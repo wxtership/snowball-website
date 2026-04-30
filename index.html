@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Snowball — Weather it. Snowball it.</title>
+<link rel="preload" as="image" href="assets/xtreme-logo.png" fetchpriority="high" />
+<style>
+@font-face {
+  font-family: 'Druk Wide';
+  src: url('./fonts/DrukWideBold.woff2') format('woff2');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Mustica Pro';
+  src: url('./fonts/MusticaPro-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple-500: #6B54F5;
+  --purple-400: #9B5EF5;
+  --purple-300: #BFA3FF;
+  --purple-200: #DDD0FF;
+  --purple-800: #2a1060;
+  --purple-900: #1a0d3e;
+  --purple-950: #0d0820;
+  --dark-900: #0d0d18;
+  --dark-800: #1a1a2e;
+  --dark-700: #252540;
+  --font-display: 'Druk Wide', 'Arial Black', Impact, sans-serif;
+  --font-body: 'Mustica Pro', Arial, sans-serif;
+  --glow: 0 0 40px rgba(107,84,245,0.45);
+  --glow-sm: 0 0 16px rgba(107,84,245,0.3);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark-900);
+  color: #fff;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.45;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark-900); }
+::-webkit-scrollbar-thumb { background: var(--purple-800); border-radius: 999px; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(13,13,24,0.75);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo img { width: 32px; height: 32px; border-radius: 50%; }
+.nav-logo span { font-family: var(--font-display); font-size: 14px; letter-spacing: 0.04em; color: #fff; text-transform: uppercase; }
+.nav-pill { display: none; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-link { color: rgba(255,255,255,0.55); font-size: 14px; text-decoration: none; font-family: var(--font-body); transition: color 0.2s; }
+.nav-link:hover { color: #fff; }
+.nav-cta { background: var(--purple-500); color: #fff; font-family: var(--font-body); font-size: 13px; padding: 8px 20px; border-radius: 999px; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; box-shadow: var(--glow-sm); }
+.nav-cta:hover { background: var(--purple-400); transform: scale(1.03); }
+
+#hero {
+  position: relative; min-height: 93vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden; padding: 120px 24px 60px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(107,84,245,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(61,10,138,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(107,84,245,0.12) 0%, transparent 60%),
+    var(--dark-900);
+  transform: translateZ(0);
+  will-change: transform;
+}
+.hero-content { position: relative; z-index: 3; max-width: 860px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(107,84,245,0.15); border: 1px solid rgba(107,84,245,0.35);
+  border-radius: 999px; padding: 7px 18px 7px 10px; margin-bottom: 28px;
+  font-size: 13px; color: var(--purple-200); backdrop-filter: blur(10px);
+}
+.hero-eyebrow img { width: 22px; height: 22px; border-radius: 50%; }
+.hero-headline {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: clamp(18px, 2.8vw, 30px); line-height: 1.2;
+  letter-spacing: 0.01em; color: rgba(255,255,255,0.55);
+  margin-bottom: 10px; text-align: center; width: 100%;
+  text-transform: none;
+}
+.hero-rotating-line {
+  font-family: var(--font-display); font-weight: 700;
+  line-height: 1.0; letter-spacing: -0.02em; text-transform: uppercase;
+  color: var(--purple-400);
+  background: linear-gradient(90deg, var(--purple-400) 0%, var(--purple-300) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  width: 100%; max-width: 100%;
+  padding: 0 12px;
+}
+.rotating-slot {
+  display: inline-block;
+  max-width: 94vw;
+  vertical-align: bottom;
+  padding-right: 0.12em;
+  padding-left: 0.04em;
+}
+.hero-sub {
+  font-family: var(--font-body); font-size: clamp(15px, 2vw, 18px);
+  color: rgba(255,255,255,0.55); max-width: 520px; margin: 12px auto 40px; line-height: 1.65;
+}
+.hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--purple-500); color: #fff;
+  font-family: var(--font-body); font-size: 15px; padding: 14px 28px;
+  border-radius: 999px; border: none; cursor: pointer; text-decoration: none;
+  box-shadow: var(--glow), 0 4px 20px rgba(0,0,0,0.5);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-primary:hover { background: var(--purple-400); transform: scale(1.04); box-shadow: 0 0 50px rgba(107,84,245,0.6), 0 4px 20px rgba(0,0,0,0.5); }
+.btn-primary:active { transform: scale(0.97); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85);
+  font-family: var(--font-body); font-size: 15px; padding: 14px 28px;
+  border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); cursor: pointer;
+  text-decoration: none; backdrop-filter: blur(8px);
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.11); transform: scale(1.02); }
+
+.btn-ghost-arrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: #fff;
+  font-family: var(--font-body); font-size: 15px; padding: 14px 28px;
+  border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.5); cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  overflow: hidden;
+}
+.btn-ghost-arrow:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.06);
+  transform: scale(1.02);
+}
+.btn-ghost-arrow .arrow-icon {
+  display: inline-block;
+  font-size: 16px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-ghost-arrow:hover .arrow-icon {
+  transform: translate(3px, -3px);
+}
+
+.floating-icons { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; isolation: isolate; contain: layout paint style; }
+.float-icon {
+  border-radius: 16px; overflow: hidden;
+  background: rgba(107,84,245,0.10);
+  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(107,84,245,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 20px rgba(107,84,245,0.2), inset 0 1px 0 rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  will-change: transform, filter;
+  transform: translateZ(0);
+  contain: layout paint style;
+}
+.float-icon img { width: 65%; height: 65%; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(107,84,245,0.4)); }
+
+section { position: relative; z-index: 1; padding: 100px 24px; }
+.section-inner { max-width: 1080px; margin: 0 auto; }
+.section-label { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple-400); margin-bottom: 12px; }
+.section-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.02em; text-transform: uppercase; line-height: 1.05; color: #fff; margin-bottom: 16px; }
+.section-body { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 540px; margin-bottom: 48px; }
+
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.55);
+}
+
+.divider { height: 1px; background: rgba(255,255,255,0.07); }
+
+#ai-section { background: linear-gradient(180deg, transparent, rgba(42,16,96,0.08) 30%, transparent); }
+
+.ai-timeline {
+  max-width: 620px;
+  margin: 0 auto 40px;
+  padding: 8px 0;
+}
+.timeline-toolbar {
+  display: flex; justify-content: flex-start;
+  margin: 0 0 22px 64px;
+}
+.timeline-toggle {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(107,84,245,0.12);
+  border: 1px solid rgba(107,84,245,0.4);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: default;
+  box-shadow: 0 0 24px rgba(107,84,245,0.18);
+}
+.timeline-toggle-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #a78bfa;
+  box-shadow: 0 0 12px rgba(167,139,250,0.9);
+  animation: timelinePulse 1.6s ease-in-out infinite;
+}
+@keyframes timelinePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.7); }
+}
+.timeline-row {
+  display: flex; align-items: stretch;
+  gap: 20px;
+}
+.timeline-rail {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  flex-shrink: 0;
+  width: 44px;
+}
+.timeline-dot {
+  position: relative;
+  border-radius: 50% !important;
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.35s, border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+}
+.timeline-dot img {
+  width: 60%; height: 60%; object-fit: contain;
+  transition: opacity 0.3s, filter 0.3s;
+  opacity: 0.4;
+  filter: grayscale(0.6);
+}
+.state-active .timeline-dot {
+  background: rgba(107,84,245,0.18);
+  border-color: rgba(107,84,245,0.7);
+  box-shadow: 0 0 32px rgba(107,84,245,0.45);
+  transform: scale(1.05);
+}
+.state-active .timeline-dot img { opacity: 0; }
+.state-done .timeline-dot {
+  background: rgba(74,222,128,0.12);
+  border-color: rgba(74,222,128,0.45);
+  box-shadow: 0 0 18px rgba(74,222,128,0.18);
+}
+.state-done .timeline-dot img { opacity: 0; }
+.timeline-spinner {
+  position: absolute;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(167,139,250,0.2);
+  border-top-color: #a78bfa;
+  animation: timelineSpin 0.7s linear infinite;
+}
+@keyframes timelineSpin {
+  to { transform: rotate(360deg); }
+}
+.timeline-check {
+  position: absolute;
+  font-size: 18px; font-weight: 700;
+  color: #4ade80;
+  line-height: 1;
+  animation: timelinePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes timelinePop {
+  0%   { transform: scale(0.3); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.timeline-line {
+  flex: 1;
+  width: 2px;
+  background: rgba(74,222,128,0.5);
+  margin: 6px 0 -6px;
+  min-height: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.timeline-body {
+  flex: 1;
+  padding-bottom: 28px;
+}
+.timeline-row:last-of-type .timeline-body { padding-bottom: 0; }
+.timeline-time {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s;
+}
+.state-active .timeline-time { color: var(--purple-300); }
+.state-done   .timeline-time { color: rgba(74,222,128,0.85); }
+.timeline-title {
+  font-family: var(--font-body);
+  font-size: 16px; font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 6px;
+  transition: color 0.3s;
+}
+.state-active .timeline-title,
+.state-done   .timeline-title { color: #fff; }
+.timeline-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.55;
+  max-width: 460px;
+  transition: color 0.3s;
+}
+.state-active .timeline-desc { color: rgba(255,255,255,0.7); }
+.state-done   .timeline-desc { color: rgba(255,255,255,0.55); }
+
+@media (max-width: 760px) {
+  .ai-timeline { padding: 0; }
+  .timeline-row { gap: 14px; }
+}
+
+.ai-chat-demo { padding: 24px; }
+.chat-row { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+.chat-row.user { flex-direction: row-reverse; }
+.chat-ava { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: var(--dark-700); overflow: hidden; display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.6); }
+.chat-ava img { width: 100%; height: 100%; object-fit: cover; }
+.chat-text { padding: 10px 15px; border-radius: 14px; font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.85); max-width: 85%; backdrop-filter: blur(8px); }
+.chat-row.bot .chat-text { background: rgba(107,84,245,0.15); border: 1px solid rgba(107,84,245,0.25); border-top-left-radius: 4px; }
+.chat-row.user .chat-text { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-top-right-radius: 4px; }
+.tool-call-row { display: flex; align-items: center; gap: 8px; margin: 4px 0 4px 44px; background: rgba(42,16,96,0.45); border: 1px solid rgba(107,84,245,0.28); border-radius: 8px; padding: 6px 12px; font-size: 12px; color: var(--purple-300); width: fit-content; }
+.tool-call-row img { width: 16px; height: 16px; border-radius: 4px; }
+
+.economy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.econ-card {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 28px 24px;
+  backdrop-filter: blur(14px);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.econ-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--purple-500), transparent); opacity: 0; transition: opacity 0.3s; }
+.econ-card:hover { border-color: rgba(107,84,245,0.35); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 24px rgba(107,84,245,0.1); }
+.econ-card:hover::before { opacity: 1; }
+.econ-icon { width: 48px; height: 48px; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+.econ-icon img { width: 100%; height: 100%; }
+.econ-title { font-family: var(--font-body); font-size: 17px; color: #fff; margin-bottom: 8px; }
+.econ-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.econ-tag { display: inline-block; margin-top: 14px; background: rgba(107,84,245,0.18); border: 1px solid rgba(107,84,245,0.3); color: var(--purple-300); font-size: 11px; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 999px; }
+
+#commands { background: linear-gradient(180deg, transparent, rgba(26,13,62,0.18) 40%, transparent); }
+.commands-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.cmd-chip {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 10px 16px;
+  cursor: default; backdrop-filter: blur(10px);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.cmd-chip:hover { background: rgba(107,84,245,0.14); border-color: rgba(107,84,245,0.35); transform: translateY(-2px); }
+.cmd-chip img { width: 28px; height: 28px; border-radius: 6px; }
+.cmd-chip-inner { display: flex; flex-direction: column; gap: 1px; }
+.cmd-chip-name { font-size: 13px; color: rgba(255,255,255,0.9); }
+.cmd-chip-desc { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+#preview { background: linear-gradient(180deg, transparent, rgba(42,16,96,0.12) 40%, transparent); }
+.preview-card { padding: 60px 48px; text-align: center; position: relative; overflow: hidden; }
+.preview-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--purple-400), transparent); }
+.preview-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(107,84,245,0.15); border: 1px solid rgba(107,84,245,0.3); border-radius: 999px; padding: 5px 16px; margin-bottom: 24px; font-size: 12px; color: var(--purple-300); letter-spacing: 0.08em; text-transform: uppercase; }
+.preview-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 6px #4ade80; animation: blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.preview-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 16px; }
+.preview-body { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.65; max-width: 520px; margin: 0 auto 36px; }
+.server-tag { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 10px 20px; margin-bottom: 32px; }
+.server-tag img { width: 32px; height: 32px; border-radius: 8px; }
+.server-tag-name { font-size: 15px; color: #fff; }
+.server-tag-members { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+.pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple-300); box-shadow: 0 0 8px var(--purple-300); display: inline-block; animation: blink 2s ease-in-out infinite; flex-shrink: 0; }
+.pulse-dot.green { background: #4ade80; box-shadow: 0 0 8px #4ade80; }
+
+.preview-minimal { text-align: left; max-width: 720px; padding: 40px 0; }
+.preview-minimal-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 13px;
+  color: rgba(255,255,255,0.55); letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+.preview-minimal-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(40px, 6vw, 76px);
+  letter-spacing: -0.03em; line-height: 0.98;
+  color: #fff; margin-bottom: 20px;
+  text-transform: none;
+}
+.preview-minimal-body {
+  font-size: 17px; color: rgba(255,255,255,0.6);
+  line-height: 1.65; max-width: 520px; margin-bottom: 36px;
+}
+.preview-minimal-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.preview-minimal-meta {
+  font-family: var(--font-body); font-size: 13px;
+  color: rgba(255,255,255,0.4); letter-spacing: 0.02em;
+}
+
+.preview-invite-wrap { max-width: 480px; margin: 0 auto; text-align: center; }
+.preview-invite-pretitle {
+  font-family: var(--font-body); font-size: 13px;
+  color: rgba(255,255,255,0.5); letter-spacing: 0.04em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.invite-card {
+  background: #2b2d31;
+  border-radius: 12px; overflow: hidden;
+  text-align: left;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.invite-card-banner {
+  height: 100px;
+  background: linear-gradient(135deg, #3D0A8A, #6B54F5);
+  position: relative; overflow: hidden;
+}
+.invite-card-banner img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+.invite-card-body { padding: 16px; }
+.invite-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.invite-server-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 4px solid #2b2d31; margin-top: -36px;
+  background: #1e1f22; flex-shrink: 0; object-fit: cover;
+}
+.invite-server-name { font-family: var(--font-body); font-weight: 600; font-size: 16px; color: #fff; margin-bottom: 4px; }
+.invite-meta { display: flex; align-items: center; gap: 14px; font-size: 13px; color: rgba(255,255,255,0.55); }
+.invite-online, .invite-members { display: inline-flex; align-items: center; gap: 6px; }
+.invite-tags { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.invite-tag {
+  font-size: 11px; padding: 3px 8px; border-radius: 4px;
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+.invite-btn {
+  display: block; width: 100%; text-align: center;
+  background: #248046; color: #fff;
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  padding: 10px 16px; border-radius: 8px; text-decoration: none;
+  transition: background 0.15s;
+}
+.invite-btn:hover { background: #1a6334; }
+
+.preview-ticker-wrap { text-align: center; padding: 20px 0; }
+.preview-ticker-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 12px;
+  color: rgba(255,255,255,0.55); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 28px;
+  padding: 8px 16px; border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.preview-ticker-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(36px, 5.5vw, 68px);
+  letter-spacing: -0.03em; line-height: 1.0;
+  color: #fff; margin-bottom: 48px;
+  text-transform: none;
+}
+.preview-ticker-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px; max-width: 760px; margin: 0 auto 44px;
+}
+.ticker-stat {
+  padding: 28px 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  text-align: center;
+  min-width: 0;
+  overflow: hidden;
+}
+.ticker-stat-num {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(24px, 3.4vw, 40px);
+  letter-spacing: -0.02em; color: #fff;
+  margin-bottom: 6px; line-height: 1;
+}
+.ticker-stat-num.is-word {
+  font-size: clamp(18px, 2.4vw, 28px);
+  letter-spacing: -0.01em;
+}
+.ticker-stat-label {
+  font-family: var(--font-body); font-size: 12px;
+  color: rgba(255,255,255,0.5); letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.preview-ticker-foot {
+  font-family: var(--font-body); font-size: 13px;
+  color: rgba(255,255,255,0.35); margin-top: 20px;
+  letter-spacing: 0.02em;
+}
+
+.preview-editorial { max-width: 760px; margin: 0 auto; text-align: left; padding: 40px 0; }
+.preview-editorial-num {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 14px; color: var(--purple-400);
+  letter-spacing: 0.04em; margin-bottom: 8px;
+}
+.preview-editorial-kicker {
+  font-family: var(--font-body); font-size: 14px;
+  color: rgba(255,255,255,0.5); margin-bottom: 24px;
+}
+.preview-editorial-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.025em; line-height: 1.05;
+  color: #fff; margin-bottom: 28px;
+  text-transform: none;
+}
+.preview-editorial-body {
+  font-size: 18px; color: rgba(255,255,255,0.65);
+  line-height: 1.7; max-width: 620px; margin-bottom: 36px;
+}
+.preview-editorial-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .preview-ticker-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .preview-minimal-title { font-size: clamp(34px, 9vw, 52px); }
+  .preview-ticker-title  { font-size: clamp(32px, 8vw, 48px); }
+  .preview-editorial-title { font-size: clamp(30px, 7.5vw, 44px); }
+  .ticker-stat { padding: 20px 10px; }
+  .ticker-stat-num { font-size: clamp(20px, 5.5vw, 30px); word-break: break-word; }
+  .ticker-stat-label { font-size: 10px; letter-spacing: 0.04em; }
+}
+
+footer { position: relative; z-index: 1; text-align: center; padding: 40px 24px; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-logo { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.footer-logo img { width: 28px; height: 28px; border-radius: 50%; }
+.footer-logo span { font-family: var(--font-display); font-size: 13px; letter-spacing: 0.04em; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+.footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+@media (max-width: 760px) {
+  nav { padding: 14px 20px; }
+  .nav-links { gap: 16px; }
+  .nav-link { display: none; }
+  .economy-grid { grid-template-columns: 1fr; }
+  #hero { min-height: 95vh; padding: 100px 16px 60px; }
+  .hero-sub { font-size: 15px; }
+  .floating-icons { z-index: 1; }
+  .hero-content { z-index: 3; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-ghost { width: 100%; max-width: 280px; justify-content: center; }
+  .section { padding: 60px 16px; }
+  .preview-card { padding: 36px 20px; }
+  .commands-grid { gap: 8px; }
+  .section-title { font-size: clamp(26px, 6vw, 40px); }
+}
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const PHRASES = [
+  "track weather","chat with AI","get forecasts","receive alerts",
+  "generate EAS alerts","listen to music","tune in to radio","earn SNOWFLAKES",
+  "fight your boar","stay informed"
+];
+
+const FLOAT_ICONS = [
+  { src:'assets/icons/weather.png',    top:'8%',   left:'4%',   size:90,  dur:'8s',   delay:'0s',    depth:1.0,  mobileHide:false },
+  { src:'assets/icons/radar.png',      top:'18%',  left:'9%',   size:66,  dur:'11s',  delay:'-2s',   depth:0.5,  mobileHide:false },
+  { src:'assets/icons/ai.png',         top:'7%',   right:'4%',  size:100, dur:'7s',   delay:'-1s',   depth:1.2,  mobileHide:false },
+  { src:'assets/icons/alert.png',      top:'22%',  right:'7%',  size:74,  dur:'9s',   delay:'-3s',   depth:0.6,  mobileHide:false },
+  { src:'assets/icons/forecast.png',   top:'38%',  left:'2%',   size:76,  dur:'10s',  delay:'-0.5s', depth:0.8,  mobileHide:false },
+  { src:'assets/icons/satellite.png',  top:'58%',  left:'3%',   size:62,  dur:'13s',  delay:'-4s',   depth:0.35, mobileHide:false },
+  { src:'assets/icons/music.png',      top:'66%',  right:'3%',  size:80,  dur:'8.5s', delay:'-1.5s', depth:0.9,  mobileHide:false },
+  { src:'assets/icons/balance.png',    top:'42%',  right:'2%',  size:68,  dur:'6.5s', delay:'-2.5s', depth:0.7,  mobileHide:false },
+  { src:'assets/icons/lightning.png',  top:'76%',  left:'2%',   size:70,  dur:'9.5s', delay:'-3.5s', depth:0.45, mobileHide:false },
+  { src:'assets/icons/outlook.png',    top:'30%',  left:'6%',   size:60,  dur:'7.5s', delay:'-5s',   depth:0.4,  mobileHide:false },
+  { src:'assets/icons/radio.png',      top:'80%',  right:'5%',  size:64,  dur:'12s',  delay:'-0.8s', depth:0.5,  mobileHide:false },
+  { src:'assets/icons/spotter.png',    top:'54%',  right:'6%',  size:62,  dur:'10s',  delay:'-2s',   depth:0.6,  mobileHide:false },
+  { src:'assets/icons/shop.png',       top:'15%',  left:'38%',  size:56,  dur:'14s',  delay:'-6s',   depth:0.3,  mobileHide:true  },
+  { src:'assets/icons/leaderboard.png',top:'70%',  right:'22%', size:58,  dur:'11s',  delay:'-3s',   depth:0.55, mobileHide:true  },
+  { src:'assets/icons/level.png',      top:'48%',  left:'18%',  size:54,  dur:'8s',   delay:'-4.5s', depth:0.4,  mobileHide:true  },
+];
+
+const BURST_ORIGINS = [
+  { scale: 3.2, blur: 28, r:  -8 },
+  { scale: 2.4, blur: 22, r:  14 },
+  { scale: 3.6, blur: 32, r: -12 },
+  { scale: 2.8, blur: 24, r:  18 },
+  { scale: 3.0, blur: 26, r:  -6 },
+  { scale: 2.2, blur: 20, r:  10 },
+  { scale: 3.4, blur: 30, r: -16 },
+  { scale: 2.6, blur: 23, r:   8 },
+  { scale: 2.0, blur: 18, r: -10 },
+  { scale: 2.8, blur: 25, r:  20 },
+  { scale: 2.4, blur: 21, r:  -4 },
+  { scale: 3.0, blur: 27, r:  12 },
+  { scale: 2.2, blur: 19, r: -18 },
+  { scale: 2.6, blur: 24, r:   6 },
+  { scale: 3.2, blur: 29, r: -14 },
+];
+
+function FloatingIcons({ burstKey }) {
+  const [offset, setOffset]         = React.useState({ x: 0, y: 0 });
+  const [mobile, setMobile]         = React.useState(false);
+  const [smoothing, setSmoothing]   = React.useState(false);
+  const [burstPhase, setBurstPhase] = React.useState('out');
+  const smoothTimerRef              = React.useRef(null);
+
+  useEffect(() => {
+    const check = () => setMobile(window.innerWidth <= 760);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  useEffect(() => {
+    setBurstPhase('out');
+    const delay = setTimeout(() => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setBurstPhase('in');
+          setTimeout(() => setBurstPhase('rest'), 2400);
+        });
+      });
+    }, 400);
+    return () => clearTimeout(delay);
+  }, [burstKey]);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleMouseMove = (e) => {
+      if (mobile) return;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const cx = window.innerWidth / 2;
+          const cy = window.innerHeight / 2;
+          setOffset({ x: (e.clientX - cx) / cx, y: (e.clientY - cy) / cy });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    const handleMouseEnter = () => {
+      if (mobile) return;
+      setSmoothing(true);
+      clearTimeout(smoothTimerRef.current);
+      smoothTimerRef.current = setTimeout(() => setSmoothing(false), 450);
+    };
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.documentElement.addEventListener('mouseenter', handleMouseEnter);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.documentElement.removeEventListener('mouseenter', handleMouseEnter);
+    };
+  }, [mobile]);
+
+  const isBursting = burstPhase !== 'rest';
+
+  return (
+    <div className="floating-icons">
+      {FLOAT_ICONS.map((fi, i) => {
+        if (mobile && fi.mobileHide) return null;
+        const animName  = ['floatDiagA','floatDiagB','floatDiagC','floatDiagD'][i % 4];
+        const bo        = BURST_ORIGINS[i] || BURST_ORIGINS[0];
+        const stagger   = i * 18;
+        const depthBlur = mobile
+          ? (fi.depth < 0.5 ? 4 : fi.depth < 0.7 ? 2.5 : fi.depth < 0.9 ? 1.2 : 0)
+          : (fi.depth < 0.5 ? 2.5 : fi.depth < 0.7 ? 1 : 0);
+        const scrollBlur    = 0;
+        const scrollOpacity = 1;
+        const motionBlur = 0;
+        const frozen = (burstPhase === 'out');
+        const restPx = frozen ? 0 : (offset.x * fi.depth * 28);
+        const restPy = frozen ? 0 : (offset.y * fi.depth * 22);
+        const totalBlur = depthBlur + scrollBlur + motionBlur;
+        const baseOpacity = fi.depth < 0.45 ? 0.35 : fi.depth < 0.65 ? 0.5 : fi.depth < 0.85 ? 0.65 : 0.8;
+        const isOut    = burstPhase === 'out';
+        const bScale   = isOut ? bo.scale : 1;
+        const bRot     = isOut ? bo.r : 0;
+        const bBlur    = isOut ? bo.blur : totalBlur;
+        const bOpacity = isOut ? 0 : baseOpacity * scrollOpacity;
+        const outerStyle = {
+          position: 'absolute',
+          top: fi.top, left: fi.left, right: fi.right,
+          transform: `translate(${restPx}px, ${restPy}px)`,
+          willChange: 'transform',
+          transition: smoothing ? `transform 0.4s cubic-bezier(0.22,1,0.36,1)` : 'none',
+          zIndex: 1,
+        };
+        const burstStyle = {
+          transform: `rotate(${bRot}deg) scale(${bScale})`,
+          opacity: bOpacity,
+          transition: isOut
+            ? 'none'
+            : `transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${stagger}ms, opacity 0.45s ease ${stagger}ms`,
+        };
+        const iconSize = mobile ? Math.round(fi.size * 0.85) : fi.size;
+        const innerStyle = {
+          width: iconSize, height: iconSize,
+          animation: burstPhase !== 'out' ? `${animName} ${fi.dur} ease-in-out ${fi.delay} infinite` : 'none',
+          filter: bBlur > 0.05 ? `blur(${bBlur.toFixed(2)}px)` : 'none',
+          transition: isOut ? 'none' : `filter 0.6s ease ${stagger}ms`,
+        };
+        return (
+          <div key={i} style={outerStyle}>
+            <div style={burstStyle}>
+              <div className="float-icon" style={innerStyle}>
+                <img src={fi.src} alt="" />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+      <style>{`
+        @keyframes floatDiagA {
+          0%   { transform: translate(0px, 0px) rotate(-2deg); }
+          25%  { transform: translate(16px, -22px) rotate(2deg); }
+          50%  { transform: translate(28px, -12px) rotate(-1deg); }
+          75%  { transform: translate(12px, -30px) rotate(3deg); }
+          100% { transform: translate(0px, 0px) rotate(-2deg); }
+        }
+        @keyframes floatDiagB {
+          0%   { transform: translate(0px, 0px) rotate(3deg); }
+          20%  { transform: translate(-20px, -18px) rotate(-2deg); }
+          50%  { transform: translate(-10px, -30px) rotate(1deg); }
+          80%  { transform: translate(-24px, -10px) rotate(-3deg); }
+          100% { transform: translate(0px, 0px) rotate(3deg); }
+        }
+        @keyframes floatDiagC {
+          0%   { transform: translate(0px, 0px) rotate(0deg); }
+          30%  { transform: translate(20px, -24px) rotate(4deg); }
+          60%  { transform: translate(-8px, -16px) rotate(-2deg); }
+          100% { transform: translate(0px, 0px) rotate(0deg); }
+        }
+        @keyframes floatDiagD {
+          0%   { transform: translate(0px, 0px) rotate(-3deg); }
+          40%  { transform: translate(-14px, -26px) rotate(2deg); }
+          70%  { transform: translate(10px, -18px) rotate(-1deg); }
+          100% { transform: translate(0px, 0px) rotate(-3deg); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+const SLOT_HEIGHT = 'clamp(52px, 9vw, 110px)';
+
+function RotatingWord() {
+  const [current, setCurrent] = useState(0);
+  const [phase, setPhase]     = useState('idle');
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setPhase('exit');
+      setTimeout(() => {
+        setCurrent(prev => (prev + 1) % PHRASES.length);
+        setPhase('enter');
+        setTimeout(() => setPhase('idle'), 450);
+      }, 300);
+    }, 2400);
+    return () => clearInterval(t);
+  }, []);
+
+  const phrase = PHRASES[current];
+  const len    = phrase.length;
+  const fontSize = len > 16
+    ? 'clamp(20px, 3.6vw, 52px)'
+    : len > 12
+      ? 'clamp(24px, 4.8vw, 62px)'
+      : 'clamp(28px, 6vw, 74px)';
+
+  const baseStyle = {
+    display: 'block',
+    whiteSpace: 'nowrap',
+    fontSize,
+    lineHeight: SLOT_HEIGHT,
+    background: 'linear-gradient(90deg, #9B5EF5 0%, #BFA3FF 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+    fontFamily: 'var(--font-display)',
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    textTransform: 'uppercase',
+  };
+
+  const visibleStyle = {
+    ...baseStyle,
+    opacity: phase === 'exit' ? 0 : 1,
+    transform: phase === 'exit' ? 'translateY(-10px)' : 'translateY(0px)',
+    transition: phase === 'exit'
+      ? 'opacity 0.28s ease, transform 0.28s ease'
+      : phase === 'enter'
+        ? 'opacity 0.4s ease, transform 0.4s ease'
+        : 'none',
+  };
+
+  return (
+    <div className="rotating-slot" style={{ height: SLOT_HEIGHT }}>
+      <span style={visibleStyle}>{phrase}</span>
+    </div>
+  );
+}
+
+function Nav() {
+  return (
+    <nav>
+      <div className="nav-logo">
+        <img src="assets/xtreme-logo.png" alt="Xtreme Weather" loading="eager" fetchpriority="high" decoding="async" style={{width:48,height:48,borderRadius:'50%',objectFit:'cover'}} />
+      </div>
+      <div className="nav-links">
+        <span className="nav-pill">Community Preview</span>
+        <a href="#ai-section" className="nav-link">AI</a>
+        <a href="#economy" className="nav-link">Economy</a>
+        <a href="#commands" className="nav-link">Commands</a>
+      </div>
+      <a href="https://discord.gg/xtremeweather" target="_blank" className="nav-cta" style={{display:'inline-flex',alignItems:'center',gap:8}}>
+        Join
+        <img src="assets/arrow-up-right.png" alt="" style={{width:14,height:14,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)'}} />
+      </a>
+    </nav>
+  );
+}
+
+function Hero() {
+  const [burstKey] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  return (
+    <section id="hero">
+      <div className="hero-bg" />
+      <FloatingIcons burstKey={burstKey} />
+      <div className="hero-content" style={{
+        opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(12px)',
+        transform: visible ? 'translateY(0) scale(1)' : 'translateY(16px) scale(1.03)',
+        transition: 'opacity 1.1s cubic-bezier(0.22,1,0.36,1), filter 1.1s cubic-bezier(0.22,1,0.36,1), transform 1.1s cubic-bezier(0.22,1,0.36,1)',
+      }}>
+        <h1 className="hero-headline" style={{marginBottom:10}}>
+          <span style={{display:'flex',alignItems:'center',justifyContent:'center',gap:14,flexWrap:'wrap'}}>
+            <img src="assets/snowball-logo-transparent.png" alt="" style={{width:34,height:34,flexShrink:0,objectFit:'contain'}} />
+            Snowball is the best Discord app to
+          </span>
+        </h1>
+        <div className="hero-rotating-line">
+          <RotatingWord />
+        </div>
+        <p className="hero-sub" style={{
+          opacity: visible ? 1 : 0,
+          filter: visible ? 'blur(0px)' : 'blur(8px)',
+          transform: visible ? 'translateY(0)' : 'translateY(12px)',
+          transition: 'opacity 1s cubic-bezier(0.22,1,0.36,1) 0.2s, filter 1s cubic-bezier(0.22,1,0.36,1) 0.2s, transform 1s cubic-bezier(0.22,1,0.36,1) 0.2s',
+        }}>
+          The most advanced Discord app for weather. AI that actually fetches real data, a full economy system, radio, music, and so much more. <strong style={{color:'var(--purple-300)'}}>Weather it. Snowball it.</strong>
+        </p>
+        <div className="hero-ctas" style={{
+          opacity: visible ? 1 : 0,
+          filter: visible ? 'blur(0px)' : 'blur(6px)',
+          transform: visible ? 'translateY(0)' : 'translateY(10px)',
+          transition: 'opacity 0.9s cubic-bezier(0.22,1,0.36,1) 0.38s, filter 0.9s cubic-bezier(0.22,1,0.36,1) 0.38s, transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.38s',
+        }}>
+          <a href="https://discord.gg/xtremeweather" target="_blank" className="btn-ghost-arrow" style={{display:'inline-flex',alignItems:'center',gap:8}}>
+            <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{flexShrink:0}}>
+              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+            </svg>
+            Try it out
+            <img src="assets/arrow-up-right.png" alt="" style={{width:16,height:16,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)'}} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AnimatedTimeline() {
+  const steps = [
+    { icon:'assets/icons/ai.png',        title:'Message sent',      desc:'Natural language. Any channel.',                   start: 0.15, end: 0.55 },
+    { icon:'assets/icons/outlook.png',   title:'Thinking',          desc:'Parsing intent, picking tools.',                   start: 0.90, end: 1.80 },
+    { icon:'assets/icons/satellite.png', title:'Searching the web', desc:'Web search, outlooks, current weather, and more.', start: 2.20, end: 4.20 },
+    { icon:'assets/icons/weather.png',   title:'Response back',     desc:'Grounded, sourced, with embeds.',                  start: 5.00, end: 5.00 },
+  ];
+  const TOTAL = 5.0;
+  const FRAME = 50;
+
+  const [t, setT]         = React.useState(0);
+  const [running, setRun] = React.useState(false);
+  const sectionRef        = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!sectionRef.current) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) setRun(true); });
+    }, { threshold: 0.3 });
+    obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (!running) return;
+    let raf;
+    const startMs = performance.now();
+    const tick = (now) => {
+      const elapsed = (now - startMs) / 1000;
+      if (elapsed >= TOTAL) {
+        setT(TOTAL);
+        return;
+      }
+      setT(elapsed);
+      raf = setTimeout(() => requestAnimationFrame(tick), FRAME);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => clearTimeout(raf);
+  }, [running]);
+
+  const stepStates = steps.map((s, i) => {
+    const next = steps[i + 1];
+    let state = 'pending';
+    let display = s.start;
+    if (t < s.start) {
+      state = 'pending';
+      display = s.start;
+    } else if (next && t >= next.start) {
+      state = 'done';
+      display = s.end;
+    } else if (t >= s.start && t <= s.end) {
+      state = 'active';
+      display = t;
+    } else if (t > s.end) {
+      state = next ? 'done' : 'done';
+      display = s.end;
+    }
+    return { ...s, state, display };
+  });
+
+  return (
+    <div className="ai-timeline" ref={sectionRef} style={{marginLeft:0,marginRight:'auto'}}>
+      {stepStates.map((s, i) => (
+        <div key={i} className={"timeline-row state-" + s.state}>
+          <div className="timeline-rail">
+            <div className="timeline-dot">
+              {s.state === 'active'
+                ? <span className="timeline-spinner"></span>
+                : <img src={s.icon} alt="" />}
+              {s.state === 'done' && <span className="timeline-check">✓</span>}
+            </div>
+            {i < stepStates.length - 1 && (
+              <div className={"timeline-line " + (s.state === 'done' ? 'is-filled' : '')} />
+            )}
+          </div>
+          <div className="timeline-body">
+            <div className="timeline-time">
+              {s.display.toFixed(2)}s
+            </div>
+            <div className="timeline-title">{s.title}</div>
+            <div className="timeline-desc">{s.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function DiscordChatDemo() {
+  const [phase, setPhase] = React.useState(0);
+  const ref    = React.useRef(null);
+  const ranRef = React.useRef(false);
+
+  React.useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !ranRef.current) {
+        ranRef.current = true;
+        setTimeout(() => setPhase(1), 300);
+        setTimeout(() => setPhase(2), 1100);
+        setTimeout(() => setPhase(3), 4400);
+      }
+    }, { threshold: 0.2 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  const discordFont = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
+  const userPing = (
+    <span style={{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,cursor:'pointer'}}>
+      @✽ wxtershipping
+    </span>
+  );
+
+  const ChannelHeader = () => (
+    <div style={{
+      background:'rgba(20,14,42,0.65)',
+      backdropFilter:'blur(8px)',
+      padding:'12px 16px',display:'flex',alignItems:'center',gap:8,
+      borderBottom:'1px solid rgba(0,0,0,0.35)',
+      boxShadow:'0 1px 0 rgba(255,255,255,0.04)',
+    }}>
+      <span style={{color:'#80848e',fontSize:18}}>❄</span>
+      <span style={{color:'#80848e',margin:'0 -2px'}}>·</span>
+      <span style={{fontWeight:700,color:'#f2f3f5',fontSize:15}}>snowball</span>
+      <span style={{color:'#3d4045',margin:'0 6px'}}>|</span>
+      <span style={{color:'#80848e',fontSize:18,marginLeft:-2}}>❄</span>
+      <span style={{color:'#80848e',margin:'0 -2px'}}>·</span>
+      <span style={{color:'#80848e',fontSize:13,overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis',minWidth:0}}>Chat with Snowball: Xtreme Weather's revolutionary new Discord App.</span>
+    </div>
+  );
+
+  const ReplyQuote = () => (
+    <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:4,fontSize:13,color:'#b5bac1',position:'relative',paddingLeft:30}}>
+      <span style={{
+        position:'absolute',left:-12,top:'50%',
+        width:30,height:14,borderLeft:'2px solid #4e5058',borderTop:'2px solid #4e5058',
+        borderTopLeftRadius:6,
+      }}></span>
+      <div style={{width:16,height:16,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0}}></div>
+      <span style={{color:'#e67e22',fontWeight:600}}>✽ wxtershipping…</span>
+      <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>⚡ XWD</span>
+      <span style={{color:'#c9b6ff'}}>@Snowball</span>
+      <span style={{color:'#b5bac1',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>What's the weather for Pittsburgh today</span>
+    </div>
+  );
+
+  const UserMessage = () => (
+    <div style={{display:'flex',gap:16,padding:'4px 16px 8px',animation:'dcMsgIn 0.22s ease forwards'}}>
+      <div style={{width:40,height:40,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontWeight:700,fontSize:16}}>✽</div>
+      <div style={{flex:1,minWidth:0}}>
+        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:2}}>
+          <span style={{color:'#e67e22',fontWeight:600,fontSize:15}}>✽ wxtershipping…</span>
+          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>⚡ XWD</span>
+          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
+        </div>
+        <div style={{color:'#dbdee1',lineHeight:1.6}}>
+          <span style={{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3}}>@Snowball</span> What's the weather for Pittsburgh today
+        </div>
+      </div>
+    </div>
+  );
+
+  const Thinking = () => (
+    <div style={{display:'flex',gap:16,padding:'4px 16px',animation:'dcMsgIn 0.22s ease forwards'}}>
+      <img src="assets/snowball.png" alt="" style={{width:40,height:40,borderRadius:'50%',flexShrink:0}} />
+      <div style={{flex:1,minWidth:0}}>
+        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:2}}>
+          <span style={{color:'#fff',fontWeight:700,fontSize:15}}>Snowball</span>
+          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>✓ APP</span>
+          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
+        </div>
+        <div style={{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14}}>
+          <span style={{display:'inline-flex',width:14,height:14,borderRadius:'50%',border:'1.5px solid #80848e',alignItems:'center',justifyContent:'center',fontSize:9}}>🕐</span>
+          Snowball is thinking
+          <span className="dc-dots"><span></span><span></span><span></span></span>
+        </div>
+      </div>
+    </div>
+  );
+
+  const Embed = () => (
+    <div style={{
+      background:'rgba(43,45,49,0.85)',
+      borderRadius:8,
+      maxWidth:460,overflow:'hidden',
+      border:'1px solid rgba(255,255,255,0.04)',
+    }}>
+      <div style={{
+        height:96,
+        background:`linear-gradient(135deg,#5d4d7a 0%,#6f5e8e 60%,#8b7ba8 100%)`,
+        display:'flex',alignItems:'center',gap:14,padding:'0 26px',
+        position:'relative',overflow:'hidden',
+      }}>
+        <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.18), transparent 60%)'}}></div>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{position:'relative',opacity:0.9}}>
+          <path d="M3 8h14M5 12h11M7 16h7M9 20h4" stroke="#e8e2f5" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+        <span style={{color:'#fff',fontWeight:700,fontSize:24,letterSpacing:'-0.01em',position:'relative'}}>Weather for Pittsburgh</span>
+      </div>
+      <div style={{padding:'14px 18px',display:'flex',flexDirection:'column',gap:12}}>
+        <div style={{display:'flex',gap:14,alignItems:'flex-start'}}>
+          <div style={{flex:1,minWidth:0}}>
+            <div style={{color:'#fff',fontWeight:700,fontSize:17,marginBottom:4}}>Weather for Pittsburgh, PA</div>
+            <div style={{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5}}>
+              <span style={{color:'#80848e',flexShrink:0}}>›</span>
+              <div>Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting <strong style={{color:'#fff'}}>haze</strong> as of 20 minutes ago.</div>
+            </div>
+          </div>
+          <svg width="56" height="56" viewBox="0 0 64 64" style={{flexShrink:0}}>
+            <g>
+              <circle cx="32" cy="30" r="10" fill="#fbbf24"/>
+              <g stroke="#fbbf24" strokeWidth="3" strokeLinecap="round">
+                <line x1="32" y1="10" x2="32" y2="14"/>
+                <line x1="32" y1="46" x2="32" y2="50"/>
+                <line x1="12" y1="30" x2="16" y2="30"/>
+                <line x1="48" y1="30" x2="52" y2="30"/>
+                <line x1="18" y1="16" x2="21" y2="19"/>
+                <line x1="43" y1="19" x2="46" y2="16"/>
+              </g>
+              <g stroke="#b5bac1" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="14" y1="44" x2="22" y2="44"/>
+                <line x1="26" y1="44" x2="38" y2="44"/>
+                <line x1="42" y1="44" x2="50" y2="44"/>
+                <line x1="18" y1="50" x2="30" y2="50"/>
+                <line x1="34" y1="50" x2="46" y2="50"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <div style={{color:'#fff',fontWeight:700,fontSize:15,marginBottom:4}}>Active Alerts</div>
+          <div style={{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5}}>
+            <span style={{color:'#80848e',flexShrink:0}}>›</span>
+            <div>There's currently an advisory for the area. You can use <span style={{color:'#c9b6ff'}}>/weather alerts</span> for more information!</div>
+          </div>
+        </div>
+        <div>
+          <div style={{color:'#fff',fontWeight:700,fontSize:15,marginBottom:6}}>Conditions</div>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px 24px',fontSize:13}}>
+            <div><div style={{color:'#fff',fontWeight:600}}>Temperature:</div><div style={{color:'#dbdee1'}}>46°F (Feels like 42°F)</div></div>
+            <div><div style={{color:'#fff',fontWeight:600}}>Wind:</div><div style={{color:'#dbdee1'}}>8mph WNW (Gusts 18mph)</div></div>
+            <div><div style={{color:'#fff',fontWeight:600}}>Humidity:</div><div style={{color:'#dbdee1'}}>66%</div></div>
+            <div><div style={{color:'#fff',fontWeight:600}}>Dew Point:</div><div style={{color:'#dbdee1'}}>35°F</div></div>
+            <div><div style={{color:'#fff',fontWeight:600}}>Visibility:</div><div style={{color:'#dbdee1'}}>4.00 miles</div></div>
+            <div><div style={{color:'#fff',fontWeight:600}}>Pressure:</div><div style={{color:'#dbdee1'}}>29.92 inHg</div></div>
+          </div>
+        </div>
+        <div style={{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2}}>
+          <img src="assets/snowball.png" alt="" style={{width:16,height:16,borderRadius:'50%'}} />
+          Snowball
+        </div>
+      </div>
+    </div>
+  );
+
+  const ViewBtn = () => (
+    <button type="button" style={{
+      marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',
+      color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,
+      padding:'7px 14px',borderRadius:6,cursor:'pointer',
+      display:'inline-flex',alignItems:'center',gap:6,
+    }}>
+      View Full Forecast
+      <span style={{fontSize:11,opacity:0.7}}>↗</span>
+    </button>
+  );
+
+  const Quoted = () => (
+    <div style={{
+      marginTop:14,paddingLeft:14,borderLeft:'4px solid #4e5058',
+      fontSize:13,color:'#dbdee1',lineHeight:1.6,
+    }}>
+      Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. <span style={{color:'#4ade80'}}>✓</span>
+    </div>
+  );
+
+  const Disclaimer = () => (
+    <div style={{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5}}>
+      <span style={{color:'#9B5EF5'}}>ⓘ</span>
+      Snowball's AI responses can make mistakes. Unlimited usage.
+    </div>
+  );
+
+  const BotResponse = () => (
+    <div style={{display:'flex',gap:16,padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'}}>
+      <img src="assets/snowball.png" alt="" style={{width:40,height:40,borderRadius:'50%',flexShrink:0}} />
+      <div style={{flex:1,minWidth:0}}>
+        <ReplyQuote />
+        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:6}}>
+          <span style={{color:'#fff',fontWeight:700,fontSize:15}}>Snowball</span>
+          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>✓ APP</span>
+          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
+        </div>
+        <div style={{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap'}}>
+          <span style={{display:'inline-flex',width:14,height:14,borderRadius:'50%',background:'#4ade80',color:'#0a1f0d',alignItems:'center',justifyContent:'center',fontSize:9,fontWeight:700}}>✓</span>
+          Thought for 5 seconds&nbsp;·&nbsp;{userPing}
+        </div>
+        <Embed />
+        <ViewBtn />
+        <Quoted />
+        <Disclaimer />
+      </div>
+    </div>
+  );
+
+  return (
+    <div ref={ref} style={{
+      background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',
+      borderRadius:12, overflow:'hidden',
+      border:'1px solid rgba(155,94,245,0.18)',
+      boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',
+      fontFamily:discordFont,
+      fontSize:14, color:'#dbdee1', maxWidth:560,
+    }}>
+      <ChannelHeader />
+      <div style={{padding:'16px 0',minHeight:240}}>
+        {phase >= 1 && <UserMessage />}
+        {phase === 2 && <Thinking />}
+        {phase >= 3 && <BotResponse />}
+      </div>
+      <div style={{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6}}>
+        Message <span style={{color:'#80848e'}}>❄·</span> snowball
+      </div>
+      <style>{`
+        @keyframes dcMsgIn {
+          from { opacity:0; transform:translateY(6px); }
+          to   { opacity:1; transform:translateY(0); }
+        }
+        .dc-dots { display:inline-flex; gap:3px; align-items:center; margin-left:2px; }
+        .dc-dots span { width:4px; height:4px; border-radius:50%; background:#80848e; animation:dcDot 1.2s infinite ease-in-out; }
+        .dc-dots span:nth-child(2) { animation-delay:0.2s; }
+        .dc-dots span:nth-child(3) { animation-delay:0.4s; }
+        @keyframes dcDot { 0%,80%,100%{opacity:0.3;transform:scale(0.8);} 40%{opacity:1;transform:scale(1.1);} }
+      `}</style>
+    </div>
+  );
+}
+
+function AiSection() {
+  return (
+    <section id="ai-section">
+      <div className="section-inner">
+        <h2 className="section-title">The only AI that<br/>actually looks it up</h2>
+        <p className="section-body">
+          Every other AI makes up weather data. Snowball's AI hits the live web and the same NWS, SPC, and NOAA feeds the pros use — then answers in <strong style={{color:'#fff'}}>~3–4 seconds</strong>. Heavy multi-tool requests still come back in under 8.
+        </p>
+        <AnimatedTimeline />
+        <DiscordChatDemo />
+      </div>
+    </section>
+  );
+}
+
+function EconomySection() {
+  const cards = [
+    { icon:'assets/icons/balance.png', title:'SNOWFLAKES Currency', desc:'Earn SNOWFLAKES by chatting, completing missions, and winning fights. Spend them in the shop on roles, items, and boar upgrades.', tag:'/balance' },
+    { icon:'assets/icons/events.png', title:'Missions & Paths', desc:'Daily and weekly missions reward SNOWFLAKES and XP. Choose a career path — Meteorologist, Chaser, Broadcaster — for unique perks.', tag:'/events' },
+    { icon:'assets/icons/level.png', title:'XP & Leveling', desc:'Climb the server ranks. Every message earns XP. Unlock roles, channel access, and economy boosts as you level up.', tag:'/level' },
+    { icon:'assets/icons/stock.png', title:'Stock Market', desc:'Trade virtual stocks that mirror real market data. Build a portfolio, diversify, and compete on the leaderboard.', tag:'/stock' },
+    { icon:'assets/icons/spotter.png', title:'Boar Pets & Fights', desc:'Adopt and train your boar companion. Battle other members\' boars for FLAX and glory. Feed, level, and evolve them.', tag:'/boar' },
+    { icon:'assets/icons/leaderboard.png', title:'Leaderboard', desc:'Compete for the top spot across FLAX balance, XP, stock gains, and boar wins. Updated in real-time.', tag:'/leaderboard' },
+  ];
+  return (
+    <section id="economy">
+      <div className="divider" />
+      <div className="section-inner" style={{paddingTop:80}}>
+        <h2 className="section-title">A whole world<br/>inside Discord</h2>
+        <p className="section-body">
+          Snowball's economy isn't just points. It's a full ecosystem — currency, stocks, pets, missions, and leaderboards — all woven into the Xtreme Weather community.
+        </p>
+        <div className="economy-grid">
+          {cards.map((c,i) => (
+            <div key={i} className="econ-card">
+              <div className="econ-icon"><img src={c.icon} alt="" /></div>
+              <div className="econ-title">{c.title}</div>
+              <div className="econ-desc">{c.desc}</div>
+              <span className="econ-tag">{c.tag}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CommandsSection() {
+  const cmds = [
+    { icon:'assets/icons/weather.png', name:'/weather', desc:'Current conditions' },
+    { icon:'assets/icons/forecast.png', name:'/forecast', desc:'Multi-day forecast' },
+    { icon:'assets/icons/radar.png', name:'/radar', desc:'Live NEXRAD' },
+    { icon:'assets/icons/alert.png', name:'/alerts', desc:'Active NWS alerts' },
+    { icon:'assets/icons/satellite.png', name:'/satellite', desc:'GOES imagery' },
+    { icon:'assets/icons/outlook.png', name:'/outlook', desc:'SPC outlook' },
+    { icon:'assets/icons/lightning.png', name:'/lightning', desc:'Strike activity' },
+    { icon:'assets/icons/spotter.png', name:'/spotter', desc:'Spotter reports' },
+    { icon:'assets/icons/emergency.png', name:'/eas', desc:'EAS product' },
+    { icon:'assets/icons/music.png', name:'/music', desc:'Play music' },
+    { icon:'assets/icons/radio.png', name:'/radio', desc:'Weather radio' },
+    { icon:'assets/icons/balance.png', name:'/balance', desc:'Your FLAX' },
+    { icon:'assets/icons/stock.png', name:'/stock', desc:'Trade stocks' },
+    { icon:'assets/icons/leaderboard.png', name:'/leaderboard', desc:'Top members' },
+    { icon:'assets/icons/level.png', name:'/level', desc:'Your XP' },
+    { icon:'assets/icons/shop.png', name:'/shop', desc:'Buy items' },
+    { icon:'assets/icons/events.png', name:'/missions', desc:'Daily quests' },
+    { icon:'assets/icons/ai.png', name:'/ask', desc:'Ask the AI' },
+  ];
+  return (
+    <section id="commands">
+      <div className="divider" />
+      <div className="section-inner" style={{paddingTop:80}}>
+        <h2 className="section-title">Everything in a slash</h2>
+        <p className="section-body">
+          Dozens of commands covering weather data, AI, economy, and entertainment — all tuned for the Xtreme Weather community.
+        </p>
+        <div className="commands-grid">
+          {cmds.map((c,i) => (
+            <div key={i} className="cmd-chip">
+              <img src={c.icon} alt="" />
+              <div className="cmd-chip-inner">
+                <span className="cmd-chip-name">{c.name}</span>
+                <span className="cmd-chip-desc">{c.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function formatK(n) {
+  if (typeof n !== 'number') return null;
+  if (n < 1000) return String(n);
+  return (n/1000).toFixed(1).replace(/\.0$/, '') + 'K';
+}
+
+function PreviewTicker() {
+  const [online, setOnline]   = React.useState(null);
+  const [members, setMembers] = React.useState(null);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    const fetchCounts = () => {
+      fetch('https://discord.com/api/guilds/1077714936056250388/widget.json', { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (cancelled || !data) return;
+          if (typeof data.presence_count === 'number') setOnline(formatK(data.presence_count));
+          if (typeof data.approximate_member_count === 'number') {
+            setMembers(formatK(data.approximate_member_count) + '+');
+          }
+        })
+        .catch(() => {});
+    };
+    fetchCounts();
+    const id = setInterval(fetchCounts, 30000);
+    return () => { cancelled = true; clearInterval(id); };
+  }, []);
+
+  const stats = [
+    { num: members ?? '7.2K+',  label: 'Members' },
+    { num: online ?? '—',       label: 'Online now' },
+    { num: 'Thousands',         label: 'of AI messages sent' },
+    { num: 'Billions',          label: 'in the economy' },
+  ];
+  return (
+    <div className="preview-ticker-wrap">
+      <h2 className="preview-ticker-title">
+        The community<br/>is already inside.
+      </h2>
+      <div className="preview-ticker-grid">
+        {stats.map((s,i) => {
+          const isWord = typeof s.num === 'string' && /^[A-Za-z]/.test(s.num);
+          return (
+            <div key={i} className="ticker-stat">
+              <div className={"ticker-stat-num" + (isWord ? " is-word" : "")}>{s.num}</div>
+              <div className="ticker-stat-label">{s.label}</div>
+            </div>
+          );
+        })}
+      </div>
+      <a href="https://discord.gg/xtremeweather" target="_blank" className="btn-primary" style={{display:'inline-flex',alignItems:'center',gap:10}}>
+        <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+        Join Xtreme Weather
+      </a>
+      <div className="preview-ticker-foot">discord.gg/xtremeweather</div>
+    </div>
+  );
+}
+
+function PreviewSection() {
+  return (
+    <section id="preview">
+      <div className="divider" />
+      <div className="section-inner" style={{paddingTop:80}}>
+        <PreviewTicker />
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <div className="footer-logo">
+        <img src="assets/snowball.png" alt="" />
+        <span>Snowball</span>
+      </div>
+      <div className="footer-copy">© 2026 Snowball · Xtreme Weather · Community Preview</div>
+    </footer>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <AiSection />
+      <EconomySection />
+      <CommandsSection />
+      <PreviewSection />
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
