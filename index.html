@@ -727,7 +727,8 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
 
 <div id="root"></div>
 <script>
-const { useState, useEffect, useRef, createElement: h, Fragment } = React;
+const { useState, useEffect, useRef } = React;
+const h = React.createElement;
 
 const PHRASES = [
   "track weather","chat with AI","get forecasts","receive alerts",
@@ -771,12 +772,41 @@ const BURST_ORIGINS = [
   { scale: 3.2, blur: 29, r: -14 },
 ];
 
+const FLOAT_KEYFRAMES = `
+  @keyframes floatDiagA {
+    0%   { transform: translate(0px, 0px) rotate(-2deg); }
+    25%  { transform: translate(16px, -22px) rotate(2deg); }
+    50%  { transform: translate(28px, -12px) rotate(-1deg); }
+    75%  { transform: translate(12px, -30px) rotate(3deg); }
+    100% { transform: translate(0px, 0px) rotate(-2deg); }
+  }
+  @keyframes floatDiagB {
+    0%   { transform: translate(0px, 0px) rotate(3deg); }
+    20%  { transform: translate(-20px, -18px) rotate(-2deg); }
+    50%  { transform: translate(-10px, -30px) rotate(1deg); }
+    80%  { transform: translate(-24px, -10px) rotate(-3deg); }
+    100% { transform: translate(0px, 0px) rotate(3deg); }
+  }
+  @keyframes floatDiagC {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    30%  { transform: translate(20px, -24px) rotate(4deg); }
+    60%  { transform: translate(-8px, -16px) rotate(-2deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+  }
+  @keyframes floatDiagD {
+    0%   { transform: translate(0px, 0px) rotate(-3deg); }
+    40%  { transform: translate(-14px, -26px) rotate(2deg); }
+    70%  { transform: translate(10px, -18px) rotate(-1deg); }
+    100% { transform: translate(0px, 0px) rotate(-3deg); }
+  }
+`;
+
 function FloatingIcons({ burstKey }) {
-  const [offset, setOffset]         = React.useState({ x: 0, y: 0 });
-  const [mobile, setMobile]         = React.useState(false);
-  const [smoothing, setSmoothing]   = React.useState(false);
-  const [burstPhase, setBurstPhase] = React.useState('out');
-  const smoothTimerRef              = React.useRef(null);
+  const [offset, setOffset]         = useState({ x: 0, y: 0 });
+  const [mobile, setMobile]         = useState(false);
+  const [smoothing, setSmoothing]   = useState(false);
+  const [burstPhase, setBurstPhase] = useState('out');
+  const smoothTimerRef              = useRef(null);
 
   useEffect(() => {
     const check = () => setMobile(window.innerWidth <= 760);
@@ -826,92 +856,55 @@ function FloatingIcons({ burstKey }) {
     };
   }, [mobile]);
 
-  const isBursting = burstPhase !== 'rest';
+  const icons = FLOAT_ICONS.map((fi, i) => {
+    if (mobile && fi.mobileHide) return null;
+    const animName  = ['floatDiagA','floatDiagB','floatDiagC','floatDiagD'][i % 4];
+    const bo        = BURST_ORIGINS[i] || BURST_ORIGINS[0];
+    const stagger   = i * 18;
+    const depthBlur = mobile
+      ? (fi.depth < 0.5 ? 4 : fi.depth < 0.7 ? 2.5 : fi.depth < 0.9 ? 1.2 : 0)
+      : (fi.depth < 0.5 ? 2.5 : fi.depth < 0.7 ? 1 : 0);
+    const frozen = (burstPhase === 'out');
+    const restPx = frozen ? 0 : (offset.x * fi.depth * 28);
+    const restPy = frozen ? 0 : (offset.y * fi.depth * 22);
+    const baseOpacity = fi.depth < 0.45 ? 0.35 : fi.depth < 0.65 ? 0.5 : fi.depth < 0.85 ? 0.65 : 0.8;
+    const isOut    = burstPhase === 'out';
+    const bScale   = isOut ? bo.scale : 1;
+    const bRot     = isOut ? bo.r : 0;
+    const bBlur    = isOut ? bo.blur : depthBlur;
+    const bOpacity = isOut ? 0 : baseOpacity;
+    const outerStyle = {
+      position: 'absolute',
+      top: fi.top, left: fi.left, right: fi.right,
+      transform: 'translate(' + restPx + 'px, ' + restPy + 'px)',
+      willChange: 'transform',
+      transition: smoothing ? 'transform 0.4s cubic-bezier(0.22,1,0.36,1)' : 'none',
+      zIndex: 1,
+    };
+    const burstStyle = {
+      transform: 'rotate(' + bRot + 'deg) scale(' + bScale + ')',
+      opacity: bOpacity,
+      transition: isOut ? 'none' : 'transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) ' + stagger + 'ms, opacity 0.45s ease ' + stagger + 'ms',
+    };
+    const iconSize = mobile ? Math.round(fi.size * 0.85) : fi.size;
+    const innerStyle = {
+      width: iconSize, height: iconSize,
+      animation: burstPhase !== 'out' ? animName + ' ' + fi.dur + ' ease-in-out ' + fi.delay + ' infinite' : 'none',
+      filter: bBlur > 0.05 ? 'blur(' + bBlur.toFixed(2) + 'px)' : 'none',
+      transition: isOut ? 'none' : 'filter 0.6s ease ' + stagger + 'ms',
+    };
+    return h('div', { key: i, style: outerStyle },
+      h('div', { style: burstStyle },
+        h('div', { className: 'float-icon', style: innerStyle },
+          h('img', { src: fi.src, alt: '' })
+        )
+      )
+    );
+  });
 
-  return (
-    <div className="floating-icons">
-      {FLOAT_ICONS.map((fi, i) => {
-        if (mobile && fi.mobileHide) return null;
-        const animName  = ['floatDiagA','floatDiagB','floatDiagC','floatDiagD'][i % 4];
-        const bo        = BURST_ORIGINS[i] || BURST_ORIGINS[0];
-        const stagger   = i * 18;
-        const depthBlur = mobile
-          ? (fi.depth < 0.5 ? 4 : fi.depth < 0.7 ? 2.5 : fi.depth < 0.9 ? 1.2 : 0)
-          : (fi.depth < 0.5 ? 2.5 : fi.depth < 0.7 ? 1 : 0);
-        const scrollBlur    = 0;
-        const scrollOpacity = 1;
-        const motionBlur = 0;
-        const frozen = (burstPhase === 'out');
-        const restPx = frozen ? 0 : (offset.x * fi.depth * 28);
-        const restPy = frozen ? 0 : (offset.y * fi.depth * 22);
-        const totalBlur = depthBlur + scrollBlur + motionBlur;
-        const baseOpacity = fi.depth < 0.45 ? 0.35 : fi.depth < 0.65 ? 0.5 : fi.depth < 0.85 ? 0.65 : 0.8;
-        const isOut    = burstPhase === 'out';
-        const bScale   = isOut ? bo.scale : 1;
-        const bRot     = isOut ? bo.r : 0;
-        const bBlur    = isOut ? bo.blur : totalBlur;
-        const bOpacity = isOut ? 0 : baseOpacity * scrollOpacity;
-        const outerStyle = {
-          position: 'absolute',
-          top: fi.top, left: fi.left, right: fi.right,
-          transform: `translate(${restPx}px, ${restPy}px)`,
-          willChange: 'transform',
-          transition: smoothing ? `transform 0.4s cubic-bezier(0.22,1,0.36,1)` : 'none',
-          zIndex: 1,
-        };
-        const burstStyle = {
-          transform: `rotate(${bRot}deg) scale(${bScale})`,
-          opacity: bOpacity,
-          transition: isOut
-            ? 'none'
-            : `transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${stagger}ms, opacity 0.45s ease ${stagger}ms`,
-        };
-        const iconSize = mobile ? Math.round(fi.size * 0.85) : fi.size;
-        const innerStyle = {
-          width: iconSize, height: iconSize,
-          animation: burstPhase !== 'out' ? `${animName} ${fi.dur} ease-in-out ${fi.delay} infinite` : 'none',
-          filter: bBlur > 0.05 ? `blur(${bBlur.toFixed(2)}px)` : 'none',
-          transition: isOut ? 'none' : `filter 0.6s ease ${stagger}ms`,
-        };
-        return (
-          <div key={i} style={outerStyle}>
-            <div style={burstStyle}>
-              <div className="float-icon" style={innerStyle}>
-                <img src={fi.src} alt="" />
-              </div>
-            </div>
-          </div>
-        );
-      })}
-      <style>{`
-        @keyframes floatDiagA {
-          0%   { transform: translate(0px, 0px) rotate(-2deg); }
-          25%  { transform: translate(16px, -22px) rotate(2deg); }
-          50%  { transform: translate(28px, -12px) rotate(-1deg); }
-          75%  { transform: translate(12px, -30px) rotate(3deg); }
-          100% { transform: translate(0px, 0px) rotate(-2deg); }
-        }
-        @keyframes floatDiagB {
-          0%   { transform: translate(0px, 0px) rotate(3deg); }
-          20%  { transform: translate(-20px, -18px) rotate(-2deg); }
-          50%  { transform: translate(-10px, -30px) rotate(1deg); }
-          80%  { transform: translate(-24px, -10px) rotate(-3deg); }
-          100% { transform: translate(0px, 0px) rotate(3deg); }
-        }
-        @keyframes floatDiagC {
-          0%   { transform: translate(0px, 0px) rotate(0deg); }
-          30%  { transform: translate(20px, -24px) rotate(4deg); }
-          60%  { transform: translate(-8px, -16px) rotate(-2deg); }
-          100% { transform: translate(0px, 0px) rotate(0deg); }
-        }
-        @keyframes floatDiagD {
-          0%   { transform: translate(0px, 0px) rotate(-3deg); }
-          40%  { transform: translate(-14px, -26px) rotate(2deg); }
-          70%  { transform: translate(10px, -18px) rotate(-1deg); }
-          100% { transform: translate(0px, 0px) rotate(-3deg); }
-        }
-      `}</style>
-    </div>
+  return h('div', { className: 'floating-icons' },
+    ...icons,
+    h('style', null, FLOAT_KEYFRAMES)
   );
 }
 
@@ -935,46 +928,29 @@ function RotatingWord() {
 
   const phrase = PHRASES[current];
   const len    = phrase.length;
-  const fontSize = len > 16
-    ? 'clamp(20px, 3.6vw, 52px)'
-    : len > 12
-      ? 'clamp(24px, 4.8vw, 62px)'
-      : 'clamp(28px, 6vw, 74px)';
+  const fontSize = len > 16 ? 'clamp(20px, 3.6vw, 52px)' : len > 12 ? 'clamp(24px, 4.8vw, 62px)' : 'clamp(28px, 6vw, 74px)';
 
   const baseStyle = {
-    display: 'block',
-    whiteSpace: 'nowrap',
-    fontSize,
+    display: 'block', whiteSpace: 'nowrap', fontSize,
     lineHeight: SLOT_HEIGHT,
     background: 'linear-gradient(90deg, #9B5EF5 0%, #BFA3FF 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    fontFamily: 'var(--font-display)',
-    fontWeight: 700,
-    letterSpacing: '-0.02em',
-    textTransform: 'uppercase',
+    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+    fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '-0.02em', textTransform: 'uppercase',
   };
-
-  const visibleStyle = {
-    ...baseStyle,
+  const visibleStyle = Object.assign({}, baseStyle, {
     opacity: phase === 'exit' ? 0 : 1,
     transform: phase === 'exit' ? 'translateY(-10px)' : 'translateY(0px)',
-    transition: phase === 'exit'
-      ? 'opacity 0.28s ease, transform 0.28s ease'
-      : phase === 'enter'
-        ? 'opacity 0.4s ease, transform 0.4s ease'
-        : 'none',
-  };
+    transition: phase === 'exit' ? 'opacity 0.28s ease, transform 0.28s ease' : phase === 'enter' ? 'opacity 0.4s ease, transform 0.4s ease' : 'none',
+  });
 
-  return (
-    <div className="rotating-slot" style={{ height: SLOT_HEIGHT }}>
-      <span style={visibleStyle}>{phrase}</span>
-    </div>
+  return h('div', { className: 'rotating-slot', style: { height: SLOT_HEIGHT } },
+    h('span', { style: visibleStyle }, phrase)
   );
 }
 
 function Nav() { return null; }
+
+const DISCORD_SVG_PATH = 'M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z';
 
 function Hero() {
   const [burstKey] = useState(0);
@@ -985,49 +961,46 @@ function Hero() {
     return () => clearTimeout(t);
   }, []);
 
-  return (
-    <section id="hero">
-      <div className="hero-bg" />
-      <FloatingIcons burstKey={burstKey} />
-      <div className="hero-content" style={{
+  return h('section', { id: 'hero' },
+    h('div', { className: 'hero-bg' }),
+    h(FloatingIcons, { burstKey }),
+    h('div', { className: 'hero-content', style: {
+      opacity: visible ? 1 : 0,
+      filter: visible ? 'blur(0px)' : 'blur(8px)',
+      transform: visible ? 'translateY(0)' : 'translateY(24px)',
+      transition: 'opacity 1.4s cubic-bezier(0.16,1,0.3,1), filter 1.4s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
+    }},
+      h('h1', { className: 'hero-headline', style: { marginBottom: 10 } },
+        h('span', { style: { display:'flex', alignItems:'center', justifyContent:'center', gap:14, flexWrap:'wrap' } },
+          h('img', { src: 'assets/snowball-logo-transparent.png', alt: '', style: { width:34, height:34, flexShrink:0, objectFit:'contain' } }),
+          'Snowball is the best Discord app to'
+        )
+      ),
+      h('div', { className: 'hero-rotating-line' }, h(RotatingWord)),
+      h('p', { className: 'hero-sub', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(8px)',
-        transform: visible ? 'translateY(0)' : 'translateY(24px)',
-        transition: 'opacity 1.4s cubic-bezier(0.16,1,0.3,1), filter 1.4s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
-      }}>
-        <h1 className="hero-headline" style={{marginBottom:10}}>
-          <span style={{display:'flex',alignItems:'center',justifyContent:'center',gap:14,flexWrap:'wrap'}}>
-            <img src="assets/snowball-logo-transparent.png" alt="" style={{width:34,height:34,flexShrink:0,objectFit:'contain'}} />
-            Snowball is the best Discord app to
-          </span>
-        </h1>
-        <div className="hero-rotating-line">
-          <RotatingWord />
-        </div>
-        <p className="hero-sub" style={{
-          opacity: visible ? 1 : 0,
-          filter: visible ? 'blur(0px)' : 'blur(6px)',
-          transform: visible ? 'translateY(0)' : 'translateY(16px)',
-          transition: 'opacity 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s, filter 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s, transform 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s',
-        }}>
-          The most advanced Discord app for weather. AI that actually fetches real data, a full economy system, radio, music, and so much more. <strong style={{color:'var(--purple-300)'}}>Weather it. Snowball it.</strong>
-        </p>
-        <div className="hero-ctas" style={{
-          opacity: visible ? 1 : 0,
-          filter: visible ? 'blur(0px)' : 'blur(6px)',
-          transform: visible ? 'translateY(0)' : 'translateY(10px)',
-          transition: 'opacity 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s, filter 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s, transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s',
-        }}>
-          <a href="https://discord.gg/xtremeweather" target="_blank" className="btn-ghost-arrow" style={{display:'inline-flex',alignItems:'center',gap:8}}>
-            <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{flexShrink:0}}>
-              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-            </svg>
-            Try it out
-            <img src="assets/arrow-up-right.png" alt="" style={{width:16,height:16,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)'}} />
-          </a>
-        </div>
-      </div>
-    </section>
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        transform: visible ? 'translateY(0)' : 'translateY(16px)',
+        transition: 'opacity 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s, filter 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s, transform 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s',
+      } },
+        'The most advanced Discord app for weather. AI that actually fetches real data, a full economy system, radio, music, and so much more. ',
+        h('strong', { style: { color: 'var(--purple-300)' } }, 'Weather it. Snowball it.')
+      ),
+      h('div', { className: 'hero-ctas', style: {
+        opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        transform: visible ? 'translateY(0)' : 'translateY(10px)',
+        transition: 'opacity 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s, filter 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s, transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s',
+      } },
+        h('a', { href: 'https://discord.gg/xtremeweather', target: '_blank', className: 'btn-ghost-arrow', style: { display:'inline-flex', alignItems:'center', gap:8 } },
+          h('svg', { width:20, height:20, viewBox:'0 0 127.14 96.36', fill:'currentColor', xmlns:'http://www.w3.org/2000/svg', style:{flexShrink:0} },
+            h('path', { d: DISCORD_SVG_PATH })
+          ),
+          'Try it out',
+          h('img', { src:'assets/arrow-up-right.png', alt:'', style:{ width:16, height:16, objectFit:'contain', flexShrink:0, filter:'brightness(0) invert(1)' } })
+        )
+      )
+    )
   );
 }
 
@@ -1041,11 +1014,11 @@ function AnimatedTimeline() {
   const TOTAL = 5.0;
   const FRAME = 50;
 
-  const [t, setT]         = React.useState(0);
-  const [running, setRun] = React.useState(false);
-  const sectionRef        = React.useRef(null);
+  const [t, setT]         = useState(0);
+  const [running, setRun] = useState(false);
+  const sectionRef        = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!sectionRef.current) return;
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) setRun(true); });
@@ -1054,16 +1027,13 @@ function AnimatedTimeline() {
     return () => obs.disconnect();
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!running) return;
     let raf;
     const startMs = performance.now();
     const tick = (now) => {
       const elapsed = (now - startMs) / 1000;
-      if (elapsed >= TOTAL) {
-        setT(TOTAL);
-        return;
-      }
+      if (elapsed >= TOTAL) { setT(TOTAL); return; }
       setT(elapsed);
       raf = setTimeout(() => requestAnimationFrame(tick), FRAME);
     };
@@ -1073,58 +1043,50 @@ function AnimatedTimeline() {
 
   const stepStates = steps.map((s, i) => {
     const next = steps[i + 1];
-    let state = 'pending';
-    let display = s.start;
-    if (t < s.start) {
-      state = 'pending';
-      display = s.start;
-    } else if (next && t >= next.start) {
-      state = 'done';
-      display = s.end;
-    } else if (t >= s.start && t <= s.end) {
-      state = 'active';
-      display = t;
-    } else if (t > s.end) {
-      state = next ? 'done' : 'done';
-      display = s.end;
-    }
-    return { ...s, state, display };
+    let state = 'pending', display = s.start;
+    if (t < s.start) { state = 'pending'; display = s.start; }
+    else if (next && t >= next.start) { state = 'done'; display = s.end; }
+    else if (t >= s.start && t <= s.end) { state = 'active'; display = t; }
+    else if (t > s.end) { state = 'done'; display = s.end; }
+    return Object.assign({}, s, { state, display });
   });
 
-  return (
-    <div className="ai-timeline" ref={sectionRef} style={{marginLeft:0,marginRight:'auto'}}>
-      {stepStates.map((s, i) => (
-        <div key={i} className={"timeline-row state-" + s.state}>
-          <div className="timeline-rail">
-            <div className="timeline-dot">
-              {s.state === 'active'
-                ? <span className="timeline-spinner"></span>
-                : <img src={s.icon} alt="" />}
-              {s.state === 'done' && <span className="timeline-check">✓</span>}
-            </div>
-            {i < stepStates.length - 1 && (
-              <div className={"timeline-line " + (s.state === 'done' ? 'is-filled' : '')} />
-            )}
-          </div>
-          <div className="timeline-body">
-            <div className="timeline-time">
-              {s.display.toFixed(2)}s
-            </div>
-            <div className="timeline-title">{s.title}</div>
-            <div className="timeline-desc">{s.desc}</div>
-          </div>
-        </div>
-      ))}
-    </div>
+  return h('div', { className: 'ai-timeline', ref: sectionRef, style: { marginLeft:0, marginRight:'auto' } },
+    ...stepStates.map((s, i) =>
+      h('div', { key: i, className: 'timeline-row state-' + s.state },
+        h('div', { className: 'timeline-rail' },
+          h('div', { className: 'timeline-dot' },
+            s.state === 'active' ? h('span', { className: 'timeline-spinner' }) : h('img', { src: s.icon, alt: '' }),
+            s.state === 'done' ? h('span', { className: 'timeline-check' }, '✓') : null
+          ),
+          i < stepStates.length - 1 ? h('div', { className: 'timeline-line' + (s.state === 'done' ? ' is-filled' : '') }) : null
+        ),
+        h('div', { className: 'timeline-body' },
+          h('div', { className: 'timeline-time' }, s.display.toFixed(2) + 's'),
+          h('div', { className: 'timeline-title' }, s.title),
+          h('div', { className: 'timeline-desc' }, s.desc)
+        )
+      )
+    )
   );
 }
 
-function DiscordChatDemo() {
-  const [phase, setPhase] = React.useState(0);
-  const ref    = React.useRef(null);
-  const ranRef = React.useRef(false);
+const DC_DOTS_CSS = `
+  @keyframes dcMsgIn { from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);} }
+  .dc-dots{display:inline-flex;gap:3px;align-items:center;margin-left:2px;}
+  .dc-dots span{width:4px;height:4px;border-radius:50%;background:#80848e;animation:dcDot 1.2s infinite ease-in-out;}
+  .dc-dots span:nth-child(2){animation-delay:0.2s;}
+  .dc-dots span:nth-child(3){animation-delay:0.4s;}
+  @keyframes dcDot{0%,80%,100%{opacity:0.3;transform:scale(0.8);}40%{opacity:1;transform:scale(1.1);}}
+`;
 
-  React.useEffect(() => {
+function DiscordChatDemo() {
+  const [phase, setPhase] = useState(0);
+  const ref    = useRef(null);
+  const ranRef = useRef(false);
+  const ggSans = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
+
+  useEffect(() => {
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !ranRef.current) {
         ranRef.current = true;
@@ -1137,227 +1099,172 @@ function DiscordChatDemo() {
     return () => obs.disconnect();
   }, []);
 
-  const discordFont = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
-  const ggSans = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
-  const userPing = (
-    <span style={{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,cursor:'pointer'}}>
-      @✽ wxtershipping
-    </span>
-  );
+  const userPing = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,cursor:'pointer'} }, '@✽ wxtershipping');
 
-  const ChannelHeader = () => (
-    <div style={{
-      background:'rgba(20,14,42,0.65)',
-      backdropFilter:'blur(8px)',
-      padding:'12px 16px',display:'flex',alignItems:'center',gap:8,
-      borderBottom:'1px solid rgba(0,0,0,0.35)',
-      boxShadow:'0 1px 0 rgba(255,255,255,0.04)',
-    }}>
-      <span style={{color:'#80848e',fontSize:18}}>❄</span>
-      <span style={{color:'#80848e',margin:'0 -2px'}}>·</span>
-      <span style={{fontWeight:700,color:'#f2f3f5',fontSize:15}}>snowball</span>
-      <span style={{color:'#3d4045',margin:'0 6px'}}>|</span>
-      <span style={{color:'#80848e',fontSize:18,marginLeft:-2}}>❄</span>
-      <span style={{color:'#80848e',margin:'0 -2px'}}>·</span>
-      <span style={{color:'#80848e',fontSize:13,overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis',minWidth:0}}>Chat with Snowball: Xtreme Weather's revolutionary new Discord App.</span>
-    </div>
-  );
+  function ChannelHeader() {
+    return h('div', { style:{background:'rgba(20,14,42,0.65)',backdropFilter:'blur(8px)',padding:'12px 16px',display:'flex',alignItems:'center',gap:8,borderBottom:'1px solid rgba(0,0,0,0.35)',boxShadow:'0 1px 0 rgba(255,255,255,0.04)'} },
+      h('span', { style:{color:'#80848e',fontSize:18} }, '❄'),
+      h('span', { style:{color:'#80848e',margin:'0 -2px'} }, '·'),
+      h('span', { style:{fontWeight:700,color:'#f2f3f5',fontSize:15} }, 'snowball'),
+      h('span', { style:{color:'#3d4045',margin:'0 6px'} }, '|'),
+      h('span', { style:{color:'#80848e',fontSize:18,marginLeft:-2} }, '❄'),
+      h('span', { style:{color:'#80848e',margin:'0 -2px'} }, '·'),
+      h('span', { style:{color:'#80848e',fontSize:13,overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis',minWidth:0} }, "Chat with Snowball: Xtreme Weather's revolutionary new Discord App.")
+    );
+  }
 
-  const ReplyQuote = () => (
-    <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:4,fontSize:13,color:'#b5bac1',position:'relative',paddingLeft:30}}>
-      <span style={{
-        position:'absolute',left:-12,top:'50%',
-        width:30,height:14,borderLeft:'2px solid #4e5058',borderTop:'2px solid #4e5058',
-        borderTopLeftRadius:6,
-      }}></span>
-      <div style={{width:16,height:16,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0}}></div>
-      <span style={{color:'#e67e22',fontWeight:600}}>✽ wxtershipping…</span>
-      <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>⚡ XWD</span>
-      <span style={{color:'#c9b6ff'}}>@Snowball</span>
-      <span style={{color:'#b5bac1',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>What's the weather for Pittsburgh today</span>
-    </div>
-  );
+  function ReplyQuote() {
+    return h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:4,fontSize:13,color:'#b5bac1',position:'relative',paddingLeft:30} },
+      h('span', { style:{position:'absolute',left:-12,top:'50%',width:30,height:14,borderLeft:'2px solid #4e5058',borderTop:'2px solid #4e5058',borderTopLeftRadius:6} }),
+      h('div', { style:{width:16,height:16,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0} }),
+      h('span', { style:{color:'#e67e22',fontWeight:600} }, '✽ wxtershipping…'),
+      h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '⚡ XWD'),
+      h('span', { style:{color:'#c9b6ff'} }, '@Snowball'),
+      h('span', { style:{color:'#b5bac1',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'} }, "What's the weather for Pittsburgh today")
+    );
+  }
 
-  const UserMessage = () => (
-    <div style={{display:'flex',gap:16,padding:'4px 16px 8px',animation:'dcMsgIn 0.22s ease forwards'}}>
-      <div style={{width:40,height:40,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontWeight:700,fontSize:16}}>✽</div>
-      <div style={{flex:1,minWidth:0}}>
-        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:2}}>
-          <span style={{color:'#e67e22',fontWeight:600,fontSize:15}}>✽ wxtershipping…</span>
-          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>⚡ XWD</span>
-          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
-        </div>
-        <div style={{color:'#dbdee1',lineHeight:1.6}}>
-          <span style={{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3}}>@Snowball</span> What's the weather for Pittsburgh today
-        </div>
-      </div>
-    </div>
-  );
+  function UserMessage() {
+    return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 8px',animation:'dcMsgIn 0.22s ease forwards'} },
+      h('div', { style:{width:40,height:40,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontWeight:700,fontSize:16} }, '✽'),
+      h('div', { style:{flex:1,minWidth:0} },
+        h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
+          h('span', { style:{color:'#e67e22',fontWeight:600,fontSize:15} }, '✽ wxtershipping…'),
+          h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '⚡ XWD'),
+          h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
+        ),
+        h('div', { style:{color:'#dbdee1',lineHeight:1.6} },
+          h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3} }, '@Snowball'),
+          " What's the weather for Pittsburgh today"
+        )
+      )
+    );
+  }
 
-  const Thinking = () => (
-    <div style={{display:'flex',gap:16,padding:'4px 16px',animation:'dcMsgIn 0.22s ease forwards'}}>
-      <img src="assets/snowball-server-icon.png" alt="" style={{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'}} />
-      <div style={{flex:1,minWidth:0}}>
-        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:2}}>
-          <span style={{color:'#fff',fontWeight:700,fontSize:15}}>Snowball</span>
-          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>✓ APP</span>
-          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
-        </div>
-        <div style={{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14}}>
-          <span style={{display:'inline-flex',width:14,height:14,borderRadius:'50%',border:'1.5px solid #80848e',alignItems:'center',justifyContent:'center',fontSize:9}}>🕐</span>
-          Snowball is thinking
-          <span className="dc-dots"><span></span><span></span><span></span></span>
-        </div>
-      </div>
-    </div>
-  );
+  function Thinking() {
+    return h('div', { style:{display:'flex',gap:16,padding:'4px 16px',animation:'dcMsgIn 0.22s ease forwards'} },
+      h('img', { src:'assets/snowball-server-icon.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+      h('div', { style:{flex:1,minWidth:0} },
+        h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
+          h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
+          h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '✓ APP'),
+          h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
+        ),
+        h('div', { style:{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14} },
+          h('span', { style:{display:'inline-flex',width:14,height:14,borderRadius:'50%',border:'1.5px solid #80848e',alignItems:'center',justifyContent:'center',fontSize:9} }, '🕐'),
+          'Snowball is thinking',
+          h('span', { className:'dc-dots' }, h('span'), h('span'), h('span'))
+        )
+      )
+    );
+  }
 
-  const Embed = () => (
-    <div style={{
-      background:'#2b2d31',
-      borderRadius:8,
-      maxWidth:460,overflow:'hidden',
-      border:'1px solid rgba(255,255,255,0.06)',
-      fontFamily:ggSans,
-    }}>
-      {/* Real photo banner */}
-      <div style={{position:'relative',height:120,overflow:'hidden'}}>
-        <img src="assets/embed-banner.png" alt="" style={{width:'100%',height:'100%',objectFit:'cover'}} />
-      </div>
-      <div style={{padding:'14px 18px',display:'flex',flexDirection:'column',gap:12}}>
-        {/* Title row with real weather icon */}
-        <div style={{display:'flex',gap:14,alignItems:'flex-start'}}>
-          <div style={{flex:1,minWidth:0}}>
-            <div style={{color:'#fff',fontWeight:700,fontSize:17,marginBottom:4,fontFamily:ggSans}}>Weather for Pittsburgh, PA</div>
-            <div style={{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5}}>
-              <span style={{color:'#80848e',flexShrink:0}}>›</span>
-              <div>Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting <strong style={{color:'#fff'}}>haze</strong> as of 20 minutes ago.</div>
-            </div>
-          </div>
-          {/* Real sun/haze emoji asset */}
-          <img src="assets/emoji-sunny-haze.png" alt="" style={{width:52,height:52,flexShrink:0,objectFit:'contain'}} />
-        </div>
-        <div>
-          <div style={{color:'#fff',fontWeight:700,fontSize:15,marginBottom:4,fontFamily:ggSans}}>Active Alerts</div>
-          <div style={{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5}}>
-            <span style={{color:'#80848e',flexShrink:0}}>›</span>
-            <div>There's currently an advisory for the area. You can use <span style={{color:'#c9b6ff'}}>/weather alerts</span> for more information!</div>
-          </div>
-        </div>
-        <div>
-          <div style={{color:'#fff',fontWeight:700,fontSize:15,marginBottom:6,fontFamily:ggSans}}>Conditions</div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px 24px',fontSize:13,fontFamily:ggSans}}>
-            <div><div style={{color:'#fff',fontWeight:600}}>Temperature:</div><div style={{color:'#dbdee1'}}>46°F (Feels like 42°F)</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Wind:</div><div style={{color:'#dbdee1'}}>8mph WNW (Gusts 18mph)</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Humidity:</div><div style={{color:'#dbdee1'}}>66%</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Dew Point:</div><div style={{color:'#dbdee1'}}>35°F</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Visibility:</div><div style={{color:'#dbdee1'}}>4.00 miles</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Pressure:</div><div style={{color:'#dbdee1'}}>29.92 inHg</div></div>
-          </div>
-        </div>
-        <div style={{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2,fontFamily:ggSans}}>
-          <img src="assets/snowball-server-icon.png" alt="" style={{width:16,height:16,borderRadius:'50%',objectFit:'cover'}} />
-          Snowball
-        </div>
-      </div>
-    </div>
-  );
+  function Embed() {
+    return h('div', { style:{background:'#2b2d31',borderRadius:8,maxWidth:460,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:ggSans} },
+      h('div', { style:{position:'relative',height:120,overflow:'hidden'} },
+        h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover'} })
+      ),
+      h('div', { style:{padding:'14px 18px',display:'flex',flexDirection:'column',gap:12} },
+        h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
+          h('div', { style:{flex:1,minWidth:0} },
+            h('div', { style:{color:'#fff',fontWeight:700,fontSize:17,marginBottom:4,fontFamily:ggSans} }, 'Weather for Pittsburgh, PA'),
+            h('div', { style:{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5} },
+              h('span', { style:{color:'#80848e',flexShrink:0} }, '›'),
+              h('div', null,
+                'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
+                h('strong', { style:{color:'#fff'} }, 'haze'),
+                ' as of 20 minutes ago.'
+              )
+            )
+          ),
+          h('img', { src:'assets/emoji-sunny-haze.png', alt:'', loading:'lazy', style:{width:52,height:52,flexShrink:0,objectFit:'contain'} })
+        ),
+        h('div', null,
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:4,fontFamily:ggSans} }, 'Active Alerts'),
+          h('div', { style:{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5} },
+            h('span', { style:{color:'#80848e',flexShrink:0} }, '›'),
+            h('div', null, "There's currently an advisory for the area. You can use ", h('span', { style:{color:'#c9b6ff'} }, '/weather alerts'), ' for more information!')
+          )
+        ),
+        h('div', null,
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:6,fontFamily:ggSans} }, 'Conditions'),
+          h('div', { style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px 24px',fontSize:13,fontFamily:ggSans} },
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Temperature:'), h('div', { style:{color:'#dbdee1'} }, '46°F (Feels like 42°F)')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Wind:'), h('div', { style:{color:'#dbdee1'} }, '8mph WNW (Gusts 18mph)')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Humidity:'), h('div', { style:{color:'#dbdee1'} }, '66%')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Dew Point:'), h('div', { style:{color:'#dbdee1'} }, '35°F')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Visibility:'), h('div', { style:{color:'#dbdee1'} }, '4.00 miles')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Pressure:'), h('div', { style:{color:'#dbdee1'} }, '29.92 inHg'))
+          )
+        ),
+        h('div', { style:{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2,fontFamily:ggSans} },
+          h('img', { src:'assets/snowball-server-icon.png', alt:'', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover'} }),
+          'Snowball'
+        )
+      )
+    );
+  }
 
-  const ViewBtn = () => (
-    <button type="button" style={{
-      marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',
-      color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,
-      padding:'7px 14px',borderRadius:6,cursor:'pointer',
-      display:'inline-flex',alignItems:'center',gap:6,
-    }}>
-      View Full Forecast
-      <span style={{fontSize:11,opacity:0.7}}>↗</span>
-    </button>
-  );
+  function BotResponse() {
+    return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'} },
+      h('img', { src:'assets/snowball-server-icon.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+      h('div', { style:{flex:1,minWidth:0} },
+        h(ReplyQuote),
+        h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:6} },
+          h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
+          h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '✓ APP'),
+          h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
+        ),
+        h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:ggSans} },
+          h('img', { src:'assets/emoji-snowball-circle.png', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
+          'Thought for 5 seconds · ',
+          userPing
+        ),
+        h(Embed),
+        h('button', { type:'button', style:{marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,padding:'7px 14px',borderRadius:6,cursor:'pointer',display:'inline-flex',alignItems:'center',gap:6} },
+          'View Full Forecast',
+          h('span', { style:{fontSize:11,opacity:0.7} }, '↗')
+        ),
+        h('div', { style:{marginTop:14,paddingLeft:14,borderLeft:'4px solid #4e5058',fontSize:13,color:'#dbdee1',lineHeight:1.6} },
+          "Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. ",
+          h('img', { src:'assets/emoji-true.png', alt:'', loading:'lazy', style:{width:18,height:18,objectFit:'contain',verticalAlign:'middle',marginLeft:2} })
+        ),
+        h('div', { style:{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5,fontFamily:ggSans} },
+          h('img', { src:'assets/emoji-snowball-cloud.png', alt:'', style:{width:14,height:14,objectFit:'contain',flexShrink:0} }),
+          "Snowball's AI responses can make mistakes. Unlimited usage."
+        )
+      )
+    );
+  }
 
-  const Quoted = () => (
-    <div style={{
-      marginTop:14,paddingLeft:14,borderLeft:'4px solid #4e5058',
-      fontSize:13,color:'#dbdee1',lineHeight:1.6,
-    }}>
-      Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. <img src="assets/emoji-true.png" alt="" style={{width:18,height:18,objectFit:'contain',verticalAlign:'middle',marginLeft:2}} />
-    </div>
-  );
-
-  const Disclaimer = () => (
-    <div style={{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5,fontFamily:ggSans}}>
-      <img src="assets/emoji-snowball-cloud.png" alt="" style={{width:14,height:14,objectFit:'contain',flexShrink:0}} />
-      Snowball's AI responses can make mistakes. Unlimited usage.
-    </div>
-  );
-
-  const BotResponse = () => (
-    <div style={{display:'flex',gap:16,padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'}}>
-      <img src="assets/snowball-server-icon.png" alt="" style={{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'}} />
-      <div style={{flex:1,minWidth:0}}>
-        <ReplyQuote />
-        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:6}}>
-          <span style={{color:'#fff',fontWeight:700,fontSize:15}}>Snowball</span>
-          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>✓ APP</span>
-          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
-        </div>
-        <div style={{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:ggSans}}>
-          <img src="assets/emoji-snowball-circle.png" alt="" style={{width:16,height:16,objectFit:'contain',flexShrink:0}} />
-          Thought for 5 seconds&nbsp;·&nbsp;{userPing}
-        </div>
-        <Embed />
-        <ViewBtn />
-        <Quoted />
-        <Disclaimer />
-      </div>
-    </div>
-  );
-
-  return (
-    <div ref={ref} style={{
-      background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',
-      borderRadius:12, overflow:'hidden',
-      border:'1px solid rgba(155,94,245,0.18)',
-      boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',
-      fontFamily:discordFont,
-      fontSize:14, color:'#dbdee1', maxWidth:560,
-    }}>
-      <ChannelHeader />
-      <div style={{padding:'16px 0',minHeight:240}}>
-        {phase >= 1 && <UserMessage />}
-        {phase === 2 && <Thinking />}
-        {phase >= 3 && <BotResponse />}
-      </div>
-      <div style={{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6}}>
-        Message <span style={{color:'#80848e'}}>❄·</span> snowball
-      </div>
-      <style>{`
-        @keyframes dcMsgIn {
-          from { opacity:0; transform:translateY(6px); }
-          to   { opacity:1; transform:translateY(0); }
-        }
-        .dc-dots { display:inline-flex; gap:3px; align-items:center; margin-left:2px; }
-        .dc-dots span { width:4px; height:4px; border-radius:50%; background:#80848e; animation:dcDot 1.2s infinite ease-in-out; }
-        .dc-dots span:nth-child(2) { animation-delay:0.2s; }
-        .dc-dots span:nth-child(3) { animation-delay:0.4s; }
-        @keyframes dcDot { 0%,80%,100%{opacity:0.3;transform:scale(0.8);} 40%{opacity:1;transform:scale(1.1);} }
-      `}</style>
-    </div>
+  return h('div', { ref, style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:ggSans,fontSize:14,color:'#dbdee1',maxWidth:560} },
+    h(ChannelHeader),
+    h('div', { style:{padding:'16px 0',minHeight:240} },
+      phase >= 1 ? h(UserMessage) : null,
+      phase === 2 ? h(Thinking) : null,
+      phase >= 3 ? h(BotResponse) : null
+    ),
+    h('div', { style:{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6} },
+      'Message ',
+      h('span', { style:{color:'#80848e'} }, '❄·'),
+      ' snowball'
+    ),
+    h('style', null, DC_DOTS_CSS)
   );
 }
 
 function AiSection() {
-  return (
-    <section id="ai-section">
-      <div className="section-inner">
-        <h2 className="section-title">The only AI that<br/>actually looks it up</h2>
-        <p className="section-body">
-          Every other AI makes up weather data. Snowball's AI hits the live web and the same NWS, SPC, and NOAA feeds the pros use — then answers in <strong style={{color:'#fff'}}>~3–4 seconds</strong>. Heavy multi-tool requests still come back in under 8.
-        </p>
-        <AnimatedTimeline />
-        <DiscordChatDemo />
-      </div>
-    </section>
+  return h('section', { id: 'ai-section' },
+    h('div', { className: 'section-inner' },
+      h('h2', { className: 'section-title' }, 'The only AI that', h('br'), 'actually looks it up'),
+      h('p', { className: 'section-body' },
+        'Every other AI makes up weather data. Snowball’s AI hits the live web and the same NWS, SPC, and NOAA feeds the pros use — then answers in ',
+        h('strong', { style:{color:'#fff'} }, '~3–4 seconds'),
+        '. Heavy multi-tool requests still come back in under 8.'
+      ),
+      h(AnimatedTimeline),
+      h(DiscordChatDemo)
+    )
   );
 }
 
@@ -1367,29 +1274,27 @@ function EconomySection() {
     { icon:'assets/icons/events.png', title:'Missions & Paths', desc:'Daily and weekly missions reward SNOWFLAKES and XP. Choose a career path — Meteorologist, Chaser, Broadcaster — for unique perks.', tag:'/events' },
     { icon:'assets/icons/level.png', title:'XP & Leveling', desc:'Climb the server ranks. Every message earns XP. Unlock roles, channel access, and economy boosts as you level up.', tag:'/level' },
     { icon:'assets/icons/stock.png', title:'Stock Market', desc:'Trade virtual stocks that mirror real market data. Build a portfolio, diversify, and compete on the leaderboard.', tag:'/stock' },
-    { icon:'assets/icons/spotter.png', title:'Boar Pets & Fights', desc:'Adopt and train your boar companion. Battle other members\' boars for FLAX and glory. Feed, level, and evolve them.', tag:'/boar' },
+    { icon:'assets/icons/spotter.png', title:'Boar Pets & Fights', desc:"Adopt and train your boar companion. Battle other members' boars for FLAX and glory. Feed, level, and evolve them.", tag:'/boar' },
     { icon:'assets/icons/leaderboard.png', title:'Leaderboard', desc:'Compete for the top spot across FLAX balance, XP, stock gains, and boar wins. Updated in real-time.', tag:'/leaderboard' },
   ];
-  return (
-    <section id="economy">
-      <div className="divider" />
-      <div className="section-inner" style={{paddingTop:80}}>
-        <h2 className="section-title">A whole world<br/>inside Discord</h2>
-        <p className="section-body">
-          Snowball's economy isn't just points. It's a full ecosystem — currency, stocks, pets, missions, and leaderboards — all woven into the Xtreme Weather community.
-        </p>
-        <div className="economy-grid">
-          {cards.map((c,i) => (
-            <div key={i} className="econ-card">
-              <div className="econ-icon"><img src={c.icon} alt="" /></div>
-              <div className="econ-title">{c.title}</div>
-              <div className="econ-desc">{c.desc}</div>
-              <span className="econ-tag">{c.tag}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  return h('section', { id: 'economy' },
+    h('div', { className: 'divider' }),
+    h('div', { className: 'section-inner', style:{paddingTop:80} },
+      h('h2', { className: 'section-title' }, 'A whole world', h('br'), 'inside Discord'),
+      h('p', { className: 'section-body' },
+        "Snowball's economy isn't just points. It's a full ecosystem — currency, stocks, pets, missions, and leaderboards — all woven into the Xtreme Weather community."
+      ),
+      h('div', { className: 'economy-grid' },
+        ...cards.map((c,i) =>
+          h('div', { key:i, className:'econ-card' },
+            h('div', { className:'econ-icon' }, h('img', { src:c.icon, alt:'', loading:'lazy' })),
+            h('div', { className:'econ-title' }, c.title),
+            h('div', { className:'econ-desc' }, c.desc),
+            h('span', { className:'econ-tag' }, c.tag)
+          )
+        )
+      )
+    )
   );
 }
 
@@ -1414,27 +1319,25 @@ function CommandsSection() {
     { icon:'assets/icons/events.png', name:'/missions', desc:'Daily quests' },
     { icon:'assets/icons/ai.png', name:'/ask', desc:'Ask the AI' },
   ];
-  return (
-    <section id="commands">
-      <div className="divider" />
-      <div className="section-inner" style={{paddingTop:80}}>
-        <h2 className="section-title">Everything in a slash</h2>
-        <p className="section-body">
-          Dozens of commands covering weather data, AI, economy, and entertainment — all tuned for the Xtreme Weather community.
-        </p>
-        <div className="commands-grid">
-          {cmds.map((c,i) => (
-            <div key={i} className="cmd-chip">
-              <img src={c.icon} alt="" />
-              <div className="cmd-chip-inner">
-                <span className="cmd-chip-name">{c.name}</span>
-                <span className="cmd-chip-desc">{c.desc}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  return h('section', { id:'commands' },
+    h('div', { className:'divider' }),
+    h('div', { className:'section-inner', style:{paddingTop:80} },
+      h('h2', { className:'section-title' }, 'Everything in a slash'),
+      h('p', { className:'section-body' },
+        'Dozens of commands covering weather data, AI, economy, and entertainment — all tuned for the Xtreme Weather community.'
+      ),
+      h('div', { className:'commands-grid' },
+        ...cmds.map((c,i) =>
+          h('div', { key:i, className:'cmd-chip' },
+            h('img', { src:c.icon, alt:'', loading:'lazy' }),
+            h('div', { className:'cmd-chip-inner' },
+              h('span', { className:'cmd-chip-name' }, c.name),
+              h('span', { className:'cmd-chip-desc' }, c.desc)
+            )
+          )
+        )
+      )
+    )
   );
 }
 
@@ -1445,10 +1348,10 @@ function formatK(n) {
 }
 
 function PreviewTicker() {
-  const [online, setOnline]   = React.useState(null);
-  const [members, setMembers] = React.useState(null);
+  const [online, setOnline]   = useState(null);
+  const [members, setMembers] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let cancelled = false;
     const fetchCounts = () => {
       fetch('https://discord.com/api/guilds/1077714936056250388/widget.json', { cache: 'no-store' })
@@ -1456,9 +1359,7 @@ function PreviewTicker() {
         .then(data => {
           if (cancelled || !data) return;
           if (typeof data.presence_count === 'number') setOnline(formatK(data.presence_count) + '+');
-          if (typeof data.approximate_member_count === 'number') {
-            setMembers(formatK(data.approximate_member_count) + '+');
-          }
+          if (typeof data.approximate_member_count === 'number') setMembers(formatK(data.approximate_member_count) + '+');
         })
         .catch(() => {});
     };
@@ -1468,65 +1369,58 @@ function PreviewTicker() {
   }, []);
 
   const stats = [
-    { num: members ?? '7.2K+',  label: 'Members' },
-    { num: online ?? '—',       label: 'Online now' },
+    { num: members ?? '7.2K+', label: 'Members' },
+    { num: online ?? '—',  label: 'Online now' },
     { num: 'Thousands',         label: 'of AI messages sent' },
     { num: 'Billions',          label: 'in the economy' },
   ];
-  return (
-    <div className="preview-ticker-wrap">
-      <h2 className="preview-ticker-title">
-        The community<br/>is already inside.
-      </h2>
-      <div className="preview-ticker-grid">
-        {stats.map((s,i) => {
-          const isWord = typeof s.num === 'string' && /^[A-Za-z]/.test(s.num);
-          return (
-            <div key={i} className="ticker-stat">
-              <div className={"ticker-stat-num" + (isWord ? " is-word" : "")}>{s.num}</div>
-              <div className="ticker-stat-label">{s.label}</div>
-            </div>
-          );
-        })}
-      </div>
-      <a href="https://discord.gg/xtremeweather" target="_blank" className="btn-primary" style={{display:'inline-flex',alignItems:'center',gap:10}}>
-        <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
-        Join Xtreme Weather
-      </a>
-      <div className="preview-ticker-foot">discord.gg/xtremeweather</div>
-    </div>
+
+  return h('div', { className:'preview-ticker-wrap' },
+    h('h2', { className:'preview-ticker-title' }, 'The community', h('br'), 'is already inside.'),
+    h('div', { className:'preview-ticker-grid' },
+      ...stats.map((s,i) => {
+        const isWord = typeof s.num === 'string' && /^[A-Za-z]/.test(s.num);
+        return h('div', { key:i, className:'ticker-stat' },
+          h('div', { className:'ticker-stat-num' + (isWord ? ' is-word' : '') }, s.num),
+          h('div', { className:'ticker-stat-label' }, s.label)
+        );
+      })
+    ),
+    h('a', { href:'https://discord.gg/xtremeweather', target:'_blank', className:'btn-primary', style:{display:'inline-flex',alignItems:'center',gap:10} },
+      h('svg', { width:20, height:20, viewBox:'0 0 127.14 96.36', fill:'currentColor', xmlns:'http://www.w3.org/2000/svg' },
+        h('path', { d: DISCORD_SVG_PATH })
+      ),
+      'Join Xtreme Weather'
+    ),
+    h('div', { className:'preview-ticker-foot' }, 'discord.gg/xtremeweather')
   );
 }
 
 function PreviewSection() {
-  return (
-    <section id="preview">
-      <div className="divider" />
-      <div className="section-inner" style={{paddingTop:80}}>
-        <PreviewTicker />
-      </div>
-    </section>
+  return h('section', { id:'preview' },
+    h('div', { className:'divider' }),
+    h('div', { className:'section-inner', style:{paddingTop:80} },
+      h(PreviewTicker)
+    )
   );
 }
 
 function Footer() { return null; }
 
 function App() {
-  return (
-    <>
-      <Nav />
-      <Hero />
-      <AiSection />
-      <EconomySection />
-      <CommandsSection />
-      <PreviewSection />
-      <Footer />
-    </>
+  return h(React.Fragment, null,
+    h(Nav),
+    h(Hero),
+    h(AiSection),
+    h(EconomySection),
+    h(CommandsSection),
+    h(PreviewSection),
+    h(Footer)
   );
 }
 
 const rootEl = document.getElementById('root');
-ReactDOM.createRoot(rootEl).render(<App />);
+ReactDOM.createRoot(rootEl).render(h(App));
 requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('ready')));
 </script>
 
