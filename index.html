@@ -976,13 +976,24 @@ function Hero() {
     h('div', { className: 'hero-bg' }),
     h(FloatingIcons, { burstKey }),
     h('div', { className: 'hero-content' },
-      h('h1', { className: 'hero-headline', style: { marginBottom: 10 } },
+      h('h1', { className: 'hero-headline', style: {
+        marginBottom: 10,
+        opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        transform: visible ? 'translateY(0)' : 'translateY(16px)',
+        transition: 'opacity 1.2s cubic-bezier(0.16,1,0.3,1), filter 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1)',
+      } },
         h('span', { style: { display:'flex', alignItems:'center', justifyContent:'center', gap:14, flexWrap:'wrap' } },
           h('img', { src: 'assets/snowball-logo-transparent-small.png', alt: '', fetchpriority: 'high', style: { width:34, height:34, flexShrink:0, objectFit:'contain' } }),
           'Snowball is the best Discord app to'
         )
       ),
-      h('div', { className: 'hero-rotating-line' }, h(RotatingWord)),
+      h('div', { className: 'hero-rotating-line', style: {
+        opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        transform: visible ? 'translateY(0)' : 'translateY(16px)',
+        transition: 'opacity 1.2s cubic-bezier(0.16,1,0.3,1) 0.12s, filter 1.2s cubic-bezier(0.16,1,0.3,1) 0.12s, transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.12s',
+      } }, h(RotatingWord)),
       h('p', { className: 'hero-sub', style: {
         opacity: visible ? 1 : 0,
         filter: visible ? 'blur(0px)' : 'blur(6px)',
