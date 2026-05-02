@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Snowball is the most advanced Discord app for weather. AI that fetches real data, a full economy system, radio, music, and more — built for the Xtreme Weather community." />
 <title>Snowball — Weather it. Snowball it.</title>
+<link rel="preconnect" href="https://discord.com" />
+<link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="preload" as="image" href="assets/xtreme-logo.png" fetchpriority="high" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="styles.css">
@@ -12,31 +15,37 @@
   font-family: 'Druk Wide';
   src: url('./fonts/DrukWideBold.woff2') format('woff2');
   font-weight: 700;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Mustica Pro';
   src: url('./fonts/MusticaPro-SemiBold.woff2') format('woff2');
   font-weight: 600;
+  font-display: swap;
 }
 @font-face {
   font-family: 'gg sans';
   src: url('./fonts/gg-sans-regular.ttf') format('truetype');
   font-weight: 400;
+  font-display: swap;
 }
 @font-face {
   font-family: 'gg sans';
   src: url('./fonts/gg-sans-medium.ttf') format('truetype');
   font-weight: 500;
+  font-display: swap;
 }
 @font-face {
   font-family: 'gg sans';
   src: url('./fonts/gg-sans-semibold.ttf') format('truetype');
   font-weight: 600;
+  font-display: swap;
 }
 @font-face {
   font-family: 'gg sans';
   src: url('./fonts/gg-sans-bold.ttf') format('truetype');
   font-weight: 700;
+  font-display: swap;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -517,8 +526,10 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
   margin-bottom: 6px; line-height: 1;
 }
 .ticker-stat-num.is-word {
-  font-size: clamp(18px, 2.4vw, 28px);
+  font-size: clamp(13px, 1.8vw, 22px);
   letter-spacing: -0.01em;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .ticker-stat-label {
   font-family: var(--font-body); font-size: 12px;
@@ -561,6 +572,7 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
   .preview-editorial-title { font-size: clamp(30px, 7.5vw, 44px); }
   .ticker-stat { padding: 20px 10px; }
   .ticker-stat-num { font-size: clamp(20px, 5.5vw, 30px); word-break: break-word; }
+  .ticker-stat-num.is-word { font-size: clamp(12px, 4vw, 18px); }
   .ticker-stat-label { font-size: 10px; letter-spacing: 0.04em; }
 }
 
@@ -582,9 +594,8 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
   .section-title { font-size: clamp(26px, 6vw, 40px); }
 }
 </style>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -715,8 +726,8 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
 </div>
 
 <div id="root"></div>
-<script type="text/babel">
-const { useState, useEffect, useRef } = React;
+<script>
+const { useState, useEffect, useRef, createElement: h, Fragment } = React;
 
 const PHRASES = [
   "track weather","chat with AI","get forecasts","receive alerts",
@@ -1444,7 +1455,7 @@ function PreviewTicker() {
         .then(r => r.ok ? r.json() : null)
         .then(data => {
           if (cancelled || !data) return;
-          if (typeof data.presence_count === 'number') setOnline(formatK(data.presence_count));
+          if (typeof data.presence_count === 'number') setOnline(formatK(data.presence_count) + '+');
           if (typeof data.approximate_member_count === 'number') {
             setMembers(formatK(data.approximate_member_count) + '+');
           }
