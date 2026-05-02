@@ -92,12 +92,6 @@ body::before {
 
 #root { opacity: 0; transition: opacity 0.3s ease; min-height: 100vh; }
 #root.ready { opacity: 1; }
-#hero-static.hidden { display: none; }
-#hero-static {
-  position: relative; min-height: 93vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; overflow: hidden; padding: 120px 24px 60px;
-}
 
 .navbar { background: rgba(13, 8, 32, 0.6) !important; }
 
@@ -736,23 +730,6 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
             <a href="#" class="clean-link"><div class="icon-box"><i class="fas fa-code-branch"></i></div><span>Changelog</span></a>
         </div>
     </div>
-</div>
-
-<div id="hero-static" aria-hidden="true">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <h1 class="hero-headline" style="margin-bottom:10px">
-      <span style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
-        <img src="assets/snowball-logo-transparent-small.png" alt="" fetchpriority="high" width="34" height="34" style="flex-shrink:0;object-fit:contain">
-        Snowball is the best Discord app to
-      </span>
-    </h1>
-    <div class="hero-rotating-line">
-      <div class="rotating-slot" style="height:clamp(52px,9vw,110px)">
-        <span style="display:block;white-space:nowrap;font-size:clamp(28px,6vw,74px);line-height:clamp(52px,9vw,110px);background:linear-gradient(90deg,#9B5EF5 0%,#BFA3FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:var(--font-display);font-weight:700;letter-spacing:-0.02em;text-transform:uppercase">TRACK WEATHER</span>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div id="root"></div>
@@ -1439,11 +1416,7 @@ function App() {
 
 const rootEl = document.getElementById('root');
 ReactDOM.createRoot(rootEl).render(h(App));
-requestAnimationFrame(() => requestAnimationFrame(() => {
-  rootEl.classList.add('ready');
-  var hs = document.getElementById('hero-static');
-  if (hs) hs.classList.add('hidden');
-}));
+requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('ready')));
 </script>
 
 <footer class="site-footer">
