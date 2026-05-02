@@ -94,6 +94,11 @@ body::before {
 #root.ready { opacity: 1; }
 
 .navbar { background: rgba(13, 8, 32, 0.6) !important; }
+@media (max-width: 1024px) {
+  .navbar { background: #000 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .nav-container { justify-content: flex-start !important; gap: 12px; padding-left: 16px !important; }
+  .nav-left { margin-right: 0; }
+}
 
 #hero {
   position: relative; min-height: 93vh;
@@ -686,9 +691,9 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
 <div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
     <div class="mobile-view main-view" id="sb-mobile-main-view">
         <div class="mobile-centered-content">
-            <button class="mobile-big-link active" onclick="sbOpenSubMenu('snowball')">Snowball <i class="fas fa-chevron-right tiny-arrow"></i></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('weather')">Weather <i class="fas fa-chevron-right tiny-arrow"></i></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link active" onclick="sbToggleMobileMenu()">Snowball</button>
         </div>
     </div>
     <div class="mobile-view sub-view" id="sb-sub-menu-snowball">
