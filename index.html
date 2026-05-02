@@ -1513,12 +1513,10 @@ function sbToggleMobileMenu() {
     if (isActive) {
         menu.classList.remove('active');
         btn.classList.remove('active');
-        document.body.style.touchAction = '';
         setTimeout(sbCloseSubMenu, 300);
     } else {
         menu.classList.add('active');
         btn.classList.add('active');
-        document.body.style.touchAction = 'none';
     }
 }
 function sbOpenSubMenu(id) {
