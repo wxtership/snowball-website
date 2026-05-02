@@ -108,6 +108,18 @@ body {
   }
 }
 
+#sb-tint-anchor-top, #sb-tint-anchor-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #0d0d18;
+  z-index: 100000;
+  pointer-events: none;
+}
+#sb-tint-anchor-top { top: 0; }
+#sb-tint-anchor-bottom { bottom: 0; }
+
 #hero {
   position: relative; min-height: 92vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -619,6 +631,9 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<div id="sb-tint-anchor-top" aria-hidden="true"></div>
+<div id="sb-tint-anchor-bottom" aria-hidden="true"></div>
 
 <nav class="navbar">
     <div class="nav-container">
