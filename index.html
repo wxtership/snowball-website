@@ -9,9 +9,8 @@
 <link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="image" href="assets/snowball-logo-transparent-small.png" fetchpriority="high" />
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="styles.css"></noscript>
 <style>
 @font-face {
   font-family: 'Druk Wide';
@@ -92,10 +91,6 @@ body::before {
 
 #root { opacity: 0; transition: opacity 0.3s ease; min-height: 100vh; }
 #root.ready { opacity: 1; }
-.no-transitions .navbar,
-.no-transitions .navbar *,
-.no-transitions .mobile-menu-overlay,
-.no-transitions .mobile-menu-overlay * { transition: none !important; animation: none !important; }
 
 .navbar { background: rgba(13, 8, 32, 0.6) !important; }
 @media (max-width: 1024px) {
@@ -1532,17 +1527,6 @@ window.addEventListener('resize', function() {
     }
 });
 
-document.body.classList.add('no-transitions');
-function sbReady() {
-    requestAnimationFrame(function() {
-        document.body.classList.remove('no-transitions');
-    });
-}
-if (document.readyState === 'complete') {
-    sbReady();
-} else {
-    window.addEventListener('load', sbReady);
-}
 </script>
 </body>
 </html>
