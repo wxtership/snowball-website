@@ -92,7 +92,8 @@ body::before {
 
 #root { opacity: 0; transition: opacity 0.3s ease; min-height: 100vh; }
 #root.ready { opacity: 1; }
-.no-transitions * { transition: none !important; animation: none !important; }
+.no-transitions .navbar *,
+.no-transitions .mobile-menu-overlay { transition: none !important; animation: none !important; }
 
 .navbar { background: rgba(13, 8, 32, 0.6) !important; }
 @media (max-width: 1024px) {
