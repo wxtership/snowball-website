@@ -7,7 +7,7 @@
 <title>Snowball — Weather it. Snowball it.</title>
 <link rel="preconnect" href="https://discord.com" />
 <link rel="preconnect" href="https://unpkg.com" crossorigin />
-<link rel="preload" as="image" href="assets/xtreme-logo.png" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/xtreme-logo-small.png" fetchpriority="high" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -526,10 +526,9 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
   margin-bottom: 6px; line-height: 1;
 }
 .ticker-stat-num.is-word {
-  font-size: clamp(13px, 1.8vw, 22px);
+  font-size: clamp(11px, 1.4vw, 18px);
   letter-spacing: -0.01em;
-  word-break: break-word;
-  overflow-wrap: break-word;
+  white-space: nowrap;
 }
 .ticker-stat-label {
   font-family: var(--font-body); font-size: 12px;
@@ -572,7 +571,7 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
   .preview-editorial-title { font-size: clamp(30px, 7.5vw, 44px); }
   .ticker-stat { padding: 20px 10px; }
   .ticker-stat-num { font-size: clamp(20px, 5.5vw, 30px); word-break: break-word; }
-  .ticker-stat-num.is-word { font-size: clamp(12px, 4vw, 18px); }
+  .ticker-stat-num.is-word { font-size: clamp(10px, 3.5vw, 15px); white-space: nowrap; }
   .ticker-stat-label { font-size: 10px; letter-spacing: 0.04em; }
 }
 
@@ -607,7 +606,7 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
                 <i class="fas fa-times"></i>
             </button>
             <a href="https://xtremewx.com/new" style="display:flex;align-items:center;text-decoration:none;">
-                <img src="assets/xtreme-logo.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
+                <img src="assets/xtreme-logo-small.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
             </a>
         </div>
         <div class="nav-center">
@@ -737,21 +736,21 @@ const PHRASES = [
 ];
 
 const FLOAT_ICONS = [
-  { src:'assets/icons/weather.png',    top:'8%',   left:'4%',   size:90,  dur:'8s',   delay:'0s',    depth:1.0,  mobileHide:false },
-  { src:'assets/icons/radar.png',      top:'18%',  left:'9%',   size:66,  dur:'11s',  delay:'-2s',   depth:0.5,  mobileHide:false },
-  { src:'assets/icons/ai.png',         top:'7%',   right:'4%',  size:100, dur:'7s',   delay:'-1s',   depth:1.2,  mobileHide:false },
-  { src:'assets/icons/alert.png',      top:'22%',  right:'7%',  size:74,  dur:'9s',   delay:'-3s',   depth:0.6,  mobileHide:false },
-  { src:'assets/icons/forecast.png',   top:'38%',  left:'2%',   size:76,  dur:'10s',  delay:'-0.5s', depth:0.8,  mobileHide:false },
-  { src:'assets/icons/satellite.png',  top:'58%',  left:'3%',   size:62,  dur:'13s',  delay:'-4s',   depth:0.35, mobileHide:false },
-  { src:'assets/icons/music.png',      top:'66%',  right:'3%',  size:80,  dur:'8.5s', delay:'-1.5s', depth:0.9,  mobileHide:false },
-  { src:'assets/icons/balance.png',    top:'42%',  right:'2%',  size:68,  dur:'6.5s', delay:'-2.5s', depth:0.7,  mobileHide:false },
-  { src:'assets/icons/lightning.png',  top:'76%',  left:'2%',   size:70,  dur:'9.5s', delay:'-3.5s', depth:0.45, mobileHide:false },
-  { src:'assets/icons/outlook.png',    top:'30%',  left:'6%',   size:60,  dur:'7.5s', delay:'-5s',   depth:0.4,  mobileHide:false },
-  { src:'assets/icons/radio.png',      top:'80%',  right:'5%',  size:64,  dur:'12s',  delay:'-0.8s', depth:0.5,  mobileHide:false },
-  { src:'assets/icons/spotter.png',    top:'54%',  right:'6%',  size:62,  dur:'10s',  delay:'-2s',   depth:0.6,  mobileHide:false },
-  { src:'assets/icons/shop.png',       top:'15%',  left:'38%',  size:56,  dur:'14s',  delay:'-6s',   depth:0.3,  mobileHide:true  },
-  { src:'assets/icons/leaderboard.png',top:'70%',  right:'22%', size:58,  dur:'11s',  delay:'-3s',   depth:0.55, mobileHide:true  },
-  { src:'assets/icons/level.png',      top:'48%',  left:'18%',  size:54,  dur:'8s',   delay:'-4.5s', depth:0.4,  mobileHide:true  },
+  { src:'assets/icons/small-weather.png',    top:'8%',   left:'4%',   size:90,  dur:'8s',   delay:'0s',    depth:1.0,  mobileHide:false },
+  { src:'assets/icons/small-radar.png',      top:'18%',  left:'9%',   size:66,  dur:'11s',  delay:'-2s',   depth:0.5,  mobileHide:false },
+  { src:'assets/icons/small-ai.png',         top:'7%',   right:'4%',  size:100, dur:'7s',   delay:'-1s',   depth:1.2,  mobileHide:false },
+  { src:'assets/icons/small-alert.png',      top:'22%',  right:'7%',  size:74,  dur:'9s',   delay:'-3s',   depth:0.6,  mobileHide:false },
+  { src:'assets/icons/small-forecast.png',   top:'38%',  left:'2%',   size:76,  dur:'10s',  delay:'-0.5s', depth:0.8,  mobileHide:false },
+  { src:'assets/icons/small-satellite.png',  top:'58%',  left:'3%',   size:62,  dur:'13s',  delay:'-4s',   depth:0.35, mobileHide:false },
+  { src:'assets/icons/small-music.png',      top:'66%',  right:'3%',  size:80,  dur:'8.5s', delay:'-1.5s', depth:0.9,  mobileHide:false },
+  { src:'assets/icons/small-balance.png',    top:'42%',  right:'2%',  size:68,  dur:'6.5s', delay:'-2.5s', depth:0.7,  mobileHide:false },
+  { src:'assets/icons/small-lightning.png',  top:'76%',  left:'2%',   size:70,  dur:'9.5s', delay:'-3.5s', depth:0.45, mobileHide:false },
+  { src:'assets/icons/small-outlook.png',    top:'30%',  left:'6%',   size:60,  dur:'7.5s', delay:'-5s',   depth:0.4,  mobileHide:false },
+  { src:'assets/icons/small-radio.png',      top:'80%',  right:'5%',  size:64,  dur:'12s',  delay:'-0.8s', depth:0.5,  mobileHide:false },
+  { src:'assets/icons/small-spotter.png',    top:'54%',  right:'6%',  size:62,  dur:'10s',  delay:'-2s',   depth:0.6,  mobileHide:false },
+  { src:'assets/icons/small-shop.png',       top:'15%',  left:'38%',  size:56,  dur:'14s',  delay:'-6s',   depth:0.3,  mobileHide:true  },
+  { src:'assets/icons/small-leaderboard.png',top:'70%',  right:'22%', size:58,  dur:'11s',  delay:'-3s',   depth:0.55, mobileHide:true  },
+  { src:'assets/icons/small-level.png',      top:'48%',  left:'18%',  size:54,  dur:'8s',   delay:'-4.5s', depth:0.4,  mobileHide:true  },
 ];
 
 const BURST_ORIGINS = [
@@ -972,7 +971,7 @@ function Hero() {
     }},
       h('h1', { className: 'hero-headline', style: { marginBottom: 10 } },
         h('span', { style: { display:'flex', alignItems:'center', justifyContent:'center', gap:14, flexWrap:'wrap' } },
-          h('img', { src: 'assets/snowball-logo-transparent.png', alt: '', style: { width:34, height:34, flexShrink:0, objectFit:'contain' } }),
+          h('img', { src: 'assets/snowball-logo-transparent-small.png', alt: '', style: { width:34, height:34, flexShrink:0, objectFit:'contain' } }),
           'Snowball is the best Discord app to'
         )
       ),
@@ -1006,10 +1005,10 @@ function Hero() {
 
 function AnimatedTimeline() {
   const steps = [
-    { icon:'assets/icons/ai.png',        title:'Message sent',      desc:'Natural language. Any channel.',                   start: 0.15, end: 0.55 },
-    { icon:'assets/icons/outlook.png',   title:'Thinking',          desc:'Parsing intent, picking tools.',                   start: 0.90, end: 1.80 },
-    { icon:'assets/icons/satellite.png', title:'Searching the web', desc:'Web search, outlooks, current weather, and more.', start: 2.20, end: 4.20 },
-    { icon:'assets/icons/weather.png',   title:'Response back',     desc:'Grounded, sourced, with embeds.',                  start: 5.00, end: 5.00 },
+    { icon:'assets/icons/small-ai.png',        title:'Message sent',      desc:'Natural language. Any channel.',                   start: 0.15, end: 0.55 },
+    { icon:'assets/icons/small-outlook.png',   title:'Thinking',          desc:'Parsing intent, picking tools.',                   start: 0.90, end: 1.80 },
+    { icon:'assets/icons/small-satellite.png', title:'Searching the web', desc:'Web search, outlooks, current weather, and more.', start: 2.20, end: 4.20 },
+    { icon:'assets/icons/small-weather.png',   title:'Response back',     desc:'Grounded, sourced, with embeds.',                  start: 5.00, end: 5.00 },
   ];
   const TOTAL = 5.0;
   const FRAME = 50;
@@ -1270,12 +1269,12 @@ function AiSection() {
 
 function EconomySection() {
   const cards = [
-    { icon:'assets/icons/balance.png', title:'SNOWFLAKES Currency', desc:'Earn SNOWFLAKES by chatting, completing missions, and winning fights. Spend them in the shop on roles, items, and boar upgrades.', tag:'/balance' },
-    { icon:'assets/icons/events.png', title:'Missions & Paths', desc:'Daily and weekly missions reward SNOWFLAKES and XP. Choose a career path — Meteorologist, Chaser, Broadcaster — for unique perks.', tag:'/events' },
-    { icon:'assets/icons/level.png', title:'XP & Leveling', desc:'Climb the server ranks. Every message earns XP. Unlock roles, channel access, and economy boosts as you level up.', tag:'/level' },
-    { icon:'assets/icons/stock.png', title:'Stock Market', desc:'Trade virtual stocks that mirror real market data. Build a portfolio, diversify, and compete on the leaderboard.', tag:'/stock' },
-    { icon:'assets/icons/spotter.png', title:'Boar Pets & Fights', desc:"Adopt and train your boar companion. Battle other members' boars for FLAX and glory. Feed, level, and evolve them.", tag:'/boar' },
-    { icon:'assets/icons/leaderboard.png', title:'Leaderboard', desc:'Compete for the top spot across FLAX balance, XP, stock gains, and boar wins. Updated in real-time.', tag:'/leaderboard' },
+    { icon:'assets/icons/small-balance.png', title:'SNOWFLAKES Currency', desc:'Earn SNOWFLAKES by chatting, completing missions, and winning fights. Spend them in the shop on roles, items, and boar upgrades.', tag:'/balance' },
+    { icon:'assets/icons/small-events.png', title:'Missions & Paths', desc:'Daily and weekly missions reward SNOWFLAKES and XP. Choose a career path — Meteorologist, Chaser, Broadcaster — for unique perks.', tag:'/events' },
+    { icon:'assets/icons/small-level.png', title:'XP & Leveling', desc:'Climb the server ranks. Every message earns XP. Unlock roles, channel access, and economy boosts as you level up.', tag:'/level' },
+    { icon:'assets/icons/small-stock.png', title:'Stock Market', desc:'Trade virtual stocks that mirror real market data. Build a portfolio, diversify, and compete on the leaderboard.', tag:'/stock' },
+    { icon:'assets/icons/small-spotter.png', title:'Boar Pets & Fights', desc:"Adopt and train your boar companion. Battle other members' boars for FLAX and glory. Feed, level, and evolve them.", tag:'/boar' },
+    { icon:'assets/icons/small-leaderboard.png', title:'Leaderboard', desc:'Compete for the top spot across FLAX balance, XP, stock gains, and boar wins. Updated in real-time.', tag:'/leaderboard' },
   ];
   return h('section', { id: 'economy' },
     h('div', { className: 'divider' }),
@@ -1300,24 +1299,24 @@ function EconomySection() {
 
 function CommandsSection() {
   const cmds = [
-    { icon:'assets/icons/weather.png', name:'/weather', desc:'Current conditions' },
-    { icon:'assets/icons/forecast.png', name:'/forecast', desc:'Multi-day forecast' },
-    { icon:'assets/icons/radar.png', name:'/radar', desc:'Live NEXRAD' },
-    { icon:'assets/icons/alert.png', name:'/alerts', desc:'Active NWS alerts' },
-    { icon:'assets/icons/satellite.png', name:'/satellite', desc:'GOES imagery' },
-    { icon:'assets/icons/outlook.png', name:'/outlook', desc:'SPC outlook' },
-    { icon:'assets/icons/lightning.png', name:'/lightning', desc:'Strike activity' },
-    { icon:'assets/icons/spotter.png', name:'/spotter', desc:'Spotter reports' },
-    { icon:'assets/icons/emergency.png', name:'/eas', desc:'EAS product' },
-    { icon:'assets/icons/music.png', name:'/music', desc:'Play music' },
-    { icon:'assets/icons/radio.png', name:'/radio', desc:'Weather radio' },
-    { icon:'assets/icons/balance.png', name:'/balance', desc:'Your FLAX' },
-    { icon:'assets/icons/stock.png', name:'/stock', desc:'Trade stocks' },
-    { icon:'assets/icons/leaderboard.png', name:'/leaderboard', desc:'Top members' },
-    { icon:'assets/icons/level.png', name:'/level', desc:'Your XP' },
-    { icon:'assets/icons/shop.png', name:'/shop', desc:'Buy items' },
-    { icon:'assets/icons/events.png', name:'/missions', desc:'Daily quests' },
-    { icon:'assets/icons/ai.png', name:'/ask', desc:'Ask the AI' },
+    { icon:'assets/icons/small-weather.png', name:'/weather', desc:'Current conditions' },
+    { icon:'assets/icons/small-forecast.png', name:'/forecast', desc:'Multi-day forecast' },
+    { icon:'assets/icons/small-radar.png', name:'/radar', desc:'Live NEXRAD' },
+    { icon:'assets/icons/small-alert.png', name:'/alerts', desc:'Active NWS alerts' },
+    { icon:'assets/icons/small-satellite.png', name:'/satellite', desc:'GOES imagery' },
+    { icon:'assets/icons/small-outlook.png', name:'/outlook', desc:'SPC outlook' },
+    { icon:'assets/icons/small-lightning.png', name:'/lightning', desc:'Strike activity' },
+    { icon:'assets/icons/small-spotter.png', name:'/spotter', desc:'Spotter reports' },
+    { icon:'assets/icons/small-emergency.png', name:'/eas', desc:'EAS product' },
+    { icon:'assets/icons/small-music.png', name:'/music', desc:'Play music' },
+    { icon:'assets/icons/small-radio.png', name:'/radio', desc:'Weather radio' },
+    { icon:'assets/icons/small-balance.png', name:'/balance', desc:'Your FLAX' },
+    { icon:'assets/icons/small-stock.png', name:'/stock', desc:'Trade stocks' },
+    { icon:'assets/icons/small-leaderboard.png', name:'/leaderboard', desc:'Top members' },
+    { icon:'assets/icons/small-level.png', name:'/level', desc:'Your XP' },
+    { icon:'assets/icons/small-shop.png', name:'/shop', desc:'Buy items' },
+    { icon:'assets/icons/small-events.png', name:'/missions', desc:'Daily quests' },
+    { icon:'assets/icons/small-ai.png', name:'/ask', desc:'Ask the AI' },
   ];
   return h('section', { id:'commands' },
     h('div', { className:'divider' }),
@@ -1428,7 +1427,7 @@ requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('re
     <div class="footer-container">
         <div class="footer-brand-section">
             <div class="footer-brand-identity">
-                <img src="assets/xtreme-logo.png" loading="lazy" decoding="async" alt="Xtreme Weather" class="footer-logo">
+                <img src="assets/xtreme-logo-small.png" loading="lazy" decoding="async" alt="Xtreme Weather" class="footer-logo">
                 <div class="footer-brand-text">
                     <span class="footer-brand-name">Xtreme Weather</span>
                     <span class="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
