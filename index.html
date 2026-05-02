@@ -96,16 +96,20 @@ body {
 @media (max-width: 768px) {
   .mobile-menu-overlay {
     background: #0d0d18 !important;
-    transition: opacity 0.35s ease, visibility 0.35s !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0s 0.4s, visibility 0s 0.4s !important;
     transform: translateZ(0);
   }
   .mobile-menu-overlay.active {
-    transition: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0s, visibility 0s !important;
   }
   .mobile-menu-overlay .main-view {
     opacity: 0;
     transform: translateY(24px) scale(0.97);
-    transition: opacity 0.45s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
   }
   .mobile-menu-overlay.active .main-view {
     opacity: 1;
