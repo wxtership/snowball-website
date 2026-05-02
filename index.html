@@ -583,7 +583,184 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<!-- NAV -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <button class="nav-btn-circle hamburger" id="mobile-trigger" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="https://xtremewx.com/new" style="display:flex;align-items:center;text-decoration:none;">
+                <img src="assets/xtreme-logo.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
+            </a>
+        </div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li class="has-dropdown" data-menu="snowball">
+                    <a href="#" class="active">Snowball <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="weather">
+                    <a href="#">Weather <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="community">
+                    <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="nav-cta" style="display:inline-flex;align-items:center;gap:8px;">
+                Join
+                <img src="assets/arrow-up-right.png" alt="" style="width:14px;height:14px;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);">
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- SNOWBALL MEGA MENU -->
+<div class="mega-menu" id="snowball-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Features</div>
+            <a href="#ai-section" class="mega-item"><i class="fas fa-robot"></i><div class="mega-item-text"><span class="title">AI Weather</span><span class="desc">Ask anything, get real data</span></div></a>
+            <a href="#economy" class="mega-item"><i class="fas fa-snowflake"></i><div class="mega-item-text"><span class="title">Economy</span><span class="desc">SNOWFLAKES, stocks &amp; boars</span></div></a>
+            <a href="#commands" class="mega-item"><i class="fas fa-terminal"></i><div class="mega-item-text"><span class="title">Commands</span><span class="desc">All slash commands</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Get Started</div>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Join the Server</span><span class="desc">Add Snowball to your Discord</span></div></a>
+            <a href="#preview" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Community</span><span class="desc">7K+ members strong</span></div></a>
+            <a href="#" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Live Radio</span><span class="desc">Weather radio &amp; music</span></div></a>
+        </div>
+    </div>
+</div>
+
+<!-- WEATHER MEGA MENU -->
+<div class="mega-menu" id="weather-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Forecasts</div>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-sun"></i><div class="mega-item-text"><span class="title">Now</span><span class="desc">Current conditions</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-clock"></i><div class="mega-item-text"><span class="title">Hourly</span><span class="desc">Next 24 hours</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-calendar-alt"></i><div class="mega-item-text"><span class="title">10-Day</span><span class="desc">Long range outlook</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Maps &amp; Data</div>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Radar</span><span class="desc">Live doppler imagery</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-video"></i><div class="mega-item-text"><span class="title">Cameras</span><span class="desc">Traffic cams &amp; feeds</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-newspaper"></i><div class="mega-item-text"><span class="title">News</span><span class="desc">Storm reports</span></div></a>
+        </div>
+    </div>
+</div>
+
+<!-- COMMUNITY MEGA MENU -->
+<div class="mega-menu" id="community-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Socials</div>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Discord</span><span class="desc">Join the community</span></div></a>
+            <a href="https://x.com/xtremeweatherwx" target="_blank" class="mega-item"><i class="fab fa-x-twitter"></i><div class="mega-item-text"><span class="title">X / Twitter</span><span class="desc">Live updates</span></div></a>
+            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" class="mega-item"><i class="fab fa-tiktok"></i><div class="mega-item-text"><span class="title">TikTok</span><span class="desc">Weather videos</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Project</div>
+            <a href="#" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Staff</span><span class="desc">Meet the team</span></div></a>
+            <a href="#" class="mega-item"><i class="fas fa-code-branch"></i><div class="mega-item-text"><span class="title">Changelog</span><span class="desc">Latest updates</span></div></a>
+        </div>
+    </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu-overlay" id="mobile-menu" onclick="closeMobileMenu(event)">
+    <div class="mobile-view main-view" id="mobile-main-view">
+        <div class="mobile-centered-content">
+            <button class="mobile-big-link active" onclick="openSubMenu('snowball')">Snowball <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="openSubMenu('weather')">Weather <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="openSubMenu('community')">Community <i class="fas fa-chevron-right tiny-arrow"></i></button>
+        </div>
+    </div>
+
+    <div class="mobile-view sub-view" id="sub-menu-snowball">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="closeSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Snowball</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="#ai-section" class="clean-link" onclick="toggleMobileMenu()"><div class="icon-box"><i class="fas fa-robot"></i></div><span>AI Weather</span></a>
+            <a href="#economy" class="clean-link" onclick="toggleMobileMenu()"><div class="icon-box"><i class="fas fa-snowflake"></i></div><span>Economy</span></a>
+            <a href="#commands" class="clean-link" onclick="toggleMobileMenu()"><div class="icon-box"><i class="fas fa-terminal"></i></div><span>Commands</span></a>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link" onclick="toggleMobileMenu()"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Join the Server</span></a>
+            <a href="#preview" class="clean-link" onclick="toggleMobileMenu()"><div class="icon-box"><i class="fas fa-users"></i></div><span>Community</span></a>
+        </div>
+    </div>
+
+    <div class="mobile-view sub-view" id="sub-menu-weather">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="closeSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Weather</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-sun"></i></div><span>Current Conditions</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-clock"></i></div><span>Hourly Forecast</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-calendar-alt"></i></div><span>10-Day Outlook</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-satellite-dish"></i></div><span>Live Radar</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-video"></i></div><span>Cameras</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-newspaper"></i></div><span>Storm Reports</span></a>
+        </div>
+    </div>
+
+    <div class="mobile-view sub-view" id="sub-menu-community">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="closeSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Community</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Discord Server</span></a>
+            <a href="https://x.com/xtremeweatherwx" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-x-twitter"></i></div><span>X / Twitter</span></a>
+            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-tiktok"></i></div><span>TikTok</span></a>
+            <a href="#" class="clean-link"><div class="icon-box"><i class="fas fa-users"></i></div><span>Staff Team</span></a>
+            <a href="#" class="clean-link"><div class="icon-box"><i class="fas fa-code-branch"></i></div><span>Changelog</span></a>
+        </div>
+    </div>
+</div>
+
 <div id="root"></div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand-section">
+            <div class="footer-brand-identity">
+                <img src="assets/snowball-logo-transparent.png" loading="lazy" decoding="async" alt="Snowball" class="footer-logo">
+                <div class="footer-brand-text">
+                    <span class="footer-brand-name">Snowball</span>
+                    <span class="footer-tagline">Weather it. Snowball it.</span>
+                </div>
+            </div>
+            <p class="footer-description">
+                The most advanced Discord app for weather. AI that fetches real data, a full economy system, radio, music, and more.
+            </p>
+        </div>
+        <div class="footer-nav-section">
+            <div class="footer-socials">
+                <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://x.com/xtremeweatherwx" target="_blank" rel="noopener" class="social-btn" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <nav class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Privacy</a>
+                <a href="#" class="footer-link">Terms</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Status</a>
+            </nav>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        &copy; 2026 Xtreme Weather. All rights reserved.
+    </div>
+</footer>
 <script type="text/babel">
 const { useState, useEffect, useRef } = React;
 
@@ -832,739 +1009,14 @@ function RotatingWord() {
   );
 }
 
-function Nav() {
-  return (
-    <>
-      <nav className="navbar">
-        <div className="nav-container">
-          <div className="nav-left">
-            <button className="nav-btn-circle hamburger" id="mobile-trigger" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()} aria-label="Toggle navigation menu">
-              <i className="fas fa-bars"></i>
-              <i className="fas fa-times"></i>
-            </button>
-            <a href="https://xtremewx.com/new" style={{display:'flex',alignItems:'center',textDecoration:'none'}}>
-              <img src="assets/xtreme-logo.png" alt="Xtreme Weather" width="40" height="40" className="logo" fetchpriority="high" />
-            </a>
-          </div>
-          <div className="nav-center">
-            <ul className="nav-links">
-              <li className="has-dropdown" data-menu="snowball">
-                <a href="#" className="active">Snowball <i className="fas fa-chevron-down dropdown-arrow"></i></a>
-              </li>
-              <li className="has-dropdown" data-menu="weather">
-                <a href="#">Weather <i className="fas fa-chevron-down dropdown-arrow"></i></a>
-              </li>
-              <li className="has-dropdown" data-menu="community">
-                <a href="#">Community <i className="fas fa-chevron-down dropdown-arrow"></i></a>
-              </li>
-            </ul>
-          </div>
-          <div className="nav-right">
-            <a href="https://discord.gg/xtremeweather" target="_blank" className="nav-cta" style={{display:'inline-flex',alignItems:'center',gap:8}}>
-              Join
-              <img src="assets/arrow-up-right.png" alt="" style={{width:14,height:14,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)'}} />
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Snowball mega menu */}
-      <div className="mega-menu" id="snowball-mega-menu">
-        <div className="mega-menu-container">
-          <div className="mega-column">
-            <div className="mega-header">Features</div>
-            <a href="#ai-section" className="mega-item"><i className="fas fa-robot"></i><div className="mega-item-text"><span className="title">AI Weather</span><span className="desc">Ask anything, get real data</span></div></a>
-            <a href="#economy" className="mega-item"><i className="fas fa-snowflake"></i><div className="mega-item-text"><span className="title">Economy</span><span className="desc">SNOWFLAKES, stocks & boars</span></div></a>
-            <a href="#commands" className="mega-item"><i className="fas fa-slash"></i><div className="mega-item-text"><span className="title">Commands</span><span className="desc">All slash commands</span></div></a>
-          </div>
-          <div className="mega-column">
-            <div className="mega-header">Get Started</div>
-            <a href="https://discord.gg/xtremeweather" target="_blank" className="mega-item"><i className="fab fa-discord"></i><div className="mega-item-text"><span className="title">Join the Server</span><span className="desc">Add Snowball to your Discord</span></div></a>
-            <a href="#preview" className="mega-item"><i className="fas fa-users"></i><div className="mega-item-text"><span className="title">Community</span><span className="desc">7K+ members strong</span></div></a>
-            <a href="#" className="mega-item"><i className="fas fa-satellite-dish"></i><div className="mega-item-text"><span className="title">Live Radio</span><span className="desc">Weather radio & music</span></div></a>
-          </div>
-        </div>
-      </div>
-
-      {/* Weather mega menu */}
-      <div className="mega-menu" id="weather-mega-menu">
-        <div className="mega-menu-container">
-          <div className="mega-column">
-            <div className="mega-header">Forecasts</div>
-            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-sun"></i><div className="mega-item-text"><span className="title">Now</span><span className="desc">Current conditions</span></div></a>
-            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-clock"></i><div className="mega-item-text"><span className="title">Hourly</span><span className="desc">Next 24 hours</span></div></a>
-            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-calendar-alt"></i><div className="mega-item-text"><span className="title">10-Day</span><span className="desc">Long range outlook</span></div></a>
-          </div>
-          <div className="mega-column">
-            <div className="mega-header">Maps & Data</div>
-            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-satellite-dish"></i><div className="mega-item-text"><span className="title">Radar</span><span className="desc">Live doppler imagery</span></div></a>
-            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-video"></i><div className="mega-item-text"><span className="title">Cameras</span><span className="desc">Traffic cams & feeds</span></div></a>
-            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-newspaper"></i><div className="mega-item-text"><span className="title">News</span><span className="desc">Storm reports</span></div></a>
-          </div>
-        </div>
-      </div>
-
-      {/* Community mega menu */}
-      <div className="mega-menu" id="community-mega-menu">
-        <div className="mega-menu-container">
-          <div className="mega-column">
-            <div className="mega-header">Socials</div>
-            <a href="https://discord.gg/xtremeweather" target="_blank" className="mega-item"><i className="fab fa-discord"></i><div className="mega-item-text"><span className="title">Discord</span><span className="desc">Join the community</span></div></a>
-            <a href="https://x.com/xtremeweatherwx" target="_blank" className="mega-item"><i className="fab fa-x-twitter"></i><div className="mega-item-text"><span className="title">X / Twitter</span><span className="desc">Live updates</span></div></a>
-            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" className="mega-item"><i className="fab fa-tiktok"></i><div className="mega-item-text"><span className="title">TikTok</span><span className="desc">Weather videos</span></div></a>
-          </div>
-          <div className="mega-column">
-            <div className="mega-header">Project</div>
-            <a href="#" className="mega-item"><i className="fas fa-users"></i><div className="mega-item-text"><span className="title">Staff</span><span className="desc">Meet the team</span></div></a>
-            <a href="#" className="mega-item"><i className="fas fa-code-branch"></i><div className="mega-item-text"><span className="title">Changelog</span><span className="desc">Latest updates</span></div></a>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu overlay */}
-      <div className="mobile-menu-overlay" id="mobile-menu" onClick={(e) => window.closeMobileMenu && window.closeMobileMenu(e)}>
-        <div className="mobile-view main-view" id="mobile-main-view">
-          <div className="mobile-centered-content">
-            <button className="mobile-big-link active" onClick={() => window.openSubMenu && window.openSubMenu('snowball')}>Snowball <i className="fas fa-chevron-right tiny-arrow"></i></button>
-            <button className="mobile-big-link" onClick={() => window.openSubMenu && window.openSubMenu('weather')}>Weather <i className="fas fa-chevron-right tiny-arrow"></i></button>
-            <button className="mobile-big-link" onClick={() => window.openSubMenu && window.openSubMenu('community')}>Community <i className="fas fa-chevron-right tiny-arrow"></i></button>
-          </div>
-        </div>
-
-        <div className="mobile-view sub-view" id="sub-menu-snowball">
-          <div className="sub-menu-header">
-            <button className="back-btn-circle" onClick={() => window.closeSubMenu && window.closeSubMenu()}><i className="fas fa-chevron-left"></i></button>
-            <span className="sub-title">Snowball</span>
-          </div>
-          <div className="mobile-clean-list">
-            <a href="#ai-section" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fas fa-robot"></i></div><span>AI Weather</span></a>
-            <a href="#economy" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fas fa-snowflake"></i></div><span>Economy</span></a>
-            <a href="#commands" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fas fa-slash"></i></div><span>Commands</span></a>
-            <a href="https://discord.gg/xtremeweather" target="_blank" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fab fa-discord"></i></div><span>Join the Server</span></a>
-            <a href="#preview" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fas fa-users"></i></div><span>Community</span></a>
-          </div>
-        </div>
-
-        <div className="mobile-view sub-view" id="sub-menu-weather">
-          <div className="sub-menu-header">
-            <button className="back-btn-circle" onClick={() => window.closeSubMenu && window.closeSubMenu()}><i className="fas fa-chevron-left"></i></button>
-            <span className="sub-title">Weather</span>
-          </div>
-          <div className="mobile-clean-list">
-            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-sun"></i></div><span>Current Conditions</span></a>
-            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-clock"></i></div><span>Hourly Forecast</span></a>
-            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-calendar-alt"></i></div><span>10-Day Outlook</span></a>
-            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-satellite-dish"></i></div><span>Live Radar</span></a>
-            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-video"></i></div><span>Cameras</span></a>
-            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-newspaper"></i></div><span>Storm Reports</span></a>
-          </div>
-        </div>
-
-        <div className="mobile-view sub-view" id="sub-menu-community">
-          <div className="sub-menu-header">
-            <button className="back-btn-circle" onClick={() => window.closeSubMenu && window.closeSubMenu()}><i className="fas fa-chevron-left"></i></button>
-            <span className="sub-title">Community</span>
-          </div>
-          <div className="mobile-clean-list">
-            <a href="https://discord.gg/xtremeweather" target="_blank" className="clean-link"><div className="icon-box"><i className="fab fa-discord"></i></div><span>Discord Server</span></a>
-            <a href="https://x.com/xtremeweatherwx" target="_blank" className="clean-link"><div className="icon-box"><i className="fab fa-x-twitter"></i></div><span>X / Twitter</span></a>
-            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" className="clean-link"><div className="icon-box"><i className="fab fa-tiktok"></i></div><span>TikTok</span></a>
-            <a href="#" className="clean-link"><div className="icon-box"><i className="fas fa-users"></i></div><span>Staff Team</span></a>
-            <a href="#" className="clean-link"><div className="icon-box"><i className="fas fa-code-branch"></i></div><span>Changelog</span></a>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
-
-function Hero() {
-  const [burstKey] = useState(0);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 80);
-    return () => clearTimeout(t);
-  }, []);
-
-  return (
-    <section id="hero">
-      <div className="hero-bg" />
-      <FloatingIcons burstKey={burstKey} />
-      <div className="hero-content" style={{
-        opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(8px)',
-        transform: visible ? 'translateY(0)' : 'translateY(24px)',
-        transition: 'opacity 1.4s cubic-bezier(0.16,1,0.3,1), filter 1.4s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
-      }}>
-        <h1 className="hero-headline" style={{marginBottom:10}}>
-          <span style={{display:'flex',alignItems:'center',justifyContent:'center',gap:14,flexWrap:'wrap'}}>
-            <img src="assets/snowball-logo-transparent.png" alt="" style={{width:34,height:34,flexShrink:0,objectFit:'contain'}} />
-            Snowball is the best Discord app to
-          </span>
-        </h1>
-        <div className="hero-rotating-line">
-          <RotatingWord />
-        </div>
-        <p className="hero-sub" style={{
-          opacity: visible ? 1 : 0,
-          filter: visible ? 'blur(0px)' : 'blur(6px)',
-          transform: visible ? 'translateY(0)' : 'translateY(16px)',
-          transition: 'opacity 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s, filter 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s, transform 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s',
-        }}>
-          The most advanced Discord app for weather. AI that actually fetches real data, a full economy system, radio, music, and so much more. <strong style={{color:'var(--purple-300)'}}>Weather it. Snowball it.</strong>
-        </p>
-        <div className="hero-ctas" style={{
-          opacity: visible ? 1 : 0,
-          filter: visible ? 'blur(0px)' : 'blur(6px)',
-          transform: visible ? 'translateY(0)' : 'translateY(10px)',
-          transition: 'opacity 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s, filter 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s, transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s',
-        }}>
-          <a href="https://discord.gg/xtremeweather" target="_blank" className="btn-ghost-arrow" style={{display:'inline-flex',alignItems:'center',gap:8}}>
-            <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{flexShrink:0}}>
-              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-            </svg>
-            Try it out
-            <img src="assets/arrow-up-right.png" alt="" style={{width:16,height:16,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)'}} />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function AnimatedTimeline() {
-  const steps = [
-    { icon:'assets/icons/ai.png',        title:'Message sent',      desc:'Natural language. Any channel.',                   start: 0.15, end: 0.55 },
-    { icon:'assets/icons/outlook.png',   title:'Thinking',          desc:'Parsing intent, picking tools.',                   start: 0.90, end: 1.80 },
-    { icon:'assets/icons/satellite.png', title:'Searching the web', desc:'Web search, outlooks, current weather, and more.', start: 2.20, end: 4.20 },
-    { icon:'assets/icons/weather.png',   title:'Response back',     desc:'Grounded, sourced, with embeds.',                  start: 5.00, end: 5.00 },
-  ];
-  const TOTAL = 5.0;
-  const FRAME = 50;
-
-  const [t, setT]         = React.useState(0);
-  const [running, setRun] = React.useState(false);
-  const sectionRef        = React.useRef(null);
-
-  React.useEffect(() => {
-    if (!sectionRef.current) return;
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) setRun(true); });
-    }, { threshold: 0.3 });
-    obs.observe(sectionRef.current);
-    return () => obs.disconnect();
-  }, []);
-
-  React.useEffect(() => {
-    if (!running) return;
-    let raf;
-    const startMs = performance.now();
-    const tick = (now) => {
-      const elapsed = (now - startMs) / 1000;
-      if (elapsed >= TOTAL) {
-        setT(TOTAL);
-        return;
-      }
-      setT(elapsed);
-      raf = setTimeout(() => requestAnimationFrame(tick), FRAME);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => clearTimeout(raf);
-  }, [running]);
-
-  const stepStates = steps.map((s, i) => {
-    const next = steps[i + 1];
-    let state = 'pending';
-    let display = s.start;
-    if (t < s.start) {
-      state = 'pending';
-      display = s.start;
-    } else if (next && t >= next.start) {
-      state = 'done';
-      display = s.end;
-    } else if (t >= s.start && t <= s.end) {
-      state = 'active';
-      display = t;
-    } else if (t > s.end) {
-      state = next ? 'done' : 'done';
-      display = s.end;
-    }
-    return { ...s, state, display };
-  });
-
-  return (
-    <div className="ai-timeline" ref={sectionRef} style={{marginLeft:0,marginRight:'auto'}}>
-      {stepStates.map((s, i) => (
-        <div key={i} className={"timeline-row state-" + s.state}>
-          <div className="timeline-rail">
-            <div className="timeline-dot">
-              {s.state === 'active'
-                ? <span className="timeline-spinner"></span>
-                : <img src={s.icon} alt="" />}
-              {s.state === 'done' && <span className="timeline-check">✓</span>}
-            </div>
-            {i < stepStates.length - 1 && (
-              <div className={"timeline-line " + (s.state === 'done' ? 'is-filled' : '')} />
-            )}
-          </div>
-          <div className="timeline-body">
-            <div className="timeline-time">
-              {s.display.toFixed(2)}s
-            </div>
-            <div className="timeline-title">{s.title}</div>
-            <div className="timeline-desc">{s.desc}</div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function DiscordChatDemo() {
-  const [phase, setPhase] = React.useState(0);
-  const ref    = React.useRef(null);
-  const ranRef = React.useRef(false);
-
-  React.useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !ranRef.current) {
-        ranRef.current = true;
-        setTimeout(() => setPhase(1), 300);
-        setTimeout(() => setPhase(2), 1100);
-        setTimeout(() => setPhase(3), 4400);
-      }
-    }, { threshold: 0.2 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-
-  const discordFont = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
-  const ggSans = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
-  const userPing = (
-    <span style={{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,cursor:'pointer'}}>
-      @✽ wxtershipping
-    </span>
-  );
-
-  const ChannelHeader = () => (
-    <div style={{
-      background:'rgba(20,14,42,0.65)',
-      backdropFilter:'blur(8px)',
-      padding:'12px 16px',display:'flex',alignItems:'center',gap:8,
-      borderBottom:'1px solid rgba(0,0,0,0.35)',
-      boxShadow:'0 1px 0 rgba(255,255,255,0.04)',
-    }}>
-      <span style={{color:'#80848e',fontSize:18}}>❄</span>
-      <span style={{color:'#80848e',margin:'0 -2px'}}>·</span>
-      <span style={{fontWeight:700,color:'#f2f3f5',fontSize:15}}>snowball</span>
-      <span style={{color:'#3d4045',margin:'0 6px'}}>|</span>
-      <span style={{color:'#80848e',fontSize:18,marginLeft:-2}}>❄</span>
-      <span style={{color:'#80848e',margin:'0 -2px'}}>·</span>
-      <span style={{color:'#80848e',fontSize:13,overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis',minWidth:0}}>Chat with Snowball: Xtreme Weather's revolutionary new Discord App.</span>
-    </div>
-  );
-
-  const ReplyQuote = () => (
-    <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:4,fontSize:13,color:'#b5bac1',position:'relative',paddingLeft:30}}>
-      <span style={{
-        position:'absolute',left:-12,top:'50%',
-        width:30,height:14,borderLeft:'2px solid #4e5058',borderTop:'2px solid #4e5058',
-        borderTopLeftRadius:6,
-      }}></span>
-      <div style={{width:16,height:16,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0}}></div>
-      <span style={{color:'#e67e22',fontWeight:600}}>✽ wxtershipping…</span>
-      <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>⚡ XWD</span>
-      <span style={{color:'#c9b6ff'}}>@Snowball</span>
-      <span style={{color:'#b5bac1',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>What's the weather for Pittsburgh today</span>
-    </div>
-  );
-
-  const UserMessage = () => (
-    <div style={{display:'flex',gap:16,padding:'4px 16px 8px',animation:'dcMsgIn 0.22s ease forwards'}}>
-      <div style={{width:40,height:40,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontWeight:700,fontSize:16}}>✽</div>
-      <div style={{flex:1,minWidth:0}}>
-        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:2}}>
-          <span style={{color:'#e67e22',fontWeight:600,fontSize:15}}>✽ wxtershipping…</span>
-          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>⚡ XWD</span>
-          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
-        </div>
-        <div style={{color:'#dbdee1',lineHeight:1.6}}>
-          <span style={{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3}}>@Snowball</span> What's the weather for Pittsburgh today
-        </div>
-      </div>
-    </div>
-  );
-
-  const Thinking = () => (
-    <div style={{display:'flex',gap:16,padding:'4px 16px',animation:'dcMsgIn 0.22s ease forwards'}}>
-      <img src="assets/snowball-server-icon.png" alt="" style={{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'}} />
-      <div style={{flex:1,minWidth:0}}>
-        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:2}}>
-          <span style={{color:'#fff',fontWeight:700,fontSize:15}}>Snowball</span>
-          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>✓ APP</span>
-          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
-        </div>
-        <div style={{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14}}>
-          <span style={{display:'inline-flex',width:14,height:14,borderRadius:'50%',border:'1.5px solid #80848e',alignItems:'center',justifyContent:'center',fontSize:9}}>🕐</span>
-          Snowball is thinking
-          <span className="dc-dots"><span></span><span></span><span></span></span>
-        </div>
-      </div>
-    </div>
-  );
-
-  const Embed = () => (
-    <div style={{
-      background:'#2b2d31',
-      borderRadius:8,
-      maxWidth:460,overflow:'hidden',
-      border:'1px solid rgba(255,255,255,0.06)',
-      fontFamily:ggSans,
-    }}>
-      {/* Real photo banner */}
-      <div style={{position:'relative',height:120,overflow:'hidden'}}>
-        <img src="assets/embed-banner.png" alt="" style={{width:'100%',height:'100%',objectFit:'cover'}} />
-      </div>
-      <div style={{padding:'14px 18px',display:'flex',flexDirection:'column',gap:12}}>
-        {/* Title row with real weather icon */}
-        <div style={{display:'flex',gap:14,alignItems:'flex-start'}}>
-          <div style={{flex:1,minWidth:0}}>
-            <div style={{color:'#fff',fontWeight:700,fontSize:17,marginBottom:4,fontFamily:ggSans}}>Weather for Pittsburgh, PA</div>
-            <div style={{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5}}>
-              <span style={{color:'#80848e',flexShrink:0}}>›</span>
-              <div>Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting <strong style={{color:'#fff'}}>haze</strong> as of 20 minutes ago.</div>
-            </div>
-          </div>
-          {/* Real sun/haze emoji asset */}
-          <img src="assets/emoji-sunny-haze.png" alt="" style={{width:52,height:52,flexShrink:0,objectFit:'contain'}} />
-        </div>
-        <div>
-          <div style={{color:'#fff',fontWeight:700,fontSize:15,marginBottom:4,fontFamily:ggSans}}>Active Alerts</div>
-          <div style={{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5}}>
-            <span style={{color:'#80848e',flexShrink:0}}>›</span>
-            <div>There's currently an advisory for the area. You can use <span style={{color:'#c9b6ff'}}>/weather alerts</span> for more information!</div>
-          </div>
-        </div>
-        <div>
-          <div style={{color:'#fff',fontWeight:700,fontSize:15,marginBottom:6,fontFamily:ggSans}}>Conditions</div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px 24px',fontSize:13,fontFamily:ggSans}}>
-            <div><div style={{color:'#fff',fontWeight:600}}>Temperature:</div><div style={{color:'#dbdee1'}}>46°F (Feels like 42°F)</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Wind:</div><div style={{color:'#dbdee1'}}>8mph WNW (Gusts 18mph)</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Humidity:</div><div style={{color:'#dbdee1'}}>66%</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Dew Point:</div><div style={{color:'#dbdee1'}}>35°F</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Visibility:</div><div style={{color:'#dbdee1'}}>4.00 miles</div></div>
-            <div><div style={{color:'#fff',fontWeight:600}}>Pressure:</div><div style={{color:'#dbdee1'}}>29.92 inHg</div></div>
-          </div>
-        </div>
-        <div style={{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2,fontFamily:ggSans}}>
-          <img src="assets/snowball-server-icon.png" alt="" style={{width:16,height:16,borderRadius:'50%',objectFit:'cover'}} />
-          Snowball
-        </div>
-      </div>
-    </div>
-  );
-
-  const ViewBtn = () => (
-    <button type="button" style={{
-      marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',
-      color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,
-      padding:'7px 14px',borderRadius:6,cursor:'pointer',
-      display:'inline-flex',alignItems:'center',gap:6,
-    }}>
-      View Full Forecast
-      <span style={{fontSize:11,opacity:0.7}}>↗</span>
-    </button>
-  );
-
-  const Quoted = () => (
-    <div style={{
-      marginTop:14,paddingLeft:14,borderLeft:'4px solid #4e5058',
-      fontSize:13,color:'#dbdee1',lineHeight:1.6,
-    }}>
-      Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. <img src="assets/emoji-true.png" alt="" style={{width:18,height:18,objectFit:'contain',verticalAlign:'middle',marginLeft:2}} />
-    </div>
-  );
-
-  const Disclaimer = () => (
-    <div style={{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5,fontFamily:ggSans}}>
-      <img src="assets/emoji-snowball-cloud.png" alt="" style={{width:14,height:14,objectFit:'contain',flexShrink:0}} />
-      Snowball's AI responses can make mistakes. Unlimited usage.
-    </div>
-  );
-
-  const BotResponse = () => (
-    <div style={{display:'flex',gap:16,padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'}}>
-      <img src="assets/snowball-server-icon.png" alt="" style={{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'}} />
-      <div style={{flex:1,minWidth:0}}>
-        <ReplyQuote />
-        <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:6}}>
-          <span style={{color:'#fff',fontWeight:700,fontSize:15}}>Snowball</span>
-          <span style={{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3}}>✓ APP</span>
-          <span style={{color:'#80848e',fontSize:12}}>4:06 PM</span>
-        </div>
-        <div style={{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:ggSans}}>
-          <img src="assets/emoji-snowball-circle.png" alt="" style={{width:16,height:16,objectFit:'contain',flexShrink:0}} />
-          Thought for 5 seconds&nbsp;·&nbsp;{userPing}
-        </div>
-        <Embed />
-        <ViewBtn />
-        <Quoted />
-        <Disclaimer />
-      </div>
-    </div>
-  );
-
-  return (
-    <div ref={ref} style={{
-      background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',
-      borderRadius:12, overflow:'hidden',
-      border:'1px solid rgba(155,94,245,0.18)',
-      boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',
-      fontFamily:discordFont,
-      fontSize:14, color:'#dbdee1', maxWidth:560,
-    }}>
-      <ChannelHeader />
-      <div style={{padding:'16px 0',minHeight:240}}>
-        {phase >= 1 && <UserMessage />}
-        {phase === 2 && <Thinking />}
-        {phase >= 3 && <BotResponse />}
-      </div>
-      <div style={{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6}}>
-        Message <span style={{color:'#80848e'}}>❄·</span> snowball
-      </div>
-      <style>{`
-        @keyframes dcMsgIn {
-          from { opacity:0; transform:translateY(6px); }
-          to   { opacity:1; transform:translateY(0); }
-        }
-        .dc-dots { display:inline-flex; gap:3px; align-items:center; margin-left:2px; }
-        .dc-dots span { width:4px; height:4px; border-radius:50%; background:#80848e; animation:dcDot 1.2s infinite ease-in-out; }
-        .dc-dots span:nth-child(2) { animation-delay:0.2s; }
-        .dc-dots span:nth-child(3) { animation-delay:0.4s; }
-        @keyframes dcDot { 0%,80%,100%{opacity:0.3;transform:scale(0.8);} 40%{opacity:1;transform:scale(1.1);} }
-      `}</style>
-    </div>
-  );
-}
-
-function AiSection() {
-  return (
-    <section id="ai-section">
-      <div className="section-inner">
-        <h2 className="section-title">The only AI that<br/>actually looks it up</h2>
-        <p className="section-body">
-          Every other AI makes up weather data. Snowball's AI hits the live web and the same NWS, SPC, and NOAA feeds the pros use — then answers in <strong style={{color:'#fff'}}>~3–4 seconds</strong>. Heavy multi-tool requests still come back in under 8.
-        </p>
-        <AnimatedTimeline />
-        <DiscordChatDemo />
-      </div>
-    </section>
-  );
-}
-
-function EconomySection() {
-  const cards = [
-    { icon:'assets/icons/balance.png', title:'SNOWFLAKES Currency', desc:'Earn SNOWFLAKES by chatting, completing missions, and winning fights. Spend them in the shop on roles, items, and boar upgrades.', tag:'/balance' },
-    { icon:'assets/icons/events.png', title:'Missions & Paths', desc:'Daily and weekly missions reward SNOWFLAKES and XP. Choose a career path — Meteorologist, Chaser, Broadcaster — for unique perks.', tag:'/events' },
-    { icon:'assets/icons/level.png', title:'XP & Leveling', desc:'Climb the server ranks. Every message earns XP. Unlock roles, channel access, and economy boosts as you level up.', tag:'/level' },
-    { icon:'assets/icons/stock.png', title:'Stock Market', desc:'Trade virtual stocks that mirror real market data. Build a portfolio, diversify, and compete on the leaderboard.', tag:'/stock' },
-    { icon:'assets/icons/spotter.png', title:'Boar Pets & Fights', desc:'Adopt and train your boar companion. Battle other members\' boars for FLAX and glory. Feed, level, and evolve them.', tag:'/boar' },
-    { icon:'assets/icons/leaderboard.png', title:'Leaderboard', desc:'Compete for the top spot across FLAX balance, XP, stock gains, and boar wins. Updated in real-time.', tag:'/leaderboard' },
-  ];
-  return (
-    <section id="economy">
-      <div className="divider" />
-      <div className="section-inner" style={{paddingTop:80}}>
-        <h2 className="section-title">A whole world<br/>inside Discord</h2>
-        <p className="section-body">
-          Snowball's economy isn't just points. It's a full ecosystem — currency, stocks, pets, missions, and leaderboards — all woven into the Xtreme Weather community.
-        </p>
-        <div className="economy-grid">
-          {cards.map((c,i) => (
-            <div key={i} className="econ-card">
-              <div className="econ-icon"><img src={c.icon} alt="" /></div>
-              <div className="econ-title">{c.title}</div>
-              <div className="econ-desc">{c.desc}</div>
-              <span className="econ-tag">{c.tag}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CommandsSection() {
-  const cmds = [
-    { icon:'assets/icons/weather.png', name:'/weather', desc:'Current conditions' },
-    { icon:'assets/icons/forecast.png', name:'/forecast', desc:'Multi-day forecast' },
-    { icon:'assets/icons/radar.png', name:'/radar', desc:'Live NEXRAD' },
-    { icon:'assets/icons/alert.png', name:'/alerts', desc:'Active NWS alerts' },
-    { icon:'assets/icons/satellite.png', name:'/satellite', desc:'GOES imagery' },
-    { icon:'assets/icons/outlook.png', name:'/outlook', desc:'SPC outlook' },
-    { icon:'assets/icons/lightning.png', name:'/lightning', desc:'Strike activity' },
-    { icon:'assets/icons/spotter.png', name:'/spotter', desc:'Spotter reports' },
-    { icon:'assets/icons/emergency.png', name:'/eas', desc:'EAS product' },
-    { icon:'assets/icons/music.png', name:'/music', desc:'Play music' },
-    { icon:'assets/icons/radio.png', name:'/radio', desc:'Weather radio' },
-    { icon:'assets/icons/balance.png', name:'/balance', desc:'Your FLAX' },
-    { icon:'assets/icons/stock.png', name:'/stock', desc:'Trade stocks' },
-    { icon:'assets/icons/leaderboard.png', name:'/leaderboard', desc:'Top members' },
-    { icon:'assets/icons/level.png', name:'/level', desc:'Your XP' },
-    { icon:'assets/icons/shop.png', name:'/shop', desc:'Buy items' },
-    { icon:'assets/icons/events.png', name:'/missions', desc:'Daily quests' },
-    { icon:'assets/icons/ai.png', name:'/ask', desc:'Ask the AI' },
-  ];
-  return (
-    <section id="commands">
-      <div className="divider" />
-      <div className="section-inner" style={{paddingTop:80}}>
-        <h2 className="section-title">Everything in a slash</h2>
-        <p className="section-body">
-          Dozens of commands covering weather data, AI, economy, and entertainment — all tuned for the Xtreme Weather community.
-        </p>
-        <div className="commands-grid">
-          {cmds.map((c,i) => (
-            <div key={i} className="cmd-chip">
-              <img src={c.icon} alt="" />
-              <div className="cmd-chip-inner">
-                <span className="cmd-chip-name">{c.name}</span>
-                <span className="cmd-chip-desc">{c.desc}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function formatK(n) {
-  if (typeof n !== 'number') return null;
-  if (n < 1000) return String(n);
-  return (n/1000).toFixed(1).replace(/\.0$/, '') + 'K';
-}
-
-function PreviewTicker() {
-  const [online, setOnline]   = React.useState(null);
-  const [members, setMembers] = React.useState(null);
-
-  React.useEffect(() => {
-    let cancelled = false;
-    const fetchCounts = () => {
-      fetch('https://discord.com/api/guilds/1077714936056250388/widget.json', { cache: 'no-store' })
-        .then(r => r.ok ? r.json() : null)
-        .then(data => {
-          if (cancelled || !data) return;
-          if (typeof data.presence_count === 'number') setOnline(formatK(data.presence_count));
-          if (typeof data.approximate_member_count === 'number') {
-            setMembers(formatK(data.approximate_member_count) + '+');
-          }
-        })
-        .catch(() => {});
-    };
-    fetchCounts();
-    const id = setInterval(fetchCounts, 30000);
-    return () => { cancelled = true; clearInterval(id); };
-  }, []);
-
-  const stats = [
-    { num: members ?? '7.2K+',  label: 'Members' },
-    { num: online ?? '—',       label: 'Online now' },
-    { num: 'Thousands',         label: 'of AI messages sent' },
-    { num: 'Billions',          label: 'in the economy' },
-  ];
-  return (
-    <div className="preview-ticker-wrap">
-      <h2 className="preview-ticker-title">
-        The community<br/>is already inside.
-      </h2>
-      <div className="preview-ticker-grid">
-        {stats.map((s,i) => {
-          const isWord = typeof s.num === 'string' && /^[A-Za-z]/.test(s.num);
-          return (
-            <div key={i} className="ticker-stat">
-              <div className={"ticker-stat-num" + (isWord ? " is-word" : "")}>{s.num}</div>
-              <div className="ticker-stat-label">{s.label}</div>
-            </div>
-          );
-        })}
-      </div>
-      <a href="https://discord.gg/xtremeweather" target="_blank" className="btn-primary" style={{display:'inline-flex',alignItems:'center',gap:10}}>
-        <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
-        Join Xtreme Weather
-      </a>
-      <div className="preview-ticker-foot">discord.gg/xtremeweather</div>
-    </div>
-  );
-}
-
-function PreviewSection() {
-  return (
-    <section id="preview">
-      <div className="divider" />
-      <div className="section-inner" style={{paddingTop:80}}>
-        <PreviewTicker />
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="site-footer">
-      <div className="footer-container">
-        <div className="footer-brand-section">
-          <div className="footer-brand-identity">
-            <img src="assets/snowball-logo-transparent.png" loading="lazy" decoding="async" alt="Snowball" className="footer-logo" />
-            <div className="footer-brand-text">
-              <span className="footer-brand-name">Snowball</span>
-              <span className="footer-tagline">Weather it. Snowball it.</span>
-            </div>
-          </div>
-          <p className="footer-description">
-            The most advanced Discord app for weather. AI that fetches real data, a full economy system, radio, music, and more.
-          </p>
-        </div>
-        <div className="footer-nav-section">
-          <div className="footer-socials">
-            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" rel="noopener" className="social-btn" aria-label="TikTok">
-              <i className="fab fa-tiktok"></i>
-            </a>
-            <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" className="social-btn" aria-label="Discord">
-              <i className="fab fa-discord"></i>
-            </a>
-            <a href="https://x.com/xtremeweatherwx" target="_blank" rel="noopener" className="social-btn" aria-label="X (Twitter)">
-              <i className="fab fa-x-twitter"></i>
-            </a>
-          </div>
-          <nav className="footer-links">
-            <a href="#" className="footer-link">About</a>
-            <a href="#" className="footer-link">Privacy</a>
-            <a href="#" className="footer-link">Terms</a>
-            <a href="#" className="footer-link">Contact</a>
-            <a href="#" className="footer-link">Status</a>
-          </nav>
-        </div>
-      </div>
-      <div className="footer-copyright">
-        &copy; 2026 Xtreme Weather. All rights reserved.
-      </div>
-    </footer>
-  );
-}
-
 function App() {
   return (
     <>
-      <Nav />
       <Hero />
       <AiSection />
       <EconomySection />
       <CommandsSection />
       <PreviewSection />
-      <Footer />
     </>
   );
 }
