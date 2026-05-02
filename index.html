@@ -834,9 +834,8 @@ const FLOAT_KEYFRAMES = `
 function FloatingIcons({ burstKey }) {
   const [offset, setOffset]         = useState({ x: 0, y: 0 });
   const [mobile, setMobile]         = useState(false);
-  const [smoothing, setSmoothing]   = useState(false);
   const [burstPhase, setBurstPhase] = useState('out');
-  const smoothTimerRef              = useRef(null);
+  const lastMoveRef                 = useRef(0);
 
   useEffect(() => {
     const check = () => setMobile(window.innerWidth <= 760);
@@ -862,6 +861,7 @@ function FloatingIcons({ burstKey }) {
     let ticking = false;
     const handleMouseMove = (e) => {
       if (mobile) return;
+      lastMoveRef.current = Date.now();
       if (!ticking) {
         requestAnimationFrame(() => {
           const cx = window.innerWidth / 2;
@@ -872,18 +872,8 @@ function FloatingIcons({ burstKey }) {
         ticking = true;
       }
     };
-    const handleMouseEnter = () => {
-      if (mobile) return;
-      setSmoothing(true);
-      clearTimeout(smoothTimerRef.current);
-      smoothTimerRef.current = setTimeout(() => setSmoothing(false), 450);
-    };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    document.documentElement.addEventListener('mouseenter', handleMouseEnter);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.documentElement.removeEventListener('mouseenter', handleMouseEnter);
-    };
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mobile]);
 
   const icons = FLOAT_ICONS.map((fi, i) => {
@@ -903,12 +893,15 @@ function FloatingIcons({ burstKey }) {
     const bRot     = isOut ? bo.r : 0;
     const bBlur    = isOut ? bo.blur : depthBlur;
     const bOpacity = isOut ? 0 : baseOpacity;
+    const idle = Date.now() - lastMoveRef.current > 800;
     const outerStyle = {
       position: 'absolute',
       top: fi.top, left: fi.left, right: fi.right,
       transform: 'translate(' + restPx + 'px, ' + restPy + 'px)',
       willChange: 'transform',
-      transition: smoothing ? 'transform 0.4s cubic-bezier(0.22,1,0.36,1)' : 'none',
+      transition: frozen ? 'none' : idle
+        ? 'transform 1.2s cubic-bezier(0.16,1,0.3,1)'
+        : 'transform 0.12s linear',
       zIndex: 1,
     };
     const burstStyle = {
