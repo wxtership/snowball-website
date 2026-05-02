@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Snowball — Weather it. Snowball it.</title>
 <link rel="preload" as="image" href="assets/xtreme-logo.png" fetchpriority="high" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="styles.css">
 <style>
 @font-face {
   font-family: 'Druk Wide';
@@ -77,23 +79,6 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--dark-900); }
 ::-webkit-scrollbar-thumb { background: var(--purple-800); border-radius: 999px; }
 
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 48px;
-  background: rgba(13,13,24,0.75);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.nav-logo { display: flex; align-items: center; gap: 10px; }
-.nav-logo img { width: 32px; height: 32px; border-radius: 50%; }
-.nav-logo span { font-family: var(--font-display); font-size: 14px; letter-spacing: 0.04em; color: #fff; text-transform: uppercase; }
-.nav-pill { display: none; }
-.nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-link { color: rgba(255,255,255,0.55); font-size: 14px; text-decoration: none; font-family: var(--font-body); transition: color 0.2s; }
-.nav-link:hover { color: #fff; }
-.nav-cta { background: var(--purple-500); color: #fff; font-family: var(--font-body); font-size: 13px; padding: 8px 20px; border-radius: 999px; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; box-shadow: var(--glow-sm); }
-.nav-cta:hover { background: var(--purple-400); transform: scale(1.03); }
 
 #hero {
   position: relative; min-height: 93vh;
@@ -577,88 +562,6 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
   .ticker-stat-label { font-size: 10px; letter-spacing: 0.04em; }
 }
 
-footer {
-  position: relative; z-index: 1;
-  padding: 48px 48px 0;
-  background: var(--dark-900);
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-.footer-inner {
-  max-width: 1080px; margin: 0 auto;
-}
-.footer-top {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  gap: 40px; padding-bottom: 40px;
-}
-.footer-brand-section {
-  display: flex; flex-direction: column; gap: 16px;
-  max-width: 360px;
-}
-.footer-brand {
-  display: flex; align-items: center; gap: 14px;
-}
-.footer-brand-icon {
-  width: 54px; height: 54px; border-radius: 14px; overflow: hidden;
-  flex-shrink: 0;
-}
-.footer-brand-icon img { width: 100%; height: 100%; object-fit: cover; }
-.footer-brand-text { display: flex; flex-direction: column; gap: 3px; }
-.footer-brand-name {
-  font-family: var(--font-body); font-size: 18px; font-weight: 700;
-  letter-spacing: -0.01em; color: #fff; line-height: 1.1;
-}
-.footer-brand-tagline {
-  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75);
-}
-.footer-description {
-  font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.5);
-}
-.footer-nav-section {
-  display: flex; flex-direction: column; align-items: flex-end; gap: 20px;
-  flex-shrink: 0;
-}
-.footer-socials { display: flex; align-items: center; gap: 10px; }
-.footer-social-btn {
-  width: 46px; height: 46px; border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none; color: rgba(255,255,255,0.7);
-  transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
-  flex-shrink: 0;
-}
-.footer-social-btn:hover {
-  background: rgba(255,255,255,0.15);
-  border-color: rgba(255,255,255,0.3);
-  color: #fff;
-  transform: translateY(-3px);
-}
-.footer-social-btn svg { width: 20px; height: 20px; display: block; }
-.footer-nav-pill {
-  display: flex; align-items: center; gap: 0;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 999px; padding: 6px 12px;
-}
-.footer-nav-link {
-  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5);
-  text-decoration: none; padding: 4px 12px; border-radius: 999px;
-  transition: color 0.2s, background 0.2s;
-  white-space: nowrap;
-}
-.footer-nav-link:hover { color: #fff; }
-.footer-copyright {
-  border-top: 1px solid rgba(255,255,255,0.05);
-  padding: 20px 0;
-  font-size: 13px; color: rgba(255,255,255,0.4);
-  text-align: center;
-}
-@media (max-width: 760px) {
-  footer { padding: 36px 20px 0; }
-  .footer-top { flex-direction: column; align-items: flex-start; gap: 28px; }
-  .footer-nav-section { align-items: flex-start; }
-  .footer-nav-pill { flex-wrap: wrap; }
-}
 
 @media (max-width: 760px) {
   nav { padding: 14px 20px; }
@@ -682,6 +585,140 @@ footer {
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <button class="nav-btn-circle hamburger" id="mobile-trigger" onclick="sbToggleMobileMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="https://xtremewx.com/new" style="display:flex;align-items:center;text-decoration:none;">
+                <img src="assets/xtreme-logo.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
+            </a>
+        </div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li class="has-dropdown" data-menu="snowball">
+                    <a href="#" class="active">Snowball <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="weather">
+                    <a href="#">Weather <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="community">
+                    <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="nav-cta" style="display:inline-flex;align-items:center;gap:8px;">
+                Join
+                <img src="assets/arrow-up-right.png" alt="" style="width:14px;height:14px;object-fit:contain;flex-shrink:0;filter:brightness(0) invert(1);">
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="mega-menu" id="snowball-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Features</div>
+            <a href="#ai-section" class="mega-item"><i class="fas fa-robot"></i><div class="mega-item-text"><span class="title">AI Weather</span><span class="desc">Ask anything, get real data</span></div></a>
+            <a href="#economy" class="mega-item"><i class="fas fa-snowflake"></i><div class="mega-item-text"><span class="title">Economy</span><span class="desc">SNOWFLAKES, stocks &amp; boars</span></div></a>
+            <a href="#commands" class="mega-item"><i class="fas fa-terminal"></i><div class="mega-item-text"><span class="title">Commands</span><span class="desc">All slash commands</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Get Started</div>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Join the Server</span><span class="desc">Add Snowball to your Discord</span></div></a>
+            <a href="#preview" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Community</span><span class="desc">7K+ members strong</span></div></a>
+            <a href="#" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Live Radio</span><span class="desc">Weather radio &amp; music</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mega-menu" id="weather-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Forecasts</div>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-sun"></i><div class="mega-item-text"><span class="title">Now</span><span class="desc">Current conditions</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-clock"></i><div class="mega-item-text"><span class="title">Hourly</span><span class="desc">Next 24 hours</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-calendar-alt"></i><div class="mega-item-text"><span class="title">10-Day</span><span class="desc">Long range outlook</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Maps &amp; Data</div>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Radar</span><span class="desc">Live doppler imagery</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-video"></i><div class="mega-item-text"><span class="title">Cameras</span><span class="desc">Traffic cams &amp; feeds</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-newspaper"></i><div class="mega-item-text"><span class="title">News</span><span class="desc">Storm reports</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mega-menu" id="community-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Socials</div>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Discord</span><span class="desc">Join the community</span></div></a>
+            <a href="https://x.com/xtremeweatherwx" target="_blank" class="mega-item"><i class="fab fa-x-twitter"></i><div class="mega-item-text"><span class="title">X / Twitter</span><span class="desc">Live updates</span></div></a>
+            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" class="mega-item"><i class="fab fa-tiktok"></i><div class="mega-item-text"><span class="title">TikTok</span><span class="desc">Weather videos</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Project</div>
+            <a href="#" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Staff</span><span class="desc">Meet the team</span></div></a>
+            <a href="#" class="mega-item"><i class="fas fa-code-branch"></i><div class="mega-item-text"><span class="title">Changelog</span><span class="desc">Latest updates</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
+    <div class="mobile-view main-view" id="sb-mobile-main-view">
+        <div class="mobile-centered-content">
+            <button class="mobile-big-link active" onclick="sbOpenSubMenu('snowball')">Snowball <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('weather')">Weather <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community <i class="fas fa-chevron-right tiny-arrow"></i></button>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-snowball">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Snowball</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="#ai-section" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fas fa-robot"></i></div><span>AI Weather</span></a>
+            <a href="#economy" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fas fa-snowflake"></i></div><span>Economy</span></a>
+            <a href="#commands" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fas fa-terminal"></i></div><span>Commands</span></a>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Join the Server</span></a>
+            <a href="#preview" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fas fa-users"></i></div><span>Community</span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-weather">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Weather</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-sun"></i></div><span>Current Conditions</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-clock"></i></div><span>Hourly Forecast</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-calendar-alt"></i></div><span>10-Day Outlook</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-satellite-dish"></i></div><span>Live Radar</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-video"></i></div><span>Cameras</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-newspaper"></i></div><span>Storm Reports</span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-community">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Community</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Discord Server</span></a>
+            <a href="https://x.com/xtremeweatherwx" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-x-twitter"></i></div><span>X / Twitter</span></a>
+            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-tiktok"></i></div><span>TikTok</span></a>
+            <a href="#" class="clean-link"><div class="icon-box"><i class="fas fa-users"></i></div><span>Staff Team</span></a>
+            <a href="#" class="clean-link"><div class="icon-box"><i class="fas fa-code-branch"></i></div><span>Changelog</span></a>
+        </div>
+    </div>
+</div>
+
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect, useRef } = React;
@@ -931,25 +968,7 @@ function RotatingWord() {
   );
 }
 
-function Nav() {
-  return (
-    <nav>
-      <div className="nav-logo">
-        <img src="assets/xtreme-logo.png" alt="Xtreme Weather" loading="eager" fetchpriority="high" decoding="async" style={{width:48,height:48,borderRadius:'50%',objectFit:'cover'}} />
-      </div>
-      <div className="nav-links">
-        <span className="nav-pill">Community Preview</span>
-        <a href="#ai-section" className="nav-link">AI</a>
-        <a href="#economy" className="nav-link">Economy</a>
-        <a href="#commands" className="nav-link">Commands</a>
-      </div>
-      <a href="https://discord.gg/xtremeweather" target="_blank" className="nav-cta" style={{display:'inline-flex',alignItems:'center',gap:8}}>
-        Join
-        <img src="assets/arrow-up-right.png" alt="" style={{width:14,height:14,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)'}} />
-      </a>
-    </nav>
-  );
-}
+function Nav() { return null; }
 
 function Hero() {
   const [burstKey] = useState(0);
@@ -1486,53 +1505,43 @@ function PreviewSection() {
 
 function Footer() {
   return (
-    <footer>
-      <div className="footer-inner">
-        <div className="footer-top">
-          <div className="footer-brand-section">
-            <div className="footer-brand">
-              <div className="footer-brand-icon">
-                <img src="assets/xtreme-logo.png" alt="Xtreme Weather" />
-              </div>
-              <div className="footer-brand-text">
-                <span className="footer-brand-name">Xtreme Weather</span>
-                <span className="footer-brand-tagline">Real-time forecasts, radar &amp; alerts</span>
-              </div>
+    <footer className="site-footer">
+      <div className="footer-container">
+        <div className="footer-brand-section">
+          <div className="footer-brand-identity">
+            <img src="assets/xtreme-logo.png" loading="lazy" decoding="async" alt="Xtreme Weather" className="footer-logo" />
+            <div className="footer-brand-text">
+              <span className="footer-brand-name">Xtreme Weather</span>
+              <span className="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
             </div>
-            <p className="footer-description">
-              Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.
-            </p>
           </div>
-          <div className="footer-nav-section">
-            <div className="footer-socials">
-              <a href="https://www.tiktok.com/@xtremeweatherwx" target="_blank" className="footer-social-btn" aria-label="TikTok">
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
-                </svg>
-              </a>
-              <a href="https://discord.gg/xtremeweather" target="_blank" className="footer-social-btn" aria-label="Discord">
-                <svg viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-                </svg>
-              </a>
-              <a href="https://x.com/xtremeweatherwx" target="_blank" className="footer-social-btn" aria-label="X">
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L2.25 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-            </div>
-            <nav className="footer-nav-pill">
-              <a href="#" className="footer-nav-link">About</a>
-              <a href="#" className="footer-nav-link">Privacy</a>
-              <a href="#" className="footer-nav-link">Terms</a>
-              <a href="#" className="footer-nav-link">Contact</a>
-              <a href="#" className="footer-nav-link">Status</a>
-            </nav>
+          <p className="footer-description">
+            Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.
+          </p>
+        </div>
+        <div className="footer-nav-section">
+          <div className="footer-socials">
+            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" rel="noopener" className="social-btn" aria-label="TikTok">
+              <i className="fab fa-tiktok"></i>
+            </a>
+            <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" className="social-btn" aria-label="Discord">
+              <i className="fab fa-discord"></i>
+            </a>
+            <a href="https://x.com/xtremeweatherwx" target="_blank" rel="noopener" className="social-btn" aria-label="X">
+              <i className="fab fa-x-twitter"></i>
+            </a>
           </div>
+          <nav className="footer-links">
+            <a href="#" className="footer-link">About</a>
+            <a href="#" className="footer-link">Privacy</a>
+            <a href="#" className="footer-link">Terms</a>
+            <a href="#" className="footer-link">Contact</a>
+            <a href="#" className="footer-link">Status</a>
+          </nav>
         </div>
-        <div className="footer-copyright">
-          &copy; 2026 Xtreme Weather. All rights reserved.
-        </div>
+      </div>
+      <div className="footer-copyright">
+        &copy; 2026 Xtreme Weather. All rights reserved.
       </div>
     </footer>
   );
@@ -1553,6 +1562,111 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand-section">
+            <div class="footer-brand-identity">
+                <img src="assets/xtreme-logo.png" loading="lazy" decoding="async" alt="Xtreme Weather" class="footer-logo">
+                <div class="footer-brand-text">
+                    <span class="footer-brand-name">Xtreme Weather</span>
+                    <span class="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
+                </div>
+            </div>
+            <p class="footer-description">
+                Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.
+            </p>
+        </div>
+        <div class="footer-nav-section">
+            <div class="footer-socials">
+                <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://x.com/xtremeweatherwx" target="_blank" rel="noopener" class="social-btn" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <nav class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Privacy</a>
+                <a href="#" class="footer-link">Terms</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Status</a>
+            </nav>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        &copy; 2026 Xtreme Weather. All rights reserved.
+    </div>
+</footer>
+
+<script>
+// Mega menu hover
+document.querySelectorAll('.has-dropdown[data-menu]').forEach(function(item) {
+    var menuName = item.getAttribute('data-menu');
+    var megaMenu = document.getElementById(menuName + '-mega-menu');
+    if (!megaMenu) return;
+    var t;
+    item.addEventListener('mouseenter', function() {
+        clearTimeout(t);
+        megaMenu.style.opacity = '1';
+        megaMenu.style.visibility = 'visible';
+        megaMenu.style.pointerEvents = 'auto';
+        megaMenu.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    item.addEventListener('mouseleave', function() {
+        t = setTimeout(function() {
+            megaMenu.style.opacity = '0';
+            megaMenu.style.visibility = 'hidden';
+            megaMenu.style.pointerEvents = 'none';
+            megaMenu.style.transform = 'translateX(-50%) translateY(20px)';
+        }, 100);
+    });
+    megaMenu.addEventListener('mouseenter', function() { clearTimeout(t); });
+    megaMenu.addEventListener('mouseleave', function() {
+        megaMenu.style.opacity = '0';
+        megaMenu.style.visibility = 'hidden';
+        megaMenu.style.pointerEvents = 'none';
+        megaMenu.style.transform = 'translateX(-50%) translateY(20px)';
+    });
+});
+
+// Mobile menu
+function sbToggleMobileMenu() {
+    var menu = document.getElementById('sb-mobile-menu');
+    var btn = document.getElementById('mobile-trigger');
+    var isActive = menu.classList.contains('active');
+    if (isActive) {
+        menu.classList.remove('active');
+        btn.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(sbCloseSubMenu, 300);
+    } else {
+        menu.classList.add('active');
+        btn.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+function sbOpenSubMenu(id) {
+    var menu = document.getElementById('sb-mobile-menu');
+    menu.classList.add('sub-active');
+    document.querySelectorAll('#sb-mobile-menu .sub-view').forEach(function(el) { el.classList.remove('active'); });
+    var sub = document.getElementById('sb-sub-menu-' + id);
+    if (sub) sub.classList.add('active');
+}
+function sbCloseSubMenu() {
+    var menu = document.getElementById('sb-mobile-menu');
+    menu.classList.remove('sub-active');
+    document.querySelectorAll('#sb-mobile-menu .sub-view').forEach(function(el) { el.classList.remove('active'); });
+}
+function sbCloseMobileMenu(e) {
+    if (e.target === document.getElementById('sb-mobile-menu')) sbToggleMobileMenu();
+}
+
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 1024) {
+        var menu = document.getElementById('sb-mobile-menu');
+        if (menu.classList.contains('active')) sbToggleMobileMenu();
+    }
+});
 </script>
 </body>
 </html>
