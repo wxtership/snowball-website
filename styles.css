@@ -4641,7 +4641,7 @@ body.scroll-locked {
     html {
         scrollbar-gutter: auto;
         /* iOS rubber-band area uses root background when over-scrolling */
-        background-color: #14111F;
+        background-color: #0d0d18;
     }
     ::-webkit-scrollbar {
         display: none;
@@ -4650,7 +4650,7 @@ body.scroll-locked {
         -ms-overflow-style: none;
         scrollbar-width: none;
         /* Keep bottom bounce area from flashing pure black */
-        background-color: #14111F;
+        background-color: #0d0d18;
     }
 
     /* iOS/Safari repaint fix: footer can stay blank after overlay + scroll-lock toggles */
