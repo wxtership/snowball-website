@@ -116,9 +116,10 @@ body::before {
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
   background:
+    linear-gradient(to top, var(--dark-900) 0%, transparent 25%),
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(107,84,245,0.25) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(61,10,138,0.2) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(107,84,245,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 60%, rgba(61,10,138,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 60%, rgba(107,84,245,0.12) 0%, transparent 60%),
     var(--dark-900);
   transform: translateZ(0);
   will-change: transform;
