@@ -4642,7 +4642,6 @@ body.scroll-locked {
         scrollbar-gutter: auto;
         /* iOS rubber-band area uses root background when over-scrolling */
         background-color: #14111F;
-        overscroll-behavior-y: none;
     }
     ::-webkit-scrollbar {
         display: none;
