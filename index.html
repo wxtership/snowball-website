@@ -7,7 +7,8 @@
 <title>Snowball — Weather it. Snowball it.</title>
 <link rel="preconnect" href="https://discord.com" />
 <link rel="preconnect" href="https://unpkg.com" crossorigin />
-<link rel="preload" as="image" href="assets/xtreme-logo-small.png" fetchpriority="high" />
+<link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
+<link rel="preload" as="image" href="assets/snowball-logo-transparent-small.png" fetchpriority="high" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -518,6 +519,10 @@ section { position: relative; z-index: 1; padding: 100px 24px; }
   text-align: center;
   min-width: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .ticker-stat-num {
   font-family: var(--font-display); font-weight: 700;
@@ -963,15 +968,10 @@ function Hero() {
   return h('section', { id: 'hero' },
     h('div', { className: 'hero-bg' }),
     h(FloatingIcons, { burstKey }),
-    h('div', { className: 'hero-content', style: {
-      opacity: visible ? 1 : 0,
-      filter: visible ? 'blur(0px)' : 'blur(8px)',
-      transform: visible ? 'translateY(0)' : 'translateY(24px)',
-      transition: 'opacity 1.4s cubic-bezier(0.16,1,0.3,1), filter 1.4s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)',
-    }},
+    h('div', { className: 'hero-content' },
       h('h1', { className: 'hero-headline', style: { marginBottom: 10 } },
         h('span', { style: { display:'flex', alignItems:'center', justifyContent:'center', gap:14, flexWrap:'wrap' } },
-          h('img', { src: 'assets/snowball-logo-transparent-small.png', alt: '', style: { width:34, height:34, flexShrink:0, objectFit:'contain' } }),
+          h('img', { src: 'assets/snowball-logo-transparent-small.png', alt: '', fetchpriority: 'high', style: { width:34, height:34, flexShrink:0, objectFit:'contain' } }),
           'Snowball is the best Discord app to'
         )
       ),
@@ -996,7 +996,7 @@ function Hero() {
             h('path', { d: DISCORD_SVG_PATH })
           ),
           'Try it out',
-          h('img', { src:'assets/arrow-up-right.png', alt:'', style:{ width:16, height:16, objectFit:'contain', flexShrink:0, filter:'brightness(0) invert(1)' } })
+          h('img', { src:'assets/arrow-up-right-small.png', alt:'', style:{ width:16, height:16, objectFit:'contain', flexShrink:0, filter:'brightness(0) invert(1)' } })
         )
       )
     )
