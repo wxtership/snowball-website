@@ -96,8 +96,15 @@ body {
 @media (max-width: 768px) {
   .mobile-menu-overlay {
     background: #0d0d18 !important;
+    transition: none !important;
     transform: translateZ(0);
     will-change: opacity;
+  }
+  .mobile-menu-overlay .mobile-view {
+    transition: none !important;
+  }
+  .hero-bg {
+    background: #0d0d18 !important;
   }
 }
 
