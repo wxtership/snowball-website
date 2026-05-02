@@ -96,17 +96,24 @@ body {
 @media (max-width: 768px) {
   .mobile-menu-overlay {
     background: #0d0d18 !important;
-    transition: none !important;
+    transition: opacity 0.35s ease, visibility 0.35s !important;
     transform: translateZ(0);
   }
+  .mobile-menu-overlay.active {
+    transition: none !important;
+  }
   .mobile-menu-overlay .main-view {
-    opacity: 0 !important;
-    transform: translateY(24px) scale(0.97) !important;
-    transition: opacity 0.45s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1) !important;
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    transition: opacity 0.45s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
   }
   .mobile-menu-overlay.active .main-view {
-    opacity: 1 !important;
-    transform: translateY(0) scale(1) !important;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .mobile-menu-overlay.active.sub-active .main-view {
+    opacity: 0;
+    transform: translateX(-60px);
   }
   .hero-bg {
     background: #0d0d18 !important;
