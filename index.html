@@ -834,29 +834,147 @@ function RotatingWord() {
 
 function Nav() {
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        <div className="nav-left">
-          <a href="https://xtremewx.com/new" style={{display:'flex',alignItems:'center',textDecoration:'none'}}>
-            <img src="assets/xtreme-logo.png" alt="Xtreme Weather" width="40" height="40" className="logo" fetchpriority="high" />
-          </a>
+    <>
+      <nav className="navbar">
+        <div className="nav-container">
+          <div className="nav-left">
+            <button className="nav-btn-circle hamburger" id="mobile-trigger" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()} aria-label="Toggle navigation menu">
+              <i className="fas fa-bars"></i>
+              <i className="fas fa-times"></i>
+            </button>
+            <a href="https://xtremewx.com/new" style={{display:'flex',alignItems:'center',textDecoration:'none'}}>
+              <img src="assets/xtreme-logo.png" alt="Xtreme Weather" width="40" height="40" className="logo" fetchpriority="high" />
+            </a>
+          </div>
+          <div className="nav-center">
+            <ul className="nav-links">
+              <li className="has-dropdown" data-menu="snowball">
+                <a href="#" className="active">Snowball <i className="fas fa-chevron-down dropdown-arrow"></i></a>
+              </li>
+              <li className="has-dropdown" data-menu="weather">
+                <a href="#">Weather <i className="fas fa-chevron-down dropdown-arrow"></i></a>
+              </li>
+              <li className="has-dropdown" data-menu="community">
+                <a href="#">Community <i className="fas fa-chevron-down dropdown-arrow"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div className="nav-right">
+            <a href="https://discord.gg/xtremeweather" target="_blank" className="nav-cta" style={{display:'inline-flex',alignItems:'center',gap:8}}>
+              Join
+              <img src="assets/arrow-up-right.png" alt="" style={{width:14,height:14,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)'}} />
+            </a>
+          </div>
         </div>
-        <div className="nav-center">
-          <ul className="nav-links">
-            <li><a href="#ai-section">AI</a></li>
-            <li><a href="#economy">Economy</a></li>
-            <li><a href="#commands">Commands</a></li>
-            <li><a href="#" className="active">Snowball</a></li>
-          </ul>
-        </div>
-        <div className="nav-right">
-          <a href="https://discord.gg/xtremeweather" target="_blank" className="nav-cta" style={{display:'inline-flex',alignItems:'center',gap:8}}>
-            Join
-            <img src="assets/arrow-up-right.png" alt="" style={{width:14,height:14,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)'}} />
-          </a>
+      </nav>
+
+      {/* Snowball mega menu */}
+      <div className="mega-menu" id="snowball-mega-menu">
+        <div className="mega-menu-container">
+          <div className="mega-column">
+            <div className="mega-header">Features</div>
+            <a href="#ai-section" className="mega-item"><i className="fas fa-robot"></i><div className="mega-item-text"><span className="title">AI Weather</span><span className="desc">Ask anything, get real data</span></div></a>
+            <a href="#economy" className="mega-item"><i className="fas fa-snowflake"></i><div className="mega-item-text"><span className="title">Economy</span><span className="desc">SNOWFLAKES, stocks & boars</span></div></a>
+            <a href="#commands" className="mega-item"><i className="fas fa-slash"></i><div className="mega-item-text"><span className="title">Commands</span><span className="desc">All slash commands</span></div></a>
+          </div>
+          <div className="mega-column">
+            <div className="mega-header">Get Started</div>
+            <a href="https://discord.gg/xtremeweather" target="_blank" className="mega-item"><i className="fab fa-discord"></i><div className="mega-item-text"><span className="title">Join the Server</span><span className="desc">Add Snowball to your Discord</span></div></a>
+            <a href="#preview" className="mega-item"><i className="fas fa-users"></i><div className="mega-item-text"><span className="title">Community</span><span className="desc">7K+ members strong</span></div></a>
+            <a href="#" className="mega-item"><i className="fas fa-satellite-dish"></i><div className="mega-item-text"><span className="title">Live Radio</span><span className="desc">Weather radio & music</span></div></a>
+          </div>
         </div>
       </div>
-    </nav>
+
+      {/* Weather mega menu */}
+      <div className="mega-menu" id="weather-mega-menu">
+        <div className="mega-menu-container">
+          <div className="mega-column">
+            <div className="mega-header">Forecasts</div>
+            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-sun"></i><div className="mega-item-text"><span className="title">Now</span><span className="desc">Current conditions</span></div></a>
+            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-clock"></i><div className="mega-item-text"><span className="title">Hourly</span><span className="desc">Next 24 hours</span></div></a>
+            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-calendar-alt"></i><div className="mega-item-text"><span className="title">10-Day</span><span className="desc">Long range outlook</span></div></a>
+          </div>
+          <div className="mega-column">
+            <div className="mega-header">Maps & Data</div>
+            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-satellite-dish"></i><div className="mega-item-text"><span className="title">Radar</span><span className="desc">Live doppler imagery</span></div></a>
+            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-video"></i><div className="mega-item-text"><span className="title">Cameras</span><span className="desc">Traffic cams & feeds</span></div></a>
+            <a href="https://xtremewx.com/new" className="mega-item"><i className="fas fa-newspaper"></i><div className="mega-item-text"><span className="title">News</span><span className="desc">Storm reports</span></div></a>
+          </div>
+        </div>
+      </div>
+
+      {/* Community mega menu */}
+      <div className="mega-menu" id="community-mega-menu">
+        <div className="mega-menu-container">
+          <div className="mega-column">
+            <div className="mega-header">Socials</div>
+            <a href="https://discord.gg/xtremeweather" target="_blank" className="mega-item"><i className="fab fa-discord"></i><div className="mega-item-text"><span className="title">Discord</span><span className="desc">Join the community</span></div></a>
+            <a href="https://x.com/xtremeweatherwx" target="_blank" className="mega-item"><i className="fab fa-x-twitter"></i><div className="mega-item-text"><span className="title">X / Twitter</span><span className="desc">Live updates</span></div></a>
+            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" className="mega-item"><i className="fab fa-tiktok"></i><div className="mega-item-text"><span className="title">TikTok</span><span className="desc">Weather videos</span></div></a>
+          </div>
+          <div className="mega-column">
+            <div className="mega-header">Project</div>
+            <a href="#" className="mega-item"><i className="fas fa-users"></i><div className="mega-item-text"><span className="title">Staff</span><span className="desc">Meet the team</span></div></a>
+            <a href="#" className="mega-item"><i className="fas fa-code-branch"></i><div className="mega-item-text"><span className="title">Changelog</span><span className="desc">Latest updates</span></div></a>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu overlay */}
+      <div className="mobile-menu-overlay" id="mobile-menu" onClick={(e) => window.closeMobileMenu && window.closeMobileMenu(e)}>
+        <div className="mobile-view main-view" id="mobile-main-view">
+          <div className="mobile-centered-content">
+            <button className="mobile-big-link active" onClick={() => window.openSubMenu && window.openSubMenu('snowball')}>Snowball <i className="fas fa-chevron-right tiny-arrow"></i></button>
+            <button className="mobile-big-link" onClick={() => window.openSubMenu && window.openSubMenu('weather')}>Weather <i className="fas fa-chevron-right tiny-arrow"></i></button>
+            <button className="mobile-big-link" onClick={() => window.openSubMenu && window.openSubMenu('community')}>Community <i className="fas fa-chevron-right tiny-arrow"></i></button>
+          </div>
+        </div>
+
+        <div className="mobile-view sub-view" id="sub-menu-snowball">
+          <div className="sub-menu-header">
+            <button className="back-btn-circle" onClick={() => window.closeSubMenu && window.closeSubMenu()}><i className="fas fa-chevron-left"></i></button>
+            <span className="sub-title">Snowball</span>
+          </div>
+          <div className="mobile-clean-list">
+            <a href="#ai-section" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fas fa-robot"></i></div><span>AI Weather</span></a>
+            <a href="#economy" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fas fa-snowflake"></i></div><span>Economy</span></a>
+            <a href="#commands" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fas fa-slash"></i></div><span>Commands</span></a>
+            <a href="https://discord.gg/xtremeweather" target="_blank" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fab fa-discord"></i></div><span>Join the Server</span></a>
+            <a href="#preview" className="clean-link" onClick={() => window.toggleMobileMenu && window.toggleMobileMenu()}><div className="icon-box"><i className="fas fa-users"></i></div><span>Community</span></a>
+          </div>
+        </div>
+
+        <div className="mobile-view sub-view" id="sub-menu-weather">
+          <div className="sub-menu-header">
+            <button className="back-btn-circle" onClick={() => window.closeSubMenu && window.closeSubMenu()}><i className="fas fa-chevron-left"></i></button>
+            <span className="sub-title">Weather</span>
+          </div>
+          <div className="mobile-clean-list">
+            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-sun"></i></div><span>Current Conditions</span></a>
+            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-clock"></i></div><span>Hourly Forecast</span></a>
+            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-calendar-alt"></i></div><span>10-Day Outlook</span></a>
+            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-satellite-dish"></i></div><span>Live Radar</span></a>
+            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-video"></i></div><span>Cameras</span></a>
+            <a href="https://xtremewx.com/new" className="clean-link"><div className="icon-box"><i className="fas fa-newspaper"></i></div><span>Storm Reports</span></a>
+          </div>
+        </div>
+
+        <div className="mobile-view sub-view" id="sub-menu-community">
+          <div className="sub-menu-header">
+            <button className="back-btn-circle" onClick={() => window.closeSubMenu && window.closeSubMenu()}><i className="fas fa-chevron-left"></i></button>
+            <span className="sub-title">Community</span>
+          </div>
+          <div className="mobile-clean-list">
+            <a href="https://discord.gg/xtremeweather" target="_blank" className="clean-link"><div className="icon-box"><i className="fab fa-discord"></i></div><span>Discord Server</span></a>
+            <a href="https://x.com/xtremeweatherwx" target="_blank" className="clean-link"><div className="icon-box"><i className="fab fa-x-twitter"></i></div><span>X / Twitter</span></a>
+            <a href="https://tiktok.com/@xtremeweatherwx" target="_blank" className="clean-link"><div className="icon-box"><i className="fab fa-tiktok"></i></div><span>TikTok</span></a>
+            <a href="#" className="clean-link"><div className="icon-box"><i className="fas fa-users"></i></div><span>Staff Team</span></a>
+            <a href="#" className="clean-link"><div className="icon-box"><i className="fas fa-code-branch"></i></div><span>Changelog</span></a>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -1399,14 +1517,14 @@ function Footer() {
       <div className="footer-container">
         <div className="footer-brand-section">
           <div className="footer-brand-identity">
-            <img src="assets/xtreme-logo.png" loading="lazy" decoding="async" alt="Xtreme Weather" className="footer-logo" />
+            <img src="assets/snowball-logo-transparent.png" loading="lazy" decoding="async" alt="Snowball" className="footer-logo" />
             <div className="footer-brand-text">
-              <span className="footer-brand-name">Xtreme Weather</span>
-              <span className="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
+              <span className="footer-brand-name">Snowball</span>
+              <span className="footer-tagline">Weather it. Snowball it.</span>
             </div>
           </div>
           <p className="footer-description">
-            Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.
+            The most advanced Discord app for weather. AI that fetches real data, a full economy system, radio, music, and more.
           </p>
         </div>
         <div className="footer-nav-section">
@@ -1453,5 +1571,6 @@ function App() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
+<script src="app.js"></script>
 </body>
 </html>
