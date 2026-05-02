@@ -8,10 +8,11 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title>Snowball — Weather it. Snowball it.</title>
 <link rel="preconnect" href="https://discord.com" />
-<link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="image" href="assets/snowball-logo-transparent-small.png" fetchpriority="high" />
-<link rel="stylesheet" href="styles.css">
+<link rel="preload" as="style" href="styles.css" />
+<link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="styles.css"></noscript>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
 <style>
 @font-face {
@@ -86,6 +87,10 @@ body {
 
 #root { opacity: 0; transition: opacity 0.3s ease; min-height: 100vh; }
 #root.ready { opacity: 1; }
+
+/* Critical FOUC guards — hide until styles.css loads */
+.mega-menu, .mobile-menu-overlay, .sub-view { opacity: 0; visibility: hidden; pointer-events: none; }
+.alert-modal, .coverage-modal, .share-modal, .camera-modal { display: none; }
 
 .navbar { background: rgba(13, 8, 32, 0.6) !important; }
 @media (max-width: 1024px) {
@@ -360,7 +365,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.6);
   margin-bottom: 4px;
   font-variant-numeric: tabular-nums;
   transition: color 0.3s;
@@ -378,7 +383,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .state-done   .timeline-title { color: #fff; }
 .timeline-desc {
   font-size: 14px;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.6);
   line-height: 1.55;
   max-width: 460px;
   transition: color 0.3s;
@@ -433,7 +438,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .cmd-chip img { width: 28px; height: 28px; border-radius: 6px; }
 .cmd-chip-inner { display: flex; flex-direction: column; gap: 1px; }
 .cmd-chip-name { font-size: 13px; color: rgba(255,255,255,0.9); }
-.cmd-chip-desc { font-size: 11px; color: rgba(255,255,255,0.4); }
+.cmd-chip-desc { font-size: 11px; color: rgba(255,255,255,0.6); }
 
 #preview { background: linear-gradient(180deg, transparent, rgba(42,16,96,0.12) 40%, transparent); }
 .preview-card { padding: 60px 48px; text-align: center; position: relative; overflow: hidden; }
@@ -571,7 +576,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 .preview-ticker-foot {
   font-family: var(--font-body); font-size: 13px;
-  color: rgba(255,255,255,0.35); margin-top: 20px;
+  color: rgba(255,255,255,0.6); margin-top: 20px;
   letter-spacing: 0.02em;
 }
 
