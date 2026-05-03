@@ -1220,7 +1220,7 @@ function DcThinking({ leaving }) {
     h('div', { style:{flex:1,minWidth:0} },
       h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
         h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
-        h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, h('img', { src:'assets/app.png', alt:'', style:{width:9,height:9,objectFit:'contain'} }), 'APP'),
+        h('img', { src:'assets/app.png', alt:'APP', style:{height:18,width:'auto',objectFit:'contain',flexShrink:0,verticalAlign:'middle'} }),
         h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
       ),
       h('div', { style:{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14} },
@@ -1289,7 +1289,7 @@ function DcBotResponse() {
         h(DcReplyQuote),
         h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:6} },
           h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
-          h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, h('img', { src:'assets/app.png', alt:'', style:{width:9,height:9,objectFit:'contain'} }), 'APP'),
+          h('img', { src:'assets/app.png', alt:'APP', style:{height:18,width:'auto',objectFit:'contain',flexShrink:0,verticalAlign:'middle'} }),
           h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
         ),
         h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:DC_GG_SANS} },
@@ -1300,7 +1300,7 @@ function DcBotResponse() {
         h(DcEmbed),
         h('button', { type:'button', style:{marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,padding:'7px 14px',borderRadius:6,cursor:'pointer',display:'inline-flex',alignItems:'center',gap:6} },
           'View Full Forecast',
-          h('img', { src:'assets/linkbutton.png', alt:'', style:{width:14,height:14,objectFit:'contain',opacity:0.85} })
+          h('img', { src:'assets/linkbutton.png', alt:'', style:{width:22,height:22,objectFit:'contain',opacity:0.9} })
         ),
         h('div', { style:{marginTop:14,paddingLeft:14,borderLeft:'4px solid #4e5058',fontSize:13,color:'#dbdee1',lineHeight:1.6} },
           "Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. ",
