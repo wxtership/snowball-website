@@ -1159,96 +1159,79 @@ const DC_DOTS_CSS = `
   @keyframes dcDot{0%,80%,100%{opacity:0.3;transform:scale(0.8);}40%{opacity:1;transform:scale(1.1);}}
 `;
 
-function DiscordChatDemo({ t, fading }) {
-  // Derive phase from the shared clock so the chat stays in lockstep with the
-  // timeline above. Boundaries match AI_TIMELINE_STEPS start times.
-  const phase = t < 0.20 ? 0
-              : t < 1.10 ? 1   // UserMessage shown (timeline: "Message sent")
-              : t < 5.00 ? 2   // + Thinking (timeline: "Researching")
-                         : 3;  // + BotResponse (timeline: "Response back")
-  const ref         = useRef(null);
-  const contentRef  = useRef(null);
-  const [bodyHeight, setBodyHeight] = useState(240);
-  const ggSans = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
+// Module-level constants & sub-components for the Discord chat demo. Hoisted
+// out of DiscordChatDemo so their function references stay stable across
+// re-renders — otherwise React unmounts/remounts them every tick (50ms) which
+// retriggers the dcMsgIn entry animation and causes constant flashing.
+const DC_GG_SANS = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
+const DC_WX_AVATAR = 'https://avatars.githubusercontent.com/u/178625091?v=4';
+const DC_USER_PING = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,cursor:'pointer'} }, '@wxtership');
 
-  // Measure content height on each phase change so the chat container's height
-  // animates smoothly from "Thinking" (~small) to "BotResponse" (~tall) instead
-  // of snapping the page down by hundreds of pixels.
-  useEffect(() => {
-    if (!contentRef.current) return;
-    const measured = Math.max(240, contentRef.current.scrollHeight);
-    setBodyHeight(measured);
-  }, [phase]);
+function DcChannelHeader() {
+  return h('div', { style:{background:'rgba(20,14,42,0.65)',backdropFilter:'blur(8px)',padding:'12px 16px',display:'flex',alignItems:'center',gap:8,borderBottom:'1px solid rgba(0,0,0,0.35)',boxShadow:'0 1px 0 rgba(255,255,255,0.04)'} },
+    h('span', { style:{color:'#80848e',fontSize:18} }, '❄'),
+    h('span', { style:{color:'#80848e',margin:'0 -2px'} }, '·'),
+    h('span', { style:{fontWeight:700,color:'#f2f3f5',fontSize:15} }, 'snowball'),
+    h('span', { style:{color:'#3d4045',margin:'0 6px'} }, '|'),
+    h('span', { style:{color:'#80848e',fontSize:18,marginLeft:-2} }, '❄'),
+    h('span', { style:{color:'#80848e',margin:'0 -2px'} }, '·'),
+    h('span', { style:{color:'#80848e',fontSize:13,overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis',minWidth:0} }, "Chat with Snowball: Xtreme Weather's revolutionary new Discord App.")
+  );
+}
 
-  const userPing = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,cursor:'pointer'} }, '@✽ wxtershipping');
+function DcReplyQuote() {
+  return h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:4,fontSize:13,color:'#b5bac1',position:'relative',paddingLeft:30} },
+    h('span', { style:{position:'absolute',left:-12,top:'50%',width:30,height:14,borderLeft:'2px solid #4e5058',borderTop:'2px solid #4e5058',borderTopLeftRadius:6} }),
+    h('img', { src: DC_WX_AVATAR, alt: '', style:{width:16,height:16,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+    h('span', { style:{color:'#e67e22',fontWeight:600} }, 'wxtership'),
+    h('span', { style:{color:'#c9b6ff'} }, '@Snowball'),
+    h('span', { style:{color:'#b5bac1',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'} }, "What's the weather for Pittsburgh today")
+  );
+}
 
-  function ChannelHeader() {
-    return h('div', { style:{background:'rgba(20,14,42,0.65)',backdropFilter:'blur(8px)',padding:'12px 16px',display:'flex',alignItems:'center',gap:8,borderBottom:'1px solid rgba(0,0,0,0.35)',boxShadow:'0 1px 0 rgba(255,255,255,0.04)'} },
-      h('span', { style:{color:'#80848e',fontSize:18} }, '❄'),
-      h('span', { style:{color:'#80848e',margin:'0 -2px'} }, '·'),
-      h('span', { style:{fontWeight:700,color:'#f2f3f5',fontSize:15} }, 'snowball'),
-      h('span', { style:{color:'#3d4045',margin:'0 6px'} }, '|'),
-      h('span', { style:{color:'#80848e',fontSize:18,marginLeft:-2} }, '❄'),
-      h('span', { style:{color:'#80848e',margin:'0 -2px'} }, '·'),
-      h('span', { style:{color:'#80848e',fontSize:13,overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis',minWidth:0} }, "Chat with Snowball: Xtreme Weather's revolutionary new Discord App.")
-    );
-  }
-
-  function ReplyQuote() {
-    return h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:4,fontSize:13,color:'#b5bac1',position:'relative',paddingLeft:30} },
-      h('span', { style:{position:'absolute',left:-12,top:'50%',width:30,height:14,borderLeft:'2px solid #4e5058',borderTop:'2px solid #4e5058',borderTopLeftRadius:6} }),
-      h('div', { style:{width:16,height:16,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0} }),
-      h('span', { style:{color:'#e67e22',fontWeight:600} }, '✽ wxtershipping…'),
-      h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '⚡ XWD'),
-      h('span', { style:{color:'#c9b6ff'} }, '@Snowball'),
-      h('span', { style:{color:'#b5bac1',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'} }, "What's the weather for Pittsburgh today")
-    );
-  }
-
-  function UserMessage() {
-    return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 8px',animation:'dcMsgIn 0.22s ease forwards'} },
-      h('div', { style:{width:40,height:40,borderRadius:'50%',background:'linear-gradient(135deg,#3D0A8A,#6B54F5)',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontWeight:700,fontSize:16} }, '✽'),
-      h('div', { style:{flex:1,minWidth:0} },
-        h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
-          h('span', { style:{color:'#e67e22',fontWeight:600,fontSize:15} }, '✽ wxtershipping…'),
-          h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '⚡ XWD'),
-          h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
-        ),
-        h('div', { style:{color:'#dbdee1',lineHeight:1.6} },
-          h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3} }, '@Snowball'),
-          " What's the weather for Pittsburgh today"
-        )
+function DcUserMessage() {
+  return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 8px',animation:'dcMsgIn 0.22s ease forwards'} },
+    h('img', { src: DC_WX_AVATAR, alt: '', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+    h('div', { style:{flex:1,minWidth:0} },
+      h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
+        h('span', { style:{color:'#e67e22',fontWeight:600,fontSize:15} }, 'wxtership'),
+        h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
+      ),
+      h('div', { style:{color:'#dbdee1',lineHeight:1.6} },
+        h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3} }, '@Snowball'),
+        " What's the weather for Pittsburgh today"
       )
-    );
-  }
+    )
+  );
+}
 
-  function Thinking() {
-    return h('div', { style:{display:'flex',gap:16,padding:'4px 16px',animation:'dcMsgIn 0.22s ease forwards'} },
-      h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
-      h('div', { style:{flex:1,minWidth:0} },
-        h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
-          h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
-          h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '✓ APP'),
-          h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
-        ),
-        h('div', { style:{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14} },
-          h('span', { style:{display:'inline-flex',width:14,height:14,borderRadius:'50%',border:'1.5px solid #80848e',alignItems:'center',justifyContent:'center',fontSize:9} }, '🕐'),
-          'Snowball is thinking',
-          h('span', { className:'dc-dots' }, h('span'), h('span'), h('span'))
-        )
+function DcThinking() {
+  return h('div', { style:{display:'flex',gap:16,padding:'4px 16px',animation:'dcMsgIn 0.22s ease forwards'} },
+    h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+    h('div', { style:{flex:1,minWidth:0} },
+      h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
+        h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
+        h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '✓ APP'),
+        h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
+      ),
+      h('div', { style:{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14} },
+        h('span', { style:{display:'inline-flex',width:14,height:14,borderRadius:'50%',border:'1.5px solid #80848e',alignItems:'center',justifyContent:'center',fontSize:9} }, '🕐'),
+        'Snowball is thinking',
+        h('span', { className:'dc-dots' }, h('span'), h('span'), h('span'))
       )
-    );
-  }
+    )
+  );
+}
 
-  function Embed() {
-    return h('div', { style:{background:'#2b2d31',borderRadius:8,maxWidth:460,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:ggSans} },
+function DcEmbed() {
+    return h('div', { style:{background:'#2b2d31',borderRadius:8,maxWidth:460,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS} },
       h('div', { style:{position:'relative',height:120,overflow:'hidden'} },
         h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover'} })
       ),
       h('div', { style:{padding:'14px 18px',display:'flex',flexDirection:'column',gap:12} },
         h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
           h('div', { style:{flex:1,minWidth:0} },
-            h('div', { style:{color:'#fff',fontWeight:700,fontSize:17,marginBottom:4,fontFamily:ggSans} }, 'Weather for Pittsburgh, PA'),
+            h('div', { style:{color:'#fff',fontWeight:700,fontSize:17,marginBottom:4,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
             h('div', { style:{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5} },
               h('span', { style:{color:'#80848e',flexShrink:0} }, '›'),
               h('div', null,
@@ -1261,15 +1244,15 @@ function DiscordChatDemo({ t, fading }) {
           h('img', { src:'assets/emoji-sunny-haze.png', alt:'', loading:'lazy', style:{width:52,height:52,flexShrink:0,objectFit:'contain'} })
         ),
         h('div', null,
-          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:4,fontFamily:ggSans} }, 'Active Alerts'),
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:4,fontFamily:DC_GG_SANS} }, 'Active Alerts'),
           h('div', { style:{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5} },
             h('span', { style:{color:'#80848e',flexShrink:0} }, '›'),
             h('div', null, "There's currently an advisory for the area. You can use ", h('span', { style:{color:'#c9b6ff'} }, '/weather alerts'), ' for more information!')
           )
         ),
         h('div', null,
-          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:6,fontFamily:ggSans} }, 'Conditions'),
-          h('div', { style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px 24px',fontSize:13,fontFamily:ggSans} },
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Conditions'),
+          h('div', { style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px 24px',fontSize:13,fontFamily:DC_GG_SANS} },
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Temperature:'), h('div', { style:{color:'#dbdee1'} }, '46°F (Feels like 42°F)')),
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Wind:'), h('div', { style:{color:'#dbdee1'} }, '8mph WNW (Gusts 18mph)')),
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Humidity:'), h('div', { style:{color:'#dbdee1'} }, '66%')),
@@ -1278,7 +1261,7 @@ function DiscordChatDemo({ t, fading }) {
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Pressure:'), h('div', { style:{color:'#dbdee1'} }, '29.92 inHg'))
           )
         ),
-        h('div', { style:{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2,fontFamily:ggSans} },
+        h('div', { style:{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2,fontFamily:DC_GG_SANS} },
           h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover'} }),
           'Snowball'
         )
@@ -1286,22 +1269,22 @@ function DiscordChatDemo({ t, fading }) {
     );
   }
 
-  function BotResponse() {
-    return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'} },
+function DcBotResponse() {
+  return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'} },
       h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
       h('div', { style:{flex:1,minWidth:0} },
-        h(ReplyQuote),
+        h(DcReplyQuote),
         h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:6} },
           h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
           h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '✓ APP'),
           h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
         ),
-        h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:ggSans} },
+        h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:DC_GG_SANS} },
           h('img', { src:'assets/emoji-snowball-circle.png', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
           'Thought for 5 seconds · ',
-          userPing
+          DC_USER_PING
         ),
-        h(Embed),
+        h(DcEmbed),
         h('button', { type:'button', style:{marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,padding:'7px 14px',borderRadius:6,cursor:'pointer',display:'inline-flex',alignItems:'center',gap:6} },
           'View Full Forecast',
           h('span', { style:{fontSize:11,opacity:0.7} }, '↗')
@@ -1310,7 +1293,7 @@ function DiscordChatDemo({ t, fading }) {
           "Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. ",
           h('img', { src:'assets/emoji-true.png', alt:'', loading:'lazy', style:{width:18,height:18,objectFit:'contain',verticalAlign:'middle',marginLeft:2} })
         ),
-        h('div', { style:{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5,fontFamily:ggSans} },
+        h('div', { style:{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5,fontFamily:DC_GG_SANS} },
           h('img', { src:'assets/emoji-snowball-cloud.png', alt:'', style:{width:14,height:14,objectFit:'contain',flexShrink:0} }),
           "Snowball's AI responses can make mistakes. Unlimited usage."
         )
@@ -1318,8 +1301,28 @@ function DiscordChatDemo({ t, fading }) {
     );
   }
 
-  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:ggSans,fontSize:14,color:'#dbdee1',maxWidth:560} },
-    h(ChannelHeader),
+function DiscordChatDemo({ t, fading }) {
+  // Derive phase from the shared clock so the chat stays in lockstep with the
+  // timeline above. Boundaries match AI_TIMELINE_STEPS start times.
+  const phase = t < 0.20 ? 0
+              : t < 1.10 ? 1   // UserMessage shown (timeline: "Message sent")
+              : t < 5.00 ? 2   // + Thinking (timeline: "Researching")
+                         : 3;  // + BotResponse (timeline: "Response back")
+  const ref         = useRef(null);
+  const contentRef  = useRef(null);
+  const [bodyHeight, setBodyHeight] = useState(240);
+
+  // Measure content height on each phase change so the chat container's height
+  // animates smoothly from "Thinking" (~small) to "BotResponse" (~tall) instead
+  // of snapping the page down by hundreds of pixels.
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const measured = Math.max(240, contentRef.current.scrollHeight);
+    setBodyHeight(measured);
+  }, [phase]);
+
+  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:560} },
+    h(DcChannelHeader),
     h('div', {
       style: {
         height: bodyHeight + 'px',
@@ -1328,9 +1331,9 @@ function DiscordChatDemo({ t, fading }) {
       },
     },
       h('div', { ref: contentRef, style:{padding:'16px 0'} },
-        phase >= 1 ? h(UserMessage) : null,
-        phase === 2 ? h(Thinking) : null,
-        phase >= 3 ? h(BotResponse) : null
+        phase >= 1 ? h(DcUserMessage,  { key: 'msg'   }) : null,
+        phase === 2 ? h(DcThinking,    { key: 'think' }) : null,
+        phase >= 3 ? h(DcBotResponse,  { key: 'bot'   }) : null
       )
     ),
     h('div', { style:{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6} },
