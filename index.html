@@ -307,14 +307,15 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   filter: grayscale(0.6);
 }
 .state-active .timeline-dot {
-  background: rgba(107,84,245,0.18);
+  /* Layer the tint over solid page bg so the line behind the dot is masked. */
+  background: linear-gradient(rgba(107,84,245,0.18), rgba(107,84,245,0.18)), #0b0b0f;
   border-color: rgba(107,84,245,0.7);
   box-shadow: 0 0 32px rgba(107,84,245,0.45);
   transform: scale(1.05);
 }
 .state-active .timeline-dot img { opacity: 0; }
 .state-done .timeline-dot {
-  background: rgba(74,222,128,0.12);
+  background: linear-gradient(rgba(74,222,128,0.12), rgba(74,222,128,0.12)), #0b0b0f;
   border-color: rgba(74,222,128,0.45);
   box-shadow: 0 0 18px rgba(74,222,128,0.18);
 }
@@ -1191,7 +1192,7 @@ function DcReplyQuote() {
     h('img', { src: DC_WX_AVATAR, alt: '', style:{width:16,height:16,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
     h('span', { style:{color:'#e67e22',fontWeight:600} }, 'wxtership'),
     h('span', { style:{color:'#c9b6ff'} }, '@Snowball'),
-    h('span', { style:{color:'#b5bac1',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'} }, "What's the weather for Pittsburgh today")
+    h('span', { style:{color:'#b5bac1',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'} }, "What's going on in Pittsburgh today?")
   );
 }
 
@@ -1205,7 +1206,7 @@ function DcUserMessage() {
       ),
       h('div', { style:{color:'#dbdee1',lineHeight:1.6} },
         h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3} }, '@Snowball'),
-        " What's the weather for Pittsburgh today"
+        " What's going on in Pittsburgh today?"
       )
     )
   );
