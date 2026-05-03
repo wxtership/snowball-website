@@ -1166,8 +1166,19 @@ function DiscordChatDemo({ t, fading }) {
               : t < 1.10 ? 1   // UserMessage shown (timeline: "Message sent")
               : t < 5.00 ? 2   // + Thinking (timeline: "Researching")
                          : 3;  // + BotResponse (timeline: "Response back")
-  const ref    = useRef(null);
+  const ref         = useRef(null);
+  const contentRef  = useRef(null);
+  const [bodyHeight, setBodyHeight] = useState(240);
   const ggSans = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
+
+  // Measure content height on each phase change so the chat container's height
+  // animates smoothly from "Thinking" (~small) to "BotResponse" (~tall) instead
+  // of snapping the page down by hundreds of pixels.
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const measured = Math.max(240, contentRef.current.scrollHeight);
+    setBodyHeight(measured);
+  }, [phase]);
 
   const userPing = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,cursor:'pointer'} }, '@✽ wxtershipping');
 
@@ -1309,10 +1320,18 @@ function DiscordChatDemo({ t, fading }) {
 
   return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:ggSans,fontSize:14,color:'#dbdee1',maxWidth:560} },
     h(ChannelHeader),
-    h('div', { style:{padding:'16px 0',minHeight:240} },
-      phase >= 1 ? h(UserMessage) : null,
-      phase === 2 ? h(Thinking) : null,
-      phase >= 3 ? h(BotResponse) : null
+    h('div', {
+      style: {
+        height: bodyHeight + 'px',
+        overflow: 'hidden',
+        transition: 'height 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
+      },
+    },
+      h('div', { ref: contentRef, style:{padding:'16px 0'} },
+        phase >= 1 ? h(UserMessage) : null,
+        phase === 2 ? h(Thinking) : null,
+        phase >= 3 ? h(BotResponse) : null
+      )
     ),
     h('div', { style:{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6} },
       'Message ',
@@ -1348,9 +1367,19 @@ function AiSection() {
     if (!running) return;
     let cancelled = false;
     let timer;
+    let cycleCount = 0;
+    const MAX_CYCLES = 2;
 
     const startCycle = () => {
       if (cancelled) return;
+      // After 2 full loops, freeze in the final state — everything visible,
+      // no more fading. Stops the text from flickering forever.
+      if (cycleCount >= MAX_CYCLES) {
+        setFading(false);
+        setT(AI_TIMELINE_TOTAL);
+        return;
+      }
+      cycleCount += 1;
       setFading(false);
       setT(0);
       const cycleStart = performance.now();
@@ -1363,7 +1392,9 @@ function AiSection() {
         } else if (elapsed < AI_TIMELINE_TOTAL + HOLD) {
           setT(AI_TIMELINE_TOTAL);
           timer = setTimeout(tick, FRAME_MS);
-        } else if (elapsed < AI_TIMELINE_TOTAL + HOLD + FADE) {
+        } else if (cycleCount < MAX_CYCLES && elapsed < AI_TIMELINE_TOTAL + HOLD + FADE) {
+          // Skip the fade on the final cycle so we settle directly into the
+          // finished state instead of fading out then snapping back.
           setT(AI_TIMELINE_TOTAL);
           setFading(true);
           timer = setTimeout(tick, FRAME_MS);
