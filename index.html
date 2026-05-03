@@ -1262,18 +1262,18 @@ function DcEmbed() {
         h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
-        // Header block: description on top, then title row with emoji below
-        h('div', null,
-          h('div', { style:{fontSize:13.5,color:'#dbdee1',lineHeight:1.55,marginBottom:6} },
-            DC_ARROW_IMG,
-            'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
-            h('strong', { style:{color:'#fff'} }, 'haze'),
-            ' as of 20 minutes ago.'
+        // Header block: title on top with sun icon on the right, description text below the title.
+        h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
+          h('div', { style:{flex:1,minWidth:0} },
+            h('div', { style:{color:'#fff',fontWeight:700,fontSize:18,lineHeight:1.25,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
+            h('div', { style:{fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
+              DC_ARROW_IMG,
+              'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
+              h('strong', { style:{color:'#fff'} }, 'haze'),
+              ' as of 20 minutes ago.'
+            )
           ),
-          h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
-            h('div', { style:{flex:1,minWidth:0,color:'#fff',fontWeight:700,fontSize:18,lineHeight:1.25,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
-            h('img', { src:'assets/emoji-sunny-haze.png', alt:'', loading:'lazy', style:{width:54,height:54,flexShrink:0,objectFit:'contain'} })
-          )
+          h('img', { src:'assets/emoji-sunny-haze.png', alt:'', loading:'lazy', style:{width:54,height:54,flexShrink:0,objectFit:'contain'} })
         ),
         h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.06)'} }),
         h('div', null,
