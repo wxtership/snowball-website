@@ -1464,9 +1464,9 @@ function CommandsSection() {
     { cat:'Community', icon:'assets/icons/small-level.png',       name:'level view',    desc:'View a level card for yourself or another user' },
     { cat:'Community', icon:'assets/icons/small-leaderboard.png', name:'leaderboard',   desc:'View server leaderboards' },
   ];
-  const cats = ['All', 'Weather', 'EAS', 'Music & Radio', 'Economy', 'Utility', 'Community'];
-  const [active, setActive] = useState('All');
-  const filtered = active === 'All' ? cmds : cmds.filter(c => c.cat === active);
+  const cats = ['Weather', 'EAS', 'Music & Radio', 'Economy', 'Utility', 'Community'];
+  const [active, setActive] = useState('Weather');
+  const filtered = cmds.filter(c => c.cat === active);
 
   return h('section', { id:'commands' },
     h('div', { className:'divider' }),
