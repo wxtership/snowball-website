@@ -443,7 +443,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 12px;
-  view-transition-name: commands-grid;
 }
 .cmd-chip {
   display: flex; align-items: center; gap: 10px;
@@ -1499,14 +1498,23 @@ function CommandsSection() {
   });
 
   const [active, setActive] = useState('Weather');
+  const gridRef = useRef(null);
 
   const handlePick = (cat) => {
     if (cat === active) return;
+    const grid = gridRef.current;
     // View Transitions API: browser captures old + new states and crossfades
     // them, animating both opacity AND height/layout in one smooth pass.
-    if (typeof document !== 'undefined' && document.startViewTransition) {
-      document.startViewTransition(() => {
+    // Only apply view-transition-name during the transition itself — keeping it
+    // on the grid permanently creates a stacking context that breaks the
+    // navbar's backdrop-filter from blurring the grid underneath on scroll.
+    if (typeof document !== 'undefined' && document.startViewTransition && grid) {
+      grid.style.viewTransitionName = 'commands-grid';
+      const t = document.startViewTransition(() => {
         ReactDOM.flushSync(() => setActive(cat));
+      });
+      t.finished.finally(() => {
+        grid.style.viewTransitionName = '';
       });
     } else {
       setActive(cat);
@@ -1529,7 +1537,7 @@ function CommandsSection() {
           }, cat)
         )
       ),
-      h('div', { className:'commands-grid' },
+      h('div', { className:'commands-grid', ref: gridRef },
         ...cmdsWithIdx.map(c => {
           const visible = c.cat === active;
           return h('div', {
