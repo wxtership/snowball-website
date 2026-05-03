@@ -4649,3 +4649,161 @@ body.scroll-locked {
 .camera-modal { z-index: 11000 !important; }
 .share-modal { z-index: 11000 !important; }
 .coverage-modal { z-index: 11000 !important; }
+
+/* ==========================================================================
+   COMMANDS SECTION - filter pills + chip grid
+   ========================================================================== */
+
+.cmd-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 28px 0 32px;
+}
+
+.cmd-filter-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.75);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.15s ease;
+}
+
+.cmd-filter-pill:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.cmd-filter-pill:active {
+    transform: scale(0.96);
+}
+
+.cmd-filter-pill.active {
+    background: white;
+    border-color: white;
+    color: #0b0b0f;
+}
+
+.cmd-filter-pill.active:hover {
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.cmd-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    min-width: 0;
+    opacity: 0;
+    animation: cmd-chip-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cmd-chip:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+.cmd-chip img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.cmd-chip-inner {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 2px;
+}
+
+.cmd-chip-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cmd-chip-desc {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@keyframes cmd-chip-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .cmd-filters {
+        gap: 8px;
+        margin: 22px 0 24px;
+    }
+
+    .cmd-filter-pill {
+        padding: 8px 14px;
+        font-size: 0.82rem;
+    }
+
+    .commands-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px;
+    }
+
+    .cmd-chip {
+        padding: 11px;
+        gap: 10px;
+        border-radius: 12px;
+        transition: none;
+    }
+
+    .cmd-chip:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.08);
+        transform: none;
+    }
+
+    .cmd-chip img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .cmd-chip-name {
+        font-size: 0.82rem;
+    }
+
+    .cmd-chip-desc {
+        font-size: 0.72rem;
+    }
+}
