@@ -1265,7 +1265,7 @@ function DcEmbed() {
         // Header block: title on top with sun icon on the right, description text below the title.
         h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
           h('div', { style:{flex:1,minWidth:0} },
-            h('div', { style:{color:'#fff',fontWeight:700,fontSize:24,lineHeight:1.2,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
+            h('div', { style:{color:'#fff',fontWeight:700,fontSize:22,lineHeight:1.2,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
             h('div', { style:{fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
               DC_ARROW_IMG,
               'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
@@ -1379,12 +1379,6 @@ function DiscordChatDemo({ t, fading }) {
         showThinking    ? h(DcThinking,     { key: 'think', leaving: thinkingLeaving }) : null,
         showBotResponse ? h(DcBotResponse,  { key: 'bot'   })                            : null
       )
-    ),
-    h('div', { style:{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6} },
-      'Message ',
-      h('span', { style:{color:'#80848e',fontSize:15,lineHeight:1} }, '❄'),
-      h('span', { style:{width:4,height:4,borderRadius:'50%',background:'#80848e',display:'inline-block',flexShrink:0,margin:'0 -2px'} }),
-      ' snowball'
     ),
     h('style', null, DC_DOTS_CSS)
   );
