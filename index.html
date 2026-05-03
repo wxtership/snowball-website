@@ -1236,7 +1236,7 @@ function DiscordChatDemo() {
 
   function Thinking() {
     return h('div', { style:{display:'flex',gap:16,padding:'4px 16px',animation:'dcMsgIn 0.22s ease forwards'} },
-      h('img', { src:'assets/snowball-server-icon.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+      h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
       h('div', { style:{flex:1,minWidth:0} },
         h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
           h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
@@ -1291,7 +1291,7 @@ function DiscordChatDemo() {
           )
         ),
         h('div', { style:{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2,fontFamily:ggSans} },
-          h('img', { src:'assets/snowball-server-icon.png', alt:'', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover'} }),
+          h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover'} }),
           'Snowball'
         )
       )
@@ -1300,7 +1300,7 @@ function DiscordChatDemo() {
 
   function BotResponse() {
     return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'} },
-      h('img', { src:'assets/snowball-server-icon.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+      h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
       h('div', { style:{flex:1,minWidth:0} },
         h(ReplyQuote),
         h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:6} },
@@ -1416,8 +1416,8 @@ function CommandsSection() {
     { cat:'Weather', icon:'assets/icons/small-outlook.png',     name:'outlook timing',    desc:'SPC timing charts' },
     // EAS
     { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas decode',        desc:'Decode SAME header' },
-    { cat:'EAS',     icon:'assets/icons/small-emergency.png',   name:'eas audio',         desc:'Generate EAS audio' },
-    { cat:'EAS',     icon:'assets/icons/small-emergency.png',   name:'eas generate',      desc:'Build EAS alert' },
+    { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas audio',         desc:'Generate EAS audio' },
+    { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas generate',      desc:'Build EAS alert' },
     // Music & Radio
     { cat:'Music & Radio', icon:'assets/icons/small-music.png', name:'music play',        desc:'Play a song' },
     { cat:'Music & Radio', icon:'assets/icons/small-music.png', name:'music nowplaying',  desc:'Now playing' },
@@ -1469,15 +1469,15 @@ function CommandsSection() {
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai usage',        desc:'Check AI usage' },
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai clear',        desc:'Clear AI memory' },
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai memory',       desc:'Manage AI memory' },
-    { cat:'Utility', icon:'assets/icons/small-snowball.png',    name:'about',           desc:'About Snowball' },
+    { cat:'Utility', icon:'assets/icons/small-help.png',        name:'about',           desc:'About Snowball' },
     { cat:'Utility', icon:'assets/icons/small-help.png',        name:'help',            desc:'Browse commands' },
     { cat:'Utility', icon:'assets/icons/small-ping.png',        name:'ping',            desc:'Check bot latency' },
     { cat:'Utility', icon:'assets/icons/small-messages.png',    name:'stats messages',  desc:'Message activity chart' },
     { cat:'Utility', icon:'assets/icons/small-members.png',     name:'stats members',   desc:'Member count chart' },
     { cat:'Utility', icon:'assets/icons/small-suggestion.png',  name:'suggest',         desc:'Submit suggestion or bug' },
     // Community
-    { cat:'Community', icon:'assets/icons/small-birthdayadd.png', name:'birthday add',  desc:'Set your birthday' },
-    { cat:'Community', icon:'assets/icons/small-birthday.png',    name:'birthday remove', desc:'Remove your birthday' },
+    { cat:'Community', icon:'assets/icons/small-birthdaypurple.png', name:'birthday add',  desc:'Set your birthday' },
+    { cat:'Community', icon:'assets/icons/small-birthdaypurple.png', name:'birthday remove', desc:'Remove your birthday' },
     { cat:'Community', icon:'assets/icons/small-qotd.png',        name:'qotd submit',   desc:'Submit QOTD idea' },
     { cat:'Community', icon:'assets/icons/small-spotter.png',     name:'spotter add',   desc:'Submit spotter cert' },
     { cat:'Community', icon:'assets/icons/small-level.png',       name:'level view',    desc:'View level card' },
