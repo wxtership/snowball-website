@@ -1298,7 +1298,8 @@ function DcBotResponse() {
         ),
         h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:DC_GG_SANS} },
           h('img', { src:'assets/thinkingdone.webp', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
-          'Thought for 5 seconds · ',
+          h('span', null, 'Thought for 5 seconds'),
+          h('span', { style:{width:4,height:4,borderRadius:'50%',background:'#80848e',display:'inline-block',flexShrink:0} }),
           DC_USER_PING
         ),
         h(DcEmbed),
@@ -1349,7 +1350,7 @@ function DiscordChatDemo({ t, fading }) {
       style: {
         height: bodyHeight + 'px',
         overflow: 'hidden',
-        transition: 'height 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
+        transition: 'height 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
       },
     },
       h('div', { ref: contentRef, style:{padding:'16px 0'} },
@@ -1360,7 +1361,8 @@ function DiscordChatDemo({ t, fading }) {
     ),
     h('div', { style:{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6} },
       'Message ',
-      h('span', { style:{color:'#80848e'} }, '❄·'),
+      h('span', { style:{color:'#80848e',fontSize:18,lineHeight:1} }, '❄'),
+      h('span', { style:{width:4,height:4,borderRadius:'50%',background:'#80848e',display:'inline-block',flexShrink:0,margin:'0 -2px'} }),
       ' snowball'
     ),
     h('style', null, DC_DOTS_CSS)
