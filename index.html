@@ -1125,6 +1125,9 @@ function AnimatedTimeline({ t, fading }) {
     let state = 'pending', display = s.start;
     if (t < s.start) { state = 'pending'; display = s.start; }
     else if (next && t >= next.start) { state = 'done'; display = s.end; }
+    // Last step (no next): once we've reached its start time, it's done.
+    // Avoids showing the spinner forever for instantaneous steps (start === end).
+    else if (!next && t >= s.start) { state = 'done'; display = s.end; }
     else if (t >= s.start && t <= s.end) { state = 'active'; display = t; }
     else if (t > s.end) { state = 'done'; display = s.end; }
     return Object.assign({}, s, { state, display });
