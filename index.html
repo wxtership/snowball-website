@@ -481,6 +481,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 @keyframes vt-fade-out { to { opacity: 0; } }
 @keyframes vt-fade-in  { from { opacity: 0; } }
 
+/* AI section loop fade — both timeline and Discord chat fade out together
+   before the cycle resets. Transition only applies when fading is added so
+   the snap-back to opacity 1 at reset is instant (no flash). */
+.demo-fades { opacity: 1; }
+.demo-fades.demo-fading { opacity: 0; transition: opacity 0.45s ease-out; }
+
 /* Navbar: own snapshot, no fade, no movement — preserves backdrop-filter blur
    during the grid transition instead of dropping it for 360ms. */
 ::view-transition-old(navbar),
@@ -1105,44 +1111,17 @@ function Hero() {
   );
 }
 
-function AnimatedTimeline() {
-  const steps = [
-    { icon:'assets/icons/small-ai.png',        title:'Message sent',  desc:'Natural language. Any channel.',                          start: 0.15, end: 0.50 },
-    { icon:'assets/icons/small-satellite.png', title:'Researching',   desc:'Parses intent, fetches outlooks, current weather, more.', start: 0.90, end: 3.20 },
-    { icon:'assets/icons/small-weather.png',   title:'Response back', desc:'Grounded, sourced, with embeds.',                         start: 3.80, end: 3.80 },
-  ];
-  const TOTAL = 4.0;
-  const FRAME = 50;
+// Shared timeline steps — used by AiSection's clock and rendered here.
+const AI_TIMELINE_STEPS = [
+  { icon:'assets/icons/small-ai.png',        title:'Message sent',  desc:'Natural language. Any channel.',                          start: 0.20, end: 0.70 },
+  { icon:'assets/icons/small-satellite.png', title:'Researching',   desc:'Parses intent, fetches outlooks, current weather, more.', start: 1.10, end: 4.20 },
+  { icon:'assets/icons/small-weather.png',   title:'Response back', desc:'Grounded, sourced, with embeds.',                         start: 5.00, end: 5.00 },
+];
+const AI_TIMELINE_TOTAL = 5.0;
 
-  const [t, setT]         = useState(0);
-  const [running, setRun] = useState(false);
-  const sectionRef        = useRef(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) setRun(true); });
-    }, { threshold: 0.3 });
-    obs.observe(sectionRef.current);
-    return () => obs.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!running) return;
-    let raf;
-    const startMs = performance.now();
-    const tick = (now) => {
-      const elapsed = (now - startMs) / 1000;
-      if (elapsed >= TOTAL) { setT(TOTAL); return; }
-      setT(elapsed);
-      raf = setTimeout(() => requestAnimationFrame(tick), FRAME);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => clearTimeout(raf);
-  }, [running]);
-
-  const stepStates = steps.map((s, i) => {
-    const next = steps[i + 1];
+function AnimatedTimeline({ t, fading }) {
+  const stepStates = AI_TIMELINE_STEPS.map((s, i) => {
+    const next = AI_TIMELINE_STEPS[i + 1];
     let state = 'pending', display = s.start;
     if (t < s.start) { state = 'pending'; display = s.start; }
     else if (next && t >= next.start) { state = 'done'; display = s.end; }
@@ -1151,7 +1130,7 @@ function AnimatedTimeline() {
     return Object.assign({}, s, { state, display });
   });
 
-  return h('div', { className: 'ai-timeline', ref: sectionRef, style: { marginLeft:0, marginRight:'auto' } },
+  return h('div', { className: 'ai-timeline demo-fades' + (fading ? ' demo-fading' : ''), style: { marginLeft:0, marginRight:'auto' } },
     ...stepStates.map((s, i) =>
       h('div', { key: i, className: 'timeline-row state-' + s.state },
         h('div', { className: 'timeline-rail' },
@@ -1180,24 +1159,15 @@ const DC_DOTS_CSS = `
   @keyframes dcDot{0%,80%,100%{opacity:0.3;transform:scale(0.8);}40%{opacity:1;transform:scale(1.1);}}
 `;
 
-function DiscordChatDemo() {
-  const [phase, setPhase] = useState(0);
+function DiscordChatDemo({ t, fading }) {
+  // Derive phase from the shared clock so the chat stays in lockstep with the
+  // timeline above. Boundaries match AI_TIMELINE_STEPS start times.
+  const phase = t < 0.20 ? 0
+              : t < 1.10 ? 1   // UserMessage shown (timeline: "Message sent")
+              : t < 5.00 ? 2   // + Thinking (timeline: "Researching")
+                         : 3;  // + BotResponse (timeline: "Response back")
   const ref    = useRef(null);
-  const ranRef = useRef(false);
   const ggSans = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !ranRef.current) {
-        ranRef.current = true;
-        setTimeout(() => setPhase(1), 300);
-        setTimeout(() => setPhase(2), 1100);
-        setTimeout(() => setPhase(3), 4400);
-      }
-    }, { threshold: 0.2 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
 
   const userPing = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,cursor:'pointer'} }, '@✽ wxtershipping');
 
@@ -1337,7 +1307,7 @@ function DiscordChatDemo() {
     );
   }
 
-  return h('div', { ref, style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:ggSans,fontSize:14,color:'#dbdee1',maxWidth:560} },
+  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:ggSans,fontSize:14,color:'#dbdee1',maxWidth:560} },
     h(ChannelHeader),
     h('div', { style:{padding:'16px 0',minHeight:240} },
       phase >= 1 ? h(UserMessage) : null,
@@ -1354,7 +1324,61 @@ function DiscordChatDemo() {
 }
 
 function AiSection() {
-  return h('section', { id: 'ai-section' },
+  // Shared clock: drives both the timeline and the Discord chat in lockstep.
+  // Cycle = animate (TOTAL) → hold (HOLD) → fade out (FADE) → reset, repeat.
+  const HOLD = 1.5;
+  const FADE = 0.45;
+  const FRAME_MS = 50;
+
+  const sectionRef = useRef(null);
+  const [running, setRun] = useState(false);
+  const [t, setT] = useState(0);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) setRun(true);
+    }, { threshold: 0.25 });
+    obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!running) return;
+    let cancelled = false;
+    let timer;
+
+    const startCycle = () => {
+      if (cancelled) return;
+      setFading(false);
+      setT(0);
+      const cycleStart = performance.now();
+      const tick = () => {
+        if (cancelled) return;
+        const elapsed = (performance.now() - cycleStart) / 1000;
+        if (elapsed < AI_TIMELINE_TOTAL) {
+          setT(elapsed);
+          timer = setTimeout(tick, FRAME_MS);
+        } else if (elapsed < AI_TIMELINE_TOTAL + HOLD) {
+          setT(AI_TIMELINE_TOTAL);
+          timer = setTimeout(tick, FRAME_MS);
+        } else if (elapsed < AI_TIMELINE_TOTAL + HOLD + FADE) {
+          setT(AI_TIMELINE_TOTAL);
+          setFading(true);
+          timer = setTimeout(tick, FRAME_MS);
+        } else {
+          startCycle();
+        }
+      };
+      tick();
+    };
+
+    startCycle();
+    return () => { cancelled = true; clearTimeout(timer); };
+  }, [running]);
+
+  return h('section', { id: 'ai-section', ref: sectionRef },
     h('div', { className: 'section-inner' },
       h('h2', { className: 'section-title' }, 'The only AI that', h('br'), 'actually looks it up'),
       h('p', { className: 'section-body' },
@@ -1362,8 +1386,8 @@ function AiSection() {
         h('strong', { style:{color:'#fff'} }, '~3–4 seconds'),
         '. Heavy multi-tool requests still come back in under 8.'
       ),
-      h(AnimatedTimeline),
-      h(DiscordChatDemo)
+      h(AnimatedTimeline, { t, fading }),
+      h(DiscordChatDemo,  { t, fading })
     )
   );
 }
