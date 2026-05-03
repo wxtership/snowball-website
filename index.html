@@ -1226,17 +1226,21 @@ function DcThinking() {
   );
 }
 
+// Inline arrow used in embed bullet rows. Hoisted so we don't rebuild the
+// element every render.
+const DC_ARROW_IMG = h('img', { src:'assets/emoji-snowball-face.png', alt:'', loading:'lazy', style:{width:16,height:16,objectFit:'contain',flexShrink:0,marginTop:2} });
+
 function DcEmbed() {
-    return h('div', { style:{background:'#2b2d31',borderRadius:8,maxWidth:460,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS} },
-      h('div', { style:{position:'relative',height:120,overflow:'hidden'} },
-        h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover'} })
+    return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:460,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,backdropFilter:'blur(4px)'} },
+      h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 120',overflow:'hidden'} },
+        h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'14px 18px',display:'flex',flexDirection:'column',gap:12} },
         h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
           h('div', { style:{flex:1,minWidth:0} },
             h('div', { style:{color:'#fff',fontWeight:700,fontSize:17,marginBottom:4,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
             h('div', { style:{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5} },
-              h('span', { style:{color:'#80848e',flexShrink:0} }, '›'),
+              DC_ARROW_IMG,
               h('div', null,
                 'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
                 h('strong', { style:{color:'#fff'} }, 'haze'),
@@ -1249,15 +1253,15 @@ function DcEmbed() {
         h('div', null,
           h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:4,fontFamily:DC_GG_SANS} }, 'Active Alerts'),
           h('div', { style:{display:'flex',gap:6,fontSize:13,color:'#dbdee1',lineHeight:1.5} },
-            h('span', { style:{color:'#80848e',flexShrink:0} }, '›'),
+            DC_ARROW_IMG,
             h('div', null, "There's currently an advisory for the area. You can use ", h('span', { style:{color:'#c9b6ff'} }, '/weather alerts'), ' for more information!')
           )
         ),
         h('div', null,
-          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Conditions'),
-          h('div', { style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px 24px',fontSize:13,fontFamily:DC_GG_SANS} },
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:8,fontFamily:DC_GG_SANS} }, 'Conditions'),
+          h('div', { style:{display:'flex',flexDirection:'column',gap:10,fontSize:13,fontFamily:DC_GG_SANS} },
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Temperature:'), h('div', { style:{color:'#dbdee1'} }, '46°F (Feels like 42°F)')),
-            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Wind:'), h('div', { style:{color:'#dbdee1'} }, '8mph WNW (Gusts 18mph)')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Wind:'), h('div', { style:{color:'#dbdee1'} }, '8mph from the west-northwest (Gusting to 18mph)')),
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Humidity:'), h('div', { style:{color:'#dbdee1'} }, '66%')),
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Dew Point:'), h('div', { style:{color:'#dbdee1'} }, '35°F')),
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Visibility:'), h('div', { style:{color:'#dbdee1'} }, '4.00 miles')),
@@ -1283,7 +1287,7 @@ function DcBotResponse() {
           h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
         ),
         h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:DC_GG_SANS} },
-          h('img', { src:'assets/emoji-snowball-circle.png', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
+          h('img', { src:'assets/emoji-snowball-thinking.png', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
           'Thought for 5 seconds · ',
           DC_USER_PING
         ),
