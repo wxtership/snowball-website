@@ -1249,35 +1249,40 @@ function DcEmbed() {
       h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 120',overflow:'hidden'} },
         h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
-      h('div', { style:{padding:'14px 18px',display:'flex',flexDirection:'column',gap:12} },
-        h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
-          h('div', { style:{flex:1,minWidth:0} },
-            h('div', { style:{color:'#fff',fontWeight:700,fontSize:17,marginBottom:4,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
-            h('div', { style:{fontSize:13,color:'#dbdee1',lineHeight:1.5} },
-              DC_ARROW_IMG,
+      h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
+        // Header block: title + emoji on top row, description full-width below
+        h('div', null,
+          h('div', { style:{display:'flex',gap:14,alignItems:'flex-start',marginBottom:12} },
+            h('div', { style:{flex:1,minWidth:0,color:'#fff',fontWeight:700,fontSize:18,lineHeight:1.25,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
+            h('img', { src:'assets/emoji-sunny-haze.png', alt:'', loading:'lazy', style:{width:54,height:54,flexShrink:0,objectFit:'contain'} })
+          ),
+          h('div', { style:{display:'flex',gap:8,alignItems:'flex-start',fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
+            DC_ARROW_IMG,
+            h('div', { style:{flex:1,minWidth:0} },
               'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
               h('strong', { style:{color:'#fff'} }, 'haze'),
               ' as of 20 minutes ago.'
             )
-          ),
-          h('img', { src:'assets/emoji-sunny-haze.png', alt:'', loading:'lazy', style:{width:52,height:52,flexShrink:0,objectFit:'contain'} })
-        ),
-        h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2} },
-          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:4,fontFamily:DC_GG_SANS} }, 'Active Alerts'),
-          h('div', { style:{fontSize:13,color:'#dbdee1',lineHeight:1.5} },
-            DC_ARROW_IMG,
-            "There's currently an advisory for the area. You can use ", h('span', { style:{color:'#c9b6ff'} }, '/weather alerts'), ' for more information!'
           )
         ),
-        h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2} },
-          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:8,fontFamily:DC_GG_SANS} }, 'Conditions'),
-          h('div', { style:{display:'flex',flexDirection:'column',gap:10,fontSize:13,fontFamily:DC_GG_SANS} },
-            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Temperature:'), h('div', { style:{color:'#dbdee1'} }, '46°F (Feels like 42°F)')),
-            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Wind:'), h('div', { style:{color:'#dbdee1'} }, '8mph from the west-northwest (Gusting to 18mph)')),
-            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Humidity:'), h('div', { style:{color:'#dbdee1'} }, '66%')),
-            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Dew Point:'), h('div', { style:{color:'#dbdee1'} }, '35°F')),
-            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Visibility:'), h('div', { style:{color:'#dbdee1'} }, '4.00 miles')),
-            h('div', null, h('div', { style:{color:'#fff',fontWeight:600} }, 'Pressure:'), h('div', { style:{color:'#dbdee1'} }, '29.92 inHg'))
+        h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.06)'} }),
+        h('div', null,
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:8,fontFamily:DC_GG_SANS} }, 'Active Alerts'),
+          h('div', { style:{display:'flex',gap:8,alignItems:'flex-start',fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
+            DC_ARROW_IMG,
+            h('div', { style:{flex:1,minWidth:0} }, "There's currently an advisory for the area. You can use ", h('span', { style:{color:'#c9b6ff'} }, '/weather alerts'), ' for more information!')
+          )
+        ),
+        h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.06)'} }),
+        h('div', null,
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:12,fontFamily:DC_GG_SANS} }, 'Conditions'),
+          h('div', { style:{display:'flex',flexDirection:'column',gap:14,fontSize:13.5,fontFamily:DC_GG_SANS} },
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Temperature:'), h('div', { style:{color:'#dbdee1'} }, '46°F (Feels like 42°F)')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Wind:'), h('div', { style:{color:'#dbdee1'} }, '8mph from the west-northwest (Gusting to 18mph)')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Humidity:'), h('div', { style:{color:'#dbdee1'} }, '66%')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Dew Point:'), h('div', { style:{color:'#dbdee1'} }, '35°F')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Visibility:'), h('div', { style:{color:'#dbdee1'} }, '4.00 miles')),
+            h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Pressure:'), h('div', { style:{color:'#dbdee1'} }, '29.92 inHg'))
           )
         ),
         h('div', { style:{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2,fontFamily:DC_GG_SANS} },
