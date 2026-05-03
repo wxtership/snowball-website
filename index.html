@@ -1107,12 +1107,11 @@ function Hero() {
 
 function AnimatedTimeline() {
   const steps = [
-    { icon:'assets/icons/small-ai.png',        title:'Message sent',      desc:'Natural language. Any channel.',                   start: 0.15, end: 0.55 },
-    { icon:'assets/icons/small-outlook.png',   title:'Thinking',          desc:'Parsing intent, picking tools.',                   start: 0.90, end: 1.80 },
-    { icon:'assets/icons/small-satellite.png', title:'Searching the web', desc:'Web search, outlooks, current weather, and more.', start: 2.20, end: 4.20 },
-    { icon:'assets/icons/small-weather.png',   title:'Response back',     desc:'Grounded, sourced, with embeds.',                  start: 5.00, end: 5.00 },
+    { icon:'assets/icons/small-ai.png',        title:'Message sent',  desc:'Natural language. Any channel.',                          start: 0.15, end: 0.50 },
+    { icon:'assets/icons/small-satellite.png', title:'Researching',   desc:'Parses intent, fetches outlooks, current weather, more.', start: 0.90, end: 3.20 },
+    { icon:'assets/icons/small-weather.png',   title:'Response back', desc:'Grounded, sourced, with embeds.',                         start: 3.80, end: 3.80 },
   ];
-  const TOTAL = 5.0;
+  const TOTAL = 4.0;
   const FRAME = 50;
 
   const [t, setT]         = useState(0);
