@@ -637,13 +637,9 @@ body {
     transform: scale(0.9);
 }
 
-.nav-btn-circle i {
-    font-size: 1.1rem;
-}
-
+.nav-btn-circle i,
 .back-btn-circle i {
-    font-size: 1rem;
-    margin-right: 2px;
+    font-size: 1.1rem;
 }
 
 /* Update the nav-btn-disabled class with smooth transitions */
