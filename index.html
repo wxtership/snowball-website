@@ -1306,10 +1306,13 @@ function DcBotResponse() {
 
 function DiscordChatDemo({ t, fading }) {
   // Derive phase from the shared clock so the chat stays in lockstep with the
-  // timeline above. Boundaries match AI_TIMELINE_STEPS start times.
+  // timeline above. Boundaries match AI_TIMELINE_STEPS start/end times.
+  // Phase 2.5 is a deliberate gap — Thinking disappears at the end of
+  // Researching (4.20s), then nothing for ~0.8s, then BotResponse pops in.
   const phase = t < 0.20 ? 0
               : t < 1.10 ? 1   // UserMessage shown (timeline: "Message sent")
-              : t < 5.00 ? 2   // + Thinking (timeline: "Researching")
+              : t < 4.20 ? 2   // + Thinking (timeline: "Researching")
+              : t < 5.00 ? 2.5 // Thinking removed, BotResponse not yet
                          : 3;  // + BotResponse (timeline: "Response back")
   const ref         = useRef(null);
   const contentRef  = useRef(null);
