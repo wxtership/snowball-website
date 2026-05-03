@@ -179,9 +179,21 @@ body {
   font-family: var(--font-body); font-size: 15px; padding: 14px 28px;
   border-radius: 999px; border: none; cursor: pointer; text-decoration: none;
   box-shadow: var(--glow), 0 4px 20px rgba(0,0,0,0.5);
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition: transform 0.15s, box-shadow 0.2s;
+  position: relative;
+  isolation: isolate;
 }
-.btn-primary:hover { background: var(--purple-400); transform: scale(1.04); box-shadow: 0 0 50px rgba(107,84,245,0.6), 0 4px 20px rgba(0,0,0,0.5); }
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.55);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.btn-primary:hover::after { opacity: 1; }
 .btn-primary:active { transform: scale(0.97); }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1118,7 +1130,7 @@ function Hero() {
 const AI_TIMELINE_STEPS = [
   { icon:'assets/icons/small-ai.png',        title:'Message sent',  desc:'Snowball will reply to you in any channel',                  start: 0.20, end: 0.70 },
   { icon:'assets/icons/small-satellite.png', title:'Researching',   desc:'Snowball will find the relevant data for your question',     start: 1.10, end: 4.20 },
-  { icon:'assets/icons/small-weather.png',   title:'Response back', desc:"In just a few seconds, you'll get all the info you'd need.", start: 5.00, end: 5.00 },
+  { icon:'assets/icons/small-weather.png',   title:'Response back', desc:"In just a few seconds, you'll get all the info you'd need", start: 5.00, end: 5.00 },
 ];
 const AI_TIMELINE_TOTAL = 5.0;
 
@@ -1193,8 +1205,8 @@ function DcReplyQuote() {
     ),
     h('div', { style:{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'} },
       h('img', { src: DC_WX_AVATAR, alt: '', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover',verticalAlign:'middle',marginRight:6,marginTop:-2} }),
-      h('span', { style:{color:'#e67e22',fontWeight:600,marginRight:6} }, 'wxtership'),
-      h('span', { style:{color:'#c9b6ff',fontWeight:700,marginRight:6} }, '@Snowball'),
+      h('span', { style:{color:'#a78bfa',fontWeight:600,marginRight:6} }, 'wxtership'),
+      h('span', { style:{color:'#c9b6ff',marginRight:6} }, '@Snowball'),
       h('span', null, "What's going on in Pittsburgh today?")
     )
   );
@@ -1205,11 +1217,11 @@ function DcUserMessage() {
     h('img', { src: DC_WX_AVATAR, alt: '', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
     h('div', { style:{flex:1,minWidth:0} },
       h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
-        h('span', { style:{color:'#e67e22',fontWeight:600,fontSize:15} }, 'wxtership'),
+        h('span', { style:{color:'#a78bfa',fontWeight:600,fontSize:15} }, 'wxtership'),
         h('span', { style:{color:'#80848e',fontSize:12} }, '6:07 PM')
       ),
       h('div', { style:{color:'#dbdee1',lineHeight:1.6} },
-        h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3,fontWeight:700} }, '@Snowball'),
+        h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3} }, '@Snowball'),
         " What's going on in Pittsburgh today?"
       )
     )
@@ -1256,21 +1268,21 @@ function DcEmbed() {
             h('div', { style:{flex:1,minWidth:0,color:'#fff',fontWeight:700,fontSize:18,lineHeight:1.25,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
             h('img', { src:'assets/emoji-sunny-haze.png', alt:'', loading:'lazy', style:{width:54,height:54,flexShrink:0,objectFit:'contain'} })
           ),
-          h('div', { style:{display:'flex',gap:8,alignItems:'flex-start',fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
+          h('div', { style:{fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
             DC_ARROW_IMG,
-            h('div', { style:{flex:1,minWidth:0} },
-              'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
-              h('strong', { style:{color:'#fff'} }, 'haze'),
-              ' as of 20 minutes ago.'
-            )
+            'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
+            h('strong', { style:{color:'#fff'} }, 'haze'),
+            ' as of 20 minutes ago.'
           )
         ),
         h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.06)'} }),
         h('div', null,
           h('div', { style:{color:'#fff',fontWeight:700,fontSize:15,marginBottom:8,fontFamily:DC_GG_SANS} }, 'Active Alerts'),
-          h('div', { style:{display:'flex',gap:8,alignItems:'flex-start',fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
+          h('div', { style:{fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
             DC_ARROW_IMG,
-            h('div', { style:{flex:1,minWidth:0} }, "There's currently an advisory for the area. You can use ", h('span', { style:{color:'#c9b6ff'} }, '/weather alerts'), ' for more information!')
+            "There's currently an advisory for the area. You can use ",
+            h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3} }, '/weather alerts'),
+            ' for more information!'
           )
         ),
         h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.06)'} }),
@@ -1449,9 +1461,7 @@ function AiSection() {
     h('div', { className: 'section-inner' },
       h('h2', { className: 'section-title' }, 'The only AI that', h('br'), 'actually looks it up'),
       h('p', { className: 'section-body' },
-        'Every other AI makes up weather data. Snowball’s AI hits the live web and the same NWS, SPC, and NOAA feeds the pros use — then answers in ',
-        h('strong', { style:{color:'#fff'} }, '~3–4 seconds'),
-        '. Heavy multi-tool requests still come back in under 8.'
+        "Every other AI will just try searching the web or making up data. Snowball's AI has all of the tools to give you an accurate response. Whether its the current weather, forecast, or even the radar: Snowball can do it."
       ),
       h(AnimatedTimeline, { t, fading }),
       h(DiscordChatDemo,  { t, fading })
@@ -1696,7 +1706,7 @@ function PreviewTicker() {
   ];
 
   return h('div', { className:'preview-ticker-wrap' },
-    h('h2', { className:'preview-ticker-title' }, 'The community', h('br'), 'is already inside.'),
+    h('h2', { className:'preview-ticker-title' }, 'THE COMMUNITY', h('br'), 'IS ALREADY INSIDE.'),
     h('div', { className:'preview-ticker-grid' },
       ...stats.map((s,i) => {
         const isWord = typeof s.num === 'string' && /^[A-Za-z]/.test(s.num);
