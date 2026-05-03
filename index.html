@@ -1254,7 +1254,7 @@ function DcThinking({ leaving }) {
 // Inline arrow used in embed bullet rows. Hoisted so we don't rebuild the
 // element every render. Sits inline with the text so wrapped lines flow
 // underneath the arrow, matching Discord's real embed bullet behavior.
-const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy', style:{width:17,height:17,objectFit:'contain',verticalAlign:'-4px',marginRight:6} });
+const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy', style:{width:14,height:14,objectFit:'contain',verticalAlign:'top',marginRight:6,marginTop:3} });
 
 function DcEmbed() {
     return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:460,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,backdropFilter:'blur(4px)'} },
@@ -1365,7 +1365,7 @@ function DiscordChatDemo({ t, fading }) {
     setBodyHeight(measured);
   }, [showUserMsg, showThinking, thinkingLeaving, showBotResponse]);
 
-  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:560} },
+  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:720} },
     h(DcChannelHeader),
     h('div', {
       style: {
