@@ -4311,37 +4311,47 @@ body {
     }
     
     /* =====================================================================
-       DISABLE HOVER EFFECTS ON TOUCH DEVICES
+       DISABLE HOVER ANIMATIONS ON MOBILE (except buttons & footer)
        ===================================================================== */
-    
-    .nav-btn-circle:hover,
-    .back-btn-circle:hover,
-    .search-trigger-btn:hover,
-    .hamburger:hover {
-        background: rgba(255, 255, 255, 0.15);
-        transform: none;
+
+    /* Kill transitions on cards/items so tap-triggered :hover never animates */
+    .mega-item,
+    .mega-item i,
+    .mobile-big-link,
+    .clean-link,
+    .alert-item,
+    .hourly-card,
+    .life-card,
+    .stat-item,
+    .resultitem,
+    .fav-item,
+    .fav-delete,
+    .no-cams-box,
+    .vjs-big-play-button,
+    .location,
+    .bottom-nav-item,
+    .camera-thumb-overlay,
+    .search-input-large {
+        transition: none !important;
     }
-    
-    .units-toggle:hover {
-        background: rgba(255, 255, 255, 0.15);
-    }
-    
+
+    /* Neutralize :hover state to base values (no visible change on tap) */
     .mega-item:hover {
         background: transparent;
         border-color: transparent;
         transform: none;
     }
-    
+
+    .mega-item:hover i {
+        transform: none;
+        color: inherit;
+    }
+
     .mobile-big-link:hover,
     .clean-link:hover {
         opacity: 1;
     }
-    
-    .mobile-units-pill:hover {
-        background: rgba(255, 255, 255, 0.12);
-        color: rgba(255, 255, 255, 0.7);
-    }
-    
+
     .alert-item:hover {
         background: rgba(255, 255, 255, 0.07);
         border-right-color: rgba(255, 255, 255, 0.08);
@@ -4350,113 +4360,67 @@ body {
         transform: none;
         box-shadow: none;
     }
-    
-    .alert-modal-close:hover,
-    .camera-modal-close:hover,
-    .share-modal-close:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: none;
-    }
-    
+
     .hourly-card:hover {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.05);
         transform: none;
     }
-    
+
     .life-card:hover {
-        background: rgba(255, 255, 255, 0.12);
-        transform: none;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-    }
-    
-    .stat-item:hover {
-        background: rgba(255, 255, 255, 0.08);
-        transform: none;
-    }
-    
-    .resultitem:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: transparent;
-        color: rgba(255, 255, 255, 0.8);
-        transform: none;
-    }
-    
-    .fav-item:hover {
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
         transform: none;
         box-shadow: none;
     }
-    
+
+    .stat-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: none;
+    }
+
+    .resultitem:hover {
+        background: transparent;
+        border-color: transparent;
+        color: inherit;
+        transform: none;
+    }
+
+    .fav-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: none;
+        box-shadow: none;
+    }
+
     .fav-item:hover .fav-delete {
         opacity: 0;
     }
-    
-    .current-location-btn:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        color: rgba(255, 255, 255, 0.9);
-        transform: none;
-        box-shadow: none;
-    }
-    
+
     .search-input-large:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: none;
-        box-shadow: none;
-    }
-    
-    .view-map-btn:hover,
-    .hourly-cta:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: none;
-    }
-    
-    .share-platform-btn:hover {
-        background: rgba(255, 255, 255, 0.07);
-        border-color: rgba(255, 255, 255, 0.08);
-        transform: none;
-        box-shadow: none;
-    }
-    
-    .share-more-btn:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.15);
-    }
-    
-    .social-btn:hover {
         background: rgba(255, 255, 255, 0.05);
         border-color: rgba(255, 255, 255, 0.1);
         transform: none;
         box-shadow: none;
     }
-    
-    .social-btn:hover i {
-        color: rgba(255, 255, 255, 0.7);
-        text-shadow: none;
-    }
-    
-    .footer-link:hover {
-        color: rgba(255, 255, 255, 0.5);
-    }
-    
+
     .no-cams-box:hover {
-        background: rgba(255, 255, 255, 0.03);
-        border-color: rgba(255, 255, 255, 0.1);
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.05);
     }
-    
+
     .video-js:hover .vjs-big-play-button {
-        background: rgba(255, 255, 255, 0.1);
+        background: inherit;
         transform: none;
     }
-    
+
     .location:hover {
-        background: rgba(255, 255, 255, 0.12);
+        background: transparent;
     }
-    
+
     .bottom-nav-item:hover {
-        color: rgba(255, 255, 255, 0.5);
+        color: inherit;
+    }
+
+    .camera-thumb:hover .camera-thumb-overlay {
+        transform: none;
     }
     
     /* =====================================================================
