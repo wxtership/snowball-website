@@ -1182,16 +1182,21 @@ function DcChannelHeader() {
 }
 
 function DcReplyQuote() {
-  // Inline flow (not flex) so the message text wraps naturally beneath the
-  // avatar/name on narrow widths instead of being clipped with an ellipsis.
-  return h('div', { style:{position:'relative',marginTop:-6,marginBottom:8,marginLeft:8,paddingLeft:30,fontSize:13,color:'#b5bac1',lineHeight:'20px'} },
+  // Sits as its own row above the avatar+name line, like a real Discord
+  // reply header. marginLeft:20 lines the curve up over the bot avatar
+  // below. Inner div clips overflow with an ellipsis so the snippet stays
+  // a single line; SVG lives outside that clipped region so the curve
+  // isn't truncated by overflow:hidden.
+  return h('div', { style:{position:'relative',marginTop:-2,marginBottom:2,marginLeft:20,paddingLeft:42,fontSize:13,color:'#b5bac1',lineHeight:'20px'} },
     h('svg', { width:32, height:18, viewBox:'0 0 32 18', fill:'none', style:{position:'absolute',left:-2,top:6} },
       h('path', { d:'M2 17 L2 8 Q2 3 7 3 L30 3', stroke:'#4e5058', strokeWidth:2, strokeLinecap:'round', strokeLinejoin:'round' })
     ),
-    h('img', { src: DC_WX_AVATAR, alt: '', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover',verticalAlign:'middle',marginRight:6,marginTop:-2} }),
-    h('span', { style:{color:'#e67e22',fontWeight:600,marginRight:6} }, 'wxtership'),
-    h('span', { style:{color:'#c9b6ff',marginRight:6} }, '@Snowball'),
-    h('span', null, "What's going on in Pittsburgh today?")
+    h('div', { style:{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'} },
+      h('img', { src: DC_WX_AVATAR, alt: '', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover',verticalAlign:'middle',marginRight:6,marginTop:-2} }),
+      h('span', { style:{color:'#e67e22',fontWeight:600,marginRight:6} }, 'wxtership'),
+      h('span', { style:{color:'#c9b6ff',marginRight:6} }, '@Snowball'),
+      h('span', null, "What's going on in Pittsburgh today?")
+    )
   );
 }
 
@@ -1215,18 +1220,20 @@ function DcThinking({ leaving }) {
   const anim = leaving
     ? 'dcMsgOut 0.30s cubic-bezier(0.4, 0, 1, 1) forwards'
     : 'dcMsgIn 0.22s ease forwards';
-  return h('div', { style:{display:'flex',gap:16,padding:'4px 16px',animation:anim} },
-    h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
-    h('div', { style:{flex:1,minWidth:0} },
-      h(DcReplyQuote),
-      h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
-        h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
-        h('img', { src:'assets/app.png', alt:'APP', style:{height:30,width:'auto',objectFit:'contain',flexShrink:0,verticalAlign:'middle'} }),
-        h('span', { style:{color:'#80848e',fontSize:12} }, '6:07 PM')
-      ),
-      h('div', { style:{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14} },
-        h('img', { src:'assets/icons/small-clock.webp', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
-        "Snowball's ruminating on it…"
+  return h('div', { style:{padding:'4px 16px',animation:anim} },
+    h(DcReplyQuote),
+    h('div', { style:{display:'flex',gap:16} },
+      h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+      h('div', { style:{flex:1,minWidth:0} },
+        h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
+          h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
+          h('img', { src:'assets/app.png', alt:'APP', style:{height:30,width:'auto',objectFit:'contain',flexShrink:0,verticalAlign:'middle'} }),
+          h('span', { style:{color:'#80848e',fontSize:12} }, '6:07 PM')
+        ),
+        h('div', { style:{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14} },
+          h('img', { src:'assets/icons/small-clock.webp', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
+          "Snowball's ruminating on it…"
+        )
       )
     )
   );
@@ -1282,36 +1289,38 @@ function DcEmbed() {
   }
 
 function DcBotResponse() {
-  return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'} },
-      h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
-      h('div', { style:{flex:1,minWidth:0} },
-        h(DcReplyQuote),
-        h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:6} },
-          h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
-          h('img', { src:'assets/app.png', alt:'APP', style:{height:30,width:'auto',objectFit:'contain',flexShrink:0,verticalAlign:'middle'} }),
-          h('span', { style:{color:'#80848e',fontSize:12} }, '6:07 PM')
-        ),
-        h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:DC_GG_SANS} },
-          h('img', { src:'assets/thinkingdone.webp', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
-          h('span', null, 'Thought for 5 seconds'),
-          h('span', { style:{width:4,height:4,borderRadius:'50%',background:'#80848e',display:'inline-block',flexShrink:0} }),
-          DC_USER_PING
-        ),
-        h(DcEmbed),
-        h('button', { type:'button', style:{marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,padding:'7px 14px',borderRadius:6,cursor:'pointer',display:'inline-flex',alignItems:'center',gap:6} },
-          'View Full Forecast',
-          h('img', { src:'assets/linkbutton.png', alt:'', style:{width:22,height:22,objectFit:'contain',opacity:0.9} })
-        ),
-        h('div', { style:{marginTop:14,display:'flex',gap:14,fontSize:13,color:'#dbdee1',lineHeight:1.6} },
-          h('div', { style:{width:4,background:'#4e5058',borderRadius:2,flexShrink:0,alignSelf:'stretch'} }),
-          h('div', { style:{flex:1,minWidth:0} },
-            "Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. ",
-            h('img', { src:'assets/true.webp', alt:'', loading:'lazy', style:{width:18,height:18,objectFit:'contain',verticalAlign:'middle',marginLeft:2} })
+  return h('div', { style:{padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'} },
+      h(DcReplyQuote),
+      h('div', { style:{display:'flex',gap:16} },
+        h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+        h('div', { style:{flex:1,minWidth:0} },
+          h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:6} },
+            h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
+            h('img', { src:'assets/app.png', alt:'APP', style:{height:30,width:'auto',objectFit:'contain',flexShrink:0,verticalAlign:'middle'} }),
+            h('span', { style:{color:'#80848e',fontSize:12} }, '6:07 PM')
+          ),
+          h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:DC_GG_SANS} },
+            h('img', { src:'assets/thinkingdone.webp', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
+            h('span', null, 'Thought for 5 seconds'),
+            h('span', { style:{width:4,height:4,borderRadius:'50%',background:'#80848e',display:'inline-block',flexShrink:0} }),
+            DC_USER_PING
+          ),
+          h(DcEmbed),
+          h('button', { type:'button', style:{marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,padding:'7px 14px',borderRadius:6,cursor:'pointer',display:'inline-flex',alignItems:'center',gap:6} },
+            'View Full Forecast',
+            h('img', { src:'assets/linkbutton.png', alt:'', style:{width:22,height:22,objectFit:'contain',opacity:0.9} })
+          ),
+          h('div', { style:{marginTop:14,display:'flex',gap:14,fontSize:13,color:'#dbdee1',lineHeight:1.6} },
+            h('div', { style:{width:4,background:'#4e5058',borderRadius:2,flexShrink:0,alignSelf:'stretch'} }),
+            h('div', { style:{flex:1,minWidth:0} },
+              "Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. ",
+              h('img', { src:'assets/true.webp', alt:'', loading:'lazy', style:{width:18,height:18,objectFit:'contain',verticalAlign:'middle',marginLeft:2} })
+            )
+          ),
+          h('div', { style:{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5,fontFamily:DC_GG_SANS} },
+            h('img', { src:'assets/disclaimer.webp', alt:'', style:{width:14,height:14,objectFit:'contain',flexShrink:0} }),
+            "Snowball's AI responses can make mistakes. Unlimited usage."
           )
-        ),
-        h('div', { style:{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5,fontFamily:DC_GG_SANS} },
-          h('img', { src:'assets/disclaimer.webp', alt:'', style:{width:14,height:14,objectFit:'contain',flexShrink:0} }),
-          "Snowball's AI responses can make mistakes. Unlimited usage."
         )
       )
     );
