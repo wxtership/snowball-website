@@ -291,9 +291,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 .timeline-dot {
   position: relative;
+  z-index: 2;
   border-radius: 50% !important;
   width: 44px; height: 44px;
-  background: rgba(255,255,255,0.04);
+  background: #0b0b0f;
   border: 1px solid rgba(255,255,255,0.12);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -344,9 +345,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   flex: 1;
   width: 2px;
   background: rgba(74,222,128,0.5);
-  margin: 6px 0 -6px;
+  margin: -6px 0 -6px;
   min-height: 28px;
   position: relative;
+  z-index: 1;
   overflow: hidden;
 }
 .timeline-body {
@@ -1139,7 +1141,7 @@ function AnimatedTimeline({ t, fading }) {
         h('div', { className: 'timeline-rail' },
           h('div', { className: 'timeline-dot' },
             s.state === 'active' ? h('span', { className: 'timeline-spinner' }) : h('img', { src: s.icon, alt: '' }),
-            s.state === 'done' ? h('span', { className: 'timeline-check' }, '✓') : null
+            s.state === 'done' ? h('span', { className: 'timeline-check' }, h('i', { className: 'fa-solid fa-check' })) : null
           ),
           i < stepStates.length - 1 ? h('div', { className: 'timeline-line' + (s.state === 'done' ? ' is-filled' : '') }) : null
         ),
@@ -1154,7 +1156,8 @@ function AnimatedTimeline({ t, fading }) {
 }
 
 const DC_DOTS_CSS = `
-  @keyframes dcMsgIn { from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);} }
+  @keyframes dcMsgIn  { from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);} }
+  @keyframes dcMsgOut { from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(-6px) scale(0.97);} }
   .dc-dots{display:inline-flex;gap:3px;align-items:center;margin-left:2px;}
   .dc-dots span{width:4px;height:4px;border-radius:50%;background:#80848e;animation:dcDot 1.2s infinite ease-in-out;}
   .dc-dots span:nth-child(2){animation-delay:0.2s;}
@@ -1208,13 +1211,16 @@ function DcUserMessage() {
   );
 }
 
-function DcThinking() {
-  return h('div', { style:{display:'flex',gap:16,padding:'4px 16px',animation:'dcMsgIn 0.22s ease forwards'} },
+function DcThinking({ leaving }) {
+  const anim = leaving
+    ? 'dcMsgOut 0.30s cubic-bezier(0.4, 0, 1, 1) forwards'
+    : 'dcMsgIn 0.22s ease forwards';
+  return h('div', { style:{display:'flex',gap:16,padding:'4px 16px',animation:anim} },
     h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
     h('div', { style:{flex:1,minWidth:0} },
       h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
         h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
-        h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '✓ APP'),
+        h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, h('img', { src:'assets/app.png', alt:'', style:{width:9,height:9,objectFit:'contain'} }), 'APP'),
         h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
       ),
       h('div', { style:{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14} },
@@ -1283,7 +1289,7 @@ function DcBotResponse() {
         h(DcReplyQuote),
         h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:6} },
           h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
-          h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, '✓ APP'),
+          h('span', { style:{background:'#5865f2',color:'#fff',fontSize:9,padding:'1px 5px',borderRadius:3,fontWeight:700,display:'inline-flex',alignItems:'center',gap:3} }, h('img', { src:'assets/app.png', alt:'', style:{width:9,height:9,objectFit:'contain'} }), 'APP'),
           h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
         ),
         h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:DC_GG_SANS} },
@@ -1294,7 +1300,7 @@ function DcBotResponse() {
         h(DcEmbed),
         h('button', { type:'button', style:{marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,padding:'7px 14px',borderRadius:6,cursor:'pointer',display:'inline-flex',alignItems:'center',gap:6} },
           'View Full Forecast',
-          h('span', { style:{fontSize:11,opacity:0.7} }, '↗')
+          h('img', { src:'assets/linkbutton.png', alt:'', style:{width:14,height:14,objectFit:'contain',opacity:0.85} })
         ),
         h('div', { style:{marginTop:14,paddingLeft:14,borderLeft:'4px solid #4e5058',fontSize:13,color:'#dbdee1',lineHeight:1.6} },
           "Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. ",
@@ -1309,15 +1315,14 @@ function DcBotResponse() {
   }
 
 function DiscordChatDemo({ t, fading }) {
-  // Derive phase from the shared clock so the chat stays in lockstep with the
-  // timeline above. Boundaries match AI_TIMELINE_STEPS start/end times.
-  // Phase 2.5 is a deliberate gap — Thinking disappears at the end of
-  // Researching (4.20s), then nothing for ~0.8s, then BotResponse pops in.
-  const phase = t < 0.20 ? 0
-              : t < 1.10 ? 1   // UserMessage shown (timeline: "Message sent")
-              : t < 4.20 ? 2   // + Thinking (timeline: "Researching")
-              : t < 5.00 ? 2.5 // Thinking removed, BotResponse not yet
-                         : 3;  // + BotResponse (timeline: "Response back")
+  // Derived visibility flags for each chat element, driven by the shared clock.
+  // Thinking renders for an extra 0.30s past the Researching boundary so the
+  // dcMsgOut fade animation can play before unmount. `thinkingLeaving` flips to
+  // true when t crosses 4.20s, swapping the entry animation for the exit one.
+  const showUserMsg     = t >= 0.20;
+  const showThinking    = t >= 1.10 && t < 4.50;
+  const thinkingLeaving = t >= 4.20;
+  const showBotResponse = t >= 5.00;
   const ref         = useRef(null);
   const contentRef  = useRef(null);
   const [bodyHeight, setBodyHeight] = useState(240);
@@ -1329,7 +1334,7 @@ function DiscordChatDemo({ t, fading }) {
     if (!contentRef.current) return;
     const measured = Math.max(240, contentRef.current.scrollHeight);
     setBodyHeight(measured);
-  }, [phase]);
+  }, [showUserMsg, showThinking, thinkingLeaving, showBotResponse]);
 
   return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:560} },
     h(DcChannelHeader),
@@ -1341,9 +1346,9 @@ function DiscordChatDemo({ t, fading }) {
       },
     },
       h('div', { ref: contentRef, style:{padding:'16px 0'} },
-        phase >= 1 ? h(DcUserMessage,  { key: 'msg'   }) : null,
-        phase === 2 ? h(DcThinking,    { key: 'think' }) : null,
-        phase >= 3 ? h(DcBotResponse,  { key: 'bot'   }) : null
+        showUserMsg     ? h(DcUserMessage,  { key: 'msg'   })                            : null,
+        showThinking    ? h(DcThinking,     { key: 'think', leaving: thinkingLeaving }) : null,
+        showBotResponse ? h(DcBotResponse,  { key: 'bot'   })                            : null
       )
     ),
     h('div', { style:{margin:'0 16px 16px',background:'rgba(56,58,64,0.6)',backdropFilter:'blur(6px)',borderRadius:8,padding:'11px 16px',color:'#6d6f78',fontSize:14,display:'flex',alignItems:'center',gap:6} },
