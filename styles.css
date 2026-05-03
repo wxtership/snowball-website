@@ -4677,12 +4677,6 @@ body.scroll-locked {
     transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.15s ease;
 }
 
-.cmd-filter-pill:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: white;
-}
-
 .cmd-filter-pill:active {
     transform: scale(0.96);
 }
@@ -4691,10 +4685,6 @@ body.scroll-locked {
     background: white;
     border-color: white;
     color: #0b0b0f;
-}
-
-.cmd-filter-pill.active:hover {
-    background: rgba(255, 255, 255, 0.92);
 }
 
 .commands-grid {
