@@ -482,6 +482,16 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 @keyframes vt-fade-out { to { opacity: 0; } }
 @keyframes vt-fade-in  { from { opacity: 0; } }
+
+/* Navbar: own snapshot, no fade, no movement — preserves backdrop-filter blur
+   during the grid transition instead of dropping it for 360ms. */
+::view-transition-old(navbar),
+::view-transition-new(navbar) {
+  animation: none !important;
+  mix-blend-mode: normal;
+}
+::view-transition-old(navbar) { opacity: 0; }
+::view-transition-new(navbar) { opacity: 1; }
 @media (max-width: 768px) {
   .cmd-filters { gap: 8px; margin: 22px 0 24px; }
   .cmd-filter-pill { padding: 8px 14px; font-size: 0.82rem; }
@@ -1509,12 +1519,18 @@ function CommandsSection() {
     // on the grid permanently creates a stacking context that breaks the
     // navbar's backdrop-filter from blurring the grid underneath on scroll.
     if (typeof document !== 'undefined' && document.startViewTransition && grid) {
+      // Give the navbar its own snapshot too so backdrop-filter keeps working
+      // during the transition. Without this, it's flattened into the root
+      // snapshot and loses the live blur for the 360ms transition window.
+      const navbar = document.querySelector('.navbar');
       grid.style.viewTransitionName = 'commands-grid';
+      if (navbar) navbar.style.viewTransitionName = 'navbar';
       const t = document.startViewTransition(() => {
         ReactDOM.flushSync(() => setActive(cat));
       });
       t.finished.finally(() => {
         grid.style.viewTransitionName = '';
+        if (navbar) navbar.style.viewTransitionName = '';
       });
     } else {
       setActive(cat);
