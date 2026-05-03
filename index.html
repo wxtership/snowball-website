@@ -439,6 +439,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .cmd-filter-pill.active { background: var(--purple-500, #6b54f5); border-color: var(--purple-400, #8a76ff); color: #fff; }
 .cmd-filter-pill.active:hover { background: var(--purple-400, #8a76ff); }
 
+.commands-wrapper {
+  overflow: hidden;
+  transition: height 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
 .commands-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -449,10 +453,19 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px; padding: 10px 16px;
   min-width: 0;
-  cursor: default; backdrop-filter: blur(10px);
+  cursor: default;
   opacity: 0;
   animation: cmd-chip-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 18ms);
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  contain: layout paint;
+}
+.cmd-chip.hidden {
+  display: none;
+}
+.cmd-chip.leaving {
+  animation: cmd-chip-out 220ms cubic-bezier(0.4, 0, 1, 1) both;
+  animation-delay: calc(var(--i, 0) * 10ms);
 }
 .cmd-chip:hover { background: rgba(107,84,245,0.14); border-color: rgba(107,84,245,0.35); transform: translateY(-2px); }
 .cmd-chip img { width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0; }
@@ -462,6 +475,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 @keyframes cmd-chip-in {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cmd-chip-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-6px); }
 }
 @media (max-width: 768px) {
   .cmd-filters { gap: 8px; margin: 22px 0 24px; }
@@ -1465,8 +1482,38 @@ function CommandsSection() {
     { cat:'Community', icon:'assets/icons/small-leaderboard.png', name:'leaderboard',   desc:'View leaderboards' },
   ];
   const cats = ['Weather', 'EAS', 'Music & Radio', 'Economy', 'Utility', 'Community'];
+
+  // Pre-compute index-within-category so each card has a stable stagger position.
+  const seenIdx = {};
+  const cmdsWithIdx = cmds.map(c => {
+    const idx = seenIdx[c.cat] || 0;
+    seenIdx[c.cat] = idx + 1;
+    return Object.assign({}, c, { _i: idx });
+  });
+
   const [active, setActive] = useState('Weather');
-  const filtered = cmds.filter(c => c.cat === active);
+  const [outgoing, setOutgoing] = useState(null);
+  const wrapperRef = useRef(null);
+  const gridRef = useRef(null);
+
+  // Animate the wrapper's height to match the grid whenever the active filter changes.
+  useEffect(() => {
+    if (!wrapperRef.current || !gridRef.current) return;
+    wrapperRef.current.style.height = gridRef.current.scrollHeight + 'px';
+  }, [active]);
+
+  const handlePick = (cat) => {
+    if (cat === active || outgoing) return;
+    if (wrapperRef.current && gridRef.current) {
+      // Lock current height before swap so the height transition has a "from" value.
+      wrapperRef.current.style.height = gridRef.current.scrollHeight + 'px';
+    }
+    setOutgoing(active);
+    setTimeout(() => {
+      setActive(cat);
+      setOutgoing(null);
+    }, 240);
+  };
 
   return h('section', { id:'commands' },
     h('div', { className:'divider' }),
@@ -1480,23 +1527,30 @@ function CommandsSection() {
           h('button', {
             key: cat,
             className: 'cmd-filter-pill' + (cat === active ? ' active' : ''),
-            onClick: () => setActive(cat),
+            onClick: () => handlePick(cat),
           }, cat)
         )
       ),
-      h('div', { className:'commands-grid', key: active },
-        ...filtered.map((c, i) =>
-          h('div', {
-            key: c.name,
-            className: 'cmd-chip',
-            style: { animationDelay: (i * 18) + 'ms' },
-          },
-            h('img', { src:c.icon, alt:'', loading:'lazy' }),
-            h('div', { className:'cmd-chip-inner' },
-              h('span', { className:'cmd-chip-name' }, '/' + c.name),
-              h('span', { className:'cmd-chip-desc' }, c.desc)
-            )
-          )
+      h('div', { className:'commands-wrapper', ref: wrapperRef },
+        h('div', { ref: gridRef, className:'commands-grid' },
+          ...cmdsWithIdx.map(c => {
+            const visible = c.cat === active;
+            const leaving = c.cat === outgoing && !visible;
+            let cls = 'cmd-chip';
+            if (leaving) cls += ' leaving';
+            else if (!visible) cls += ' hidden';
+            return h('div', {
+              key: c.name,
+              className: cls,
+              style: { '--i': c._i },
+            },
+              h('img', { src:c.icon, alt:'', width:28, height:28, decoding:'async' }),
+              h('div', { className:'cmd-chip-inner' },
+                h('span', { className:'cmd-chip-name' }, '/' + c.name),
+                h('span', { className:'cmd-chip-desc' }, c.desc)
+              )
+            );
+          })
         )
       )
     )
