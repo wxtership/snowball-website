@@ -1218,6 +1218,7 @@ function DcThinking({ leaving }) {
   return h('div', { style:{display:'flex',gap:16,padding:'4px 16px',animation:anim} },
     h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
     h('div', { style:{flex:1,minWidth:0} },
+      h(DcReplyQuote),
       h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
         h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
         h('img', { src:'assets/app.png', alt:'APP', style:{height:30,width:'auto',objectFit:'contain',flexShrink:0,verticalAlign:'middle'} }),
@@ -1225,7 +1226,7 @@ function DcThinking({ leaving }) {
       ),
       h('div', { style:{color:'#80848e',display:'flex',alignItems:'center',gap:6,fontSize:14} },
         h('img', { src:'assets/icons/small-clock.webp', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
-        'Snowball is thinking'
+        "Snowball's ruminating on it…"
       )
     )
   );
