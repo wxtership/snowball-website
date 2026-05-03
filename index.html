@@ -1228,7 +1228,7 @@ function DcThinking() {
 
 // Inline arrow used in embed bullet rows. Hoisted so we don't rebuild the
 // element every render.
-const DC_ARROW_IMG = h('img', { src:'assets/emoji-snowball-face.png', alt:'', loading:'lazy', style:{width:16,height:16,objectFit:'contain',flexShrink:0,marginTop:2} });
+const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy', style:{width:16,height:16,objectFit:'contain',flexShrink:0,marginTop:2} });
 
 function DcEmbed() {
     return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:460,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,backdropFilter:'blur(4px)'} },
@@ -1287,7 +1287,7 @@ function DcBotResponse() {
           h('span', { style:{color:'#80848e',fontSize:12} }, '4:06 PM')
         ),
         h('div', { style:{color:'#80848e',fontSize:13,marginBottom:10,display:'flex',alignItems:'center',gap:5,flexWrap:'wrap',fontFamily:DC_GG_SANS} },
-          h('img', { src:'assets/emoji-snowball-thinking.png', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
+          h('img', { src:'assets/thinkingdone.webp', alt:'', style:{width:16,height:16,objectFit:'contain',flexShrink:0} }),
           'Thought for 5 seconds · ',
           DC_USER_PING
         ),
@@ -1298,10 +1298,10 @@ function DcBotResponse() {
         ),
         h('div', { style:{marginTop:14,paddingLeft:14,borderLeft:'4px solid #4e5058',fontSize:13,color:'#dbdee1',lineHeight:1.6} },
           "Pretty mild out there right now — mid-46s with some haze, light west-northwest breeze. Feels a touch cooler at 42 with the wind chill. There's an active advisory in the area if you want to check that out. Nothing dramatic, just a typical Thursday afternoon. ",
-          h('img', { src:'assets/emoji-true.png', alt:'', loading:'lazy', style:{width:18,height:18,objectFit:'contain',verticalAlign:'middle',marginLeft:2} })
+          h('img', { src:'assets/true.webp', alt:'', loading:'lazy', style:{width:18,height:18,objectFit:'contain',verticalAlign:'middle',marginLeft:2} })
         ),
         h('div', { style:{marginTop:8,fontSize:11,color:'#80848e',display:'flex',alignItems:'center',gap:5,fontFamily:DC_GG_SANS} },
-          h('img', { src:'assets/emoji-snowball-cloud.png', alt:'', style:{width:14,height:14,objectFit:'contain',flexShrink:0} }),
+          h('img', { src:'assets/disclaimer.webp', alt:'', style:{width:14,height:14,objectFit:'contain',flexShrink:0} }),
           "Snowball's AI responses can make mistakes. Unlimited usage."
         )
       )
