@@ -520,6 +520,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .cmd-chip img { width: 22px; height: 22px; }
   .cmd-chip-name { font-size: 12px; }
   .cmd-chip-desc { font-size: 10.5px; }
+  /* Disable card hover lift/glow on touch (econ cards) — they were getting
+     stuck in the hover state on tap. */
+  .econ-card { transition: none; }
+  .econ-card:hover { border-color: rgba(255,255,255,0.08); transform: none; box-shadow: none; }
+  .econ-card:hover::before { opacity: 0; }
 }
 
 #preview { background: linear-gradient(180deg, transparent, rgba(42,16,96,0.12) 40%, transparent); }
@@ -1477,7 +1482,7 @@ function EconomySection() {
     h('div', { className: 'section-inner', style:{paddingTop:80} },
       h('h2', { className: 'section-title' }, 'A whole world', h('br'), 'inside Discord'),
       h('p', { className: 'section-body' },
-        "Snowball's economy isn't just points. It's a full ecosystem — currency, stocks, pets, missions, and leaderboards — all woven into the Xtreme Weather community."
+        "Snowball's economy isn't just about the flakes. It's a full ecosystem with stocks, pets, paths, missions, and leaderboards. It's all designed for the community in ways that just work."
       ),
       h('div', { className: 'economy-grid' },
         ...cards.map((c,i) =>
