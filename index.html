@@ -1184,7 +1184,7 @@ const DC_DOTS_CSS = `
 // retriggers the dcMsgIn entry animation and causes constant flashing.
 const DC_GG_SANS = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
 const DC_WX_AVATAR = 'https://avatars.githubusercontent.com/u/178625091?v=4';
-const DC_USER_PING = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.3)',padding:'1px 4px',borderRadius:3,cursor:'pointer',fontWeight:500} }, '@wxtership');
+const DC_USER_PING = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.3)',padding:'1px 4px',borderRadius:3,cursor:'default',fontWeight:500} }, '@wxtership');
 
 function DcChannelHeader() {
   return h('div', { style:{background:'rgba(20,14,42,0.65)',backdropFilter:'blur(8px)',padding:'12px 16px',display:'flex',alignItems:'center',gap:8,borderBottom:'1px solid rgba(0,0,0,0.35)',boxShadow:'0 1px 0 rgba(255,255,255,0.04)'} },
@@ -1259,7 +1259,7 @@ function DcThinking({ leaving }) {
 // Inline arrow used in embed bullet rows. Hoisted so we don't rebuild the
 // element every render. Sits inline with the text so wrapped lines flow
 // underneath the arrow, matching Discord's real embed bullet behavior.
-const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy', style:{width:17,height:17,objectFit:'contain',verticalAlign:'top',marginRight:6,marginTop:2} });
+const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy', style:{width:15,height:15,objectFit:'contain',verticalAlign:'top',marginRight:6,marginTop:3} });
 
 function DcEmbed() {
     return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:690,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,backdropFilter:'blur(4px)'} },
@@ -1328,7 +1328,7 @@ function DcBotResponse() {
             DC_USER_PING
           ),
           h(DcEmbed),
-          h('button', { type:'button', style:{marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,padding:'7px 14px',borderRadius:6,cursor:'pointer',display:'inline-flex',alignItems:'center',gap:6} },
+          h('button', { type:'button', tabIndex:-1, style:{marginTop:8,background:'#2b2d31',border:'1px solid rgba(255,255,255,0.08)',color:'#dbdee1',fontFamily:'inherit',fontSize:13,fontWeight:500,padding:'7px 14px',borderRadius:6,cursor:'default',display:'inline-flex',alignItems:'center',gap:6,pointerEvents:'none'} },
             'View Full Forecast',
             h('img', { src:'assets/arrow-up-right-small.png', alt:'', style:{width:13,height:13,objectFit:'contain',flexShrink:0,filter:'brightness(0) invert(1)',opacity:0.85} })
           ),
