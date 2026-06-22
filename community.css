@@ -8,9 +8,13 @@
 
 /* ---- Page intro / hero (clears the fixed 67px navbar) ---- */
 .page-hero {
-  padding-top: 128px;
-  padding-bottom: 28px;
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertically center the heading in the hero */
+  align-items: center;
   text-align: center;
+  padding: 96px 24px 48px;   /* top clears the fixed navbar even when centered */
   background:
     radial-gradient(circle 300px at 50% 0%, rgba(159,94,245,0.5) 0%, transparent 70%),
     radial-gradient(ellipse 90% 80% at 50% -8%, rgba(107,84,245,0.34) 0%, transparent 60%),
@@ -140,7 +144,7 @@
   .stats-strip { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .page-hero { padding-top: 140px; }
+  .page-hero { min-height: 54vh; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
