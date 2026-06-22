@@ -33,8 +33,9 @@
     var meta = TIERS[t.key] || { label: t.label || t.key, icon: 'fa-user', cls: '' };
     var cards = t.members.map(function (m) { return renderCard(m, meta); }).join('');
     return '<div class="staff-tier">' +
-        '<div class="staff-tier-title"><span class="tier-icon ' + meta.cls + '">' +
-          '<i class="fas ' + meta.icon + '"></i></span>' + esc(t.label || meta.label) + '</div>' +
+        '<div class="staff-tier-title">' +
+          '<img class="tier-icon" src="assets/icons/role-' + (TIERS[t.key] ? t.key : 'staff') + '.svg" alt="" width="30" height="30">' +
+          esc(t.label || meta.label) + '</div>' +
         '<div class="staff-grid">' + cards + '</div>' +
       '</div>';
   }
