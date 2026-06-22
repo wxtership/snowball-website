@@ -8,13 +8,8 @@
 
 /* ---- Page intro / hero (clears the fixed 67px navbar) ---- */
 .page-hero {
-  min-height: 62vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;   /* vertically center the heading in the hero */
-  align-items: center;
+  padding: 150px 24px 0;   /* space above the heading; the gap below is on .page-hero + section */
   text-align: center;
-  padding: 96px 24px 48px;   /* top clears the fixed navbar even when centered */
   background:
     radial-gradient(circle 300px at 50% 0%, rgba(159,94,245,0.5) 0%, transparent 70%),
     radial-gradient(ellipse 90% 80% at 50% -8%, rgba(107,84,245,0.34) 0%, transparent 60%),
@@ -22,7 +17,8 @@
 }
 .page-hero .section-inner { display: flex; flex-direction: column; align-items: center; }
 .page-hero .section-title { margin-bottom: 18px; }
-.page-hero .section-body { max-width: 600px; margin: 0 auto 28px; }
+.page-hero .section-body { max-width: 600px; margin: 0 auto; }
+.page-hero + section { padding-top: 84px; }   /* gap below heading, balanced with the ~83px above */
 
 .page-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -144,7 +140,8 @@
   .stats-strip { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .page-hero { min-height: 54vh; }
+  .page-hero { padding-top: 128px; }
+  .page-hero + section { padding-top: 62px; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
@@ -189,20 +186,42 @@
 .staff-card.has-banner .staff-name { text-shadow: 0 1px 4px rgba(0,0,0,0.55); }
 .staff-card.has-banner .staff-handle { color: rgba(255,255,255,0.8); text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 
-/* ---- Staff roster: staggered "load up" entrance ---- */
-.staff-tier-title, .staff-card {
-  animation: staff-stagger-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  animation-delay: calc(var(--i, 0) * 50ms);
-}
-@keyframes staff-stagger-in {
-  from { opacity: 0; transform: translateY(18px); }
+/* ---- Entrance: content "loads up" with a slow, smooth stagger (every page) ---- */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+.page-hero .section-title,
+.page-hero .section-body,
+.community-page .section-label,
+.community-page .section-heading,
+.economy-grid > *,
+.stats-strip > *,
+.contact-grid > *,
+.community-cta,
+.staff-tier-title,
+.staff-card {
+  animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
+}
+.page-hero .section-title { animation-delay: 0.05s; }
+.page-hero .section-body  { animation-delay: 0.2s; }
+.community-page .section-label   { animation-delay: 0.05s; }
+.community-page .section-heading { animation-delay: 0.13s; }
+.community-cta { animation-delay: 0.1s; }
+.economy-grid > :nth-child(1), .stats-strip > :nth-child(1), .contact-grid > :nth-child(1) { animation-delay: 0.12s; }
+.economy-grid > :nth-child(2), .stats-strip > :nth-child(2), .contact-grid > :nth-child(2) { animation-delay: 0.24s; }
+.economy-grid > :nth-child(3), .stats-strip > :nth-child(3), .contact-grid > :nth-child(3) { animation-delay: 0.36s; }
+.economy-grid > :nth-child(4), .stats-strip > :nth-child(4), .contact-grid > :nth-child(4) { animation-delay: 0.48s; }
+/* staff cards/headers carry a JS-set --i for a continuous top-to-bottom cascade */
+.staff-tier-title, .staff-card { animation-delay: calc(var(--i, 0) * 85ms); }
 .staff-empty { text-align: center; color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; padding: 40px 0; }
 .staff-empty a { color: var(--purple-300); text-decoration: none; }
 .staff-empty a:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) {
-  .staff-tier-title, .staff-card { animation: none; }
+  .page-hero .section-title, .page-hero .section-body,
+  .community-page .section-label, .community-page .section-heading,
+  .economy-grid > *, .stats-strip > *, .contact-grid > *,
+  .community-cta, .staff-tier-title, .staff-card { animation: none; }
 }
 
 /* ---- Background weather-icon texture (scattered near the edges) ---- */
