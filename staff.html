@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Meet the team behind Snowball and the Xtreme Weather community: owners, developers, and moderators." />
+<meta name="description" content="Meet the team behind Snowball and the Xtreme Weather community: founders, leadership, staff, and trial staff." />
 <meta name="theme-color" content="#0d0d18" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title>Staff — Xtreme Weather</title>
@@ -163,143 +163,66 @@
 
   <section>
     <div class="section-inner">
+      <!-- The roster auto-populates from staff.json, published by the Snowball bot's
+           /moderation sync command. The placeholder tiers below show until the first
+           sync runs (or if staff.json can't be loaded). Empty tiers are hidden. -->
+      <div id="staff-roster">
 
-      <!-- =====================================================================
-           PLACEHOLDER ROSTER  —  replace with the real team.
-           For each member edit: name, role, bio, avatar (src), and the social
-           links. Duplicate or delete an <article class="staff-card">...</article>
-           block to add or remove people. Square avatar images look best; drop
-           them in assets/ and point src at them.
-           ===================================================================== -->
-
-      <div class="staff-tier">
-        <div class="staff-tier-title">Owners</div>
-        <div class="staff-grid">
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Owner Name</span>
-            <span class="staff-role">Founder</span>
-            <p class="staff-bio">Runs the show. Short bio goes here: what they do and why they're great.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Co-Owner Name</span>
-            <span class="staff-role">Co-Owner</span>
-            <p class="staff-bio">Keeps everything moving. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
+        <div class="staff-tier">
+          <div class="staff-tier-title"><span class="tier-icon tier-founder"><i class="fas fa-crown"></i></span>Founder</div>
+          <div class="staff-grid">
+            <article class="staff-card has-banner">
+              <div class="staff-banner staff-banner-default"></div>
+              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
+              <span class="staff-name">Founder</span>
+              <span class="staff-role">Founder</span>
+            </article>
+          </div>
         </div>
-      </div>
 
-      <div class="staff-tier">
-        <div class="staff-tier-title">Developers</div>
-        <div class="staff-grid">
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Developer Name</span>
-            <span class="staff-role">Lead Developer</span>
-            <p class="staff-bio">Builds the bot's brains. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Developer Name</span>
-            <span class="staff-role">Bot Developer</span>
-            <p class="staff-bio">Ships features and squashes bugs. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Developer Name</span>
-            <span class="staff-role">Web Developer</span>
-            <p class="staff-bio">Makes the website look sharp. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
+        <div class="staff-tier">
+          <div class="staff-tier-title"><span class="tier-icon tier-leadership"><i class="fas fa-gavel"></i></span>Leadership</div>
+          <div class="staff-grid">
+            <article class="staff-card has-banner">
+              <div class="staff-banner staff-banner-default"></div>
+              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
+              <span class="staff-name">Leadership</span>
+              <span class="staff-role">Leadership</span>
+            </article>
+            <article class="staff-card has-banner">
+              <div class="staff-banner staff-banner-default"></div>
+              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
+              <span class="staff-name">Leadership</span>
+              <span class="staff-role">Leadership</span>
+            </article>
+          </div>
         </div>
-      </div>
 
-      <div class="staff-tier">
-        <div class="staff-tier-title">Moderators</div>
-        <div class="staff-grid">
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Moderator Name</span>
-            <span class="staff-role">Moderator</span>
-            <p class="staff-bio">Keeps the server friendly. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Moderator Name</span>
-            <span class="staff-role">Moderator</span>
-            <p class="staff-bio">Keeps the server friendly. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Moderator Name</span>
-            <span class="staff-role">Moderator</span>
-            <p class="staff-bio">Keeps the server friendly. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Moderator Name</span>
-            <span class="staff-role">Moderator</span>
-            <p class="staff-bio">Keeps the server friendly. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Moderator Name</span>
-            <span class="staff-role">Moderator</span>
-            <p class="staff-bio">Keeps the server friendly. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
-          <article class="staff-card">
-            <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-            <span class="staff-name">Moderator Name</span>
-            <span class="staff-role">Moderator</span>
-            <p class="staff-bio">Keeps the server friendly. Short bio goes here.</p>
-            <div class="staff-socials">
-              <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-              <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
-          </article>
+        <div class="staff-tier">
+          <div class="staff-tier-title"><span class="tier-icon tier-staff"><i class="fas fa-wrench"></i></span>Staff</div>
+          <div class="staff-grid">
+            <article class="staff-card has-banner">
+              <div class="staff-banner staff-banner-default"></div>
+              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
+              <span class="staff-name">Staff</span>
+              <span class="staff-role">Staff</span>
+            </article>
+            <article class="staff-card has-banner">
+              <div class="staff-banner staff-banner-default"></div>
+              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
+              <span class="staff-name">Staff</span>
+              <span class="staff-role">Staff</span>
+            </article>
+            <article class="staff-card has-banner">
+              <div class="staff-banner staff-banner-default"></div>
+              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
+              <span class="staff-name">Staff</span>
+              <span class="staff-role">Staff</span>
+            </article>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
@@ -407,5 +330,6 @@ window.addEventListener('resize', function() {
 });
 
 </script>
+<script src="staff.js"></script>
 </body>
 </html>

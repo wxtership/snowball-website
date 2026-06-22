@@ -142,3 +142,29 @@
 @media (max-width: 560px) {
   .staff-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Staff tier icons (gradient badges in tier headings) ---- */
+.tier-icon {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 13px; flex: 0 0 auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+.tier-icon.tier-founder    { background: linear-gradient(135deg, #5b4bc4, #8f7be8); }
+.tier-icon.tier-leadership { background: linear-gradient(135deg, #394aa3, #5f7be0); }
+.tier-icon.tier-staff      { background: linear-gradient(135deg, #2f7390, #49a7c6); }
+.tier-icon.tier-trial      { background: linear-gradient(135deg, #2f7a60, #49a77e); }
+
+/* ---- Staff card with Discord-style banner header ---- */
+.staff-card.has-banner { padding-top: 0; overflow: hidden; }
+.staff-banner {
+  width: calc(100% + 40px); margin: 0 -20px; height: 80px;
+  background-size: cover; background-position: center;
+  background-color: rgba(255,255,255,0.04);
+}
+.staff-banner-default { background: linear-gradient(135deg, rgba(107,84,245,0.45), rgba(107,84,245,0.12)); }
+.staff-card.has-banner .staff-avatar {
+  margin-top: -44px; position: relative; z-index: 1;
+  border-width: 3px; border-color: rgba(13,13,24,0.85);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+}

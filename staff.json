@@ -1,0 +1,10 @@
+{
+  "updatedAt": null,
+  "guild": null,
+  "tiers": [
+    { "key": "founder", "label": "Founder", "members": [] },
+    { "key": "leadership", "label": "Leadership", "members": [] },
+    { "key": "staff", "label": "Staff", "members": [] },
+    { "key": "trial", "label": "Trial Staff", "members": [] }
+  ]
+}
