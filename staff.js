@@ -36,7 +36,7 @@
         '<div class="staff-tier-title">' +
           '<img class="tier-icon" src="assets/icons/role-' + (TIERS[t.key] ? t.key : 'staff') + '.png" alt="" width="30" height="30">' +
           esc(t.label || meta.label) + '</div>' +
-        '<div class="staff-grid">' + cards + '</div>' +
+        '<div class="staff-grid staff-grid-' + (TIERS[t.key] ? t.key : 'other') + '">' + cards + '</div>' +
       '</div>';
   }
 

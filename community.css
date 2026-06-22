@@ -74,6 +74,8 @@
 .staff-tier-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
 
 .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.staff-grid-leadership { grid-template-columns: repeat(2, 1fr); }   /* 2x2 for 4 */
+.staff-grid-founder .staff-card { grid-column: 1 / -1; }            /* founder spans full width */
 
 .staff-card {
   display: flex; flex-direction: column; align-items: center; text-align: center;
