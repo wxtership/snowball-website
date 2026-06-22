@@ -199,6 +199,9 @@
 .stats-strip > *,
 .contact-grid > *,
 .community-cta,
+.timeline-item,
+.faq > details,
+.mission,
 .staff-tier-title,
 .staff-card {
   animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
@@ -214,6 +217,7 @@
 .economy-grid > :nth-child(4), .stats-strip > :nth-child(4), .contact-grid > :nth-child(4) { animation-delay: 0.48s; }
 /* staff cards/headers carry a JS-set --i for a continuous top-to-bottom cascade */
 .staff-tier-title, .staff-card { animation-delay: calc(var(--i, 0) * 85ms); }
+.timeline-item, .faq > details { animation-delay: calc(var(--i, 0) * 90ms); }
 .staff-empty { text-align: center; color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; padding: 40px 0; }
 .staff-empty a { color: var(--purple-300); text-decoration: none; }
 .staff-empty a:hover { text-decoration: underline; }
@@ -221,7 +225,7 @@
   .page-hero .section-title, .page-hero .section-body,
   .community-page .section-label, .community-page .section-heading,
   .economy-grid > *, .stats-strip > *, .contact-grid > *,
-  .community-cta, .staff-tier-title, .staff-card { animation: none; }
+  .community-cta, .timeline-item, .faq > details, .mission, .staff-tier-title, .staff-card { animation: none; }
 }
 
 /* ---- Background weather-icon texture (scattered near the edges) ---- */
@@ -252,3 +256,27 @@
   pointer-events: none; z-index: 0;
 }
 .site-footer > * { position: relative; z-index: 1; }
+
+/* ---- About: history timeline ---- */
+.timeline { position: relative; max-width: 680px; margin: 0 auto; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--purple-500), rgba(107,84,245,0.08)); }
+.timeline-item { position: relative; padding-bottom: 34px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before { content: ''; position: absolute; left: -30px; top: 3px; width: 15px; height: 15px; border-radius: 50%; background: var(--purple-500); box-shadow: 0 0 0 4px rgba(107,84,245,0.16); }
+.timeline-year { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: #fff; margin-bottom: 6px; }
+.timeline-text { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.58); }
+
+/* ---- About: FAQ accordion ---- */
+.faq { max-width: 760px; margin: 0 auto; }
+.faq details { background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 0 20px; margin-bottom: 12px; transition: border-color 0.25s; }
+.faq details[open] { border-color: rgba(107,84,245,0.3); }
+.faq summary { cursor: pointer; padding: 18px 0; font-family: var(--font-body); font-weight: 600; font-size: 15px; color: #fff; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--purple-300); font-size: 12px; transition: transform 0.25s; }
+.faq details[open] summary::after { transform: rotate(180deg); }
+.faq-answer { margin: 0; padding: 0 0 18px; font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.6); }
+
+/* ---- About: mission quote ---- */
+.mission { max-width: 760px; margin: 0 auto; text-align: center; padding: 44px 36px; background: linear-gradient(135deg, rgba(107,84,245,0.12), rgba(107,84,245,0.03)); border: 1px solid rgba(107,84,245,0.22); border-radius: 24px; }
+.mission-quote { font-family: var(--font-body); font-size: clamp(17px, 2.2vw, 23px); line-height: 1.55; color: rgba(255,255,255,0.92); }
+.mission-cite { display: block; margin-top: 18px; font-size: 14px; color: var(--purple-300); font-style: normal; }
