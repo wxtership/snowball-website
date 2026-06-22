@@ -139,7 +139,7 @@
   .stats-strip { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .page-hero { padding-top: 108px; }
+  .page-hero { padding-top: 140px; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
@@ -202,21 +202,20 @@
 
 /* ---- Background weather-icon texture (scattered near the edges) ---- */
 .page-decor { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.page-decor i {
-  position: absolute; color: var(--purple-400); opacity: 0.07;
-  filter: drop-shadow(0 0 10px rgba(107,84,245,0.35));
-}
-.page-decor i:nth-child(1)  { top: 16%; left: 4%;  font-size: 40px; transform: rotate(-14deg); }
-.page-decor i:nth-child(2)  { top: 9%;  right: 6%; font-size: 58px; transform: rotate(12deg); }
-.page-decor i:nth-child(3)  { top: 38%; left: 7%;  font-size: 32px; transform: rotate(-6deg); opacity: 0.05; }
-.page-decor i:nth-child(4)  { top: 30%; right: 4%; font-size: 48px; transform: rotate(16deg); }
-.page-decor i:nth-child(5)  { top: 56%; left: 3%;  font-size: 44px; transform: rotate(8deg); }
-.page-decor i:nth-child(6)  { top: 64%; right: 8%; font-size: 30px; transform: rotate(-20deg); opacity: 0.05; }
-.page-decor i:nth-child(7)  { top: 78%; left: 9%;  font-size: 50px; transform: rotate(6deg); }
-.page-decor i:nth-child(8)  { top: 84%; right: 5%; font-size: 36px; transform: rotate(-10deg); }
-.page-decor i:nth-child(9)  { top: 47%; right: 12%; font-size: 26px; transform: rotate(4deg); opacity: 0.04; }
-.page-decor i:nth-child(10) { top: 90%; left: 6%;  font-size: 34px; transform: rotate(-8deg); opacity: 0.05; }
-@media (max-width: 768px) {
-  .page-decor i { opacity: 0.04; }
-  .page-decor i:nth-child(odd) { display: none; }
-}
+.page-decor i { position: absolute; color: #3a3a48; }   /* small, gray, full-opacity texture */
+.page-decor i:nth-child(1)  { top: 13%; left: 6%;   font-size: 16px; transform: rotate(-12deg); }
+.page-decor i:nth-child(2)  { top: 8%;  left: 28%;  font-size: 14px; transform: rotate(8deg); }
+.page-decor i:nth-child(3)  { top: 11%; right: 9%;  font-size: 18px; transform: rotate(14deg); }
+.page-decor i:nth-child(4)  { top: 20%; right: 26%; font-size: 13px; transform: rotate(-6deg); }
+.page-decor i:nth-child(5)  { top: 26%; left: 4%;   font-size: 20px; transform: rotate(10deg); }
+.page-decor i:nth-child(6)  { top: 33%; right: 5%;  font-size: 15px; transform: rotate(-16deg); }
+.page-decor i:nth-child(7)  { top: 41%; left: 9%;   font-size: 17px; transform: rotate(6deg); }
+.page-decor i:nth-child(8)  { top: 47%; right: 11%; font-size: 14px; transform: rotate(-10deg); }
+.page-decor i:nth-child(9)  { top: 55%; left: 5%;   font-size: 19px; transform: rotate(12deg); }
+.page-decor i:nth-child(10) { top: 61%; right: 7%;  font-size: 15px; transform: rotate(-8deg); }
+.page-decor i:nth-child(11) { top: 68%; left: 11%;  font-size: 17px; transform: rotate(16deg); }
+.page-decor i:nth-child(12) { top: 74%; right: 24%; font-size: 13px; transform: rotate(-14deg); }
+.page-decor i:nth-child(13) { top: 80%; left: 7%;   font-size: 18px; transform: rotate(8deg); }
+.page-decor i:nth-child(14) { top: 86%; right: 8%;  font-size: 16px; transform: rotate(-6deg); }
+.page-decor i:nth-child(15) { top: 92%; left: 22%;  font-size: 14px; transform: rotate(10deg); }
+.page-decor i:nth-child(16) { top: 90%; right: 14%; font-size: 17px; transform: rotate(-12deg); }
