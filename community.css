@@ -8,7 +8,7 @@
 
 /* ---- Page intro / hero (clears the fixed 67px navbar) ---- */
 .page-hero {
-  padding: 150px 24px 0;   /* space above the heading; the gap below is on .page-hero + section */
+  padding: 192px 24px 0;   /* space above the heading; the gap below is on .page-hero + section */
   text-align: center;
   background:
     radial-gradient(circle 300px at 50% 0%, rgba(159,94,245,0.5) 0%, transparent 70%),
@@ -18,7 +18,7 @@
 .page-hero .section-inner { display: flex; flex-direction: column; align-items: center; }
 .page-hero .section-title { margin-bottom: 18px; }
 .page-hero .section-body { max-width: 600px; margin: 0 auto; }
-.page-hero + section { padding-top: 84px; }   /* gap below heading, balanced with the ~83px above */
+.page-hero + section { padding-top: 124px; }   /* gap below heading, balanced with the ~125px above */
 
 .page-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -140,8 +140,8 @@
   .stats-strip { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .page-hero { padding-top: 128px; }
-  .page-hero + section { padding-top: 62px; }
+  .page-hero { padding-top: 158px; }
+  .page-hero + section { padding-top: 90px; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
