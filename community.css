@@ -96,6 +96,7 @@
   font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
   background: rgba(107,84,245,0.15); border: 1px solid rgba(107,84,245,0.3); color: var(--purple-300);
 }
+.staff-handle { margin-top: 7px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.62); }
 .staff-bio { margin-top: 12px; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.5); }
 .staff-socials { display: flex; gap: 10px; margin-top: 16px; }
 .staff-socials a {
@@ -173,9 +174,10 @@
 }
 .staff-card.has-banner .staff-avatar,
 .staff-card.has-banner .staff-name,
-.staff-card.has-banner .staff-role { position: relative; z-index: 1; }
+.staff-card.has-banner .staff-handle { position: relative; z-index: 1; }
 .staff-card.has-banner .staff-avatar {
   border-width: 3px; border-color: rgba(255,255,255,0.3);
   box-shadow: 0 6px 18px rgba(0,0,0,0.5);
 }
 .staff-card.has-banner .staff-name { text-shadow: 0 1px 4px rgba(0,0,0,0.55); }
+.staff-card.has-banner .staff-handle { color: rgba(255,255,255,0.8); text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
