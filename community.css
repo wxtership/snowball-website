@@ -1,0 +1,144 @@
+/* ==========================================================================
+   COMMUNITY PAGES  (about.html / staff.html / contact.html)
+   Builds on snowball.css tokens + .section-* / .econ-card / .btn-* patterns.
+   Loaded AFTER snowball.css so equal-specificity rules win here.
+   ========================================================================== */
+
+.community-page { position: relative; z-index: 1; }
+
+/* ---- Page intro / hero (clears the fixed 67px navbar) ---- */
+.page-hero {
+  padding-top: 128px;
+  padding-bottom: 28px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 0%, rgba(107,84,245,0.22) 0%, transparent 60%),
+    transparent;
+}
+.page-hero .section-inner { display: flex; flex-direction: column; align-items: center; }
+.page-hero .section-title { margin-bottom: 18px; }
+.page-hero .section-body { max-width: 600px; margin: 0 auto 28px; }
+
+.page-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(107,84,245,0.15); border: 1px solid rgba(107,84,245,0.3);
+  border-radius: 999px; padding: 6px 16px; margin-bottom: 22px;
+  font-size: 12px; color: var(--purple-300);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.page-badge i { font-size: 12px; }
+
+.page-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* A section heading used mid-page (left-aligned, smaller than the hero) */
+.section-heading {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.02em;
+  text-transform: uppercase; line-height: 1.1; color: #fff; margin-bottom: 28px;
+}
+
+/* ---- Font-Awesome icon tile (used on about/contact cards) ---- */
+.card-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(107,84,245,0.14); border: 1px solid rgba(107,84,245,0.28);
+  color: var(--purple-300); font-size: 20px; margin-bottom: 16px;
+}
+
+/* ---- Stats strip (about) ---- */
+.stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.stat-card {
+  text-align: center; padding: 26px 18px;
+  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; backdrop-filter: blur(14px);
+}
+.stat-num {
+  display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(28px, 4vw, 40px); line-height: 1;
+  background: linear-gradient(90deg, var(--purple-400), var(--purple-300));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-label {
+  display: block; margin-top: 8px; font-size: 12px; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+/* ---- Staff ---- */
+.staff-tier { margin-bottom: 44px; }
+.staff-tier:last-child { margin-bottom: 0; }
+.staff-tier-title {
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple-300);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
+}
+.staff-tier-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+
+.staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+.staff-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 30px 20px; backdrop-filter: blur(14px);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.staff-card:hover {
+  border-color: rgba(107,84,245,0.35); transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 24px rgba(107,84,245,0.1);
+}
+.staff-avatar {
+  width: 84px; height: 84px; border-radius: 50%; object-fit: cover;
+  border: 2px solid rgba(107,84,245,0.4); background: var(--dark-700);
+  margin-bottom: 16px; box-shadow: 0 0 0 4px rgba(107,84,245,0.08);
+}
+.staff-name { font-family: var(--font-body); font-size: 17px; font-weight: 600; color: #fff; }
+.staff-role {
+  display: inline-block; margin-top: 9px; padding: 4px 12px; border-radius: 999px;
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  background: rgba(107,84,245,0.15); border: 1px solid rgba(107,84,245,0.3); color: var(--purple-300);
+}
+.staff-bio { margin-top: 12px; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.5); }
+.staff-socials { display: flex; gap: 10px; margin-top: 16px; }
+.staff-socials a {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none;
+  transition: color 0.25s, background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.staff-socials a:hover {
+  color: #fff; background: rgba(107,84,245,0.2);
+  border-color: rgba(107,84,245,0.4); transform: translateY(-2px);
+}
+
+/* ---- Contact ---- */
+.contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+/* makes an .econ-card behave as a clickable link */
+.card-link { text-decoration: none; display: block; }
+.card-arrow {
+  margin-top: 16px; color: var(--purple-300); font-size: 14px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 8px; transition: gap 0.25s ease;
+}
+.card-link:hover .card-arrow { gap: 13px; }
+
+/* ---- Closing CTA band ---- */
+.community-cta {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(107,84,245,0.12), rgba(107,84,245,0.04));
+  border: 1px solid rgba(107,84,245,0.25); border-radius: 28px;
+  padding: 56px 32px;
+}
+.community-cta .section-title { margin-bottom: 12px; }
+.community-cta .section-body { margin: 0 auto 28px; }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .staff-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .page-hero { padding-top: 108px; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .staff-grid { grid-template-columns: 1fr; }
+}
