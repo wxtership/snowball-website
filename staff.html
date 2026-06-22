@@ -163,60 +163,12 @@
 
   <section>
     <div class="section-inner">
-      <!-- The roster auto-populates from staff.json, published by the Snowball bot's
-           /moderation sync command. The placeholder tiers below show until the first
-           sync runs (or if staff.json can't be loaded). Empty tiers are hidden. -->
-      <div id="staff-roster">
-
-        <div class="staff-tier">
-          <div class="staff-tier-title"><img class="tier-icon" src="assets/icons/role-founder.png" alt="" width="30" height="30">Founder</div>
-          <div class="staff-grid staff-grid-founder">
-            <article class="staff-card has-banner">
-              <div class="staff-card-bg staff-card-bg-default"></div>
-              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-              <span class="staff-name">Founder</span>
-            </article>
-          </div>
-        </div>
-
-        <div class="staff-tier">
-          <div class="staff-tier-title"><img class="tier-icon" src="assets/icons/role-leadership.png" alt="" width="30" height="30">Leadership</div>
-          <div class="staff-grid staff-grid-leadership">
-            <article class="staff-card has-banner">
-              <div class="staff-card-bg staff-card-bg-default"></div>
-              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-              <span class="staff-name">Leadership</span>
-            </article>
-            <article class="staff-card has-banner">
-              <div class="staff-card-bg staff-card-bg-default"></div>
-              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-              <span class="staff-name">Leadership</span>
-            </article>
-          </div>
-        </div>
-
-        <div class="staff-tier">
-          <div class="staff-tier-title"><img class="tier-icon" src="assets/icons/role-staff.png" alt="" width="30" height="30">Staff</div>
-          <div class="staff-grid staff-grid-staff">
-            <article class="staff-card has-banner">
-              <div class="staff-card-bg staff-card-bg-default"></div>
-              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-              <span class="staff-name">Staff</span>
-            </article>
-            <article class="staff-card has-banner">
-              <div class="staff-card-bg staff-card-bg-default"></div>
-              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-              <span class="staff-name">Staff</span>
-            </article>
-            <article class="staff-card has-banner">
-              <div class="staff-card-bg staff-card-bg-default"></div>
-              <img class="staff-avatar" src="assets/snowball-logo-transparent-small.png" alt="" loading="lazy">
-              <span class="staff-name">Staff</span>
-            </article>
-          </div>
-        </div>
-
-      </div>
+      <!-- The roster is fetched from staff.json (published by the bot's /moderation sync)
+           and faded in only once it (and its avatars) have loaded. A spinner shows while
+           loading; a message shows if it can't load. Empty tiers are hidden. -->
+      <div id="staff-loading" class="staff-loading" aria-hidden="true"><span class="staff-spinner"></span></div>
+      <div id="staff-roster" class="staff-roster" aria-live="polite"></div>
+      <noscript><p class="staff-empty">Turn on JavaScript to see the team, or come say hi in <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">the Discord</a>.</p></noscript>
     </div>
   </section>
 
