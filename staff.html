@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="community.css">
 </head>
 <body>
+<div class="page-decor" aria-hidden="true"><i class="fas fa-bolt"></i><i class="fas fa-tornado"></i><i class="fas fa-triangle-exclamation"></i><i class="fas fa-snowflake"></i><i class="fas fa-cloud-bolt"></i><i class="fas fa-bolt"></i><i class="fas fa-tornado"></i><i class="fas fa-snowflake"></i><i class="fas fa-triangle-exclamation"></i><i class="fas fa-bolt"></i></div>
 <nav class="navbar">
     <div class="nav-container">
         <div class="nav-left">
@@ -149,25 +150,19 @@
 
   <section class="page-hero">
     <div class="section-inner">
-      <span class="page-badge"><i class="fas fa-users"></i> The Team</span>
       <h1 class="section-title">Meet the team</h1>
       <p class="section-body">
         The people who keep the forecasts flowing, the storms covered, and the community running.
         Xtreme Weather is built and moderated by a crew of weather nerds, builders, and night-owl mods.
       </p>
-      <div class="page-cta">
-        <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-discord"></i> Join the Server</a>
-      </div>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <!-- The roster is fetched from staff.json (published by the bot's /moderation sync)
-           and faded in only once it (and its avatars) have loaded. A spinner shows while
-           loading; a message shows if it can't load. Empty tiers are hidden. -->
-      <div id="staff-loading" class="staff-loading" aria-hidden="true"><span class="staff-spinner"></span></div>
-      <div id="staff-roster" class="staff-roster" aria-live="polite"></div>
+      <!-- The roster is fetched from staff.json (published by the bot's /moderation sync).
+           Cards load in with a staggered entrance. A message shows if it can't load. -->
+      <div id="staff-roster" aria-live="polite"></div>
       <noscript><p class="staff-empty">Turn on JavaScript to see the team, or come say hi in <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">the Discord</a>.</p></noscript>
     </div>
   </section>
