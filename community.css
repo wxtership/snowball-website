@@ -155,16 +155,27 @@
 .tier-icon.tier-staff      { background: linear-gradient(135deg, #2f7390, #49a7c6); }
 .tier-icon.tier-trial      { background: linear-gradient(135deg, #2f7a60, #49a77e); }
 
-/* ---- Staff card with Discord-style banner header ---- */
-.staff-card.has-banner { padding-top: 0; overflow: hidden; }
-.staff-banner {
-  width: calc(100% + 40px); margin: 0 -20px; height: 80px;
+/* ---- Staff card: full-box blurred + saturated background (banner, else avatar) ---- */
+.staff-card.has-banner { position: relative; overflow: hidden; background: var(--dark-800); }
+.staff-card-bg {
+  position: absolute; inset: 0; z-index: 0;
   background-size: cover; background-position: center;
-  background-color: rgba(255,255,255,0.04);
+  filter: blur(22px) saturate(1.7);
+  transform: scale(1.3);
 }
-.staff-banner-default { background: linear-gradient(135deg, rgba(107,84,245,0.45), rgba(107,84,245,0.12)); }
+.staff-card-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,20,0.32) 0%, rgba(10,10,20,0.74) 100%);
+}
+.staff-card-bg-default {
+  background: linear-gradient(135deg, rgba(107,84,245,0.5), rgba(107,84,245,0.12));
+  filter: none; transform: none;
+}
+.staff-card.has-banner .staff-avatar,
+.staff-card.has-banner .staff-name,
+.staff-card.has-banner .staff-role { position: relative; z-index: 1; }
 .staff-card.has-banner .staff-avatar {
-  margin-top: -44px; position: relative; z-index: 1;
-  border-width: 3px; border-color: rgba(13,13,24,0.85);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+  border-width: 3px; border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
 }
+.staff-card.has-banner .staff-name { text-shadow: 0 1px 4px rgba(0,0,0,0.55); }

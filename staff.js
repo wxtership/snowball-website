@@ -44,16 +44,13 @@
     var name = esc(m.displayName || m.username || 'Member');
     var role = esc(m.role || meta.label);
     var avatar = safeUrl(m.avatar) || 'assets/snowball-logo-transparent-small.png';
-    var banner;
-    if (safeUrl(m.banner)) {
-      banner = '<div class="staff-banner" style="background-image:url(\'' + safeUrl(m.banner) + '\')"></div>';
-    } else if (typeof m.accentColor === 'string' && /^#[0-9a-fA-F]{3,8}$/.test(m.accentColor)) {
-      banner = '<div class="staff-banner" style="background:' + m.accentColor + '"></div>';
-    } else {
-      banner = '<div class="staff-banner staff-banner-default"></div>';
-    }
+    // Background fills the whole card: prefer the banner, else the avatar (blurred + saturated in CSS).
+    var bgUrl = safeUrl(m.banner) || safeUrl(m.avatar);
+    var bg = bgUrl
+      ? '<div class="staff-card-bg" style="background-image:url(\'' + bgUrl + '\')"></div>'
+      : '<div class="staff-card-bg staff-card-bg-default"></div>';
     return '<article class="staff-card has-banner">' +
-        banner +
+        bg +
         '<img class="staff-avatar" src="' + avatar + '" alt="" loading="lazy">' +
         '<span class="staff-name">' + name + '</span>' +
         '<span class="staff-role">' + role + '</span>' +
