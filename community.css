@@ -274,13 +274,13 @@
 .site-footer > * { position: relative; z-index: 1; }
 
 /* ---- About: history timeline (centre line, alternating cards) ---- */
-.timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 8px 0; }
+.timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 8px 0; isolation: isolate; }
 .timeline::before {
   content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
-  width: 2px; margin-left: -1px; background: rgba(255,255,255,0.12);
+  width: 4px; margin-left: -2px; border-radius: 999px; background: rgba(255,255,255,0.12);
 }
 .timeline-item {
-  position: relative; width: calc(50% - 38px); box-sizing: border-box;
+  position: relative; z-index: 1; width: calc(50% - 38px); box-sizing: border-box;
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
   border-radius: 20px; padding: 26px 30px; margin-bottom: 36px; text-align: left;
 }
@@ -313,11 +313,12 @@
 }
 /* centre line draws down as you scroll (fill height set by JS via --timeline-fill) */
 .timeline::after {
-  content: ''; position: absolute; left: 50%; top: 0; width: 2px; margin-left: -1px;
-  height: var(--timeline-fill, 0%);
+  content: ''; position: absolute; left: 50%; top: 0; width: 4px; margin-left: -2px; z-index: 0;
+  height: var(--timeline-fill, 0%); border-radius: 999px;
   background: linear-gradient(var(--purple-300), var(--purple-500));
   box-shadow: 0 0 10px rgba(107,84,245,0.5);
 }
+@media (max-width: 760px) { .timeline::after { left: 8px; margin-left: 0; } }
 /* cards reveal as they scroll into view (gated on .js so they never stay hidden without JS) */
 html.js .timeline-item { opacity: 0; transform: translateY(26px); transition: opacity 0.6s cubic-bezier(0.22,0.61,0.36,1), transform 0.6s cubic-bezier(0.22,0.61,0.36,1); }
 html.js .timeline-item.in-view { opacity: 1; transform: none; }
