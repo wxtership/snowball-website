@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="The story behind Xtreme Weather and Snowball: our history, FAQ, and what we're about. Meet the community behind the forecasts." />
 <meta name="theme-color" content="#0d0d18" />
@@ -165,23 +166,23 @@
       <div class="timeline">
         <div class="timeline-item" style="--i:0">
           <div class="timeline-year">2022</div>
-          <p class="timeline-text">Xtreme Weather launched on June 7th with 500+ members. After an early setback, the community rebuilt and climbed past 800.</p>
+          <p class="timeline-text">Xtreme Weather launched on June 7th, 2022 and quickly grew past 500 members. After an early setback, the community rebuilt, stronger than before, and pushed past 800.</p>
         </div>
         <div class="timeline-item" style="--i:1">
           <div class="timeline-year">2023</div>
-          <p class="timeline-text">Our biggest year yet. The current home was established on April 19th, and the community really found its footing.</p>
+          <p class="timeline-text">Our current home was established on April 19th, 2023, and the community quickly found its footing and its momentum.</p>
         </div>
         <div class="timeline-item" style="--i:2">
           <div class="timeline-year">2024</div>
-          <p class="timeline-text">3,500+ new members joined. We added a weather alerts category, new channels, a refreshed website, and our own official radar.</p>
+          <p class="timeline-text">Our biggest growth year yet, with 4,000+ new members. We rolled out a refreshed website and launched our very own official radar.</p>
         </div>
         <div class="timeline-item" style="--i:3">
           <div class="timeline-year">2025</div>
-          <p class="timeline-text">Snowball, the community's own Discord app, took off: AI weather that actually fetches real data, a full Snowflakes economy, live radio, and music.</p>
+          <p class="timeline-text">We kept iterating and growing: revamping our Coverage Modes, becoming a WRN Ambassador, and taking real steps toward being the best weather community on the platform.</p>
         </div>
         <div class="timeline-item" style="--i:4">
           <div class="timeline-year">2026</div>
-          <p class="timeline-text">7,000+ members strong and still growing, with round-the-clock coverage and a community that shows up for every storm.</p>
+          <p class="timeline-text">For our three-year anniversary, we shipped our biggest revamp yet: new graphics, new channels, and so much more, headlined by Snowball, the community's own Discord app with AI weather that actually fetches real data, a full economy, live radio, and music. Now 7,500+ members strong and still growing, with round-the-clock coverage and a crew that shows up for every storm.</p>
         </div>
       </div>
     </div>
@@ -366,6 +367,34 @@ document.querySelectorAll('.faq-q').forEach(function (btn) {
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 });
+
+// Timeline: reveal each card as it scrolls into view + draw the centre line as you scroll
+(function () {
+  var timeline = document.querySelector('.timeline');
+  if (!timeline) return;
+  var items = timeline.querySelectorAll('.timeline-item');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -12% 0px' });
+    items.forEach(function (it) { io.observe(it); });
+  } else {
+    items.forEach(function (it) { it.classList.add('in-view'); });
+  }
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var r = timeline.getBoundingClientRect();
+    var fill = (window.innerHeight * 0.5 - r.top) / r.height;
+    timeline.style.setProperty('--timeline-fill', (Math.max(0, Math.min(1, fill)) * 100) + '%');
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
 </script>
 </body>
 </html>
