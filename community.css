@@ -223,6 +223,12 @@
 .economy-grid > :nth-child(4), .stats-strip > :nth-child(4), .contact-grid > :nth-child(4) { animation-delay: 0.48s; }
 /* staff cards/headers carry a JS-set --i for a continuous top-to-bottom cascade */
 .staff-tier-title, .staff-card { animation-delay: calc(var(--i, 0) * 85ms); }
+/* Roster cards stay paused (held at the animation's invisible start) until staff.js
+   adds .in a frame after render, so they never flash in at full opacity. */
+#staff-roster .staff-tier-title,
+#staff-roster .staff-card { animation-play-state: paused; }
+#staff-roster.in .staff-tier-title,
+#staff-roster.in .staff-card { animation-play-state: running; }
 .timeline-item, .faq > details { animation-delay: calc(var(--i, 0) * 90ms); }
 .staff-empty { text-align: center; color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; padding: 40px 0; }
 .staff-empty a { color: var(--purple-300); text-decoration: none; }
