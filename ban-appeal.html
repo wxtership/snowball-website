@@ -197,6 +197,25 @@
           </a>
         </section>
 
+        <section class="contact-form appeal-panel appeal-panel-hidden" id="appeal-submitted">
+          <div class="appeal-account" id="appeal-submitted-account">
+            <img id="appeal-submitted-avatar" src="" alt="" class="appeal-avatar" hidden>
+            <div>
+              <span class="appeal-account-label">Welcome back</span>
+              <strong id="appeal-submitted-account-name">Discord user</strong>
+            </div>
+            <a href="#" id="appeal-submitted-not-you" class="appeal-not-you">Not you?</a>
+          </div>
+          <div class="card-icon"><i class="fas fa-paper-plane"></i></div>
+          <h2 class="appeal-title">Appeal submitted</h2>
+          <p class="appeal-copy" id="appeal-submitted-copy">
+            Your appeal was sent to staff. You can refresh this page safely.
+          </p>
+          <a class="btn-primary form-submit" href="contact.html">
+            <i class="fas fa-envelope"></i> Contact the team
+          </a>
+        </section>
+
         <form class="contact-form appeal-panel appeal-panel-hidden" id="appeal-form" action="/api/ban-appeals" method="POST">
           <input type="hidden" name="discord_id" id="appeal-discord-id">
           <input type="hidden" name="ban_id" id="appeal-ban-id">
@@ -375,6 +394,7 @@ window.addEventListener('resize', function() {
     var gate = document.getElementById('appeal-gate');
     var layout = document.getElementById('appeal-layout');
     var notBanned = document.getElementById('appeal-not-banned');
+    var submitted = document.getElementById('appeal-submitted');
     var form = document.getElementById('appeal-form');
     var status = document.getElementById('appeal-status');
     var formStatus = document.getElementById('appeal-form-status');
@@ -384,7 +404,9 @@ window.addEventListener('resize', function() {
     var oauthCode = query.get('code');
     var oauthError = query.get('error');
     var appealToken = '';
-    if (!gate || !layout || !notBanned || !form || !status || !formStatus || !submit) return;
+    var storageKey = 'snowballAppealState:v1';
+    var currentUser = null;
+    if (!gate || !layout || !notBanned || !submitted || !form || !status || !formStatus || !submit) return;
 
     function redirectUri() {
         return window.location.origin + window.location.pathname;
@@ -403,6 +425,7 @@ window.addEventListener('resize', function() {
 
     function restartOAuth(event) {
         event.preventDefault();
+        clearStoredAppealState();
         window.location.href = oauthUrl(true);
     }
 
@@ -424,9 +447,35 @@ window.addEventListener('resize', function() {
 
     function show(panel) {
         layout.classList.remove('is-loading');
-        [gate, notBanned, form].forEach(function (el) { el.classList.add('appeal-panel-hidden'); el.classList.remove('appeal-panel-ready'); });
+        [gate, notBanned, submitted, form].forEach(function (el) { el.classList.add('appeal-panel-hidden'); el.classList.remove('appeal-panel-ready'); });
         panel.classList.remove('appeal-panel-hidden');
         requestAnimationFrame(function () { panel.classList.add('appeal-panel-ready'); });
+    }
+
+    function readStoredAppealState() {
+        try {
+            var stored = JSON.parse(localStorage.getItem(storageKey) || 'null');
+            if (!stored || !stored.user || !stored.user.id) return null;
+            return stored;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function writeStoredAppealState(state) {
+        try {
+            localStorage.setItem(storageKey, JSON.stringify({
+                status: state.status,
+                user: state.user,
+                submitted_at: state.submitted_at || null
+            }));
+        } catch (error) {}
+    }
+
+    function clearStoredAppealState() {
+        try {
+            localStorage.removeItem(storageKey);
+        } catch (error) {}
     }
 
     function clearOAuthQuery() {
@@ -449,10 +498,12 @@ window.addEventListener('resize', function() {
     }
 
     function hydrateAccount(user) {
+        currentUser = user || currentUser;
         var name = '@' + displayName(user).replace(/^@/, '');
         [
             ['appeal-account-name', 'appeal-account-avatar'],
-            ['appeal-form-account-name', 'appeal-form-avatar']
+            ['appeal-form-account-name', 'appeal-form-avatar'],
+            ['appeal-submitted-account-name', 'appeal-submitted-avatar']
         ].forEach(function (ids) {
             var nameEl = document.getElementById(ids[0]);
             var avatarEl = document.getElementById(ids[1]);
@@ -513,6 +564,18 @@ window.addEventListener('resize', function() {
             copy.textContent = 'Snowball did not find an active Xtreme Weather ban for this Discord account.';
         }
         show(notBanned);
+        writeStoredAppealState({ status: 'not_banned', user: user });
+    }
+
+    function showSubmitted(user, submittedAt) {
+        hydrateAccount(user);
+        var copy = document.getElementById('appeal-submitted-copy');
+        if (copy) {
+            copy.textContent = submittedAt
+                ? 'Your appeal was sent to staff on ' + formatAppealDate(submittedAt) + '. You can refresh this page safely.'
+                : 'Your appeal was sent to staff. You can refresh this page safely.';
+        }
+        show(submitted);
     }
 
     function setText(id, value) {
@@ -524,6 +587,7 @@ window.addEventListener('resize', function() {
         var user = data.user || {};
         var ban = data.ban || {};
         appealToken = data.appeal_token || '';
+        currentUser = user;
         hydrateAccount(user);
         document.getElementById('appeal-discord-id').value = user.id || '';
         document.getElementById('appeal-ban-id').value = ban.id || '';
@@ -531,6 +595,7 @@ window.addEventListener('resize', function() {
         setText('appeal-reason', ban.reason);
         setText('appeal-date', formatAppealDate(ban.created_at || ban.date));
         show(form);
+        writeStoredAppealState({ status: 'banned', user: user });
     }
 
     function loadAppealState() {
@@ -540,6 +605,18 @@ window.addEventListener('resize', function() {
             show(gate);
             clearOAuthQuery();
             return;
+        }
+
+        if (!oauthCode) {
+            var stored = readStoredAppealState();
+            if (stored && stored.status === 'submitted') {
+                showSubmitted(stored.user, stored.submitted_at);
+                return;
+            }
+            if (stored && stored.status === 'not_banned') {
+                showNotBanned(stored.user);
+                return;
+            }
         }
 
         status.className = 'form-status';
@@ -615,9 +692,10 @@ window.addEventListener('resize', function() {
                 return data;
             });
         }).then(function () {
+            var submittedAt = new Date().toISOString();
             form.reset();
-            formStatus.className = 'form-status is-success';
-            formStatus.textContent = 'Appeal submitted. Staff will review it.';
+            writeStoredAppealState({ status: 'submitted', user: currentUser, submitted_at: submittedAt });
+            showSubmitted(currentUser, submittedAt);
             burstContactConfetti();
         }).catch(function (error) {
             formStatus.className = 'form-status is-error';
