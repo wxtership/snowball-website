@@ -84,11 +84,11 @@ body {
     min-height: 100vh !important;
     min-height: 100dvh !important;
     height: auto !important;
-    transition: opacity 0.2s ease-out, visibility 0s linear 0.2s !important;
+    transition: opacity 0.32s ease-out, visibility 0s linear 0.32s !important;
   }
   .mobile-menu-overlay.active {
     visibility: visible !important;
-    transition: opacity 0.2s ease-out, visibility 0s !important;
+    transition: opacity 0.32s ease-out, visibility 0s !important;
   }
   .mobile-view {
     transform: none !important;

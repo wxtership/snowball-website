@@ -245,7 +245,7 @@ function sbToggleMobileMenu() {
     if (isActive) {
         menu.classList.remove('active');
         btn.classList.remove('active');
-        document.body.classList.remove('sb-mobile-menu-open');
+        setTimeout(function () { document.body.classList.remove('sb-mobile-menu-open'); }, 340);
         setTimeout(sbCloseSubMenu, 300);
     } else {
         menu.classList.add('active');
