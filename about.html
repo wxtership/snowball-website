@@ -190,27 +190,40 @@
   <section>
     <div class="section-inner">
       <h2 class="section-heading">Frequently asked questions</h2>
+      <p class="faq-intro">We've compiled a list of the questions you may have about the community, even for longtime members.</p>
       <div class="faq">
-        <details style="--i:0">
-          <summary>What are Coverage Modes?</summary>
-          <p class="faq-answer">When Xtreme Weather enters a Coverage Mode, we run focused, real-time coverage of a significant weather event, so everyone can follow along as it unfolds.</p>
-        </details>
-        <details style="--i:1">
-          <summary>What is Snowball?</summary>
-          <p class="faq-answer">Snowball is the community's Discord app: AI weather that actually fetches real data, a full economy with Snowflakes, live radio, music, and a whole lot more.</p>
-        </details>
-        <details style="--i:2">
-          <summary>What are Snowflakes?</summary>
-          <p class="faq-answer">Snowflakes are the server's currency. Earn them with commands and spend them across Snowball's economy. They're just for fun, nothing more.</p>
-        </details>
-        <details style="--i:3">
-          <summary>What radars do you use?</summary>
-          <p class="faq-answer">Our own official radar, plus tools like RadarScope and RadarOmega for deeper dives during active weather.</p>
-        </details>
-        <details style="--i:4">
-          <summary>Where do I ask a weather question or leave a suggestion?</summary>
-          <p class="faq-answer">Hop into the Discord. We have dedicated spots for weather questions and suggestions, and we read every one.</p>
-        </details>
+        <div class="faq-item" style="--i:0">
+          <button class="faq-q" aria-expanded="false"><span>What is Snowball?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Snowball is our new all-in-one Discord app for Xtreme Weather. It combines all of the commands &amp; features you'd ever need: from weather, playing music &amp; radio, to the server economy, community features, and so much more.</p></div></div>
+        </div>
+        <div class="faq-item" style="--i:1">
+          <button class="faq-q" aria-expanded="false"><span>Are we accepting applications for a position?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Applications for roles like @Staff and @Coverage Expert will usually be opened on a bi-yearly basis, or whenever needed. We'll promote the need for a position whenever one comes up, so if you haven't heard anything lately: probably not.</p></div></div>
+        </div>
+        <div class="faq-item" style="--i:2">
+          <button class="faq-q" aria-expanded="false"><span>What are Coverage Modes?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Coverage Modes are our way of letting you know some significant weather is on the way that'll impact a wide variety of people. At the moment there are three types: Severe Coverage, Winter Coverage, and Tropical Coverage. You can find more on what triggers each mode in our Coverage Information &amp; Policies resource.</p></div></div>
+        </div>
+        <div class="faq-item" style="--i:3">
+          <button class="faq-q" aria-expanded="false"><span>Who can answer my weather question?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Snowball can help with that! Ping @Snowball in any channel with your question and it'll help answer. Note that Snowball can make mistakes, and you should never use it for life-saving information. Always refer to NOAA/NWS resources for the most up-to-date information in that regard.</p></div></div>
+        </div>
+        <div class="faq-item" style="--i:4">
+          <button class="faq-q" aria-expanded="false"><span>What are Snowflakes? How does the economy work?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Snowflakes are the server "currency," and you can earn them just by chatting or running any economy command with Snowball. From there you can choose a path, do missions &amp; buy roles that help you earn more and climb the leaderboard. You can even raise your own boar &amp; fight others for Snowflakes, or invest in the server stock. There's so much to discover, really.</p></div></div>
+        </div>
+        <div class="faq-item" style="--i:5">
+          <button class="faq-q" aria-expanded="false"><span>How can I level up, and what do I get?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">You can level up just by sending messages and being active! You can also earn level XP by being in a voice chat. For more on the perks, check out the Role Rewards resource.</p></div></div>
+        </div>
+        <div class="faq-item" style="--i:6">
+          <button class="faq-q" aria-expanded="false"><span>Who runs this place?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">We're flattered! You can find information on every role in the server, including <a href="staff.html">staff</a>, in the Role Information resource.</p></div></div>
+        </div>
+        <div class="faq-item" style="--i:7">
+          <button class="faq-q" aria-expanded="false"><span>How do I report a policy violation or member?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Open a <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">Support Ticket</a>! We're always here to help, and if you notice something that shouldn't be, we can assist with it.</p></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -344,6 +357,15 @@ window.addEventListener('resize', function() {
     }
 });
 
+</script>
+<script>
+// FAQ accordion: toggle .open; the height animates via the grid-rows transition in CSS
+document.querySelectorAll('.faq-q').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var open = btn.parentElement.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
 </script>
 </body>
 </html>
