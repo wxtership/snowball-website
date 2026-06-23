@@ -190,12 +190,15 @@
   font-size: 13px; line-height: 1.55;
 }
 .contact-note code { color: var(--purple-300); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-.appeal-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+.appeal-layout { grid-template-columns: minmax(0, 1fr); max-width: 880px; margin: 0 auto; }
+.appeal-layout.is-loading { min-height: 520px; }
 .appeal-panel { position: relative; overflow: hidden; }
 .appeal-panel-hidden { display: none; }
+.appeal-panel-ready { animation: appeal-fade-in 0.45s ease both; }
 .appeal-title {
   font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 32px);
   line-height: 1.1; text-transform: uppercase; color: #fff; margin: 0 0 12px;
+  max-width: 100%; overflow-wrap: anywhere; word-break: break-word;
 }
 .appeal-copy { margin: 0 0 24px; color: rgba(255,255,255,0.58); line-height: 1.7; }
 .appeal-account {
@@ -211,7 +214,7 @@
   display: block; margin-bottom: 2px; font-size: 11px; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.42);
 }
-.appeal-account strong { display: block; color: #fff; font-size: 15px; line-height: 1.25; }
+.appeal-account strong { display: block; color: #fff; font-size: 15px; line-height: 1.25; overflow-wrap: anywhere; word-break: break-word; }
 .appeal-not-you {
   margin-left: auto; color: var(--purple-300); text-decoration: none;
   font-size: 13px; font-weight: 700;
@@ -236,6 +239,10 @@
   color: rgba(255,255,255,0.42);
 }
 .appeal-meta dd { margin: 0; color: rgba(255,255,255,0.78); line-height: 1.55; }
+@keyframes appeal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 /* makes an .econ-card behave as a clickable link */
 .card-link { text-decoration: none; display: block; }
 .card-arrow {

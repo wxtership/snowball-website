@@ -165,8 +165,8 @@
 
   <section>
     <div class="section-inner">
-      <div class="contact-layout appeal-layout">
-        <section class="contact-form appeal-panel" id="appeal-gate">
+      <div class="contact-layout appeal-layout is-loading" id="appeal-layout">
+        <section class="contact-form appeal-panel appeal-panel-hidden" id="appeal-gate">
           <div class="card-icon"><i class="fab fa-discord"></i></div>
           <h2 class="appeal-title">Start with Snowball</h2>
           <p class="appeal-copy">
@@ -216,17 +216,21 @@
             <dl class="appeal-meta">
               <div><dt>Reason</dt><dd id="appeal-reason">Waiting for Snowball...</dd></div>
               <div><dt>Date</dt><dd id="appeal-date">Waiting for Snowball...</dd></div>
-              <div><dt>Moderator note</dt><dd id="appeal-note">Waiting for Snowball...</dd></div>
             </dl>
           </div>
 
           <label class="form-field">
-            <span>Why should this ban be reviewed? <b aria-hidden="true">*</b></span>
+            <span>Email <b aria-hidden="true">*</b></span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+
+          <label class="form-field">
+            <span>Why should this ban be revoked? <b aria-hidden="true">*</b></span>
             <textarea name="appeal_reason" rows="7" required></textarea>
           </label>
 
           <label class="form-field">
-            <span>Anything staff should know?</span>
+            <span>Anything else Staff should know?</span>
             <textarea name="extra_context" rows="4"></textarea>
           </label>
 
@@ -238,20 +242,6 @@
           <div class="form-status" id="appeal-form-status" role="status" aria-live="polite"></div>
           <button type="submit" class="btn-primary form-submit" id="appeal-submit"><i class="fas fa-paper-plane"></i> Submit appeal</button>
         </form>
-
-        <aside class="contact-side">
-          <div class="contact-note">
-            Appeals are private and reviewed by staff. Include context, take responsibility where needed, and keep it honest.
-          </div>
-          <a class="contact-side-link" href="contact.html">
-            <i class="fas fa-envelope"></i>
-            <span><strong>Not banned?</strong>Use the contact form instead</span>
-          </a>
-          <a class="contact-side-link" href="https://x.com/joinxtremewx" target="_blank" rel="noopener">
-            <i class="fab fa-x-twitter"></i>
-            <span><strong>X / Twitter</strong>For public updates</span>
-          </a>
-        </aside>
       </div>
     </div>
   </section>
@@ -383,6 +373,7 @@ window.addEventListener('resize', function() {
     var API_ME = SNOWBALL_API_BASE + '/api/ban-appeal/me';
     var API_APPEALS = SNOWBALL_API_BASE + '/api/ban-appeals';
     var gate = document.getElementById('appeal-gate');
+    var layout = document.getElementById('appeal-layout');
     var notBanned = document.getElementById('appeal-not-banned');
     var form = document.getElementById('appeal-form');
     var status = document.getElementById('appeal-status');
@@ -393,7 +384,7 @@ window.addEventListener('resize', function() {
     var oauthCode = query.get('code');
     var oauthError = query.get('error');
     var appealToken = '';
-    if (!gate || !notBanned || !form || !status || !formStatus || !submit) return;
+    if (!gate || !layout || !notBanned || !form || !status || !formStatus || !submit) return;
 
     function redirectUri() {
         return window.location.origin + window.location.pathname;
@@ -432,8 +423,10 @@ window.addEventListener('resize', function() {
     });
 
     function show(panel) {
-        [gate, notBanned, form].forEach(function (el) { el.classList.add('appeal-panel-hidden'); });
+        layout.classList.remove('is-loading');
+        [gate, notBanned, form].forEach(function (el) { el.classList.add('appeal-panel-hidden'); el.classList.remove('appeal-panel-ready'); });
         panel.classList.remove('appeal-panel-hidden');
+        requestAnimationFrame(function () { panel.classList.add('appeal-panel-ready'); });
     }
 
     function clearOAuthQuery() {
@@ -473,6 +466,26 @@ window.addEventListener('resize', function() {
                 avatarEl.hidden = true;
             }
         });
+    }
+
+    function formatAppealDate(value) {
+        if (!value) return 'Not provided';
+        var date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value;
+        var parts = new Intl.DateTimeFormat(undefined, {
+            month: 'numeric',
+            day: 'numeric',
+            year: '2-digit',
+            hour: 'numeric',
+            minute: '2-digit',
+            timeZoneName: 'short'
+        }).formatToParts(date).reduce(function (acc, part) {
+            acc[part.type] = part.value;
+            return acc;
+        }, {});
+        var period = parts.dayPeriod ? ' ' + parts.dayPeriod : '';
+        var zone = parts.timeZoneName ? ' ' + parts.timeZoneName : '';
+        return parts.month + '/' + parts.day + '/' + parts.year + ' at ' + parts.hour + ':' + parts.minute + period + zone;
     }
 
     function showApiUnavailable() {
@@ -516,8 +529,7 @@ window.addEventListener('resize', function() {
         document.getElementById('appeal-ban-id').value = ban.id || '';
         setText('appeal-user', '@' + displayName(user).replace(/^@/, ''));
         setText('appeal-reason', ban.reason);
-        setText('appeal-date', ban.created_at || ban.date);
-        setText('appeal-note', ban.moderator_note || ban.note || 'No extra note is on record.');
+        setText('appeal-date', formatAppealDate(ban.created_at || ban.date));
         show(form);
     }
 
@@ -586,6 +598,7 @@ window.addEventListener('resize', function() {
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 appeal_token: appealToken,
+                email: form.elements.email.value,
                 appeal_reason: form.elements.appeal_reason.value,
                 extra_context: form.elements.extra_context.value,
                 truthful: form.elements.truthful.checked
