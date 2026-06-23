@@ -604,19 +604,40 @@ window.addEventListener('resize', function() {
                 truthful: form.elements.truthful.checked
             })
         }).then(function (response) {
-            if (!response.ok) throw new Error('Appeal submission failed.');
+            return response.json().catch(function () {
+                return {};
+            }).then(function (data) {
+                if (!response.ok) {
+                    var error = new Error(data.error || 'appeal_submit_failed');
+                    error.code = data.error || 'appeal_submit_failed';
+                    throw error;
+                }
+                return data;
+            });
+        }).then(function () {
             form.reset();
             formStatus.className = 'form-status is-success';
             formStatus.textContent = 'Appeal submitted. Staff will review it.';
             burstContactConfetti();
-        }).catch(function () {
+        }).catch(function (error) {
             formStatus.className = 'form-status is-error';
-            formStatus.textContent = 'Something went wrong. Try again later.';
+            formStatus.textContent = appealSubmitErrorMessage(error && error.code);
         }).finally(function () {
             form.classList.remove('is-sending');
             submit.disabled = false;
         });
     });
+
+    function appealSubmitErrorMessage(code) {
+        var messages = {
+            valid_email_required: 'Enter a valid email address so staff can send the decision.',
+            appeal_reason_required: 'Tell us a little more about why this ban should be revoked.',
+            invalid_appeal_token: 'This appeal session expired. Log in with Snowball again.',
+            not_banned: 'Snowball no longer finds an active ban for this account.',
+            appeal_submit_failed: 'Snowball could not submit the appeal. Try again in a moment.'
+        };
+        return messages[code] || messages.appeal_submit_failed;
+    }
 
     function burstContactConfetti() {
         var wrap = document.createElement('div');
