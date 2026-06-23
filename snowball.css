@@ -108,6 +108,17 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  body.sb-mobile-menu-open {
+    background: #0d0d18 !important;
+  }
+  body.sb-mobile-menu-open .community-page,
+  body.sb-mobile-menu-open .site-footer,
+  body.sb-mobile-menu-open #root {
+    visibility: hidden;
+  }
+}
+
 #community-mega-menu .mega-column + .mega-column {
   border-left: 1px solid rgba(255,255,255,0.08);
   padding-left: 28px;

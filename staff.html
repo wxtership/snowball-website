@@ -245,10 +245,12 @@ function sbToggleMobileMenu() {
     if (isActive) {
         menu.classList.remove('active');
         btn.classList.remove('active');
+        document.body.classList.remove('sb-mobile-menu-open');
         setTimeout(sbCloseSubMenu, 300);
     } else {
         menu.classList.add('active');
         btn.classList.add('active');
+        document.body.classList.add('sb-mobile-menu-open');
     }
 }
 function sbOpenSubMenu(id) {
