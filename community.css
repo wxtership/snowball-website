@@ -228,6 +228,9 @@
   animation-delay: calc(var(--i, 0) * 85ms);
 }
 .timeline-item, .faq > details { animation-delay: calc(var(--i, 0) * 90ms); }
+/* Reserve height while the roster is loading so the footer doesn't sit up under the
+   hero before the cards arrive (it drops back to natural height once filled). */
+#staff-roster:empty { min-height: 90vh; }
 .staff-empty { text-align: center; color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; padding: 40px 0; }
 .staff-empty a { color: var(--purple-300); text-decoration: none; }
 .staff-empty a:hover { text-decoration: underline; }
