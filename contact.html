@@ -166,7 +166,7 @@
   <section>
     <div class="section-inner">
       <div class="contact-layout">
-        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xgojvvez" method="POST">
+        <form class="contact-form" id="contact-form" action="https://snowball-api.xtremewx.com/api/contact" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="_subject" value="New Xtreme Weather contact form submission">
           <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off">
 
@@ -203,6 +203,11 @@
           <label class="form-field">
             <span>Message <b aria-hidden="true">*</b></span>
             <textarea name="message" rows="7" required></textarea>
+          </label>
+
+          <label class="form-field">
+            <span>Images</span>
+            <input type="file" name="images" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
           </label>
 
           <label class="form-check">
@@ -349,11 +354,12 @@ window.addEventListener('resize', function() {
     }
 });
 
-// Contact form: submit to Formspree with AJAX so visitors stay on this page.
+// Contact form: submit to Snowball with AJAX so visitors stay on this page.
 (function () {
     var form = document.getElementById('contact-form');
     var status = document.getElementById('contact-form-status');
     var submit = document.getElementById('contact-form-submit');
+    var API_CONTACT = 'https://snowball-api.xtremewx.com/api/contact';
     if (!form || !status || !submit) return;
 
     form.addEventListener('submit', function (event) {
@@ -368,24 +374,47 @@ window.addEventListener('resize', function() {
         status.className = 'form-status';
         status.textContent = 'Sending...';
 
-        fetch(form.action, {
+        fetch(API_CONTACT, {
             method: 'POST',
             body: new FormData(form),
             headers: { 'Accept': 'application/json' }
         }).then(function (response) {
-            if (!response.ok) throw new Error('Formspree rejected the submission.');
+            return response.json().catch(function () {
+                return {};
+            }).then(function (data) {
+                if (!response.ok) {
+                    var error = new Error(data.error || 'contact_submit_failed');
+                    error.code = data.error || 'contact_submit_failed';
+                    throw error;
+                }
+                return data;
+            });
+        }).then(function () {
             form.reset();
             status.className = 'form-status is-success';
             status.textContent = 'Message sent. We got it.';
             burstContactConfetti();
-        }).catch(function () {
+        }).catch(function (error) {
             status.className = 'form-status is-error';
-            status.textContent = 'Something went wrong. Try again, or reach us on Discord.';
+            status.textContent = contactErrorMessage(error && error.code);
         }).finally(function () {
             form.classList.remove('is-sending');
             submit.disabled = false;
         });
     });
+
+    function contactErrorMessage(code) {
+        var messages = {
+            name_required: 'Add your name so staff knows who sent this.',
+            valid_email_required: 'Enter a valid email address so staff can reply.',
+            topic_required: 'Choose a topic for your message.',
+            message_required: 'Write a little more before sending.',
+            image_type_not_allowed: 'Images can be PNG, JPG, WebP, or GIF only.',
+            image_too_large: 'Each image needs to be under 3 MB.',
+            contact_submit_failed: 'Snowball could not send this yet. Try again, or reach us on Discord.'
+        };
+        return messages[code] || messages.contact_submit_failed;
+    }
 
     function burstContactConfetti() {
         var wrap = document.createElement('div');

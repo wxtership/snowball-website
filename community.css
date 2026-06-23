@@ -137,6 +137,21 @@
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 .form-field textarea { resize: vertical; min-height: 150px; line-height: 1.55; }
+.form-field input[type="file"] {
+  padding: 11px 14px;
+  color: rgba(255,255,255,0.7);
+}
+.form-field input[type="file"]::file-selector-button {
+  border: 0;
+  border-radius: 10px;
+  margin-right: 12px;
+  padding: 8px 12px;
+  background: rgba(107,84,245,0.22);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
