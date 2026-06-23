@@ -130,6 +130,13 @@ body {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
+.site-footer::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 240px;
+  background: radial-gradient(ellipse 55% 100% at 50% 0%, rgba(107,84,245,0.18) 0%, transparent 72%);
+  pointer-events: none; z-index: 0;
+}
+.site-footer > * { position: relative; z-index: 1; }
+
 #sb-tint-anchor-top, #sb-tint-anchor-bottom {
   position: fixed;
   left: 0;
