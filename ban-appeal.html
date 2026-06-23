@@ -179,6 +179,14 @@
         </section>
 
         <section class="contact-form appeal-panel appeal-panel-hidden" id="appeal-not-banned">
+          <div class="appeal-account" id="appeal-account">
+            <img id="appeal-account-avatar" src="" alt="" class="appeal-avatar" hidden>
+            <div>
+              <span class="appeal-account-label">Welcome back</span>
+              <strong id="appeal-account-name">Discord user</strong>
+            </div>
+            <a href="#" id="appeal-not-you" class="appeal-not-you">Not you?</a>
+          </div>
           <div class="card-icon"><i class="fas fa-circle-check"></i></div>
           <h2 class="appeal-title">No active ban found</h2>
           <p class="appeal-copy">
@@ -192,6 +200,15 @@
         <form class="contact-form appeal-panel appeal-panel-hidden" id="appeal-form" action="/api/ban-appeals" method="POST">
           <input type="hidden" name="discord_id" id="appeal-discord-id">
           <input type="hidden" name="ban_id" id="appeal-ban-id">
+
+          <div class="appeal-account" id="appeal-form-account">
+            <img id="appeal-form-avatar" src="" alt="" class="appeal-avatar" hidden>
+            <div>
+              <span class="appeal-account-label">Welcome back</span>
+              <strong id="appeal-form-account-name">Discord user</strong>
+            </div>
+            <a href="#" id="appeal-form-not-you" class="appeal-not-you">Not you?</a>
+          </div>
 
           <div class="appeal-ban-card">
             <span class="appeal-kicker">Ban on record</span>
@@ -375,7 +392,7 @@ window.addEventListener('resize', function() {
     var oauthError = query.get('error');
     if (!gate || !notBanned || !form || !status || !formStatus || !submit) return;
 
-    function oauthUrl() {
+    function oauthUrl(forcePrompt) {
         var redirect = window.location.origin + window.location.pathname;
         var params = new URLSearchParams({
             client_id: SNOWBALL_CLIENT_ID,
@@ -383,7 +400,13 @@ window.addEventListener('resize', function() {
             response_type: 'code',
             scope: 'identify'
         });
+        if (forcePrompt) params.set('prompt', 'consent');
         return 'https://discord.com/oauth2/authorize?' + params.toString();
+    }
+
+    function restartOAuth(event) {
+        event.preventDefault();
+        window.location.href = oauthUrl(true);
     }
 
     if (login) {
@@ -398,6 +421,9 @@ window.addEventListener('resize', function() {
             login.href = oauthUrl();
         }
     }
+    document.querySelectorAll('.appeal-not-you').forEach(function (link) {
+        link.addEventListener('click', restartOAuth);
+    });
 
     function show(panel) {
         [gate, notBanned, form].forEach(function (el) { el.classList.add('appeal-panel-hidden'); });
@@ -409,15 +435,65 @@ window.addEventListener('resize', function() {
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 
-    function showNotBannedFallback() {
-        var copy = notBanned.querySelector('.appeal-copy');
-        if (copy) {
-            copy.textContent = 'Snowball OAuth returned successfully. No active Xtreme Weather ban was found for this Discord account.';
+    function avatarUrl(user) {
+        if (!user) return '';
+        if (user.avatar_url) return user.avatar_url;
+        if (user.id && user.avatar) {
+            return 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.png?size=96';
         }
-        status.className = 'form-status is-success';
-        status.textContent = 'Snowball login completed.';
+        return '';
+    }
+
+    function displayName(user) {
+        if (!user) return 'Discord user';
+        return user.global_name || user.display_name || user.username || user.tag || 'Discord user';
+    }
+
+    function hydrateAccount(user) {
+        var name = '@' + displayName(user).replace(/^@/, '');
+        [
+            ['appeal-account-name', 'appeal-account-avatar'],
+            ['appeal-form-account-name', 'appeal-form-avatar']
+        ].forEach(function (ids) {
+            var nameEl = document.getElementById(ids[0]);
+            var avatarEl = document.getElementById(ids[1]);
+            if (nameEl) nameEl.textContent = name;
+            if (!avatarEl) return;
+            var src = avatarUrl(user);
+            if (src) {
+                avatarEl.src = src;
+                avatarEl.hidden = false;
+            } else {
+                avatarEl.hidden = true;
+            }
+        });
+    }
+
+    function showSignedInPending() {
+        var copy = notBanned.querySelector('.appeal-copy');
+        var title = notBanned.querySelector('.appeal-title');
+        var icon = notBanned.querySelector('.card-icon i');
+        hydrateAccount();
+        if (title) title.textContent = 'Checking your ban status';
+        if (icon) icon.className = 'fas fa-shield-halved';
+        if (copy) {
+            copy.textContent = 'You are signed in with Snowball. If there is an active ban, Snowball will show the appeal form once the server check is available.';
+        }
         show(notBanned);
         clearOAuthQuery();
+    }
+
+    function showNotBanned(user) {
+        var copy = notBanned.querySelector('.appeal-copy');
+        var title = notBanned.querySelector('.appeal-title');
+        var icon = notBanned.querySelector('.card-icon i');
+        hydrateAccount(user);
+        if (title) title.textContent = 'No active ban found';
+        if (icon) icon.className = 'fas fa-circle-check';
+        if (copy) {
+            copy.textContent = 'Snowball did not find an active Xtreme Weather ban for this Discord account.';
+        }
+        show(notBanned);
     }
 
     function setText(id, value) {
@@ -428,9 +504,10 @@ window.addEventListener('resize', function() {
     function hydrateBan(data) {
         var user = data.user || {};
         var ban = data.ban || {};
+        hydrateAccount(user);
         document.getElementById('appeal-discord-id').value = user.id || '';
         document.getElementById('appeal-ban-id').value = ban.id || '';
-        setText('appeal-user', user.username ? '@' + user.username : 'Discord user');
+        setText('appeal-user', '@' + displayName(user).replace(/^@/, ''));
         setText('appeal-reason', ban.reason);
         setText('appeal-date', ban.created_at || ban.date);
         setText('appeal-note', ban.moderator_note || ban.note || 'No extra note is on record.');
@@ -459,7 +536,7 @@ window.addEventListener('resize', function() {
             .then(function (data) {
                 if (!data.authenticated) {
                     if (oauthCode) {
-                        showNotBannedFallback();
+                        showSignedInPending();
                         return;
                     }
                     status.textContent = 'Log in with the Snowball Discord app to check your ban status.';
@@ -468,11 +545,11 @@ window.addEventListener('resize', function() {
                 }
                 if (!data.banned) {
                     if (data.oauthFallback) {
-                        showNotBannedFallback();
+                        showSignedInPending();
                         return;
                     }
                     clearOAuthQuery();
-                    show(notBanned);
+                    showNotBanned(data.user);
                     return;
                 }
                 clearOAuthQuery();
@@ -480,7 +557,7 @@ window.addEventListener('resize', function() {
             })
             .catch(function () {
                 if (oauthCode) {
-                    showNotBannedFallback();
+                    showSignedInPending();
                     return;
                 }
                 status.className = 'form-status is-error';
