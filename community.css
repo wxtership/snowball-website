@@ -274,14 +274,44 @@
 }
 .site-footer > * { position: relative; z-index: 1; }
 
-/* ---- About: history timeline ---- */
-.timeline { position: relative; max-width: 620px; margin: 0 auto; padding-left: 30px; }
-.timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--purple-500), rgba(107,84,245,0.08)); }
-.timeline-item { position: relative; padding-bottom: 34px; }
-.timeline-item:last-child { padding-bottom: 0; }
-.timeline-item::before { content: ''; position: absolute; left: -30px; top: 3px; width: 15px; height: 15px; border-radius: 50%; background: var(--purple-500); box-shadow: 0 0 0 4px rgba(107,84,245,0.16); }
-.timeline-year { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: #fff; margin-bottom: 6px; }
-.timeline-text { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.58); }
+/* ---- About: history timeline (centre line, alternating cards) ---- */
+.timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 8px 0; }
+.timeline::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 2px; margin-left: -1px; background: rgba(255,255,255,0.12);
+}
+.timeline-item {
+  position: relative; width: calc(50% - 38px); box-sizing: border-box;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 26px 30px; margin-bottom: 36px; text-align: left;
+}
+.timeline-item:nth-child(odd)  { margin-left: 0; margin-right: auto; }
+.timeline-item:nth-child(even) { margin-left: auto; margin-right: 0; }
+.timeline-item:last-child { margin-bottom: 0; }
+/* connector from the card to the centre line */
+.timeline-item::after {
+  content: ''; position: absolute; top: 37px; height: 2px; width: 38px;
+  background: rgba(255,255,255,0.12);
+}
+.timeline-item:nth-child(odd)::after  { right: -38px; }
+.timeline-item:nth-child(even)::after { left: -38px; }
+/* dot on the centre line */
+.timeline-item::before {
+  content: ''; position: absolute; top: 31px; width: 15px; height: 15px;
+  border-radius: 50%; background: #fff; z-index: 1;
+  box-shadow: 0 0 0 4px var(--dark-900), 0 0 0 6px rgba(255,255,255,0.2);
+}
+.timeline-item:nth-child(odd)::before  { right: -45px; }
+.timeline-item:nth-child(even)::before { left: -45px; }
+.timeline-year { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 1.9vw, 26px); color: #fff; margin-bottom: 10px; }
+.timeline-text { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.6); margin: 0; }
+@media (max-width: 760px) {
+  .timeline { max-width: 100%; padding-left: 30px; }
+  .timeline::before { left: 8px; margin-left: 0; }
+  .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { width: 100%; margin: 0 0 22px; }
+  .timeline-item:nth-child(odd)::before, .timeline-item:nth-child(even)::before { left: -30px; right: auto; top: 24px; }
+  .timeline-item:nth-child(odd)::after, .timeline-item:nth-child(even)::after { left: -22px; right: auto; width: 16px; top: 31px; }
+}
 
 /* ---- About: FAQ accordion ---- */
 .faq { max-width: 720px; margin: 0 auto; }
