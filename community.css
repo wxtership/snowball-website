@@ -207,9 +207,7 @@
 .community-cta,
 .timeline-item,
 .faq > details,
-.mission,
-.staff-tier-title,
-.staff-card {
+.mission {
   animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
 }
 .page-hero .section-title { animation-delay: 0.05s; }
@@ -221,14 +219,14 @@
 .economy-grid > :nth-child(2), .stats-strip > :nth-child(2), .contact-grid > :nth-child(2) { animation-delay: 0.24s; }
 .economy-grid > :nth-child(3), .stats-strip > :nth-child(3), .contact-grid > :nth-child(3) { animation-delay: 0.36s; }
 .economy-grid > :nth-child(4), .stats-strip > :nth-child(4), .contact-grid > :nth-child(4) { animation-delay: 0.48s; }
-/* staff cards/headers carry a JS-set --i for a continuous top-to-bottom cascade */
-.staff-tier-title, .staff-card { animation-delay: calc(var(--i, 0) * 85ms); }
-/* Roster cards stay paused (held at the animation's invisible start) until staff.js
-   adds .in a frame after render, so they never flash in at full opacity. */
-#staff-roster .staff-tier-title,
-#staff-roster .staff-card { animation-play-state: paused; }
-#staff-roster.in .staff-tier-title,
-#staff-roster.in .staff-card { animation-play-state: running; }
+/* Roster cards animate only when staff.js adds .animate-in to the container, and it does
+   so BEFORE the cards are created, so they paint at the animation's invisible first frame
+   (no flash). Without JS the cards just stay visible. --i (per card) drives the cascade. */
+#staff-roster.animate-in .staff-tier-title,
+#staff-roster.animate-in .staff-card {
+  animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 85ms);
+}
 .timeline-item, .faq > details { animation-delay: calc(var(--i, 0) * 90ms); }
 .staff-empty { text-align: center; color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; padding: 40px 0; }
 .staff-empty a { color: var(--purple-300); text-decoration: none; }
@@ -237,7 +235,8 @@
   .page-hero .section-title, .page-hero .section-body,
   .community-page .section-label, .community-page .section-heading,
   .economy-grid > *, .stats-strip > *, .contact-grid > *,
-  .community-cta, .timeline-item, .faq > details, .mission, .staff-tier-title, .staff-card { animation: none; }
+  .community-cta, .timeline-item, .faq > details, .mission,
+  #staff-roster.animate-in .staff-tier-title, #staff-roster.animate-in .staff-card { animation: none; }
 }
 
 /* ---- Background weather-icon texture (scattered near the edges) ---- */

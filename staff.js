@@ -45,12 +45,10 @@
     var remaining = urls.length, done = false;
     function render() {
       if (done) return; done = true;
+      // Add the class BEFORE inserting the cards so they're created already animating from
+      // the invisible first frame (no flash). Without this JS, the cards just stay visible.
+      root.classList.add('animate-in');
       root.innerHTML = tiers.map(renderTier).join('');
-      // Cards are painted at their invisible start (paused) first, then we start the
-      // staggered entrance on the next frame so nothing flashes in at full opacity.
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () { root.classList.add('in'); });
-      });
     }
     if (!remaining) { render(); return; }
     urls.forEach(function (u) {
