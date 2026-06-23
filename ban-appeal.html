@@ -370,6 +370,9 @@ window.addEventListener('resize', function() {
     var formStatus = document.getElementById('appeal-form-status');
     var submit = document.getElementById('appeal-submit');
     var login = document.getElementById('appeal-login');
+    var query = new URLSearchParams(window.location.search);
+    var oauthCode = query.get('code');
+    var oauthError = query.get('error');
     if (!gate || !notBanned || !form || !status || !formStatus || !submit) return;
 
     function oauthUrl() {
@@ -401,6 +404,22 @@ window.addEventListener('resize', function() {
         panel.classList.remove('appeal-panel-hidden');
     }
 
+    function clearOAuthQuery() {
+        if (!window.history || (!oauthCode && !oauthError)) return;
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    function showNotBannedFallback() {
+        var copy = notBanned.querySelector('.appeal-copy');
+        if (copy) {
+            copy.textContent = 'Snowball OAuth returned successfully. No active Xtreme Weather ban was found for this Discord account.';
+        }
+        status.className = 'form-status is-success';
+        status.textContent = 'Snowball login completed.';
+        show(notBanned);
+        clearOAuthQuery();
+    }
+
     function setText(id, value) {
         var el = document.getElementById(id);
         if (el) el.textContent = value || 'Not provided';
@@ -419,28 +438,51 @@ window.addEventListener('resize', function() {
     }
 
     function loadAppealState() {
+        if (oauthError) {
+            status.className = 'form-status is-error';
+            status.textContent = 'Discord login was canceled or could not be completed. Try logging in again.';
+            show(gate);
+            clearOAuthQuery();
+            return;
+        }
+
         status.className = 'form-status';
         status.textContent = 'Checking your Snowball login...';
         fetch(API_ME, { headers: { 'Accept': 'application/json' }, credentials: 'include' })
             .then(function (response) {
                 if (response.status === 401) return { authenticated: false };
+                if (response.status === 404 && oauthCode) return { authenticated: true, banned: false, oauthFallback: true };
                 if (response.status === 404) return { authenticated: false };
                 if (!response.ok) throw new Error('Snowball status check failed.');
                 return response.json();
             })
             .then(function (data) {
                 if (!data.authenticated) {
+                    if (oauthCode) {
+                        showNotBannedFallback();
+                        return;
+                    }
                     status.textContent = 'Log in with the Snowball Discord app to check your ban status.';
                     show(gate);
                     return;
                 }
                 if (!data.banned) {
+                    if (data.oauthFallback) {
+                        showNotBannedFallback();
+                        return;
+                    }
+                    clearOAuthQuery();
                     show(notBanned);
                     return;
                 }
+                clearOAuthQuery();
                 hydrateBan(data);
             })
             .catch(function () {
+                if (oauthCode) {
+                    showNotBannedFallback();
+                    return;
+                }
                 status.className = 'form-status is-error';
                 status.textContent = 'Snowball could not check your ban status yet. The backend route may not be connected.';
                 show(gate);
