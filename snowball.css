@@ -80,9 +80,11 @@ body {
 @media (max-width: 768px) {
   .mobile-menu-overlay {
     background: #0d0d18 !important;
-    bottom: auto !important;
-    height: 100vh !important;   /* fallback for browsers without dvh */
-    height: 100dvh !important;  /* matches the visible viewport incl. the URL bar */
+    top: 0 !important;
+    bottom: 0 !important;       /* anchor both ends = full, stable height (no resize lag) */
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
   }
   .hero-bg {
     background: #0d0d18 !important;
