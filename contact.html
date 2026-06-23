@@ -164,17 +164,17 @@
   <section>
     <div class="section-inner">
       <div class="contact-layout">
-        <form class="contact-form" action="https://formspree.io/f/xgojvvez" method="POST">
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xgojvvez" method="POST">
           <input type="hidden" name="_subject" value="New Xtreme Weather contact form submission">
           <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off">
 
           <div class="form-grid">
             <label class="form-field">
-              <span>Name</span>
+              <span>Name <b aria-hidden="true">*</b></span>
               <input type="text" name="name" autocomplete="name" required>
             </label>
             <label class="form-field">
-              <span>Email</span>
+              <span>Email <b aria-hidden="true">*</b></span>
               <input type="email" name="email" autocomplete="email" required>
             </label>
           </div>
@@ -185,7 +185,7 @@
               <input type="text" name="discord" autocomplete="off" placeholder="@username">
             </label>
             <label class="form-field">
-              <span>Topic</span>
+              <span>Topic <b aria-hidden="true">*</b></span>
               <select name="topic" required>
                 <option value="">Choose one</option>
                 <option>Snowball support</option>
@@ -199,7 +199,7 @@
           </div>
 
           <label class="form-field">
-            <span>Message</span>
+            <span>Message <b aria-hidden="true">*</b></span>
             <textarea name="message" rows="7" required></textarea>
           </label>
 
@@ -208,7 +208,8 @@
             <span>I'm okay with the team contacting me back.</span>
           </label>
 
-          <button type="submit" class="btn-primary form-submit"><i class="fas fa-paper-plane"></i> Send message</button>
+          <div class="form-status" id="contact-form-status" role="status" aria-live="polite"></div>
+          <button type="submit" class="btn-primary form-submit" id="contact-form-submit"><i class="fas fa-paper-plane"></i> Send message</button>
         </form>
 
         <aside class="contact-side">
@@ -344,6 +345,62 @@ window.addEventListener('resize', function() {
         if (menu.classList.contains('active')) sbToggleMobileMenu();
     }
 });
+
+// Contact form: submit to Formspree with AJAX so visitors stay on this page.
+(function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('contact-form-status');
+    var submit = document.getElementById('contact-form-submit');
+    if (!form || !status || !submit) return;
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        form.classList.add('is-sending');
+        submit.disabled = true;
+        status.className = 'form-status';
+        status.textContent = 'Sending...';
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        }).then(function (response) {
+            if (!response.ok) throw new Error('Formspree rejected the submission.');
+            form.reset();
+            status.className = 'form-status is-success';
+            status.textContent = 'Message sent. We got it.';
+            burstContactConfetti();
+        }).catch(function () {
+            status.className = 'form-status is-error';
+            status.textContent = 'Something went wrong. Try again, or reach us on Discord.';
+        }).finally(function () {
+            form.classList.remove('is-sending');
+            submit.disabled = false;
+        });
+    });
+
+    function burstContactConfetti() {
+        var wrap = document.createElement('div');
+        var colors = ['#6B54F5', '#BFA3FF', '#9ee6b7', '#ffffff', '#ff8fa3'];
+        wrap.className = 'contact-confetti';
+        for (var i = 0; i < 44; i++) {
+            var piece = document.createElement('i');
+            piece.style.setProperty('--x', (Math.random() * 100).toFixed(2) + 'vw');
+            piece.style.setProperty('--dx', ((Math.random() * 160) - 80).toFixed(0) + 'px');
+            piece.style.setProperty('--r', ((Math.random() * 360) | 0) + 'deg');
+            piece.style.setProperty('--d', (1.4 + Math.random() * 1.2).toFixed(2) + 's');
+            piece.style.setProperty('--c', colors[i % colors.length]);
+            wrap.appendChild(piece);
+        }
+        document.body.appendChild(wrap);
+        setTimeout(function () { wrap.remove(); }, 2800);
+    }
+})();
 
 </script>
 </body>

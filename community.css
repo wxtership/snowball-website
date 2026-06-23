@@ -127,6 +127,7 @@
   font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
   color: rgba(255,255,255,0.58);
 }
+.form-field b { color: #ff4d6d; font-weight: 700; }
 .form-field input,
 .form-field select,
 .form-field textarea {
@@ -147,6 +148,26 @@
 .form-check input { width: 17px; height: 17px; accent-color: var(--purple-500); }
 .form-submit { width: fit-content; }
 .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-status {
+  min-height: 20px; margin: 0 0 16px; font-size: 14px; line-height: 1.45;
+  color: rgba(255,255,255,0.62);
+}
+.form-status.is-success { color: #9ee6b7; }
+.form-status.is-error { color: #ff8fa3; }
+.contact-form.is-sending .form-submit { opacity: 0.72; pointer-events: none; }
+.contact-confetti {
+  position: fixed; inset: 0; z-index: 10000; pointer-events: none; overflow: hidden;
+}
+.contact-confetti i {
+  position: absolute; top: -18px; width: 9px; height: 14px; border-radius: 3px;
+  background: var(--c); left: var(--x); transform: rotate(var(--r));
+  animation: contact-confetti-fall var(--d) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes contact-confetti-fall {
+  0% { opacity: 0; transform: translate3d(0, -20px, 0) rotate(var(--r)); }
+  10% { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(var(--dx), 105vh, 0) rotate(calc(var(--r) + 540deg)); }
+}
 .contact-side { display: flex; flex-direction: column; gap: 12px; }
 .contact-side-link {
   display: flex; align-items: center; gap: 14px; text-decoration: none;
