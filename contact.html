@@ -163,44 +163,67 @@
 
   <section>
     <div class="section-inner">
-      <div class="contact-grid">
+      <div class="contact-layout">
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="hidden" name="_subject" value="New Xtreme Weather contact form submission">
+          <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off">
 
-        <a class="econ-card card-link" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">
-          <div class="card-icon"><i class="fab fa-discord"></i></div>
-          <h3 class="econ-title">Join the Discord</h3>
-          <p class="econ-desc">The fastest way to reach us. Hang out, ask questions, and get help from staff and the community in real time.</p>
-          <span class="card-arrow">Open Discord <i class="fas fa-arrow-right"></i></span>
-        </a>
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="form-field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
 
-        <a class="econ-card card-link" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">
-          <div class="card-icon"><i class="fas fa-life-ring"></i></div>
-          <h3 class="econ-title">Support &amp; tickets</h3>
-          <p class="econ-desc">Need help with Snowball or your account? Open a ticket in the server and a staff member will jump in to sort it out.</p>
-          <span class="card-arrow">Get support <i class="fas fa-arrow-right"></i></span>
-        </a>
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Discord username</span>
+              <input type="text" name="discord" autocomplete="off" placeholder="@username">
+            </label>
+            <label class="form-field">
+              <span>Topic</span>
+              <select name="topic" required>
+                <option value="">Choose one</option>
+                <option>Snowball support</option>
+                <option>Bug report</option>
+                <option>Feature idea</option>
+                <option>Partnership or press</option>
+                <option>Community question</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
 
-        <a class="econ-card card-link" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">
-          <div class="card-icon"><i class="fas fa-bug"></i></div>
-          <h3 class="econ-title">Bugs &amp; feature ideas</h3>
-          <p class="econ-desc">Found a glitch or have a feature in mind? Drop it in the feedback channels. We read everything and ship fixes fast.</p>
-          <span class="card-arrow">Share feedback <i class="fas fa-arrow-right"></i></span>
-        </a>
+          <label class="form-field">
+            <span>Message</span>
+            <textarea name="message" rows="7" required></textarea>
+          </label>
 
-        <a class="econ-card card-link" href="https://x.com/joinxtremewx" target="_blank" rel="noopener">
-          <div class="card-icon"><i class="fab fa-x-twitter"></i></div>
-          <h3 class="econ-title">Partnerships &amp; press</h3>
-          <p class="econ-desc">For collabs, partnerships, or press, slide into our X DMs and we'll get back to you.</p>
-          <span class="card-arrow">Message on X <i class="fas fa-arrow-right"></i></span>
-        </a>
-        <!-- Have a business email? Add another card:
-        <a class="econ-card card-link" href="mailto:you@example.com">
-          <div class="card-icon"><i class="fas fa-envelope"></i></div>
-          <h3 class="econ-title">Email us</h3>
-          <p class="econ-desc">Prefer email? Reach the team directly.</p>
-          <span class="card-arrow">Send an email <i class="fas fa-arrow-right"></i></span>
-        </a>
-        -->
+          <label class="form-check">
+            <input type="checkbox" name="reply_ok" value="yes" checked>
+            <span>I'm okay with the team contacting me back.</span>
+          </label>
 
+          <button type="submit" class="btn-primary form-submit"><i class="fas fa-paper-plane"></i> Send message</button>
+        </form>
+
+        <aside class="contact-side">
+          <a class="contact-side-link" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">
+            <i class="fab fa-discord"></i>
+            <span><strong>Discord</strong>Fastest for support and tickets</span>
+          </a>
+          <a class="contact-side-link" href="https://x.com/joinxtremewx" target="_blank" rel="noopener">
+            <i class="fab fa-x-twitter"></i>
+            <span><strong>X / Twitter</strong>Good for partnerships and updates</span>
+          </a>
+          <div class="contact-note">
+            Replace <code>YOUR_FORM_ID</code> with your Formspree form ID when you're ready to receive submissions.
+          </div>
+        </aside>
       </div>
     </div>
   </section>
