@@ -80,11 +80,24 @@ body {
 @media (max-width: 768px) {
   .mobile-menu-overlay {
     background: #0d0d18 !important;
-    top: 0 !important;
-    bottom: 0 !important;       /* anchor both ends = full, stable height (no resize lag) */
-    left: 0 !important;
-    right: 0 !important;
+    inset: -2px !important;     /* overdraws the viewport to avoid iOS edge flashes */
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
     height: auto !important;
+    transition: opacity 0.18s ease-out, visibility 0s linear 0.18s !important;
+  }
+  .mobile-menu-overlay.active {
+    visibility: visible !important;
+    transition: opacity 0.18s ease-out, visibility 0s !important;
+  }
+  .mobile-view {
+    transform: none !important;
+    transition: opacity 0.22s ease-out !important;
+  }
+  .mobile-menu-overlay.sub-active .main-view,
+  .sub-view,
+  .sub-view.active {
+    transform: none !important;
   }
   .hero-bg {
     background: #0d0d18 !important;
