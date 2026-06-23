@@ -28,9 +28,33 @@
         var ia = ORDER.indexOf(a.key), ib = ORDER.indexOf(b.key);
         return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
       });
-      root.innerHTML = tiers.map(renderTier).join('');
+      preloadThenRender(tiers);
     })
     .catch(function () { showError(); });
+
+  // Preload avatars/banners so cards don't flash in unstyled, then render (which
+  // triggers the staggered entrance). Falls back after a short timeout.
+  function preloadThenRender(tiers) {
+    var urls = [];
+    tiers.forEach(function (t) {
+      t.members.forEach(function (m) {
+        var a = safeUrl(m.avatar); if (a) urls.push(a);
+        var b = safeUrl(m.banner); if (b) urls.push(b);
+      });
+    });
+    var remaining = urls.length, done = false;
+    function render() {
+      if (done) return; done = true;
+      root.innerHTML = tiers.map(renderTier).join('');
+    }
+    if (!remaining) { render(); return; }
+    urls.forEach(function (u) {
+      var img = new Image();
+      img.onload = img.onerror = function () { if (--remaining <= 0) render(); };
+      img.src = u;
+    });
+    setTimeout(render, 2500); // never wait forever on a slow image
+  }
 
   function showError() {
     root.innerHTML = '<p class="staff-empty">We couldn’t load the team right now. '
