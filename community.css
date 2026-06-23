@@ -190,6 +190,33 @@
   font-size: 13px; line-height: 1.55;
 }
 .contact-note code { color: var(--purple-300); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.appeal-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+.appeal-panel { position: relative; overflow: hidden; }
+.appeal-panel-hidden { display: none; }
+.appeal-title {
+  font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.1; text-transform: uppercase; color: #fff; margin: 0 0 12px;
+}
+.appeal-copy { margin: 0 0 24px; color: rgba(255,255,255,0.58); line-height: 1.7; }
+.appeal-kicker {
+  display: block; margin-bottom: 10px; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple-300);
+}
+.appeal-ban-card {
+  margin-bottom: 22px; padding: 20px; border-radius: 16px;
+  background: linear-gradient(135deg, rgba(107,84,245,0.13), rgba(255,255,255,0.03));
+  border: 1px solid rgba(107,84,245,0.22);
+}
+.appeal-meta { display: grid; gap: 12px; margin: 18px 0 0; }
+.appeal-meta div {
+  display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px;
+  padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.appeal-meta dt {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(255,255,255,0.42);
+}
+.appeal-meta dd { margin: 0; color: rgba(255,255,255,0.78); line-height: 1.55; }
 /* makes an .econ-card behave as a clickable link */
 .card-link { text-decoration: none; display: block; }
 .card-arrow {
@@ -227,6 +254,7 @@
   .form-grid { grid-template-columns: 1fr; gap: 0; }
   .contact-form, .contact-side { padding: 22px; }
   .form-submit { width: 100%; justify-content: center; }
+  .appeal-meta div { grid-template-columns: 1fr; gap: 6px; }
 }
 @media (max-width: 560px) {
   .staff-grid { grid-template-columns: 1fr; }

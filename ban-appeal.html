@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="The story behind Xtreme Weather and Snowball: our history, FAQ, and what we're about. Meet the community behind the forecasts." />
+<meta name="description" content="Appeal an Xtreme Weather Discord ban through Snowball. Log in, review your ban details, and submit an appeal for the staff team." />
 <meta name="theme-color" content="#0d0d18" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>About — Xtreme Weather</title>
+<title>Ban Appeal — Xtreme Weather</title>
 <link rel="preconnect" href="https://discord.com" />
 <link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
@@ -156,93 +155,86 @@
 
   <section class="page-hero">
     <div class="section-inner">
-      <h1 class="section-title">About Us</h1>
+      <h1 class="section-title">Ban Appeal</h1>
       <p class="section-body">
-        Want to learn more about Xtreme Weather? You're in the right place. Here's our
-        story, what we're about, and answers to the questions we hear most.
+        Log in with Snowball to check your ban status. If you're banned, Snowball can show the
+        reason on record and unlock the appeal form for staff review.
       </p>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <h2 class="section-heading">How we got here</h2>
-      <!-- Update the 2025 / 2026 milestones with the real events whenever you like. -->
-      <div class="timeline">
-        <div class="timeline-item" style="--i:0">
-          <div class="timeline-year">2022</div>
-          <p class="timeline-text">Xtreme Weather launched on June 7th, 2022 and quickly grew past 500 members. After an early setback, the community rebuilt, stronger than before, and pushed past 800.</p>
-        </div>
-        <div class="timeline-item" style="--i:1">
-          <div class="timeline-year">2023</div>
-          <p class="timeline-text">Our current home was established on April 19th, 2023, and the community quickly found its footing and its momentum.</p>
-        </div>
-        <div class="timeline-item" style="--i:2">
-          <div class="timeline-year">2024</div>
-          <p class="timeline-text">Our biggest growth year yet, with 4,000+ new members. We rolled out a refreshed website and launched our very own official radar.</p>
-        </div>
-        <div class="timeline-item" style="--i:3">
-          <div class="timeline-year">2025</div>
-          <p class="timeline-text">We kept iterating and growing: revamping our Coverage Modes, becoming a WRN Ambassador, and taking real steps toward being the best weather community on the platform.</p>
-        </div>
-        <div class="timeline-item" style="--i:4">
-          <div class="timeline-year">2026</div>
-          <p class="timeline-text">For our three-year anniversary, we shipped our biggest revamp yet: new graphics, new channels, and so much more, headlined by Snowball, the community's own Discord app with AI weather that actually fetches real data, a full economy, live radio, and music. Now 7,500+ members strong and still growing, with round-the-clock coverage and a crew that shows up for every storm.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="contact-layout appeal-layout">
+        <section class="contact-form appeal-panel" id="appeal-gate">
+          <div class="card-icon"><i class="fab fa-discord"></i></div>
+          <h2 class="appeal-title">Start with Snowball</h2>
+          <p class="appeal-copy">
+            Snowball needs to verify your Discord account before showing ban details or accepting an appeal.
+          </p>
+          <a class="btn-primary form-submit" id="appeal-login" href="/api/auth/discord?next=/ban-appeal.html">
+            <i class="fas fa-right-to-bracket"></i> Log in with Snowball
+          </a>
+          <div class="form-status" id="appeal-status" role="status" aria-live="polite"></div>
+        </section>
 
-  <section>
-    <div class="section-inner">
-      <h2 class="section-heading">Frequently asked questions</h2>
-      <p class="faq-intro">We've compiled a list of the questions you may have about the community, even for longtime members.</p>
-      <div class="faq">
-        <div class="faq-item" style="--i:0">
-          <button class="faq-q" aria-expanded="false"><span>What is Snowball?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Snowball is our new all-in-one Discord app for Xtreme Weather. It combines all of the commands &amp; features you'd ever need: from weather, playing music &amp; radio, to the server economy, community features, and so much more.</p></div></div>
-        </div>
-        <div class="faq-item" style="--i:1">
-          <button class="faq-q" aria-expanded="false"><span>Are we accepting applications for a position?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Applications for roles like @Staff and @Coverage Expert will usually be opened on a bi-yearly basis, or whenever needed. We'll promote the need for a position whenever one comes up, so if you haven't heard anything lately: probably not.</p></div></div>
-        </div>
-        <div class="faq-item" style="--i:2">
-          <button class="faq-q" aria-expanded="false"><span>What are Coverage Modes?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Coverage Modes are our way of letting you know some significant weather is on the way that'll impact a wide variety of people. At the moment there are three types: Severe Coverage, Winter Coverage, and Tropical Coverage. You can find more on what triggers each mode in our Coverage Information &amp; Policies resource.</p></div></div>
-        </div>
-        <div class="faq-item" style="--i:3">
-          <button class="faq-q" aria-expanded="false"><span>Who can answer my weather question?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Snowball can help with that! Ping @Snowball in any channel with your question and it'll help answer. Note that Snowball can make mistakes, and you should never use it for life-saving information. Always refer to NOAA/NWS resources for the most up-to-date information in that regard.</p></div></div>
-        </div>
-        <div class="faq-item" style="--i:4">
-          <button class="faq-q" aria-expanded="false"><span>What are Snowflakes? How does the economy work?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Snowflakes are the server "currency," and you can earn them just by chatting or running any economy command with Snowball. From there you can choose a path, do missions &amp; buy roles that help you earn more and climb the leaderboard. You can even raise your own boar &amp; fight others for Snowflakes, or invest in the server stock. There's so much to discover, really.</p></div></div>
-        </div>
-        <div class="faq-item" style="--i:5">
-          <button class="faq-q" aria-expanded="false"><span>How can I level up, and what do I get?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">You can level up just by sending messages and being active! You can also earn level XP by being in a voice chat. For more on the perks, check out the Role Rewards resource.</p></div></div>
-        </div>
-        <div class="faq-item" style="--i:6">
-          <button class="faq-q" aria-expanded="false"><span>Who runs this place?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">We're flattered! You can find information on every role in the server, including <a href="staff.html">staff</a>, in the Role Information resource.</p></div></div>
-        </div>
-        <div class="faq-item" style="--i:7">
-          <button class="faq-q" aria-expanded="false"><span>How do I report a policy violation or member?</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-          <div class="faq-a-wrap"><div class="faq-a"><p class="faq-answer">Open a <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">Support Ticket</a>! We're always here to help, and if you notice something that shouldn't be, we can assist with it.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <section class="contact-form appeal-panel appeal-panel-hidden" id="appeal-not-banned">
+          <div class="card-icon"><i class="fas fa-circle-check"></i></div>
+          <h2 class="appeal-title">No active ban found</h2>
+          <p class="appeal-copy">
+            Snowball did not find an active Xtreme Weather ban for this Discord account.
+          </p>
+          <a class="btn-primary form-submit" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">
+            <i class="fab fa-discord"></i> Rejoin the server
+          </a>
+        </section>
 
-  <section class="quote-section">
-    <div class="section-inner">
-      <div class="mission">
-        <span class="mission-mark" aria-hidden="true">&ldquo;</span>
-        <p class="mission-quote">Since day one, Xtreme Weather has had one mission: to continue creating a safe, welcoming space to learn, track, and love weather. And it's never changing. Every one of you is why this community means something, because innovation always wins over imitation.</p>
-        <div class="mission-author">
-          <span class="mission-name">Speedtape</span>
-          <span class="mission-role">Xtreme Weather Leadership</span>
-        </div>
+        <form class="contact-form appeal-panel appeal-panel-hidden" id="appeal-form" action="/api/ban-appeals" method="POST">
+          <input type="hidden" name="discord_id" id="appeal-discord-id">
+          <input type="hidden" name="ban_id" id="appeal-ban-id">
+
+          <div class="appeal-ban-card">
+            <span class="appeal-kicker">Ban on record</span>
+            <h2 class="appeal-title" id="appeal-user">Discord user</h2>
+            <dl class="appeal-meta">
+              <div><dt>Reason</dt><dd id="appeal-reason">Waiting for Snowball...</dd></div>
+              <div><dt>Date</dt><dd id="appeal-date">Waiting for Snowball...</dd></div>
+              <div><dt>Moderator note</dt><dd id="appeal-note">Waiting for Snowball...</dd></div>
+            </dl>
+          </div>
+
+          <label class="form-field">
+            <span>Why should this ban be reviewed? <b aria-hidden="true">*</b></span>
+            <textarea name="appeal_reason" rows="7" required></textarea>
+          </label>
+
+          <label class="form-field">
+            <span>Anything staff should know?</span>
+            <textarea name="extra_context" rows="4"></textarea>
+          </label>
+
+          <label class="form-check">
+            <input type="checkbox" name="truthful" value="yes" required>
+            <span>I understand that dishonest or spam appeals may be denied.</span>
+          </label>
+
+          <div class="form-status" id="appeal-form-status" role="status" aria-live="polite"></div>
+          <button type="submit" class="btn-primary form-submit" id="appeal-submit"><i class="fas fa-paper-plane"></i> Submit appeal</button>
+        </form>
+
+        <aside class="contact-side">
+          <div class="contact-note">
+            Appeals are private and reviewed by staff. Include context, take responsibility where needed, and keep it honest.
+          </div>
+          <a class="contact-side-link" href="contact.html">
+            <i class="fas fa-envelope"></i>
+            <span><strong>Not banned?</strong>Use the contact form instead</span>
+          </a>
+          <a class="contact-side-link" href="https://x.com/joinxtremewx" target="_blank" rel="noopener">
+            <i class="fab fa-x-twitter"></i>
+            <span><strong>X / Twitter</strong>For public updates</span>
+          </a>
+        </aside>
       </div>
     </div>
   </section>
@@ -250,11 +242,10 @@
   <section>
     <div class="section-inner">
       <div class="community-cta">
-        <h2 class="section-title">Meet the team</h2>
-        <p class="section-body">We're a small crew of weather nerds, builders, and night-owl mods keeping Xtreme Weather running smoothly.</p>
+        <h2 class="section-title">Appeals are reviewed by staff</h2>
+        <p class="section-body">Submitting an appeal does not guarantee an unban, but it gives the team the context they need to make a fair call.</p>
         <div class="page-cta">
-          <a href="staff.html" class="btn-primary"><i class="fas fa-users"></i> See our staff</a>
-          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-ghost"><i class="fab fa-discord"></i> Join the Server</a>
+          <a href="contact.html" class="btn-primary"><i class="fas fa-envelope"></i> Contact the team</a>
         </div>
       </div>
     </div>
@@ -366,43 +357,122 @@ window.addEventListener('resize', function() {
     }
 });
 
-</script>
-<script>
-// FAQ accordion: toggle .open; the height animates via the grid-rows transition in CSS
-document.querySelectorAll('.faq-q').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var open = btn.parentElement.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-});
-
-// Timeline: reveal each card as it scrolls into view + draw the centre line as you scroll
+// Ban appeal flow. Snowball must provide these backend routes:
+// GET /api/ban-appeal/me -> { authenticated, banned, user, ban }
+// POST /api/ban-appeals -> accepts FormData for the authenticated user.
 (function () {
-  var timeline = document.querySelector('.timeline');
-  if (!timeline) return;
-  var items = timeline.querySelectorAll('.timeline-item');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -12% 0px' });
-    items.forEach(function (it) { io.observe(it); });
-  } else {
-    items.forEach(function (it) { it.classList.add('in-view'); });
-  }
-  var ticking = false;
-  function update() {
-    ticking = false;
-    var r = timeline.getBoundingClientRect();
-    var fill = (window.innerHeight * 0.5 - r.top) / r.height;
-    timeline.style.setProperty('--timeline-fill', (Math.max(0, Math.min(1, fill)) * 100) + '%');
-  }
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  update();
+    var API_ME = '/api/ban-appeal/me';
+    var gate = document.getElementById('appeal-gate');
+    var notBanned = document.getElementById('appeal-not-banned');
+    var form = document.getElementById('appeal-form');
+    var status = document.getElementById('appeal-status');
+    var formStatus = document.getElementById('appeal-form-status');
+    var submit = document.getElementById('appeal-submit');
+    if (!gate || !notBanned || !form || !status || !formStatus || !submit) return;
+
+    function show(panel) {
+        [gate, notBanned, form].forEach(function (el) { el.classList.add('appeal-panel-hidden'); });
+        panel.classList.remove('appeal-panel-hidden');
+    }
+
+    function setText(id, value) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = value || 'Not provided';
+    }
+
+    function hydrateBan(data) {
+        var user = data.user || {};
+        var ban = data.ban || {};
+        document.getElementById('appeal-discord-id').value = user.id || '';
+        document.getElementById('appeal-ban-id').value = ban.id || '';
+        setText('appeal-user', user.username ? '@' + user.username : 'Discord user');
+        setText('appeal-reason', ban.reason);
+        setText('appeal-date', ban.created_at || ban.date);
+        setText('appeal-note', ban.moderator_note || ban.note || 'No extra note is on record.');
+        show(form);
+    }
+
+    function loadAppealState() {
+        status.className = 'form-status';
+        status.textContent = 'Checking your Snowball login...';
+        fetch(API_ME, { headers: { 'Accept': 'application/json' }, credentials: 'include' })
+            .then(function (response) {
+                if (response.status === 401) return { authenticated: false };
+                if (response.status === 404) return { authenticated: false };
+                if (!response.ok) throw new Error('Snowball status check failed.');
+                return response.json();
+            })
+            .then(function (data) {
+                if (!data.authenticated) {
+                    status.textContent = 'Log in to let Snowball check your ban status.';
+                    show(gate);
+                    return;
+                }
+                if (!data.banned) {
+                    show(notBanned);
+                    return;
+                }
+                hydrateBan(data);
+            })
+            .catch(function () {
+                status.className = 'form-status is-error';
+                status.textContent = 'Snowball could not check your ban status yet. The backend route may not be connected.';
+                show(gate);
+            });
+    }
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        form.classList.add('is-sending');
+        submit.disabled = true;
+        formStatus.className = 'form-status';
+        formStatus.textContent = 'Submitting appeal...';
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' },
+            credentials: 'include'
+        }).then(function (response) {
+            if (!response.ok) throw new Error('Appeal submission failed.');
+            form.reset();
+            formStatus.className = 'form-status is-success';
+            formStatus.textContent = 'Appeal submitted. Staff will review it.';
+            burstContactConfetti();
+        }).catch(function () {
+            formStatus.className = 'form-status is-error';
+            formStatus.textContent = 'Something went wrong. Try again later.';
+        }).finally(function () {
+            form.classList.remove('is-sending');
+            submit.disabled = false;
+        });
+    });
+
+    function burstContactConfetti() {
+        var wrap = document.createElement('div');
+        var colors = ['#6B54F5', '#BFA3FF', '#9ee6b7', '#ffffff', '#ff8fa3'];
+        wrap.className = 'contact-confetti';
+        for (var i = 0; i < 44; i++) {
+            var piece = document.createElement('i');
+            piece.style.setProperty('--x', (Math.random() * 100).toFixed(2) + 'vw');
+            piece.style.setProperty('--dx', ((Math.random() * 160) - 80).toFixed(0) + 'px');
+            piece.style.setProperty('--r', ((Math.random() * 360) | 0) + 'deg');
+            piece.style.setProperty('--d', (1.4 + Math.random() * 1.2).toFixed(2) + 's');
+            piece.style.setProperty('--c', colors[i % colors.length]);
+            wrap.appendChild(piece);
+        }
+        document.body.appendChild(wrap);
+        setTimeout(function () { wrap.remove(); }, 2800);
+    }
+
+    loadAppealState();
 })();
+
 </script>
 </body>
 </html>
