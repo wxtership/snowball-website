@@ -376,10 +376,12 @@ window.addEventListener('resize', function() {
 
 // Ban appeal flow. Snowball must provide these backend routes:
 // GET /api/ban-appeal/me -> { authenticated, banned, user, ban }
-// POST /api/ban-appeals -> accepts FormData for the authenticated user.
+// POST /api/ban-appeals -> accepts JSON for the authenticated user.
 (function () {
     var SNOWBALL_CLIENT_ID = '1465594035912704083';
-    var API_ME = '/api/ban-appeal/me';
+    var SNOWBALL_API_BASE = window.SNOWBALL_API_BASE || 'https://snowball-api.xtremewx.com';
+    var API_ME = SNOWBALL_API_BASE + '/api/ban-appeal/me';
+    var API_APPEALS = SNOWBALL_API_BASE + '/api/ban-appeals';
     var gate = document.getElementById('appeal-gate');
     var notBanned = document.getElementById('appeal-not-banned');
     var form = document.getElementById('appeal-form');
@@ -390,13 +392,17 @@ window.addEventListener('resize', function() {
     var query = new URLSearchParams(window.location.search);
     var oauthCode = query.get('code');
     var oauthError = query.get('error');
+    var appealToken = '';
     if (!gate || !notBanned || !form || !status || !formStatus || !submit) return;
 
+    function redirectUri() {
+        return window.location.origin + window.location.pathname;
+    }
+
     function oauthUrl(forcePrompt) {
-        var redirect = window.location.origin + window.location.pathname;
         var params = new URLSearchParams({
             client_id: SNOWBALL_CLIENT_ID,
-            redirect_uri: redirect,
+            redirect_uri: redirectUri(),
             response_type: 'code',
             scope: 'identify'
         });
@@ -469,15 +475,15 @@ window.addEventListener('resize', function() {
         });
     }
 
-    function showSignedInPending() {
+    function showApiUnavailable() {
         var copy = notBanned.querySelector('.appeal-copy');
         var title = notBanned.querySelector('.appeal-title');
         var icon = notBanned.querySelector('.card-icon i');
         hydrateAccount();
-        if (title) title.textContent = 'Checking your ban status';
-        if (icon) icon.className = 'fas fa-shield-halved';
+        if (title) title.textContent = 'Snowball check unavailable';
+        if (icon) icon.className = 'fas fa-triangle-exclamation';
         if (copy) {
-            copy.textContent = 'You are signed in with Snowball. If there is an active ban, Snowball will show the appeal form once the server check is available.';
+            copy.textContent = 'Snowball could not reach the secure appeal server. Try again in a moment or use the contact form.';
         }
         show(notBanned);
         clearOAuthQuery();
@@ -504,6 +510,7 @@ window.addEventListener('resize', function() {
     function hydrateBan(data) {
         var user = data.user || {};
         var ban = data.ban || {};
+        appealToken = data.appeal_token || '';
         hydrateAccount(user);
         document.getElementById('appeal-discord-id').value = user.id || '';
         document.getElementById('appeal-ban-id').value = ban.id || '';
@@ -525,29 +532,25 @@ window.addEventListener('resize', function() {
 
         status.className = 'form-status';
         status.textContent = 'Checking your Snowball login...';
-        fetch(API_ME, { headers: { 'Accept': 'application/json' }, credentials: 'include' })
+        var url = API_ME;
+        if (oauthCode) {
+            url += '?' + new URLSearchParams({ code: oauthCode, redirect_uri: redirectUri() }).toString();
+        }
+        fetch(url, { headers: { 'Accept': 'application/json' } })
             .then(function (response) {
                 if (response.status === 401) return { authenticated: false };
-                if (response.status === 404 && oauthCode) return { authenticated: true, banned: false, oauthFallback: true };
                 if (response.status === 404) return { authenticated: false };
                 if (!response.ok) throw new Error('Snowball status check failed.');
                 return response.json();
             })
             .then(function (data) {
                 if (!data.authenticated) {
-                    if (oauthCode) {
-                        showSignedInPending();
-                        return;
-                    }
                     status.textContent = 'Log in with the Snowball Discord app to check your ban status.';
                     show(gate);
                     return;
                 }
+                appealToken = data.appeal_token || '';
                 if (!data.banned) {
-                    if (data.oauthFallback) {
-                        showSignedInPending();
-                        return;
-                    }
                     clearOAuthQuery();
                     showNotBanned(data.user);
                     return;
@@ -557,7 +560,7 @@ window.addEventListener('resize', function() {
             })
             .catch(function () {
                 if (oauthCode) {
-                    showSignedInPending();
+                    showApiUnavailable();
                     return;
                 }
                 status.className = 'form-status is-error';
@@ -578,11 +581,15 @@ window.addEventListener('resize', function() {
         formStatus.className = 'form-status';
         formStatus.textContent = 'Submitting appeal...';
 
-        fetch(form.action, {
+        fetch(API_APPEALS, {
             method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' },
-            credentials: 'include'
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                appeal_token: appealToken,
+                appeal_reason: form.elements.appeal_reason.value,
+                extra_context: form.elements.extra_context.value,
+                truthful: form.elements.truthful.checked
+            })
         }).then(function (response) {
             if (!response.ok) throw new Error('Appeal submission failed.');
             form.reset();
