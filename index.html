@@ -928,7 +928,8 @@ function CommandsSection() {
     // Only apply view-transition-name during the transition itself — keeping it
     // on the grid permanently creates a stacking context that breaks the
     // navbar's backdrop-filter from blurring the grid underneath on scroll.
-    if (typeof document !== 'undefined' && document.startViewTransition && grid) {
+    const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobile && typeof document !== 'undefined' && document.startViewTransition && grid) {
       // Give the navbar its own snapshot too so backdrop-filter keeps working
       // during the transition. Without this, it's flattened into the root
       // snapshot and loses the live blur for the 360ms transition window.

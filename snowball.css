@@ -544,8 +544,15 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 @media (max-width: 768px) {
   .cmd-filters { gap: 8px; margin: 22px 0 24px; }
   .cmd-filter-pill { padding: 8px 14px; font-size: 0.82rem; }
+  .cmd-filter-pill:active { transform: none; }
   .commands-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-  .cmd-chip { padding: 9px 12px; gap: 8px; transition: none; }
+  .cmd-chip {
+    padding: 9px 12px; gap: 8px;
+    animation: cmd-chip-mobile-fade 180ms ease-out both;
+    animation-delay: 0ms;
+    transition: background 0.2s, border-color 0.2s;
+    transform: none !important;
+  }
   .cmd-chip:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); transform: none; }
   .cmd-chip img { width: 22px; height: 22px; }
   .cmd-chip-name { font-size: 12px; }
@@ -555,6 +562,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .econ-card { transition: none; }
   .econ-card:hover { border-color: rgba(255,255,255,0.08); transform: none; box-shadow: none; }
   .econ-card:hover::before { opacity: 0; }
+}
+@keyframes cmd-chip-mobile-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 #preview { background: linear-gradient(180deg, transparent, rgba(42,16,96,0.12) 40%, transparent); }
