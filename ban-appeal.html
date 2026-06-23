@@ -405,6 +405,7 @@ window.addEventListener('resize', function() {
     var oauthError = query.get('error');
     var appealToken = '';
     var storageKey = 'snowballAppealState:v1';
+    var draftKey = 'snowballAppealDraft:v1';
     var currentUser = null;
     if (!gate || !layout || !notBanned || !submitted || !form || !status || !formStatus || !submit) return;
 
@@ -475,7 +476,35 @@ window.addEventListener('resize', function() {
     function clearStoredAppealState() {
         try {
             localStorage.removeItem(storageKey);
+            sessionStorage.removeItem(draftKey);
         } catch (error) {}
+    }
+
+    function readDraft() {
+        try {
+            return JSON.parse(sessionStorage.getItem(draftKey) || 'null') || {};
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function writeDraft() {
+        try {
+            sessionStorage.setItem(draftKey, JSON.stringify({
+                email: form.elements.email.value,
+                appeal_reason: form.elements.appeal_reason.value,
+                extra_context: form.elements.extra_context.value,
+                truthful: form.elements.truthful.checked
+            }));
+        } catch (error) {}
+    }
+
+    function hydrateDraft() {
+        var draft = readDraft();
+        if (draft.email && !form.elements.email.value) form.elements.email.value = draft.email;
+        if (draft.appeal_reason && !form.elements.appeal_reason.value) form.elements.appeal_reason.value = draft.appeal_reason;
+        if (draft.extra_context && !form.elements.extra_context.value) form.elements.extra_context.value = draft.extra_context;
+        if (draft.truthful) form.elements.truthful.checked = true;
     }
 
     function clearOAuthQuery() {
@@ -564,7 +593,6 @@ window.addEventListener('resize', function() {
             copy.textContent = 'Snowball did not find an active Xtreme Weather ban for this Discord account.';
         }
         show(notBanned);
-        writeStoredAppealState({ status: 'not_banned', user: user });
     }
 
     function showSubmitted(user, submittedAt) {
@@ -594,8 +622,8 @@ window.addEventListener('resize', function() {
         setText('appeal-user', '@' + displayName(user).replace(/^@/, ''));
         setText('appeal-reason', ban.reason);
         setText('appeal-date', formatAppealDate(ban.created_at || ban.date));
+        hydrateDraft();
         show(form);
-        writeStoredAppealState({ status: 'banned', user: user });
     }
 
     function loadAppealState() {
@@ -613,10 +641,6 @@ window.addEventListener('resize', function() {
                 showSubmitted(stored.user, stored.submitted_at);
                 return;
             }
-            if (stored && stored.status === 'not_banned') {
-                showNotBanned(stored.user);
-                return;
-            }
         }
 
         status.className = 'form-status';
@@ -625,7 +649,7 @@ window.addEventListener('resize', function() {
         if (oauthCode) {
             url += '?' + new URLSearchParams({ code: oauthCode, redirect_uri: redirectUri() }).toString();
         }
-        fetch(url, { headers: { 'Accept': 'application/json' } })
+        fetch(url, { headers: { 'Accept': 'application/json' }, credentials: 'include' })
             .then(function (response) {
                 if (response.status === 401) return { authenticated: false };
                 if (response.status === 404) return { authenticated: false };
@@ -673,6 +697,7 @@ window.addEventListener('resize', function() {
         fetch(API_APPEALS, {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({
                 appeal_token: appealToken,
                 email: form.elements.email.value,
@@ -694,6 +719,7 @@ window.addEventListener('resize', function() {
         }).then(function () {
             var submittedAt = new Date().toISOString();
             form.reset();
+            sessionStorage.removeItem(draftKey);
             writeStoredAppealState({ status: 'submitted', user: currentUser, submitted_at: submittedAt });
             showSubmitted(currentUser, submittedAt);
             burstContactConfetti();
@@ -704,6 +730,11 @@ window.addEventListener('resize', function() {
             form.classList.remove('is-sending');
             submit.disabled = false;
         });
+    });
+
+    ['email', 'appeal_reason', 'extra_context', 'truthful'].forEach(function (name) {
+        if (form.elements[name]) form.elements[name].addEventListener('input', writeDraft);
+        if (form.elements[name]) form.elements[name].addEventListener('change', writeDraft);
     });
 
     function appealSubmitErrorMessage(code) {
