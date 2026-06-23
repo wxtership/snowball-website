@@ -144,13 +144,13 @@
 }
 @media (max-width: 768px) {
   .page-hero {
-    padding-top: 158px;
+    padding-top: 188px;
     background:
       radial-gradient(ellipse 82% 280px at 50% -20px, rgba(159,94,245,0.44) 0%, transparent 66%),
       radial-gradient(ellipse 130% 70% at 50% -10%, rgba(107,84,245,0.22) 0%, transparent 60%),
       transparent;
   }
-  .page-hero + section { padding-top: 90px; }
+  .page-hero + section { padding-top: 112px; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
