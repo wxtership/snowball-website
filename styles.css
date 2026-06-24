@@ -4837,6 +4837,20 @@ body.scroll-locked {
     color: rgba(255, 255, 255, 0.62);
 }
 
+/* Centered single-column footer layout (coverage-experts page). */
+.footer-centered {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    text-align: center;
+}
+.footer-centered .footer-brand-identity { justify-content: center; }
+.footer-centered .footer-socials { justify-content: center; }
+.footer-centered .footer-wrn { max-width: none; margin-top: 0; }
+
 /* Donate gets an accent treatment within the footer link pill. */
 .footer-link.is-donate {
     color: #b9a8ff;

@@ -46,7 +46,6 @@
         '<div class="staff-card-bg staff-card-bg-cov"></div>' +
         '<img class="staff-avatar" src="' + avatar + '" alt="">' +
         '<span class="staff-name">' + name + '</span>' +
-        '<span class="staff-role cov">' + esc(role) + '</span>' +
       '</article>';
   }
 
