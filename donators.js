@@ -1,5 +1,5 @@
 /* Fetches donators.json (published by Snowball's /moderation donatorsync) and renders
-   current Donator-role members, most-recent donation first, with amount + date pills. */
+   current Donator-role members, highest donation first, with amount + date pills. */
 (function () {
   var root = document.getElementById('donator-roster');
   if (!root) return;
@@ -21,13 +21,13 @@
     })
     .catch(function () { showError(); });
 
-  // Most-recent donation first; donors with no recorded date sink to the bottom,
+  // Highest donated first; donors with no recorded amount sink to the bottom,
   // tie-broken alphabetically so that block stays stable.
   function getSorted() {
     return allMembers.slice().sort(function (a, b) {
-      var at = a.donatedAt ? new Date(a.donatedAt).getTime() : 0;
-      var bt = b.donatedAt ? new Date(b.donatedAt).getTime() : 0;
-      if (bt !== at) return bt - at;
+      var av = typeof a.amount === 'number' ? a.amount : -1;
+      var bv = typeof b.amount === 'number' ? b.amount : -1;
+      if (bv !== av) return bv - av;
       var an = (a.displayName || a.username || '').toLowerCase();
       var bn = (b.displayName || b.username || '').toLowerCase();
       return an < bn ? -1 : an > bn ? 1 : 0;
@@ -107,8 +107,8 @@
     var datePill = '';
     if (m.donatedAt) {
       var d = new Date(m.donatedAt);
-      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      datePill = '<span class="donator-date-pill">Donated ' + months[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear() + '</span>';
+      var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      datePill = '<span class="donator-date-pill">Last donated ' + months[d.getUTCMonth()] + ' ' + ordinal(d.getUTCDate()) + ', ' + d.getUTCFullYear() + '</span>';
     }
     return '<article class="staff-card has-banner" style="--i:' + i + '">'
       + bg
@@ -120,6 +120,10 @@
       + '</article>';
   }
 
+  function ordinal(n) {
+    var s = ['th', 'st', 'nd', 'rd'], v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  }
   function safeUrl(u) {
     if (typeof u !== 'string' || !/^https?:\/\//i.test(u)) return '';
     return u.replace(/'/g, '%27').replace(/"/g, '%22');
