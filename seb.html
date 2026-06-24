@@ -368,6 +368,82 @@
   font-weight: 700 !important;
   color: #7a6fa0 !important;
 }
+
+/* ===== SEB PAGE: MOBILE FRIENDLY (no sideways scroll, nothing clips) ===== */
+
+/* Page-scoped overflow guard. This <style> only loads on seb.html, so these
+   rules don't leak to other pages. The rotated nav/footer/card + the
+   absolutely-positioned doodles can poke past the viewport edge, so clip it. */
+html, body { overflow-x: hidden; max-width: 100%; }
+.community-page { overflow-x: clip; }
+
+@media (max-width: 768px) {
+  /* kill the page-level tilts that push bounding boxes past 100% width */
+  .navbar       { transform: none !important; }
+  .site-footer  { transform: none !important; }
+  .roast-console{ transform: rotate(-0.6deg); }
+
+  /* belt-and-suspenders: clamp anything that still tries to overflow */
+  html, body { overflow-x: hidden; }
+  .community-page { overflow-x: hidden; }
+
+  /* doodle stickers: keep a couple near the page edges but tame them so they
+     can't spill out. The ones that sit deep in the layout get hidden. */
+  .seb-doodle {
+    font-size: 1.05rem;
+    max-width: 42vw;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .seb-doodle[style*="left"]  { left: 2% !important; }
+  .seb-doodle[style*="right"] { right: 2% !important; }
+  /* hide most doodles on mobile to avoid sitting on top of the text */
+  .community-page .seb-doodle:nth-of-type(n+3) { display: none; }
+
+  /* scale the oversized crayon type down so it never clips the viewport */
+  .section-title {
+    font-size: 2.5rem !important;
+    text-shadow:
+      2px 2px 0 #ff6b6b,
+      4px 4px 0 #4d96ff,
+      0 0 1px #000;
+    word-break: break-word;
+  }
+  .section-body { font-size: 1.4rem !important; }
+
+  .page-badge { font-size: 0.85rem !important; }
+
+  .roast-target strong { font-size: 1.5rem !important; }
+  .roast-target span   { font-size: 1.15rem !important; }
+  .roast-status        { font-size: 0.85rem !important; }
+
+  .roast-line   { font-size: 1.3rem !important; padding: 11px 14px !important; }
+  .roast-line b { font-size: 1rem; }
+  /* lighten the per-line tilts so rows don't widen the card */
+  .roast-line:nth-child(odd)  { transform: rotate(-0.3deg); }
+  .roast-line:nth-child(even) { transform: rotate(0.3deg); }
+
+  .menace-label { font-size: 1rem !important; }
+  .roast-note   { font-size: 1.3rem !important; }
+
+  /* tighten the classified stamp + corner star so they don't reach off-screen */
+  .roast-stamp { font-size: 0.9rem; top: 12px; right: 12px; }
+  .roast-console::before { font-size: 2.2rem !important; top: -16px !important; left: -8px !important; }
+
+  /* footer type a touch smaller */
+  .footer-brand-name { font-size: 1.2rem !important; }
+  .footer-tagline, .footer-description { font-size: 1.1rem !important; }
+}
+
+@media (max-width: 480px) {
+  .section-title { font-size: 2.1rem !important; }
+  .section-body { font-size: 1.3rem !important; }
+  .roast-line   { font-size: 1.2rem !important; }
+  .roast-note   { font-size: 1.2rem !important; }
+  /* on the smallest screens, drop the doodles entirely — purely decorative */
+  .seb-doodle { display: none !important; }
+}
 </style>
 </head>
 <body>
