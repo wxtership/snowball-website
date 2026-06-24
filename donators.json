@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-06-24T05:40:30.306Z",
+  "updatedAt": "2026-06-24T19:57:11.474Z",
   "updatedBy": {
-    "id": "system",
-    "tag": "manual-trigger"
+    "id": "582394159546236948",
+    "tag": "wxtership"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7347
+    "memberCount": 7349
   },
   "allTimeTotal": 682.39,
   "monthlyRaised": 93.2,
@@ -84,7 +84,7 @@
         {
           "username": "dynafolf",
           "displayName": "DynaFolf (Pike County, PA)",
-          "avatar": "https://cdn.discordapp.com/avatars/1324763970271314023/3a23152c49d433a9340ed320447e3032.png?size=256",
+          "avatar": "https://cdn.discordapp.com/avatars/1324763970271314023/df8ed6d3140ebc954bffdbfe76a86dd0.png?size=256",
           "banner": null,
           "amount": 5,
           "donatedAt": "2026-05-19T15:58:40.000Z"
@@ -107,7 +107,7 @@
         },
         {
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Rome, IT)",
+          "displayName": "Gabriel Kramp (Flight AZ 614)",
           "avatar": "https://cdn.discordapp.com/avatars/1298379997689679966/f0c410e13555832327ffd29a27321978.png?size=256",
           "banner": null,
           "amount": 40,
