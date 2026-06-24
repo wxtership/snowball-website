@@ -86,12 +86,15 @@
     var bg = bgUrl
       ? '<div class="staff-card-bg" style="background-image:url(\'' + bgUrl + '\')"></div>'
       : '<div class="staff-card-bg staff-card-bg-default"></div>';
-    return '<article class="staff-card has-banner" style="--i:' + i + '">' +
+    var tag = m.username === 'sebastioss' ? 'a href="seb.html"' : 'article';
+    var endTag = m.username === 'sebastioss' ? 'a' : 'article';
+    var label = m.username === 'sebastioss' ? ' aria-label="Open Snowball roast page for seb"' : '';
+    return '<' + tag + ' class="staff-card has-banner' + (m.username === 'sebastioss' ? ' staff-card-link' : '') + '" style="--i:' + i + '"' + label + '>' +
         bg +
         '<img class="staff-avatar" src="' + avatar + '" alt="">' +
         '<span class="staff-name">' + name + '</span>' +
         (handle ? '<span class="staff-handle">' + handle + '</span>' : '') +
-      '</article>';
+      '</' + endTag + '>';
   }
 
   function safeUrl(u) {
