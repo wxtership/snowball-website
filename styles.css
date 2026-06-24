@@ -855,6 +855,14 @@ body {
     pointer-events: auto;
 }
 
+/* A nested parent sub-view (e.g. Community while Policies is open): slid out to the
+   left, mirroring how .main-view parks, so going deeper reads as a forward push. */
+.sub-view.parked {
+    transform: translateX(-60px);
+    opacity: 0;
+    pointer-events: none;
+}
+
 .mobile-centered-content {
     flex: 1;
     display: flex;
@@ -4796,4 +4804,77 @@ body.scroll-locked {
     .cmd-chip-desc {
         font-size: 0.72rem;
     }
+}
+
+/* ==========================================================================
+   WRN AMBASSADOR FOOTER BADGE  +  POLICIES NAV  (shared, every page)
+   ========================================================================== */
+
+/* Weather-Ready Nation Ambassador credential, sat in the footer brand column.
+   The official logo is on a white field, so we keep it as a small chip and mute
+   it to grayscale by default, restoring full colour on hover. */
+.footer-wrn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 2px;
+    padding: 9px 14px 9px 9px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    text-decoration: none;
+    max-width: 340px;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+.footer-wrn:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.16);
+}
+.footer-wrn-logo {
+    width: 74px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 7px;
+    filter: grayscale(1) contrast(0.96);
+    opacity: 0.82;
+    transition: filter 0.35s ease, opacity 0.35s ease;
+}
+.footer-wrn:hover .footer-wrn-logo {
+    filter: grayscale(0);
+    opacity: 1;
+}
+.footer-wrn-text {
+    font-size: 0.76rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.58);
+}
+.footer-wrn-text strong {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 700;
+}
+.footer-wrn-text .tm {
+    font-size: 0.62em;
+    vertical-align: super;
+    opacity: 0.7;
+}
+
+/* Donate gets an accent treatment within the footer link pill. */
+.footer-link.is-donate {
+    color: #b9a8ff;
+}
+.footer-link.is-donate:hover {
+    color: #fff;
+}
+
+/* Community mega-menu now carries a third "Policies" column, so it needs more room. */
+#community-mega-menu {
+    width: 760px;
+}
+#community-mega-menu .mega-menu-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 22px;
+}
+@media (max-width: 800px) {
+    #community-mega-menu { width: 550px; }
+    #community-mega-menu .mega-menu-container { grid-template-columns: 1fr 1fr; }
 }

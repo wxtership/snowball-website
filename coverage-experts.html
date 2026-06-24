@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Meet the Xtreme Weather donators who help keep the community, tools, and Snowball running." />
+<meta name="description" content="Xtreme Weather Coverage: the Severe, Winter, and Tropical Coverage Modes, the thresholds that trigger them, our Coverage Policies, and the Experts who lead the room." />
 <meta name="theme-color" content="#0d0d18" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>Donator Wall — Xtreme Weather</title>
+<title>Coverage — Xtreme Weather</title>
 <link rel="preconnect" href="https://discord.com" />
-<link rel="preconnect" href="https://cdn.discordapp.com" />
 <link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
-<link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -47,23 +46,6 @@
         <div class="nav-right"></div>
     </div>
 </nav>
-
-<div class="mega-menu" id="snowball-mega-menu">
-    <div class="mega-menu-container">
-        <div class="mega-column">
-            <div class="mega-header">Features</div>
-            <a href="#ai-section" class="mega-item"><i class="fas fa-robot"></i><div class="mega-item-text"><span class="title">AI Weather</span><span class="desc">Ask anything, get real data</span></div></a>
-            <a href="#economy" class="mega-item"><i class="fas fa-snowflake"></i><div class="mega-item-text"><span class="title">Economy</span><span class="desc">SNOWFLAKES, stocks &amp; boars</span></div></a>
-            <a href="#commands" class="mega-item"><i class="fas fa-terminal"></i><div class="mega-item-text"><span class="title">Commands</span><span class="desc">All slash commands</span></div></a>
-        </div>
-        <div class="mega-column">
-            <div class="mega-header">Get Started</div>
-            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Join the Server</span><span class="desc">Add Snowball to your Discord</span></div></a>
-            <a href="#preview" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Community</span><span class="desc">7K+ members strong</span></div></a>
-            <a href="#" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Live Radio</span><span class="desc">Weather radio &amp; music</span></div></a>
-        </div>
-    </div>
-</div>
 
 <div class="mega-menu" id="weather-mega-menu">
     <div class="mega-menu-container">
@@ -116,19 +98,6 @@
             <button class="mobile-big-link" onclick="location.href='index.html'">Snowball</button>
         </div>
     </div>
-    <div class="mobile-view sub-view" id="sb-sub-menu-snowball">
-        <div class="sub-menu-header">
-            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
-            <span class="sub-title">Snowball</span>
-        </div>
-        <div class="mobile-clean-list">
-            <a href="#ai-section" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fas fa-robot"></i></div><span>AI Weather</span></a>
-            <a href="#economy" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fas fa-snowflake"></i></div><span>Economy</span></a>
-            <a href="#commands" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fas fa-terminal"></i></div><span>Commands</span></a>
-            <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Join the Server</span></a>
-            <a href="#preview" class="clean-link" onclick="sbToggleMobileMenu()"><div class="icon-box"><i class="fas fa-users"></i></div><span>Community</span></a>
-        </div>
-    </div>
     <div class="mobile-view sub-view" id="sb-sub-menu-weather">
         <div class="sub-menu-header">
             <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
@@ -156,8 +125,6 @@
             <a href="contact.html" class="clean-link"><div class="icon-box"><i class="fas fa-envelope"></i></div><span>Contact</span></a>
             <a href="ban-appeal.html" class="clean-link"><div class="icon-box"><i class="fas fa-gavel"></i></div><span>Ban Appeal</span></a>
             <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Discord Server</span></a>
-            <a href="https://x.com/joinxtremewx" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-x-twitter"></i></div><span>X / Twitter</span></a>
-            <a href="https://tiktok.com/@xtreme_weather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-tiktok"></i></div><span>TikTok</span></a>
         </div>
     </div>
     <div class="mobile-view sub-view" id="sb-sub-menu-policies">
@@ -173,26 +140,165 @@
         </div>
     </div>
 </div>
-</div>
 
 <main class="community-page">
 
   <section class="page-hero">
     <div class="section-inner">
-      <h1 class="section-title">Donator Wall</h1>
+      <span class="page-badge"><i class="fas fa-tower-broadcast"></i> Coverage</span>
+      <h1 class="section-title">Coverage</h1>
       <p class="section-body">
-        A thank-you wall for the people helping keep Xtreme Weather online, active, and growing.
-        This list syncs from the current Discord Donator role.
+        When the sky turns serious, Xtreme Weather goes into Coverage Mode. Here's what each
+        mode means, the thresholds that trigger it, how to conduct yourself in Coverage chats,
+        and the Experts who lead the room, keeping everything accurate and grounded in real data.
       </p>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <!-- The wall is fetched from donators.json (published by the bot's /moderation donatorsync).
-           Cards load in with a staggered entrance. A message shows if it can't load. -->
-      <div id="donator-roster" aria-live="polite"></div>
-      <noscript><p class="staff-empty">Turn on JavaScript to see the donator wall, or come say hi in <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">the Discord</a>.</p></noscript>
+      <div class="coverage-hero-card">
+        <span class="coverage-role-pill"><span class="dot"></span> Coverage Expert</span>
+        <h2>The voices you trust when it matters</h2>
+        <p>
+          Coverage Experts are hand-selected members with a proven understanding of meteorology
+          and a level head under pressure. During Severe, Winter, and Tropical Coverage, they help
+          guide the conversation, answer questions, and keep misinformation out of the chat.
+        </p>
+        <p>
+          It's a role earned through knowledge and trust, not handed out. Applications open on a
+          bi-yearly basis, or whenever the team needs to grow.
+        </p>
+        <div class="coverage-points">
+          <div class="coverage-point" style="--i:0">
+            <i class="fas fa-bullhorn"></i>
+            <h4>Lead the room</h4>
+            <p>They steer Coverage chats during active modes, keeping everyone informed and on-track.</p>
+          </div>
+          <div class="coverage-point" style="--i:1">
+            <i class="fas fa-circle-check"></i>
+            <h4>Grounded in data</h4>
+            <p>Every call is backed by real observations and official guidance, never speculation.</p>
+          </div>
+          <div class="coverage-point" style="--i:2">
+            <i class="fas fa-shield-halved"></i>
+            <h4>Guard against misinfo</h4>
+            <p>They flag and correct false or misleading weather claims before they spread.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <h2 class="section-heading">Coverage Modes</h2>
+      <p class="faq-intro">Each mode has its own criteria for activation. These are guidelines, not guarantees, our Coverage Experts can override them if a situation calls for it.</p>
+      <div class="coverage-modes">
+        <div class="mode-card severe">
+          <img src="assets/coverage/severe_static.png" loading="lazy" decoding="async" alt="Severe Coverage" class="mode-badge">
+          <h3>Severe</h3>
+          <p class="mode-crit">Usually an Enhanced Risk (3/5) from the SPC or higher. May also trigger for major flooding, a natural disaster, or another widespread threat to life.</p>
+          <div class="mode-thresholds">
+            <div class="mode-threshold"><span class="t-label">Tornado</span><span class="t-value">15% CIG1, or 10% CIG2 or higher</span></div>
+            <div class="mode-threshold"><span class="t-label">Wind</span><span class="t-value">45% CIG1, or 30% CIG2 or higher</span></div>
+            <div class="mode-threshold"><span class="t-label">Hail</span><span class="t-value">45% CIG1, or 30% CIG2 or higher</span></div>
+          </div>
+        </div>
+        <div class="mode-card winter">
+          <img src="assets/coverage/winter_static.png" loading="lazy" decoding="async" alt="Winter Coverage" class="mode-badge">
+          <h3>Winter</h3>
+          <p class="mode-crit">Usually an Extreme Risk (5/5) on the WSSI scale or higher for a broad area.</p>
+          <div class="mode-thresholds">
+            <div class="mode-threshold"><span class="t-label">Winter Storm</span><span class="t-value">At least 3+ state-wide Winter Storm Warnings</span></div>
+            <div class="mode-threshold"><span class="t-label">Ice Storm</span><span class="t-value">At least 1+ state-wide Ice Storm Warning</span></div>
+            <div class="mode-threshold"><span class="t-label">Blizzard</span><span class="t-value">At least 1 Blizzard Warning for a populated area</span></div>
+          </div>
+        </div>
+        <div class="mode-card tropical">
+          <img src="assets/coverage/tropical_static.png" loading="lazy" decoding="async" alt="Tropical Coverage" class="mode-badge">
+          <h3>Tropical</h3>
+          <p class="mode-crit">Usually a Category 1/5 on the Saffir-Simpson Hurricane Wind scale or higher.</p>
+          <div class="mode-thresholds">
+            <div class="mode-threshold"><span class="t-label">Hurricane Warning</span><span class="t-value">Any Hurricane Warning for a populated area in the mainland 48 states. Territory warnings are at Expert discretion.</span></div>
+            <div class="mode-threshold"><span class="t-label">Major Hurricane</span><span class="t-value">Any Major Hurricane (Cat 3+) expected to make US landfall, including territories</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="coverage-expert-note">Each Coverage Mode's criteria can be overridden by a <span class="ce-tag">Coverage Expert</span> when conditions warrant it.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <h2 class="section-heading">Coverage Policies</h2>
+      <p class="faq-intro">For the safety of our members, keep the following in mind when chatting during any Coverage Mode.</p>
+      <div class="coverage-rules">
+        <div class="coverage-rule">
+          <span class="rule-ico"><i class="fas fa-hand-peace"></i></span>
+          <div><h4>Be on your best behavior</h4><p>It can be hectic enough. Please refrain from spamming and typing in all caps.</p></div>
+        </div>
+        <div class="coverage-rule">
+          <span class="rule-ico"><i class="fas fa-triangle-exclamation"></i></span>
+          <div><h4>No doomcasting</h4><p>Exaggerating weather events beyond what the data supports is not allowed. Members rely on Coverage chats for accurate information.</p></div>
+        </div>
+        <div class="coverage-rule">
+          <span class="rule-ico"><i class="fas fa-stopwatch"></i></span>
+          <div><h4>No pre-rating</h4><p>Assigning a rating while a tornado is ongoing is speculative and falls under misinformation. Please refrain from it.</p></div>
+        </div>
+        <div class="coverage-rule">
+          <span class="rule-ico"><i class="fas fa-book-open"></i></span>
+          <div><h4>Follow accurate sources</h4><p>Keep your sources to NOAA/NWS and official trained spotters on the ground. Experimental sources like Nadocast fall under our Misinformation Policy.</p></div>
+        </div>
+        <div class="coverage-rule">
+          <span class="rule-ico"><i class="fas fa-brain"></i></span>
+          <div><h4>Keep an open mind</h4><p>Respect the polygon the NWS issues. Don't call an event a "bust" when it has only just started.</p></div>
+        </div>
+        <div class="coverage-rule">
+          <span class="rule-ico"><i class="fas fa-eye-slash"></i></span>
+          <div><h4>Mind distressing media</h4><p>We recommend spoilering damage photos. Please don't send media that may be distressing or that falls under our <a href="charter.html">Explicit Content policy</a>.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="staff-tier">
+        <div class="staff-tier-title" style="--i:0"><i class="fas fa-tower-broadcast" style="color:var(--cov);"></i> Lead Experts</div>
+        <div class="staff-grid staff-grid-coverage">
+          <article class="staff-card has-banner coverage-card" style="--i:1">
+            <div class="staff-card-bg staff-card-bg-cov"></div>
+            <div class="staff-avatar initial">D</div>
+            <span class="staff-name">Drew</span>
+            <span class="staff-role cov">Lead Coverage Expert</span>
+          </article>
+          <article class="staff-card has-banner coverage-card" style="--i:2">
+            <div class="staff-card-bg staff-card-bg-cov"></div>
+            <div class="staff-avatar initial">F</div>
+            <span class="staff-name">Frost</span>
+            <span class="staff-role cov">Lead Coverage Expert</span>
+          </article>
+        </div>
+      </div>
+      <p class="coverage-expert-note" style="margin-top:8px;">
+        Beyond our Leads, a wider team of <span class="ce-tag">Coverage Experts</span> helps run the room
+        during active modes. The role is earned through proven weather knowledge and trust, applications open
+        on a bi-yearly basis or whenever the team needs to grow.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="community-cta">
+        <h2 class="section-title">Think you've got what it takes?</h2>
+        <p class="section-body">Coverage Expert applications open periodically. If you know your weather and keep a cool head when it counts, we'd love to see you apply when the time comes.</p>
+        <div class="page-cta">
+          <a href="about.html" class="btn-primary"><i class="fas fa-circle-info"></i> How it works</a>
+          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-ghost"><i class="fab fa-discord"></i> Join the Server</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -237,11 +343,6 @@
     </div>
 </footer>
 
-<script>
-// Navbar logic now lives in the shared nav.js (loaded before </body>).
-
-</script>
-<script src="donators.js"></script>
 <script src="nav.js"></script>
 </body>
 </html>

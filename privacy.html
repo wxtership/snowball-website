@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The Xtreme Weather Privacy Policy: how the Discord server, this website, and the Snowball bot collect, use, store, and share your data, plus your rights." />
+<meta name="theme-color" content="#0d0d18" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Privacy Policy — Xtreme Weather</title>
+<link rel="preconnect" href="https://discord.com" />
+<link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
+<link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
+<link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="snowball.css">
+<link rel="stylesheet" href="community.css">
+</head>
+<body>
+<div class="page-decor" aria-hidden="true"><i class="fas fa-bolt"></i><i class="fas fa-tornado"></i><i class="fas fa-triangle-exclamation"></i><i class="fas fa-snowflake"></i><i class="fas fa-cloud-bolt"></i><i class="fas fa-cloud"></i><i class="fas fa-cloud-rain"></i><i class="fas fa-cloud-showers-heavy"></i><i class="fas fa-sun"></i><i class="fas fa-cloud-sun"></i><i class="fas fa-wind"></i><i class="fas fa-droplet"></i><i class="fas fa-umbrella"></i><i class="fas fa-smog"></i><i class="fas fa-temperature-half"></i><i class="fas fa-hurricane"></i></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <button class="nav-btn-circle hamburger" id="mobile-trigger" onclick="sbToggleMobileMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="https://xtremewx.com/new" style="display:flex;align-items:center;text-decoration:none;">
+                <img src="assets/xtreme-logo-small.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
+            </a>
+        </div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li class="has-dropdown" data-menu="weather">
+                    <a href="#">Weather <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="community">
+                    <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li>
+                    <a href="index.html">Snowball</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right"></div>
+    </div>
+</nav>
+
+<div class="mega-menu" id="weather-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Forecasts</div>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-sun"></i><div class="mega-item-text"><span class="title">Now</span><span class="desc">Current conditions</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-clock"></i><div class="mega-item-text"><span class="title">Hourly</span><span class="desc">Next 24 hours</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-calendar-alt"></i><div class="mega-item-text"><span class="title">10-Day</span><span class="desc">Long range outlook</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Maps &amp; Data</div>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Radar</span><span class="desc">Live doppler imagery</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-video"></i><div class="mega-item-text"><span class="title">Cameras</span><span class="desc">Traffic cams &amp; feeds</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-newspaper"></i><div class="mega-item-text"><span class="title">News</span><span class="desc">Storm reports</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mega-menu" id="community-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Project</div>
+            <a href="staff.html" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Staff</span><span class="desc">Meet the team</span></div></a>
+            <a href="donators.html" class="mega-item"><i class="fas fa-heart"></i><div class="mega-item-text"><span class="title">Donators</span><span class="desc">Community supporters</span></div></a>
+            <a href="about.html" class="mega-item"><i class="fas fa-circle-info"></i><div class="mega-item-text"><span class="title">About</span><span class="desc">Our story &amp; mission</span></div></a>
+            <a href="contact.html" class="mega-item"><i class="fas fa-envelope"></i><div class="mega-item-text"><span class="title">Contact</span><span class="desc">Get in touch</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Policies</div>
+            <a href="charter.html" class="mega-item"><i class="fas fa-scroll"></i><div class="mega-item-text"><span class="title">Charter</span><span class="desc">Community standards</span></div></a>
+            <a href="coverage-experts.html" class="mega-item"><i class="fas fa-tower-broadcast"></i><div class="mega-item-text"><span class="title">Coverage Experts</span><span class="desc">Who runs coverage</span></div></a>
+            <a href="privacy.html" class="mega-item"><i class="fas fa-user-shield"></i><div class="mega-item-text"><span class="title">Privacy Policy</span><span class="desc">Your data &amp; rights</span></div></a>
+            <a href="terms.html" class="mega-item"><i class="fas fa-file-contract"></i><div class="mega-item-text"><span class="title">Terms of Service</span><span class="desc">Rules of use</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">More</div>
+            <a href="ban-appeal.html" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Request a review</span></div></a>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Discord</span><span class="desc">Join the community</span></div></a>
+            <a href="https://x.com/joinxtremewx" target="_blank" class="mega-item"><i class="fab fa-x-twitter"></i><div class="mega-item-text"><span class="title">X / Twitter</span><span class="desc">Live updates</span></div></a>
+            <a href="https://tiktok.com/@xtreme_weather" target="_blank" class="mega-item"><i class="fab fa-tiktok"></i><div class="mega-item-text"><span class="title">TikTok</span><span class="desc">Behind the scenes</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
+    <div class="mobile-view main-view" id="sb-mobile-main-view">
+        <div class="mobile-centered-content">
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('weather')">Weather <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="location.href='index.html'">Snowball</button>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-weather">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Weather</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-sun"></i></div><span>Current Conditions</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-clock"></i></div><span>Hourly Forecast</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-calendar-alt"></i></div><span>10-Day Outlook</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-satellite-dish"></i></div><span>Live Radar</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-video"></i></div><span>Cameras</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-newspaper"></i></div><span>Storm Reports</span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-community">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Community</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="staff.html" class="clean-link"><div class="icon-box"><i class="fas fa-users"></i></div><span>Staff Team</span></a>
+            <a href="donators.html" class="clean-link"><div class="icon-box"><i class="fas fa-heart"></i></div><span>Donators</span></a>
+            <a href="about.html" class="clean-link"><div class="icon-box"><i class="fas fa-circle-info"></i></div><span>About</span></a>
+            <button class="clean-link" onclick="sbOpenSubMenu('policies')"><div class="icon-box"><i class="fas fa-scroll"></i></div><span>Policies</span><i class="fas fa-chevron-right" style="margin-left:auto;opacity:0.3;font-size:1rem;"></i></button>
+            <a href="contact.html" class="clean-link"><div class="icon-box"><i class="fas fa-envelope"></i></div><span>Contact</span></a>
+            <a href="ban-appeal.html" class="clean-link"><div class="icon-box"><i class="fas fa-gavel"></i></div><span>Ban Appeal</span></a>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Discord Server</span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-policies">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Policies</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="charter.html" class="clean-link"><div class="icon-box"><i class="fas fa-scroll"></i></div><span>Community Charter</span></a>
+            <a href="coverage-experts.html" class="clean-link"><div class="icon-box"><i class="fas fa-tower-broadcast"></i></div><span>Coverage Experts</span></a>
+            <a href="privacy.html" class="clean-link"><div class="icon-box"><i class="fas fa-user-shield"></i></div><span>Privacy Policy</span></a>
+            <a href="terms.html" class="clean-link"><div class="icon-box"><i class="fas fa-file-contract"></i></div><span>Terms of Service</span></a>
+        </div>
+    </div>
+</div>
+
+<main class="community-page">
+
+  <section class="page-hero">
+    <div class="section-inner">
+      <span class="page-badge"><i class="fas fa-user-shield"></i> Privacy Policy</span>
+      <h1 class="section-title">Privacy Policy</h1>
+      <p class="section-body">
+        How Xtreme Weather handles your information across our Discord server, this website, and
+        the Snowball bot, including what we collect, why, how long we keep it, and the choices
+        you have.
+      </p>
+      <div class="doc-meta">
+        <span><b>Effective:</b> March 31, 2026</span>
+        <span class="dot"></span>
+        <span><b>Version:</b> 1.0</span>
+        <span class="dot"></span>
+        <span><b>Contact:</b> <a href="mailto:support@xtremewx.com" style="color:inherit;">support@xtremewx.com</a></span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="legal-doc">
+
+        <div class="doc-toc">
+          <a href="#overview">Overview</a>
+          <a href="#server">The Server</a>
+          <a href="#website">The Website</a>
+          <a href="#snowball">Snowball</a>
+          <a href="#retention">Retention</a>
+          <a href="#sharing">Sharing</a>
+          <a href="#ai">AI</a>
+          <a href="#rights">Your Rights</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="legal-section" id="overview">
+          <h2><span class="legal-num">01</span> Overview &amp; scope</h2>
+          <p>This Privacy Policy explains how Xtreme Weather, operated by Xtreme Weather / BP Technologies, handles your information across three things we run: our <strong>Discord server</strong>, this <strong>website</strong> (xtremewx.com and its subpages), and <strong>Snowball</strong>, our Discord bot. Because different parts and features apply to different people at different times, not every section below applies to you at all times.</p>
+          <p>For privacy questions, data access requests, export requests, or deletion requests, contact us at <a href="mailto:support@xtremewx.com">support@xtremewx.com</a>.</p>
+          <div class="legal-callout info">
+            <span class="legal-callout-label">Good to know</span>
+            This policy describes our current, implemented behavior. Where our systems do not enforce a fixed automatic deletion schedule, we say so plainly rather than promising a purge timeline that does not yet exist.
+          </div>
+        </div>
+
+        <div class="legal-section" id="server">
+          <h2><span class="legal-num">02</span> The Discord server</h2>
+          <p>When you join and use the Xtreme Weather Discord server, your participation is also governed by <a href="https://discord.com/privacy" target="_blank" rel="noopener">Discord's own Privacy Policy</a>. Within our server, we (through staff tools and Snowball) may process:</p>
+          <ul>
+            <li>Your Discord user ID, username, display name, avatar, and roles</li>
+            <li>Messages you send in channels, for moderation, support, and community features</li>
+            <li>Join and leave events, and voice-channel presence, for leveling, announcements, and moderation</li>
+            <li>Moderation history and support interactions tied to your account</li>
+          </ul>
+          <p>We use this to run the community: identifying members, moderating content, operating features, and keeping the server safe. Much of this is accessed live from Discord rather than separately stored, unless it is written into a feature record described in the Snowball section below.</p>
+        </div>
+
+        <div class="legal-section" id="website">
+          <h2><span class="legal-num">03</span> This website</h2>
+          <p>This website is a largely static informational site. We aim to collect as little as possible. Depending on what you do here, we may process:</p>
+          <ul>
+            <li><strong>Contact form:</strong> if you submit the <a href="contact.html">contact form</a>, we receive the information you provide (such as a name, contact handle, and your message) so we can respond.</li>
+            <li><strong>Ban appeals:</strong> if you submit a <a href="ban-appeal.html">ban appeal</a>, we receive the details you enter so staff can review it.</li>
+            <li><strong>Donations:</strong> donation links take you to Stripe; payment handling is described under Sharing below.</li>
+            <li><strong>Basic technical data:</strong> standard request data (such as IP address and browser type) may be processed by our hosting/CDN provider to serve the site securely. The donator wall and staff pages load publicly published lists.</li>
+          </ul>
+          <div class="legal-callout note">
+            <span class="legal-callout-label">No ad tracking</span>
+            We do not sell your data and we do not run advertising or cross-site tracking networks on this site.
+          </div>
+        </div>
+
+        <div class="legal-section" id="snowball">
+          <h2><span class="legal-num">04</span> Snowball: what it collects</h2>
+          <p>Snowball includes weather tools, AI conversation features, moderation tools, support tickets, community features, music and radio playback, leveling and economy features, and optional integrations. Snowball is not a hidden surveillance tool: in general it processes Discord content when you invoke a feature, when a server enables a feature that depends on Discord events, or when operators need records to run moderation, support, safety, or debugging. Expand a category to see the detail.</p>
+
+          <div class="faq">
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>A. Discord account &amp; server information</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0 0 8px;">Snowball may collect or process Discord user IDs, guild IDs, channel IDs, thread IDs, message IDs, role IDs, and event IDs; usernames, display names, global names, tags, avatars, banners, and role membership when needed; and server membership, join/leave events, and voice presence when needed for leveling, announcements, moderation, or playback.</p>
+                <p style="margin:0;">This identifies users, runs commands, manages moderation and support, tracks progression, and posts features like birthdays or starboard. Unless written into a stored record below, much of it is accessed live and not separately retained.</p>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>B. Messages, replies, mentions &amp; AI data</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0 0 8px;">Snowball may process message content used for prefix commands; content when you mention or reply to Snowball; reply-chain and limited recent channel context used to answer certain prompts; image attachments and URLs in AI requests; AI conversation history, short thread summaries, personality settings, and reply-tracking preferences; and AI usage counters.</p>
+                <div class="legal-callout warn">
+                  <span class="legal-callout-label">Heads up</span>
+                  Snowball's AI is not limited to only the text you directly type. Depending on how you invoke it, it may also process limited reply context, recent nearby channel messages, and images needed to answer. This context is gathered in connection with your direct interaction (mentions or replies); Snowball is not designed to continuously archive unrelated channel conversations for profiling.
+                </div>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>C. Direct-message interaction data</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0;">Limited DM data when you interact with the bot: ban appeal submissions, ticket close confirmations, ticket ratings, transcript requests, and other button, select-menu, or modal responses sent through Snowball's DM workflows. Snowball is not a general-purpose DM chat bot, and ordinary DM message content is not a primary feature.</p>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>D. Moderation &amp; safety records</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0;">Moderation case IDs; target and moderator IDs; moderation type, reason, timestamp, and mute expiry; appeal text; moderation history; and log message URLs and related metadata. Used to administer moderation, keep case history, review prior enforcement, process appeals, and give authorized staff visibility.</p>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>E. Support tickets, transcripts &amp; reviews</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0 0 8px;">Ticket IDs, thread/channel IDs, opener and assigned staff IDs, and status; opening reason, escalation reason, close reason and timestamps, and ratings; transcript content generated from ticket threads; spotter application status and reviewer IDs; and level reward submission status, reviewer IDs, and uploaded file URLs.</p>
+                <p style="margin:0;"><strong>On transcripts:</strong> Snowball generates ticket transcripts from Discord thread messages when needed. There is no separate permanent transcript database table, but transcript files can be generated and sent to users or staff through Discord.</p>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>F. Community submissions &amp; public reposts</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0 0 8px;">Suggestions and bug reports; Question of the Day submissions, identity, approval status, and queue order; birthdays (month and day); and starboard data (original message/channel/author IDs, starboard message ID, reaction counts, reposted text, links, and public images).</p>
+                <p style="margin:0;">Some of this becomes public within Discord when the feature is used, for example starboard reposts and birthday announcements are designed to be visible in channels.</p>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>G. Economy, progression &amp; activity</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0 0 8px;">Economy and bank balances, cooldowns, reminders, item ownership, roles, missions, and event participation; arena/ELO, pet or boar progression, and item usage; stock or portfolio holdings; XP, levels, weekly XP, and level reward status; and aggregated message, join, leave, and trade-volume counts used for economy pricing.</p>
+                <p style="margin:0;">Snowball does not store a complete message-content archive for economy or leveling. Those systems generally use your activity and user ID to update balances, cooldowns, or XP rather than storing each message's text.</p>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>H. Music, radio, media &amp; uploads</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0;">Voice-channel participation needed to play audio; music search text; direct media URLs you supply; uploaded audio files; queue metadata (title, artist, thumbnail, requester ID); and temporary downloaded media files. Temporary files are created locally during some playback flows and are generally deleted after playback ends, when stopped, or when cleanup runs.</p>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>I. Donations &amp; payment-related information</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0 0 8px;">When donation integrations are enabled: Stripe webhook event IDs, donation amount, donor email from Stripe, payment/transaction identifiers, receipt URLs, an optional Discord username from Stripe custom fields, and limited Discord member search results used to match a donor to a member.</p>
+                <p style="margin:0;">Donor email is logged to server logs and is not posted publicly to Discord. Snowball does not receive or store full card numbers, full bank details, or other full payment credentials, those are handled by Stripe.</p>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>J. Operational &amp; error logging</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <p style="margin:0;">Technical and diagnostic data such as error messages, stack traces, command/interaction context, identifiers in error output, and service failures. Certain error logs can be forwarded to a Discord error-log channel used by operators and may include identifiers or content from the failing request. These logs are for troubleshooting, abuse prevention, and reliability, not advertising or profiling.</p>
+              </div></div></div>
+            </div>
+          </div>
+
+          <h3>How we use information</h3>
+          <p>We use information to provide weather, AI, moderation, support, music, economy, and utility features; identify the right user, server, channel, or ticket; respond to mentions, replies, commands, buttons, modals, and menus; maintain short-term AI context; store moderation and support records; operate public features like starboard, birthdays, QOTD, and donation announcements; enforce cooldowns, limits, and abuse-prevention; and troubleshoot errors. We do not sell Discord API data or share Discord user data with advertising networks or data brokers.</p>
+        </div>
+
+        <div class="legal-section" id="retention">
+          <h2><span class="legal-num">05</span> Retention &amp; deletion</h2>
+          <p>Where a category lacks a built-in automatic timer, we do not yet enforce a fixed deletion deadline for that record type. In those cases, data may remain until it is manually deleted, deleted following a valid request, removed during maintenance, or no longer needed for the feature, safety, or legal purpose involved.</p>
+
+          <div class="faq">
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>A. AI &amp; conversation data</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <div class="legal-table-wrap"><table class="legal-table">
+                  <tr><th>Record type</th><th>Retention</th></tr>
+                  <tr><td>Conversation history</td><td>Latest 6 entries per user-plus-guild scope; older entries removed on a rolling basis.</td></tr>
+                  <tr><td>Conversation thread entries</td><td>Up to 50 short entries; a thread is marked expired after 15 minutes of inactivity.</td></tr>
+                  <tr><td>Conversation summaries</td><td>Expired thread summaries may remain; no general automatic purge is currently defined.</td></tr>
+                  <tr><td>AI usage logs</td><td>Automatically purged after 48 hours.</td></tr>
+                  <tr><td>AI limit-card markers</td><td>Date-scoped to the day created; no separate cleanup job for historical rows.</td></tr>
+                  <tr><td>Reply tracking &amp; personality prefs</td><td>Retained until changed, deleted, or removed on request; no automatic purge.</td></tr>
+                  <tr><td>In-memory reply cache</td><td>Expires after 30 minutes.</td></tr>
+                </table></div>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>B. Tickets, moderation &amp; reviews</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <div class="legal-table-wrap"><table class="legal-table">
+                  <tr><th>Record type</th><th>Retention</th></tr>
+                  <tr><td>Moderation cases</td><td>No general automatic purge; retained until deleted, replaced, or no longer needed for moderation, safety, legal, or operational reasons.</td></tr>
+                  <tr><td>Ticket metadata</td><td>No general automatic purge currently defined.</td></tr>
+                  <tr><td>Ticket transcripts</td><td>Generated from Discord thread history on request; no dedicated permanent table. Discord may retain the underlying messages until deleted.</td></tr>
+                  <tr><td>Ratings, escalation, close reasons</td><td>No general automatic purge currently defined.</td></tr>
+                  <tr><td>Spotter apps &amp; reward submissions</td><td>No general automatic purge currently defined.</td></tr>
+                  <tr><td>Failed/removed ticket records</td><td>Some rows are deleted automatically if creation fails or a tracked thread is deleted.</td></tr>
+                </table></div>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>C. Community features</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <div class="legal-table-wrap"><table class="legal-table">
+                  <tr><th>Record type</th><th>Retention</th></tr>
+                  <tr><td>Birthdays</td><td>Retained until you remove the entry (<code>/birthday remove</code>), it is deleted on request, or no longer needed.</td></tr>
+                  <tr><td>QOTD submissions</td><td>No general automatic purge currently defined.</td></tr>
+                  <tr><td>Suggestions &amp; bug reports</td><td>Forwarded to Discord channels rather than a database table; retention depends on Discord history.</td></tr>
+                  <tr><td>Starboard tracking</td><td>Retained while tracked; may be deleted when the source entry leaves tracking; no full global purge schedule.</td></tr>
+                </table></div>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>D. Economy, progression &amp; activity</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <div class="legal-table-wrap"><table class="legal-table">
+                  <tr><th>Record type</th><th>Retention</th></tr>
+                  <tr><td>Economy, items, arena, roles, missions, progression</td><td>No general automatic purge currently defined.</td></tr>
+                  <tr><td>Server levels &amp; XP history</td><td>No general automatic purge currently defined.</td></tr>
+                  <tr><td>Aggregate activity used for pricing</td><td>Stored as historical pricing records with no code-defined automatic purge.</td></tr>
+                </table></div>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>E. Donations &amp; operational logs</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <div class="legal-table-wrap"><table class="legal-table">
+                  <tr><th>Record type</th><th>Retention</th></tr>
+                  <tr><td>Stripe processed event IDs</td><td>No general automatic purge currently defined.</td></tr>
+                  <tr><td>Donation-related server logs</td><td>No retention period defined in code; depends on the hosting/logging environment.</td></tr>
+                  <tr><td>Error logs (Discord/console)</td><td>No global retention period defined in code.</td></tr>
+                </table></div>
+              </div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>F. Pollers, caches &amp; temp files</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
+                <div class="legal-table-wrap"><table class="legal-table">
+                  <tr><th>Record type</th><th>Retention</th></tr>
+                  <tr><td>Temporary in-memory caches</td><td>Expire after roughly 15 minutes.</td></tr>
+                  <tr><td>Poller seen-state JSON files</td><td>Retain identifiers for roughly 24 to 48 hours depending on the poller TTL.</td></tr>
+                  <tr><td>Temporary music/media files</td><td>Generally deleted after playback or when cleanup runs.</td></tr>
+                </table></div>
+              </div></div></div>
+            </div>
+          </div>
+
+          <h3>Deletion requests</h3>
+          <p>You may request deletion of stored data by contacting <a href="mailto:support@xtremewx.com">support@xtremewx.com</a> or using the support workflow. We may deny or limit deletion where we need to keep information for moderation and safety records, fraud or abuse prevention, security investigations, payment/tax/accounting/dispute obligations, legal compliance, or other users' rights or safety. We may first verify that you are the correct Discord user or otherwise authorized.</p>
+        </div>
+
+        <div class="legal-section" id="sharing">
+          <h2><span class="legal-num">06</span> Sharing &amp; external services</h2>
+          <p>We share data only as needed to operate, process payments, provide external data sources, support media features, or comply with law.</p>
+          <div class="faq">
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Discord</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">Everything runs on Discord, so we necessarily process server, user, channel, message, reaction, and interaction data made available through the Discord API for the bot's features.</p></div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>AI provider (Anthropic)</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">Snowball sends AI prompts, limited context, images, and some conversation-summary content to Anthropic to generate replies and summaries. Snowball does not use your Discord content to train its own model; third-party handling is governed by that provider's own terms in addition to this policy.</p></div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Payments (Stripe)</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">Stripe processes donations and payment-related data and sends webhook events back to Snowball. We receive limited payment-related event data to acknowledge donations and prevent duplicate processing.</p></div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Weather, geocoding &amp; alert services</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">We may send limited request data (locations, coordinates, URLs, or queries) to OpenWeatherMap, OpenStreetMap Nominatim, api.weather.gov, Iowa State Mesonet, SPC, WPC, NHC, Instatus, Spotter Network, and ACRCloud to geocode, retrieve forecasts or alerts, monitor status, and identify radio streams. These services generally receive only the request data needed to answer.</p></div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Media &amp; music services</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">We may send request data, media links, or lookup info to Spotify, Deezer, SoundCloud, Apple Music endpoints, and yt-dlp and source hosts connected to a media URL you provide, to resolve tracks, retrieve metadata, validate links, and play or download media.</p></div></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false"><span>Operator-controlled infrastructure</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">Snowball also communicates with our own supporting infrastructure, including a banner service, secure weather and camera proxy services, and xtremewx.com service endpoints, which may receive request data needed to return weather products, camera content, images, or other outputs.</p></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="legal-section" id="ai">
+          <h2><span class="legal-num">07</span> AI-specific disclosures</h2>
+          <p>If you use Snowball's AI features, please read this carefully.</p>
+          <ul>
+            <li>Snowball may store short AI conversation history and thread summaries tied to your user ID and, in servers, the relevant guild scope.</li>
+            <li>Snowball may process reply context, recent nearby channel context, and images if needed to answer your prompt.</li>
+            <li>Snowball may send AI request content to Anthropic to generate a response or summary.</li>
+            <li>Some personality modes are intentionally more sarcastic or abrasive. That affects tone, not whether inputs may be processed and stored as described here.</li>
+            <li>Turning AI replies off stops Snowball from responding to you in those flows, but does not automatically delete previously stored AI records.</li>
+            <li>AI responses can be wrong, incomplete, or inappropriate. Never rely on them as professional, legal, medical, or emergency advice.</li>
+          </ul>
+          <div class="legal-callout warn">
+            <span class="legal-callout-label">Reminder</span>
+            AI requests may involve more than the one line you typed if you invoke Snowball in a reply or mention. That preserves conversational continuity, but means nearby contextual content may be processed to answer you.
+          </div>
+        </div>
+
+        <div class="legal-section" id="rights">
+          <h2><span class="legal-num">08</span> Your choices &amp; rights</h2>
+          <ul>
+            <li><strong>Access:</strong> request a copy or summary of the data associated with your Discord account.</li>
+            <li><strong>Export:</strong> request an export of stored data where reasonably possible.</li>
+            <li><strong>Deletion:</strong> request deletion of stored data, subject to the limitations above.</li>
+            <li><strong>AI opt-out:</strong> use Snowball's AI controls to disable AI replies to you.</li>
+            <li><strong>Birthday removal:</strong> use <code>/birthday remove</code> to delete your birthday entry.</li>
+            <li><strong>Avoid optional features:</strong> you may choose not to use AI chat, music uploads, suggestions, QOTD, or donation-linked identification fields.</li>
+            <li><strong>Server-level choices:</strong> server owners/admins choose whether to invite and configure Snowball, and some features are limited to specific servers, channels, or roles.</li>
+          </ul>
+          <div class="legal-callout note">
+            <span class="legal-callout-label">Note</span>
+            There is not currently a universal self-service <code>/data export</code> or <code>/data delete</code> command. Requests are handled manually, submit them through <a href="mailto:support@xtremewx.com">support@xtremewx.com</a> or the support workflow.
+          </div>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="legal-num">09</span> Security &amp; incident handling</h2>
+          <p>We use a mix of technical and operational controls, including database-backed storage for persistent records, Discord permission-gated commands for staff-only actions, ephemeral replies in some sensitive flows, outbound URL restrictions and private-host blocking for HTTP fetches, Stripe webhook signature verification, and role-based access for some moderation, support, and review features. Payment processing is handled by Stripe rather than us storing full payment credentials.</p>
+          <p>This policy does not claim encryption at rest, backup encryption, formal key-rotation, or a specific breach-notification timeline unless those controls are separately documented and published. If we confirm a security incident affecting your data, we may investigate, contain it, review logs and impacted systems, and make notifications where required or appropriate.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="legal-num">10</span> Children's privacy</h2>
+          <p>Snowball and Xtreme Weather are intended for use on Discord and are not directed to children under the minimum age permitted by Discord or applicable law. We do not knowingly solicit or intentionally collect personal information from users below that minimum age. If you believe a child has provided personal information in violation of applicable rules, contact us at <a href="mailto:support@xtremewx.com">support@xtremewx.com</a>.</p>
+        </div>
+
+        <div class="legal-section">
+          <h2><span class="legal-num">11</span> Changes to this policy</h2>
+          <p>We may update this Privacy Policy from time to time to reflect feature changes, legal requirements, operational changes, or updated practices. When we do, we will update the effective date and version at the top.</p>
+        </div>
+
+        <div class="legal-section" id="contact">
+          <h2><span class="legal-num">12</span> Contact</h2>
+          <p>For privacy questions, access requests, export requests, deletion requests, or other data concerns, contact:</p>
+          <p><strong>Xtreme Weather / BP Technologies</strong><br>Email: <a href="mailto:support@xtremewx.com">support@xtremewx.com</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand-section">
+            <div class="footer-brand-identity">
+                <img src="assets/xtreme-logo-small.png" loading="lazy" decoding="async" alt="Xtreme Weather" class="footer-logo">
+                <div class="footer-brand-text">
+                    <span class="footer-brand-name">Xtreme Weather</span>
+                    <span class="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
+                </div>
+            </div>
+            <p class="footer-description">
+                Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.
+            </p>
+            <a class="footer-wrn" href="https://www.weather.gov/wrn/ambassadors" target="_blank" rel="noopener">
+                <img src="assets/wrn-ambassador.png" loading="lazy" decoding="async" alt="Weather-Ready Nation Ambassador" class="footer-wrn-logo">
+                <span class="footer-wrn-text">Xtreme Weather is a proud <strong>Weather-Ready Nation</strong> Ambassador<span class="tm">&trade;</span></span>
+            </a>
+        </div>
+        <div class="footer-nav-section">
+            <div class="footer-socials">
+                <a href="https://tiktok.com/@xtreme_weather" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://x.com/joinxtremewx" target="_blank" rel="noopener" class="social-btn" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <nav class="footer-links">
+                <a href="about.html" class="footer-link">About</a>
+                <a href="charter.html" class="footer-link">Charter</a>
+                <a href="privacy.html" class="footer-link">Privacy</a>
+                <a href="terms.html" class="footer-link">Terms</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+                <a href="ban-appeal.html" class="footer-link">Appeal</a>
+                <a href="https://xtremewx.com/donate" target="_blank" rel="noopener" class="footer-link is-donate">Donate</a>
+            </nav>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        &copy; 2026 Xtreme Weather. All rights reserved.
+    </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+// Collapsible doc categories (same accordion behavior as the FAQ)
+document.querySelectorAll('.faq-q').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var open = btn.parentElement.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+</script>
+</body>
+</html>

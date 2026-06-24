@@ -90,10 +90,17 @@
             <a href="donators.html" class="mega-item"><i class="fas fa-heart"></i><div class="mega-item-text"><span class="title">Donators</span><span class="desc">Community supporters</span></div></a>
             <a href="about.html" class="mega-item"><i class="fas fa-circle-info"></i><div class="mega-item-text"><span class="title">About</span><span class="desc">Our story &amp; mission</span></div></a>
             <a href="contact.html" class="mega-item"><i class="fas fa-envelope"></i><div class="mega-item-text"><span class="title">Contact</span><span class="desc">Get in touch</span></div></a>
-            <a href="ban-appeal.html" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Request a review</span></div></a>
         </div>
         <div class="mega-column">
-            <div class="mega-header">Socials</div>
+            <div class="mega-header">Policies</div>
+            <a href="charter.html" class="mega-item"><i class="fas fa-scroll"></i><div class="mega-item-text"><span class="title">Charter</span><span class="desc">Community standards</span></div></a>
+            <a href="coverage-experts.html" class="mega-item"><i class="fas fa-tower-broadcast"></i><div class="mega-item-text"><span class="title">Coverage Experts</span><span class="desc">Who runs coverage</span></div></a>
+            <a href="privacy.html" class="mega-item"><i class="fas fa-user-shield"></i><div class="mega-item-text"><span class="title">Privacy Policy</span><span class="desc">Your data &amp; rights</span></div></a>
+            <a href="terms.html" class="mega-item"><i class="fas fa-file-contract"></i><div class="mega-item-text"><span class="title">Terms of Service</span><span class="desc">Rules of use</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">More</div>
+            <a href="ban-appeal.html" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Request a review</span></div></a>
             <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Discord</span><span class="desc">Join the community</span></div></a>
             <a href="https://x.com/joinxtremewx" target="_blank" class="mega-item"><i class="fab fa-x-twitter"></i><div class="mega-item-text"><span class="title">X / Twitter</span><span class="desc">Live updates</span></div></a>
             <a href="https://tiktok.com/@xtreme_weather" target="_blank" class="mega-item"><i class="fab fa-tiktok"></i><div class="mega-item-text"><span class="title">TikTok</span><span class="desc">Behind the scenes</span></div></a>
@@ -145,6 +152,7 @@
             <a href="staff.html" class="clean-link"><div class="icon-box"><i class="fas fa-users"></i></div><span>Staff Team</span></a>
             <a href="donators.html" class="clean-link"><div class="icon-box"><i class="fas fa-heart"></i></div><span>Donators</span></a>
             <a href="about.html" class="clean-link"><div class="icon-box"><i class="fas fa-circle-info"></i></div><span>About</span></a>
+            <button class="clean-link" onclick="sbOpenSubMenu('policies')"><div class="icon-box"><i class="fas fa-scroll"></i></div><span>Policies</span><i class="fas fa-chevron-right" style="margin-left:auto;opacity:0.3;font-size:1rem;"></i></button>
             <a href="contact.html" class="clean-link"><div class="icon-box"><i class="fas fa-envelope"></i></div><span>Contact</span></a>
             <a href="ban-appeal.html" class="clean-link"><div class="icon-box"><i class="fas fa-gavel"></i></div><span>Ban Appeal</span></a>
             <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Discord Server</span></a>
@@ -152,6 +160,19 @@
             <a href="https://tiktok.com/@xtreme_weather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-tiktok"></i></div><span>TikTok</span></a>
         </div>
     </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-policies">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Policies</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="charter.html" class="clean-link"><div class="icon-box"><i class="fas fa-scroll"></i></div><span>Community Charter</span></a>
+            <a href="coverage-experts.html" class="clean-link"><div class="icon-box"><i class="fas fa-tower-broadcast"></i></div><span>Coverage Experts</span></a>
+            <a href="privacy.html" class="clean-link"><div class="icon-box"><i class="fas fa-user-shield"></i></div><span>Privacy Policy</span></a>
+            <a href="terms.html" class="clean-link"><div class="icon-box"><i class="fas fa-file-contract"></i></div><span>Terms of Service</span></a>
+        </div>
+    </div>
+</div>
 </div>
 
 <main class="community-page">
@@ -276,6 +297,10 @@
             <p class="footer-description">
                 Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.
             </p>
+            <a class="footer-wrn" href="https://www.weather.gov/wrn/ambassadors" target="_blank" rel="noopener">
+                <img src="assets/wrn-ambassador.png" loading="lazy" decoding="async" alt="Weather-Ready Nation Ambassador" class="footer-wrn-logo">
+                <span class="footer-wrn-text">Xtreme Weather is a proud <strong>Weather-Ready Nation</strong> Ambassador<span class="tm">&trade;</span></span>
+            </a>
         </div>
         <div class="footer-nav-section">
             <div class="footer-socials">
@@ -285,11 +310,12 @@
             </div>
             <nav class="footer-links">
                 <a href="about.html" class="footer-link">About</a>
-                <a href="#" class="footer-link">Privacy</a>
-                <a href="#" class="footer-link">Terms</a>
+                <a href="charter.html" class="footer-link">Charter</a>
+                <a href="privacy.html" class="footer-link">Privacy</a>
+                <a href="terms.html" class="footer-link">Terms</a>
                 <a href="contact.html" class="footer-link">Contact</a>
                 <a href="ban-appeal.html" class="footer-link">Appeal</a>
-                <a href="#" class="footer-link">Status</a>
+                <a href="https://xtremewx.com/donate" target="_blank" rel="noopener" class="footer-link is-donate">Donate</a>
             </nav>
         </div>
     </div>
@@ -298,77 +324,7 @@
     </div>
 </footer>
 
-<script>
-// Mega menu hover
-document.querySelectorAll('.has-dropdown[data-menu]').forEach(function(item) {
-    var menuName = item.getAttribute('data-menu');
-    var megaMenu = document.getElementById(menuName + '-mega-menu');
-    if (!megaMenu) return;
-    var t;
-    item.addEventListener('mouseenter', function() {
-        clearTimeout(t);
-        megaMenu.style.opacity = '1';
-        megaMenu.style.visibility = 'visible';
-        megaMenu.style.pointerEvents = 'auto';
-        megaMenu.style.transform = 'translateX(-50%) translateY(0)';
-    });
-    item.addEventListener('mouseleave', function() {
-        t = setTimeout(function() {
-            megaMenu.style.opacity = '0';
-            megaMenu.style.visibility = 'hidden';
-            megaMenu.style.pointerEvents = 'none';
-            megaMenu.style.transform = 'translateX(-50%) translateY(20px)';
-        }, 100);
-    });
-    megaMenu.addEventListener('mouseenter', function() { clearTimeout(t); });
-    megaMenu.addEventListener('mouseleave', function() {
-        megaMenu.style.opacity = '0';
-        megaMenu.style.visibility = 'hidden';
-        megaMenu.style.pointerEvents = 'none';
-        megaMenu.style.transform = 'translateX(-50%) translateY(20px)';
-    });
-});
-
-// Mobile menu
-function sbToggleMobileMenu() {
-    var menu = document.getElementById('sb-mobile-menu');
-    var btn = document.getElementById('mobile-trigger');
-    var isActive = menu.classList.contains('active');
-    if (isActive) {
-        menu.classList.remove('active');
-        btn.classList.remove('active');
-        document.body.classList.remove('sb-mobile-menu-open');
-        setTimeout(sbCloseSubMenu, 300);
-    } else {
-        menu.classList.add('active');
-        btn.classList.add('active');
-        document.body.classList.add('sb-mobile-menu-open');
-    }
-}
-function sbOpenSubMenu(id) {
-    var menu = document.getElementById('sb-mobile-menu');
-    menu.classList.add('sub-active');
-    document.querySelectorAll('#sb-mobile-menu .sub-view').forEach(function(el) { el.classList.remove('active'); });
-    var sub = document.getElementById('sb-sub-menu-' + id);
-    if (sub) sub.classList.add('active');
-}
-function sbCloseSubMenu() {
-    var menu = document.getElementById('sb-mobile-menu');
-    menu.classList.remove('sub-active');
-    document.querySelectorAll('#sb-mobile-menu .sub-view').forEach(function(el) { el.classList.remove('active'); });
-}
-function sbCloseMobileMenu(e) {
-    if (e.target === document.getElementById('sb-mobile-menu')) sbToggleMobileMenu();
-}
-
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 1024) {
-        var menu = document.getElementById('sb-mobile-menu');
-        if (menu.classList.contains('active')) sbToggleMobileMenu();
-    }
-});
-
-</script>
+<script src="nav.js"></script>
 <script>
 // FAQ accordion: toggle .open; the height animates via the grid-rows transition in CSS
 document.querySelectorAll('.faq-q').forEach(function (btn) {

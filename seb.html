@@ -458,37 +458,125 @@ html, body { overflow-x: hidden; max-width: 100%; }
 <div class="page-decor" aria-hidden="true"><i class="fas fa-bolt"></i><i class="fas fa-tornado"></i><i class="fas fa-triangle-exclamation"></i><i class="fas fa-snowflake"></i><i class="fas fa-cloud-bolt"></i><i class="fas fa-cloud"></i><i class="fas fa-cloud-rain"></i><i class="fas fa-cloud-showers-heavy"></i><i class="fas fa-sun"></i><i class="fas fa-cloud-sun"></i><i class="fas fa-wind"></i><i class="fas fa-droplet"></i><i class="fas fa-umbrella"></i><i class="fas fa-smog"></i><i class="fas fa-temperature-half"></i><i class="fas fa-hurricane"></i></div>
 
 <nav class="navbar">
-  <div class="nav-container">
-    <div class="nav-left">
-      <button class="nav-btn-circle hamburger" id="mobile-trigger" onclick="sbToggleMobileMenu()" aria-label="Toggle menu">
-        <i class="fas fa-bars"></i>
-        <i class="fas fa-times"></i>
-      </button>
-      <a href="https://xtremewx.com/new" style="display:flex;align-items:center;text-decoration:none;">
-        <img src="assets/xtreme-logo-small.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
-      </a>
+    <div class="nav-container">
+        <div class="nav-left">
+            <button class="nav-btn-circle hamburger" id="mobile-trigger" onclick="sbToggleMobileMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="https://xtremewx.com/new" style="display:flex;align-items:center;text-decoration:none;">
+                <img src="assets/xtreme-logo-small.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
+            </a>
+        </div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li class="has-dropdown" data-menu="weather">
+                    <a href="#">Weather <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="community">
+                    <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li>
+                    <a href="index.html">Snowball</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right"></div>
     </div>
-    <div class="nav-center">
-      <ul class="nav-links">
-        <li><a href="index.html">Snowball</a></li>
-        <li><a href="staff.html">Staff</a></li>
-        <li><a href="donators.html">Donators</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
-    <div class="nav-right"></div>
-  </div>
 </nav>
 
-<div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
-  <div class="mobile-view main-view" id="sb-mobile-main-view">
-    <div class="mobile-centered-content">
-      <button class="mobile-big-link" onclick="location.href='index.html'">Snowball</button>
-      <button class="mobile-big-link" onclick="location.href='staff.html'">Staff</button>
-      <button class="mobile-big-link" onclick="location.href='donators.html'">Donators</button>
-      <button class="mobile-big-link" onclick="location.href='about.html'">About</button>
+<div class="mega-menu" id="weather-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Forecasts</div>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-sun"></i><div class="mega-item-text"><span class="title">Now</span><span class="desc">Current conditions</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-clock"></i><div class="mega-item-text"><span class="title">Hourly</span><span class="desc">Next 24 hours</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-calendar-alt"></i><div class="mega-item-text"><span class="title">10-Day</span><span class="desc">Long range outlook</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Maps &amp; Data</div>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Radar</span><span class="desc">Live doppler imagery</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-video"></i><div class="mega-item-text"><span class="title">Cameras</span><span class="desc">Traffic cams &amp; feeds</span></div></a>
+            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-newspaper"></i><div class="mega-item-text"><span class="title">News</span><span class="desc">Storm reports</span></div></a>
+        </div>
     </div>
-  </div>
+</div>
+
+<div class="mega-menu" id="community-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Project</div>
+            <a href="staff.html" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Staff</span><span class="desc">Meet the team</span></div></a>
+            <a href="donators.html" class="mega-item"><i class="fas fa-heart"></i><div class="mega-item-text"><span class="title">Donators</span><span class="desc">Community supporters</span></div></a>
+            <a href="about.html" class="mega-item"><i class="fas fa-circle-info"></i><div class="mega-item-text"><span class="title">About</span><span class="desc">Our story &amp; mission</span></div></a>
+            <a href="contact.html" class="mega-item"><i class="fas fa-envelope"></i><div class="mega-item-text"><span class="title">Contact</span><span class="desc">Get in touch</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Policies</div>
+            <a href="charter.html" class="mega-item"><i class="fas fa-scroll"></i><div class="mega-item-text"><span class="title">Charter</span><span class="desc">Community standards</span></div></a>
+            <a href="coverage-experts.html" class="mega-item"><i class="fas fa-tower-broadcast"></i><div class="mega-item-text"><span class="title">Coverage Experts</span><span class="desc">Who runs coverage</span></div></a>
+            <a href="privacy.html" class="mega-item"><i class="fas fa-user-shield"></i><div class="mega-item-text"><span class="title">Privacy Policy</span><span class="desc">Your data &amp; rights</span></div></a>
+            <a href="terms.html" class="mega-item"><i class="fas fa-file-contract"></i><div class="mega-item-text"><span class="title">Terms of Service</span><span class="desc">Rules of use</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">More</div>
+            <a href="ban-appeal.html" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Request a review</span></div></a>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Discord</span><span class="desc">Join the community</span></div></a>
+            <a href="https://x.com/joinxtremewx" target="_blank" class="mega-item"><i class="fab fa-x-twitter"></i><div class="mega-item-text"><span class="title">X / Twitter</span><span class="desc">Live updates</span></div></a>
+            <a href="https://tiktok.com/@xtreme_weather" target="_blank" class="mega-item"><i class="fab fa-tiktok"></i><div class="mega-item-text"><span class="title">TikTok</span><span class="desc">Behind the scenes</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
+    <div class="mobile-view main-view" id="sb-mobile-main-view">
+        <div class="mobile-centered-content">
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('weather')">Weather <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="location.href='index.html'">Snowball</button>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-weather">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Weather</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-sun"></i></div><span>Current Conditions</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-clock"></i></div><span>Hourly Forecast</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-calendar-alt"></i></div><span>10-Day Outlook</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-satellite-dish"></i></div><span>Live Radar</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-video"></i></div><span>Cameras</span></a>
+            <a href="https://xtremewx.com/new" class="clean-link"><div class="icon-box"><i class="fas fa-newspaper"></i></div><span>Storm Reports</span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-community">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Community</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="staff.html" class="clean-link"><div class="icon-box"><i class="fas fa-users"></i></div><span>Staff Team</span></a>
+            <a href="donators.html" class="clean-link"><div class="icon-box"><i class="fas fa-heart"></i></div><span>Donators</span></a>
+            <a href="about.html" class="clean-link"><div class="icon-box"><i class="fas fa-circle-info"></i></div><span>About</span></a>
+            <button class="clean-link" onclick="sbOpenSubMenu('policies')"><div class="icon-box"><i class="fas fa-scroll"></i></div><span>Policies</span><i class="fas fa-chevron-right" style="margin-left:auto;opacity:0.3;font-size:1rem;"></i></button>
+            <a href="contact.html" class="clean-link"><div class="icon-box"><i class="fas fa-envelope"></i></div><span>Contact</span></a>
+            <a href="ban-appeal.html" class="clean-link"><div class="icon-box"><i class="fas fa-gavel"></i></div><span>Ban Appeal</span></a>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Discord Server</span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-menu-policies">
+        <div class="sub-menu-header">
+            <button class="back-btn-circle" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+            <span class="sub-title">Policies</span>
+        </div>
+        <div class="mobile-clean-list">
+            <a href="charter.html" class="clean-link"><div class="icon-box"><i class="fas fa-scroll"></i></div><span>Community Charter</span></a>
+            <a href="coverage-experts.html" class="clean-link"><div class="icon-box"><i class="fas fa-tower-broadcast"></i></div><span>Coverage Experts</span></a>
+            <a href="privacy.html" class="clean-link"><div class="icon-box"><i class="fas fa-user-shield"></i></div><span>Privacy Policy</span></a>
+            <a href="terms.html" class="clean-link"><div class="icon-box"><i class="fas fa-file-contract"></i></div><span>Terms of Service</span></a>
+        </div>
+    </div>
 </div>
 
 <main class="community-page">
@@ -551,58 +639,45 @@ html, body { overflow-x: hidden; max-width: 100%; }
 </main>
 
 <footer class="site-footer">
-  <div class="footer-container">
-    <div class="footer-brand-section">
-      <div class="footer-brand-identity">
-        <img src="assets/xtreme-logo-small.png" loading="lazy" decoding="async" alt="Xtreme Weather" class="footer-logo">
-        <div class="footer-brand-text">
-          <span class="footer-brand-name">Xtreme Weather</span>
-          <span class="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
+    <div class="footer-container">
+        <div class="footer-brand-section">
+            <div class="footer-brand-identity">
+                <img src="assets/xtreme-logo-small.png" loading="lazy" decoding="async" alt="Xtreme Weather" class="footer-logo">
+                <div class="footer-brand-text">
+                    <span class="footer-brand-name">Xtreme Weather</span>
+                    <span class="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
+                </div>
+            </div>
+            <p class="footer-description">
+                Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.
+            </p>
+            <a class="footer-wrn" href="https://www.weather.gov/wrn/ambassadors" target="_blank" rel="noopener">
+                <img src="assets/wrn-ambassador.png" loading="lazy" decoding="async" alt="Weather-Ready Nation Ambassador" class="footer-wrn-logo">
+                <span class="footer-wrn-text">Xtreme Weather is a proud <strong>Weather-Ready Nation</strong> Ambassador<span class="tm">&trade;</span></span>
+            </a>
         </div>
-      </div>
-      <p class="footer-description">Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.</p>
+        <div class="footer-nav-section">
+            <div class="footer-socials">
+                <a href="https://tiktok.com/@xtreme_weather" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://x.com/joinxtremewx" target="_blank" rel="noopener" class="social-btn" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <nav class="footer-links">
+                <a href="about.html" class="footer-link">About</a>
+                <a href="charter.html" class="footer-link">Charter</a>
+                <a href="privacy.html" class="footer-link">Privacy</a>
+                <a href="terms.html" class="footer-link">Terms</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+                <a href="ban-appeal.html" class="footer-link">Appeal</a>
+                <a href="https://xtremewx.com/donate" target="_blank" rel="noopener" class="footer-link is-donate">Donate</a>
+            </nav>
+        </div>
     </div>
-    <div class="footer-nav-section">
-      <div class="footer-socials">
-        <a href="https://tiktok.com/@xtreme_weather" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
-        <a href="https://x.com/joinxtremewx" target="_blank" rel="noopener" class="social-btn" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-      </div>
-      <nav class="footer-links">
-        <a href="about.html" class="footer-link">About</a>
-        <a href="staff.html" class="footer-link">Staff</a>
-        <a href="contact.html" class="footer-link">Contact</a>
-        <a href="ban-appeal.html" class="footer-link">Appeal</a>
-      </nav>
+    <div class="footer-copyright">
+        &copy; 2026 Xtreme Weather. All rights reserved.
     </div>
-  </div>
-  <div class="footer-copyright">&copy; 2026 Xtreme Weather. all rights reserved (this page was not reserved tho). do NOT feed the boar 🐗</div>
 </footer>
 
-<script>
-function sbToggleMobileMenu() {
-  var menu = document.getElementById('sb-mobile-menu');
-  var btn = document.getElementById('mobile-trigger');
-  var isActive = menu.classList.contains('active');
-  if (isActive) {
-    menu.classList.remove('active');
-    btn.classList.remove('active');
-    document.body.classList.remove('sb-mobile-menu-open');
-  } else {
-    menu.classList.add('active');
-    btn.classList.add('active');
-    document.body.classList.add('sb-mobile-menu-open');
-  }
-}
-function sbCloseMobileMenu(e) {
-  if (e.target === document.getElementById('sb-mobile-menu')) sbToggleMobileMenu();
-}
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 1024) {
-    var menu = document.getElementById('sb-mobile-menu');
-    if (menu.classList.contains('active')) sbToggleMobileMenu();
-  }
-});
-</script>
+<script src="nav.js"></script>
 </body>
 </html>
