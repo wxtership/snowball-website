@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="snowball.css">
 <link rel="stylesheet" href="community.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 <style>
 /* ===== SEB PAGE: OVERRIDE DECOR ICONS WITH CHAOS ===== */
 @keyframes sebFloat  { 0%,100%{transform:translateY(0) rotate(var(--ir,0deg))} 50%{transform:translateY(-11px) rotate(var(--ir,0deg))} }
@@ -39,219 +39,250 @@
 .page-decor i:nth-child(15) { --ir:10deg;  animation-duration:2.7s!important; }
 .page-decor i:nth-child(16) { --ir:-12deg; animation-duration:3.8s!important; animation-name:sebWobble!important; }
 
-/* ===== SEB PAGE: CRAYON KINDERGARTENER PAPER MODE ===== */
+/* ===== SEB PAGE: DARK CRAYON CHALKBOARD STUPID MODE ===== */
 
-/* SVG wobbly-border filter lives in the DOM, referenced here */
 @keyframes stampIn {
   0%  { transform:rotate(-20deg) scale(2.8); opacity:0; }
-  65% { transform:rotate(7deg)   scale(0.92); opacity:1; }
-  100%{ transform:rotate(-4deg)  scale(1); opacity:1; }
+  65% { transform:rotate(8deg)   scale(0.92); opacity:1; }
+  100%{ transform:rotate(-5deg)  scale(1); opacity:1; }
 }
 @keyframes avatarWiggle {
-  0%,100%{transform:rotate(0deg)} 20%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} 80%{transform:rotate(-3deg)}
+  0%,100%{transform:rotate(0deg) scale(1)} 20%{transform:rotate(-7deg) scale(1.06)} 50%{transform:rotate(7deg)} 80%{transform:rotate(-4deg)}
 }
 @keyframes badgeBounce {
-  0%,100%{transform:scale(1) rotate(-1deg)} 50%{transform:scale(1.1) rotate(1deg)}
+  0%,100%{transform:scale(1) rotate(-2deg)} 50%{transform:scale(1.12) rotate(2deg)}
 }
 @keyframes progressFill { from{width:0} to{width:73%} }
-@keyframes paperIn {
-  0%  { transform:rotate(-1.5deg) translateY(20px); opacity:0; }
-  100%{ transform:rotate(-1.5deg) translateY(0);    opacity:1; }
+@keyframes cardIn {
+  0%  { transform:rotate(-1.2deg) translateY(24px) scale(0.96); opacity:0; }
+  100%{ transform:rotate(-1.2deg) translateY(0)    scale(1);    opacity:1; }
 }
-@keyframes scribbleUnder {
-  from { stroke-dashoffset: 200; }
-  to   { stroke-dashoffset: 0; }
+@keyframes titleWobble {
+  0%,100%{transform:rotate(-2deg)} 50%{transform:rotate(2deg)}
+}
+@keyframes rainbowText {
+  0%{color:#ff6b6b} 20%{color:#ffd93d} 40%{color:#6bcb77} 60%{color:#4d96ff} 80%{color:#c44dff} 100%{color:#ff6b6b}
+}
+@keyframes doodleFloat {
+  0%,100%{transform:translateY(0) rotate(var(--dr,0deg))} 50%{transform:translateY(-14px) rotate(calc(var(--dr,0deg) + 8deg))}
 }
 
-/* badge */
-.page-badge { animation: badgeBounce 2.4s ease-in-out infinite; display:inline-block; }
+/* WHOLE PAGE: stupid handwriting everywhere, dark stays */
+.community-page { position: relative; }
+.community-page .section-inner { position: relative; z-index: 2; }
 
-/* hero title: handwriting font, crayon yellow, wobbly filter */
+/* HERO BADGE -> looks like a kid's gold star sticker */
+.page-badge {
+  font-family: 'Gloria Hallelujah', cursive !important;
+  font-size: 1rem !important;
+  background: #ffd93d !important;
+  color: #2a1a0e !important;
+  border: 3px solid #1a1208 !important;
+  border-radius: 50px !important;
+  box-shadow: 3px 3px 0 #1a1208 !important;
+  transform: rotate(-3deg);
+  animation: badgeBounce 2.2s ease-in-out infinite;
+  display:inline-block;
+}
+
+/* HUGE BOLD CRAYON TITLE */
 .section-title {
-  font-family: 'Caveat', cursive !important;
-  font-size: 3.2rem !important;
-  color: #f5c842 !important;
-  text-shadow: 3px 3px 0 #c47a00, -1px -1px 0 #c47a0055;
-  letter-spacing: 0.02em;
+  font-family: 'Gloria Hallelujah', cursive !important;
+  font-size: 4.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  color: #ffd93d !important;
+  text-shadow:
+    4px 4px 0 #ff6b6b,
+    8px 8px 0 #4d96ff,
+    0 0 1px #000;
+  letter-spacing: 0.01em;
   filter: url(#squiggle);
+  animation: titleWobble 5s ease-in-out infinite;
+  display: inline-block;
 }
 
-/* hero body text: handwriting */
+/* BIG BOLD body text */
 .section-body {
   font-family: 'Caveat', cursive !important;
-  font-size: 1.25rem !important;
-  color: #e8dfc8 !important;
+  font-size: 1.9rem !important;
+  font-weight: 700 !important;
+  color: #f0e9d8 !important;
+  line-height: 1.3 !important;
 }
+.section-body strong { color:#ffd93d !important; }
 
-/* THE PAPER CARD */
+/* THE CARD: black construction paper / chalkboard, NOT light */
 .roast-console {
   background:
-    repeating-linear-gradient(
-      transparent,
-      transparent 27px,
-      #b8c9e022 28px
-    ),
-    linear-gradient(135deg, #f5f0e8 0%, #ede5d0 50%, #f0ead8 100%) !important;
-  border: none !important;
-  border-radius: 4px 6px 8px 3px !important;
+    repeating-linear-gradient(transparent, transparent 33px, rgba(255,255,255,0.04) 34px),
+    linear-gradient(135deg, #16131f 0%, #1d1828 60%, #181320 100%) !important;
+  border: 4px dashed #ffd93d88 !important;
+  border-radius: 14px 8px 16px 6px !important;
   box-shadow:
-    3px 4px 0 #c4a97d,
-    6px 8px 0 #a8896055,
-    0 12px 40px rgba(0,0,0,0.55),
-    inset 0 0 60px rgba(180,150,100,0.08) !important;
+    6px 6px 0 #ff6b6b55,
+    -4px 8px 0 #4d96ff44,
+    0 16px 50px rgba(0,0,0,0.6) !important;
   position: relative;
-  transform: rotate(-1.5deg);
-  animation: paperIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both;
-  /* tape strip at top */
+  transform: rotate(-1.2deg);
+  animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both;
 }
-/* scotch tape strip */
+/* taped-on doodle corner: a scribbled star */
 .roast-console::before {
-  content: '' !important;
+  content: '★' !important;
   position: absolute !important;
-  top: -14px !important;
-  left: 50% !important;
-  transform: translateX(-50%) rotate(-2deg) !important;
-  width: 80px !important;
-  height: 26px !important;
-  background: rgba(220,210,180,0.45) !important;
-  border: 1px solid rgba(200,190,160,0.5) !important;
-  border-radius: 2px !important;
-  backdrop-filter: blur(1px) !important;
-  z-index: 3 !important;
+  top: -22px !important;
+  left: -16px !important;
+  font-size: 3rem !important;
+  color: #ffd93d !important;
+  text-shadow: 2px 2px 0 #1a1208 !important;
+  transform: rotate(-15deg) !important;
+  z-index: 5 !important;
+  filter: url(#squiggle);
+  animation: doodleFloat 4s ease-in-out infinite;
+  --dr: -15deg;
 }
 
-/* CLASSIFIED stamp */
+/* CLASSIFIED stamp — bright crayon red on dark */
 .roast-stamp {
   position: absolute;
-  top: 18px;
-  right: 20px;
-  font-family: 'DrukWideBold', sans-serif;
-  font-size: 1rem;
-  font-weight: 900;
-  color: #cc1111;
-  border: 4px solid #cc1111;
-  padding: 3px 10px;
-  border-radius: 3px;
-  letter-spacing: 0.14em;
-  transform: rotate(-4deg);
+  top: 16px;
+  right: 18px;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ff5b5b;
+  border: 4px solid #ff5b5b;
+  padding: 4px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+  transform: rotate(-5deg);
   opacity: 0;
   pointer-events: none;
   animation: stampIn 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.9s forwards;
   text-transform: uppercase;
   z-index: 4;
   filter: url(#squiggle);
-  text-shadow: 1px 1px 0 #88000044;
 }
 
-/* card header: text goes dark on paper */
-.roast-console-head { border-bottom-color: #c4a97d55 !important; }
+/* card header */
+.roast-console-head { border-bottom: 3px dashed #ffffff22 !important; }
 .roast-target strong {
-  font-family: 'Caveat', cursive !important;
-  font-size: 1.4rem !important;
-  color: #2a1a0e !important;
+  font-family: 'Gloria Hallelujah', cursive !important;
+  font-size: 1.9rem !important;
+  animation: rainbowText 5s linear infinite;
 }
 .roast-target span {
   font-family: 'Caveat', cursive !important;
-  color: #6b4f2e !important;
-  font-size: 1rem !important;
+  color: #b9aee0 !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
 }
 .roast-status {
-  font-family: 'Caveat', cursive !important;
-  color: #3a6b2a !important;
-  font-size: 1rem !important;
+  font-family: 'Gloria Hallelujah', cursive !important;
+  color: #1a1208 !important;
+  font-size: 0.95rem !important;
   animation: badgeBounce 2s ease-in-out infinite;
-  background: #d4f0c8 !important;
-  border-color: #3a6b2a44 !important;
+  background: #6bcb77 !important;
+  border: 3px solid #1a1208 !important;
+  box-shadow: 2px 2px 0 #1a1208 !important;
 }
 
-/* avatar: hand-drawn circle border */
+/* avatar: kid-drew-a-circle outline */
 .roast-target img {
   animation: avatarWiggle 3s ease-in-out infinite;
-  border: 4px solid transparent !important;
-  outline: 3px dashed #e07030 !important;
-  outline-offset: 3px !important;
+  outline: 4px dashed #ff6b6b !important;
+  outline-offset: 4px !important;
   border-radius: 50% !important;
   filter: url(#squiggle);
 }
 
-/* FINDING CARDS: sticky-note style, each slightly different */
-.roast-grid { gap: 10px !important; }
+/* FINDINGS: scribbled note cards on dark */
+.roast-grid { gap: 14px !important; }
 .roast-line {
   font-family: 'Caveat', cursive !important;
-  font-size: 1.1rem !important;
-  color: #1a1208 !important;
-  background: #fffde7 !important;
+  font-size: 1.7rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  color: #f5f0e0 !important;
+  background: rgba(255,255,255,0.035) !important;
   border: none !important;
-  border-left: 5px solid #f5c842 !important;
-  border-radius: 2px 8px 8px 2px !important;
-  box-shadow: 2px 2px 0 #c4a97d88, 0 3px 8px rgba(0,0,0,0.12) !important;
-  padding: 10px 14px !important;
+  border-left: 7px solid #ffd93d !important;
+  border-radius: 4px 16px 16px 4px !important;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.4) !important;
+  padding: 12px 18px !important;
   filter: url(#squiggle);
 }
-.roast-line:nth-child(odd)  { transform: rotate(-0.6deg); }
-.roast-line:nth-child(even) { transform: rotate(0.5deg); background: #fef9e7 !important; }
-.roast-line:hover { transform: rotate(0deg) scale(1.015) !important; transition: transform 0.15s ease; }
+.roast-line:nth-child(odd)  { transform: rotate(-0.7deg); }
+.roast-line:nth-child(even) { transform: rotate(0.6deg); }
+.roast-line:hover { transform: rotate(0deg) scale(1.02) !important; transition: transform 0.15s ease; background: rgba(255,255,255,0.07) !important; }
 
-/* crayon-colored left borders per finding */
-.roast-line:nth-child(1) { border-left-color: #e05252 !important; }
-.roast-line:nth-child(2) { border-left-color: #e07830 !important; }
-.roast-line:nth-child(3) { border-left-color: #d4b800 !important; }
-.roast-line:nth-child(4) { border-left-color: #3aaa50 !important; }
-.roast-line:nth-child(5) { border-left-color: #2090c0 !important; }
-.roast-line:nth-child(6) { border-left-color: #7c5cbf !important; }
-.roast-line:nth-child(7) { border-left-color: #cc44aa !important; }
-.roast-line:nth-child(8) { border-left-color: #e05252 !important; }
+/* crayon-colored left borders + glow per finding */
+.roast-line:nth-child(1) { border-left-color:#ff6b6b !important; }
+.roast-line:nth-child(2) { border-left-color:#ff9f40 !important; }
+.roast-line:nth-child(3) { border-left-color:#ffd93d !important; }
+.roast-line:nth-child(4) { border-left-color:#6bcb77 !important; }
+.roast-line:nth-child(5) { border-left-color:#4d96ff !important; }
+.roast-line:nth-child(6) { border-left-color:#c44dff !important; }
+.roast-line:nth-child(7) { border-left-color:#ff5bcf !important; }
+.roast-line:nth-child(8) { border-left-color:#ff6b6b !important; }
 
-/* finding labels: crayon colors */
-.roast-line b { font-size:0.85rem; letter-spacing:0.06em; font-family:'DrukWideBold',sans-serif !important; }
-.roast-line:nth-child(1) b { color:#e05252; }
-.roast-line:nth-child(2) b { color:#e07830; }
-.roast-line:nth-child(3) b { color:#c4a000; }
-.roast-line:nth-child(4) b { color:#2a8a40; }
-.roast-line:nth-child(5) b { color:#1878a8; }
-.roast-line:nth-child(6) b { color:#6a4aaf; }
-.roast-line:nth-child(7) b { color:#bc389a; }
-.roast-line:nth-child(8) b { color:#e05252; }
+/* finding labels: big bold crayon colors */
+.roast-line b { font-size:1.1rem; font-family:'Gloria Hallelujah',cursive !important; display:block; margin-bottom:2px; }
+.roast-line:nth-child(1) b { color:#ff6b6b; }
+.roast-line:nth-child(2) b { color:#ff9f40; }
+.roast-line:nth-child(3) b { color:#ffd93d; }
+.roast-line:nth-child(4) b { color:#6bcb77; }
+.roast-line:nth-child(5) b { color:#4d96ff; }
+.roast-line:nth-child(6) b { color:#c44dff; }
+.roast-line:nth-child(7) b { color:#ff5bcf; }
+.roast-line:nth-child(8) b { color:#ff6b6b; }
 
-/* menace progress bar: on paper */
+/* menace bar: crayon scribble on dark */
 .menace-bar-wrap {
-  margin: 18px 0 4px;
-  background: #e8dfc8 !important;
+  margin: 20px 0 4px;
+  background: rgba(255,255,255,0.05) !important;
   border-radius: 0 !important;
-  height: 12px;
+  height: 16px;
   overflow: hidden;
-  border: 2px solid #c4a97d !important;
+  border: 3px solid #ffd93d88 !important;
   filter: url(#squiggle);
 }
 .menace-bar {
   height: 100%;
-  background: repeating-linear-gradient(
-    45deg,
-    #e05252,
-    #e05252 6px,
-    #e07830 6px,
-    #e07830 12px
-  ) !important;
+  background: repeating-linear-gradient(45deg,#ff6b6b,#ff6b6b 8px,#ff9f40 8px,#ff9f40 16px) !important;
   width: 0;
   animation: progressFill 1.8s cubic-bezier(0.22,1,0.36,1) 1s forwards;
 }
 .menace-label {
-  font-family: 'Caveat', cursive !important;
-  font-size: 0.95rem !important;
-  color: #6b4f2e !important;
-  letter-spacing: 0.04em;
+  font-family: 'Gloria Hallelujah', cursive !important;
+  font-size: 1.1rem !important;
+  color: #ffd93d !important;
   text-transform: none !important;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 /* roast note */
 .roast-note {
   font-family: 'Caveat', cursive !important;
-  font-size: 1rem !important;
-  color: #7a6040 !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #b9aee0 !important;
   font-style: italic;
-  border-top: 2px dashed #c4a97d88 !important;
+  border-top: 3px dashed #ffffff22 !important;
   background: transparent !important;
+}
+
+/* floating doodle stickers scattered on the page */
+.seb-doodle {
+  position: absolute;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 2.4rem;
+  pointer-events: none;
+  z-index: 1;
+  filter: url(#squiggle);
+  animation: doodleFloat 5s ease-in-out infinite;
+  opacity: 0.9;
 }
 </style>
 </head>
@@ -301,12 +332,18 @@
 </div>
 
 <main class="community-page">
+  <span class="seb-doodle" style="top:120px;left:6%;--dr:-12deg;color:#ffd93d;">★</span>
+  <span class="seb-doodle" style="top:180px;right:8%;--dr:14deg;color:#ff6b6b;animation-delay:0.6s;">~squiggle~</span>
+  <span class="seb-doodle" style="top:340px;left:4%;--dr:8deg;color:#4d96ff;animation-delay:1.1s;">?!?!</span>
+  <span class="seb-doodle" style="top:420px;right:5%;--dr:-10deg;color:#6bcb77;animation-delay:0.3s;">★</span>
+  <span class="seb-doodle" style="top:600px;left:7%;--dr:16deg;color:#c44dff;animation-delay:0.9s;">:3</span>
+  <span class="seb-doodle" style="top:720px;right:6%;--dr:-6deg;color:#ff9f40;animation-delay:1.4s;">LOL</span>
   <section class="page-hero">
     <div class="section-inner">
       <span class="page-badge"><i class="fas fa-robot"></i> Snowball investigation</span>
       <h1 class="section-title">seb roast file</h1>
       <p class="section-body">
-        Snowball ran a full vibe scan on <strong>@sebastioss</strong> and returned a page of deeply unserious disrespect.
+        Snowball ran a full vibe scan on <strong>@sebastioss</strong> and returned a page of deeply unserious disrespect. drawed by a 5 year old apparently.
       </p>
     </div>
   </section>
