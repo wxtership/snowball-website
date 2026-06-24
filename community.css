@@ -138,21 +138,6 @@
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 .form-field textarea { resize: vertical; min-height: 150px; line-height: 1.55; }
-.form-field input[type="file"] {
-  padding: 11px 14px;
-  color: rgba(255,255,255,0.7);
-}
-.form-field input[type="file"]::file-selector-button {
-  border: 0;
-  border-radius: 10px;
-  margin-right: 12px;
-  padding: 8px 12px;
-  background: rgba(107,84,245,0.22);
-  color: #fff;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
@@ -160,7 +145,7 @@
   box-shadow: 0 0 0 4px rgba(107,84,245,0.12);
 }
 .form-field ::placeholder { color: rgba(255,255,255,0.32); }
-.form-check { display: flex; align-items: center; gap: 10px; margin: 2px 0 22px; }
+.form-check { display: flex; align-items: center; gap: 10px; margin: 2px 0 12px; }
 .form-check input { width: 17px; height: 17px; accent-color: var(--purple-500); }
 .form-submit { width: fit-content; }
 .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
@@ -276,6 +261,7 @@
 }
 .community-cta .section-title { margin-bottom: 12px; }
 .community-cta .section-body { margin: 0 auto 28px; }
+.contact-followup { margin-top: 76px; }
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
