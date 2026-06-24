@@ -82,7 +82,7 @@
       var formatted = allTimeTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       totalLine = '<div class="donate-banner-total">'
         + '<span class="donate-banner-amount">$' + formatted + '</span>'
-        + '<span class="donate-banner-label">raised all-time by this community</span>'
+        + '<span class="donate-banner-label">raised all-time by us</span>'
         + '</div>';
     }
     return '<div class="donate-banner">'
