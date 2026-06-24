@@ -210,8 +210,8 @@
             <span>I'm okay with the team contacting me back.</span>
           </label>
 
-          <div class="form-status" id="contact-form-status" role="status" aria-live="polite"></div>
           <button type="submit" class="btn-primary form-submit" id="contact-form-submit"><i class="fas fa-paper-plane"></i> Send message</button>
+          <div class="form-status contact-form-status" id="contact-form-status" role="status" aria-live="polite"></div>
         </form>
 
       </div>
@@ -353,7 +353,7 @@ window.addEventListener('resize', function() {
 
         form.classList.add('is-sending');
         submit.disabled = true;
-        status.className = 'form-status';
+        status.className = 'form-status contact-form-status';
         status.textContent = 'Sending...';
 
         fetch(API_CONTACT, {
@@ -373,11 +373,11 @@ window.addEventListener('resize', function() {
             });
         }).then(function () {
             form.reset();
-            status.className = 'form-status is-success';
+            status.className = 'form-status contact-form-status is-success';
             status.textContent = 'Message sent. We got it.';
             burstContactConfetti();
         }).catch(function (error) {
-            status.className = 'form-status is-error';
+            status.className = 'form-status contact-form-status is-error';
             status.textContent = contactErrorMessage(error && error.code);
         }).finally(function () {
             form.classList.remove('is-sending');

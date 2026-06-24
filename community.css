@@ -153,6 +153,11 @@
   min-height: 20px; margin: 0 0 16px; font-size: 14px; line-height: 1.45;
   color: rgba(255,255,255,0.62);
 }
+.contact-form-status {
+  min-height: 0;
+  margin: 12px 0 0;
+}
+.contact-form-status:empty { margin: 0; }
 .form-status.is-success { color: #9ee6b7; }
 .form-status.is-error { color: #ff8fa3; }
 .contact-form.is-sending .form-submit { opacity: 0.72; pointer-events: none; }
