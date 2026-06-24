@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-06-24T04:46:25.950Z",
+  "updatedAt": "2026-06-24T04:54:55.338Z",
   "updatedBy": {
-    "id": "582394159546236948",
-    "tag": "wxtership"
+    "id": "system",
+    "tag": "manual-trigger"
   },
   "guild": {
     "id": "1077714936056250388",
@@ -144,8 +144,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2024-10-22T20:27:16.120Z",
-          "amount": 80,
-          "donatedAt": "2026-01-10T02:55:09.000Z"
+          "amount": 40,
+          "donatedAt": "2026-01-06T17:55:08.000Z"
         },
         {
           "id": "451857870552825856",
