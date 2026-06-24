@@ -938,7 +938,7 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
   background:
     radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--mode) 16%, transparent) 0%, transparent 60%),
     rgba(255,255,255,0.035);
-  border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid var(--mode);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 .mode-badge {
   width: 84px; height: 84px; border-radius: 50%; margin-bottom: 14px;

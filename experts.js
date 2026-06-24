@@ -1,7 +1,7 @@
 /* Fetches experts.json (published by Snowball's /moderation expertssync) and renders the
-   Coverage Expert roster: Lead Experts first, then the rest. Every expert shows the shared
-   Coverage Expert role icon rather than a personal avatar. If the file can't load, the
-   static fallback already in #experts-roster is left in place. */
+   Coverage Expert roster: Lead Experts first, then the rest. Falls back to the shared
+   Coverage Expert icon if a member has no avatar. If the file can't load, the static
+   fallback already in #experts-roster is left in place. */
 (function () {
   var root = document.getElementById('experts-roster');
   if (!root || !window.fetch) return;
@@ -41,9 +41,10 @@
 
   function renderCard(m, role) {
     var name = esc(m.displayName || m.username || 'Expert');
+    var avatar = m.avatarURL ? esc(m.avatarURL) : ICON;
     return '<article class="staff-card has-banner coverage-card">' +
         '<div class="staff-card-bg staff-card-bg-cov"></div>' +
-        '<img class="staff-avatar" src="' + ICON + '" alt="">' +
+        '<img class="staff-avatar" src="' + avatar + '" alt="">' +
         '<span class="staff-name">' + name + '</span>' +
         '<span class="staff-role cov">' + esc(role) + '</span>' +
       '</article>';
