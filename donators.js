@@ -30,9 +30,13 @@
       });
     } else if (sort === 'recent') {
       arr.sort(function (a, b) {
-        var at = a.joinedAt ? new Date(a.joinedAt).getTime() : 0;
-        var bt = b.joinedAt ? new Date(b.joinedAt).getTime() : 0;
-        return bt - at;
+        var at = a.donatedAt ? new Date(a.donatedAt).getTime() : 0;
+        var bt = b.donatedAt ? new Date(b.donatedAt).getTime() : 0;
+        if (bt !== at) return bt - at;
+        // tie-break undated members alphabetically so the bottom block is stable
+        var an = (a.displayName || a.username || '').toLowerCase();
+        var bn = (b.displayName || b.username || '').toLowerCase();
+        return an < bn ? -1 : an > bn ? 1 : 0;
       });
     } else {
       arr.sort(function (a, b) {
@@ -116,10 +120,10 @@
       ? '<span class="donator-amount-pill">$' + m.amount.toFixed(2) + '</span>'
       : '';
     var datePill = '';
-    if (sort === 'recent' && m.joinedAt) {
-      var d = new Date(m.joinedAt);
+    if (sort === 'recent' && m.donatedAt) {
+      var d = new Date(m.donatedAt);
       var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      datePill = '<span class="donator-date-pill">Joined ' + months[d.getUTCMonth()] + ' ' + d.getUTCFullYear() + '</span>';
+      datePill = '<span class="donator-date-pill">Donated ' + months[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear() + '</span>';
     }
     return '<article class="staff-card has-banner" style="--i:' + i + '">'
       + bg
