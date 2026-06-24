@@ -331,6 +331,31 @@
   color: rgba(255,255,255,0.55);
 }
 
+/* ---- Donate perks panel (top, under the hero) ---- */
+.donate-perks {
+  width: 100%; max-width: 720px; margin: 34px auto 0; padding: 26px 26px 30px;
+  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px; backdrop-filter: blur(14px); text-align: center;
+}
+.donate-perks-title {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--purple-300); margin-bottom: 20px;
+}
+.donate-perks-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px;
+}
+.perk {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 18px 8px; border-radius: 16px;
+  background: rgba(107,84,245,0.08); border: 1px solid rgba(107,84,245,0.18);
+}
+.perk i { font-size: 19px; color: var(--purple-300); margin-bottom: 7px; }
+.perk-main { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: #fff; line-height: 1.15; }
+.perk-sub { font-size: 11px; color: rgba(255,255,255,0.52); letter-spacing: 0.02em; }
+@media (max-width: 600px) {
+  .donate-perks-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ---- All-time total + donate CTA (bottom of the wall) ---- */
 .donate-banner {
   margin-top: 48px; padding: 44px 32px; text-align: center;
