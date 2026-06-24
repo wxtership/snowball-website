@@ -165,7 +165,7 @@
 
   <section>
     <div class="section-inner">
-      <div class="contact-layout">
+      <div class="contact-layout contact-layout-single">
         <form class="contact-form" id="contact-form" action="https://snowball-api.xtremewx.com/api/contact" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="_subject" value="New Xtreme Weather contact form submission">
           <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off">
@@ -219,19 +219,6 @@
           <button type="submit" class="btn-primary form-submit" id="contact-form-submit"><i class="fas fa-paper-plane"></i> Send message</button>
         </form>
 
-        <aside class="contact-side">
-          <a class="contact-side-link" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">
-            <i class="fab fa-discord"></i>
-            <span><strong>Discord</strong>Fastest for support and tickets</span>
-          </a>
-          <a class="contact-side-link" href="https://x.com/joinxtremewx" target="_blank" rel="noopener">
-            <i class="fab fa-x-twitter"></i>
-            <span><strong>X / Twitter</strong>Good for partnerships and updates</span>
-          </a>
-          <div class="contact-note">
-            For urgent support, Discord is still the fastest route. Form messages are best for bugs, ideas, partnerships, and anything that can wait for a thoughtful reply.
-          </div>
-        </aside>
       </div>
     </div>
   </section>
@@ -411,6 +398,7 @@ window.addEventListener('resize', function() {
             message_required: 'Write a little more before sending.',
             image_type_not_allowed: 'Images can be PNG, JPG, WebP, or GIF only.',
             image_too_large: 'Each image needs to be under 3 MB.',
+            contact_rate_limited: 'You already sent a message today. Try again tomorrow.',
             contact_submit_failed: 'Snowball could not send this yet. Try again, or reach us on Discord.'
         };
         return messages[code] || messages.contact_submit_failed;
