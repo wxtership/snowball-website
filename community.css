@@ -574,22 +574,22 @@
 }
 .page-decor { position: absolute; top: 0; left: 0; width: 100%; height: 760px; z-index: 0; pointer-events: none; overflow: hidden; }
 .page-decor i { position: absolute; color: #3a3a48; animation: iconFloat 3.2s ease-in-out infinite; }
-.page-decor i:nth-child(1)  { top: 50px;  left: 9%;   font-size: 18px; --ir:-12deg; animation-duration:3.0s; animation-delay:0.0s; }
-.page-decor i:nth-child(2)  { top: 44px;  right: 13%; font-size: 15px; --ir:10deg;  animation-duration:3.6s; animation-delay:0.4s; animation-name:iconDrift; }
-.page-decor i:nth-child(3)  { top: 80px;  left: 27%;  font-size: 14px; --ir:8deg;   animation-duration:2.8s; animation-delay:0.8s; }
-.page-decor i:nth-child(4)  { top: 70px;  right: 29%; font-size: 16px; --ir:-8deg;  animation-duration:3.4s; animation-delay:0.2s; animation-name:iconDrift; }
-.page-decor i:nth-child(5)  { top: 122px; left: 4%;   font-size: 19px; --ir:14deg;  animation-duration:2.6s; animation-delay:0.6s; }
-.page-decor i:nth-child(6)  { top: 110px; right: 5%;  font-size: 17px; --ir:-16deg; animation-duration:3.8s; animation-delay:1.0s; animation-name:iconDrift; }
-.page-decor i:nth-child(7)  { top: 162px; left: 17%;  font-size: 14px; --ir:6deg;   --io:0.85; animation-duration:3.1s; animation-delay:0.3s; }
-.page-decor i:nth-child(8)  { top: 150px; right: 19%; font-size: 15px; --ir:-10deg; --io:0.85; animation-duration:2.9s; animation-delay:0.7s; animation-name:iconPulse; }
-.page-decor i:nth-child(9)  { top: 214px; left: 8%;   font-size: 16px; --ir:12deg;  --io:0.7;  animation-duration:3.3s; animation-delay:0.1s; }
-.page-decor i:nth-child(10) { top: 202px; right: 7%;  font-size: 14px; --ir:-6deg;  --io:0.7;  animation-duration:2.7s; animation-delay:0.5s; animation-name:iconDrift; }
-.page-decor i:nth-child(11) { top: 274px; left: 22%;  font-size: 15px; --ir:16deg;  --io:0.55; animation-duration:3.5s; animation-delay:0.9s; }
-.page-decor i:nth-child(12) { top: 262px; right: 24%; font-size: 13px; --ir:-14deg; --io:0.55; animation-duration:3.0s; animation-delay:0.0s; animation-name:iconPulse; }
-.page-decor i:nth-child(13) { top: 344px; left: 5%;   font-size: 17px; --ir:8deg;   --io:0.4;  animation-duration:2.8s; animation-delay:0.4s; }
-.page-decor i:nth-child(14) { top: 332px; right: 6%;  font-size: 15px; --ir:-8deg;  --io:0.4;  animation-duration:3.6s; animation-delay:0.8s; animation-name:iconDrift; }
-.page-decor i:nth-child(15) { top: 420px; left: 14%;  font-size: 14px; --ir:10deg;  --io:0.28; animation-duration:3.2s; animation-delay:0.2s; }
-.page-decor i:nth-child(16) { top: 408px; right: 12%; font-size: 16px; --ir:-12deg; --io:0.28; animation-duration:2.5s; animation-delay:0.6s; animation-name:iconPulse; }
+.page-decor i:nth-child(1)  { top: 50px;  left: 9%;   font-size: 18px; --ir:-12deg; animation-duration:3.0s; animation-delay:-1.5s; }
+.page-decor i:nth-child(2)  { top: 44px;  right: 13%; font-size: 15px; --ir:10deg;  animation-duration:3.6s; animation-delay:-0.4s; animation-name:iconDrift; }
+.page-decor i:nth-child(3)  { top: 80px;  left: 27%;  font-size: 14px; --ir:8deg;   animation-duration:2.8s; animation-delay:-0.8s; }
+.page-decor i:nth-child(4)  { top: 70px;  right: 29%; font-size: 16px; --ir:-8deg;  animation-duration:3.4s; animation-delay:-0.2s; animation-name:iconDrift; }
+.page-decor i:nth-child(5)  { top: 122px; left: 4%;   font-size: 19px; --ir:14deg;  animation-duration:2.6s; animation-delay:-0.6s; }
+.page-decor i:nth-child(6)  { top: 110px; right: 5%;  font-size: 17px; --ir:-16deg; animation-duration:3.8s; animation-delay:-1.0s; animation-name:iconDrift; }
+.page-decor i:nth-child(7)  { top: 162px; left: 17%;  font-size: 14px; --ir:6deg;   --io:0.85; animation-duration:3.1s; animation-delay:-0.3s; }
+.page-decor i:nth-child(8)  { top: 150px; right: 19%; font-size: 15px; --ir:-10deg; --io:0.85; animation-duration:2.9s; animation-delay:-0.7s; animation-name:iconPulse; }
+.page-decor i:nth-child(9)  { top: 214px; left: 8%;   font-size: 16px; --ir:12deg;  --io:0.7;  animation-duration:3.3s; animation-delay:-0.1s; }
+.page-decor i:nth-child(10) { top: 202px; right: 7%;  font-size: 14px; --ir:-6deg;  --io:0.7;  animation-duration:2.7s; animation-delay:-0.5s; animation-name:iconDrift; }
+.page-decor i:nth-child(11) { top: 274px; left: 22%;  font-size: 15px; --ir:16deg;  --io:0.55; animation-duration:3.5s; animation-delay:-0.9s; }
+.page-decor i:nth-child(12) { top: 262px; right: 24%; font-size: 13px; --ir:-14deg; --io:0.55; animation-duration:3.0s; animation-delay:-1.2s; animation-name:iconPulse; }
+.page-decor i:nth-child(13) { top: 344px; left: 5%;   font-size: 17px; --ir:8deg;   --io:0.4;  animation-duration:2.8s; animation-delay:-0.4s; }
+.page-decor i:nth-child(14) { top: 332px; right: 6%;  font-size: 15px; --ir:-8deg;  --io:0.4;  animation-duration:3.6s; animation-delay:-0.8s; animation-name:iconDrift; }
+.page-decor i:nth-child(15) { top: 420px; left: 14%;  font-size: 14px; --ir:10deg;  --io:0.28; animation-duration:3.2s; animation-delay:-0.2s; }
+.page-decor i:nth-child(16) { top: 408px; right: 12%; font-size: 16px; --ir:-12deg; --io:0.28; animation-duration:2.5s; animation-delay:-0.6s; animation-name:iconPulse; }
 
 /* ---- About: history timeline (centre line, alternating cards) ---- */
 .timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 8px 0; isolation: isolate; }
