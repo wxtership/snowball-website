@@ -15,105 +15,135 @@
 <link rel="stylesheet" href="snowball.css">
 <link rel="stylesheet" href="community.css">
 <style>
-/* ===== ANIMATED DECOR ICONS ===== */
-@keyframes sebFloat {
-  0%, 100% { transform: translateY(0px) rotate(var(--r, 0deg)); }
-  50%       { transform: translateY(-10px) rotate(var(--r, 0deg)); }
-}
-@keyframes sebSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes sebWobble {
-  0%,100% { transform: rotate(var(--r,0deg)); }
-  25%     { transform: rotate(calc(var(--r,0deg) + 18deg)); }
-  75%     { transform: rotate(calc(var(--r,0deg) - 18deg)); }
-}
-.page-decor i { animation: sebFloat 3s ease-in-out infinite; }
-.page-decor i:nth-child(1)  { --r:-12deg; animation-duration:2.8s; animation-delay:0s; }
-.page-decor i:nth-child(2)  { --r:10deg;  animation-duration:3.4s; animation-delay:0.3s; }
-.page-decor i:nth-child(3)  { --r:8deg;   animation-duration:2.5s; animation-delay:0.6s; animation-name:sebWobble; }
-.page-decor i:nth-child(4)  { --r:-8deg;  animation-duration:3.1s; animation-delay:0.9s; }
-.page-decor i:nth-child(5)  { --r:14deg;  animation-duration:2.7s; animation-delay:0.2s; }
-.page-decor i:nth-child(6)  { --r:-16deg; animation-duration:3.6s; animation-delay:0.5s; animation-name:sebWobble; }
-.page-decor i:nth-child(7)  { --r:6deg;   animation-duration:2.9s; animation-delay:0.8s; }
-.page-decor i:nth-child(8)  { --r:-10deg; animation-duration:3.2s; animation-delay:0.1s; }
-.page-decor i:nth-child(9)  { --r:12deg;  animation-duration:2.6s; animation-delay:0.4s; animation-name:sebSpin; animation-duration:6s; }
-.page-decor i:nth-child(10) { --r:-6deg;  animation-duration:3.3s; animation-delay:0.7s; }
-.page-decor i:nth-child(11) { --r:16deg;  animation-duration:2.4s; animation-delay:0.0s; animation-name:sebWobble; }
-.page-decor i:nth-child(12) { --r:-14deg; animation-duration:3.5s; animation-delay:0.6s; }
-.page-decor i:nth-child(13) { --r:8deg;   animation-duration:2.8s; animation-delay:0.3s; animation-name:sebSpin; animation-duration:8s; }
-.page-decor i:nth-child(14) { --r:-8deg;  animation-duration:3.0s; animation-delay:0.9s; }
-.page-decor i:nth-child(15) { --r:10deg;  animation-duration:2.7s; animation-delay:0.2s; }
-.page-decor i:nth-child(16) { --r:-12deg; animation-duration:3.8s; animation-delay:0.5s; animation-name:sebWobble; }
+/* ===== SEB PAGE: OVERRIDE DECOR ICONS WITH CHAOS ===== */
+@keyframes sebFloat  { 0%,100%{transform:translateY(0) rotate(var(--ir,0deg))} 50%{transform:translateY(-11px) rotate(var(--ir,0deg))} }
+@keyframes sebSpin   { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes sebWobble { 0%,100%{transform:rotate(var(--ir,0deg))} 25%{transform:rotate(calc(var(--ir,0deg) + 20deg))} 75%{transform:rotate(calc(var(--ir,0deg) - 20deg))} }
+.page-decor i { animation: sebFloat 3s ease-in-out infinite !important; }
+.page-decor i:nth-child(1)  { --ir:-12deg; animation-duration:2.8s!important; }
+.page-decor i:nth-child(2)  { --ir:10deg;  animation-duration:3.4s!important; }
+.page-decor i:nth-child(3)  { --ir:8deg;   animation-duration:2.5s!important; animation-name:sebWobble!important; }
+.page-decor i:nth-child(4)  { --ir:-8deg;  animation-duration:3.1s!important; }
+.page-decor i:nth-child(5)  { --ir:14deg;  animation-duration:2.7s!important; }
+.page-decor i:nth-child(6)  { --ir:-16deg; animation-duration:3.6s!important; animation-name:sebWobble!important; }
+.page-decor i:nth-child(7)  { --ir:6deg;   animation-duration:2.9s!important; }
+.page-decor i:nth-child(8)  { --ir:-10deg; animation-duration:3.2s!important; }
+.page-decor i:nth-child(9)  { --ir:0deg;   animation-duration:6s!important;   animation-name:sebSpin!important; }
+.page-decor i:nth-child(10) { --ir:-6deg;  animation-duration:3.3s!important; }
+.page-decor i:nth-child(11) { --ir:16deg;  animation-duration:2.4s!important; animation-name:sebWobble!important; }
+.page-decor i:nth-child(12) { --ir:-14deg; animation-duration:3.5s!important; }
+.page-decor i:nth-child(13) { --ir:0deg;   animation-duration:8s!important;   animation-name:sebSpin!important; }
+.page-decor i:nth-child(14) { --ir:-8deg;  animation-duration:3.0s!important; }
+.page-decor i:nth-child(15) { --ir:10deg;  animation-duration:2.7s!important; }
+.page-decor i:nth-child(16) { --ir:-12deg; animation-duration:3.8s!important; animation-name:sebWobble!important; }
 
-/* ===== FUNNY PAGE OVERHAUL ===== */
+/* ===== SEB PAGE: FULL STUPID MODE ===== */
+@keyframes titleShake {
+  0%,100%{transform:rotate(-1.5deg) skew(-1deg)} 25%{transform:rotate(2deg) skew(1deg)} 50%{transform:rotate(-1deg)} 75%{transform:rotate(1.5deg) skew(-0.5deg)}
+}
 @keyframes stampIn {
-  0%   { transform: rotate(-20deg) scale(2.5); opacity: 0; }
-  60%  { transform: rotate(6deg) scale(0.95); opacity: 1; }
-  100% { transform: rotate(-4deg) scale(1); opacity: 1; }
+  0%  { transform:rotate(-25deg) scale(3); opacity:0; }
+  65% { transform:rotate(8deg)   scale(0.9); opacity:1; }
+  100%{ transform:rotate(-5deg)  scale(1); opacity:1; }
 }
 @keyframes avatarWiggle {
-  0%,100% { transform: rotate(0deg); }
-  20%     { transform: rotate(-6deg); }
-  40%     { transform: rotate(6deg); }
-  60%     { transform: rotate(-4deg); }
-  80%     { transform: rotate(4deg); }
+  0%,100%{transform:rotate(0deg) scale(1)} 15%{transform:rotate(-8deg) scale(1.05)} 35%{transform:rotate(7deg)} 55%{transform:rotate(-5deg)} 75%{transform:rotate(6deg) scale(1.03)}
 }
 @keyframes badgeBounce {
-  0%,100% { transform: scale(1); }
-  50%     { transform: scale(1.08); }
+  0%,100%{transform:scale(1) rotate(0deg)} 40%{transform:scale(1.12) rotate(-2deg)} 60%{transform:scale(1.08) rotate(2deg)}
 }
-.page-badge { animation: badgeBounce 2s ease-in-out infinite; display: inline-block; }
+@keyframes rainbow {
+  0%{color:#f87171} 14%{color:#fb923c} 28%{color:#facc15} 42%{color:#4ade80} 57%{color:#22d3ee} 71%{color:#a78bfa} 85%{color:#f472b6} 100%{color:#f87171}
+}
+@keyframes cardTilt {
+  0%,100%{transform:rotate(-0.6deg)} 50%{transform:rotate(0.6deg)}
+}
+@keyframes progressFill {
+  from{width:0} to{width:73%}
+}
 
-/* Stamp overlay */
+/* title shakes gently like it's embarrassed */
+.section-title { animation: titleShake 4s ease-in-out infinite; display:inline-block; letter-spacing:0.04em; }
+
+/* badge bounces */
+.page-badge { animation: badgeBounce 2s ease-in-out infinite; display:inline-block; }
+
+/* whole console card slow-tilts */
+.roast-console { animation: cardTilt 5s ease-in-out infinite; transform-origin: center center; position: relative; }
+
+/* CLASSIFIED stamp — inside the card now */
 .roast-stamp {
   position: absolute;
-  top: 18px;
-  right: 22px;
-  font-size: 1.15rem;
+  top: 14px;
+  right: 16px;
+  font-size: 1.05rem;
   font-weight: 900;
-  font-family: 'DrukWideBold', sans-serif;
   color: #ff4444;
   border: 3px solid #ff4444;
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 4px;
-  letter-spacing: 0.08em;
-  transform: rotate(-4deg);
-  opacity: 0.85;
+  letter-spacing: 0.1em;
+  transform: rotate(-5deg);
+  opacity: 0.88;
   pointer-events: none;
-  animation: stampIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.4s both;
+  animation: stampIn 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.5s both;
   text-transform: uppercase;
+  font-family: 'DrukWideBold', sans-serif;
+  z-index: 2;
 }
-.roast-shell { position: relative; }
 
-/* Avatar wobbles on hover */
+/* avatar wiggles like it's nervous */
 .roast-target img {
-  animation: avatarWiggle 3s ease-in-out infinite;
-  border: 2px solid #ff444433;
+  animation: avatarWiggle 3.5s ease-in-out infinite;
+  border: 3px solid #ff444455;
   border-radius: 50%;
 }
 
-/* Each finding gets a slightly different wonky angle */
-.roast-grid .roast-line:nth-child(odd)  { transform: rotate(-0.4deg); }
-.roast-grid .roast-line:nth-child(even) { transform: rotate(0.3deg); }
-.roast-grid .roast-line:hover { transform: rotate(0deg) scale(1.02); transition: transform 0.2s ease; }
+/* name does rainbow */
+.roast-target strong { animation: rainbow 4s linear infinite; }
 
-/* Finding labels cycle through silly colors */
-.roast-line:nth-child(1) b { color: #f87171; }
-.roast-line:nth-child(2) b { color: #fb923c; }
-.roast-line:nth-child(3) b { color: #facc15; }
-.roast-line:nth-child(4) b { color: #4ade80; }
-.roast-line:nth-child(5) b { color: #22d3ee; }
-.roast-line:nth-child(6) b { color: #a78bfa; }
-.roast-line:nth-child(7) b { color: #f472b6; }
-.roast-line:nth-child(8) b { color: #ff4444; }
+/* findings: alternating tilt + rainbow label colors */
+.roast-grid .roast-line:nth-child(odd)  { transform: rotate(-0.5deg); }
+.roast-grid .roast-line:nth-child(even) { transform: rotate(0.4deg); }
+.roast-grid .roast-line:hover { transform: rotate(0deg) scale(1.025); transition: transform 0.15s ease; cursor: default; }
+.roast-line:nth-child(1) b { color:#f87171; }
+.roast-line:nth-child(2) b { color:#fb923c; }
+.roast-line:nth-child(3) b { color:#facc15; }
+.roast-line:nth-child(4) b { color:#4ade80; }
+.roast-line:nth-child(5) b { color:#22d3ee; }
+.roast-line:nth-child(6) b { color:#a78bfa; }
+.roast-line:nth-child(7) b { color:#f472b6; }
+.roast-line:nth-child(8) b { color:#ff4444; }
 
-/* Status badge blink */
-.roast-status { animation: badgeBounce 1.8s ease-in-out infinite; }
+/* menace progress bar */
+.menace-bar-wrap {
+  margin: 18px 0 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.menace-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#fb923c,#f87171,#f472b6);
+  width: 0;
+  animation: progressFill 1.8s cubic-bezier(0.22,1,0.36,1) 0.6s forwards;
+}
+.menace-label {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
 
-/* Title has a little chaos */
-.section-title { letter-spacing: 0.04em; }
+/* status bounces */
+.roast-status { animation: badgeBounce 2s ease-in-out infinite; }
+
+/* roast note gets a little italic chaotic energy */
+.roast-note { font-style: italic; opacity: 0.55; }
 </style>
 </head>
 <body>
@@ -166,8 +196,8 @@
 
   <section>
     <div class="section-inner roast-shell">
-      <div class="roast-stamp">CLASSIFIED</div>
       <div class="roast-console">
+        <div class="roast-stamp">CLASSIFIED</div>
         <div class="roast-console-head">
           <div class="roast-target">
             <img src="https://cdn.discordapp.com/avatars/726612317248159745/192c3649d837559212f72338d4fef0de.png?size=256" alt="">
@@ -188,6 +218,12 @@
           <div class="roast-line"><b>Finding 06</b>Tried reverse psychology on Snowball once. Snowball logged it, filed it, and still won't cooperate. The record stands.</div>
           <div class="roast-line"><b>Finding 07</b>Arena ELO of 1404. Not bad. Not good. Just aggressively, committedly mid. Incredible consistency.</div>
           <div class="roast-line"><b>Finding 08</b>Final verdict: rich in the bank, broke in the wallet, owns a losing boar named after a burrito chain, and Snowball has receipts.</div>
+        </div>
+
+        <div style="padding: 0 4px 8px;">
+          <div class="menace-label">overall menace rating</div>
+          <div class="menace-bar-wrap"><div class="menace-bar"></div></div>
+          <div style="font-size:0.68rem;color:rgba(255,255,255,0.25);margin-top:4px;">73% — dangerously high. proceed with caution.</div>
         </div>
 
         <p class="roast-note">
