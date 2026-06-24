@@ -14,6 +14,107 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="snowball.css">
 <link rel="stylesheet" href="community.css">
+<style>
+/* ===== ANIMATED DECOR ICONS ===== */
+@keyframes sebFloat {
+  0%, 100% { transform: translateY(0px) rotate(var(--r, 0deg)); }
+  50%       { transform: translateY(-10px) rotate(var(--r, 0deg)); }
+}
+@keyframes sebSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes sebWobble {
+  0%,100% { transform: rotate(var(--r,0deg)); }
+  25%     { transform: rotate(calc(var(--r,0deg) + 18deg)); }
+  75%     { transform: rotate(calc(var(--r,0deg) - 18deg)); }
+}
+.page-decor i { animation: sebFloat 3s ease-in-out infinite; }
+.page-decor i:nth-child(1)  { --r:-12deg; animation-duration:2.8s; animation-delay:0s; }
+.page-decor i:nth-child(2)  { --r:10deg;  animation-duration:3.4s; animation-delay:0.3s; }
+.page-decor i:nth-child(3)  { --r:8deg;   animation-duration:2.5s; animation-delay:0.6s; animation-name:sebWobble; }
+.page-decor i:nth-child(4)  { --r:-8deg;  animation-duration:3.1s; animation-delay:0.9s; }
+.page-decor i:nth-child(5)  { --r:14deg;  animation-duration:2.7s; animation-delay:0.2s; }
+.page-decor i:nth-child(6)  { --r:-16deg; animation-duration:3.6s; animation-delay:0.5s; animation-name:sebWobble; }
+.page-decor i:nth-child(7)  { --r:6deg;   animation-duration:2.9s; animation-delay:0.8s; }
+.page-decor i:nth-child(8)  { --r:-10deg; animation-duration:3.2s; animation-delay:0.1s; }
+.page-decor i:nth-child(9)  { --r:12deg;  animation-duration:2.6s; animation-delay:0.4s; animation-name:sebSpin; animation-duration:6s; }
+.page-decor i:nth-child(10) { --r:-6deg;  animation-duration:3.3s; animation-delay:0.7s; }
+.page-decor i:nth-child(11) { --r:16deg;  animation-duration:2.4s; animation-delay:0.0s; animation-name:sebWobble; }
+.page-decor i:nth-child(12) { --r:-14deg; animation-duration:3.5s; animation-delay:0.6s; }
+.page-decor i:nth-child(13) { --r:8deg;   animation-duration:2.8s; animation-delay:0.3s; animation-name:sebSpin; animation-duration:8s; }
+.page-decor i:nth-child(14) { --r:-8deg;  animation-duration:3.0s; animation-delay:0.9s; }
+.page-decor i:nth-child(15) { --r:10deg;  animation-duration:2.7s; animation-delay:0.2s; }
+.page-decor i:nth-child(16) { --r:-12deg; animation-duration:3.8s; animation-delay:0.5s; animation-name:sebWobble; }
+
+/* ===== FUNNY PAGE OVERHAUL ===== */
+@keyframes stampIn {
+  0%   { transform: rotate(-20deg) scale(2.5); opacity: 0; }
+  60%  { transform: rotate(6deg) scale(0.95); opacity: 1; }
+  100% { transform: rotate(-4deg) scale(1); opacity: 1; }
+}
+@keyframes avatarWiggle {
+  0%,100% { transform: rotate(0deg); }
+  20%     { transform: rotate(-6deg); }
+  40%     { transform: rotate(6deg); }
+  60%     { transform: rotate(-4deg); }
+  80%     { transform: rotate(4deg); }
+}
+@keyframes badgeBounce {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.08); }
+}
+.page-badge { animation: badgeBounce 2s ease-in-out infinite; display: inline-block; }
+
+/* Stamp overlay */
+.roast-stamp {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  font-family: 'DrukWideBold', sans-serif;
+  color: #ff4444;
+  border: 3px solid #ff4444;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  transform: rotate(-4deg);
+  opacity: 0.85;
+  pointer-events: none;
+  animation: stampIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.4s both;
+  text-transform: uppercase;
+}
+.roast-shell { position: relative; }
+
+/* Avatar wobbles on hover */
+.roast-target img {
+  animation: avatarWiggle 3s ease-in-out infinite;
+  border: 2px solid #ff444433;
+  border-radius: 50%;
+}
+
+/* Each finding gets a slightly different wonky angle */
+.roast-grid .roast-line:nth-child(odd)  { transform: rotate(-0.4deg); }
+.roast-grid .roast-line:nth-child(even) { transform: rotate(0.3deg); }
+.roast-grid .roast-line:hover { transform: rotate(0deg) scale(1.02); transition: transform 0.2s ease; }
+
+/* Finding labels cycle through silly colors */
+.roast-line:nth-child(1) b { color: #f87171; }
+.roast-line:nth-child(2) b { color: #fb923c; }
+.roast-line:nth-child(3) b { color: #facc15; }
+.roast-line:nth-child(4) b { color: #4ade80; }
+.roast-line:nth-child(5) b { color: #22d3ee; }
+.roast-line:nth-child(6) b { color: #a78bfa; }
+.roast-line:nth-child(7) b { color: #f472b6; }
+.roast-line:nth-child(8) b { color: #ff4444; }
+
+/* Status badge blink */
+.roast-status { animation: badgeBounce 1.8s ease-in-out infinite; }
+
+/* Title has a little chaos */
+.section-title { letter-spacing: 0.04em; }
+</style>
 </head>
 <body>
 <div class="page-decor" aria-hidden="true"><i class="fas fa-bolt"></i><i class="fas fa-tornado"></i><i class="fas fa-triangle-exclamation"></i><i class="fas fa-snowflake"></i><i class="fas fa-cloud-bolt"></i><i class="fas fa-cloud"></i><i class="fas fa-cloud-rain"></i><i class="fas fa-cloud-showers-heavy"></i><i class="fas fa-sun"></i><i class="fas fa-cloud-sun"></i><i class="fas fa-wind"></i><i class="fas fa-droplet"></i><i class="fas fa-umbrella"></i><i class="fas fa-smog"></i><i class="fas fa-temperature-half"></i><i class="fas fa-hurricane"></i></div>
@@ -65,6 +166,7 @@
 
   <section>
     <div class="section-inner roast-shell">
+      <div class="roast-stamp">CLASSIFIED</div>
       <div class="roast-console">
         <div class="roast-console-head">
           <div class="roast-target">
