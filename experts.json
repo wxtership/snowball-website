@@ -1,20 +1,86 @@
 {
-  "updatedAt": "2026-06-24T00:00:00.000Z",
-  "updatedBy": { "id": "0", "tag": "seed" },
-  "guild": { "id": "1077714936056250388", "name": "Xtreme Weather" },
+  "updatedAt": "2026-06-24T19:35:12.948Z",
+  "updatedBy": {
+    "id": "582394159546236948",
+    "tag": "wxtership"
+  },
+  "guild": {
+    "id": "1077714936056250388",
+    "name": "Xtreme Weather",
+    "memberCount": 7349
+  },
   "tiers": [
     {
       "key": "lead",
       "label": "Lead Experts",
       "members": [
-        { "id": "763380002770649088", "username": "drew", "displayName": "Drew" },
-        { "id": "626259765537800212", "username": "frost", "displayName": "Frost" }
+        {
+          "id": "626259765537800212",
+          "username": "wxoutlaw",
+          "displayName": "Frost - Lead Expert"
+        },
+        {
+          "id": "763380002770649088",
+          "username": "itsdrewp",
+          "displayName": "Drew - Lead Expert"
+        }
       ]
     },
     {
       "key": "expert",
       "label": "Coverage Experts",
-      "members": []
+      "members": [
+        {
+          "id": "582394159546236948",
+          "username": "wxtership",
+          "displayName": "☭ wxtership"
+        },
+        {
+          "id": "770787602583388170",
+          "username": "apocalypsenow",
+          "displayName": "apoc (Southeast MI)"
+        },
+        {
+          "id": "1132908259162992712",
+          "username": "awcoal",
+          "displayName": "awcoal (NJ) 🐌"
+        },
+        {
+          "id": "1061023304862933122",
+          "username": "busybird15",
+          "displayName": "BusyBird15 (SparkRadar, KIWX)"
+        },
+        {
+          "id": "1193213878834843758",
+          "username": "darkespeon.wx",
+          "displayName": "DarkEspeon (North AL)"
+        },
+        {
+          "id": "1033720108968841277",
+          "username": "mesocyclone_vortex",
+          "displayName": "Dvorak (Porto Alegre, RS,Brazil)"
+        },
+        {
+          "id": "664920241528242207",
+          "username": "kurtfan5468",
+          "displayName": "Kurt"
+        },
+        {
+          "id": "877009401423200296",
+          "username": "weatherlord_wx",
+          "displayName": "Max (Massachusetts)"
+        },
+        {
+          "id": "1104974309295923201",
+          "username": "painlesmaster3",
+          "displayName": "Painlesmaster3 (Medina, OH)"
+        },
+        {
+          "id": "948372386347102209",
+          "username": "last_one_remaining",
+          "displayName": "RemainingWX"
+        }
+      ]
     }
   ]
 }
