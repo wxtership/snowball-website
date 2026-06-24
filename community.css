@@ -374,12 +374,11 @@
 .economy-grid > :nth-child(3), .stats-strip > :nth-child(3), .contact-grid > :nth-child(3) { animation-delay: 0.36s; }
 .economy-grid > :nth-child(4), .stats-strip > :nth-child(4), .contact-grid > :nth-child(4) { animation-delay: 0.48s; }
 .contact-layout { animation-delay: 0.08s; }
-.contact-form .form-grid:nth-of-type(1) { animation-delay: 0.16s; }
-.contact-form .form-grid:nth-of-type(2) { animation-delay: 0.25s; }
-.contact-form > .form-field { animation-delay: 0.34s; }
-.contact-form .form-check { animation-delay: 0.43s; }
+.contact-form .form-grid,
+.contact-form > .form-field,
+.contact-form .form-check,
 .contact-form .form-status,
-.contact-form .form-submit { animation-delay: 0.5s; }
+.contact-form .form-submit { animation-delay: 0.16s; }
 .contact-side-link:nth-child(1) { animation-delay: 0.24s; }
 .contact-side-link:nth-child(2) { animation-delay: 0.34s; }
 .contact-note { animation-delay: 0.44s; }
