@@ -7,12 +7,16 @@
 
   var allMembers = [];
   var allTimeTotal = null;
+  var monthlyRaised = null;
+  var monthlyGoal = null;
 
   fetch('donators.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
       if (!data || !Array.isArray(data.tiers)) { showError(); return; }
       if (typeof data.allTimeTotal === 'number') allTimeTotal = data.allTimeTotal;
+      if (typeof data.monthlyRaised === 'number') monthlyRaised = data.monthlyRaised;
+      if (typeof data.monthlyGoal === 'number') monthlyGoal = data.monthlyGoal;
       data.tiers.forEach(function (tier) {
         if (tier && Array.isArray(tier.members)) allMembers = allMembers.concat(tier.members);
       });
@@ -67,13 +71,33 @@
 
   function renderWall(members) {
     var cards = members.map(function (m, i) { return renderCard(m, i + 1); }).join('');
-    return '<div class="staff-tier">'
+    return renderProgress()
+      + '<div class="staff-tier">'
       + '<div class="staff-tier-title" style="--i:0">'
       + '<img src="assets/donatechat.png" class="tier-img-icon" alt="" aria-hidden="true">'
       + 'Donators</div>'
       + '<div class="staff-grid staff-grid-donator">' + cards + '</div>'
       + '</div>'
       + renderDonateBanner();
+  }
+
+  function renderProgress() {
+    if (typeof monthlyGoal !== 'number' || monthlyGoal <= 0) return '';
+    var raised = typeof monthlyRaised === 'number' ? monthlyRaised : 0;
+    var pct = Math.min(100, Math.round((raised / monthlyGoal) * 100));
+    var met = raised >= monthlyGoal;
+    var caption = met
+      ? 'This month’s costs are covered — thank you! 💜'
+      : pct + '% of this month’s costs covered';
+    return '<div class="donate-progress' + (met ? ' is-met' : '') + '">'
+      + '<div class="donate-progress-head">'
+      + '<span class="donate-progress-label">This Month</span>'
+      + '<span class="donate-progress-figs">$' + raised.toFixed(2)
+      + '<span class="muted"> / $' + monthlyGoal.toFixed(2) + '</span></span>'
+      + '</div>'
+      + '<div class="donate-progress-track"><div class="donate-progress-fill" style="width:' + pct + '%"></div></div>'
+      + '<div class="donate-progress-caption">' + caption + '</div>'
+      + '</div>';
   }
 
   function renderDonateBanner() {

@@ -356,6 +356,40 @@
   .donate-perks-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* ---- Monthly goal progress bar (top of the wall) ---- */
+.donate-progress {
+  max-width: 720px; margin: 0 auto 38px; padding: 22px 24px;
+  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; backdrop-filter: blur(14px);
+}
+.donate-progress-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  margin-bottom: 12px;
+}
+.donate-progress-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--purple-300);
+}
+.donate-progress-figs {
+  font-family: var(--font-display); font-weight: 700; font-size: 20px; color: #fff;
+}
+.donate-progress-figs .muted { color: rgba(255,255,255,0.4); font-size: 16px; }
+.donate-progress-track {
+  height: 12px; border-radius: 999px; overflow: hidden;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.06);
+}
+.donate-progress-fill {
+  height: 100%; border-radius: 999px; min-width: 8px;
+  background: linear-gradient(90deg, var(--purple-500), var(--purple-400));
+  transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.donate-progress.is-met .donate-progress-fill {
+  background: linear-gradient(90deg, #2f9e6b, #49c68a);
+}
+.donate-progress-caption {
+  margin-top: 10px; font-size: 13px; color: rgba(255,255,255,0.55);
+}
+
 /* ---- All-time total + donate CTA (bottom of the wall) ---- */
 .donate-banner {
   margin-top: 48px; padding: 44px 32px; text-align: center;
