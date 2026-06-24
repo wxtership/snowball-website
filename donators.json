@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T03:20:58.556Z",
+  "updatedAt": "2026-06-24T03:44:23.575Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -20,7 +20,9 @@
           "displayName": "$ Death {GE, TBS}",
           "avatar": "https://cdn.discordapp.com/avatars/1326976601673568380/03619ebb4b7cc03aba2c59f8aad06d07.png?size=256",
           "banner": null,
-          "accentColor": "#ffffff"
+          "accentColor": "#ffffff",
+          "joinedAt": "2026-04-28T12:25:57.923Z",
+          "amount": null
         },
         {
           "id": "762538324615102476",
@@ -28,7 +30,9 @@
           "displayName": "aaaqqq (North Augusta, SC)",
           "avatar": "https://cdn.discordapp.com/avatars/762538324615102476/667f4824b7768347f8490eb46b5f6490.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2025-04-02T07:41:24.767Z",
+          "amount": null
         },
         {
           "id": "136818144256851968",
@@ -36,7 +40,9 @@
           "displayName": "AmericanJon - MI",
           "avatar": "https://cdn.discordapp.com/avatars/136818144256851968/0fcb2b4c4adb41218680d15bd5852a29.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2026-04-02T22:21:46.950Z",
+          "amount": null
         },
         {
           "id": "176081301743337472",
@@ -44,7 +50,9 @@
           "displayName": "Bex | Morrisville, PA",
           "avatar": "https://cdn.discordapp.com/avatars/176081301743337472/8fedfae86e0dab50b31b88bf9a42efcd.png?size=256",
           "banner": null,
-          "accentColor": "#2e0b05"
+          "accentColor": "#2e0b05",
+          "joinedAt": "2025-03-13T06:43:22.846Z",
+          "amount": null
         },
         {
           "id": "1060732954285965332",
@@ -52,7 +60,9 @@
           "displayName": "cat 395",
           "avatar": "https://cdn.discordapp.com/avatars/1060732954285965332/d88094d82bf6e1d25aec5ca3fb74febe.png?size=256",
           "banner": null,
-          "accentColor": "#ff0000"
+          "accentColor": "#ff0000",
+          "joinedAt": "2023-12-09T18:41:05.994Z",
+          "amount": null
         },
         {
           "id": "686282452527743147",
@@ -60,7 +70,9 @@
           "displayName": "ᴄᴏʀᴇɴᴛɪɴ",
           "avatar": "https://cdn.discordapp.com/avatars/686282452527743147/613b1e275110b67e3e185047b3ac97e5.png?size=256",
           "banner": null,
-          "accentColor": "#000000"
+          "accentColor": "#000000",
+          "joinedAt": "2023-10-19T01:50:36.713Z",
+          "amount": null
         },
         {
           "id": "548140785384554508",
@@ -68,7 +80,9 @@
           "displayName": "DirtyBean",
           "avatar": "https://cdn.discordapp.com/avatars/548140785384554508/d5586bd54085466e048f87aec30b1fbf.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2025-06-08T17:02:41.620Z",
+          "amount": null
         },
         {
           "id": "763380002770649088",
@@ -76,7 +90,9 @@
           "displayName": "Drew - Lead Expert",
           "avatar": "https://cdn.discordapp.com/avatars/763380002770649088/f3aad866f9dba8440e72c653c1b3553b.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2026-01-02T05:10:50.704Z",
+          "amount": null
         },
         {
           "id": "1324763970271314023",
@@ -84,7 +100,9 @@
           "displayName": "DynaFolf (Pike County, PA)",
           "avatar": "https://cdn.discordapp.com/avatars/1324763970271314023/3a23152c49d433a9340ed320447e3032.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2025-12-08T19:59:19.015Z",
+          "amount": null
         },
         {
           "id": "1110754991091748905",
@@ -92,7 +110,9 @@
           "displayName": "𝕱𝖊𝖆𝖗 𝕴𝖓𝖈𝖆𝖗𝖓𝖆𝖙𝖊",
           "avatar": "https://cdn.discordapp.com/avatars/1110754991091748905/bd2aeb97b1a280b0e6f0afd7c9a31581.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2025-08-25T21:08:34.946Z",
+          "amount": null
         },
         {
           "id": "1298379997689679966",
@@ -100,7 +120,9 @@
           "displayName": "Gabriel Kramp (Rome, IT)",
           "avatar": "https://cdn.discordapp.com/avatars/1298379997689679966/f0c410e13555832327ffd29a27321978.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2024-10-22T20:27:16.120Z",
+          "amount": null
         },
         {
           "id": "451857870552825856",
@@ -108,7 +130,9 @@
           "displayName": "Jaysonido",
           "avatar": "https://cdn.discordapp.com/avatars/451857870552825856/0235dbf9d7623d96dbaa5b61d867529b.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2023-04-20T01:51:51.719Z",
+          "amount": null
         },
         {
           "id": "1324922787483357274",
@@ -116,7 +140,9 @@
           "displayName": "JP’s EAS MocksX (Bibb County,GA)",
           "avatar": "https://cdn.discordapp.com/avatars/1324922787483357274/434a803be05e1fd7c17796ea3fcfdb5d.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2026-05-14T20:29:11.277Z",
+          "amount": null
         },
         {
           "id": "538124101047418886",
@@ -124,7 +150,9 @@
           "displayName": "Kodster (Greenville, SC)",
           "avatar": "https://cdn.discordapp.com/avatars/538124101047418886/d9abc5b73a0bb99f5f85c6be22cbc884.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2026-03-12T02:02:09.432Z",
+          "amount": null
         },
         {
           "id": "496829863924072448",
@@ -132,7 +160,9 @@
           "displayName": "maudpuzzie",
           "avatar": "https://cdn.discordapp.com/avatars/496829863924072448/a_88bd3a6d3cbdf93af7a36138501a1080.gif?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2025-10-12T22:58:26.937Z",
+          "amount": null
         },
         {
           "id": "877009401423200296",
@@ -140,7 +170,9 @@
           "displayName": "Max (Massachusetts)",
           "avatar": "https://cdn.discordapp.com/avatars/877009401423200296/7bf72e4a157a0f9d32e0ab7b867d25b3.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2026-01-01T05:25:29.681Z",
+          "amount": null
         },
         {
           "id": "663289381284610049",
@@ -148,7 +180,9 @@
           "displayName": "No One (KS)",
           "avatar": "https://cdn.discordapp.com/avatars/663289381284610049/3b60b4d20c7ee6805582398a1a634d29.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2025-08-11T05:15:36.309Z",
+          "amount": null
         },
         {
           "id": "359087432538390528",
@@ -156,7 +190,9 @@
           "displayName": "Patrick",
           "avatar": "https://cdn.discordapp.com/avatars/359087432538390528/d2bd986f1e5324754f26494b30320431.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2024-08-22T02:36:03.518Z",
+          "amount": null
         },
         {
           "id": "1133479873155956878",
@@ -164,7 +200,9 @@
           "displayName": "Philly",
           "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1133479873155956878/avatars/26e7d9dfed6dc2d9a33bcf5564ba7f3a.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2024-08-20T13:59:09.038Z",
+          "amount": null
         },
         {
           "id": "989369484299104256",
@@ -172,7 +210,9 @@
           "displayName": "Preston (French Island, WI)",
           "avatar": "https://cdn.discordapp.com/avatars/989369484299104256/ee3ff4e2536780c5c0971f4bd892d734.png?size=256",
           "banner": null,
-          "accentColor": "#00fff0"
+          "accentColor": "#00fff0",
+          "joinedAt": "2026-01-19T05:40:17.302Z",
+          "amount": null
         },
         {
           "id": "948372386347102209",
@@ -180,7 +220,9 @@
           "displayName": "RemainingWX",
           "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/948372386347102209/avatars/d2247637bee2cd4a51c993789ad6a3ca.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2024-10-15T04:05:09.845Z",
+          "amount": null
         },
         {
           "id": "609961976092950528",
@@ -188,7 +230,9 @@
           "displayName": "Robby (MN)",
           "avatar": "https://cdn.discordapp.com/avatars/609961976092950528/1c3539ce9859c31176f4fb6ce4e5eba4.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2023-05-07T04:49:30.204Z",
+          "amount": null
         },
         {
           "id": "901700314216947712",
@@ -196,7 +240,9 @@
           "displayName": "Rock",
           "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/901700314216947712/avatars/0c52bcbc12bdebc9e4e10f20164f880a.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2025-10-06T18:51:14.109Z",
+          "amount": null
         },
         {
           "id": "1085767966118920233",
@@ -204,7 +250,9 @@
           "displayName": "RTW (Parker County, TX)",
           "avatar": "https://cdn.discordapp.com/avatars/1085767966118920233/90620ef79aee1d3c0cb90dd8247e6c1e.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2025-04-05T15:01:35.962Z",
+          "amount": null
         },
         {
           "id": "726612317248159745",
@@ -212,7 +260,9 @@
           "displayName": "seb",
           "avatar": "https://cdn.discordapp.com/avatars/726612317248159745/192c3649d837559212f72338d4fef0de.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2023-04-19T19:30:55.408Z",
+          "amount": null
         },
         {
           "id": "655579190711681033",
@@ -220,7 +270,9 @@
           "displayName": "Speedtape",
           "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/655579190711681033/avatars/0877d7498725125d23adbf616f955de9.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2023-12-07T19:02:19.934Z",
+          "amount": null
         },
         {
           "id": "1020878856829292614",
@@ -228,7 +280,9 @@
           "displayName": "SYRUP ♡ ・COLUMBUS OH",
           "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1020878856829292614/avatars/a_25a98d7abaa8baddf89b6e7940ec554a.gif?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2024-09-03T19:25:23.806Z",
+          "amount": null
         },
         {
           "id": "1409029489119461397",
@@ -236,7 +290,9 @@
           "displayName": "tiger (Hanoi, Vietnam)",
           "avatar": "https://cdn.discordapp.com/avatars/1409029489119461397/47c8ca458c7349c382ac959d524694f4.png?size=256",
           "banner": null,
-          "accentColor": "#ffc400"
+          "accentColor": "#ffc400",
+          "joinedAt": "2025-08-24T04:48:18.443Z",
+          "amount": null
         },
         {
           "id": "858386183603617874",
@@ -244,7 +300,9 @@
           "displayName": "Ziema [GE | TBS]",
           "avatar": "https://cdn.discordapp.com/avatars/858386183603617874/5ca950bdb1bf9a756d37243a6ca29873.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": null,
+          "joinedAt": "2026-01-07T07:07:27.621Z",
+          "amount": null
         }
       ]
     }
