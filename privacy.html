@@ -145,20 +145,13 @@
 
   <section class="page-hero">
     <div class="section-inner">
-      <span class="page-badge"><i class="fas fa-user-shield"></i> Privacy Policy</span>
       <h1 class="section-title">Privacy Policy</h1>
       <p class="section-body">
         How Xtreme Weather handles your information across our Discord server, this website, and
         the Snowball bot, including what we collect, why, how long we keep it, and the choices
         you have.
       </p>
-      <div class="doc-meta">
-        <span><b>Effective:</b> March 31, 2026</span>
-        <span class="dot"></span>
-        <span><b>Version:</b> 1.0</span>
-        <span class="dot"></span>
-        <span><b>Contact:</b> <a href="mailto:support@xtremewx.com" style="color:inherit;">support@xtremewx.com</a></span>
-      </div>
+      <p class="doc-meta-plain"><b>Effective March 31, 2026</b> &middot; Version 1.0 &middot; <a href="mailto:support@xtremewx.com">support@xtremewx.com</a></p>
     </div>
   </section>
 
@@ -184,7 +177,7 @@
           <p>For privacy questions, data access requests, export requests, or deletion requests, contact us at <a href="mailto:support@xtremewx.com">support@xtremewx.com</a>.</p>
           <div class="legal-callout info">
             <span class="legal-callout-label">Good to know</span>
-            This policy describes our current, implemented behavior. Where our systems do not enforce a fixed automatic deletion schedule, we say so plainly rather than promising a purge timeline that does not yet exist.
+            This policy reflects how Xtreme Weather and Snowball actually work today. Where we don't run a fixed automatic deletion schedule, we say so plainly rather than promising deletion timelines we don't keep.
           </div>
         </div>
 
@@ -297,7 +290,7 @@
 
         <div class="legal-section" id="retention">
           <h2><span class="legal-num">05</span> Retention &amp; deletion</h2>
-          <p>Where a category lacks a built-in automatic timer, we do not yet enforce a fixed deletion deadline for that record type. In those cases, data may remain until it is manually deleted, deleted following a valid request, removed during maintenance, or no longer needed for the feature, safety, or legal purpose involved.</p>
+          <p>Some data has a fixed expiry, shown below. Where no fixed timer applies, we keep information only as long as it’s needed for the feature, your account, safety, or legal reasons, then remove it on a valid request or during routine maintenance.</p>
 
           <div class="faq">
             <div class="faq-item">
@@ -307,10 +300,10 @@
                   <tr><th>Record type</th><th>Retention</th></tr>
                   <tr><td>Conversation history</td><td>Latest 6 entries per user-plus-guild scope; older entries removed on a rolling basis.</td></tr>
                   <tr><td>Conversation thread entries</td><td>Up to 50 short entries; a thread is marked expired after 15 minutes of inactivity.</td></tr>
-                  <tr><td>Conversation summaries</td><td>Expired thread summaries may remain; no general automatic purge is currently defined.</td></tr>
+                  <tr><td>Conversation summaries</td><td>Expired thread summaries are kept until no longer needed.</td></tr>
                   <tr><td>AI usage logs</td><td>Automatically purged after 48 hours.</td></tr>
-                  <tr><td>AI limit-card markers</td><td>Date-scoped to the day created; no separate cleanup job for historical rows.</td></tr>
-                  <tr><td>Reply tracking &amp; personality prefs</td><td>Retained until changed, deleted, or removed on request; no automatic purge.</td></tr>
+                  <tr><td>AI limit-card markers</td><td>Scoped to the day created; cleared once no longer needed.</td></tr>
+                  <tr><td>Reply tracking &amp; personality prefs</td><td>Kept until you change or remove them, or you request deletion.</td></tr>
                   <tr><td>In-memory reply cache</td><td>Expires after 30 minutes.</td></tr>
                 </table></div>
               </div></div></div>
@@ -320,11 +313,11 @@
               <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
                 <div class="legal-table-wrap"><table class="legal-table">
                   <tr><th>Record type</th><th>Retention</th></tr>
-                  <tr><td>Moderation cases</td><td>No general automatic purge; retained until deleted, replaced, or no longer needed for moderation, safety, legal, or operational reasons.</td></tr>
-                  <tr><td>Ticket metadata</td><td>No general automatic purge currently defined.</td></tr>
-                  <tr><td>Ticket transcripts</td><td>Generated from Discord thread history on request; no dedicated permanent table. Discord may retain the underlying messages until deleted.</td></tr>
-                  <tr><td>Ratings, escalation, close reasons</td><td>No general automatic purge currently defined.</td></tr>
-                  <tr><td>Spotter apps &amp; reward submissions</td><td>No general automatic purge currently defined.</td></tr>
+                  <tr><td>Moderation cases</td><td>Kept until deleted, replaced, or no longer needed for moderation, safety, legal, or operational reasons.</td></tr>
+                  <tr><td>Ticket metadata</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
+                  <tr><td>Ticket transcripts</td><td>Generated from Discord thread history on request; not stored in a permanent transcript database. Discord may retain the underlying messages until deleted.</td></tr>
+                  <tr><td>Ratings, escalation, close reasons</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
+                  <tr><td>Spotter apps &amp; reward submissions</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
                   <tr><td>Failed/removed ticket records</td><td>Some rows are deleted automatically if creation fails or a tracked thread is deleted.</td></tr>
                 </table></div>
               </div></div></div>
@@ -335,9 +328,9 @@
                 <div class="legal-table-wrap"><table class="legal-table">
                   <tr><th>Record type</th><th>Retention</th></tr>
                   <tr><td>Birthdays</td><td>Retained until you remove the entry (<code>/birthday remove</code>), it is deleted on request, or no longer needed.</td></tr>
-                  <tr><td>QOTD submissions</td><td>No general automatic purge currently defined.</td></tr>
-                  <tr><td>Suggestions &amp; bug reports</td><td>Forwarded to Discord channels rather than a database table; retention depends on Discord history.</td></tr>
-                  <tr><td>Starboard tracking</td><td>Retained while tracked; may be deleted when the source entry leaves tracking; no full global purge schedule.</td></tr>
+                  <tr><td>QOTD submissions</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
+                  <tr><td>Suggestions &amp; bug reports</td><td>Forwarded to Discord channels rather than stored in our database; retention then depends on Discord history.</td></tr>
+                  <tr><td>Starboard tracking</td><td>Kept while a post is tracked; removed when it leaves the starboard.</td></tr>
                 </table></div>
               </div></div></div>
             </div>
@@ -346,9 +339,9 @@
               <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
                 <div class="legal-table-wrap"><table class="legal-table">
                   <tr><th>Record type</th><th>Retention</th></tr>
-                  <tr><td>Economy, items, arena, roles, missions, progression</td><td>No general automatic purge currently defined.</td></tr>
-                  <tr><td>Server levels &amp; XP history</td><td>No general automatic purge currently defined.</td></tr>
-                  <tr><td>Aggregate activity used for pricing</td><td>Stored as historical pricing records with no code-defined automatic purge.</td></tr>
+                  <tr><td>Economy, items, arena, roles, missions, progression</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
+                  <tr><td>Server levels &amp; XP history</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
+                  <tr><td>Aggregate activity used for pricing</td><td>Kept as historical pricing records until no longer needed.</td></tr>
                 </table></div>
               </div></div></div>
             </div>
@@ -357,9 +350,9 @@
               <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
                 <div class="legal-table-wrap"><table class="legal-table">
                   <tr><th>Record type</th><th>Retention</th></tr>
-                  <tr><td>Stripe processed event IDs</td><td>No general automatic purge currently defined.</td></tr>
-                  <tr><td>Donation-related server logs</td><td>No retention period defined in code; depends on the hosting/logging environment.</td></tr>
-                  <tr><td>Error logs (Discord/console)</td><td>No global retention period defined in code.</td></tr>
+                  <tr><td>Stripe processed event IDs</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
+                  <tr><td>Donation-related server logs</td><td>Kept according to our hosting and logging environment, and no longer than needed.</td></tr>
+                  <tr><td>Error logs (Discord/console)</td><td>Kept only as long as needed for troubleshooting and reliability.</td></tr>
                 </table></div>
               </div></div></div>
             </div>
@@ -486,8 +479,8 @@
                 Delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm with Xtreme Weather.
             </p>
             <a class="footer-wrn" href="https://www.weather.gov/wrn/ambassadors" target="_blank" rel="noopener">
-                <img src="assets/wrn-ambassador.png" loading="lazy" decoding="async" alt="Weather-Ready Nation Ambassador" class="footer-wrn-logo">
-                <span class="footer-wrn-text">Xtreme Weather is a proud <strong>Weather-Ready Nation</strong> Ambassador<span class="tm">&trade;</span></span>
+                <img src="assets/wrn.png" loading="lazy" decoding="async" alt="Weather-Ready Nation Ambassador" class="footer-wrn-logo">
+                <span class="footer-wrn-text">Xtreme Weather is a proud Weather-Ready Nation Ambassador</span>
             </a>
         </div>
         <div class="footer-nav-section">

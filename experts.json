@@ -1,0 +1,20 @@
+{
+  "updatedAt": "2026-06-24T00:00:00.000Z",
+  "updatedBy": { "id": "0", "tag": "seed" },
+  "guild": { "id": "1077714936056250388", "name": "Xtreme Weather" },
+  "tiers": [
+    {
+      "key": "lead",
+      "label": "Lead Experts",
+      "members": [
+        { "id": "763380002770649088", "username": "drew", "displayName": "Drew" },
+        { "id": "626259765537800212", "username": "frost", "displayName": "Frost" }
+      ]
+    },
+    {
+      "key": "expert",
+      "label": "Coverage Experts",
+      "members": []
+    }
+  ]
+}
