@@ -88,7 +88,7 @@
     var pct = Math.min(100, Math.round((raised / monthlyGoal) * 100));
     var met = raised >= monthlyGoal;
     var caption = met
-      ? 'This month’s costs are covered — thank you! 💜'
+      ? 'This month’s costs are covered, thank you! 💜'
       : pct + '% of this month’s costs covered';
     return '<div class="donate-progress' + (met ? ' is-met' : '') + '">'
       + '<div class="donate-progress-head">'

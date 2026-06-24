@@ -530,6 +530,7 @@
    (no flash). Without JS the cards just stay visible. --i (per card) drives the cascade. */
 #staff-roster.animate-in .staff-tier-title,
 #staff-roster.animate-in .staff-card,
+#donator-roster.animate-in .donate-progress,
 #donator-roster.animate-in .staff-tier-title,
 #donator-roster.animate-in .staff-card {
   animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
@@ -552,6 +553,7 @@
   .contact-side-link, .contact-note,
   .community-cta, .timeline-item, .faq-item, .mission,
   #staff-roster.animate-in .staff-tier-title, #staff-roster.animate-in .staff-card,
+  #donator-roster.animate-in .donate-progress,
   #donator-roster.animate-in .staff-tier-title, #donator-roster.animate-in .staff-card { animation: none; }
 }
 
