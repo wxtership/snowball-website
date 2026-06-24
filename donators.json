@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T03:46:55.084Z",
+  "updatedAt": "2026-06-24T04:14:10.120Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -22,7 +22,8 @@
           "banner": null,
           "accentColor": "#ffffff",
           "joinedAt": "2026-04-28T12:25:57.923Z",
-          "amount": null
+          "amount": null,
+          "donatedAt": null
         },
         {
           "id": "762538324615102476",
@@ -32,7 +33,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-04-02T07:41:24.767Z",
-          "amount": null
+          "amount": 5,
+          "donatedAt": "2025-07-03T06:48:30.000Z"
         },
         {
           "id": "136818144256851968",
@@ -42,7 +44,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2026-04-02T22:21:46.950Z",
-          "amount": null
+          "amount": 10,
+          "donatedAt": "2026-04-10T18:21:37.000Z"
         },
         {
           "id": "176081301743337472",
@@ -52,7 +55,8 @@
           "banner": null,
           "accentColor": "#2e0b05",
           "joinedAt": "2025-03-13T06:43:22.846Z",
-          "amount": null
+          "amount": 1,
+          "donatedAt": "2025-06-21T06:11:17.000Z"
         },
         {
           "id": "1060732954285965332",
@@ -62,7 +66,8 @@
           "banner": null,
           "accentColor": "#ff0000",
           "joinedAt": "2023-12-09T18:41:05.994Z",
-          "amount": null
+          "amount": 1,
+          "donatedAt": "2025-06-21T05:46:17.000Z"
         },
         {
           "id": "686282452527743147",
@@ -72,7 +77,8 @@
           "banner": null,
           "accentColor": "#000000",
           "joinedAt": "2023-10-19T01:50:36.713Z",
-          "amount": null
+          "amount": 5,
+          "donatedAt": "2025-06-12T12:14:35.000Z"
         },
         {
           "id": "548140785384554508",
@@ -82,7 +88,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-06-08T17:02:41.620Z",
-          "amount": null
+          "amount": null,
+          "donatedAt": null
         },
         {
           "id": "763380002770649088",
@@ -92,7 +99,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2026-01-02T05:10:50.704Z",
-          "amount": null
+          "amount": 1,
+          "donatedAt": "2026-01-08T02:21:49.000Z"
         },
         {
           "id": "1324763970271314023",
@@ -102,7 +110,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-12-08T19:59:19.015Z",
-          "amount": null
+          "amount": 5,
+          "donatedAt": "2026-05-19T15:58:40.000Z"
         },
         {
           "id": "1110754991091748905",
@@ -112,7 +121,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-08-25T21:08:34.946Z",
-          "amount": null
+          "amount": 5,
+          "donatedAt": "2026-04-27T00:20:15.000Z"
         },
         {
           "id": "1298379997689679966",
@@ -122,7 +132,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2024-10-22T20:27:16.120Z",
-          "amount": null
+          "amount": 40,
+          "donatedAt": "2026-01-06T17:55:08.000Z"
         },
         {
           "id": "451857870552825856",
@@ -132,7 +143,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2023-04-20T01:51:51.719Z",
-          "amount": null
+          "amount": 4,
+          "donatedAt": "2026-04-19T17:16:56.000Z"
         },
         {
           "id": "1324922787483357274",
@@ -142,7 +154,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2026-05-14T20:29:11.277Z",
-          "amount": null
+          "amount": 1,
+          "donatedAt": "2026-06-07T02:01:51.000Z"
         },
         {
           "id": "538124101047418886",
@@ -152,17 +165,19 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2026-03-12T02:02:09.432Z",
-          "amount": null
+          "amount": 1,
+          "donatedAt": "2026-03-17T04:10:31.000Z"
         },
         {
           "id": "496829863924072448",
           "username": "hainesnoids",
           "displayName": "maudpuzzie",
-          "avatar": "https://cdn.discordapp.com/avatars/496829863924072448/a_88bd3a6d3cbdf93af7a36138501a1080.gif?size=256",
+          "avatar": "https://cdn.discordapp.com/avatars/496829863924072448/a_88bd3a6d3cbdf93af7a36138501a1080.png?size=256",
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-10-12T22:58:26.937Z",
-          "amount": null
+          "amount": 1.01,
+          "donatedAt": "2026-01-24T00:43:24.000Z"
         },
         {
           "id": "877009401423200296",
@@ -172,7 +187,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2026-01-01T05:25:29.681Z",
-          "amount": null
+          "amount": 9.13,
+          "donatedAt": "2026-05-19T16:00:38.000Z"
         },
         {
           "id": "663289381284610049",
@@ -182,7 +198,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-08-11T05:15:36.309Z",
-          "amount": null
+          "amount": 10,
+          "donatedAt": "2026-01-01T05:48:41.000Z"
         },
         {
           "id": "359087432538390528",
@@ -192,7 +209,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2024-08-22T02:36:03.518Z",
-          "amount": null
+          "amount": 20,
+          "donatedAt": "2026-05-19T16:02:17.000Z"
         },
         {
           "id": "1133479873155956878",
@@ -202,7 +220,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2024-08-20T13:59:09.038Z",
-          "amount": null
+          "amount": 7,
+          "donatedAt": "2026-03-10T01:52:03.000Z"
         },
         {
           "id": "989369484299104256",
@@ -212,7 +231,8 @@
           "banner": null,
           "accentColor": "#00fff0",
           "joinedAt": "2026-01-19T05:40:17.302Z",
-          "amount": null
+          "amount": 21,
+          "donatedAt": "2026-02-05T04:18:07.000Z"
         },
         {
           "id": "948372386347102209",
@@ -222,7 +242,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2024-10-15T04:05:09.845Z",
-          "amount": null
+          "amount": 25.2,
+          "donatedAt": "2026-02-09T03:46:17.000Z"
         },
         {
           "id": "609961976092950528",
@@ -232,7 +253,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2023-05-07T04:49:30.204Z",
-          "amount": null
+          "amount": 152.37,
+          "donatedAt": "2026-06-21T02:49:23.000Z"
         },
         {
           "id": "901700314216947712",
@@ -242,7 +264,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-10-06T18:51:14.109Z",
-          "amount": null
+          "amount": null,
+          "donatedAt": null
         },
         {
           "id": "1085767966118920233",
@@ -252,7 +275,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-04-05T15:01:35.962Z",
-          "amount": null
+          "amount": 2.5,
+          "donatedAt": "2026-06-06T09:34:48.000Z"
         },
         {
           "id": "726612317248159745",
@@ -262,7 +286,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2023-04-19T19:30:55.408Z",
-          "amount": null
+          "amount": 2,
+          "donatedAt": "2026-01-23T04:23:03.000Z"
         },
         {
           "id": "655579190711681033",
@@ -272,17 +297,19 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2023-12-07T19:02:19.934Z",
-          "amount": null
+          "amount": 65,
+          "donatedAt": "2026-04-21T19:57:08.000Z"
         },
         {
           "id": "1020878856829292614",
           "username": "starzoneeee_xp",
           "displayName": "SYRUP ♡ ・COLUMBUS OH",
-          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1020878856829292614/avatars/a_25a98d7abaa8baddf89b6e7940ec554a.gif?size=256",
+          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1020878856829292614/avatars/a_25a98d7abaa8baddf89b6e7940ec554a.png?size=256",
           "banner": null,
           "accentColor": null,
           "joinedAt": "2024-09-03T19:25:23.806Z",
-          "amount": null
+          "amount": null,
+          "donatedAt": null
         },
         {
           "id": "1409029489119461397",
@@ -292,7 +319,8 @@
           "banner": null,
           "accentColor": "#ffc400",
           "joinedAt": "2025-08-24T04:48:18.443Z",
-          "amount": null
+          "amount": null,
+          "donatedAt": null
         },
         {
           "id": "858386183603617874",
@@ -302,7 +330,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2026-01-07T07:07:27.621Z",
-          "amount": null
+          "amount": null,
+          "donatedAt": null
         }
       ]
     }
