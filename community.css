@@ -28,6 +28,7 @@
   letter-spacing: 0.08em; text-transform: uppercase;
 }
 .page-badge i { font-size: 12px; }
+.badge-img-icon { width: 14px; height: 14px; object-fit: contain; vertical-align: middle; }
 
 .page-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
