@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T19:35:12.948Z",
+  "updatedAt": "2026-06-24T20:06:33.211Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -17,12 +17,14 @@
         {
           "id": "626259765537800212",
           "username": "wxoutlaw",
-          "displayName": "Frost - Lead Expert"
+          "displayName": "Frost - Lead Expert",
+          "avatarURL": "https://cdn.discordapp.com/avatars/626259765537800212/b6d5d6c22ff17e5f0daf134255a5ab5e.png?size=256"
         },
         {
           "id": "763380002770649088",
           "username": "itsdrewp",
-          "displayName": "Drew - Lead Expert"
+          "displayName": "Drew - Lead Expert",
+          "avatarURL": "https://cdn.discordapp.com/avatars/763380002770649088/f3aad866f9dba8440e72c653c1b3553b.png?size=256"
         }
       ]
     },
@@ -33,52 +35,62 @@
         {
           "id": "582394159546236948",
           "username": "wxtership",
-          "displayName": "☭ wxtership"
+          "displayName": "☭ wxtership",
+          "avatarURL": "https://cdn.discordapp.com/avatars/582394159546236948/4b5f06bc2504edd9c6dcea5c6b5ad2e7.png?size=256"
         },
         {
           "id": "770787602583388170",
           "username": "apocalypsenow",
-          "displayName": "apoc (Southeast MI)"
+          "displayName": "apoc (Southeast MI)",
+          "avatarURL": "https://cdn.discordapp.com/avatars/770787602583388170/0bf996fe906568484a5fb17ddd6bd9e3.png?size=256"
         },
         {
           "id": "1132908259162992712",
           "username": "awcoal",
-          "displayName": "awcoal (NJ) 🐌"
+          "displayName": "awcoal (NJ) 🐌",
+          "avatarURL": "https://cdn.discordapp.com/avatars/1132908259162992712/f22c6c3e1a8f99ea68ebe9cc263d12d4.png?size=256"
         },
         {
           "id": "1061023304862933122",
           "username": "busybird15",
-          "displayName": "BusyBird15 (SparkRadar, KIWX)"
+          "displayName": "BusyBird15 (SparkRadar, KIWX)",
+          "avatarURL": "https://cdn.discordapp.com/avatars/1061023304862933122/a305c7afa8bddcd46fe73d6a28ebb389.png?size=256"
         },
         {
           "id": "1193213878834843758",
           "username": "darkespeon.wx",
-          "displayName": "DarkEspeon (North AL)"
+          "displayName": "DarkEspeon (North AL)",
+          "avatarURL": "https://cdn.discordapp.com/avatars/1193213878834843758/c731bf55a599388bea8289de8e315b99.png?size=256"
         },
         {
           "id": "1033720108968841277",
           "username": "mesocyclone_vortex",
-          "displayName": "Dvorak (Porto Alegre, RS,Brazil)"
+          "displayName": "Dvorak (Porto Alegre, RS,Brazil)",
+          "avatarURL": "https://cdn.discordapp.com/avatars/1033720108968841277/c338ead2cb4dfe78582f7e417b89dd16.png?size=256"
         },
         {
           "id": "664920241528242207",
           "username": "kurtfan5468",
-          "displayName": "Kurt"
+          "displayName": "Kurt",
+          "avatarURL": "https://cdn.discordapp.com/avatars/664920241528242207/d1af46adce745aa91786d7a8e02359d3.png?size=256"
         },
         {
           "id": "877009401423200296",
           "username": "weatherlord_wx",
-          "displayName": "Max (Massachusetts)"
+          "displayName": "Max (Massachusetts)",
+          "avatarURL": "https://cdn.discordapp.com/avatars/877009401423200296/7bf72e4a157a0f9d32e0ab7b867d25b3.png?size=256"
         },
         {
           "id": "1104974309295923201",
           "username": "painlesmaster3",
-          "displayName": "Painlesmaster3 (Medina, OH)"
+          "displayName": "Painlesmaster3 (Medina, OH)",
+          "avatarURL": "https://cdn.discordapp.com/avatars/1104974309295923201/a7979176cd62ae3fcba660a38afd3065.png?size=256"
         },
         {
           "id": "948372386347102209",
           "username": "last_one_remaining",
-          "displayName": "RemainingWX"
+          "displayName": "RemainingWX",
+          "avatarURL": "https://cdn.discordapp.com/guilds/1077714936056250388/users/948372386347102209/avatars/d2247637bee2cd4a51c993789ad6a3ca.png?size=256"
         }
       ]
     }
