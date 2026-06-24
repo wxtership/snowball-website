@@ -216,6 +216,25 @@
           </a>
         </section>
 
+        <section class="contact-form appeal-panel appeal-panel-hidden" id="appeal-denied">
+          <div class="appeal-account" id="appeal-denied-account">
+            <img id="appeal-denied-avatar" src="" alt="" class="appeal-avatar" hidden>
+            <div>
+              <span class="appeal-account-label">Welcome back</span>
+              <strong id="appeal-denied-account-name">Discord user</strong>
+            </div>
+            <a href="#" id="appeal-denied-not-you" class="appeal-not-you">Not you?</a>
+          </div>
+          <div class="card-icon"><i class="fas fa-circle-xmark"></i></div>
+          <h2 class="appeal-title">Appeal denied</h2>
+          <p class="appeal-copy" id="appeal-denied-copy">
+            Your appeal was reviewed and denied. You can try again in 6 months.
+          </p>
+          <a class="btn-primary form-submit" href="contact.html">
+            <i class="fas fa-envelope"></i> Contact the team
+          </a>
+        </section>
+
         <form class="contact-form appeal-panel appeal-panel-hidden" id="appeal-form" action="/api/ban-appeals" method="POST">
           <input type="hidden" name="discord_id" id="appeal-discord-id">
           <input type="hidden" name="ban_id" id="appeal-ban-id">
@@ -395,6 +414,7 @@ window.addEventListener('resize', function() {
     var layout = document.getElementById('appeal-layout');
     var notBanned = document.getElementById('appeal-not-banned');
     var submitted = document.getElementById('appeal-submitted');
+    var denied = document.getElementById('appeal-denied');
     var form = document.getElementById('appeal-form');
     var status = document.getElementById('appeal-status');
     var formStatus = document.getElementById('appeal-form-status');
@@ -407,7 +427,7 @@ window.addEventListener('resize', function() {
     var storageKey = 'snowballAppealState:v1';
     var draftKey = 'snowballAppealDraft:v1';
     var currentUser = null;
-    if (!gate || !layout || !notBanned || !submitted || !form || !status || !formStatus || !submit) return;
+    if (!gate || !layout || !notBanned || !submitted || !denied || !form || !status || !formStatus || !submit) return;
 
     function redirectUri() {
         return window.location.origin + window.location.pathname;
@@ -448,7 +468,7 @@ window.addEventListener('resize', function() {
 
     function show(panel) {
         layout.classList.remove('is-loading');
-        [gate, notBanned, submitted, form].forEach(function (el) { el.classList.add('appeal-panel-hidden'); el.classList.remove('appeal-panel-ready'); });
+        [gate, notBanned, submitted, denied, form].forEach(function (el) { el.classList.add('appeal-panel-hidden'); el.classList.remove('appeal-panel-ready'); });
         panel.classList.remove('appeal-panel-hidden');
         requestAnimationFrame(function () { panel.classList.add('appeal-panel-ready'); });
     }
@@ -532,7 +552,8 @@ window.addEventListener('resize', function() {
         [
             ['appeal-account-name', 'appeal-account-avatar'],
             ['appeal-form-account-name', 'appeal-form-avatar'],
-            ['appeal-submitted-account-name', 'appeal-submitted-avatar']
+            ['appeal-submitted-account-name', 'appeal-submitted-avatar'],
+            ['appeal-denied-account-name', 'appeal-denied-avatar']
         ].forEach(function (ids) {
             var nameEl = document.getElementById(ids[0]);
             var avatarEl = document.getElementById(ids[1]);
@@ -606,6 +627,17 @@ window.addEventListener('resize', function() {
         show(submitted);
     }
 
+    function showDenied(user, appeal) {
+        hydrateAccount(user);
+        var copy = document.getElementById('appeal-denied-copy');
+        if (copy) {
+            copy.textContent = appeal && appeal.decided_at
+                ? 'Your appeal was denied on ' + formatAppealDate(appeal.decided_at) + '. You can try again in 6 months.'
+                : 'Your appeal was reviewed and denied. You can try again in 6 months.';
+        }
+        show(denied);
+    }
+
     function setText(id, value) {
         var el = document.getElementById(id);
         if (el) el.textContent = value || 'Not provided';
@@ -635,14 +667,6 @@ window.addEventListener('resize', function() {
             return;
         }
 
-        if (!oauthCode) {
-            var stored = readStoredAppealState();
-            if (stored && stored.status === 'submitted') {
-                showSubmitted(stored.user, stored.submitted_at);
-                return;
-            }
-        }
-
         status.className = 'form-status';
         status.textContent = 'Checking your Snowball login...';
         var url = API_ME;
@@ -663,6 +687,12 @@ window.addEventListener('resize', function() {
                     return;
                 }
                 appealToken = data.appeal_token || '';
+                if (data.appeal && data.appeal.status === 'denied') {
+                    clearOAuthQuery();
+                    writeStoredAppealState({ status: 'denied', user: data.user, submitted_at: data.appeal.decided_at || data.appeal.submitted_at });
+                    showDenied(data.user, data.appeal);
+                    return;
+                }
                 if (!data.banned) {
                     clearOAuthQuery();
                     showNotBanned(data.user);
@@ -674,6 +704,15 @@ window.addEventListener('resize', function() {
             .catch(function () {
                 if (oauthCode) {
                     showApiUnavailable();
+                    return;
+                }
+                var stored = readStoredAppealState();
+                if (stored && stored.status === 'submitted') {
+                    showSubmitted(stored.user, stored.submitted_at);
+                    return;
+                }
+                if (stored && stored.status === 'denied') {
+                    showDenied(stored.user, { decided_at: stored.submitted_at });
                     return;
                 }
                 status.className = 'form-status is-error';
