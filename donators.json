@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T05:15:19.605Z",
+  "updatedAt": "2026-06-24T05:40:30.306Z",
   "updatedBy": {
     "id": "system",
     "tag": "manual-trigger"
@@ -10,6 +10,8 @@
     "memberCount": 7347
   },
   "allTimeTotal": 682.39,
+  "monthlyRaised": 93.2,
+  "monthlyGoal": 50,
   "tiers": [
     {
       "key": "donator",
