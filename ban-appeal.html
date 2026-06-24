@@ -687,15 +687,16 @@ window.addEventListener('resize', function() {
                     return;
                 }
                 appealToken = data.appeal_token || '';
+                if (!data.banned) {
+                    clearOAuthQuery();
+                    clearStoredAppealState();
+                    showNotBanned(data.user);
+                    return;
+                }
                 if (data.appeal && data.appeal.status === 'denied') {
                     clearOAuthQuery();
                     writeStoredAppealState({ status: 'denied', user: data.user, submitted_at: data.appeal.decided_at || data.appeal.submitted_at });
                     showDenied(data.user, data.appeal);
-                    return;
-                }
-                if (!data.banned) {
-                    clearOAuthQuery();
-                    showNotBanned(data.user);
                     return;
                 }
                 clearOAuthQuery();
