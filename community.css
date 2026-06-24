@@ -1050,6 +1050,24 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
 .charter-item-flag a { color: var(--purple-300); text-decoration: none; font-weight: 600; }
 .charter-item-flag a:hover { text-decoration: underline; }
 
+/* Coverage expert roster stagger — same pattern as #staff-roster.animate-in */
+#experts-roster.animate-in .staff-tier-title,
+#experts-roster.animate-in .staff-card {
+  animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 85ms);
+}
+#experts-roster:empty { min-height: 40vh; }
+@media (prefers-reduced-motion: reduce) {
+  #experts-roster.animate-in .staff-tier-title,
+  #experts-roster.animate-in .staff-card { animation: none; }
+}
+
+/* Charter-item icon variant (coverage policies) — teal instead of purple number */
+.charter-item-ico {
+  font-size: 16px; color: var(--cov); min-width: 40px;
+  display: flex; align-items: flex-start; justify-content: flex-start; padding-top: 3px;
+}
+
 /* Coverage policies as a single panel of rows, not cards */
 .policy-list {
   list-style: none; margin: 0 auto; padding: 4px 0; max-width: 760px;
