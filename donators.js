@@ -52,7 +52,7 @@
     var grid = root.querySelector('.staff-grid-donator');
     if (!grid) return;
     var sorted = getSorted(sort);
-    grid.innerHTML = sorted.map(function (m, i) { return renderCard(m, i + 1); }).join('');
+    grid.innerHTML = sorted.map(function (m, i) { return renderCard(m, i + 1, sort); }).join('');
   }
 
   function preloadThenRender(members) {
@@ -65,7 +65,7 @@
     function render() {
       if (done) return; done = true;
       root.classList.add('animate-in');
-      root.innerHTML = renderWall(getSorted(currentSort));
+      root.innerHTML = renderWall(getSorted(currentSort), currentSort);
       root.querySelectorAll('.donator-sort-btn').forEach(function (btn) {
         btn.addEventListener('click', function () { applySort(btn.dataset.sort); });
       });
@@ -89,8 +89,8 @@
     root.innerHTML = '<p class="staff-empty">No donators are synced yet. Check back soon.</p>';
   }
 
-  function renderWall(members) {
-    var cards = members.map(function (m, i) { return renderCard(m, i + 1); }).join('');
+  function renderWall(members, sort) {
+    var cards = members.map(function (m, i) { return renderCard(m, i + 1, sort); }).join('');
     return '<div class="staff-tier">'
       + '<div class="staff-tier-title" style="--i:0">'
       + '<img src="assets/donatechat.png" class="tier-img-icon" alt="" aria-hidden="true">'
@@ -104,7 +104,7 @@
       + '</div>';
   }
 
-  function renderCard(m, i) {
+  function renderCard(m, i, sort) {
     var name = esc(m.displayName || m.username || 'Member');
     var handle = m.username ? '@' + esc(m.username) : '';
     var avatar = safeUrl(m.avatar) || 'assets/snowball-logo-transparent-small.png';
@@ -115,12 +115,19 @@
     var amountPill = typeof m.amount === 'number'
       ? '<span class="donator-amount-pill">$' + m.amount.toFixed(2) + '</span>'
       : '';
+    var datePill = '';
+    if (sort === 'recent' && m.joinedAt) {
+      var d = new Date(m.joinedAt);
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      datePill = '<span class="donator-date-pill">Joined ' + months[d.getUTCMonth()] + ' ' + d.getUTCFullYear() + '</span>';
+    }
     return '<article class="staff-card has-banner" style="--i:' + i + '">'
       + bg
       + '<img class="staff-avatar" src="' + avatar + '" alt="">'
       + '<span class="staff-name">' + name + '</span>'
       + (handle ? '<span class="staff-handle">' + handle + '</span>' : '')
       + amountPill
+      + datePill
       + '</article>';
   }
 

@@ -344,6 +344,13 @@
   background: rgba(107,84,245,0.22); border: 1px solid rgba(107,84,245,0.42);
   color: var(--purple-300);
 }
+.donator-date-pill {
+  position: relative; z-index: 1; margin-top: 10px;
+  display: inline-block; padding: 4px 12px; border-radius: 999px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.55);
+}
 
 /* ---- Staff card: full-box blurred + saturated background (banner, else avatar) ---- */
 .staff-card.has-banner { position: relative; overflow: hidden; background: var(--dark-800); }
