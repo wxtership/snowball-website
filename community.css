@@ -80,6 +80,7 @@
 .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .staff-grid-leadership { grid-template-columns: repeat(2, 1fr); }   /* 2x2 for 4 */
 .staff-grid-founder .staff-card { grid-column: 1 / -1; }            /* founder spans full width */
+.staff-grid-donator { grid-template-columns: repeat(3, 1fr); }
 
 .staff-card {
   display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -305,6 +306,7 @@
 .tier-icon.tier-leadership { background: linear-gradient(135deg, #394aa3, #5f7be0); }
 .tier-icon.tier-staff      { background: linear-gradient(135deg, #2f7390, #49a7c6); }
 .tier-icon.tier-trial      { background: linear-gradient(135deg, #2f7a60, #49a77e); }
+.tier-icon.tier-donator    { background: linear-gradient(135deg, #6b54f5, #b46cff); }
 
 /* ---- Staff card: full-box blurred + saturated background (banner, else avatar) ---- */
 .staff-card.has-banner { position: relative; overflow: hidden; background: var(--dark-800); }
@@ -379,14 +381,17 @@
    so BEFORE the cards are created, so they paint at the animation's invisible first frame
    (no flash). Without JS the cards just stay visible. --i (per card) drives the cascade. */
 #staff-roster.animate-in .staff-tier-title,
-#staff-roster.animate-in .staff-card {
+#staff-roster.animate-in .staff-card,
+#donator-roster.animate-in .staff-tier-title,
+#donator-roster.animate-in .staff-card {
   animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
   animation-delay: calc(var(--i, 0) * 85ms);
 }
 .faq-item { animation-delay: calc(var(--i, 0) * 90ms); }
 /* Reserve height while the roster is loading so the footer doesn't sit up under the
    hero before the cards arrive (it drops back to natural height once filled). */
-#staff-roster:empty { min-height: 90vh; }
+#staff-roster:empty,
+#donator-roster:empty { min-height: 90vh; }
 .staff-empty { text-align: center; color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; padding: 40px 0; }
 .staff-empty a { color: var(--purple-300); text-decoration: none; }
 .staff-empty a:hover { text-decoration: underline; }
@@ -398,7 +403,8 @@
   .contact-form .form-check, .contact-form .form-status, .contact-form .form-submit,
   .contact-side-link, .contact-note,
   .community-cta, .timeline-item, .faq-item, .mission,
-  #staff-roster.animate-in .staff-tier-title, #staff-roster.animate-in .staff-card { animation: none; }
+  #staff-roster.animate-in .staff-tier-title, #staff-roster.animate-in .staff-card,
+  #donator-roster.animate-in .staff-tier-title, #donator-roster.animate-in .staff-card { animation: none; }
 }
 
 /* ---- Background weather-icon texture (scattered near the edges) ---- */

@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Get in touch with the Xtreme Weather team. Join the Discord, open a ticket, report bugs, or reach out for partnerships." />
+<meta name="description" content="Meet the Xtreme Weather donators who help keep the community, tools, and Snowball running." />
 <meta name="theme-color" content="#0d0d18" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>Contact — Xtreme Weather</title>
+<title>Donator Wall — Xtreme Weather</title>
 <link rel="preconnect" href="https://discord.com" />
+<link rel="preconnect" href="https://cdn.discordapp.com" />
 <link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
@@ -157,78 +158,20 @@
 
   <section class="page-hero">
     <div class="section-inner">
-      <h1 class="section-title">Get in touch</h1>
+      <h1 class="section-title">Donator Wall</h1>
       <p class="section-body">
-        Questions, bugs, big ideas, or just want to say hi? Here's how to reach the
-        Xtreme Weather team. The Discord is always the fastest way to get a reply.
+        A thank-you wall for the people helping keep Xtreme Weather online, active, and growing.
+        This list syncs from the current Discord Donator role.
       </p>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <div class="contact-layout contact-layout-single">
-        <form class="contact-form" id="contact-form" action="https://snowball-api.xtremewx.com/api/contact" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="_subject" value="New Xtreme Weather contact form submission">
-          <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off">
-
-          <div class="form-grid">
-            <label class="form-field">
-              <span>Name <b aria-hidden="true">*</b></span>
-              <input type="text" name="name" autocomplete="name" required>
-            </label>
-            <label class="form-field">
-              <span>Email <b aria-hidden="true">*</b></span>
-              <input type="email" name="email" autocomplete="email" required>
-            </label>
-          </div>
-
-          <div class="form-grid">
-            <label class="form-field">
-              <span>Discord username</span>
-              <input type="text" name="discord" autocomplete="off" placeholder="@username">
-            </label>
-            <label class="form-field">
-              <span>Topic <b aria-hidden="true">*</b></span>
-              <select name="topic" required>
-                <option value="">Choose one</option>
-                <option>Snowball support</option>
-                <option>Bug report</option>
-                <option>Feature idea</option>
-                <option>Partnership or press</option>
-                <option>Community question</option>
-                <option>Other</option>
-              </select>
-            </label>
-          </div>
-
-          <label class="form-field">
-            <span>Message <b aria-hidden="true">*</b></span>
-            <textarea name="message" rows="7" required></textarea>
-          </label>
-
-          <label class="form-check">
-            <input type="checkbox" name="reply_ok" value="yes" checked>
-            <span>I'm okay with the team contacting me back.</span>
-          </label>
-
-          <button type="submit" class="btn-primary form-submit" id="contact-form-submit"><i class="fas fa-paper-plane"></i> Send message</button>
-          <div class="form-status contact-form-status" id="contact-form-status" role="status" aria-live="polite"></div>
-        </form>
-
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-inner">
-      <div class="community-cta">
-        <h2 class="section-title">See you in the server</h2>
-        <p class="section-body">Thousands of members, round-the-clock weather, and an economy that never sleeps. Come say hi.</p>
-        <div class="page-cta">
-          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-discord"></i> Join the Server</a>
-        </div>
-      </div>
+      <!-- The wall is fetched from donators.json (published by the bot's /moderation donatorsync).
+           Cards load in with a staggered entrance. A message shows if it can't load. -->
+      <div id="donator-roster" aria-live="polite"></div>
+      <noscript><p class="staff-empty">Turn on JavaScript to see the donator wall, or come say hi in <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">the Discord</a>.</p></noscript>
     </div>
   </section>
 
@@ -338,85 +281,7 @@ window.addEventListener('resize', function() {
     }
 });
 
-// Contact form: submit to Snowball with AJAX so visitors stay on this page.
-(function () {
-    var form = document.getElementById('contact-form');
-    var status = document.getElementById('contact-form-status');
-    var submit = document.getElementById('contact-form-submit');
-    var API_CONTACT = 'https://snowball-api.xtremewx.com/api/contact';
-    if (!form || !status || !submit) return;
-
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        form.classList.add('is-sending');
-        submit.disabled = true;
-        status.className = 'form-status contact-form-status';
-        status.textContent = 'Sending...';
-
-        fetch(API_CONTACT, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        }).then(function (response) {
-            return response.json().catch(function () {
-                return {};
-            }).then(function (data) {
-                if (!response.ok) {
-                    var error = new Error(data.error || 'contact_submit_failed');
-                    error.code = data.error || 'contact_submit_failed';
-                    throw error;
-                }
-                return data;
-            });
-        }).then(function () {
-            form.reset();
-            status.className = 'form-status contact-form-status is-success';
-            status.textContent = 'Message sent. We got it.';
-            burstContactConfetti();
-        }).catch(function (error) {
-            status.className = 'form-status contact-form-status is-error';
-            status.textContent = contactErrorMessage(error && error.code);
-        }).finally(function () {
-            form.classList.remove('is-sending');
-            submit.disabled = false;
-        });
-    });
-
-    function contactErrorMessage(code) {
-        var messages = {
-            name_required: 'Add your name so staff knows who sent this.',
-            valid_email_required: 'Enter a valid email address so staff can reply.',
-            topic_required: 'Choose a topic for your message.',
-            message_required: 'Write a little more before sending.',
-            contact_rate_limited: 'You already sent a message today. Try again tomorrow.',
-            contact_submit_failed: 'Snowball could not send this yet. Try again, or reach us on Discord.'
-        };
-        return messages[code] || messages.contact_submit_failed;
-    }
-
-    function burstContactConfetti() {
-        var wrap = document.createElement('div');
-        var colors = ['#6B54F5', '#BFA3FF', '#9ee6b7', '#ffffff', '#ff8fa3'];
-        wrap.className = 'contact-confetti';
-        for (var i = 0; i < 44; i++) {
-            var piece = document.createElement('i');
-            piece.style.setProperty('--x', (Math.random() * 100).toFixed(2) + 'vw');
-            piece.style.setProperty('--dx', ((Math.random() * 160) - 80).toFixed(0) + 'px');
-            piece.style.setProperty('--r', ((Math.random() * 360) | 0) + 'deg');
-            piece.style.setProperty('--d', (1.4 + Math.random() * 1.2).toFixed(2) + 's');
-            piece.style.setProperty('--c', colors[i % colors.length]);
-            wrap.appendChild(piece);
-        }
-        document.body.appendChild(wrap);
-        setTimeout(function () { wrap.remove(); }, 2800);
-    }
-})();
-
 </script>
+<script src="donators.js"></script>
 </body>
 </html>
