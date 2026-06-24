@@ -4844,7 +4844,7 @@ body.scroll-locked {
     display: flex;
     justify-content: center;
 }
-.footer-wrn-row .footer-wrn { max-width: none; margin-top: 0; }
+.footer-wrn-row .footer-wrn { max-width: none; margin-top: 0; flex-direction: row; gap: 10px; align-items: center; }
 
 /* Donate gets an accent treatment within the footer link pill. */
 .footer-link.is-donate {
