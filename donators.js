@@ -49,6 +49,7 @@
       if (done) return; done = true;
       root.classList.add('animate-in');
       root.innerHTML = renderWall(getSorted());
+      animateProgress();
     }
     if (!remaining) { render(); return; }
     urls.forEach(function (u) {
@@ -95,7 +96,7 @@
       + '<span class="donate-progress-figs">$' + raised.toFixed(2)
       + '<span class="muted"> / $' + monthlyGoal.toFixed(2) + '</span></span>'
       + '</div>'
-      + '<div class="donate-progress-track"><div class="donate-progress-fill" style="width:' + pct + '%"></div></div>'
+      + '<div class="donate-progress-track"><div class="donate-progress-fill" data-pct="' + pct + '" style="width:0%"></div></div>'
       + '<div class="donate-progress-caption">' + caption + '</div>'
       + '</div>';
   }
@@ -142,6 +143,15 @@
       + amountPill
       + datePill
       + '</article>';
+  }
+
+  // Let the bar paint at 0%, then bump to its target so the width transition fires.
+  function animateProgress() {
+    var fill = root.querySelector('.donate-progress-fill');
+    if (!fill) return;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { fill.style.width = (fill.getAttribute('data-pct') || 0) + '%'; });
+    });
   }
 
   function ordinal(n) {
