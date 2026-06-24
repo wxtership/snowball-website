@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T04:14:10.120Z",
+  "updatedAt": "2026-06-24T04:40:59.352Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -9,6 +9,7 @@
     "name": "Xtreme Weather",
     "memberCount": 7347
   },
+  "allTimeTotal": 682.39,
   "tiers": [
     {
       "key": "donator",
@@ -88,8 +89,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-06-08T17:02:41.620Z",
-          "amount": null,
-          "donatedAt": null
+          "amount": 10,
+          "donatedAt": "2026-06-04T18:16:05.000Z"
         },
         {
           "id": "763380002770649088",
@@ -125,6 +126,17 @@
           "donatedAt": "2026-04-27T00:20:15.000Z"
         },
         {
+          "id": "626259765537800212",
+          "username": "wxoutlaw",
+          "displayName": "Frost - Lead Expert",
+          "avatar": "https://cdn.discordapp.com/avatars/626259765537800212/b6d5d6c22ff17e5f0daf134255a5ab5e.png?size=256",
+          "banner": null,
+          "accentColor": null,
+          "joinedAt": "2025-08-28T04:34:54.512Z",
+          "amount": 69.67,
+          "donatedAt": "2026-04-27T01:55:39.000Z"
+        },
+        {
           "id": "1298379997689679966",
           "username": "gabrielkramp.",
           "displayName": "Gabriel Kramp (Rome, IT)",
@@ -132,8 +144,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2024-10-22T20:27:16.120Z",
-          "amount": 40,
-          "donatedAt": "2026-01-06T17:55:08.000Z"
+          "amount": 80,
+          "donatedAt": "2026-01-10T02:55:09.000Z"
         },
         {
           "id": "451857870552825856",
@@ -264,8 +276,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2025-10-06T18:51:14.109Z",
-          "amount": null,
-          "donatedAt": null
+          "amount": 12,
+          "donatedAt": "2026-04-19T16:00:18.000Z"
         },
         {
           "id": "1085767966118920233",
@@ -286,8 +298,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2023-04-19T19:30:55.408Z",
-          "amount": 2,
-          "donatedAt": "2026-01-23T04:23:03.000Z"
+          "amount": 3,
+          "donatedAt": "2026-03-10T01:45:00.000Z"
         },
         {
           "id": "655579190711681033",
@@ -297,7 +309,7 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2023-12-07T19:02:19.934Z",
-          "amount": 65,
+          "amount": 90,
           "donatedAt": "2026-04-21T19:57:08.000Z"
         },
         {
@@ -308,8 +320,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2024-09-03T19:25:23.806Z",
-          "amount": null,
-          "donatedAt": null
+          "amount": 2,
+          "donatedAt": "2025-06-21T05:43:05.000Z"
         },
         {
           "id": "1409029489119461397",
@@ -319,7 +331,7 @@
           "banner": null,
           "accentColor": "#ffc400",
           "joinedAt": "2025-08-24T04:48:18.443Z",
-          "amount": null,
+          "amount": 0.99,
           "donatedAt": null
         },
         {
@@ -330,8 +342,8 @@
           "banner": null,
           "accentColor": null,
           "joinedAt": "2026-01-07T07:07:27.621Z",
-          "amount": null,
-          "donatedAt": null
+          "amount": 1,
+          "donatedAt": "2025-06-22T21:53:40.000Z"
         }
       ]
     }
