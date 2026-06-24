@@ -4837,19 +4837,14 @@ body.scroll-locked {
     color: rgba(255, 255, 255, 0.62);
 }
 
-/* Centered single-column footer layout (coverage-experts page). */
-.footer-centered {
-    max-width: 900px;
-    margin: 0 auto;
+/* WRN centered row (coverage-experts page) between the two-column section and copyright. */
+.footer-wrn-row {
+    max-width: 1200px;
+    margin: 2rem auto 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.4rem;
-    text-align: center;
+    justify-content: center;
 }
-.footer-centered .footer-brand-identity { justify-content: center; }
-.footer-centered .footer-socials { justify-content: center; }
-.footer-centered .footer-wrn { max-width: none; margin-top: 0; }
+.footer-wrn-row .footer-wrn { max-width: none; margin-top: 0; }
 
 /* Donate gets an accent treatment within the footer link pill. */
 .footer-link.is-donate {
