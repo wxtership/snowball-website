@@ -93,7 +93,7 @@
     var cards = members.map(function (m, i) { return renderCard(m, i + 1); }).join('');
     return '<div class="staff-tier">'
       + '<div class="staff-tier-title" style="--i:0">'
-      + '<img src="assets/donator.png" class="tier-img-icon" alt="" aria-hidden="true">'
+      + '<img src="assets/donatechat.png" class="tier-img-icon" alt="" aria-hidden="true">'
       + 'Donators</div>'
       + '<div class="donator-sort-bar">'
       + '<button class="donator-sort-btn active" data-sort="alpha">Alphabetical</button>'
@@ -114,7 +114,7 @@
       : '<div class="staff-card-bg staff-card-bg-default"></div>';
     var amountPill = typeof m.amount === 'number'
       ? '<span class="donator-amount-pill">$' + m.amount.toFixed(2) + '</span>'
-      : '<span class="donator-amount-pill">Donator</span>';
+      : '';
     return '<article class="staff-card has-banner" style="--i:' + i + '">'
       + bg
       + '<img class="staff-avatar" src="' + avatar + '" alt="">'
