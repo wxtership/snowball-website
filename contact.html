@@ -205,11 +205,6 @@
             <textarea name="message" rows="7" required></textarea>
           </label>
 
-          <label class="form-field">
-            <span>Images</span>
-            <input type="file" name="images" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
-          </label>
-
           <label class="form-check">
             <input type="checkbox" name="reply_ok" value="yes" checked>
             <span>I'm okay with the team contacting me back.</span>
@@ -396,8 +391,6 @@ window.addEventListener('resize', function() {
             valid_email_required: 'Enter a valid email address so staff can reply.',
             topic_required: 'Choose a topic for your message.',
             message_required: 'Write a little more before sending.',
-            image_type_not_allowed: 'Images can be PNG, JPG, WebP, or GIF only.',
-            image_too_large: 'Each image needs to be under 3 MB.',
             contact_rate_limited: 'You already sent a message today. Try again tomorrow.',
             contact_submit_failed: 'Snowball could not send this yet. Try again, or reach us on Discord.'
         };
