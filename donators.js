@@ -7,11 +7,13 @@
 
   var currentSort = 'alpha';
   var allMembers = [];
+  var allTimeTotal = null;
 
   fetch('donators.json', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
       if (!data || !Array.isArray(data.tiers)) { showError(); return; }
+      if (typeof data.allTimeTotal === 'number') allTimeTotal = data.allTimeTotal;
       data.tiers.forEach(function (tier) {
         if (tier && Array.isArray(tier.members)) allMembers = allMembers.concat(tier.members);
       });
@@ -105,6 +107,24 @@
       + '<button class="donator-sort-btn" data-sort="recent">Recent</button>'
       + '</div>'
       + '<div class="staff-grid staff-grid-donator">' + cards + '</div>'
+      + '</div>'
+      + renderDonateBanner();
+  }
+
+  function renderDonateBanner() {
+    var totalLine = '';
+    if (typeof allTimeTotal === 'number' && allTimeTotal > 0) {
+      var formatted = allTimeTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      totalLine = '<div class="donate-banner-total">'
+        + '<span class="donate-banner-amount">$' + formatted + '</span>'
+        + '<span class="donate-banner-label">raised all-time by this community</span>'
+        + '</div>';
+    }
+    return '<div class="donate-banner">'
+      + totalLine
+      + '<p class="donate-banner-copy">Every dollar keeps the bots, radar, and alerts running. Want your name on the wall?</p>'
+      + '<a href="https://xtremewx.com/donate" target="_blank" rel="noopener" class="donate-banner-btn">'
+      + '<i class="fas fa-heart" aria-hidden="true"></i> Donate</a>'
       + '</div>';
   }
 

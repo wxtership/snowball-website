@@ -352,6 +352,40 @@
   color: rgba(255,255,255,0.55);
 }
 
+/* ---- All-time total + donate CTA (bottom of the wall) ---- */
+.donate-banner {
+  margin-top: 48px; padding: 44px 32px; text-align: center;
+  background: linear-gradient(135deg, rgba(107,84,245,0.14), rgba(107,84,245,0.04));
+  border: 1px solid rgba(107,84,245,0.28); border-radius: 28px;
+}
+.donate-banner-total { margin-bottom: 18px; }
+.donate-banner-amount {
+  display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(40px, 6vw, 64px); line-height: 1;
+  background: linear-gradient(90deg, var(--purple-400), var(--purple-300));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.donate-banner-label {
+  display: block; margin-top: 10px; font-size: 13px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+}
+.donate-banner-copy {
+  max-width: 480px; margin: 0 auto 24px; font-size: 15px; line-height: 1.6;
+  color: rgba(255,255,255,0.62);
+}
+.donate-banner-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 30px; border-radius: 999px; text-decoration: none;
+  font-weight: 700; font-size: 15px; color: #fff;
+  background: linear-gradient(135deg, #6b54f5, #b46cff);
+  box-shadow: 0 8px 24px rgba(107,84,245,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.donate-banner-btn:hover {
+  transform: translateY(-2px); box-shadow: 0 12px 30px rgba(107,84,245,0.5);
+}
+.donate-banner-btn i { font-size: 14px; }
+
 /* ---- Staff card: full-box blurred + saturated background (banner, else avatar) ---- */
 .staff-card.has-banner { position: relative; overflow: hidden; background: var(--dark-800); }
 .staff-card-bg {
