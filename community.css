@@ -1001,6 +1001,7 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
 .staff-card.coverage-card { border-color: rgba(43,212,212,0.22); }
 .staff-card.coverage-card .staff-card-bg-cov {
   background: linear-gradient(135deg, rgba(43,212,212,0.42), rgba(43,212,212,0.1));
+  filter: none; transform: none;
 }
 .staff-card.coverage-card .staff-avatar {
   border-color: rgba(43,212,212,0.55); box-shadow: 0 0 0 4px rgba(43,212,212,0.12);

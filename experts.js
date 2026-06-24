@@ -42,8 +42,11 @@
   function renderCard(m, role) {
     var name = esc(m.displayName || m.username || 'Expert');
     var avatar = m.avatarURL ? esc(m.avatarURL) : ICON;
+    var bg = m.avatarURL
+      ? '<div class="staff-card-bg" style="background-image:url(\'' + avatar + '\')"></div>'
+      : '<div class="staff-card-bg staff-card-bg-cov"></div>';
     return '<article class="staff-card has-banner coverage-card">' +
-        '<div class="staff-card-bg staff-card-bg-cov"></div>' +
+        bg +
         '<img class="staff-avatar" src="' + avatar + '" alt="">' +
         '<span class="staff-name">' + name + '</span>' +
       '</article>';
