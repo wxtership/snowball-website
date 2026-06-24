@@ -1,11 +1,10 @@
 /* Fetches donators.json (published by Snowball's /moderation donatorsync) and renders
-   current Donator-role members with sorting options and donation amount pills. */
+   current Donator-role members, most-recent donation first, with amount + date pills. */
 (function () {
   var root = document.getElementById('donator-roster');
   if (!root) return;
   if (!window.fetch) { showError(); return; }
 
-  var currentSort = 'alpha';
   var allMembers = [];
   var allTimeTotal = null;
 
@@ -22,43 +21,17 @@
     })
     .catch(function () { showError(); });
 
-  function getSorted(sort) {
-    var arr = allMembers.slice();
-    if (sort === 'amount') {
-      arr.sort(function (a, b) {
-        var av = typeof a.amount === 'number' ? a.amount : -1;
-        var bv = typeof b.amount === 'number' ? b.amount : -1;
-        return bv - av;
-      });
-    } else if (sort === 'recent') {
-      arr.sort(function (a, b) {
-        var at = a.donatedAt ? new Date(a.donatedAt).getTime() : 0;
-        var bt = b.donatedAt ? new Date(b.donatedAt).getTime() : 0;
-        if (bt !== at) return bt - at;
-        // tie-break undated members alphabetically so the bottom block is stable
-        var an = (a.displayName || a.username || '').toLowerCase();
-        var bn = (b.displayName || b.username || '').toLowerCase();
-        return an < bn ? -1 : an > bn ? 1 : 0;
-      });
-    } else {
-      arr.sort(function (a, b) {
-        var an = (a.displayName || a.username || '').toLowerCase();
-        var bn = (b.displayName || b.username || '').toLowerCase();
-        return an < bn ? -1 : an > bn ? 1 : 0;
-      });
-    }
-    return arr;
-  }
-
-  function applySort(sort) {
-    currentSort = sort;
-    document.querySelectorAll('.donator-sort-btn').forEach(function (btn) {
-      btn.classList.toggle('active', btn.dataset.sort === sort);
+  // Most-recent donation first; donors with no recorded date sink to the bottom,
+  // tie-broken alphabetically so that block stays stable.
+  function getSorted() {
+    return allMembers.slice().sort(function (a, b) {
+      var at = a.donatedAt ? new Date(a.donatedAt).getTime() : 0;
+      var bt = b.donatedAt ? new Date(b.donatedAt).getTime() : 0;
+      if (bt !== at) return bt - at;
+      var an = (a.displayName || a.username || '').toLowerCase();
+      var bn = (b.displayName || b.username || '').toLowerCase();
+      return an < bn ? -1 : an > bn ? 1 : 0;
     });
-    var grid = root.querySelector('.staff-grid-donator');
-    if (!grid) return;
-    var sorted = getSorted(sort);
-    grid.innerHTML = sorted.map(function (m, i) { return renderCard(m, i + 1, sort); }).join('');
   }
 
   function preloadThenRender(members) {
@@ -71,10 +44,7 @@
     function render() {
       if (done) return; done = true;
       root.classList.add('animate-in');
-      root.innerHTML = renderWall(getSorted(currentSort), currentSort);
-      root.querySelectorAll('.donator-sort-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () { applySort(btn.dataset.sort); });
-      });
+      root.innerHTML = renderWall(getSorted());
     }
     if (!remaining) { render(); return; }
     urls.forEach(function (u) {
@@ -95,17 +65,12 @@
     root.innerHTML = '<p class="staff-empty">No donators are synced yet. Check back soon.</p>';
   }
 
-  function renderWall(members, sort) {
-    var cards = members.map(function (m, i) { return renderCard(m, i + 1, sort); }).join('');
+  function renderWall(members) {
+    var cards = members.map(function (m, i) { return renderCard(m, i + 1); }).join('');
     return '<div class="staff-tier">'
       + '<div class="staff-tier-title" style="--i:0">'
       + '<img src="assets/donatechat.png" class="tier-img-icon" alt="" aria-hidden="true">'
       + 'Donators</div>'
-      + '<div class="donator-sort-bar">'
-      + '<button class="donator-sort-btn active" data-sort="alpha">Alphabetical</button>'
-      + '<button class="donator-sort-btn" data-sort="amount">Most Donated</button>'
-      + '<button class="donator-sort-btn" data-sort="recent">Recent</button>'
-      + '</div>'
       + '<div class="staff-grid staff-grid-donator">' + cards + '</div>'
       + '</div>'
       + renderDonateBanner();
@@ -128,7 +93,7 @@
       + '</div>';
   }
 
-  function renderCard(m, i, sort) {
+  function renderCard(m, i) {
     var name = esc(m.displayName || m.username || 'Member');
     var handle = m.username ? '@' + esc(m.username) : '';
     var avatar = safeUrl(m.avatar) || 'assets/snowball-logo-transparent-small.png';
@@ -140,7 +105,7 @@
       ? '<span class="donator-amount-pill">$' + m.amount.toFixed(2) + '</span>'
       : '';
     var datePill = '';
-    if (sort === 'recent' && m.donatedAt) {
+    if (m.donatedAt) {
       var d = new Date(m.donatedAt);
       var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
       datePill = '<span class="donator-date-pill">Donated ' + months[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear() + '</span>';

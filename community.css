@@ -315,27 +315,6 @@
   filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
 }
 
-/* ---- Donator sort bar ---- */
-.donator-sort-bar {
-  display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap;
-}
-.donator-sort-btn {
-  display: inline-flex; align-items: center;
-  padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6);
-  font: inherit; font-size: 12px; font-weight: 600;
-  letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-}
-.donator-sort-btn:hover {
-  background: rgba(107,84,245,0.14); border-color: rgba(107,84,245,0.35);
-  color: rgba(255,255,255,0.9);
-}
-.donator-sort-btn.active {
-  background: rgba(107,84,245,0.22); border-color: rgba(107,84,245,0.5);
-  color: #fff;
-}
-
 /* ---- Donator amount pill (always shown on each card) ---- */
 .donator-amount-pill {
   position: relative; z-index: 1; margin-top: 10px;
