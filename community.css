@@ -145,7 +145,7 @@
   box-shadow: 0 0 0 4px rgba(107,84,245,0.12);
 }
 .form-field ::placeholder { color: rgba(255,255,255,0.32); }
-.form-check { display: flex; align-items: center; gap: 10px; margin: 2px 0 12px; }
+.form-check { display: flex; align-items: center; gap: 10px; margin: 2px 0 22px; }
 .form-check input { width: 17px; height: 17px; accent-color: var(--purple-500); }
 .form-submit { width: fit-content; }
 .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
@@ -202,6 +202,8 @@
   max-width: 100%; overflow-wrap: anywhere; word-break: break-word;
 }
 .appeal-copy { margin: 0 0 24px; color: rgba(255,255,255,0.58); line-height: 1.7; }
+#appeal-login { margin-top: 22px; margin-bottom: 12px; }
+#appeal-gate .form-status { margin-top: 0; }
 .appeal-account {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   margin-bottom: 22px; padding: 12px 14px; border-radius: 16px;
@@ -261,7 +263,6 @@
 }
 .community-cta .section-title { margin-bottom: 12px; }
 .community-cta .section-body { margin: 0 auto 28px; }
-.contact-followup { margin-top: 76px; }
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
