@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T04:54:55.338Z",
+  "updatedAt": "2026-06-24T05:02:32.325Z",
   "updatedBy": {
     "id": "system",
     "tag": "manual-trigger"
@@ -23,8 +23,8 @@
           "banner": null,
           "accentColor": "#ffffff",
           "joinedAt": "2026-04-28T12:25:57.923Z",
-          "amount": null,
-          "donatedAt": null
+          "amount": 1,
+          "donatedAt": "2025-06-22T00:00:00.000Z"
         },
         {
           "id": "762538324615102476",
@@ -332,7 +332,7 @@
           "accentColor": "#ffc400",
           "joinedAt": "2025-08-24T04:48:18.443Z",
           "amount": 0.99,
-          "donatedAt": null
+          "donatedAt": "2026-04-20T00:00:00.000Z"
         },
         {
           "id": "858386183603617874",
