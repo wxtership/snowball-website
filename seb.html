@@ -522,28 +522,39 @@ html, body { overflow-x: hidden; max-width: 100%; }
 </div>
 
 <div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
-    <div class="mobile-flat-panel">
-        <p class="mobile-section-label">Community</p>
-        <div class="mobile-clean-list">
-            <a href="staff.html" class="clean-link"><div class="icon-box"><i class="fas fa-users"></i></div><span>Staff</span></a>
-            <a href="donators.html" class="clean-link"><div class="icon-box"><i class="fas fa-heart"></i></div><span>Donators</span></a>
-            <a href="about.html" class="clean-link"><div class="icon-box"><i class="fas fa-circle-info"></i></div><span>About</span></a>
-            <a href="coverage-experts.html" class="clean-link"><div class="icon-box"><i class="fas fa-tower-broadcast"></i></div><span>Coverage Experts</span></a>
-            <a href="https://discord.gg/xtremeweather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-discord"></i></div><span>Discord</span></a>
-            <a href="https://x.com/joinxtremewx" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-x-twitter"></i></div><span>X / Twitter</span></a>
-            <a href="https://tiktok.com/@xtreme_weather" target="_blank" class="clean-link"><div class="icon-box"><i class="fab fa-tiktok"></i></div><span>TikTok</span></a>
+    <div class="mobile-view main-view" id="sb-mobile-main-view">
+        <div class="mobile-centered-content">
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('socials')">Socials<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
+            <a href="index.html" class="mobile-big-link">Snowball</a>
         </div>
-        <p class="mobile-section-label">Information</p>
-        <div class="mobile-clean-list">
-            <a href="charter.html" class="clean-link"><div class="icon-box"><i class="fas fa-scroll"></i></div><span>Charter</span></a>
-            <a href="privacy.html" class="clean-link"><div class="icon-box"><i class="fas fa-user-shield"></i></div><span>Privacy Policy</span></a>
-            <a href="terms.html" class="clean-link"><div class="icon-box"><i class="fas fa-file-contract"></i></div><span>Terms of Service</span></a>
-            <a href="contact.html" class="clean-link"><div class="icon-box"><i class="fas fa-envelope"></i></div><span>Contact</span></a>
-            <a href="ban-appeal.html" class="clean-link"><div class="icon-box"><i class="fas fa-gavel"></i></div><span>Ban Appeal</span></a>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-community">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i> Back</button>
+        <div class="mobile-centered-content">
+            <a href="staff.html" class="mobile-big-link">Staff</a>
+            <a href="donators.html" class="mobile-big-link">Donators</a>
+            <a href="about.html" class="mobile-big-link">About</a>
+            <a href="coverage-experts.html" class="mobile-big-link">Coverage Experts</a>
         </div>
-        <p class="mobile-section-label">Snowball</p>
-        <div class="mobile-clean-list">
-            <a href="index.html" class="clean-link"><div class="icon-box"><i class="fas fa-robot"></i></div><span>Snowball Bot</span></a>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-information">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i> Back</button>
+        <div class="mobile-centered-content">
+            <a href="charter.html" class="mobile-big-link">Charter</a>
+            <a href="privacy.html" class="mobile-big-link">Privacy Policy</a>
+            <a href="terms.html" class="mobile-big-link">Terms of Service</a>
+            <a href="contact.html" class="mobile-big-link">Contact</a>
+            <a href="ban-appeal.html" class="mobile-big-link">Ban Appeal</a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-socials">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i> Back</button>
+        <div class="mobile-centered-content">
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="mobile-big-link">Discord</a>
+            <a href="https://x.com/joinxtremewx" target="_blank" class="mobile-big-link">X / Twitter</a>
+            <a href="https://tiktok.com/@xtreme_weather" target="_blank" class="mobile-big-link">TikTok</a>
         </div>
     </div>
 </div>

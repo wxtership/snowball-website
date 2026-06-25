@@ -1,4 +1,4 @@
-/* Shared navbar logic — desktop mega-menu hover + flat mobile menu. */
+/* Shared navbar logic — desktop mega-menu hover + sub-view mobile menu. */
 
 // ---- Desktop mega-menu hover ------------------------------------------------
 document.querySelectorAll('.has-dropdown[data-menu]').forEach(function (item) {
@@ -25,7 +25,55 @@ document.querySelectorAll('.has-dropdown[data-menu]').forEach(function (item) {
   megaMenu.addEventListener('mouseleave', hide);
 });
 
-// ---- Mobile menu ------------------------------------------------------------
+// ---- Mobile sub-view menu ---------------------------------------------------
+var sbSubStack = [];
+
+function sbOpenSubMenu(name) {
+  var overlay = document.getElementById('sb-mobile-menu');
+  var target = document.getElementById('sb-sub-' + name);
+  if (!overlay || !target) return;
+
+  // Park any currently active sub-view
+  var currentSub = overlay.querySelector('.sub-view.active');
+  if (currentSub) {
+    currentSub.classList.remove('active');
+    currentSub.classList.add('parked');
+    sbSubStack.push(currentSub);
+  }
+
+  overlay.classList.add('sub-active');
+  target.classList.add('active');
+  target.classList.remove('parked');
+}
+
+function sbCloseSubMenu() {
+  var overlay = document.getElementById('sb-mobile-menu');
+  if (!overlay) return;
+
+  var currentSub = overlay.querySelector('.sub-view.active');
+  if (currentSub) {
+    currentSub.classList.remove('active');
+  }
+
+  var prev = sbSubStack.pop();
+  if (prev) {
+    prev.classList.remove('parked');
+    prev.classList.add('active');
+  } else {
+    overlay.classList.remove('sub-active');
+  }
+}
+
+function sbResetSubMenus() {
+  var overlay = document.getElementById('sb-mobile-menu');
+  if (!overlay) return;
+  overlay.classList.remove('sub-active');
+  overlay.querySelectorAll('.sub-view').forEach(function (v) {
+    v.classList.remove('active', 'parked');
+  });
+  sbSubStack = [];
+}
+
 function sbToggleMobileMenu() {
   var menu = document.getElementById('sb-mobile-menu');
   var btn = document.getElementById('mobile-trigger');
@@ -33,10 +81,13 @@ function sbToggleMobileMenu() {
   var open = menu.classList.toggle('active');
   if (btn) btn.classList.toggle('active', open);
   document.body.classList.toggle('sb-mobile-menu-open', open);
+  if (!open) sbResetSubMenus();
 }
 
 function sbCloseMobileMenu(e) {
-  if (e.target === document.getElementById('sb-mobile-menu')) sbToggleMobileMenu();
+  if (e.target === document.getElementById('sb-mobile-menu')) {
+    sbToggleMobileMenu();
+  }
 }
 
 window.addEventListener('resize', function () {

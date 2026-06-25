@@ -932,6 +932,24 @@ body {
     pointer-events: none;
 }
 
+.mobile-back-btn {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    transition: color 0.2s;
+}
+.mobile-back-btn:active { color: white; }
+
 .mobile-units-pill {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
