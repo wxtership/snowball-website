@@ -4846,6 +4846,32 @@ body.scroll-locked {
 .footer-wrn-row .footer-wrn { max-width: none; margin-top: 0; flex-direction: row; gap: 10px; align-items: center; }
 .footer-wrn-row .footer-wrn-logo { width: 70px; }
 
+/* Centered WRN + donate row (all standard-footer pages). */
+.footer-center-row {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.footer-center-row .footer-wrn {
+    max-width: none; margin-top: 0;
+    flex-direction: row; gap: 10px; align-items: center;
+}
+.footer-center-row .footer-wrn-logo { width: 70px; }
+.footer-donate-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 8px 22px; border-radius: 999px;
+    background: rgba(107,84,245,0.15); border: 1px solid rgba(107,84,245,0.35);
+    color: var(--purple-300); font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.footer-donate-btn:hover {
+    background: rgba(107,84,245,0.28); border-color: rgba(107,84,245,0.6); color: #fff;
+}
+.footer-donate-btn i { font-size: 12px; }
+
 /* Donate gets an accent treatment within the footer link pill. */
 .footer-link.is-donate {
     color: #b9a8ff;
