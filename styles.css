@@ -3404,9 +3404,9 @@ body {
 }
 
 .footer-logo {
-    width: 54px;
-    height: 54px;
-    border-radius: 14px;
+    width: 68px;
+    height: 68px;
+    border-radius: 16px;
 }
 
 .footer-brand-text {
@@ -4148,7 +4148,7 @@ body {
     .footer-links {
         flex-wrap: wrap;
         justify-content: center;
-        width: 100%;
+        width: auto;
         gap: 1.2rem;
         padding: 1rem 1.5rem;
         border-radius: 50px;
