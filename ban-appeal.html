@@ -34,11 +34,11 @@
         </div>
         <div class="nav-center">
             <ul class="nav-links">
-                <li class="has-dropdown" data-menu="weather">
-                    <a href="#">Weather <i class="fas fa-chevron-down dropdown-arrow"></i></a>
-                </li>
                 <li class="has-dropdown" data-menu="community">
                     <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="information">
+                    <a href="#">Information <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
                 <li>
                     <a href="index.html">Snowball</a>
@@ -66,23 +66,6 @@
     </div>
 </div>
 
-<div class="mega-menu" id="weather-mega-menu">
-    <div class="mega-menu-container">
-        <div class="mega-column">
-            <div class="mega-header">Forecasts</div>
-            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-sun"></i><div class="mega-item-text"><span class="title">Now</span><span class="desc">Current conditions</span></div></a>
-            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-clock"></i><div class="mega-item-text"><span class="title">Hourly</span><span class="desc">Next 24 hours</span></div></a>
-            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-calendar-alt"></i><div class="mega-item-text"><span class="title">10-Day</span><span class="desc">Long range outlook</span></div></a>
-        </div>
-        <div class="mega-column">
-            <div class="mega-header">Maps &amp; Data</div>
-            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Radar</span><span class="desc">Live doppler imagery</span></div></a>
-            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-video"></i><div class="mega-item-text"><span class="title">Cameras</span><span class="desc">Traffic cams &amp; feeds</span></div></a>
-            <a href="https://xtremewx.com/new" class="mega-item"><i class="fas fa-newspaper"></i><div class="mega-item-text"><span class="title">News</span><span class="desc">Storm reports</span></div></a>
-        </div>
-    </div>
-</div>
-
 <div class="mega-menu" id="community-mega-menu">
     <div class="mega-menu-container">
         <div class="mega-column">
@@ -93,15 +76,7 @@
             <a href="contact.html" class="mega-item"><i class="fas fa-envelope"></i><div class="mega-item-text"><span class="title">Contact</span><span class="desc">Get in touch</span></div></a>
         </div>
         <div class="mega-column">
-            <div class="mega-header">Policies</div>
-            <a href="charter.html" class="mega-item"><i class="fas fa-scroll"></i><div class="mega-item-text"><span class="title">Charter</span><span class="desc">Community standards</span></div></a>
-            <a href="coverage-experts.html" class="mega-item"><i class="fas fa-tower-broadcast"></i><div class="mega-item-text"><span class="title">Coverage Experts</span><span class="desc">Who runs coverage</span></div></a>
-            <a href="privacy.html" class="mega-item"><i class="fas fa-user-shield"></i><div class="mega-item-text"><span class="title">Privacy Policy</span><span class="desc">Your data &amp; rights</span></div></a>
-            <a href="terms.html" class="mega-item"><i class="fas fa-file-contract"></i><div class="mega-item-text"><span class="title">Terms of Service</span><span class="desc">Rules of use</span></div></a>
-        </div>
-        <div class="mega-column">
-            <div class="mega-header">More</div>
-            <a href="ban-appeal.html" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Request a review</span></div></a>
+            <div class="mega-header">Connect</div>
             <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Discord</span><span class="desc">Join the community</span></div></a>
             <a href="https://x.com/joinxtremewx" target="_blank" class="mega-item"><i class="fab fa-x-twitter"></i><div class="mega-item-text"><span class="title">X / Twitter</span><span class="desc">Live updates</span></div></a>
             <a href="https://tiktok.com/@xtreme_weather" target="_blank" class="mega-item"><i class="fab fa-tiktok"></i><div class="mega-item-text"><span class="title">TikTok</span><span class="desc">Behind the scenes</span></div></a>
@@ -109,11 +84,27 @@
     </div>
 </div>
 
+<div class="mega-menu" id="information-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Policies</div>
+            <a href="charter.html" class="mega-item"><i class="fas fa-scroll"></i><div class="mega-item-text"><span class="title">Charter</span><span class="desc">Community standards</span></div></a>
+            <a href="coverage-experts.html" class="mega-item"><i class="fas fa-tower-broadcast"></i><div class="mega-item-text"><span class="title">Coverage Experts</span><span class="desc">Who runs coverage</span></div></a>
+            <a href="privacy.html" class="mega-item"><i class="fas fa-user-shield"></i><div class="mega-item-text"><span class="title">Privacy Policy</span><span class="desc">Your data &amp; rights</span></div></a>
+            <a href="terms.html" class="mega-item"><i class="fas fa-file-contract"></i><div class="mega-item-text"><span class="title">Terms of Service</span><span class="desc">Rules of use</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Support</div>
+            <a href="ban-appeal.html" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Request a review</span></div></a>
+        </div>
+    </div>
+</div>
+
 <div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
     <div class="mobile-view main-view" id="sb-mobile-main-view">
         <div class="mobile-centered-content">
-            <button class="mobile-big-link" onclick="sbOpenSubMenu('weather')">Weather <i class="fas fa-chevron-right tiny-arrow"></i></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community <i class="fas fa-chevron-right tiny-arrow"></i></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information <i class="fas fa-chevron-right tiny-arrow"></i></button>
             <button class="mobile-big-link" onclick="location.href='index.html'">Snowball</button>
         </div>
     </div>
