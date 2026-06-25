@@ -190,7 +190,7 @@
 
         <div class="legal-section" id="snowball">
           <h2><span class="legal-num">04</span> Snowball: what it collects</h2>
-          <p>Snowball includes weather tools, AI conversation features, moderation tools, support tickets, community features, music and radio playback, leveling and economy features, and optional integrations. Snowball is not a hidden surveillance tool: in general it processes Discord content when you invoke a feature, when a server enables a feature that depends on Discord events, or when operators need records to run moderation, support, safety, or debugging. Expand a category to see the detail.</p>
+          <p>Snowball includes weather tools, AI conversation features, moderation tools, support tickets, community features, leveling, economy, and more. In general it processes Discord content when you invoke a feature, when a server enables a feature that depends on Discord events, or when we need records to run moderation, support, safety, or debugging. Expand a category to see the detail.</p>
 
           <div class="faq">
             <div class="faq-item">
@@ -244,20 +244,14 @@
               </div></div></div>
             </div>
             <div class="faq-item">
-              <button class="faq-q" aria-expanded="false"><span>H. Music, radio, media &amp; uploads</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
-                <p style="margin:0;">Voice-channel participation needed to play audio; music search text; direct media URLs you supply; uploaded audio files; queue metadata (title, artist, thumbnail, requester ID); and temporary downloaded media files. Temporary files are created locally during some playback flows and are generally deleted after playback ends, when stopped, or when cleanup runs.</p>
-              </div></div></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q" aria-expanded="false"><span>I. Donations &amp; payment-related information</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <button class="faq-q" aria-expanded="false"><span>H. Donations &amp; payment-related information</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
               <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
                 <p style="margin:0 0 8px;">When donation integrations are enabled: Stripe webhook event IDs, donation amount, donor email from Stripe, payment/transaction identifiers, receipt URLs, an optional Discord username from Stripe custom fields, and limited Discord member search results used to match a donor to a member.</p>
                 <p style="margin:0;">Donor email is logged to server logs and is not posted publicly to Discord. Snowball does not receive or store full card numbers, full bank details, or other full payment credentials, those are handled by Stripe.</p>
               </div></div></div>
             </div>
             <div class="faq-item">
-              <button class="faq-q" aria-expanded="false"><span>J. Operational &amp; error logging</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+              <button class="faq-q" aria-expanded="false"><span>I. Operational &amp; error logging</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
               <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
                 <p style="margin:0;">Technical and diagnostic data such as error messages, stack traces, command/interaction context, identifiers in error output, and service failures. Certain error logs can be forwarded to a Discord error-log channel used by operators and may include identifiers or content from the failing request. These logs are for troubleshooting, abuse prevention, and reliability, not advertising or profiling.</p>
               </div></div></div>
@@ -265,7 +259,7 @@
           </div>
 
           <h3>How we use information</h3>
-          <p>We use information to provide weather, AI, moderation, support, music, economy, and utility features; identify the right user, server, channel, or ticket; respond to mentions, replies, commands, buttons, modals, and menus; maintain short-term AI context; store moderation and support records; operate public features like starboard, birthdays, QOTD, and donation announcements; enforce cooldowns, limits, and abuse-prevention; and troubleshoot errors. We do not sell Discord API data or share Discord user data with advertising networks or data brokers.</p>
+          <p>We use information to provide weather, AI, moderation, support, economy, and utility features; identify the right user, server, channel, or ticket; respond to mentions, replies, commands, buttons, modals, and menus; maintain short-term AI context; store moderation and support records; operate public features like starboard, birthdays, QOTD, and donation announcements; enforce cooldowns, limits, and abuse-prevention; and troubleshoot errors. We do not sell Discord API data or share Discord user data with advertising networks or data brokers.</p>
         </div>
 
         <div class="legal-section" id="retention">
@@ -284,7 +278,6 @@
                   <tr><td>AI usage logs</td><td>Automatically purged after 48 hours.</td></tr>
                   <tr><td>AI limit-card markers</td><td>Scoped to the day created; cleared once no longer needed.</td></tr>
                   <tr><td>Reply tracking &amp; personality prefs</td><td>Kept until you change or remove them, or you request deletion.</td></tr>
-                  <tr><td>In-memory reply cache</td><td>Expires after 30 minutes.</td></tr>
                 </table></div>
               </div></div></div>
             </div>
@@ -295,7 +288,7 @@
                   <tr><th>Record type</th><th>Retention</th></tr>
                   <tr><td>Moderation cases</td><td>Kept until deleted, replaced, or no longer needed for moderation, safety, legal, or operational reasons.</td></tr>
                   <tr><td>Ticket metadata</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
-                  <tr><td>Ticket transcripts</td><td>Generated from Discord thread history on request; not stored in a permanent transcript database. Discord may retain the underlying messages until deleted.</td></tr>
+                  <tr><td>Ticket transcripts</td><td>Generated on request and delivered via Discord. Discord may retain the underlying messages until deleted.</td></tr>
                   <tr><td>Ratings, escalation, close reasons</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
                   <tr><td>Spotter apps &amp; reward submissions</td><td>Kept until you request deletion or it’s no longer needed.</td></tr>
                   <tr><td>Failed/removed ticket records</td><td>Some rows are deleted automatically if creation fails or a tracked thread is deleted.</td></tr>
@@ -336,17 +329,6 @@
                 </table></div>
               </div></div></div>
             </div>
-            <div class="faq-item">
-              <button class="faq-q" aria-expanded="false"><span>F. Pollers, caches &amp; temp files</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer">
-                <div class="legal-table-wrap"><table class="legal-table">
-                  <tr><th>Record type</th><th>Retention</th></tr>
-                  <tr><td>Temporary in-memory caches</td><td>Expire after roughly 15 minutes.</td></tr>
-                  <tr><td>Poller seen-state JSON files</td><td>Retain identifiers for roughly 24 to 48 hours depending on the poller TTL.</td></tr>
-                  <tr><td>Temporary music/media files</td><td>Generally deleted after playback or when cleanup runs.</td></tr>
-                </table></div>
-              </div></div></div>
-            </div>
           </div>
 
           <h3>Deletion requests</h3>
@@ -355,7 +337,7 @@
 
         <div class="legal-section" id="sharing">
           <h2><span class="legal-num">06</span> Sharing &amp; external services</h2>
-          <p>We share data only as needed to operate, process payments, provide external data sources, support media features, or comply with law.</p>
+          <p>We share data only as needed to operate the Services, process payments, provide external data, or comply with law.</p>
           <div class="faq">
             <div class="faq-item">
               <button class="faq-q" aria-expanded="false"><span>Discord</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
@@ -372,14 +354,6 @@
             <div class="faq-item">
               <button class="faq-q" aria-expanded="false"><span>Weather, geocoding &amp; alert services</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
               <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">We may send limited request data (locations, coordinates, URLs, or queries) to OpenWeatherMap, OpenStreetMap Nominatim, api.weather.gov, Iowa State Mesonet, SPC, WPC, NHC, Instatus, Spotter Network, and ACRCloud to geocode, retrieve forecasts or alerts, monitor status, and identify radio streams. These services generally receive only the request data needed to answer.</p></div></div></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q" aria-expanded="false"><span>Media &amp; music services</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">We may send request data, media links, or lookup info to Spotify, Deezer, SoundCloud, Apple Music endpoints, and yt-dlp and source hosts connected to a media URL you provide, to resolve tracks, retrieve metadata, validate links, and play or download media.</p></div></div></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q" aria-expanded="false"><span>Operator-controlled infrastructure</span><i class="fas fa-chevron-down" aria-hidden="true"></i></button>
-              <div class="faq-a-wrap"><div class="faq-a"><div class="faq-answer"><p style="margin:0;">Snowball also communicates with our own supporting infrastructure, including a banner service, secure weather and camera proxy services, and xtremewx.com service endpoints, which may receive request data needed to return weather products, camera content, images, or other outputs.</p></div></div></div>
             </div>
           </div>
         </div>
@@ -409,7 +383,7 @@
             <li><strong>Deletion:</strong> request deletion of stored data, subject to the limitations above.</li>
             <li><strong>AI opt-out:</strong> use Snowball's AI controls to disable AI replies to you.</li>
             <li><strong>Birthday removal:</strong> use <code>/birthday remove</code> to delete your birthday entry.</li>
-            <li><strong>Avoid optional features:</strong> you may choose not to use AI chat, music uploads, suggestions, QOTD, or donation-linked identification fields.</li>
+            <li><strong>Avoid optional features:</strong> you may choose not to use AI chat, suggestions, QOTD, or donation-linked identification fields.</li>
             <li><strong>Server-level choices:</strong> server owners/admins choose whether to invite and configure Snowball, and some features are limited to specific servers, channels, or roles.</li>
           </ul>
           <div class="legal-callout note">
@@ -420,8 +394,7 @@
 
         <div class="legal-section">
           <h2><span class="legal-num">09</span> Security &amp; incident handling</h2>
-          <p>We use a mix of technical and operational controls, including database-backed storage for persistent records, Discord permission-gated commands for staff-only actions, ephemeral replies in some sensitive flows, outbound URL restrictions and private-host blocking for HTTP fetches, Stripe webhook signature verification, and role-based access for some moderation, support, and review features. Payment processing is handled by Stripe rather than us storing full payment credentials.</p>
-          <p>This policy does not claim encryption at rest, backup encryption, formal key-rotation, or a specific breach-notification timeline unless those controls are separately documented and published. If we confirm a security incident affecting your data, we may investigate, contain it, review logs and impacted systems, and make notifications where required or appropriate.</p>
+          <p>We take reasonable technical and operational precautions to protect the data we hold. Payment processing is handled by Stripe rather than us storing full payment credentials. If we confirm a security incident affecting your data, we'll investigate, contain it, and make notifications where required or appropriate.</p>
         </div>
 
         <div class="legal-section">
