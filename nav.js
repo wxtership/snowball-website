@@ -101,4 +101,16 @@ window.addEventListener('resize', function () {
     var menu = document.getElementById('sb-mobile-menu');
     if (menu && menu.classList.contains('active')) sbToggleMobileMenu();
   }
+  fitFooterWordmark();
 });
+
+// ---- Footer wordmark fit-to-width ------------------------------------------
+function fitFooterWordmark() {
+  var el = document.querySelector('.footer-wordmark');
+  if (!el) return;
+  el.style.fontSize = '400px';
+  var available = el.parentElement.clientWidth;
+  var ratio = (available * 0.92) / el.scrollWidth;
+  el.style.fontSize = Math.floor(400 * ratio) + 'px';
+}
+fitFooterWordmark();
