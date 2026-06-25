@@ -993,17 +993,25 @@ body {
 .mobile-sub-item:last-child { border-bottom: none; }
 .mobile-sub-item:active { opacity: 0.5; }
 .mobile-sub-icon {
-    width: 2.4rem;
-    height: 2.4rem;
-    min-width: 2.4rem;
+    position: relative;
+    width: 2.6rem;
+    height: 2.6rem;
+    min-width: 2.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
-    background: rgba(107,84,245,0.1);
-    border: 1px solid rgba(107,84,245,0.18);
+    border-radius: 50%;
+    background: rgba(107,84,245,0.12);
+    border: none;
     color: var(--purple-300);
     font-size: 0.85rem;
+}
+.mobile-sub-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('assets/othericons/w.svg') center/contain no-repeat;
+    pointer-events: none;
 }
 .mobile-sub-item-text {
     display: flex;
