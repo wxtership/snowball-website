@@ -938,7 +938,7 @@ body {
 .mobile-back-btn {
     position: absolute;
     top: calc(67px + 6px);
-    left: 1.5rem;
+    left: 1.75rem;
     width: 44px;
     height: 44px;
     border-radius: 50%;
