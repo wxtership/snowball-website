@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T19:44:51.169Z",
+  "updatedAt": "2026-06-25T02:16:41.783Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7310
+    "memberCount": 7352
   },
   "tiers": [
     {
@@ -72,7 +72,7 @@
           "displayName": "->Nave(PA)<-",
           "avatar": "https://cdn.discordapp.com/avatars/830201253005885482/61b840ad2617c85640227c46fa1df361.png?size=256",
           "banner": null,
-          "accentColor": null
+          "accentColor": "#ff0000"
         },
         {
           "id": "405757488487464961",
@@ -109,7 +109,7 @@
         {
           "id": "1298379997689679966",
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Paris, FR)",
+          "displayName": "Gabriel Kramp (Central MA)",
           "avatar": "https://cdn.discordapp.com/avatars/1298379997689679966/f0c410e13555832327ffd29a27321978.png?size=256",
           "banner": null,
           "accentColor": null
@@ -143,7 +143,72 @@
     {
       "key": "trial",
       "label": "Trial Staff",
-      "members": []
+      "members": [
+        {
+          "id": "778809059498786826",
+          "username": "2hottyscotty",
+          "displayName": "2 Hotty Scotty (042129)",
+          "avatar": "https://cdn.discordapp.com/avatars/778809059498786826/16f6575b548d6cc71f13f337b5397456.png?size=256",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "796835065287934042",
+          "username": "caleb_dont",
+          "displayName": "caleb_dont (Round Rock, TX)",
+          "avatar": "https://cdn.discordapp.com/avatars/796835065287934042/57880466deb4ceb813a3aee45b4ef75e.png?size=256",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "810308507378516008",
+          "username": "clark_la",
+          "displayName": "Clark",
+          "avatar": "https://cdn.discordapp.com/embed/avatars/3.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "1324763970271314023",
+          "username": "dynafolf",
+          "displayName": "DynaFolf (Pike County, PA)",
+          "avatar": "https://cdn.discordapp.com/avatars/1324763970271314023/df8ed6d3140ebc954bffdbfe76a86dd0.png?size=256",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "1110754991091748905",
+          "username": "theexiled6225",
+          "displayName": "𝕱𝖊𝖆𝖗 𝕴𝖓𝖈𝖆𝖗𝖓𝖆𝖙𝖊",
+          "avatar": "https://cdn.discordapp.com/avatars/1110754991091748905/bd2aeb97b1a280b0e6f0afd7c9a31581.png?size=256",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "1248427007390384199",
+          "username": "cajuninthesouth8075",
+          "displayName": "LafayetteAreaWXシ",
+          "avatar": "https://cdn.discordapp.com/avatars/1248427007390384199/8d22b8d09462e496e53813e442d88e2e.png?size=256",
+          "banner": null,
+          "accentColor": "#ffffff"
+        },
+        {
+          "id": "877009401423200296",
+          "username": "weatherlord_wx",
+          "displayName": "Max (Massachusetts)",
+          "avatar": "https://cdn.discordapp.com/avatars/877009401423200296/7bf72e4a157a0f9d32e0ab7b867d25b3.png?size=256",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "948372386347102209",
+          "username": "last_one_remaining",
+          "displayName": "RemainingWX",
+          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/948372386347102209/avatars/d2247637bee2cd4a51c993789ad6a3ca.png?size=256",
+          "banner": null,
+          "accentColor": null
+        }
+      ]
     }
   ]
 }
