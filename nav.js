@@ -105,8 +105,8 @@ window.addEventListener('resize', function () {
 });
 
 // ---- Footer wordmark fit-to-width ------------------------------------------
-// scrollWidth is capped by the parent overflow:hidden, so we measure using a
-// fixed-position off-screen probe that is unaffected by any clipping ancestor.
+// Must run after fonts load — Mustica Pro is wider than the fallback, so
+// measuring before fonts.ready gives a size that's too large.
 function fitFooterWordmark() {
   var el = document.querySelector('.footer-wordmark');
   if (!el) return;
@@ -121,8 +121,13 @@ function fitFooterWordmark() {
   document.body.appendChild(probe);
   var textWidth = probe.offsetWidth;
   document.body.removeChild(probe);
-  var available = el.parentElement.clientWidth;
+  var available = el.clientWidth;
   if (!textWidth || !available) return;
   el.style.fontSize = Math.floor(400 * (available * 0.92 / textWidth)) + 'px';
 }
-fitFooterWordmark();
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(fitFooterWordmark);
+} else {
+  window.addEventListener('load', fitFooterWordmark);
+}
