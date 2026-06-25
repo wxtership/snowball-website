@@ -820,6 +820,8 @@ body {
 
 .mobile-view {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     max-width: 500px;
@@ -837,14 +839,14 @@ body {
 }
 
 .sub-view {
-    transform: translateX(60px);
+    transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
-    padding-top: 100px;
+    padding-top: 5rem;
 }
 
 .mobile-menu-overlay.sub-active .main-view {
-    transform: translateX(-60px) !important;
+    transform: translateX(-100%) !important;
     opacity: 0;
     pointer-events: none;
 }
@@ -855,10 +857,8 @@ body {
     pointer-events: auto;
 }
 
-/* A nested parent sub-view (e.g. Community while Policies is open): slid out to the
-   left, mirroring how .main-view parks, so going deeper reads as a forward push. */
 .sub-view.parked {
-    transform: translateX(-60px);
+    transform: translateX(-100%);
     opacity: 0;
     pointer-events: none;
 }
