@@ -1110,6 +1110,32 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
 .doc-meta-plain b { color: rgba(255,255,255,0.72); font-weight: 600; }
 .doc-meta-plain a { color: inherit; }
 
+/* ---- Legal section scroll-stagger ---- */
+.legal-doc .legal-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity  0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--ls-delay, 0ms),
+    transform 0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--ls-delay, 0ms);
+}
+.legal-doc .legal-section.ls-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .legal-doc .legal-section { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---- Legal doc footer (effective date / version line) ---- */
+.legal-doc-footer {
+  margin-top: 48px; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-size: 12.5px; color: rgba(255,255,255,0.38);
+}
+.legal-doc-footer b { color: rgba(255,255,255,0.55); font-weight: 600; }
+.legal-doc-footer a { color: inherit; text-decoration: none; }
+.legal-doc-footer a:hover { color: rgba(255,255,255,0.6); }
+
 /* The mobile "Policies" opener is a <button> (it opens a nested sub-view), so it
    needs the native button chrome stripped to match the <a> clean-links. */
 button.clean-link {

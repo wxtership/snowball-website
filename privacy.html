@@ -116,25 +116,12 @@
         the Snowball bot, including what we collect, why, how long we keep it, and the choices
         you have.
       </p>
-      <p class="doc-meta-plain"><b>Effective March 31, 2026</b> &middot; Version 1.0 &middot; <a href="mailto:support@xtremewx.com">support@xtremewx.com</a></p>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
       <div class="legal-doc">
-
-        <div class="doc-toc">
-          <a href="#overview">Overview</a>
-          <a href="#server">The Server</a>
-          <a href="#website">The Website</a>
-          <a href="#snowball">Snowball</a>
-          <a href="#retention">Retention</a>
-          <a href="#sharing">Sharing</a>
-          <a href="#ai">AI</a>
-          <a href="#rights">Your Rights</a>
-          <a href="#contact">Contact</a>
-        </div>
 
         <div class="legal-section" id="overview">
           <h2><span class="legal-num">01</span> Overview &amp; scope</h2>
@@ -398,6 +385,10 @@
           <p><strong>Xtreme Weather / BP Technologies</strong><br>Email: <a href="mailto:support@xtremewx.com">support@xtremewx.com</a></p>
         </div>
 
+        <div class="legal-doc-footer">
+          <b>Effective March 31, 2026</b> &middot; Version 1.0 &middot; <a href="mailto:support@xtremewx.com">support@xtremewx.com</a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -454,6 +445,39 @@ document.querySelectorAll('.faq-q').forEach(function (btn) {
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 });
+
+// Stagger-reveal legal sections on scroll
+(function () {
+  var sections = document.querySelectorAll('.legal-doc .legal-section');
+  if (!sections.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    sections.forEach(function (s) { s.classList.add('ls-visible'); });
+    return;
+  }
+  var seen = new Set();
+  var batch = [];
+  var timer = null;
+  function flush() {
+    batch.forEach(function (el, i) {
+      el.style.setProperty('--ls-delay', (i * 75) + 'ms');
+      el.classList.add('ls-visible');
+    });
+    batch = [];
+    timer = null;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !seen.has(e.target)) {
+        seen.add(e.target);
+        batch.push(e.target);
+        io.unobserve(e.target);
+        clearTimeout(timer);
+        timer = setTimeout(flush, 16);
+      }
+    });
+  }, { rootMargin: '0px 0px -32px 0px', threshold: 0.04 });
+  sections.forEach(function (s) { io.observe(s); });
+})();
 </script>
 </body>
 </html>
