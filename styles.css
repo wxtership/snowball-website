@@ -3522,17 +3522,15 @@ body {
 }
 
 .footer-wordmark {
-    font-family: var(--font-display);
-    font-size: clamp(56px, 10.5vw, 170px);
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.045);
-    text-align: center;
-    white-space: nowrap;
-    letter-spacing: -0.02em;
+    position: absolute;
+    top: -30px;
+    left: -40px;
+    font-size: clamp(180px, 26vw, 380px);
+    color: rgba(255, 255, 255, 0.055);
     line-height: 1;
-    margin-top: 1.5rem;
     user-select: none;
     pointer-events: none;
+    transform: rotate(-15deg);
 }
 
 /* Info Section (Bottom Info) */
