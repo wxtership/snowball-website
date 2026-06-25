@@ -800,7 +800,8 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
   margin: 0 0 8px; display: flex; align-items: baseline; gap: 12px;
 }
 .legal-section > h2 .legal-num {
-  font-size: 14px; color: var(--purple-300); font-family: var(--font-body); font-weight: 700;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(18px, 2vw, 24px); color: var(--purple-300);
 }
 .legal-section > p { font-size: 14.5px; line-height: 1.74; color: rgba(255,255,255,0.66); margin: 0 0 14px; }
 .legal-section ul { margin: 0 0 14px; padding-left: 20px; }
