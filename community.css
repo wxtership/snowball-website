@@ -948,18 +948,32 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
   margin: 0 0 6px; font-family: var(--font-display); font-size: 18px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.01em; color: #fff;
 }
-.mode-crit { margin: 0 0 16px; font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.55); }
-.mode-thresholds { width: 100%; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.mode-crit { margin: 0 0 14px; font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.55); }
+.mode-thresholds {
+  width: 100%; display: flex; flex-direction: column; gap: 0; text-align: left;
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;
+}
 .mode-threshold {
-  display: flex; flex-direction: column; gap: 2px;
-  padding: 9px 12px; border-radius: 10px;
-  background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.06);
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  column-gap: 9px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: none; border-radius: 0;
+}
+.mode-threshold:last-child { border-bottom: none; padding-bottom: 0; }
+.mode-threshold::before {
+  content: '✓';
+  grid-row: 1 / 3;
+  color: var(--mode); filter: brightness(1.3);
+  font-size: 14px; font-weight: 800; line-height: 1;
+  padding-top: 3px;
 }
 .mode-threshold .t-label {
   font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--mode); filter: brightness(1.25);
 }
-.mode-threshold .t-value { font-size: 12.5px; line-height: 1.45; color: rgba(255,255,255,0.72); }
+.mode-threshold .t-value { font-size: 12px; line-height: 1.45; color: rgba(255,255,255,0.65); }
 .mode-card.severe   { --mode: #e0556d; }
 .mode-card.winter   { --mode: #5b9dff; }
 .mode-card.tropical { --mode: #3fb96b; }

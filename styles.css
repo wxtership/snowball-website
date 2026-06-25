@@ -4114,9 +4114,8 @@ body {
        ===================================================================== */
     
     .site-footer {
-        padding: 3rem 1.5rem calc(2rem + 80px);
-        padding-bottom: 85px !important;
-        padding-bottom: calc(85px + env(safe-area-inset-bottom, 0px));
+        padding: 3rem 1.5rem 2rem;
+        padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
         text-align: center;
     }
 
