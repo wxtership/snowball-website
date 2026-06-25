@@ -986,9 +986,9 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(107,84,245,0.12);
+    background: rgba(107,84,245,0.22);
     border: none;
-    color: var(--purple-300);
+    color: var(--purple-500);
     font-size: 1.1rem;
 }
 .mobile-sub-icon::after {
@@ -1012,9 +1012,7 @@ body {
     line-height: 1;
 }
 .mobile-sub-item-desc {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.38);
-    line-height: 1.3;
+    display: none;
 }
 
 .mobile-units-pill {
