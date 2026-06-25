@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T20:06:33.211Z",
+  "updatedAt": "2026-06-25T02:15:53.084Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7349
+    "memberCount": 7352
   },
   "tiers": [
     {
