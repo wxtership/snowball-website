@@ -105,12 +105,24 @@ window.addEventListener('resize', function () {
 });
 
 // ---- Footer wordmark fit-to-width ------------------------------------------
+// scrollWidth is capped by the parent overflow:hidden, so we measure using a
+// fixed-position off-screen probe that is unaffected by any clipping ancestor.
 function fitFooterWordmark() {
   var el = document.querySelector('.footer-wordmark');
   if (!el) return;
-  el.style.fontSize = '400px';
+  var cs = getComputedStyle(el);
+  var probe = document.createElement('span');
+  probe.style.cssText = 'position:fixed;top:-9999px;left:-9999px;visibility:hidden;'
+    + 'white-space:nowrap;font-size:400px;'
+    + 'font-family:' + cs.fontFamily + ';'
+    + 'font-weight:' + cs.fontWeight + ';'
+    + 'letter-spacing:' + cs.letterSpacing + ';';
+  probe.textContent = el.textContent;
+  document.body.appendChild(probe);
+  var textWidth = probe.offsetWidth;
+  document.body.removeChild(probe);
   var available = el.parentElement.clientWidth;
-  var ratio = (available * 0.92) / el.scrollWidth;
-  el.style.fontSize = Math.floor(400 * ratio) + 'px';
+  if (!textWidth || !available) return;
+  el.style.fontSize = Math.floor(400 * (available * 0.92 / textWidth)) + 'px';
 }
 fitFooterWordmark();
