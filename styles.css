@@ -937,25 +937,25 @@ body {
 
 .mobile-back-btn {
     position: absolute;
-    top: calc(67px + 10px);
-    left: 2rem;
+    top: calc(67px + 6px);
+    left: 1.5rem;
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
     color: white;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    transition: background 0.2s;
+    transition: all 0.2s ease;
     z-index: 1;
 }
-.mobile-back-btn:hover { background: rgba(255,255,255,0.14); }
-.mobile-back-btn:active { transform: scale(0.9); }
+.mobile-back-btn:hover { background: rgba(255,255,255,0.22); }
+.mobile-back-btn:active { background: rgba(255,255,255,0.25) !important; transform: scale(0.9); }
 
 /* Sub-view item list */
 .mobile-sub-list {
