@@ -474,6 +474,8 @@
 html {
     height: 100%;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -482,8 +484,9 @@ body {
     color: white;
     min-height: 100vh;
     overflow-x: hidden;
-    scrollbar-gutter: stable;
-    overflow-y: scroll;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
 }
 
 /* ==========================================================================
@@ -4648,11 +4651,6 @@ body {
 /* ==========================================================================
    SCROLLBAR & SCROLL LOCK - CLEAN VERSION
    ========================================================================== */
-
-html {
-    overflow-y: scroll;
-    scrollbar-gutter: stable;
-}
 
 body {
     margin: 0;
