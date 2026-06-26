@@ -1637,9 +1637,19 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .home-page #hero.xw-hero-v2 {
-    min-height: auto;
+    min-height: 92vh;
     justify-content: flex-start;
     padding: 150px 24px 64px;
+  }
+
+  .xw-real-radar-bg {
+    mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 96%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 96%);
+  }
+
+  .xw-hero-map {
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 92%);
+    mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 92%);
   }
 
   .xw-hero-ctas {
@@ -1708,13 +1718,13 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 @media (max-width: 560px) {
   .home-page #hero {
-    min-height: auto;
+    min-height: 92vh;
   }
 
   .home-page #hero.xw-hero-v2 {
     padding: 190px 16px 56px;
     justify-content: flex-start;
-    min-height: auto;
+    min-height: 92vh;
   }
 
   .xw-hero-mark {
@@ -1766,9 +1776,14 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .xw-real-radar-bg {
-    mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
-    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
+    mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
     opacity: 1;
+  }
+
+  .xw-hero-map {
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 96%);
+    mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 96%);
   }
 
   .xw-hero-dock {
