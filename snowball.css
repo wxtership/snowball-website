@@ -1515,13 +1515,24 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-snowball-section {
   position: relative;
   isolation: isolate;
+  background: transparent;
+}
+
+/* Blurred snow texture sits behind the content and feathers top & bottom into
+   the page's dark purple. Kept on a ::before so the text/cards stay sharp. */
+.xw-snowball-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background:
-    /* feather the top & bottom edges back into the page's dark purple */
-    linear-gradient(180deg, var(--dark-900) 0%, rgba(13,13,24,0) 15%, rgba(13,13,24,0) 85%, var(--dark-900) 100%),
-    /* snow texture */
     url('assets/square snowflake.jpg') center / cover no-repeat,
-    /* wintery base tint so the section still reads correctly before/without the image */
     linear-gradient(180deg, #16223c 0%, #1b2a48 50%, #16223c 100%);
+  filter: blur(7px);
+  transform: scale(1.06); /* hides the soft edges the blur pulls in */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+  pointer-events: none;
 }
 
 .xw-snowball-points {
@@ -1567,11 +1578,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   align-items: center;
   justify-content: center;
   padding: 30px 4%;
-  border-radius: 16px;
   margin-bottom: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
-  /* faint vignette darkens the middle for text legibility, fades to show the snow */
-  background: radial-gradient(ellipse 72% 130% at 50% 50%, rgba(10,14,24,0.42), transparent 80%);
+  background: transparent;
   overflow: hidden;
 }
 
