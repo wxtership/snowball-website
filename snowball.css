@@ -75,7 +75,7 @@ body {
   .nav-container { justify-content: flex-start !important; gap: 8px; padding-left: 4px !important; padding-right: 4px !important; }
   .nav-left { margin-right: 0; gap: 9px !important; }
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-menu-overlay {
     background: #0d0d18 !important;
     inset: -2px !important;     /* overdraws the viewport to avoid iOS edge flashes */
@@ -106,7 +106,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body.sb-mobile-menu-open {
     background: #0d0d18 !important;
   }
@@ -1764,18 +1764,19 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .xw-hero-map::after {
-    animation: beamCircle 2.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+    animation: beamCircle 2.5s linear infinite;
     transition: none;
   }
 
   @keyframes beamCircle {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to   { transform: translate(-50%, -50%) rotate(360deg); }
+    0%   { transform: translate(-50%, -50%) rotate(0deg);   animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); }
+    50%  { transform: translate(-50%, -50%) rotate(180deg); animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
   .xw-real-radar-bg {
-    mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, black 58%, transparent 80%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 58%, transparent 80%);
     opacity: 1;
   }
 

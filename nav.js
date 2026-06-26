@@ -27,11 +27,22 @@ document.querySelectorAll('.has-dropdown[data-menu]').forEach(function (item) {
 
 // ---- Mobile sub-view menu ---------------------------------------------------
 var sbSubStack = [];
+var sbTransitioning = false;
+var sbTransitionTimer = null;
+
+function sbLockTransition() {
+  sbTransitioning = true;
+  clearTimeout(sbTransitionTimer);
+  sbTransitionTimer = setTimeout(function () { sbTransitioning = false; }, 460);
+}
 
 function sbOpenSubMenu(name) {
+  if (sbTransitioning) return;
   var overlay = document.getElementById('sb-mobile-menu');
   var target = document.getElementById('sb-sub-' + name);
   if (!overlay || !target) return;
+
+  sbLockTransition();
 
   // Park any currently active sub-view
   var currentSub = overlay.querySelector('.sub-view.active');
@@ -47,8 +58,11 @@ function sbOpenSubMenu(name) {
 }
 
 function sbCloseSubMenu() {
+  if (sbTransitioning) return;
   var overlay = document.getElementById('sb-mobile-menu');
   if (!overlay) return;
+
+  sbLockTransition();
 
   var currentSub = overlay.querySelector('.sub-view.active');
   if (currentSub) {

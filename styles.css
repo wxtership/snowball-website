@@ -692,8 +692,8 @@ body {
     display: none;
 }
 
-/* Show hamburger on mobile only, not tablet */
-@media (max-width: 768px) {
+/* Show hamburger on tablet and below */
+@media (max-width: 1024px) {
     .hamburger {
         display: flex !important;
     }
@@ -3727,7 +3727,7 @@ body {
    16. RESPONSIVE - TABLET (1024px)
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     /* Navigation */
     .nav-center {
         display: none;
