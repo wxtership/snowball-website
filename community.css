@@ -947,7 +947,7 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
 }
 .mode-card h3 {
   margin: 0 0 6px; font-family: var(--font-display); font-size: 16px; font-weight: 600;
-  text-transform: none; letter-spacing: 0.01em; color: rgba(255,255,255,0.92);
+  text-transform: uppercase; letter-spacing: 0.01em; color: rgba(255,255,255,0.92);
 }
 .mode-crit { margin: 0 0 14px; font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.55); }
 .mode-thresholds {
