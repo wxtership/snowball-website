@@ -588,7 +588,7 @@ const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy',
 
 function DcEmbed() {
     return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:690,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,backdropFilter:'blur(4px)'} },
-      h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 120',overflow:'hidden'} },
+      h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 82',overflow:'hidden'} },
         h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
@@ -1065,7 +1065,6 @@ function PreviewTicker() {
 
 function PreviewSection() {
   return h('section', { id:'preview' },
-    h('div', { className:'divider' }),
     h('div', { className:'section-inner', style:{paddingTop:80} },
       h(PreviewTicker)
     )
@@ -1297,19 +1296,14 @@ function CoverageSection() {
 
 function SnowballPromoSection() {
   return h('section', { id:'snowball', className:'xw-snowball-section' },
-    h('div', { className:'divider' }),
-    h('div', { className:'section-inner' },
-      h('div', { className:'xw-snowball-banner', role:'img', 'aria-label':'Weather it, Snowball it.' },
-        h('span', { className:'xw-banner-text', 'aria-hidden':'true' },
-          'Weather it, Sn',
-          h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', loading:'lazy', className:'xw-banner-icon' }),
-          'wball it.'
-        )
-      )
-    ),
     h('div', { className:'section-inner xw-split' },
       h('div', { className:'xw-copy-block' },
-        h('h2', { className:'section-title' }, 'Way more than', h('br'), 'a weather bot'),
+        h('h2', { className:'section-title xw-snowball-title' },
+          'Weather it,', h('br'),
+          'Sn',
+          h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', loading:'lazy', className:'xw-banner-icon' }),
+          'wball it.'
+        ),
         h('p', { className:'section-body' },
           'Snowball is the Discord side of Xtreme Weather: AI weather answers that can fetch real data, forecasts, radar, alerts, radio, music, levels, economy, moderation tools, and community workflows.'
         ),
