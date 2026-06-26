@@ -54,7 +54,7 @@
   --glow-sm: 0 0 16px rgba(107,84,245,0.3);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   background: var(--dark-900);
@@ -1638,8 +1638,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
   .home-page #hero.xw-hero-v2 {
     min-height: 92vh;
-    justify-content: flex-start;
-    padding: 150px 24px 64px;
+    justify-content: center;
+    padding: 80px 24px 64px;
   }
 
   .xw-real-radar-bg {
@@ -1711,10 +1711,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     height: 74px;
   }
 
-  .home-page #hero.xw-hero-v2 {
-    padding-top: 140px;
-  }
 }
+
 
 @media (max-width: 560px) {
   .home-page #hero {
