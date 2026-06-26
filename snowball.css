@@ -1723,11 +1723,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
   .xw-hero-deck {
     font-size: 15px;
-    margin: 20px auto 52px;
+    margin: 20px auto 28px;
   }
 
   .xw-hero-ctas {
-    margin-bottom: 52px;
+    margin-bottom: 28px;
     flex-direction: column;
     align-items: center;
   }
