@@ -144,7 +144,9 @@ body {
   z-index: 100000;
   pointer-events: none;
 }
-#sb-tint-anchor-top { top: 0; }
+/* Keep the top anchor below the navbar (z 10000) so it never shows as a dark
+   strip over the header; the navbar already covers the top edge. */
+#sb-tint-anchor-top { top: 0; z-index: 9990; }
 #sb-tint-anchor-bottom { bottom: 0; }
 
 #hero {
@@ -1511,7 +1513,15 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 .xw-snowball-section {
-  background: linear-gradient(180deg, transparent, rgba(37,99,235,0.08) 42%, transparent);
+  position: relative;
+  isolation: isolate;
+  background:
+    /* feather the top & bottom edges back into the page's dark purple */
+    linear-gradient(180deg, var(--dark-900) 0%, rgba(13,13,24,0) 15%, rgba(13,13,24,0) 85%, var(--dark-900) 100%),
+    /* snow texture — drop the snow image in at assets/snowball-snow-bg.png */
+    url('assets/snowball-snow-bg.png') center / cover no-repeat,
+    /* wintery base tint so the section still reads correctly before/without the image */
+    linear-gradient(180deg, #16223c 0%, #1b2a48 50%, #16223c 100%);
 }
 
 .xw-snowball-points {
@@ -1552,12 +1562,39 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 .xw-snowball-banner {
   width: 100%;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   aspect-ratio: 10 / 3;
-  object-fit: cover;
+  padding: 0 6%;
   border-radius: 16px;
   margin-bottom: 16px;
   border: 1px solid rgba(255,255,255,0.08);
+  /* faint vignette darkens the middle for text legibility, fades to show the snow */
+  background: radial-gradient(ellipse 70% 90% at 50% 50%, rgba(10,14,24,0.40), transparent 78%);
+  overflow: hidden;
+}
+
+.xw-banner-text {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  font-size: clamp(20px, 3.4vw, 40px);
+  color: #c7d2de;
+  white-space: nowrap;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.5);
+}
+
+.xw-banner-icon {
+  height: 0.92em;
+  width: auto;
+  margin: 0 0.03em;
+  transform: translateY(0.05em);
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45));
 }
 
 @media (max-width: 1120px) {
