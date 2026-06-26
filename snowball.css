@@ -693,8 +693,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   margin-bottom: 6px; line-height: 1;
 }
 .ticker-stat-num.is-word {
-  font-size: clamp(11px, 1.4vw, 18px);
-  letter-spacing: -0.01em;
+  font-size: clamp(24px, 3.4vw, 40px);
+  letter-spacing: -0.02em;
   white-space: nowrap;
 }
 .ticker-stat-label {
@@ -738,7 +738,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .preview-editorial-title { font-size: clamp(30px, 7.5vw, 44px); }
   .ticker-stat { padding: 20px 10px; }
   .ticker-stat-num { font-size: clamp(20px, 5.5vw, 30px); word-break: break-word; }
-  .ticker-stat-num.is-word { font-size: clamp(10px, 3.5vw, 15px); white-space: nowrap; }
+  .ticker-stat-num.is-word { font-size: clamp(20px, 5.5vw, 30px); white-space: nowrap; }
   .ticker-stat-label { font-size: 10px; letter-spacing: 0.04em; }
 }
 

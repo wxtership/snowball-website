@@ -588,7 +588,7 @@ const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy',
 
 function DcEmbed() {
     return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:690,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,backdropFilter:'blur(4px)'} },
-      h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 82',overflow:'hidden'} },
+      h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 66',overflow:'hidden'} },
         h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
@@ -695,7 +695,7 @@ function DiscordChatDemo({ t, fading }) {
     setBodyHeight(measured);
   }, [showUserMsg, showThinking, thinkingLeaving, showBotResponse]);
 
-  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
+  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:14,overflow:'hidden',border:'1px solid rgba(199,210,222,0.32)',boxShadow:'0 24px 80px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
     h(DcChannelHeader),
     h('div', {
       style: {
@@ -1335,7 +1335,6 @@ function App() {
     h(HomeProductsSection),
     h(RadarAppSection),
     h(RadarWebSection),
-    h(CoverageSection),
     h(SnowballPromoSection),
     h(PreviewSection),
     h(Footer)
