@@ -39,6 +39,9 @@
         </div>
         <div class="nav-center">
             <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
                 <li class="has-dropdown" data-menu="community">
                     <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
@@ -46,7 +49,7 @@
                     <a href="#">Information <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="active">Snowball</a>
+                    <a href="snowball.html" class="active">Snowball</a>
                 </li>
             </ul>
         </div>
@@ -54,22 +57,6 @@
     </div>
 </nav>
 
-<div class="mega-menu" id="snowball-mega-menu">
-    <div class="mega-menu-container">
-        <div class="mega-column">
-            <div class="mega-header">Features</div>
-            <a href="#ai-section" class="mega-item"><i class="fas fa-robot"></i><div class="mega-item-text"><span class="title">AI Weather</span><span class="desc">Ask anything, get real data</span></div></a>
-            <a href="#economy" class="mega-item"><i class="fas fa-snowflake"></i><div class="mega-item-text"><span class="title">Economy</span><span class="desc">SNOWFLAKES, stocks &amp; boars</span></div></a>
-            <a href="#commands" class="mega-item"><i class="fas fa-terminal"></i><div class="mega-item-text"><span class="title">Commands</span><span class="desc">All slash commands</span></div></a>
-        </div>
-        <div class="mega-column">
-            <div class="mega-header">Get Started</div>
-            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Join the Server</span><span class="desc">Add Snowball to your Discord</span></div></a>
-            <a href="#preview" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Community</span><span class="desc">7K+ members strong</span></div></a>
-            <a href="#" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Live Radio</span><span class="desc">Weather radio &amp; music</span></div></a>
-        </div>
-    </div>
-</div>
 
 <div class="mega-menu" id="community-mega-menu">
     <div class="mega-menu-container">
@@ -102,9 +89,10 @@
 <div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
     <div class="mobile-view main-view" id="sb-mobile-main-view">
         <div class="mobile-centered-content">
+            <a href="index.html" class="mobile-big-link">Home</a>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
-            <a href="index.html" class="mobile-big-link">Snowball</a>
+            <a href="snowball.html" class="mobile-big-link">Snowball</a>
         </div>
     </div>
     <div class="mobile-view sub-view" id="sb-sub-community">
@@ -126,7 +114,6 @@
             <a href="ban-appeal.html" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-gavel"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Ban Appeal</span></span></a>
         </div>
     </div>
-</div>
 </div>
 
 <div id="root"></div>
