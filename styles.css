@@ -3853,7 +3853,7 @@ body {
     
     .nav-container {
         gap: 1rem;
-        padding: 0 1.5rem;
+        padding: 0 1.5rem 0 0.75rem;
     }
     
     .nav-btn-circle,
