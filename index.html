@@ -49,7 +49,7 @@
                     <a href="#">Information <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
                 <li>
-                    <a href="index.html">Snowball</a>
+                    <a href="#snowball">Snowball</a>
                 </li>
             </ul>
         </div>
@@ -92,7 +92,7 @@
             <a href="index.html" class="mobile-big-link">Home</a>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
-            <a href="index.html" class="mobile-big-link">Snowball</a>
+            <a href="#snowball" class="mobile-big-link">Snowball</a>
         </div>
     </div>
     <div class="mobile-view sub-view" id="sb-sub-community">
@@ -389,7 +389,7 @@ function Hero() {
 
   const heroItems = [
     { icon:'assets/icons/small-radar.png', label:'Radar', text:'Open the radar' },
-    { icon:'assets/appicon.png', label:'Radar App', text:'Better app coming soon' },
+    { icon:'assets/betterappicon.png', label:'Radar App', text:'Better app coming soon' },
     { icon:'assets/Discord.webp', label:'Discord', text:'Live coverage and alerts' },
     { icon:'assets/icons/small-snowball.png', label:'Snowball', text:'Weather commands and AI' },
   ];
@@ -400,8 +400,7 @@ function Hero() {
     h('div', { className: 'xw-hero-map', ref: mapRef, 'aria-hidden': 'true' },
       h('span', { className:'xw-hero-ring ring-one' }),
       h('span', { className:'xw-hero-ring ring-two' }),
-      h('span', { className:'xw-hero-ring ring-three' }),
-      h('span', { className:'xw-hero-front' })
+      h('span', { className:'xw-hero-ring ring-three' })
     ),
     h('div', { className: 'hero-content xw-hero-content' },
       h('h1', { className: 'xw-hero-title', style: {
@@ -444,11 +443,7 @@ function Hero() {
       } },
         ...heroItems.map(item =>
           h('a', { key:item.label, href:item.label === 'Discord' ? 'https://discord.gg/xtremeweather' : item.label === 'Radar' ? '#radar-web' : '#' + item.label.toLowerCase().replace(/\s+/g, '-'), target:item.label === 'Discord' ? '_blank' : undefined, rel:item.label === 'Discord' ? 'noopener' : undefined },
-            item.label === 'Radar App'
-              ? h('div', { style:{width:40,height:40,borderRadius:10,overflow:'hidden',flexShrink:0} },
-                  h('img', { src:item.icon, alt:'', loading:'lazy', style:{width:'118%',height:'118%',objectFit:'cover',marginLeft:'-9%',marginTop:'-9%',display:'block',borderRadius:0} })
-                )
-              : item.label === 'Radar'
+            item.label === 'Radar'
               ? h('img', { src:item.icon, alt:'', loading:'lazy', style:{width:46,height:46,transform:'scale(1.18)',transformOrigin:'center'} })
               : h('img', { src:item.icon, alt:'', loading:'lazy' }),
             h('span', null,
@@ -1081,7 +1076,7 @@ function HomeProductsSection() {
   const products = [
     {
       id: 'radar-app',
-      icon: 'assets/appicon.png',
+      icon: 'assets/betterappicon.png',
       title: 'Radar App',
       kicker: 'Official App',
       desc: 'A better radar app is coming soon, built around fast checks, cleaner alerts, and the Xtreme Weather ecosystem.',
@@ -1193,7 +1188,7 @@ function RadarAppSection() {
             h('span', null, h('i', { className:'fas fa-signal', 'aria-hidden':'true' }), h('i', { className:'fas fa-battery-three-quarters', 'aria-hidden':'true' }))
           ),
           h('div', { className: 'xw-phone-header' },
-            h('img', { src:'assets/appicon.png', alt:'', loading:'lazy' }),
+            h('img', { src:'assets/betterappicon.png', alt:'', loading:'lazy' }),
             h('div', null,
               h('strong', null, 'Xtreme Weather'),
               h('span', null, 'Official App')
