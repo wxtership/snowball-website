@@ -389,8 +389,8 @@ function Hero() {
 
   const heroItems = [
     { icon:'assets/icons/small-radar.png', label:'Radar', text:'Open the radar' },
-    { icon:'assets/xtremeweather.png', label:'Radar App', text:'Better app coming soon' },
-    { icon:'assets/discord.svg', label:'Discord', text:'Live coverage and alerts' },
+    { icon:'assets/appicon.png', label:'Radar App', text:'Better app coming soon' },
+    { icon:'assets/Discord.webp', label:'Discord', text:'Live coverage and alerts' },
     { icon:'assets/icons/small-snowball.png', label:'Snowball', text:'Weather commands and AI' },
   ];
 
@@ -1075,9 +1075,9 @@ function HomeProductsSection() {
   const products = [
     {
       id: 'radar-app',
-      icon: 'assets/xtremeweather.png',
+      icon: 'assets/appicon.png',
       title: 'Radar App',
-      kicker: 'Mobile',
+      kicker: 'Official App',
       desc: 'A better radar app is coming soon, built around fast checks, cleaner alerts, and the Xtreme Weather ecosystem.',
       href: '#radar-app',
       tone: 'cyan',
@@ -1093,7 +1093,7 @@ function HomeProductsSection() {
     },
     {
       id: 'discord',
-      icon: 'assets/discord.svg',
+      icon: 'assets/Discord.webp',
       title: 'Discord',
       kicker: 'Community',
       desc: 'Live coverage, weather chat, alerts, forecast discussion, and the people who keep the server moving.',
@@ -1187,10 +1187,10 @@ function RadarAppSection() {
             h('span', null, h('i', { className:'fas fa-signal', 'aria-hidden':'true' }), h('i', { className:'fas fa-battery-three-quarters', 'aria-hidden':'true' }))
           ),
           h('div', { className: 'xw-phone-header' },
-            h('img', { src:'assets/xtreme-logo-small.png', alt:'', loading:'lazy' }),
+            h('img', { src:'assets/appicon.png', alt:'', loading:'lazy' }),
             h('div', null,
               h('strong', null, 'Xtreme Weather'),
-              h('span', null, 'Radar app')
+              h('span', null, 'Official App')
             )
           ),
           h('div', { className: 'xw-phone-map' },
