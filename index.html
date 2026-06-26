@@ -39,6 +39,9 @@
         </div>
         <div class="nav-center">
             <ul class="nav-links">
+                <li>
+                    <a href="index.html" class="active">Home</a>
+                </li>
                 <li class="has-dropdown" data-menu="community">
                     <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
@@ -46,7 +49,7 @@
                     <a href="#">Information <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="active">Home</a>
+                    <a href="index.html">Snowball</a>
                 </li>
             </ul>
         </div>
@@ -86,9 +89,10 @@
 <div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
     <div class="mobile-view main-view" id="sb-mobile-main-view">
         <div class="mobile-centered-content">
+            <a href="index.html" class="mobile-big-link">Home</a>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
-            <a href="#" class="mobile-big-link">Home</a>
+            <a href="index.html" class="mobile-big-link">Snowball</a>
         </div>
     </div>
     <div class="mobile-view sub-view" id="sb-sub-community">
@@ -349,8 +353,11 @@ function Hero() {
     if (!hero || !map) return;
 
     let frame = 0;
-    const setRadarAngle = (angle) => {
-      map.style.setProperty('--radar-angle', angle.toFixed(1) + 'deg');
+    let prevAngle = 0;
+    const setRadarAngle = (raw) => {
+      let delta = ((raw - prevAngle) % 360 + 540) % 360 - 180;
+      prevAngle = prevAngle + delta;
+      map.style.setProperty('--radar-angle', prevAngle.toFixed(1) + 'deg');
     };
 
     const move = (event) => {
