@@ -364,7 +364,10 @@ function Hero() {
       const rect = hero.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
-      const angle = Math.atan2(event.clientY - cy, event.clientX - cx) * (180 / Math.PI) - 200;
+      const dx = event.clientX - cx;
+      const dy = event.clientY - cy;
+      if (dx * dx + dy * dy < 90 * 90) return;
+      const angle = Math.atan2(dy, dx) * (180 / Math.PI) - 200;
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => setRadarAngle(angle));
     };
