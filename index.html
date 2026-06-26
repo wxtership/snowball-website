@@ -1306,6 +1306,15 @@ function CoverageSection() {
 function SnowballPromoSection() {
   return h('section', { id:'snowball', className:'xw-snowball-section' },
     h('div', { className:'divider' }),
+    h('div', { className:'section-inner' },
+      h('div', { className:'xw-snowball-banner', role:'img', 'aria-label':'Weather it, Snowball it.' },
+        h('span', { className:'xw-banner-text', 'aria-hidden':'true' },
+          'Weather it, Sn',
+          h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', loading:'lazy', className:'xw-banner-icon' }),
+          'wball it.'
+        )
+      )
+    ),
     h('div', { className:'section-inner xw-split' },
       h('div', { className:'xw-copy-block' },
         h('div', { className:'section-label' }, 'Snowball'),
@@ -1326,13 +1335,6 @@ function SnowballPromoSection() {
         )
       ),
       h('div', { className:'xw-snowball-visual' },
-        h('div', { className:'xw-snowball-banner', role:'img', 'aria-label':'Weather it, Snowball it.' },
-          h('span', { className:'xw-banner-text', 'aria-hidden':'true' },
-            'Weather it, Sn',
-            h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', loading:'lazy', className:'xw-banner-icon' }),
-            'wball it.'
-          )
-        ),
         h(DiscordChatDemo, { t: AI_TIMELINE_TOTAL, fading: false })
       )
     )

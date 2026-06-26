@@ -1518,8 +1518,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   background:
     /* feather the top & bottom edges back into the page's dark purple */
     linear-gradient(180deg, var(--dark-900) 0%, rgba(13,13,24,0) 15%, rgba(13,13,24,0) 85%, var(--dark-900) 100%),
-    /* snow texture — drop the snow image in at assets/snowball-snow-bg.png */
-    url('assets/snowball-snow-bg.png') center / cover no-repeat,
+    /* snow texture */
+    url('assets/square snowflake.jpg') center / cover no-repeat,
     /* wintery base tint so the section still reads correctly before/without the image */
     linear-gradient(180deg, #16223c 0%, #1b2a48 50%, #16223c 100%);
 }
@@ -1560,18 +1560,18 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   min-width: 0;
 }
 
+/* Full-width header band at the top of the Snowball section */
 .xw-snowball-banner {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 10 / 3;
-  padding: 0 6%;
+  padding: 30px 4%;
   border-radius: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   border: 1px solid rgba(255,255,255,0.08);
   /* faint vignette darkens the middle for text legibility, fades to show the snow */
-  background: radial-gradient(ellipse 70% 90% at 50% 50%, rgba(10,14,24,0.40), transparent 78%);
+  background: radial-gradient(ellipse 72% 130% at 50% 50%, rgba(10,14,24,0.42), transparent 80%);
   overflow: hidden;
 }
 
@@ -1583,7 +1583,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   text-transform: uppercase;
   letter-spacing: -0.01em;
   line-height: 1;
-  font-size: clamp(20px, 3.4vw, 40px);
+  /* scales with the viewport so the single line fits without clipping */
+  font-size: clamp(15px, 4.2vw, 46px);
   color: #c7d2de;
   white-space: nowrap;
   text-shadow: 0 2px 18px rgba(0,0,0,0.5);
