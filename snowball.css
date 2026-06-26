@@ -841,6 +841,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   width: 1120px;
   height: 1120px;
   background: conic-gradient(from -22deg, transparent 0 248deg, rgba(34,211,238,0.18) 306deg, rgba(255,255,255,0.07) 314deg, transparent 374deg);
+  -webkit-mask-image: radial-gradient(circle at center, transparent 8%, white 22%, white 62%, transparent 100%);
+  mask-image: radial-gradient(circle at center, transparent 8%, white 22%, white 62%, transparent 100%);
   transform: translate(-50%, -50%) rotate(var(--radar-angle, 0deg));
   opacity: 0.55;
   mix-blend-mode: screen;
