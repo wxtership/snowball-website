@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-06-25T02:15:53.084Z",
+  "updatedAt": "2026-06-26T04:45:31.195Z",
   "updatedBy": {
-    "id": "582394159546236948",
-    "tag": "wxtership"
+    "id": "726612317248159745",
+    "tag": "sebastioss"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7352
+    "memberCount": 7356
   },
   "tiers": [
     {
@@ -33,12 +33,6 @@
       "label": "Coverage Experts",
       "members": [
         {
-          "id": "582394159546236948",
-          "username": "wxtership",
-          "displayName": "☭ wxtership",
-          "avatarURL": "https://cdn.discordapp.com/avatars/582394159546236948/4b5f06bc2504edd9c6dcea5c6b5ad2e7.png?size=256"
-        },
-        {
           "id": "770787602583388170",
           "username": "apocalypsenow",
           "displayName": "apoc (Southeast MI)",
@@ -48,7 +42,7 @@
           "id": "1132908259162992712",
           "username": "awcoal",
           "displayName": "awcoal (NJ) 🐌",
-          "avatarURL": "https://cdn.discordapp.com/avatars/1132908259162992712/f22c6c3e1a8f99ea68ebe9cc263d12d4.png?size=256"
+          "avatarURL": "https://cdn.discordapp.com/avatars/1132908259162992712/db2e876447e306d93e1712f912ba122c.png?size=256"
         },
         {
           "id": "1061023304862933122",
