@@ -816,7 +816,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   transform: scale(1.06);
   pointer-events: none;
   user-select: none;
-  mask-image: linear-gradient(to bottom, black 0%, black 62%, rgba(0,0,0,0.4) 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 70%);
 }
 
 .home-page .hero-content.xw-hero-content {
@@ -1695,7 +1695,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .home-page #hero.xw-hero-v2 {
-    padding: 96px 16px 48px;
+    padding: 116px 16px 48px;
   }
 
   .xw-hero-mark {
@@ -1714,7 +1714,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .xw-title-druk {
-    font-size: 42px;
+    font-size: clamp(26px, 8vw, 42px);
     line-height: 0.98;
   }
 
@@ -1727,12 +1727,21 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     margin-bottom: 28px;
   }
 
+  .xw-real-radar-bg {
+    mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
+    opacity: 1;
+  }
+
   .xw-hero-dock {
     grid-template-columns: 1fr;
   }
 
   .xw-hero-dock a {
     padding: 12px;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.07);
   }
 
 .xw-products-inner,
