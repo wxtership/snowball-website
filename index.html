@@ -451,6 +451,7 @@ function Hero() {
 
   return h('section', { id: 'hero', className: 'xw-hero-v2', ref: heroRef },
     h('div', { className: 'hero-bg' }),
+    h('img', { className:'xw-real-radar-bg', src:'assets/hero-radar-level2.png', alt:'', fetchpriority:'high', 'aria-hidden':'true' }),
     h('div', { className: 'xw-hero-map', ref: mapRef, 'aria-hidden': 'true' },
       h('span', { className:'xw-hero-ring ring-one' }),
       h('span', { className:'xw-hero-ring ring-two' }),
