@@ -530,7 +530,6 @@
    (no flash). Without JS the cards just stay visible. --i (per card) drives the cascade. */
 #staff-roster.animate-in .staff-tier-title,
 #staff-roster.animate-in .staff-card,
-#donator-roster.animate-in .donate-progress,
 #donator-roster.animate-in .staff-tier-title,
 #donator-roster.animate-in .staff-card {
   animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
@@ -553,43 +552,29 @@
   .contact-side-link, .contact-note,
   .community-cta, .timeline-item, .faq-item, .mission,
   #staff-roster.animate-in .staff-tier-title, #staff-roster.animate-in .staff-card,
-  #donator-roster.animate-in .donate-progress,
   #donator-roster.animate-in .staff-tier-title, #donator-roster.animate-in .staff-card { animation: none; }
 }
 
 /* ---- Background weather-icon texture (scattered near the edges) ---- */
 /* Texture emanates from the top of the page and fades downward (scrolls with content). */
-@keyframes iconFloat {
-  0%, 100% { transform: translateY(0)    rotate(var(--ir, 0deg)); }
-  50%       { transform: translateY(-9px) rotate(var(--ir, 0deg)); }
-}
-@keyframes iconDrift {
-  0%, 100% { transform: translateY(0)     translateX(0)    rotate(var(--ir, 0deg)); }
-  33%       { transform: translateY(-7px)  translateX(4px)  rotate(var(--ir, 0deg)); }
-  66%       { transform: translateY(-4px)  translateX(-3px) rotate(var(--ir, 0deg)); }
-}
-@keyframes iconPulse {
-  0%, 100% { transform: scale(1)    rotate(var(--ir, 0deg)); opacity: var(--io, 1); }
-  50%       { transform: scale(1.18) rotate(var(--ir, 0deg)); opacity: calc(var(--io, 1) * 1.4); }
-}
 .page-decor { position: absolute; top: 0; left: 0; width: 100%; height: 760px; z-index: 0; pointer-events: none; overflow: hidden; }
-.page-decor i { position: absolute; color: #3a3a48; animation: iconFloat 3.2s ease-in-out infinite; }
-.page-decor i:nth-child(1)  { top: 50px;  left: 9%;   font-size: 18px; --ir:-12deg; animation-duration:3.0s; animation-delay:-1.5s; }
-.page-decor i:nth-child(2)  { top: 44px;  right: 13%; font-size: 15px; --ir:10deg;  animation-duration:3.6s; animation-delay:-0.4s; animation-name:iconDrift; }
-.page-decor i:nth-child(3)  { top: 80px;  left: 27%;  font-size: 14px; --ir:8deg;   animation-duration:2.8s; animation-delay:-0.8s; }
-.page-decor i:nth-child(4)  { top: 70px;  right: 29%; font-size: 16px; --ir:-8deg;  animation-duration:3.4s; animation-delay:-0.2s; animation-name:iconDrift; }
-.page-decor i:nth-child(5)  { top: 122px; left: 4%;   font-size: 19px; --ir:14deg;  animation-duration:2.6s; animation-delay:-0.6s; }
-.page-decor i:nth-child(6)  { top: 110px; right: 5%;  font-size: 17px; --ir:-16deg; animation-duration:3.8s; animation-delay:-1.0s; animation-name:iconDrift; }
-.page-decor i:nth-child(7)  { top: 162px; left: 17%;  font-size: 14px; --ir:6deg;   --io:0.85; animation-duration:3.1s; animation-delay:-0.3s; }
-.page-decor i:nth-child(8)  { top: 150px; right: 19%; font-size: 15px; --ir:-10deg; --io:0.85; animation-duration:2.9s; animation-delay:-0.7s; animation-name:iconPulse; }
-.page-decor i:nth-child(9)  { top: 214px; left: 8%;   font-size: 16px; --ir:12deg;  --io:0.7;  animation-duration:3.3s; animation-delay:-0.1s; }
-.page-decor i:nth-child(10) { top: 202px; right: 7%;  font-size: 14px; --ir:-6deg;  --io:0.7;  animation-duration:2.7s; animation-delay:-0.5s; animation-name:iconDrift; }
-.page-decor i:nth-child(11) { top: 274px; left: 22%;  font-size: 15px; --ir:16deg;  --io:0.55; animation-duration:3.5s; animation-delay:-0.9s; }
-.page-decor i:nth-child(12) { top: 262px; right: 24%; font-size: 13px; --ir:-14deg; --io:0.55; animation-duration:3.0s; animation-delay:-1.2s; animation-name:iconPulse; }
-.page-decor i:nth-child(13) { top: 344px; left: 5%;   font-size: 17px; --ir:8deg;   --io:0.4;  animation-duration:2.8s; animation-delay:-0.4s; }
-.page-decor i:nth-child(14) { top: 332px; right: 6%;  font-size: 15px; --ir:-8deg;  --io:0.4;  animation-duration:3.6s; animation-delay:-0.8s; animation-name:iconDrift; }
-.page-decor i:nth-child(15) { top: 420px; left: 14%;  font-size: 14px; --ir:10deg;  --io:0.28; animation-duration:3.2s; animation-delay:-0.2s; }
-.page-decor i:nth-child(16) { top: 408px; right: 12%; font-size: 16px; --ir:-12deg; --io:0.28; animation-duration:2.5s; animation-delay:-0.6s; animation-name:iconPulse; }
+.page-decor i { position: absolute; color: #3a3a48; }
+.page-decor i:nth-child(1)  { top: 50px;  left: 9%;   font-size: 18px; transform: rotate(-12deg); }
+.page-decor i:nth-child(2)  { top: 44px;  right: 13%; font-size: 15px; transform: rotate(10deg); }
+.page-decor i:nth-child(3)  { top: 80px;  left: 27%;  font-size: 14px; transform: rotate(8deg); }
+.page-decor i:nth-child(4)  { top: 70px;  right: 29%; font-size: 16px; transform: rotate(-8deg); }
+.page-decor i:nth-child(5)  { top: 122px; left: 4%;   font-size: 19px; transform: rotate(14deg); }
+.page-decor i:nth-child(6)  { top: 110px; right: 5%;  font-size: 17px; transform: rotate(-16deg); }
+.page-decor i:nth-child(7)  { top: 162px; left: 17%;  font-size: 14px; transform: rotate(6deg); opacity: 0.85; }
+.page-decor i:nth-child(8)  { top: 150px; right: 19%; font-size: 15px; transform: rotate(-10deg); opacity: 0.85; }
+.page-decor i:nth-child(9)  { top: 214px; left: 8%;   font-size: 16px; transform: rotate(12deg); opacity: 0.7; }
+.page-decor i:nth-child(10) { top: 202px; right: 7%;  font-size: 14px; transform: rotate(-6deg); opacity: 0.7; }
+.page-decor i:nth-child(11) { top: 274px; left: 22%;  font-size: 15px; transform: rotate(16deg); opacity: 0.55; }
+.page-decor i:nth-child(12) { top: 262px; right: 24%; font-size: 13px; transform: rotate(-14deg); opacity: 0.55; }
+.page-decor i:nth-child(13) { top: 344px; left: 5%;   font-size: 17px; transform: rotate(8deg); opacity: 0.4; }
+.page-decor i:nth-child(14) { top: 332px; right: 6%;  font-size: 15px; transform: rotate(-8deg); opacity: 0.4; }
+.page-decor i:nth-child(15) { top: 420px; left: 14%;  font-size: 14px; transform: rotate(10deg); opacity: 0.28; }
+.page-decor i:nth-child(16) { top: 408px; right: 12%; font-size: 16px; transform: rotate(-12deg); opacity: 0.28; }
 
 /* ---- About: history timeline (centre line, alternating cards) ---- */
 .timeline { position: relative; max-width: 1000px; margin: 0 auto; padding: 8px 0; isolation: isolate; }
@@ -684,469 +669,88 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
 }
 .mission-role { display: block; margin-top: 7px; font-size: 13px; color: var(--purple-300); }
 
-/* ==========================================================================
-   POLICY / CHARTER / LEGAL / COVERAGE PAGES
-   Shares the .community-page shell + .section-* tokens, with a distinct
-   "official document" treatment so the charter and policies read as formal.
-   ========================================================================== */
-
-/* ---- Document meta row (effective date / version) under a page hero ---- */
-.doc-meta {
-  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px 18px;
-  margin-top: 18px; padding: 10px 18px;
-  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 999px; font-size: 13px; color: rgba(255,255,255,0.6);
-}
-.doc-meta b { color: rgba(255,255,255,0.85); font-weight: 600; }
-.doc-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.25); }
-
-/* ---- Quick jump nav (used at the top of long docs) ---- */
-.doc-toc {
-  display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 36px;
-}
-.doc-toc a {
-  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.66);
-  padding: 8px 15px; border-radius: 999px; text-decoration: none;
-  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-  transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
-}
-.doc-toc a:hover {
-  color: #fff; background: rgba(107,84,245,0.16);
-  border-color: rgba(107,84,245,0.4); transform: translateY(-2px);
+/* ---- Coverage Expert: mode cards ---- */
+.coverage-expert .coverage-mode-card,
+.coverage-expert .mode-card,
+.coverage-expert .coverage-card,
+.coverage-policy .coverage-mode-card,
+.coverage-policy .mode-card,
+.coverage-policy .coverage-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-/* ---- Charter articles ---- */
-.charter-intro {
-  position: relative; padding: 24px 26px; margin-bottom: 40px;
-  background: linear-gradient(135deg, rgba(107,84,245,0.12), rgba(107,84,245,0.03));
-  border: 1px solid rgba(107,84,245,0.22); border-radius: 18px;
-}
-.charter-intro p { margin: 0; font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); }
-.charter-intro .charter-intro-mark {
-  display: inline-flex; align-items: center; gap: 9px; margin-bottom: 12px;
-  font-family: var(--font-body); font-size: 12px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple-300);
+.coverage-expert .coverage-mode-card > *,
+.coverage-expert .mode-card > *,
+.coverage-expert .coverage-card > *,
+.coverage-policy .coverage-mode-card > *,
+.coverage-policy .mode-card > *,
+.coverage-policy .coverage-card > * {
+  position: relative;
+  z-index: 1;
 }
 
-.charter-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.charter-article {
-  position: relative; display: flex; flex-direction: column;
-  padding: 24px 24px 22px; border-radius: 18px;
-  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-  border-left: 3px solid rgba(107,84,245,0.5);
-  backdrop-filter: blur(14px);
-  transition: border-color 0.25s, background 0.25s, transform 0.25s;
-}
-.charter-article:hover {
-  background: rgba(255,255,255,0.05); border-left-color: var(--purple-400);
-  transform: translateY(-3px);
-}
-.charter-article-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.charter-num {
-  flex-shrink: 0; width: 30px; height: 30px; border-radius: 9px;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 14px; font-weight: 700;
-  background: rgba(107,84,245,0.16); border: 1px solid rgba(107,84,245,0.32);
-  color: var(--purple-300);
-}
-.charter-article h3 {
-  margin: 0; font-family: var(--font-body); font-size: 17px; font-weight: 700; color: #fff;
-}
-.charter-article p { margin: 0; font-size: 14px; line-height: 1.66; color: rgba(255,255,255,0.62); }
-.charter-article.full { grid-column: 1 / -1; }
-
-/* Inline "flagged in error" callout inside an article */
-.charter-flag {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
-  font-size: 12.5px; color: rgba(255,255,255,0.5);
-}
-.charter-flag a { color: var(--purple-300); text-decoration: none; font-weight: 600; }
-.charter-flag a:hover { text-decoration: underline; }
-
-/* ---- Enforcement ladder ---- */
-.enforce-ladder { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
-.enforce-step {
-  position: relative; display: flex; gap: 18px; align-items: flex-start;
-  padding: 20px 22px; border-radius: 16px;
-  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-  border-left: 4px solid var(--rung, rgba(255,255,255,0.2));
-}
-.enforce-step .rung {
-  flex-shrink: 0; width: 40px; height: 40px; border-radius: 11px;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 17px; font-weight: 700;
-  color: #fff; background: var(--rung, rgba(255,255,255,0.2));
-}
-.enforce-step h4 {
-  margin: 2px 0 6px; font-family: var(--font-body); font-size: 16px; font-weight: 700; color: #fff;
-}
-.enforce-step p { margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.6); }
-.enforce-step.s1 { --rung: #5fbf7f; }
-.enforce-step.s2 { --rung: #e0b341; }
-.enforce-step.s3 { --rung: #e08841; }
-.enforce-step.s4 { --rung: #e0556d; }
-.enforce-note {
-  margin-top: 18px; font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.55);
-}
-.enforce-note a { color: var(--purple-300); text-decoration: none; }
-.enforce-note a:hover { text-decoration: underline; }
-
-/* ---- Legal documents (privacy / terms): readable sections + accordions ---- */
-.legal-doc { max-width: 860px; margin: 0 auto; }
-.legal-section { margin-bottom: 40px; }
-.legal-section > h2 {
-  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  font-size: clamp(20px, 2.4vw, 26px); letter-spacing: -0.01em; color: #fff;
-  margin: 0 0 8px; display: flex; align-items: baseline; gap: 12px;
-}
-.legal-section > h2 .legal-num {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(18px, 2vw, 24px); color: var(--purple-300);
-}
-.legal-section > p { font-size: 14.5px; line-height: 1.74; color: rgba(255,255,255,0.66); margin: 0 0 14px; }
-.legal-section ul { margin: 0 0 14px; padding-left: 20px; }
-.legal-section li { font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,0.66); margin-bottom: 6px; }
-.legal-section a { color: var(--purple-300); text-decoration: none; }
-.legal-section a:hover { text-decoration: underline; }
-.legal-section h3 {
-  font-family: var(--font-body); font-size: 16px; font-weight: 700; color: #fff; margin: 22px 0 8px;
+.coverage-expert .coverage-mode-card::before,
+.coverage-expert .mode-card::before,
+.coverage-expert .coverage-card::before,
+.coverage-policy .coverage-mode-card::before,
+.coverage-policy .mode-card::before,
+.coverage-policy .coverage-card::before {
+  content: '';
+  position: absolute;
+  inset: -34% -20% auto;
+  height: 78%;
+  z-index: 0;
+  opacity: 0.72;
+  filter: blur(4px);
+  pointer-events: none;
 }
 
-/* Callouts (info / warning / note) */
-.legal-callout {
-  position: relative; padding: 14px 18px; margin: 16px 0; border-radius: 12px;
-  font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.74);
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-left: 3px solid rgba(255,255,255,0.25);
-}
-.legal-callout strong { color: #fff; }
-.legal-callout-label {
-  display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 4px;
-}
-.legal-callout.info { border-left-color: #5b9dff; background: rgba(91,157,255,0.08); }
-.legal-callout.info .legal-callout-label { color: #8fbcff; }
-.legal-callout.warn { border-left-color: #e0b341; background: rgba(224,179,65,0.08); }
-.legal-callout.warn .legal-callout-label { color: #f0cd6e; }
-.legal-callout.note { border-left-color: var(--purple-400); background: rgba(107,84,245,0.08); }
-.legal-callout.note .legal-callout-label { color: var(--purple-300); }
-
-/* Retention / data tables */
-.legal-table-wrap { overflow-x: auto; margin: 14px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
-.legal-table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 460px; }
-.legal-table th, .legal-table td {
-  text-align: left; padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.06);
-  vertical-align: top; line-height: 1.55;
-}
-.legal-table th { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.8); font-weight: 700; }
-.legal-table td { color: rgba(255,255,255,0.62); }
-.legal-table td:first-child { color: rgba(255,255,255,0.82); font-weight: 600; white-space: nowrap; }
-.legal-table tr:last-child td { border-bottom: none; }
-
-/* Reuse the .faq accordion look for collapsible doc categories */
-.legal-doc .faq-item { margin-bottom: 10px; }
-
-/* ---- Coverage Experts page ---- */
-:root { --cov: #2bd4d4; --cov-soft: rgba(43,212,212,0.16); }
-.coverage-hero-card {
-  position: relative; overflow: hidden;
-  padding: 34px 32px; border-radius: 22px; margin-bottom: 14px;
+.coverage-expert .coverage-mode-card:is(.severe, .coverage-severe)::before,
+.coverage-expert .mode-card:is(.severe, .coverage-severe)::before,
+.coverage-expert .coverage-card:is(.severe, .coverage-severe)::before,
+.coverage-policy .coverage-mode-card:is(.severe, .coverage-severe)::before,
+.coverage-policy .mode-card:is(.severe, .coverage-severe)::before,
+.coverage-policy .coverage-card:is(.severe, .coverage-severe)::before {
   background:
-    radial-gradient(120% 140% at 0% 0%, rgba(43,212,212,0.16) 0%, transparent 55%),
-    rgba(255,255,255,0.035);
-  border: 1px solid rgba(43,212,212,0.28);
-}
-.coverage-role-pill {
-  display: inline-flex; align-items: center; gap: 9px; margin-bottom: 16px;
-  padding: 6px 15px; border-radius: 999px;
-  background: var(--cov-soft); border: 1px solid rgba(43,212,212,0.4);
-  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--cov);
-}
-.coverage-role-pill .dot {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--cov);
-  box-shadow: 0 0 0 4px rgba(43,212,212,0.18);
-}
-.coverage-hero-card h2 {
-  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  font-size: clamp(24px, 3vw, 34px); color: #fff; margin: 0 0 12px; letter-spacing: -0.01em;
-}
-.coverage-hero-card p { font-size: 15px; line-height: 1.72; color: rgba(255,255,255,0.74); margin: 0 0 12px; max-width: 720px; }
-.coverage-hero-card p:last-child { margin-bottom: 0; }
-
-.coverage-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 26px 0 8px; }
-.coverage-point {
-  padding: 22px 20px; border-radius: 16px;
-  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-}
-.coverage-point i { color: var(--cov); font-size: 20px; margin-bottom: 12px; }
-.coverage-point h4 { margin: 0 0 7px; font-family: var(--font-body); font-size: 15px; font-weight: 700; color: #fff; }
-.coverage-point p { margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.6); }
-
-/* Lead expert cards */
-.coverage-leads { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.lead-card {
-  display: flex; align-items: center; gap: 16px; padding: 20px 22px; border-radius: 18px;
-  background: rgba(255,255,255,0.035); border: 1px solid rgba(43,212,212,0.22);
-  border-left: 3px solid var(--cov);
-  transition: transform 0.25s, background 0.25s;
-}
-.lead-card:hover { transform: translateY(-3px); background: rgba(255,255,255,0.05); }
-.lead-avatar {
-  width: 62px; height: 62px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
-  border: 2px solid rgba(43,212,212,0.5); background: var(--dark-700);
-  box-shadow: 0 0 0 4px rgba(43,212,212,0.1);
-}
-.lead-info { display: flex; flex-direction: column; gap: 4px; }
-.lead-name { font-family: var(--font-body); font-size: 17px; font-weight: 700; color: #fff; }
-.lead-role {
-  align-self: flex-start; padding: 3px 11px; border-radius: 999px; font-size: 11px;
-  letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;
-  background: var(--cov-soft); border: 1px solid rgba(43,212,212,0.4); color: var(--cov);
+    radial-gradient(ellipse 72% 66% at 50% 30%, rgba(255, 88, 88, 0.28), transparent 67%),
+    radial-gradient(ellipse 54% 58% at 50% 10%, rgba(195, 47, 67, 0.24), transparent 70%);
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 760px) {
-  .charter-grid { grid-template-columns: 1fr; }
-  .coverage-points { grid-template-columns: 1fr; }
-  .coverage-leads { grid-template-columns: 1fr; }
-  .enforce-step { padding: 16px 16px; gap: 14px; }
-}
-
-/* Entrance for doc/charter/coverage items: same reveal-up cascade as the rest of
-   the site, driven by an inline --i on each element. */
-.charter-article, .enforce-step, .coverage-point, .lead-card {
-  animation: reveal-up 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
-  animation-delay: calc(var(--i, 0) * 70ms);
-}
-@media (prefers-reduced-motion: reduce) {
-  .charter-article, .enforce-step, .coverage-point, .lead-card { animation: none; }
-}
-
-/* Initial-letter avatar variant for lead expert cards (no photo needed) */
-.lead-avatar.initial {
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 24px; font-weight: 700;
-  color: var(--cov); background: var(--cov-soft); text-transform: uppercase;
-}
-
-/* ---- Coverage Modes (Severe / Winter / Tropical) ---- */
-.coverage-modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.mode-card {
-  --mode: rgba(255,255,255,0.4);
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  padding: 26px 22px 24px; border-radius: 20px;
+.coverage-expert .coverage-mode-card:is(.winter, .coverage-winter)::before,
+.coverage-expert .mode-card:is(.winter, .coverage-winter)::before,
+.coverage-expert .coverage-card:is(.winter, .coverage-winter)::before,
+.coverage-policy .coverage-mode-card:is(.winter, .coverage-winter)::before,
+.coverage-policy .mode-card:is(.winter, .coverage-winter)::before,
+.coverage-policy .coverage-card:is(.winter, .coverage-winter)::before {
   background:
-    radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--mode) 16%, transparent) 0%, transparent 60%),
-    rgba(255,255,255,0.035);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.mode-badge {
-  width: 84px; height: 84px; border-radius: 50%; margin-bottom: 14px;
-  box-shadow: 0 8px 26px color-mix(in srgb, var(--mode) 40%, transparent);
-}
-.mode-card h3 {
-  margin: 0 0 6px; font-family: var(--font-display); font-size: 18px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.01em; color: #fff;
-}
-.mode-crit { margin: 0 0 14px; font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.55); }
-.mode-thresholds {
-  width: 100%; display: flex; flex-direction: column; gap: 0; text-align: left;
-  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;
-}
-.mode-threshold {
-  display: grid;
-  grid-template-columns: 18px 1fr;
-  column-gap: 9px;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: none; border-radius: 0;
-}
-.mode-threshold:last-child { border-bottom: none; padding-bottom: 0; }
-.mode-threshold::before {
-  content: '✓';
-  grid-row: 1 / 3;
-  color: var(--mode); filter: brightness(1.3);
-  font-size: 14px; font-weight: 800; line-height: 1;
-  padding-top: 3px;
-}
-.mode-threshold .t-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--mode); filter: brightness(1.25);
-}
-.mode-threshold .t-value { font-size: 12px; line-height: 1.45; color: rgba(255,255,255,0.65); }
-.mode-card.severe   { --mode: #e0556d; }
-.mode-card.winter   { --mode: #5b9dff; }
-.mode-card.tropical { --mode: #3fb96b; }
-
-.coverage-expert-note {
-  margin: 18px auto 0; max-width: 720px; text-align: center;
-  font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.55);
-}
-.coverage-expert-note .ce-tag {
-  color: var(--cov); font-weight: 600;
+    radial-gradient(ellipse 72% 66% at 50% 20%, rgba(101, 185, 255, 0.25), transparent 67%),
+    radial-gradient(ellipse 52% 60% at 50% 0%, rgba(80, 121, 221, 0.22), transparent 70%);
 }
 
-/* ---- Coverage Policies (conduct during a mode) ---- */
-.coverage-rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-.coverage-rule {
-  display: flex; gap: 15px; align-items: flex-start;
-  padding: 18px 20px; border-radius: 16px;
-  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-}
-.coverage-rule .rule-ico {
-  flex-shrink: 0; width: 38px; height: 38px; border-radius: 11px;
-  display: inline-flex; align-items: center; justify-content: center; font-size: 16px;
-  background: var(--cov-soft); border: 1px solid rgba(43,212,212,0.35); color: var(--cov);
-}
-.coverage-rule h4 { margin: 1px 0 5px; font-family: var(--font-body); font-size: 15px; font-weight: 700; color: #fff; }
-.coverage-rule p { margin: 0; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.6); }
-.coverage-rule.full { grid-column: 1 / -1; }
-
-@media (max-width: 760px) {
-  .coverage-modes { grid-template-columns: 1fr; }
-  .coverage-rules { grid-template-columns: 1fr; }
+.coverage-expert .coverage-mode-card:is(.tropical, .coverage-tropical)::before,
+.coverage-expert .mode-card:is(.tropical, .coverage-tropical)::before,
+.coverage-expert .coverage-card:is(.tropical, .coverage-tropical)::before,
+.coverage-policy .coverage-mode-card:is(.tropical, .coverage-tropical)::before,
+.coverage-policy .mode-card:is(.tropical, .coverage-tropical)::before,
+.coverage-policy .coverage-card:is(.tropical, .coverage-tropical)::before {
+  background:
+    radial-gradient(ellipse 72% 66% at 50% 16%, rgba(87, 227, 148, 0.24), transparent 67%),
+    radial-gradient(ellipse 54% 58% at 50% 28%, rgba(63, 172, 106, 0.22), transparent 70%);
 }
 
-.coverage-rule a { color: var(--cov); text-decoration: none; }
-.coverage-rule a:hover { text-decoration: underline; }
-
-/* ---- Coverage Experts as staff-styled cards (coverage accent) ---- */
-.staff-grid-coverage { grid-template-columns: repeat(2, 1fr); }
-.staff-card.coverage-card { border-color: rgba(255,255,255,0.1); }
-.staff-card.coverage-card .staff-card-bg-cov {
-  background: linear-gradient(135deg, rgba(43,212,212,0.42), rgba(43,212,212,0.1));
-  filter: none; transform: none;
+.coverage-expert .coverage-mode-title,
+.coverage-expert .mode-title,
+.coverage-expert .coverage-card-title,
+.coverage-policy .coverage-mode-title,
+.coverage-policy .mode-title,
+.coverage-policy .coverage-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 4px 14px rgba(0,0,0,0.28);
 }
-.staff-card.coverage-card .staff-avatar {
-  border-color: rgba(255,255,255,0.28); box-shadow: 0 0 0 4px rgba(255,255,255,0.05);
-}
-.staff-avatar.initial {
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 30px; font-weight: 700;
-  color: var(--cov); background: var(--cov-soft); text-transform: uppercase;
-}
-.staff-role.cov { background: var(--cov-soft); border-color: rgba(43,212,212,0.4); color: var(--cov); }
-@media (max-width: 600px) { .staff-grid-coverage { grid-template-columns: 1fr; } }
-
-.staff-card.coverage-card .staff-role { position: relative; z-index: 1; }
-
-/* ==========================================================================
-   CHARTER + POLICY LIST REFRESH (no per-item cards)
-   ========================================================================== */
-
-/* Charter as a formal numbered document, not a grid of cards */
-.charter-lead {
-  max-width: 820px; margin: 0 auto 36px; padding-left: 20px;
-  border-left: 3px solid rgba(107,84,245,0.5);
-  font-size: 15.5px; line-height: 1.75; color: rgba(255,255,255,0.74);
-}
-.charter-list { list-style: none; margin: 0 auto; padding: 0; max-width: 820px; }
-.charter-item {
-  display: flex; gap: 22px; align-items: flex-start;
-  padding: 24px 6px; border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-.charter-item:last-child { border-bottom: none; }
-.charter-item-no {
-  flex-shrink: 0; min-width: 40px;
-  font-family: var(--font-display); font-size: 20px; font-weight: 700;
-  color: var(--purple-300); line-height: 1.4;
-  font-variant-numeric: tabular-nums;
-}
-.charter-item-body { flex: 1; }
-.charter-item-body h3 {
-  margin: 2px 0 8px; font-family: var(--font-body); font-size: 17px; font-weight: 700; color: #fff;
-}
-.charter-item-body p { margin: 0; font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,0.64); }
-.charter-item-body p a { color: rgba(255,255,255,0.75); text-decoration: underline; text-underline-offset: 2px; }
-.charter-item-body p a:hover { color: #fff; }
-.charter-item-flag {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 10px;
-  font-size: 12.5px; color: rgba(255,255,255,0.46);
-}
-.charter-item-flag a { color: var(--purple-300); text-decoration: none; font-weight: 600; }
-.charter-item-flag a:hover { text-decoration: underline; }
-
-/* Coverage expert roster stagger — same pattern as #staff-roster.animate-in */
-#experts-roster.animate-in .staff-tier-title,
-#experts-roster.animate-in .staff-card {
-  animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
-  animation-delay: calc(var(--i, 0) * 85ms);
-}
-#experts-roster:empty { min-height: 40vh; }
-@media (prefers-reduced-motion: reduce) {
-  #experts-roster.animate-in .staff-tier-title,
-  #experts-roster.animate-in .staff-card { animation: none; }
-}
-
-/* Charter-item icon variant (coverage policies) — teal instead of purple number */
-.charter-item-ico {
-  font-size: 16px; color: var(--cov); min-width: 40px;
-  display: flex; align-items: flex-start; justify-content: flex-start; padding-top: 3px;
-}
-
-/* Coverage policies as a single panel of rows, not cards */
-.policy-list {
-  list-style: none; margin: 0 auto; padding: 4px 0; max-width: 760px;
-  background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px;
-}
-.policy-row {
-  display: flex; gap: 16px; align-items: flex-start;
-  padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.policy-row:last-child { border-bottom: none; }
-.policy-ico {
-  flex-shrink: 0; width: 30px; text-align: center; color: var(--cov); font-size: 16px; margin-top: 2px;
-}
-.policy-row h4 { margin: 0 0 4px; font-family: var(--font-body); font-size: 15px; font-weight: 700; color: #fff; }
-.policy-row p { margin: 0; font-size: 13.5px; line-height: 1.62; color: rgba(255,255,255,0.62); }
-.policy-row a { color: var(--cov); text-decoration: none; }
-.policy-row a:hover { text-decoration: underline; }
-
-/* Plain (non-pill) document meta line under a hero */
-.doc-meta-plain {
-  margin-top: 14px; font-size: 13px; color: rgba(255,255,255,0.5);
-}
-.doc-meta-plain b { color: rgba(255,255,255,0.72); font-weight: 600; }
-.doc-meta-plain a { color: inherit; }
-
-/* ---- Legal section scroll-stagger ---- */
-.legal-doc .legal-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity  0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--ls-delay, 0ms),
-    transform 0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--ls-delay, 0ms);
-}
-.legal-doc .legal-section.ls-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (prefers-reduced-motion: reduce) {
-  .legal-doc .legal-section { opacity: 1; transform: none; transition: none; }
-}
-
-/* ---- Legal doc footer (effective date / version line) ---- */
-.legal-doc-footer {
-  margin-top: 48px; padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  font-size: 12.5px; color: rgba(255,255,255,0.38);
-}
-.legal-doc-footer b { color: rgba(255,255,255,0.55); font-weight: 600; }
-.legal-doc-footer a { color: inherit; text-decoration: none; }
-.legal-doc-footer a:hover { color: rgba(255,255,255,0.6); }
-
-/* The mobile "Policies" opener is a <button> (it opens a nested sub-view), so it
-   needs the native button chrome stripped to match the <a> clean-links. */
-button.clean-link {
-  width: 100%;
-  background: transparent;
-  border: none;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
-}
-button.clean-link:focus { outline: none; }
-button.clean-link:focus-visible { outline: 2px solid var(--purple-400); outline-offset: 2px; border-radius: 8px; }
