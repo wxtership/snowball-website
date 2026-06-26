@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Xtreme Weather brings live radar, severe weather coverage, Discord alerts, Snowball, and weather tools together for one fast community-driven weather hub." />
+<meta name="description" content="Snowball is the most advanced Discord app for weather. AI that fetches real data, a full economy system, radio, music, and more — built for the Xtreme Weather community." />
 <meta name="theme-color" content="#0d0d18" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>Xtreme Weather — Radar, Alerts, Discord &amp; Snowball</title>
+<title>Snowball — Weather it. Snowball it.</title>
 <link rel="icon" type="image/png" href="assets/xtreme-logo-small.png">
 <link rel="apple-touch-icon" href="assets/xtreme-logo-small.png">
 <link rel="preconnect" href="https://discord.com" />
@@ -14,14 +14,14 @@
 <link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/hero-radar-level2.png" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/snowball-logo-transparent-small.png" fetchpriority="high" />
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="snowball.css">
 <script src="vendor/react.production.min.js"></script>
 <script src="vendor/react-dom.production.min.js"></script>
 </head>
-<body class="home-page">
+<body>
 
 <div id="sb-tint-anchor-top" aria-hidden="true"></div>
 <div id="sb-tint-anchor-bottom" aria-hidden="true"></div>
@@ -39,9 +39,6 @@
         </div>
         <div class="nav-center">
             <ul class="nav-links">
-                <li>
-                    <a href="index.html" class="active">Home</a>
-                </li>
                 <li class="has-dropdown" data-menu="community">
                     <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
@@ -49,7 +46,7 @@
                     <a href="#">Information <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
                 <li>
-                    <a href="snowball.html">Snowball</a>
+                    <a href="#" class="active">Snowball</a>
                 </li>
             </ul>
         </div>
@@ -57,6 +54,22 @@
     </div>
 </nav>
 
+<div class="mega-menu" id="snowball-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Features</div>
+            <a href="#ai-section" class="mega-item"><i class="fas fa-robot"></i><div class="mega-item-text"><span class="title">AI Weather</span><span class="desc">Ask anything, get real data</span></div></a>
+            <a href="#economy" class="mega-item"><i class="fas fa-snowflake"></i><div class="mega-item-text"><span class="title">Economy</span><span class="desc">SNOWFLAKES, stocks &amp; boars</span></div></a>
+            <a href="#commands" class="mega-item"><i class="fas fa-terminal"></i><div class="mega-item-text"><span class="title">Commands</span><span class="desc">All slash commands</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Get Started</div>
+            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Join the Server</span><span class="desc">Add Snowball to your Discord</span></div></a>
+            <a href="#preview" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Community</span><span class="desc">7K+ members strong</span></div></a>
+            <a href="#" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Live Radio</span><span class="desc">Weather radio &amp; music</span></div></a>
+        </div>
+    </div>
+</div>
 
 <div class="mega-menu" id="community-mega-menu">
     <div class="mega-menu-container">
@@ -89,10 +102,9 @@
 <div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
     <div class="mobile-view main-view" id="sb-mobile-main-view">
         <div class="mobile-centered-content">
-            <a href="index.html" class="mobile-big-link">Home</a>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
-            <a href="snowball.html" class="mobile-big-link">Snowball</a>
+            <a href="index.html" class="mobile-big-link">Snowball</a>
         </div>
     </div>
     <div class="mobile-view sub-view" id="sb-sub-community">
@@ -123,8 +135,9 @@ const { useState, useEffect, useRef } = React;
 const h = React.createElement;
 
 const PHRASES = [
-  "track live radar","follow severe weather","join live coverage","use Snowball",
-  "open the radar","get weather alerts","watch the tropics","stay ahead"
+  "track weather","chat with AI","get forecasts","receive alerts",
+  "generate EAS alerts","listen to music","tune in to radio","earn SNOWFLAKES",
+  "fight your boar","stay informed"
 ];
 
 const FLOAT_ICONS = [
@@ -336,121 +349,58 @@ function Nav() { return null; }
 
 const DISCORD_SVG_PATH = 'M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z';
 
-
 function Hero() {
+  const [burstKey] = useState(0);
   const [visible, setVisible] = useState(false);
-  const heroRef = useRef(null);
-  const mapRef = useRef(null);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(t);
   }, []);
 
-  useEffect(() => {
-    const hero = heroRef.current;
-    const map = mapRef.current;
-    if (!hero || !map) return;
-
-    let frame = 0;
-    let prevAngle = 0;
-    const setRadarAngle = (raw) => {
-      let delta = ((raw - prevAngle) % 360 + 540) % 360 - 180;
-      prevAngle = prevAngle + delta;
-      map.style.setProperty('--radar-angle', prevAngle.toFixed(1) + 'deg');
-    };
-
-    const move = (event) => {
-      const rect = hero.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = event.clientX - cx;
-      const dy = event.clientY - cy;
-      if (dx * dx + dy * dy < 90 * 90) return;
-      const angle = Math.atan2(dy, dx) * (180 / Math.PI) - 200;
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => setRadarAngle(angle));
-    };
-
-    const leave = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => setRadarAngle(0));
-    };
-
-    setRadarAngle(0);
-    hero.addEventListener('pointermove', move, { passive: true });
-    hero.addEventListener('pointerleave', leave);
-    return () => {
-      cancelAnimationFrame(frame);
-      hero.removeEventListener('pointermove', move);
-      hero.removeEventListener('pointerleave', leave);
-    };
-  }, []);
-
-  const heroItems = [
-    { icon:'assets/icons/small-radar.png', label:'Radar', text:'Open the radar' },
-    { icon:'assets/betterappicon.png', label:'Radar App', text:'Better app coming soon' },
-    { icon:'assets/Discord.webp', label:'Discord', text:'Live coverage and alerts' },
-    { icon:'assets/icons/small-snowball.png', label:'Snowball', text:'Weather commands and AI' },
-  ];
-
-  return h('section', { id: 'hero', className: 'xw-hero-v2', ref: heroRef },
+  return h('section', { id: 'hero' },
     h('div', { className: 'hero-bg' }),
-    h('img', { className:'xw-real-radar-bg', src:'assets/hero-radar-level2.png', alt:'', fetchpriority:'high', 'aria-hidden':'true' }),
-    h('div', { className: 'xw-hero-map', ref: mapRef, 'aria-hidden': 'true' },
-      h('span', { className:'xw-hero-ring ring-one' }),
-      h('span', { className:'xw-hero-ring ring-two' }),
-      h('span', { className:'xw-hero-ring ring-three' })
-    ),
-    h('div', { className: 'hero-content xw-hero-content' },
-      h('h1', { className: 'xw-hero-title', style: {
+    h(FloatingIcons, { burstKey }),
+    h('div', { className: 'hero-content' },
+      h('h1', { className: 'hero-headline', style: {
+        marginBottom: 10,
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(18px)',
-        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s',
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        transform: visible ? 'translateY(0)' : 'translateY(16px)',
+        transition: 'opacity 1.2s cubic-bezier(0.16,1,0.3,1), filter 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1)',
       } },
-        h('span', { className:'xw-title-mustica' }, 'Whatever'),
-        h('span', { className:'xw-title-druk' }, 'the Weather')
+        h('span', { style: { display:'flex', alignItems:'center', justifyContent:'center', gap:14, flexWrap:'wrap' } },
+          h('img', { src: 'assets/snowball-logo-transparent-small.png', alt: '', fetchpriority: 'high', style: { width:34, height:34, flexShrink:0, objectFit:'contain' } }),
+          'Snowball is the best Discord app to'
+        )
       ),
-      h('p', { className: 'xw-hero-deck', style: {
+      h('div', { className: 'hero-rotating-line', style: {
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(18px)',
-        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s',
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        transform: visible ? 'translateY(0)' : 'translateY(16px)',
+        transition: 'opacity 1.2s cubic-bezier(0.16,1,0.3,1) 0.12s, filter 1.2s cubic-bezier(0.16,1,0.3,1) 0.12s, transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.12s',
+      } }, h(RotatingWord)),
+      h('p', { className: 'hero-sub', style: {
+        opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        transform: visible ? 'translateY(0)' : 'translateY(16px)',
+        transition: 'opacity 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s, filter 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s, transform 1.3s cubic-bezier(0.16,1,0.3,1) 0.25s',
       } },
-        'Open the radar, watch live coverage, and jump into the Discord when the sky starts getting interesting. A better radar app is coming soon.'
+        'The most advanced Discord app for weather. AI that actually fetches real data, a full economy system, radio, music, and so much more. ',
+        h('strong', { style: { color: 'var(--purple-300)' } }, 'Weather it. Snowball it.')
       ),
-      h('div', { className: 'hero-ctas xw-hero-ctas', style: {
+      h('div', { className: 'hero-ctas', style: {
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(14px)',
-        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s',
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        transform: visible ? 'translateY(0)' : 'translateY(10px)',
+        transition: 'opacity 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s, filter 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s, transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.45s',
       } },
-        h('a', { href: '#radar-web', className: 'btn-primary', style: { display:'inline-flex', alignItems:'center', gap:8 } },
-          h('i', { className:'fas fa-location-crosshairs', 'aria-hidden':'true' }),
-          'Open the radar',
-          h('img', { src:'assets/arrow-up-right-small.png', alt:'', style:{ width:16, height:16, objectFit:'contain', flexShrink:0, filter:'brightness(0) invert(1)' } })
-        ),
-        h('a', { href: 'https://discord.gg/xtremeweather', target: '_blank', rel: 'noopener', className: 'btn-ghost-arrow', style: { display:'inline-flex', alignItems:'center', gap:8 } },
+        h('a', { href: 'https://discord.gg/xtremeweather', target: '_blank', className: 'btn-ghost-arrow', style: { display:'inline-flex', alignItems:'center', gap:8 } },
           h('svg', { width:20, height:20, viewBox:'0 0 127.14 96.36', fill:'currentColor', xmlns:'http://www.w3.org/2000/svg', style:{flexShrink:0} },
             h('path', { d: DISCORD_SVG_PATH })
           ),
-          'Join Discord',
+          'Try it out',
           h('img', { src:'assets/arrow-up-right-small.png', alt:'', style:{ width:16, height:16, objectFit:'contain', flexShrink:0, filter:'brightness(0) invert(1)' } })
-        )
-      ),
-      h('div', { className: 'xw-hero-dock', style: {
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(16px)',
-        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s',
-      } },
-        ...heroItems.map(item =>
-          h('a', { key:item.label, href:item.label === 'Discord' ? 'https://discord.gg/xtremeweather' : item.label === 'Radar' ? '#radar-web' : '#' + item.label.toLowerCase().replace(/\s+/g, '-'), target:item.label === 'Discord' ? '_blank' : undefined, rel:item.label === 'Discord' ? 'noopener' : undefined },
-            item.label === 'Radar'
-              ? h('img', { src:item.icon, alt:'', loading:'lazy', style:{width:46,height:46,transform:'scale(1.18)',transformOrigin:'center'} })
-              : h('img', { src:item.icon, alt:'', loading:'lazy' }),
-            h('span', null,
-              h('strong', null, item.label),
-              h('small', null, item.text)
-            )
-          )
         )
       )
     )
@@ -589,7 +539,7 @@ const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy',
 
 function DcEmbed() {
     return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:690,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,backdropFilter:'blur(4px)'} },
-      h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 66',overflow:'hidden'} },
+      h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 120',overflow:'hidden'} },
         h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
@@ -696,7 +646,7 @@ function DiscordChatDemo({ t, fading }) {
     setBodyHeight(measured);
   }, [showUserMsg, showThinking, thinkingLeaving, showBotResponse]);
 
-  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:14,overflow:'hidden',border:'1px solid rgba(199,210,222,0.32)',boxShadow:'0 24px 80px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
+  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:12,overflow:'hidden',border:'1px solid rgba(155,94,245,0.18)',boxShadow:'0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
     h(DcChannelHeader),
     h('div', {
       style: {
@@ -1037,14 +987,14 @@ function PreviewTicker() {
   }, []);
 
   const stats = [
-    { num: members ?? '7.5K+', label: 'Members' },
+    { num: members ?? '7.2K+', label: 'Members' },
     { num: online ?? '—',  label: 'Online now' },
-    { num: 'LIVE',         label: 'radar and alerts' },
-    { num: '24/7',         label: 'weather community' },
+    { num: 'Thousands',         label: 'of AI messages sent' },
+    { num: 'Billions',          label: 'in the economy' },
   ];
 
   return h('div', { className:'preview-ticker-wrap' },
-    h('h2', { className:'preview-ticker-title' }, 'THE COMMUNITY', h('br'), 'IS THE SIGNAL.'),
+    h('h2', { className:'preview-ticker-title' }, 'THE COMMUNITY', h('br'), 'IS ALREADY INSIDE.'),
     h('div', { className:'preview-ticker-grid' },
       ...stats.map((s,i) => {
         const isWord = typeof s.num === 'string' && /^[A-Za-z]/.test(s.num);
@@ -1066,263 +1016,9 @@ function PreviewTicker() {
 
 function PreviewSection() {
   return h('section', { id:'preview' },
+    h('div', { className:'divider' }),
     h('div', { className:'section-inner', style:{paddingTop:80} },
       h(PreviewTicker)
-    )
-  );
-}
-
-function HomeProductsSection() {
-  const products = [
-    {
-      id: 'radar-app',
-      icon: 'assets/betterappicon.png',
-      title: 'Radar App',
-      kicker: 'Official App',
-      desc: 'A better radar app is coming soon, built around fast checks, cleaner alerts, and the Xtreme Weather ecosystem.',
-      href: '#radar-app',
-      tone: 'cyan',
-    },
-    {
-      id: 'radar-web',
-      icon: 'assets/icons/small-radar.png',
-      title: 'Radar',
-      kicker: 'Browser',
-      desc: 'Open the radar quickly for storms, alerts, and coverage context without digging through extra pages.',
-      href: '#radar-web',
-      tone: 'green',
-    },
-    {
-      id: 'discord',
-      icon: 'assets/Discord.webp',
-      title: 'Discord',
-      kicker: 'Community',
-      desc: 'Live coverage, weather chat, alerts, forecast discussion, and the people who keep the server moving.',
-      href: 'https://discord.gg/xtremeweather',
-      external: true,
-      tone: 'violet',
-    },
-    {
-      id: 'snowball',
-      icon: 'assets/icons/small-snowball.png',
-      title: 'Snowball',
-      kicker: 'Discord App',
-      desc: 'Weather commands, AI briefings, live radio, music, economy, and community tools built into Discord.',
-      href: '#snowball',
-      tone: 'blue',
-    },
-    {
-      id: 'coverage',
-      icon: 'assets/coverage/severe_static.png',
-      title: 'Coverage Modes',
-      kicker: 'Operations',
-      desc: 'Severe, winter, and tropical workflows that make high-impact weather easier to follow.',
-      href: '#coverage',
-      tone: 'amber',
-    },
-  ];
-
-  return h('section', { id: 'products', className: 'home-products-section' },
-    h('div', { className: 'section-inner xw-products-inner' },
-      h('div', { className: 'xw-section-head' },
-        h('div', null,
-          h('h2', { className: 'section-title' }, 'One weather hub,', h('br'), 'all the paths in')
-        ),
-        h('p', { className: 'section-body xw-section-head-copy' },
-          'Start with the radar, the coming radar app, the Discord community, Snowball, or live coverage. Every path leads back to the same Xtreme Weather ecosystem.'
-        )
-      ),
-      h('div', { className: 'xw-product-grid' },
-        ...products.map((p, i) =>
-          h('a', {
-            key: p.id,
-            href: p.href,
-            target: p.external ? '_blank' : undefined,
-            rel: p.external ? 'noopener' : undefined,
-            className: 'xw-product-card tone-' + p.tone,
-            style: { '--i': i },
-          },
-            h('div', { className: 'xw-product-icon' }, h('img', { src: p.icon, alt: '', loading: 'lazy' })),
-            h('h3', { className: 'xw-product-title' }, p.title),
-            h('p', { className: 'xw-product-desc' }, p.desc),
-            h('span', { className: 'xw-product-link' },
-              'Explore',
-              h('img', { src:'assets/arrow-up-right-small.png', alt:'', loading:'lazy' })
-            )
-          )
-        )
-      )
-    )
-  );
-}
-
-function RadarAppSection() {
-  const features = [
-    ['Live radar', 'See what is moving without digging through menus.'],
-    ['Alerts first', 'Surface the weather that actually needs attention.'],
-    ['Community ready', 'Built to connect with Xtreme Weather coverage.'],
-  ];
-
-  return h('section', { id: 'radar-app', className: 'xw-split-section' },
-    h('div', { className: 'divider' }),
-    h('div', { className: 'section-inner xw-split' },
-      h('div', { className: 'xw-copy-block' },
-        h('div', { className: 'section-label' }, 'Radar app'),
-        h('h2', { className: 'section-title' }, 'Weather that feels', h('br'), 'built for your phone'),
-        h('p', { className: 'section-body' },
-          'A better radar app is coming soon: quicker radar checks, cleaner alert context, and an experience that feels connected to the rest of Xtreme Weather.'
-        ),
-        h('div', { className: 'xw-feature-list' },
-          ...features.map((f, i) =>
-            h('div', { key: i, className: 'xw-feature-row' },
-              h('span', { className: 'xw-feature-check' }, h('i', { className:'fas fa-check', 'aria-hidden':'true' })),
-              h('span', null, h('strong', null, f[0]), ' ', f[1])
-            )
-          )
-        )
-      ),
-      h('div', { className: 'xw-phone-stage', 'aria-label': 'Radar app preview' },
-        h('div', { className: 'xw-phone' },
-          h('div', { className: 'xw-phone-status' },
-            h('span', null, '6:07'),
-            h('span', null, h('i', { className:'fas fa-signal', 'aria-hidden':'true' }), h('i', { className:'fas fa-battery-three-quarters', 'aria-hidden':'true' }))
-          ),
-          h('div', { className: 'xw-phone-header' },
-            h('img', { src:'assets/betterappicon.png', alt:'', loading:'lazy' }),
-            h('div', null,
-              h('strong', null, 'Xtreme Weather'),
-              h('span', null, 'Official App')
-            )
-          ),
-          h('div', { className: 'xw-phone-map' },
-            h('div', { className:'xw-map-grid' }),
-            h('span', { className:'xw-storm-cell cell-one' }),
-            h('span', { className:'xw-storm-cell cell-two' }),
-            h('span', { className:'xw-storm-cell cell-three' }),
-            h('span', { className:'xw-location-pin' }),
-            h('div', { className:'xw-radar-sweep' })
-          ),
-          h('div', { className:'xw-phone-alert' },
-            h('span', { className:'xw-alert-dot' }),
-            h('div', null,
-              h('strong', null, 'Storms approaching'),
-              h('span', null, 'Radar and alert tools ready')
-            )
-          )
-        )
-      )
-    )
-  );
-}
-
-function RadarWebSection() {
-  const layers = ['Radar', 'Alerts', 'Lightning', 'Storm reports'];
-
-  return h('section', { id: 'radar-web', className: 'xw-split-section xw-split-reverse' },
-    h('div', { className: 'divider' }),
-    h('div', { className: 'section-inner xw-split' },
-      h('div', { className: 'xw-browser' },
-        h('div', { className: 'xw-browser-top' },
-          h('span', null), h('span', null), h('span', null),
-          h('div', { className: 'xw-browser-url' }, 'xtremewx.com/radar')
-        ),
-        h('div', { className: 'xw-browser-body' },
-          h('div', { className: 'xw-web-map' },
-            h('div', { className:'xw-map-grid' }),
-            h('span', { className:'xw-storm-cell cell-one' }),
-            h('span', { className:'xw-storm-cell cell-two' }),
-            h('span', { className:'xw-storm-cell cell-three' }),
-            h('div', { className:'xw-radar-sweep' })
-          ),
-          h('aside', { className:'xw-layer-panel' },
-            h('strong', null, 'Live layers'),
-            ...layers.map((layer, i) =>
-              h('span', { key: layer, className: i === 0 ? 'active' : '' },
-                h('i', { className: i === 0 ? 'fas fa-check-circle' : 'far fa-circle', 'aria-hidden':'true' }),
-                layer
-              )
-            )
-          )
-        )
-      ),
-      h('div', { className: 'xw-copy-block' },
-        h('div', { className: 'section-label' }, 'Radar'),
-        h('h2', { className: 'section-title' }, 'Open the radar', h('br'), 'and stay with the storm'),
-        h('p', { className: 'section-body' },
-          'Radar web gives the community a clear browser destination for storms, alerts, and coverage context. It is the thing you can open quickly, send to someone, and keep on a second screen.'
-        ),
-        h('div', { className:'xw-mini-metrics' },
-          h('div', null, h('strong', null, 'Layers'), h('span', null, 'Radar, alerts, reports')),
-          h('div', null, h('strong', null, 'Screen'), h('span', null, 'Phone, tablet, desktop')),
-          h('div', null, h('strong', null, 'Use'), h('span', null, 'Coverage and quick checks'))
-        )
-      )
-    )
-  );
-}
-
-function CoverageSection() {
-  const modes = [
-    { img:'assets/coverage/severe_static.png', title:'Severe', desc:'Warnings, outlooks, radar, reports, and staff coverage when storms are active.' },
-    { img:'assets/coverage/winter_static.png', title:'Winter', desc:'Snow, ice, travel impacts, watches, warnings, and community reports in one mode.' },
-    { img:'assets/coverage/tropical_static.png', title:'Tropical', desc:'Hurricane tracking, forecast updates, surge context, and tropical discussion.' },
-  ];
-
-  return h('section', { id:'coverage', className:'xw-coverage-section' },
-    h('div', { className:'divider' }),
-    h('div', { className:'section-inner' },
-      h('div', { className:'xw-section-head' },
-        h('div', null,
-          h('div', { className:'section-label' }, 'Coverage modes'),
-          h('h2', { className:'section-title' }, 'Make active weather', h('br'), 'easy to follow')
-        ),
-        h('p', { className:'section-body xw-section-head-copy' },
-          'Coverage modes give the site and Discord a clear operating state. People should know what is happening, where to go, and what matters now.'
-        )
-      ),
-      h('div', { className:'xw-coverage-grid' },
-        ...modes.map((mode, i) =>
-          h('article', { key: mode.title, className:'xw-coverage-card', style:{ '--i': i } },
-            h('img', { src:mode.img, alt:'', loading:'lazy' }),
-            h('div', null,
-              h('h3', null, mode.title),
-              h('p', null, mode.desc)
-            )
-          )
-        )
-      )
-    )
-  );
-}
-
-function SnowballPromoSection() {
-  return h('section', { id:'snowball', className:'xw-snowball-section' },
-    h('div', { className:'section-inner xw-split' },
-      h('div', { className:'xw-copy-block' },
-        h('h2', { className:'section-title xw-snowball-title' },
-          'Weather it,', h('br'),
-          'Sn',
-          h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', loading:'lazy', className:'xw-banner-icon' }),
-          'wball it.'
-        ),
-        h('p', { className:'section-body' },
-          'Snowball is the Discord side of Xtreme Weather: AI weather answers that can fetch real data, forecasts, radar, alerts, radio, music, levels, economy, moderation tools, and community workflows.'
-        ),
-        h('div', { className:'xw-snowball-points' },
-          h('span', null, h('img', { src:'assets/icons/small-ai.png', alt:'', loading:'lazy' }), 'AI weather briefings'),
-          h('span', null, h('img', { src:'assets/icons/small-radio.png', alt:'', loading:'lazy' }), 'Weather radio'),
-          h('span', null, h('img', { src:'assets/icons/small-alert.png', alt:'', loading:'lazy' }), 'Alerts and outlooks'),
-          h('span', null, h('img', { src:'assets/icons/small-balance.png', alt:'', loading:'lazy' }), 'Community economy')
-        ),
-        h('a', { href:'https://discord.gg/xtremeweather', target:'_blank', rel:'noopener', className:'btn-ghost-arrow xw-inline-cta' },
-          h('i', { className:'fab fa-discord', 'aria-hidden':'true' }),
-          'Try Snowball in Discord',
-          h('img', { src:'assets/arrow-up-right-small.png', alt:'', loading:'lazy' })
-        )
-      ),
-      h('div', { className:'xw-snowball-visual' },
-        h(DiscordChatDemo, { t: AI_TIMELINE_TOTAL, fading: false })
-      )
     )
   );
 }
@@ -1333,10 +1029,9 @@ function App() {
   return h(React.Fragment, null,
     h(Nav),
     h(Hero),
-    h(HomeProductsSection),
-    h(RadarAppSection),
-    h(RadarWebSection),
-    h(SnowballPromoSection),
+    h(AiSection),
+    h(EconomySection),
+    h(CommandsSection),
     h(PreviewSection),
     h(Footer)
   );
@@ -1386,6 +1081,7 @@ requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('re
     <div class="footer-copyright">
         &copy; 2026 Xtreme Weather. All rights reserved.
     </div>
+    <div class="footer-wordmark" aria-hidden="true">Xtreme Weather</div>
 </footer>
 
 <script>
