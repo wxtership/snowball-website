@@ -443,9 +443,7 @@ function Hero() {
       } },
         ...heroItems.map(item =>
           h('a', { key:item.label, href:item.label === 'Discord' ? 'https://discord.gg/xtremeweather' : item.label === 'Radar' ? '#radar-web' : '#' + item.label.toLowerCase().replace(/\s+/g, '-'), target:item.label === 'Discord' ? '_blank' : undefined, rel:item.label === 'Discord' ? 'noopener' : undefined },
-            item.label === 'Radar'
-              ? h('img', { src:item.icon, alt:'', loading:'lazy', style:{width:46,height:46,transform:'scale(1.18)',transformOrigin:'center'} })
-              : h('img', { src:item.icon, alt:'', loading:'lazy' }),
+            h('img', { src:item.icon, alt:'', loading:'lazy' }),
             h('span', null,
               h('strong', null, item.label),
               h('small', null, item.text)
