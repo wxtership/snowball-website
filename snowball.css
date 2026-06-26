@@ -773,7 +773,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .home-page .hero-bg {
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(6,9,18,0.92) 0%, rgba(9,11,22,0.72) 52%, var(--dark-900) 100%),
+    linear-gradient(180deg, rgba(6,9,18,0.72) 0%, rgba(9,11,22,0.64) 52%, var(--dark-900) 100%),
     #080b14;
 }
 
@@ -782,10 +782,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: absolute;
   inset: -4%;
   background:
-    linear-gradient(to top, var(--dark-900) 0%, rgba(13,13,24,0.1) 32%, rgba(13,13,24,0.25) 100%),
-    url('assets/normal_banner.png') center / cover no-repeat;
-  opacity: 0.2;
-  filter: saturate(1.2) blur(2px);
+    linear-gradient(to top, rgba(13,13,24,0.72) 0%, rgba(13,13,24,0.2) 34%, rgba(13,13,24,0.4) 100%),
+    url('assets/hero-radar-level2.png') center / cover no-repeat;
+  opacity: 0.78;
+  filter: saturate(1.18) contrast(1.04) brightness(0.72);
   transform: scale(1.04);
 }
 
@@ -794,13 +794,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 50%, rgba(34,211,238,0.08) 0 1px, transparent 2px),
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
-    radial-gradient(ellipse 58% 40% at 50% 22%, rgba(139,92,246,0.28) 0%, transparent 62%),
-    radial-gradient(ellipse 40% 36% at 18% 72%, rgba(34,211,238,0.14) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 36% at 82% 70%, rgba(74,222,128,0.12) 0%, transparent 68%);
-  background-size: 28px 28px, 84px 84px, 84px 84px, auto, auto, auto;
+    linear-gradient(180deg, rgba(5,6,14,0.18) 0%, rgba(5,6,14,0.48) 58%, var(--dark-900) 100%),
+    radial-gradient(ellipse 56% 38% at 50% 42%, rgba(0,0,0,0.46) 0%, rgba(0,0,0,0.12) 45%, transparent 68%),
+    radial-gradient(circle at 50% 50%, rgba(34,211,238,0.06) 0 1px, transparent 2px),
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: auto, auto, 28px 28px, 84px 84px, 84px 84px;
   mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
 }
 
@@ -809,6 +808,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 .xw-hero-map {
+  --radar-x: 50%;
+  --radar-y: 50%;
+  --pixel-shift-x: 0px;
+  --pixel-shift-y: 0px;
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -819,8 +822,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-hero-map::after {
   content: '';
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: var(--radar-x);
+  top: var(--radar-y);
   width: 1120px;
   height: 1120px;
   background: conic-gradient(from -22deg, transparent 0 286deg, rgba(34,211,238,0.22) 306deg, rgba(255,255,255,0.08) 318deg, transparent 338deg);
@@ -828,18 +831,20 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   animation: xw-radar-scan 9s linear infinite;
   opacity: 0.55;
   mix-blend-mode: screen;
+  transition: left 0.28s cubic-bezier(0.16,1,0.3,1), top 0.28s cubic-bezier(0.16,1,0.3,1);
 }
 
 .xw-hero-ring {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: var(--radar-x);
+  top: var(--radar-y);
   width: 420px;
   height: 420px;
   border-radius: 50%;
   border: 1px solid rgba(34,211,238,0.16);
   transform: translate(-50%, -50%);
   box-shadow: 0 0 60px rgba(34,211,238,0.06);
+  transition: left 0.28s cubic-bezier(0.16,1,0.3,1), top 0.28s cubic-bezier(0.16,1,0.3,1);
 }
 
 .xw-hero-ring.ring-two {
@@ -860,6 +865,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   z-index: 2;
   image-rendering: pixelated;
   animation: xw-pixel-field 14s steps(7, end) infinite;
+  opacity: 0.52;
 }
 
 .xw-radar-pixel {
@@ -913,8 +919,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 @keyframes xw-pixel-field {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(10px, -6px, 0); }
+  0%, 100% { transform: translate3d(var(--pixel-shift-x), var(--pixel-shift-y), 0); }
+  50% { transform: translate3d(calc(var(--pixel-shift-x) + 10px), calc(var(--pixel-shift-y) - 6px), 0); }
 }
 
 @keyframes xw-pixel-flicker {

@@ -14,7 +14,7 @@
 <link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/normal_banner.png" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/hero-radar-level2.png" fetchpriority="high" />
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="snowball.css">
@@ -394,10 +394,52 @@ const HERO_RADAR_PIXELS = buildRadarPixels();
 
 function Hero() {
   const [visible, setVisible] = useState(false);
+  const heroRef = useRef(null);
+  const mapRef = useRef(null);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    const map = mapRef.current;
+    if (!hero || !map) return;
+
+    let frame = 0;
+    const setRadarPoint = (x, y) => {
+      map.style.setProperty('--radar-x', x.toFixed(2) + '%');
+      map.style.setProperty('--radar-y', y.toFixed(2) + '%');
+      map.style.setProperty('--radar-parallax-x', ((x - 50) / 50).toFixed(3));
+      map.style.setProperty('--radar-parallax-y', ((y - 50) / 50).toFixed(3));
+      map.style.setProperty('--pixel-shift-x', (((x - 50) / 50) * -22).toFixed(2) + 'px');
+      map.style.setProperty('--pixel-shift-y', (((y - 50) / 50) * -16).toFixed(2) + 'px');
+    };
+
+    const move = (event) => {
+      const rect = hero.getBoundingClientRect();
+      const rawX = ((event.clientX - rect.left) / rect.width) * 100;
+      const rawY = ((event.clientY - rect.top) / rect.height) * 100;
+      const x = Math.max(8, Math.min(92, rawX));
+      const y = Math.max(12, Math.min(88, rawY));
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => setRadarPoint(x, y));
+    };
+
+    const leave = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => setRadarPoint(50, 50));
+    };
+
+    setRadarPoint(50, 50);
+    hero.addEventListener('pointermove', move, { passive: true });
+    hero.addEventListener('pointerleave', leave);
+    return () => {
+      cancelAnimationFrame(frame);
+      hero.removeEventListener('pointermove', move);
+      hero.removeEventListener('pointerleave', leave);
+    };
   }, []);
 
   const heroItems = [
@@ -407,9 +449,9 @@ function Hero() {
     { icon:'assets/icons/small-snowball.png', label:'Snowball', text:'Weather commands and AI' },
   ];
 
-  return h('section', { id: 'hero', className: 'xw-hero-v2' },
+  return h('section', { id: 'hero', className: 'xw-hero-v2', ref: heroRef },
     h('div', { className: 'hero-bg' }),
-    h('div', { className: 'xw-hero-map', 'aria-hidden': 'true' },
+    h('div', { className: 'xw-hero-map', ref: mapRef, 'aria-hidden': 'true' },
       h('span', { className:'xw-hero-ring ring-one' }),
       h('span', { className:'xw-hero-ring ring-two' }),
       h('span', { className:'xw-hero-ring ring-three' }),
