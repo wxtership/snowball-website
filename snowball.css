@@ -1698,7 +1698,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .home-page #hero.xw-hero-v2 {
-    padding: 116px 16px 48px;
+    padding: 160px 16px 48px;
     justify-content: flex-start;
   }
 
@@ -1741,16 +1741,13 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .xw-hero-map::after {
-    animation: beamCircle 2.5s linear infinite;
+    animation: beamCircle 2.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
     transition: none;
   }
 
   @keyframes beamCircle {
-    0%   { transform: translate(-50%, -50%) rotate(0deg); }
-    18%  { transform: translate(-50%, -50%) rotate(36deg); }
-    50%  { transform: translate(-50%, -50%) rotate(180deg); }
-    82%  { transform: translate(-50%, -50%) rotate(324deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
   .xw-real-radar-bg {
