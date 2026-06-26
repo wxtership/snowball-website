@@ -768,6 +768,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   min-height: 92vh;
   padding: 118px 24px 72px;
   isolation: isolate;
+  overflow: hidden;
 }
 
 .home-page .hero-bg {
