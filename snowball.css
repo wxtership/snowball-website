@@ -838,15 +838,18 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 1120px;
-  height: 1120px;
-  background: conic-gradient(from -22deg, transparent 0 248deg, rgba(34,211,238,0.18) 306deg, rgba(255,255,255,0.07) 314deg, transparent 374deg);
-  -webkit-mask-image: radial-gradient(circle at center, transparent 8%, white 22%, white 62%, transparent 100%);
-  mask-image: radial-gradient(circle at center, transparent 8%, white 22%, white 62%, transparent 100%);
+  width: 940px;
+  height: 940px;
+  background: conic-gradient(from -22deg, transparent 0 302deg, rgba(34,211,238,0.20) 322deg, rgba(255,255,255,0.06) 330deg, transparent 340deg);
   transform: translate(-50%, -50%) rotate(var(--radar-angle, 0deg));
   opacity: 0.55;
   mix-blend-mode: screen;
   transition: transform 0.12s linear;
+  /* Radial mask: hollow the center so the beam's convergence point doesn't pinch
+     when it sweeps over the middle, and fade the rim into a circle so the square
+     edge never looks boxy. */
+  -webkit-mask-image: radial-gradient(circle at center, transparent 0, transparent 8%, #000 24%, #000 58%, transparent 82%);
+  mask-image: radial-gradient(circle at center, transparent 0, transparent 8%, #000 24%, #000 58%, transparent 82%);
 }
 
 .xw-hero-ring {

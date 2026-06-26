@@ -3632,20 +3632,6 @@ body {
     text-align: center;
 }
 
-.footer-wordmark {
-    font-family: var(--font-display);
-    font-size: 80px;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.12);
-    text-align: center;
-    white-space: nowrap;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    padding: 1.5rem 0 2.5rem;
-    user-select: none;
-    pointer-events: none;
-}
-
 /* Info Section (Bottom Info) */
 .info-section {
     position: relative;
