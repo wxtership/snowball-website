@@ -773,7 +773,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .home-page .hero-bg {
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(6,9,18,0.5) 0%, rgba(9,11,22,0.36) 52%, var(--dark-900) 100%),
+    linear-gradient(180deg, rgba(6,9,18,0.3) 0%, rgba(9,11,22,0.2) 50%, var(--dark-900) 100%),
     #080b14;
 }
 
@@ -782,8 +782,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: absolute;
   inset: -4%;
   background:
-    radial-gradient(ellipse 58% 40% at 50% 42%, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0.08) 45%, transparent 68%),
-    linear-gradient(to top, rgba(13,13,24,0.62) 0%, rgba(13,13,24,0.12) 34%, rgba(13,13,24,0.28) 100%);
+    radial-gradient(ellipse 58% 40% at 50% 42%, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.06) 45%, transparent 68%),
+    linear-gradient(to top, rgba(13,13,24,0.88) 0%, rgba(13,13,24,0.08) 30%, rgba(13,13,24,0.18) 100%);
   opacity: 1;
   filter: none;
   transform: scale(1.04);
@@ -794,12 +794,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(5,6,14,0.05) 0%, rgba(5,6,14,0.28) 58%, rgba(13,13,24,0.92) 100%),
-    radial-gradient(circle at 50% 50%, rgba(34,211,238,0.06) 0 1px, transparent 2px),
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    linear-gradient(180deg, rgba(5,6,14,0.0) 0%, rgba(5,6,14,0.18) 52%, rgba(13,13,24,0.98) 86%, var(--dark-900) 100%),
+    radial-gradient(circle at 50% 50%, rgba(34,211,238,0.05) 0 1px, transparent 2px),
+    linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
   background-size: auto, 28px 28px, 84px 84px, 84px 84px;
-  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 100%);
 }
 
 .xw-real-radar-bg {
@@ -810,12 +810,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.82;
-  filter: saturate(1.2) contrast(1.04) brightness(0.78);
-  transform: scale(1.02);
+  opacity: 0.9;
+  filter: blur(14px) saturate(1.3) brightness(0.65);
+  transform: scale(1.06);
   pointer-events: none;
   user-select: none;
-  mask-image: linear-gradient(to bottom, black 0%, black 74%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 62%, rgba(0,0,0,0.4) 82%, transparent 100%);
 }
 
 .home-page .hero-content.xw-hero-content {
@@ -837,16 +837,15 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-hero-map::after {
   content: '';
   position: absolute;
-  left: var(--radar-x);
-  top: var(--radar-y);
+  left: 50%;
+  top: 50%;
   width: 1120px;
   height: 1120px;
   background: conic-gradient(from -22deg, transparent 0 286deg, rgba(34,211,238,0.22) 306deg, rgba(255,255,255,0.08) 318deg, transparent 338deg);
-  transform: translate(-50%, -50%);
-  animation: xw-radar-scan 9s linear infinite;
+  transform: translate(-50%, -50%) rotate(var(--radar-angle, 0deg));
   opacity: 0.55;
   mix-blend-mode: screen;
-  transition: left 0.28s cubic-bezier(0.16,1,0.3,1), top 0.28s cubic-bezier(0.16,1,0.3,1);
+  transition: transform 0.12s linear;
 }
 
 .xw-hero-ring {
@@ -873,49 +872,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   border-color: rgba(250,204,21,0.08);
 }
 
-.xw-radar-pixel-field {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  image-rendering: pixelated;
-  animation: xw-pixel-field 14s steps(7, end) infinite;
-  opacity: 0.52;
-}
-
-.xw-radar-pixel {
-  position: absolute;
-  width: 23px;
-  height: 23px;
-  border-radius: 2px;
-  transform: translate(-50%, -50%);
-  opacity: 0.82;
-  background: var(--px);
-  box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,0.16),
-    0 0 12px var(--px-glow);
-  animation: xw-pixel-flicker 3.2s steps(3, end) infinite;
-  animation-delay: calc(var(--d) * -0.19s);
-}
-
-.xw-radar-pixel.tier-blue {
-  --px: #0891b2;
-  --px-glow: rgba(8,145,178,0.36);
-}
-
-.xw-radar-pixel.tier-green {
-  --px: #16a34a;
-  --px-glow: rgba(22,163,74,0.42);
-}
-
-.xw-radar-pixel.tier-warn {
-  --px: #eab308;
-  --px-glow: rgba(234,179,8,0.52);
-}
-
-.xw-radar-pixel.tier-hot {
-  --px: #ef4444;
-  --px-glow: rgba(239,68,68,0.58);
-}
 
 .xw-hero-front {
   position: absolute;
@@ -928,19 +884,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   box-shadow: 0 0 22px rgba(34,211,238,0.28);
 }
 
-@keyframes xw-radar-scan {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes xw-pixel-field {
-  0%, 100% { transform: translate3d(var(--pixel-shift-x), var(--pixel-shift-y), 0); }
-  50% { transform: translate3d(calc(var(--pixel-shift-x) + 10px), calc(var(--pixel-shift-y) - 6px), 0); }
-}
-
-@keyframes xw-pixel-flicker {
-  0%, 100% { opacity: 0.72; }
-  50% { opacity: 0.96; }
-}
 
 .xw-hero-mark {
   display: inline-flex;
@@ -971,13 +914,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 .xw-title-mustica {
-  font-family: var(--font-body);
-  font-size: 38px;
-  line-height: 1.05;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.8vw, 52px);
+  line-height: 1.0;
   letter-spacing: 0;
-  text-transform: none;
-  color: rgba(255,255,255,0.78);
-  transform: translateY(8px);
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.62);
 }
 
 .xw-title-druk {
@@ -1649,7 +1591,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
   .xw-title-mustica {
     font-size: 28px;
-    transform: translateY(5px);
   }
 
   .xw-hero-deck {
@@ -1659,11 +1600,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .xw-hero-ring.ring-three {
     width: 720px;
     height: 720px;
-  }
-
-  .xw-radar-pixel {
-    width: 18px;
-    height: 18px;
   }
 
   .xw-section-head {
@@ -1725,7 +1661,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
   .xw-title-mustica {
     font-size: 22px;
-    transform: translateY(4px);
   }
 
   .xw-title-druk {
@@ -1750,13 +1685,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     padding: 12px;
   }
 
-  .xw-radar-pixel {
-    width: 14px;
-    height: 14px;
-    opacity: 0.68;
-  }
-
-  .xw-products-inner,
+.xw-products-inner,
   .xw-split-section .section-inner,
   .xw-coverage-section .section-inner,
   .xw-snowball-section .section-inner {

@@ -39,8 +39,8 @@
         </div>
         <div class="nav-center">
             <ul class="nav-links">
-                <li class="has-dropdown" data-menu="products">
-                    <a href="#">Products <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <li class="has-dropdown" data-menu="community">
+                    <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                 </li>
                 <li class="has-dropdown" data-menu="information">
                     <a href="#">Information <i class="fas fa-chevron-down dropdown-arrow"></i></a>
@@ -48,31 +48,12 @@
                 <li>
                     <a href="#" class="active">Home</a>
                 </li>
-                <li>
-                    <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">Discord</a>
-                </li>
             </ul>
         </div>
         <div class="nav-right"></div>
     </div>
 </nav>
 
-<div class="mega-menu" id="products-mega-menu">
-    <div class="mega-menu-container">
-        <div class="mega-column">
-            <div class="mega-header">Weather Tools</div>
-            <a href="#radar-app" class="mega-item"><i class="fas fa-mobile-screen-button"></i><div class="mega-item-text"><span class="title">Radar App</span><span class="desc">Weather tools built for your phone</span></div></a>
-            <a href="#radar-web" class="mega-item"><i class="fas fa-location-crosshairs"></i><div class="mega-item-text"><span class="title">Radar</span><span class="desc">Open the radar in your browser</span></div></a>
-            <a href="#coverage" class="mega-item"><i class="fas fa-tower-broadcast"></i><div class="mega-item-text"><span class="title">Coverage</span><span class="desc">Severe, winter, and tropical modes</span></div></a>
-        </div>
-        <div class="mega-column">
-            <div class="mega-header">Community</div>
-            <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Discord Server</span><span class="desc">Live discussion, alerts, and coverage</span></div></a>
-            <a href="#snowball" class="mega-item"><i class="fas fa-snowflake"></i><div class="mega-item-text"><span class="title">Snowball</span><span class="desc">The Xtreme Weather Discord app</span></div></a>
-            <a href="#preview" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Community Stats</span><span class="desc">See the server at a glance</span></div></a>
-        </div>
-    </div>
-</div>
 
 <div class="mega-menu" id="community-mega-menu">
     <div class="mega-menu-container">
@@ -105,19 +86,9 @@
 <div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
     <div class="mobile-view main-view" id="sb-mobile-main-view">
         <div class="mobile-centered-content">
-            <button class="mobile-big-link" onclick="sbOpenSubMenu('products')">Products<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
-            <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="mobile-big-link">Discord</a>
-        </div>
-    </div>
-    <div class="mobile-view sub-view" id="sb-sub-products">
-        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
-        <div class="mobile-sub-list">
-            <a href="#radar-app" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-mobile-screen-button"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Radar App</span></span></a>
-            <a href="#radar-web" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-location-crosshairs"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Radar</span></span></a>
-            <a href="#snowball" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-snowflake"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Snowball</span></span></a>
-            <a href="#coverage" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-tower-broadcast"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Coverage</span></span></a>
+            <a href="#" class="mobile-big-link">Home</a>
         </div>
     </div>
     <div class="mobile-view sub-view" id="sb-sub-community">
@@ -361,36 +332,6 @@ function Nav() { return null; }
 
 const DISCORD_SVG_PATH = 'M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z';
 
-function buildRadarPixels() {
-  const clusters = [
-    { x: 6,  y: 23, cols: 9,  rows: 6,  sx: 2.5, sy: 2.4, hot: 1.2, mid: 2.4 },
-    { x: 73, y: 34, cols: 12, rows: 8,  sx: 2.2, sy: 2.2, hot: 1.6, mid: 3.2 },
-    { x: 32, y: 68, cols: 8,  rows: 6,  sx: 2.4, sy: 2.2, hot: 1.0, mid: 2.3 },
-    { x: 58, y: 18, cols: 6,  rows: 4,  sx: 2.0, sy: 2.0, hot: 0.8, mid: 1.9 },
-  ];
-  const blocks = [];
-  clusters.forEach((cluster, clusterIndex) => {
-    const cx = (cluster.cols - 1) / 2;
-    const cy = (cluster.rows - 1) / 2;
-    for (let row = 0; row < cluster.rows; row += 1) {
-      for (let col = 0; col < cluster.cols; col += 1) {
-        const dist = Math.hypot((col - cx) * 0.92, (row - cy) * 1.12);
-        if (dist > cluster.mid + 1.15) continue;
-        if ((row + col + clusterIndex) % 7 === 0 && dist > cluster.hot) continue;
-        const tier = dist < cluster.hot ? 'hot' : dist < cluster.mid ? 'warn' : (row + col) % 2 ? 'green' : 'blue';
-        blocks.push({
-          x: cluster.x + col * cluster.sx,
-          y: cluster.y + row * cluster.sy + ((col + clusterIndex) % 2) * 0.55,
-          tier,
-          delay: (row + col + clusterIndex) % 8,
-        });
-      }
-    }
-  });
-  return blocks;
-}
-
-const HERO_RADAR_PIXELS = buildRadarPixels();
 
 function Hero() {
   const [visible, setVisible] = useState(false);
@@ -408,31 +349,25 @@ function Hero() {
     if (!hero || !map) return;
 
     let frame = 0;
-    const setRadarPoint = (x, y) => {
-      map.style.setProperty('--radar-x', x.toFixed(2) + '%');
-      map.style.setProperty('--radar-y', y.toFixed(2) + '%');
-      map.style.setProperty('--radar-parallax-x', ((x - 50) / 50).toFixed(3));
-      map.style.setProperty('--radar-parallax-y', ((y - 50) / 50).toFixed(3));
-      map.style.setProperty('--pixel-shift-x', (((x - 50) / 50) * -22).toFixed(2) + 'px');
-      map.style.setProperty('--pixel-shift-y', (((y - 50) / 50) * -16).toFixed(2) + 'px');
+    const setRadarAngle = (angle) => {
+      map.style.setProperty('--radar-angle', angle.toFixed(1) + 'deg');
     };
 
     const move = (event) => {
       const rect = hero.getBoundingClientRect();
-      const rawX = ((event.clientX - rect.left) / rect.width) * 100;
-      const rawY = ((event.clientY - rect.top) / rect.height) * 100;
-      const x = Math.max(8, Math.min(92, rawX));
-      const y = Math.max(12, Math.min(88, rawY));
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const angle = Math.atan2(event.clientY - cy, event.clientX - cx) * (180 / Math.PI);
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => setRadarPoint(x, y));
+      frame = requestAnimationFrame(() => setRadarAngle(angle));
     };
 
     const leave = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => setRadarPoint(50, 50));
+      frame = requestAnimationFrame(() => setRadarAngle(0));
     };
 
-    setRadarPoint(50, 50);
+    setRadarAngle(0);
     hero.addEventListener('pointermove', move, { passive: true });
     hero.addEventListener('pointerleave', leave);
     return () => {
@@ -456,53 +391,36 @@ function Hero() {
       h('span', { className:'xw-hero-ring ring-one' }),
       h('span', { className:'xw-hero-ring ring-two' }),
       h('span', { className:'xw-hero-ring ring-three' }),
-      h('div', { className:'xw-radar-pixel-field' },
-        ...HERO_RADAR_PIXELS.map((pixel, i) =>
-          h('span', {
-            key: i,
-            className: 'xw-radar-pixel tier-' + pixel.tier,
-            style: {
-              left: pixel.x + '%',
-              top: pixel.y + '%',
-              '--d': pixel.delay,
-            },
-          })
-        )
-      ),
       h('span', { className:'xw-hero-front' })
     ),
     h('div', { className: 'hero-content xw-hero-content' },
       h('div', { className: 'xw-hero-mark', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(8px)',
         transform: visible ? 'translateY(0)' : 'translateY(18px)',
-        transition: 'opacity 1s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)',
+        transition: 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)',
       } },
         h('img', { src:'assets/xtreme-logo-small.png', alt:'', fetchpriority:'high' }),
         h('span', null, 'Xtreme Weather')
       ),
       h('h1', { className: 'xw-hero-title', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(8px)',
         transform: visible ? 'translateY(0)' : 'translateY(18px)',
-        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, filter 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s',
+        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s',
       } },
         h('span', { className:'xw-title-mustica' }, 'Whatever'),
         h('span', { className:'xw-title-druk' }, 'the Weather')
       ),
       h('p', { className: 'xw-hero-deck', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(8px)',
         transform: visible ? 'translateY(0)' : 'translateY(18px)',
-        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, filter 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s',
+        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s',
       } },
         'Open the radar, watch live coverage, and jump into the Discord when the sky starts getting interesting. A better radar app is coming soon.'
       ),
       h('div', { className: 'hero-ctas xw-hero-ctas', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(8px)',
         transform: visible ? 'translateY(0)' : 'translateY(14px)',
-        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, filter 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s',
+        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s',
       } },
         h('a', { href: '#radar-web', className: 'btn-primary', style: { display:'inline-flex', alignItems:'center', gap:8 } },
           h('i', { className:'fas fa-location-crosshairs', 'aria-hidden':'true' }),
@@ -519,9 +437,8 @@ function Hero() {
       ),
       h('div', { className: 'xw-hero-dock', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(8px)',
         transform: visible ? 'translateY(0)' : 'translateY(16px)',
-        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, filter 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s',
+        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s',
       } },
         ...heroItems.map(item =>
           h('a', { key:item.label, href:item.label === 'Discord' ? 'https://discord.gg/xtremeweather' : item.label === 'Radar' ? '#radar-web' : '#' + item.label.toLowerCase().replace(/\s+/g, '-'), target:item.label === 'Discord' ? '_blank' : undefined, rel:item.label === 'Discord' ? 'noopener' : undefined },
@@ -1204,11 +1121,9 @@ function HomeProductsSection() {
   ];
 
   return h('section', { id: 'products', className: 'home-products-section' },
-    h('div', { className: 'divider' }),
     h('div', { className: 'section-inner xw-products-inner' },
       h('div', { className: 'xw-section-head' },
         h('div', null,
-          h('div', { className: 'section-label' }, 'What Xtreme Weather gives you'),
           h('h2', { className: 'section-title' }, 'One weather hub,', h('br'), 'all the paths in')
         ),
         h('p', { className: 'section-body xw-section-head-copy' },
@@ -1226,7 +1141,6 @@ function HomeProductsSection() {
             style: { '--i': i },
           },
             h('div', { className: 'xw-product-icon' }, h('img', { src: p.icon, alt: '', loading: 'lazy' })),
-            h('div', { className: 'xw-product-kicker' }, p.kicker),
             h('h3', { className: 'xw-product-title' }, p.title),
             h('p', { className: 'xw-product-desc' }, p.desc),
             h('span', { className: 'xw-product-link' },
