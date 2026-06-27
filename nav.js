@@ -137,3 +137,107 @@ if (document.fonts && document.fonts.ready) {
 } else {
   window.addEventListener('load', fitFooterWordmark);
 }
+
+// ---- Site-wide stagger-up reveal -------------------------------------------
+// Blocks inside each section rise + fade in as they scroll into view (same feel
+// as the legal pages). Works on static and React-rendered pages; elements that
+// already have their own intro animation are skipped so nothing double-animates.
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Containers whose contents animate themselves — never touch these or anything
+  // inside them (hero fade-ins, the demo cards, the feature marquee, the radar
+  // app's dive-deeper section, the legal sections handled by their own script).
+  var SKIP_INSIDE = '.xw-hero-v2, .page-hero, .xw-feat-marquee, .xw-demo3d, ' +
+    '.demo-fades, .ai-timeline, .dive-deeper-section, .legal-doc';
+
+  // Child containers whose own children should stagger individually (so grids of
+  // cards rise one-by-one) instead of the whole block moving as one unit.
+  var GROUP_SELECTOR = 'xw-product-grid xw-feature-list home-cta-stats ' +
+    'xw-section-head footer-grid';
+
+  function shouldSkip(el) {
+    if (el.hasAttribute('data-no-reveal')) return true;
+    if (el.closest('[data-no-reveal]')) return true;
+    if (el.closest(SKIP_INSIDE)) return true;
+    if (el.classList.contains('reveal-up')) return true;
+    // Don't reveal empty layout wrappers (dividers, spacers, scripts, styles).
+    var tag = el.tagName;
+    if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'BR') return true;
+    if (el.classList.contains('divider')) return true;
+    return false;
+  }
+
+  function isGroup(el) {
+    var cls = ' ' + el.className + ' ';
+    return GROUP_SELECTOR.split(' ').some(function (g) {
+      return cls.indexOf(' ' + g + ' ') !== -1;
+    });
+  }
+
+  // Collect the blocks to reveal: direct children of each .section-inner, but if
+  // a child is a known grid/group, reveal its children instead.
+  function collectTargets() {
+    var out = [];
+    document.querySelectorAll('.section-inner').forEach(function (inner) {
+      if (inner.closest(SKIP_INSIDE)) return;
+      Array.prototype.forEach.call(inner.children, function (child) {
+        if (shouldSkip(child)) return;
+        if (isGroup(child)) {
+          Array.prototype.forEach.call(child.children, function (gc) {
+            if (!shouldSkip(gc)) out.push(gc);
+          });
+        } else {
+          out.push(child);
+        }
+      });
+    });
+    return out;
+  }
+
+  if (reduce) return; // CSS already shows everything; no observer needed.
+
+  var batch = [];
+  var timer = null;
+  function flush() {
+    batch.forEach(function (el, i) {
+      el.style.setProperty('--reveal-delay', (i * 70) + 'ms');
+      el.classList.add('reveal-in');
+    });
+    batch = [];
+    timer = null;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        io.unobserve(e.target);
+        batch.push(e.target);
+        clearTimeout(timer);
+        timer = setTimeout(flush, 16);
+      }
+    });
+  }, { rootMargin: '0px 0px -32px 0px', threshold: 0.04 });
+
+  function arm() {
+    collectTargets().forEach(function (el) {
+      if (el.classList.contains('reveal-up')) return; // already armed
+      el.classList.add('reveal-up');
+      // Already in view on load? Reveal next frame so the transition runs.
+      io.observe(el);
+    });
+  }
+
+  function init() {
+    arm();
+    // React pages mount content after this script runs; re-scan a couple times.
+    setTimeout(arm, 120);
+    setTimeout(arm, 600);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

@@ -2057,3 +2057,24 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     border-radius: 12px;
   }
 }
+
+/* ===========================================================================
+   Site-wide stagger-up reveal (driven by nav.js). Blocks rise + fade in as
+   they scroll into view, like the legal pages. Opt out with [data-no-reveal];
+   elements with their own intro animations are skipped by the script.
+   =========================================================================== */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity   0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0ms),
+    transform 0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal-up.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up { opacity: 1; transform: none; transition: none; }
+}
