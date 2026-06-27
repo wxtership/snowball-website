@@ -696,7 +696,7 @@ function DiscordChatDemo({ t, fading }) {
     setBodyHeight(measured);
   }, [showUserMsg, showThinking, thinkingLeaving, showBotResponse]);
 
-  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:18,overflow:'hidden',border:'1px solid rgba(255,255,255,0.10)',boxShadow:'0 40px 100px -20px rgba(0,0,0,0.7), 0 18px 50px -12px rgba(99,102,241,0.35), inset 0 1px 0 rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
+  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:18,overflow:'hidden',border:'1px solid rgba(255,255,255,0.10)',boxShadow:'0 40px 100px -28px rgba(0,0,0,0.6), 0 0 70px -4px rgba(124,58,237,0.45), 0 0 130px 6px rgba(56,86,190,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
     h(DcChannelHeader),
     h('div', {
       style: {
