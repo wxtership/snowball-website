@@ -1059,8 +1059,7 @@ function PreviewTicker() {
         h('path', { d: DISCORD_SVG_PATH })
       ),
       'Join Xtreme Weather'
-    ),
-    h('div', { className:'preview-ticker-foot' }, 'discord.gg/xtremeweather')
+    )
   );
 }
 
@@ -1127,9 +1126,6 @@ function HomeProductsSection() {
       h('div', { className: 'xw-section-head' },
         h('div', null,
           h('h2', { className: 'section-title' }, 'One weather hub,', h('br'), 'all the paths in')
-        ),
-        h('p', { className: 'section-body xw-section-head-copy' },
-          'Start with the radar, the coming radar app, the Discord community, Snowball, or live coverage. Every path leads back to the same Xtreme Weather ecosystem.'
         )
       ),
       h('div', { className: 'xw-product-grid' },
@@ -1167,7 +1163,6 @@ function RadarAppSection() {
     h('div', { className: 'divider' }),
     h('div', { className: 'section-inner xw-split' },
       h('div', { className: 'xw-copy-block' },
-        h('div', { className: 'section-label' }, 'Radar app'),
         h('h2', { className: 'section-title' }, 'Weather that feels', h('br'), 'built for your phone'),
         h('p', { className: 'section-body' },
           'A better radar app is coming soon: quicker radar checks, cleaner alert context, and an experience that feels connected to the rest of Xtreme Weather.'
@@ -1246,7 +1241,6 @@ function RadarWebSection() {
         )
       ),
       h('div', { className: 'xw-copy-block' },
-        h('div', { className: 'section-label' }, 'Radar'),
         h('h2', { className: 'section-title' }, 'Open the radar', h('br'), 'and stay with the storm'),
         h('p', { className: 'section-body' },
           'Radar web gives the community a clear browser destination for storms, alerts, and coverage context. It is the thing you can open quickly, send to someone, and keep on a second screen.'
@@ -1273,7 +1267,6 @@ function CoverageSection() {
     h('div', { className:'section-inner' },
       h('div', { className:'xw-section-head' },
         h('div', null,
-          h('div', { className:'section-label' }, 'Coverage modes'),
           h('h2', { className:'section-title' }, 'Make active weather', h('br'), 'easy to follow')
         ),
         h('p', { className:'section-body xw-section-head-copy' },
