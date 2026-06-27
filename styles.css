@@ -980,7 +980,7 @@ body {
 /* The chevron glyph sits slightly high-and-right of true center; nudge it down
    and left a touch so the padding around it reads concentric. */
 .mobile-back-btn i {
-    transform: translate(-1px, 1px);
+    transform: translate(-3px, 8px);
 }
 .mobile-back-btn:hover { background: rgba(255,255,255,0.22); }
 .mobile-back-btn:active { background: rgba(255,255,255,0.25) !important; transform: scale(0.9); }
