@@ -653,8 +653,16 @@ function DiscordChatDemo({ t, fading }) {
   // of snapping the page down by hundreds of pixels.
   useEffect(() => {
     if (!contentRef.current) return;
-    const measured = Math.max(240, contentRef.current.scrollHeight);
-    setBodyHeight(measured);
+    const el = contentRef.current;
+    // Re-measure whenever the content reflows (font swap, images loading) so the
+    // clipped body wrapper never ends up shorter than the content and clips the
+    // embed's bottom row. A ResizeObserver keeps bodyHeight in sync past the
+    // initial phase-change measurement.
+    const measure = () => setBodyHeight(Math.max(240, el.scrollHeight));
+    measure();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
+    if (ro) ro.observe(el);
+    return () => { if (ro) ro.disconnect(); };
   }, [showThinking, thinkingLeaving, showBotResponse]);
 
   // Scroll-driven 3D tilt: the card is fully slanted when it sits away from the
@@ -695,7 +703,7 @@ function DiscordChatDemo({ t, fading }) {
         transition: 'height 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
       },
     },
-      h('div', { ref: contentRef, style:{padding:'16px 0'} },
+      h('div', { ref: contentRef, style:{padding:'8px 0 12px'} },
         showThinking    ? h(DcThinking,     { key: 'think', leaving: thinkingLeaving }) : null,
         showBotResponse ? h(DcBotResponse,  { key: 'bot'   })                            : null
       )
