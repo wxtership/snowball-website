@@ -542,22 +542,6 @@ function DcReplyQuote() {
   );
 }
 
-function DcUserMessage() {
-  return h('div', { style:{display:'flex',gap:16,padding:'4px 16px 8px',animation:'dcMsgIn 0.22s ease forwards'} },
-    h('img', { src: DC_WX_AVATAR, alt: '', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
-    h('div', { style:{flex:1,minWidth:0} },
-      h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
-        h('span', { style:{color:'#a78bfa',fontWeight:600,fontSize:15} }, 'wxtership'),
-        h('span', { style:{color:'#80848e',fontSize:12} }, '6:07 PM')
-      ),
-      h('div', { style:{color:'#dbdee1',lineHeight:1.6} },
-        h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3} }, '@Snowball'),
-        " What's going on in Pittsburgh today?"
-      )
-    )
-  );
-}
-
 function DcThinking({ leaving }) {
   const anim = leaving
     ? 'dcMsgOut 0.30s cubic-bezier(0.4, 0, 1, 1) forwards'
@@ -595,8 +579,8 @@ function DcEmbed() {
         // Header block: title on top with sun icon on the right, description text below the title.
         h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
           h('div', { style:{flex:1,minWidth:0} },
-            h('div', { style:{color:'#fff',fontWeight:700,fontSize:22,lineHeight:1.2,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
-            h('div', { style:{fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
+            h('div', { style:{color:'#fff',fontWeight:700,fontSize:19,lineHeight:1.2,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
+            h('div', { style:{fontSize:12.5,color:'#dbdee1',lineHeight:1.55} },
               DC_ARROW_IMG,
               'Pittsburgh, PA / Pittsburgh - Allegheny County Airport (KAGC) is currently reporting ',
               h('strong', { style:{color:'#fff'} }, 'haze'),
@@ -607,8 +591,8 @@ function DcEmbed() {
         ),
         h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.06)'} }),
         h('div', null,
-          h('div', { style:{color:'#fff',fontWeight:700,fontSize:18,marginBottom:8,fontFamily:DC_GG_SANS} }, 'Active Alerts'),
-          h('div', { style:{fontSize:13.5,color:'#dbdee1',lineHeight:1.55} },
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:16,marginBottom:8,fontFamily:DC_GG_SANS} }, 'Active Alerts'),
+          h('div', { style:{fontSize:12.5,color:'#dbdee1',lineHeight:1.55} },
             DC_ARROW_IMG,
             "There's currently an advisory for the area. You can use ",
             h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.18)',padding:'0 2px',borderRadius:3} }, '/weather alerts'),
@@ -617,8 +601,8 @@ function DcEmbed() {
         ),
         h('div', { style:{borderTop:'1px solid rgba(255,255,255,0.06)'} }),
         h('div', null,
-          h('div', { style:{color:'#fff',fontWeight:700,fontSize:18,marginBottom:12,fontFamily:DC_GG_SANS} }, 'Conditions'),
-          h('div', { style:{display:'flex',flexDirection:'column',gap:14,fontSize:13.5,fontFamily:DC_GG_SANS} },
+          h('div', { style:{color:'#fff',fontWeight:700,fontSize:16,marginBottom:12,fontFamily:DC_GG_SANS} }, 'Conditions'),
+          h('div', { style:{display:'flex',flexDirection:'column',gap:12,fontSize:12.5,fontFamily:DC_GG_SANS} },
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Temperature:'), h('div', { style:{color:'#dbdee1'} }, '46°F (Feels like 42°F)')),
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Wind:'), h('div', { style:{color:'#dbdee1'} }, '8mph from the west-northwest (Gusting to 18mph)')),
             h('div', null, h('div', { style:{color:'#fff',fontWeight:600,marginBottom:2} }, 'Humidity:'), h('div', { style:{color:'#dbdee1'} }, '66%')),
@@ -657,8 +641,7 @@ function DiscordChatDemo({ t, fading }) {
   // Thinking renders for an extra 0.30s past the Researching boundary so the
   // dcMsgOut fade animation can play before unmount. `thinkingLeaving` flips to
   // true when t crosses 4.20s, swapping the entry animation for the exit one.
-  const showUserMsg     = t >= 0.20;
-  const showThinking    = t >= 1.10 && t < 4.50;
+  const showThinking    = t >= 0.30 && t < 4.50;
   const thinkingLeaving = t >= 4.20;
   const showBotResponse = t >= 5.00;
   const ref         = useRef(null);
@@ -672,7 +655,7 @@ function DiscordChatDemo({ t, fading }) {
     if (!contentRef.current) return;
     const measured = Math.max(240, contentRef.current.scrollHeight);
     setBodyHeight(measured);
-  }, [showUserMsg, showThinking, thinkingLeaving, showBotResponse]);
+  }, [showThinking, thinkingLeaving, showBotResponse]);
 
   // Scroll-driven 3D tilt: the card is fully slanted when it sits away from the
   // viewport center and flattens out as it scrolls through the middle, so it
@@ -703,7 +686,7 @@ function DiscordChatDemo({ t, fading }) {
     };
   }, []);
 
-  return h('div', { ref, className: 'demo-fades xw-demo3d' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:18,overflow:'hidden',border:'1px solid rgba(255,255,255,0.10)',boxShadow:'0 40px 100px -28px rgba(0,0,0,0.6), 0 0 70px -4px rgba(124,58,237,0.45), 0 0 130px 6px rgba(56,86,190,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
+  return h('div', { ref, className: 'demo-fades xw-demo3d' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:18,overflow:'hidden',border:'1px solid rgba(255,255,255,0.10)',boxShadow:'0 40px 100px -28px rgba(0,0,0,0.6), 0 0 70px -4px rgba(124,58,237,0.45), 0 0 130px 6px rgba(56,86,190,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,fontSize:13,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
     h(DcChannelHeader),
     h('div', {
       style: {
@@ -713,7 +696,6 @@ function DiscordChatDemo({ t, fading }) {
       },
     },
       h('div', { ref: contentRef, style:{padding:'16px 0'} },
-        showUserMsg     ? h(DcUserMessage,  { key: 'msg'   })                            : null,
         showThinking    ? h(DcThinking,     { key: 'think', leaving: thinkingLeaving }) : null,
         showBotResponse ? h(DcBotResponse,  { key: 'bot'   })                            : null
       )
@@ -1313,10 +1295,13 @@ function SnowballPromoSection() {
     h('div', { className:'section-inner xw-split' },
       h('div', { className:'xw-copy-block' },
         h('h2', { className:'section-title xw-snowball-title' },
-          'Weather it,', h('br'),
-          'Sn',
-          h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', loading:'lazy', className:'xw-banner-icon' }),
-          'wball it.'
+          h('span', { className:'xw-snowball-line' }, 'Weather it,'), h('br'),
+          h('span', { className:'xw-snowball-line' },
+            'Sn',
+            h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', loading:'lazy', className:'xw-banner-icon' }),
+            'wball'
+          ), h('br'),
+          h('span', { className:'xw-snowball-line' }, 'it.')
         ),
         h('p', { className:'section-body' },
           'Snowball is a part of the Discord side of Xtreme Weather: AI weather answers that can fetch real data, forecasts, radar, alerts, radio, music, levels, and economy.'

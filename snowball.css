@@ -1761,6 +1761,13 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45));
 }
 
+/* Force the promo heading onto exactly three lines: each line is its own
+   nowrap block so a phrase never wraps mid-line ("Weather it," stays whole). */
+.xw-snowball-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 @media (max-width: 1120px) {
   .xw-title-druk {
     font-size: 72px;
