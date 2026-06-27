@@ -1334,7 +1334,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-storm-cell {
   position: absolute;
   border-radius: 999px;
-  filter: blur(7px);
+  filter: blur(12px);
   opacity: 0.86;
   z-index: 2;
 }
@@ -1379,13 +1379,20 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-radar-sweep {
   position: absolute;
   inset: -35%;
-  background: conic-gradient(from 0deg, transparent 0 276deg, rgba(34,211,238,0.24) 314deg, transparent 352deg);
+  background: conic-gradient(from 0deg, transparent 0 270deg, rgba(34,211,238,0.05) 300deg, rgba(34,211,238,0.24) 318deg, transparent 350deg);
   animation: xw-radar-spin 7.5s linear infinite;
+  filter: blur(6px);
   z-index: 3;
+  /* Keep the sweep on its own stable compositing layer so hovering nearby
+     elements never forces a layer rebuild that snaps the rotation back to 0. */
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 @keyframes xw-radar-spin {
-  to { transform: rotate(360deg); }
+  from { transform: translateZ(0) rotate(0deg); }
+  to   { transform: translateZ(0) rotate(360deg); }
 }
 
 .xw-phone-alert {
