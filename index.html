@@ -1034,7 +1034,7 @@ function PreviewTicker() {
   ];
 
   return h('div', { className:'preview-ticker-wrap' },
-    h('h2', { className:'preview-ticker-title' }, 'THE COMMUNITY', h('br'), 'IS THE SIGNAL.'),
+    h('h2', { className:'preview-ticker-title' }, 'WHEN IT MATTERS,', h('br'), "WE'RE ON IT."),
     h('div', { className:'preview-ticker-grid' },
       ...stats.map((s,i) => {
         const isWord = typeof s.num === 'string' && /^[A-Za-z]/.test(s.num);
@@ -1244,7 +1244,6 @@ function FeaturesSection() {
     h('div', { className: 'divider' }),
     h('div', { className: 'section-inner' },
       h('div', { className:'xw-features-head' },
-        h('div', { className: 'section-label' }, 'Features'),
         h('h2', { className: 'section-title' }, 'Everything in', h('br'), 'one weather hub'),
         h('p', { className:'section-body xw-features-sub' },
           'Radar, alerts, live coverage, Snowball, and a whole community packed into one fast experience.'

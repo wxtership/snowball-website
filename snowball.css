@@ -1613,7 +1613,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-feat-row[data-dir="left"]  .xw-feat-track { animation: xw-feat-scroll-left  60s linear infinite; }
 .xw-feat-row[data-dir="right"] .xw-feat-track { animation: xw-feat-scroll-right 60s linear infinite; }
 
-.xw-feat-marquee:hover .xw-feat-track { animation-play-state: paused; }
+/* Pause (don't fade) on hover. Needs to match the per-direction selector's
+   specificity so the `animation` shorthand above doesn't reset play-state
+   back to running. */
+.xw-feat-marquee:hover .xw-feat-row[data-dir] .xw-feat-track { animation-play-state: paused; }
 
 @keyframes xw-feat-scroll-left {
   from { transform: translateX(0); }
