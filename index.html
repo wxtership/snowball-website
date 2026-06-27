@@ -372,18 +372,11 @@ function Hero() {
       frame = requestAnimationFrame(() => setRadarAngle(angle));
     };
 
-    const leave = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => setRadarAngle(0));
-    };
-
     setRadarAngle(0);
     hero.addEventListener('pointermove', move, { passive: true });
-    hero.addEventListener('pointerleave', leave);
     return () => {
       cancelAnimationFrame(frame);
       hero.removeEventListener('pointermove', move);
-      hero.removeEventListener('pointerleave', leave);
     };
   }, []);
 

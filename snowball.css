@@ -867,10 +867,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   top: 50%;
   width: 940px;
   height: 940px;
-  background: conic-gradient(from -22deg, transparent 0 302deg, rgba(34,211,238,0.38) 322deg, rgba(255,255,255,0.12) 330deg, transparent 340deg);
+  background: conic-gradient(from -22deg, transparent 0 290deg, rgba(34,211,238,0.10) 306deg, rgba(34,211,238,0.38) 324deg, rgba(255,255,255,0.12) 332deg, transparent 348deg);
   transform: translate(-50%, -50%) rotate(var(--radar-angle, 0deg));
   opacity: 0.85;
   mix-blend-mode: screen;
+  filter: blur(7px);
   transition: transform 0.12s linear;
   /* Radial mask: hollow the center so the beam's convergence point doesn't pinch
      when it sweeps over the middle, and fade the rim into a circle so the square
@@ -886,9 +887,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  border: 1px solid rgba(34,211,238,0.16);
+  border: 2px solid rgba(34,211,238,0.22);
   transform: translate(-50%, -50%);
   box-shadow: 0 0 60px rgba(34,211,238,0.06);
+  filter: blur(2.5px);
 }
 
 .xw-hero-ring.ring-two {
@@ -1334,7 +1336,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-storm-cell {
   position: absolute;
   border-radius: 999px;
-  filter: blur(12px);
+  filter: blur(7px);
   opacity: 0.86;
   z-index: 2;
 }
@@ -1379,20 +1381,13 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-radar-sweep {
   position: absolute;
   inset: -35%;
-  background: conic-gradient(from 0deg, transparent 0 270deg, rgba(34,211,238,0.05) 300deg, rgba(34,211,238,0.24) 318deg, transparent 350deg);
+  background: conic-gradient(from 0deg, transparent 0 276deg, rgba(34,211,238,0.24) 314deg, transparent 352deg);
   animation: xw-radar-spin 7.5s linear infinite;
-  filter: blur(6px);
   z-index: 3;
-  /* Keep the sweep on its own stable compositing layer so hovering nearby
-     elements never forces a layer rebuild that snaps the rotation back to 0. */
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 @keyframes xw-radar-spin {
-  from { transform: translateZ(0) rotate(0deg); }
-  to   { transform: translateZ(0) rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
 .xw-phone-alert {
