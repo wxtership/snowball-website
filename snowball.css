@@ -1570,6 +1570,103 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   font-size: 13px;
 }
 
+/* ---- Features marquee (replaces the old radar-web section) ---- */
+.xw-features-section .section-inner { padding-top: 80px; padding-bottom: 8px; }
+
+.xw-features-head { max-width: 620px; margin-bottom: 44px; }
+.xw-features-head .section-title { margin-bottom: 16px; }
+.xw-features-sub { margin-bottom: 0; }
+
+/* Full-bleed track so cards can scroll off the edges of the centered column. */
+.xw-feat-marquee {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  /* fade the left/right edges so cards slide in and out softly */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
+.xw-feat-row { overflow: hidden; }
+
+.xw-feat-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Two duplicated sets sit end to end, so translating by -50% loops seamlessly. */
+.xw-feat-row[data-dir="left"]  .xw-feat-track { animation: xw-feat-scroll-left  60s linear infinite; }
+.xw-feat-row[data-dir="right"] .xw-feat-track { animation: xw-feat-scroll-right 60s linear infinite; }
+
+.xw-feat-marquee:hover .xw-feat-track { animation-play-state: paused; }
+
+@keyframes xw-feat-scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes xw-feat-scroll-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.xw-feat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 auto;
+  width: 290px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.xw-feat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(155,94,245,0.55);
+  background: rgba(255,255,255,0.06);
+}
+
+.xw-feat-icon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.xw-feat-copy { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.xw-feat-copy strong { color: #fff; font-size: 15px; letter-spacing: -0.01em; }
+.xw-feat-copy span { color: rgba(255,255,255,0.5); font-size: 12.5px; line-height: 1.4; }
+
+@media (max-width: 700px) {
+  .xw-feat-card { width: 240px; padding: 13px 15px; }
+  .xw-feat-icon { width: 40px; height: 40px; }
+  .xw-feat-row[data-dir="left"]  .xw-feat-track,
+  .xw-feat-row[data-dir="right"] .xw-feat-track { animation-duration: 42s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xw-feat-row[data-dir="left"]  .xw-feat-track,
+  .xw-feat-row[data-dir="right"] .xw-feat-track { animation: none; }
+  .xw-feat-marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+    width: auto;
+    left: auto;
+    margin-left: 0;
+  }
+  .xw-feat-row { overflow-x: auto; }
+}
+
 .xw-snowball-section {
   position: relative;
   isolation: isolate;
