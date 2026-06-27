@@ -147,9 +147,10 @@ if (document.fonts && document.fonts.ready) {
 
   // Containers whose contents animate themselves — never touch these or anything
   // inside them (hero fade-ins, the demo cards, the feature marquee, the radar
-  // app's dive-deeper section, the legal sections handled by their own script).
+  // app's dive-deeper section, the legal sections handled by their own script,
+  // and the staff roster which preloads its avatars then runs its own stagger).
   var SKIP_INSIDE = '.xw-hero-v2, .page-hero, .xw-feat-marquee, .xw-demo3d, ' +
-    '.demo-fades, .ai-timeline, .dive-deeper-section, .legal-doc';
+    '.demo-fades, .ai-timeline, .dive-deeper-section, .legal-doc, #staff-roster';
 
   // Child containers whose own children should stagger individually (so grids of
   // cards rise one-by-one) instead of the whole block moving as one unit.
@@ -197,12 +198,38 @@ if (document.fonts && document.fonts.ready) {
 
   if (reduce) return; // CSS already shows everything; no observer needed.
 
+  // Wait for a block's images to finish loading before it reveals, so an image
+  // never pops in partway through the rise (that's what broke the illusion on
+  // the staff/home grids). Force any lazy images to load now and resolve on the
+  // last one, with a hard timeout so a slow/broken image can't stall the reveal.
+  function whenImagesReady(el, cb) {
+    var imgs = el.querySelectorAll('img');
+    if (!imgs.length) { cb(); return; }
+    var remaining = 0, done = false;
+    function finish() { if (done) return; done = true; cb(); }
+    imgs.forEach(function (img) {
+      // Pull lazy images forward so they don't load *after* the reveal.
+      if (img.getAttribute('loading') === 'lazy') img.loading = 'eager';
+      if (img.complete && img.naturalWidth !== 0) return; // already loaded
+      remaining++;
+      var clear = function () {
+        img.removeEventListener('load', clear);
+        img.removeEventListener('error', clear);
+        if (--remaining <= 0) finish();
+      };
+      img.addEventListener('load', clear);
+      img.addEventListener('error', clear);
+    });
+    if (remaining === 0) { finish(); return; }
+    setTimeout(finish, 1200); // never wait forever on a slow image
+  }
+
   var batch = [];
   var timer = null;
   function flush() {
     batch.forEach(function (el, i) {
       el.style.setProperty('--reveal-delay', (i * 70) + 'ms');
-      el.classList.add('reveal-in');
+      whenImagesReady(el, function () { el.classList.add('reveal-in'); });
     });
     batch = [];
     timer = null;
