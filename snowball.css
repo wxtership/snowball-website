@@ -763,8 +763,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
    ========================================================================== */
 
 .home-page #hero.xw-hero-v2 {
-  min-height: 92vh;
-  padding: 118px 24px 72px;
+  min-height: 84vh;
+  padding: 110px 24px 40px;
   isolation: isolate;
   overflow: hidden;
 }
@@ -814,7 +814,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   transform: scale(1.06);
   pointer-events: none;
   user-select: none;
-  mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 70%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 64%, transparent 90%);
+  mask-image: linear-gradient(to bottom, black 0%, black 64%, transparent 90%);
 }
 
 .home-page .hero-content.xw-hero-content {
@@ -831,8 +832,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 80%);
-  mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 94%);
+  mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 94%);
 }
 
 .xw-hero-map::after {
@@ -1027,6 +1028,17 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
    reserved second column. */
 .home-products-section .xw-section-head {
   grid-template-columns: 1fr;
+}
+
+/* Pull the products block up into the hero's faded bottom so there isn't a
+   tall empty gap between the hero and the "Everything weather" heading. */
+.home-products-section {
+  padding-top: 0;
+  margin-top: -7vh;
+}
+
+.home-products-section .xw-products-inner {
+  padding-top: 32px;
 }
 
 .xw-products-inner,
