@@ -515,7 +515,9 @@ body {
     max-width: 1400px;
     height: 100%;
     margin: 0 auto;
-    padding: 0 2rem;
+    /* Single horizontal padding used at every width so the logo/hamburger
+       left edge never shifts when crossing the 768px / 1024px breakpoints. */
+    padding: 0 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -696,6 +698,24 @@ body {
 @media (max-width: 1024px) {
     .hamburger {
         display: flex !important;
+    }
+
+    /* Brighter circle styling for every viewport where the hamburger shows
+       (tablet + mobile), so the button looks identical across both — not
+       dim on tablet and bright only on mobile. */
+    .nav-btn-circle,
+    .back-btn-circle,
+    .search-trigger-btn,
+    .hamburger {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .nav-btn-circle:active,
+    .back-btn-circle:active,
+    .search-trigger-btn:active,
+    .hamburger:active {
+        background: rgba(255, 255, 255, 0.25);
     }
 }
 
@@ -3853,24 +3873,13 @@ body {
     
     .nav-container {
         gap: 1rem;
-        padding: 0 1.5rem 0 0.75rem;
+        /* Padding inherits the base 0 1.25rem so the header's left edge stays
+           put across the mobile/tablet/desktop boundaries (no left snap). */
     }
-    
-    .nav-btn-circle,
-    .back-btn-circle,
-    .search-trigger-btn,
-    .hamburger {
-        background: rgba(255, 255, 255, 0.15) !important;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-    }
-    
-    .nav-btn-circle:active,
-    .back-btn-circle:active,
-    .search-trigger-btn:active,
-    .hamburger:active {
-        background: rgba(255, 255, 255, 0.25) !important;
-    }
-    
+
+    /* Bright circle styling for the nav buttons now lives in the shared
+       @media (max-width: 1024px) block so tablet and mobile match. */
+
     .units-toggle {
         background: rgba(255, 255, 255, 0.15) !important;
         border: 1px solid rgba(255, 255, 255, 0.25);

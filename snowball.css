@@ -428,7 +428,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .state-active .timeline-desc { color: rgba(255,255,255,0.7); }
 .state-done   .timeline-desc { color: rgba(255,255,255,0.55); }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .ai-timeline { padding: 0; }
   .timeline-row { gap: 14px; }
 }
@@ -545,7 +545,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   will-change: transform;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .xw-demo3d {
     transform: none;
   }
@@ -750,7 +750,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 .preview-editorial-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .preview-ticker-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .preview-minimal-title { font-size: clamp(34px, 9vw, 52px); }
   .preview-ticker-title  { font-size: clamp(32px, 8vw, 48px); }
@@ -762,8 +762,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 
-@media (max-width: 760px) {
-  nav { padding: 14px 20px; }
+@media (max-width: 768px) {
+  /* NOTE: removed legacy `nav { padding: 14px 20px }` — it applied only at
+     mobile and added 20px of horizontal padding the tablet range lacked,
+     shifting the navbar contents left on tablet vs mobile. The navbar's
+     spacing is owned entirely by .nav-container (constant 0 1.25rem). */
   .nav-links { gap: 16px; }
   .nav-link { display: none; }
   .economy-grid { grid-template-columns: 1fr; }
@@ -1577,15 +1580,19 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-features-head .section-title { margin-bottom: 16px; }
 .xw-features-sub { margin-bottom: 0; }
 
-/* Full-bleed track so cards can scroll off the edges of the centered column. */
+/* Full-bleed track so cards can scroll off the edges of the centered column.
+   Uses calc(50% - 50vw) margins instead of width:100vw + margin-left:-50vw:
+   the left/right margins cancel to exactly the content box's distance from each
+   viewport edge, so the element spans the viewport WITHOUT the ~15px overshoot
+   that 100vw causes (100vw includes the scrollbar). No horizontal reflow on
+   resize, and no phantom scrollbar. */
 .xw-feat-marquee {
   display: flex;
   flex-direction: column;
   gap: 16px;
   position: relative;
-  width: 100vw;
-  left: 50%;
-  margin-left: -50vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   /* fade the left/right edges so cards slide in and out softly */
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
@@ -1647,7 +1654,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-feat-copy strong { color: #fff; font-size: 15px; letter-spacing: -0.01em; }
 .xw-feat-copy span { color: rgba(255,255,255,0.5); font-size: 12.5px; line-height: 1.4; }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .xw-feat-card { width: 240px; padding: 13px 15px; }
   .xw-feat-icon { width: 40px; height: 40px; }
   .xw-feat-row[data-dir="left"]  .xw-feat-track,
@@ -1660,9 +1667,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .xw-feat-marquee {
     -webkit-mask-image: none;
     mask-image: none;
-    width: auto;
-    left: auto;
     margin-left: 0;
+    margin-right: 0;
   }
   .xw-feat-row { overflow-x: auto; }
 }
@@ -1783,7 +1789,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .xw-product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .xw-split,
@@ -1841,7 +1847,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
   .xw-product-grid,
   .xw-coverage-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .xw-product-card {
@@ -1874,6 +1880,13 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 
 @media (max-width: 560px) {
+  /* Final collapse to one column. Above this the grids step 5->4->2 (product)
+     and 3->2 (coverage) so cards never jump straight from many columns to one. */
+  .xw-product-grid,
+  .xw-coverage-grid {
+    grid-template-columns: 1fr;
+  }
+
   .home-page #hero {
     min-height: 92vh;
   }
