@@ -696,7 +696,7 @@ function DiscordChatDemo({ t, fading }) {
     setBodyHeight(measured);
   }, [showUserMsg, showThinking, thinkingLeaving, showBotResponse]);
 
-  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:14,overflow:'hidden',border:'1px solid rgba(199,210,222,0.32)',boxShadow:'0 24px 80px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
+  return h('div', { ref, className: 'demo-fades' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:18,overflow:'hidden',border:'1px solid rgba(255,255,255,0.10)',boxShadow:'0 40px 100px -20px rgba(0,0,0,0.7), 0 18px 50px -12px rgba(99,102,241,0.35), inset 0 1px 0 rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
     h(DcChannelHeader),
     h('div', {
       style: {
@@ -1125,7 +1125,7 @@ function HomeProductsSection() {
     h('div', { className: 'section-inner xw-products-inner' },
       h('div', { className: 'xw-section-head' },
         h('div', null,
-          h('h2', { className: 'section-title' }, 'One weather hub,', h('br'), 'all the paths in')
+          h('h2', { className: 'section-title' }, 'One weather hub,', h('br'), 'every way in')
         )
       ),
       h('div', { className: 'xw-product-grid' },
