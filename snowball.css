@@ -530,22 +530,23 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .demo-fades { opacity: 1; }
 .demo-fades.demo-fading { opacity: 0; transition: opacity 0.45s ease-out; }
 
-/* 3D tilt for the Discord demo card — slants it back in space for depth, then
-   straightens on hover so it can still be read comfortably. */
+/* 3D tilt for the Discord demo card. Driven by --demo-tilt (set on scroll in
+   JS): 0 = flat, 1 = full slant. The card tilts back when it's away from the
+   viewport center and flattens as it scrolls through the middle. */
 .xw-demo3d {
-  transform: perspective(2200px) rotateY(-10deg) rotateX(4deg) rotate(-0.5deg);
+  --demo-tilt: 1;
+  transform:
+    perspective(2200px)
+    rotateY(calc(var(--demo-tilt) * -10deg))
+    rotateX(calc(var(--demo-tilt) * 4deg))
+    rotate(calc(var(--demo-tilt) * -0.5deg));
   transform-origin: 65% center;
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.18s ease-out;
   will-change: transform;
 }
 
-.xw-demo3d:hover {
-  transform: perspective(2200px) rotateY(0deg) rotateX(0deg) rotate(0deg);
-}
-
 @media (max-width: 760px) {
-  .xw-demo3d,
-  .xw-demo3d:hover {
+  .xw-demo3d {
     transform: none;
   }
 }
@@ -1054,7 +1055,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
    tall empty gap between the hero and the "Everything weather" heading. */
 .home-products-section {
   padding-top: 0;
-  margin-top: -3vh;
+  margin-top: -1vh;
 }
 
 .home-products-section .xw-products-inner {

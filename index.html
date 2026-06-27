@@ -696,6 +696,35 @@ function DiscordChatDemo({ t, fading }) {
     setBodyHeight(measured);
   }, [showUserMsg, showThinking, thinkingLeaving, showBotResponse]);
 
+  // Scroll-driven 3D tilt: the card is fully slanted when it sits away from the
+  // viewport center and flattens out as it scrolls through the middle, so it
+  // tilts and untilts continuously as you scroll up or down. Sets a unitless
+  // --demo-tilt (0 = flat, 1 = full tilt) that the CSS transform multiplies.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const elCenter = rect.top + rect.height / 2;
+      const dist = Math.abs(elCenter - vh / 2);
+      const maxDist = vh / 2 + rect.height / 2;
+      const tilt = Math.max(0, Math.min(1, dist / maxDist));
+      el.style.setProperty('--demo-tilt', tilt.toFixed(3));
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return h('div', { ref, className: 'demo-fades xw-demo3d' + (fading ? ' demo-fading' : ''), style:{background:'linear-gradient(155deg,#1a1238 0%,#241848 30%,#1f2548 70%,#16294a 100%)',borderRadius:18,overflow:'hidden',border:'1px solid rgba(255,255,255,0.10)',boxShadow:'0 40px 100px -28px rgba(0,0,0,0.6), 0 0 70px -4px rgba(124,58,237,0.45), 0 0 130px 6px rgba(56,86,190,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS,fontSize:14,color:'#dbdee1',maxWidth:'100%',width:'100%'} },
     h(DcChannelHeader),
     h('div', {
