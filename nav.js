@@ -198,30 +198,15 @@ if (document.fonts && document.fonts.ready) {
 
   if (reduce) return; // CSS already shows everything; no observer needed.
 
-  // Wait for a block's images to finish loading before it reveals, so an image
-  // never pops in partway through the rise (that's what broke the illusion on
-  // the staff/home grids). Force any lazy images to load now and resolve on the
-  // last one, with a hard timeout so a slow/broken image can't stall the reveal.
-  function whenImagesReady(el, cb) {
+  // Eager-load a block's images as soon as it's armed (before it scrolls into
+  // view), so by reveal time the image is already decoded and never pops in
+  // mid-rise. This does NOT gate the reveal — the block always animates on
+  // schedule; we just start its images early.
+  function preloadImages(el) {
     var imgs = el.querySelectorAll('img');
-    if (!imgs.length) { cb(); return; }
-    var remaining = 0, done = false;
-    function finish() { if (done) return; done = true; cb(); }
-    imgs.forEach(function (img) {
-      // Pull lazy images forward so they don't load *after* the reveal.
-      if (img.getAttribute('loading') === 'lazy') img.loading = 'eager';
-      if (img.complete && img.naturalWidth !== 0) return; // already loaded
-      remaining++;
-      var clear = function () {
-        img.removeEventListener('load', clear);
-        img.removeEventListener('error', clear);
-        if (--remaining <= 0) finish();
-      };
-      img.addEventListener('load', clear);
-      img.addEventListener('error', clear);
-    });
-    if (remaining === 0) { finish(); return; }
-    setTimeout(finish, 1200); // never wait forever on a slow image
+    for (var i = 0; i < imgs.length; i++) {
+      if (imgs[i].getAttribute('loading') === 'lazy') imgs[i].loading = 'eager';
+    }
   }
 
   var batch = [];
@@ -229,7 +214,7 @@ if (document.fonts && document.fonts.ready) {
   function flush() {
     batch.forEach(function (el, i) {
       el.style.setProperty('--reveal-delay', (i * 70) + 'ms');
-      whenImagesReady(el, function () { el.classList.add('reveal-in'); });
+      el.classList.add('reveal-in');
     });
     batch = [];
     timer = null;
@@ -250,6 +235,7 @@ if (document.fonts && document.fonts.ready) {
     collectTargets().forEach(function (el) {
       if (el.classList.contains('reveal-up')) return; // already armed
       el.classList.add('reveal-up');
+      preloadImages(el); // start images now so they're ready by reveal time
       // Already in view on load? Reveal next frame so the transition runs.
       io.observe(el);
     });
