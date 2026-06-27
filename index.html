@@ -1033,22 +1033,25 @@ function PreviewTicker() {
     { num: '24/7',         label: 'weather community' },
   ];
 
-  return h('div', { className:'preview-ticker-wrap' },
-    h('h2', { className:'preview-ticker-title' }, 'WHEN IT MATTERS,', h('br'), "WE'RE ON IT."),
-    h('div', { className:'preview-ticker-grid' },
+  return h('div', { className:'home-cta' },
+    h('div', { className:'home-cta-copy' },
+      h('span', { className:'home-cta-eyebrow' }, 'Xtreme Weather'),
+      h('h2', { className:'home-cta-title' }, 'WHEN IT MATTERS,', h('br'), "WE'RE ON IT."),
+      h('a', { href:'https://discord.gg/xtremeweather', target:'_blank', className:'btn-primary', style:{display:'inline-flex',alignItems:'center',gap:10} },
+        h('svg', { width:20, height:20, viewBox:'0 0 127.14 96.36', fill:'currentColor', xmlns:'http://www.w3.org/2000/svg' },
+          h('path', { d: DISCORD_SVG_PATH })
+        ),
+        'Join Xtreme Weather'
+      )
+    ),
+    h('div', { className:'home-cta-stats' },
       ...stats.map((s,i) => {
         const isWord = typeof s.num === 'string' && /^[A-Za-z]/.test(s.num);
-        return h('div', { key:i, className:'ticker-stat' },
-          h('div', { className:'ticker-stat-num' + (isWord ? ' is-word' : '') }, s.num),
-          h('div', { className:'ticker-stat-label' }, s.label)
+        return h('div', { key:i, className:'home-cta-stat' },
+          h('div', { className:'home-cta-stat-num' + (isWord ? ' is-word' : '') }, s.num),
+          h('div', { className:'home-cta-stat-label' }, s.label)
         );
       })
-    ),
-    h('a', { href:'https://discord.gg/xtremeweather', target:'_blank', className:'btn-primary', style:{display:'inline-flex',alignItems:'center',gap:10} },
-      h('svg', { width:20, height:20, viewBox:'0 0 127.14 96.36', fill:'currentColor', xmlns:'http://www.w3.org/2000/svg' },
-        h('path', { d: DISCORD_SVG_PATH })
-      ),
-      'Join Xtreme Weather'
     )
   );
 }
