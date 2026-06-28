@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-25T02:16:41.783Z",
+  "updatedAt": "2026-06-28T18:37:42.962Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7352
+    "memberCount": 7356
   },
   "tiers": [
     {
@@ -85,18 +85,10 @@
         {
           "id": "1083832581411315865",
           "username": "stormy_sky62",
-          "displayName": "Cookware (Northeast PA)",
+          "displayName": "Cookware (Central PA)",
           "avatar": "https://cdn.discordapp.com/avatars/1083832581411315865/79ec54d52c0664f6676256b0ea720f93.png?size=256",
           "banner": null,
           "accentColor": "#84c0e5"
-        },
-        {
-          "id": "1193213878834843758",
-          "username": "darkespeon.wx",
-          "displayName": "DarkEspeon (North AL)",
-          "avatar": "https://cdn.discordapp.com/avatars/1193213878834843758/c731bf55a599388bea8289de8e315b99.png?size=256",
-          "banner": null,
-          "accentColor": "#000000"
         },
         {
           "id": "1008568196292419584",
@@ -109,7 +101,7 @@
         {
           "id": "1298379997689679966",
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Central MA)",
+          "displayName": "Gabriel Kramp (Lynchburg VA)",
           "avatar": "https://cdn.discordapp.com/avatars/1298379997689679966/f0c410e13555832327ffd29a27321978.png?size=256",
           "banner": null,
           "accentColor": null
@@ -117,7 +109,7 @@
         {
           "id": "609961976092950528",
           "username": "robbysversion",
-          "displayName": "Robby (MN)",
+          "displayName": "Robby (PA)",
           "avatar": "https://cdn.discordapp.com/avatars/609961976092950528/1c3539ce9859c31176f4fb6ce4e5eba4.png?size=256",
           "banner": null,
           "accentColor": null
@@ -172,7 +164,7 @@
           "id": "1324763970271314023",
           "username": "dynafolf",
           "displayName": "DynaFolf (Pike County, PA)",
-          "avatar": "https://cdn.discordapp.com/avatars/1324763970271314023/df8ed6d3140ebc954bffdbfe76a86dd0.png?size=256",
+          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1324763970271314023/avatars/dae0cd80f66ab15114f8e21b21f7549a.png?size=256",
           "banner": null,
           "accentColor": null
         },
@@ -196,7 +188,7 @@
           "id": "877009401423200296",
           "username": "weatherlord_wx",
           "displayName": "Max (Massachusetts)",
-          "avatar": "https://cdn.discordapp.com/avatars/877009401423200296/7bf72e4a157a0f9d32e0ab7b867d25b3.png?size=256",
+          "avatar": "https://cdn.discordapp.com/avatars/877009401423200296/cf37f17a25a391aec6fe356d8e188aae.png?size=256",
           "banner": null,
           "accentColor": null
         },
