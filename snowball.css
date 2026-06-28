@@ -1046,17 +1046,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   background: rgba(255,255,255,0.055);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 14px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  /* Give each card its own stable compositing layer so its backdrop-filter
-     samples cleanly and isn't broken by the parent's entry animation. */
-  transform: translateZ(0);
-  isolation: isolate;
   transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
 
 .xw-hero-dock a:hover {
-  transform: translateY(-3px) translateZ(0);
+  transform: translateY(-3px);
   background: rgba(255,255,255,0.085);
   border-color: rgba(34,211,238,0.28);
 }
