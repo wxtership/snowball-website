@@ -1116,9 +1116,21 @@ function HomeProductsSection() {
 
   return h('section', { id: 'products', className: 'home-products-section' },
     h('div', { className: 'section-inner xw-products-inner' },
-      h('div', { className: 'xw-section-head' },
-        h('div', null,
-          h('h2', { className: 'section-title' }, 'Everything weather,', h('br'), 'in one place')
+      h('div', { className: 'xw-products-showcase' },
+        h('div', { className: 'xw-showcase-copy' },
+          h('h2', { className: 'section-title' }, 'Everything weather,', h('br'), 'in one place'),
+          h('p', { className: 'section-body' },
+            'Real radar, live alerts, and a whole community in one ecosystem. Track the storm, then jump straight into coverage with everyone else watching it.'
+          )
+        ),
+        h('div', { className: 'xw-showcase-media', 'aria-label': 'Live radar' },
+          h('img', { className: 'xw-showcase-radar', src: 'assets/hero-radar-level2.png', alt: 'Live weather radar showing an active storm', loading: 'lazy' }),
+          h('span', { className: 'xw-showcase-live' },
+            h('span', { className: 'xw-showcase-live-dot' }),
+            'Live radar'
+          ),
+          h('span', { className: 'xw-showcase-tag xw-showcase-tag-warn' }, 'Tornado Warning'),
+          h('span', { className: 'xw-showcase-tag xw-showcase-tag-cell' }, 'Supercell')
         )
       ),
       h('div', { className: 'xw-product-grid' },
