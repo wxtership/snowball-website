@@ -1156,17 +1156,17 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   background:
     radial-gradient(115% 115% at 50% 50%, color-mix(in srgb, var(--card-accent, var(--purple-400)) 26%, transparent), transparent 74%),
     rgba(255,255,255,0.06);
-  border-color: color-mix(in srgb, var(--purple-400) 58%, rgba(255,255,255,0.12));
+  border-color: color-mix(in srgb, var(--card-accent, var(--purple-400)) 58%, rgba(255,255,255,0.12));
   box-shadow:
     0 24px 60px -24px rgba(0,0,0,0.5),
-    0 0 52px -4px color-mix(in srgb, var(--purple-400) 58%, transparent);
+    0 0 52px -4px color-mix(in srgb, var(--card-accent, var(--purple-400)) 58%, transparent);
 }
 
-.xw-product-card.tone-cyan { --card-accent: #22d3ee; }
-.xw-product-card.tone-green { --card-accent: #4ade80; }
-.xw-product-card.tone-violet { --card-accent: #8b5cf6; }
-.xw-product-card.tone-blue { --card-accent: #60a5fa; }
-.xw-product-card.tone-amber { --card-accent: #f59e0b; }
+.xw-product-card.tone-cyan { --card-accent: #9B5EF5; }   /* Radar App: purple */
+.xw-product-card.tone-green { --card-accent: #9B5EF5; }  /* Features: purple */
+.xw-product-card.tone-violet { --card-accent: #5865F2; } /* Discord: blurple */
+.xw-product-card.tone-blue { --card-accent: #60a5fa; }   /* Snowball: blue */
+.xw-product-card.tone-amber { --card-accent: #ef4444; }  /* Coverage Modes: red */
 
 .xw-product-icon {
   width: 52px;
@@ -1180,7 +1180,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 .xw-product-card:hover .xw-product-icon {
   transform: translateY(-3px) scale(1.08);
-  filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--purple-400) 60%, transparent));
+  filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--card-accent, var(--purple-400)) 60%, transparent));
 }
 
 .xw-product-icon img {
