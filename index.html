@@ -339,18 +339,12 @@ const DISCORD_SVG_PATH = 'M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,
 
 function Hero() {
   const [visible, setVisible] = useState(false);
-  const [settled, setSettled] = useState(false);
   const heroRef = useRef(null);
   const mapRef = useRef(null);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
-    // Once the entry animation has finished, drop the transform so the dock no
-    // longer sits on its own GPU compositing layer. A lingering transform keeps
-    // the cards' backdrop-filter resampling from a fractionally-positioned
-    // layer, which leaves the text looking blurry after it animates up.
-    const s = setTimeout(() => setSettled(true), 80 + 1100 + 480 + 60);
-    return () => { clearTimeout(t); clearTimeout(s); };
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
@@ -437,7 +431,7 @@ function Hero() {
       ),
       h('div', { className: 'xw-hero-dock', style: {
         opacity: visible ? 1 : 0,
-        transform: settled ? 'none' : (visible ? 'translateY(0)' : 'translateY(16px)'),
+        transform: visible ? 'translateY(0)' : 'translateY(16px)',
         transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s',
       } },
         ...heroItems.map(item =>
