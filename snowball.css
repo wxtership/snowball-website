@@ -1189,14 +1189,14 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   object-fit: contain;
 }
 
-/* Radar icon (Features card) sits a touch left and smaller than the rest. */
-.card-features .xw-product-icon {
+/* Radar icon sits a touch left and smaller than the rest. */
+.card-radar .xw-product-icon {
   width: 47px;
   height: 47px;
   transform: translateX(-3px);
 }
 
-.xw-product-card.card-features:hover .xw-product-icon {
+.xw-product-card.card-radar:hover .xw-product-icon {
   transform: translate(-3px, -3px) scale(1.08);
 }
 
