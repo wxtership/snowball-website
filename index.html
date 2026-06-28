@@ -1127,7 +1127,7 @@ function HomeProductsSection() {
             href: p.href,
             target: p.external ? '_blank' : undefined,
             rel: p.external ? 'noopener' : undefined,
-            className: 'xw-product-card tone-' + p.tone,
+            className: 'xw-product-card tone-' + p.tone + ' card-' + p.id,
             style: { '--i': i },
           },
             h('div', { className: 'xw-product-icon' }, h('img', { src: p.icon, alt: '', loading: 'lazy' })),

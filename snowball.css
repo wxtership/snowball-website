@@ -1156,10 +1156,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   background:
     radial-gradient(115% 115% at 50% 50%, color-mix(in srgb, var(--card-accent, var(--purple-400)) 26%, transparent), transparent 74%),
     rgba(255,255,255,0.06);
-  border-color: color-mix(in srgb, var(--card-accent, var(--purple-400)) 50%, rgba(255,255,255,0.12));
+  border-color: color-mix(in srgb, var(--purple-400) 58%, rgba(255,255,255,0.12));
   box-shadow:
     0 24px 60px -24px rgba(0,0,0,0.5),
-    0 0 52px -4px color-mix(in srgb, var(--card-accent, var(--purple-400)) 58%, transparent);
+    0 0 52px -4px color-mix(in srgb, var(--purple-400) 58%, transparent);
 }
 
 .xw-product-card.tone-cyan { --card-accent: #22d3ee; }
@@ -1171,26 +1171,33 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-product-icon {
   width: 52px;
   height: 52px;
-  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--card-accent, var(--purple-400)) 18%, rgba(255,255,255,0.04));
-  border: 1px solid color-mix(in srgb, var(--card-accent, var(--purple-400)) 26%, rgba(255,255,255,0.1));
   margin-bottom: 26px;
-  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease, border-color 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), filter 0.32s ease;
 }
 
 .xw-product-card:hover .xw-product-icon {
   transform: translateY(-3px) scale(1.08);
-  border-color: color-mix(in srgb, var(--card-accent, var(--purple-400)) 50%, rgba(255,255,255,0.1));
-  box-shadow: 0 0 24px -4px color-mix(in srgb, var(--card-accent, var(--purple-400)) 70%, transparent);
+  filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--purple-400) 60%, transparent));
 }
 
 .xw-product-icon img {
-  width: 66%;
-  height: 66%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+}
+
+/* Radar icon (Features card) sits a touch left and smaller than the rest. */
+.card-features .xw-product-icon {
+  width: 47px;
+  height: 47px;
+  transform: translateX(-3px);
+}
+
+.xw-product-card.card-features:hover .xw-product-icon {
+  transform: translate(-3px, -3px) scale(1.08);
 }
 
 .xw-product-kicker {
