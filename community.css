@@ -771,7 +771,6 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
   position: relative; display: flex; gap: 18px; align-items: flex-start;
   padding: 20px 22px; border-radius: 16px;
   background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-  border-left: 4px solid var(--rung, rgba(255,255,255,0.2));
 }
 .enforce-step .rung {
   flex-shrink: 0; width: 40px; height: 40px; border-radius: 11px;
