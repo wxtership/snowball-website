@@ -506,9 +506,20 @@
 .contact-note,
 .community-cta,
 .faq-item,
-.mission {
+.mission,
+.charter-item,
+.enforce-step,
+.radar-web-figure {
   animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
 }
+/* Stagger the rule/step lists like the grids above; flat delay past five so
+   long lists don't take seconds to finish. */
+.charter-item:nth-child(1), .enforce-step:nth-child(1) { animation-delay: 0.08s; }
+.charter-item:nth-child(2), .enforce-step:nth-child(2) { animation-delay: 0.16s; }
+.charter-item:nth-child(3), .enforce-step:nth-child(3) { animation-delay: 0.24s; }
+.charter-item:nth-child(4), .enforce-step:nth-child(4) { animation-delay: 0.32s; }
+.charter-item:nth-child(5), .enforce-step:nth-child(5) { animation-delay: 0.40s; }
+.charter-item:nth-child(n+6) { animation-delay: 0.46s; }
 .page-hero .section-title { animation-delay: 0.05s; }
 .page-hero .section-body  { animation-delay: 0.2s; }
 .community-page .section-label   { animation-delay: 0.05s; }
@@ -554,6 +565,7 @@
   .contact-form .form-check, .contact-form .form-status, .contact-form .form-submit,
   .contact-side-link, .contact-note,
   .community-cta, .timeline-item, .faq-item, .mission,
+  .charter-item, .enforce-step, .radar-web-figure,
   #staff-roster.animate-in .staff-tier-title, #staff-roster.animate-in .staff-card,
   #donator-roster.animate-in .donate-progress,
   #donator-roster.animate-in .staff-tier-title, #donator-roster.animate-in .staff-card { animation: none; }

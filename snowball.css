@@ -1680,8 +1680,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 /* Pause (don't fade) on hover. Needs to match the per-direction selector's
    specificity so the `animation` shorthand above doesn't reset play-state
-   back to running. */
-.xw-feat-marquee:hover .xw-feat-row[data-dir] .xw-feat-track { animation-play-state: paused; }
+   back to running. Gated to real hover devices: on touch screens a tap
+   counts as :hover and froze the marquee until you tapped elsewhere. */
+@media (hover: hover) and (pointer: fine) {
+  .xw-feat-marquee:hover .xw-feat-row[data-dir] .xw-feat-track { animation-play-state: paused; }
+}
 
 .xw-feat-track { will-change: transform; }
 
