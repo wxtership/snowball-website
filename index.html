@@ -1091,7 +1091,7 @@ function RadarWebSection() {
   return h('section', { id: 'radar-web', className: 'xw-split-section' },
     h('div', { className: 'section-inner xw-split' },
       h('div', { className: 'xw-copy-block' },
-        h('h2', { className: 'section-title' }, 'The app radar,', h('br'), 'in your browser'),
+        h('h2', { className: 'section-title' }, 'The app,', h('br'), 'in your browser'),
         h('p', { className: 'section-body' },
           'A true port of the Xtreme Weather radar on the web. No download, no account, just open it and the storm is right there.'
         ),
@@ -1108,10 +1108,6 @@ function RadarWebSection() {
             h('i', { className:'fas fa-location-crosshairs', 'aria-hidden':'true' }),
             'Open the radar',
             h('img', { src:'assets/arrow-up-right-small.png', alt:'', className:'btn-arrow-img' })
-          ),
-          h('a', { href:'radar', className:'btn-ghost-arrow xw-inline-cta' },
-            'Learn more',
-            h('img', { src:'assets/arrow-up-right-small.png', alt:'', loading:'lazy' })
           )
         )
       ),

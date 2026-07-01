@@ -1398,7 +1398,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   height: 30px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 12px rgba(74,222,128,0.3));
 }
 
 .xw-snowball-features {
