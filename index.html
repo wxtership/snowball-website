@@ -1159,9 +1159,15 @@ function HomeProductsSection() {
 
 function RadarAppSection() {
   const features = [
-    ['Live radar', 'See what is moving without digging through menus.'],
-    ['Alerts first', 'Surface the weather that actually needs attention.'],
-    ['Community ready', 'Built to connect with Xtreme Weather coverage.'],
+    ['Super-res radar', 'Level-III reflectivity and velocity, straight off the nearest site.'],
+    ['Warnings on the map', 'Tornado and severe polygons drawn where they actually are.'],
+    ['Spotter reports', 'Ground truth from the field layered right on the radar.'],
+  ];
+
+  const shots = [
+    { src: 'assets/phone-radar-reflectivity.webp', alt: 'Super-res reflectivity radar over Dodge City', caption: 'Super-Res Reflectivity' },
+    { src: 'assets/phone-radar-velocity.webp',     alt: 'Velocity radar with a tornado warning polygon near Haviland', caption: 'Tornado Warning' },
+    { src: 'assets/phone-radar-warning.webp',      alt: 'Velocity radar and warning polygon over Wichita', caption: 'Velocity + Warnings' },
   ];
 
   return h('section', { id: 'radar-app', className: 'xw-split-section' },
@@ -1170,7 +1176,7 @@ function RadarAppSection() {
       h('div', { className: 'xw-copy-block' },
         h('h2', { className: 'section-title' }, 'Weather that feels', h('br'), 'built for your phone'),
         h('p', { className: 'section-body' },
-          'A better radar app is coming soon: quicker radar checks, cleaner alert context, and an experience that feels connected to the rest of Xtreme Weather.'
+          'Real radar from the Xtreme Weather app: super-res reflectivity and velocity, live warning polygons, and spotter reports on one fast map. Here is what it looks like right now.'
         ),
         h('div', { className: 'xw-feature-list' },
           ...features.map((f, i) =>
@@ -1181,33 +1187,11 @@ function RadarAppSection() {
           )
         )
       ),
-      h('div', { className: 'xw-phone-stage', 'aria-label': 'Radar app preview' },
-        h('div', { className: 'xw-phone' },
-          h('div', { className: 'xw-phone-status' },
-            h('span', null, '6:07'),
-            h('span', null, h('i', { className:'fas fa-signal', 'aria-hidden':'true' }), h('i', { className:'fas fa-battery-three-quarters', 'aria-hidden':'true' }))
-          ),
-          h('div', { className: 'xw-phone-header' },
-            h('img', { src:'assets/betterappicon.png', alt:'', loading:'lazy' }),
-            h('div', null,
-              h('strong', null, 'Xtreme Weather'),
-              h('span', null, 'Official App')
-            )
-          ),
-          h('div', { className: 'xw-phone-map' },
-            h('div', { className:'xw-map-grid' }),
-            h('span', { className:'xw-storm-cell cell-one' }),
-            h('span', { className:'xw-storm-cell cell-two' }),
-            h('span', { className:'xw-storm-cell cell-three' }),
-            h('span', { className:'xw-location-pin' }),
-            h('div', { className:'xw-radar-sweep' })
-          ),
-          h('div', { className:'xw-phone-alert' },
-            h('span', { className:'xw-alert-dot' }),
-            h('div', null,
-              h('strong', null, 'Storms approaching'),
-              h('span', null, 'Radar and alert tools ready')
-            )
+      h('div', { className: 'xw-phone-gallery', 'aria-label': 'Xtreme Weather app radar screens' },
+        ...shots.map((s, i) =>
+          h('figure', { key: i, className: 'xw-phone-shot' },
+            h('img', { src: s.src, alt: s.alt, loading: 'lazy', draggable: 'false' }),
+            h('figcaption', null, s.caption)
           )
         )
       )

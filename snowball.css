@@ -1408,187 +1408,96 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   box-shadow: 0 0 24px rgba(74,222,128,0.22);
 }
 
-.xw-phone-stage {
-  min-height: 560px;
+/* ---------------------------------------------------------------------------
+   Radar app gallery: three real app screenshots composited into a phone frame,
+   staggered so the middle screen leads. No fake UI, no spinning sweep.
+   --------------------------------------------------------------------------- */
+.xw-phone-gallery {
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1200px;
+  gap: clamp(10px, 2.2vw, 26px);
+  min-height: 560px;
+  perspective: 1600px;
 }
 
-.xw-phone {
-  width: min(100%, 330px);
-  aspect-ratio: 9 / 18.5;
-  padding: 16px;
-  border-radius: 36px;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
-    #070a12;
-  border: 1px solid rgba(255,255,255,0.16);
-  box-shadow: 0 34px 90px rgba(0,0,0,0.58), 0 0 54px rgba(34,211,238,0.12);
-  transform: rotateX(5deg) rotateY(-9deg);
-}
-
-.xw-phone-status,
-.xw-phone-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgba(255,255,255,0.72);
-  font-size: 12px;
-}
-
-.xw-phone-status i + i {
-  margin-left: 8px;
-}
-
-.xw-phone-header {
-  justify-content: flex-start;
-  gap: 12px;
-  padding: 16px 2px 14px;
-}
-
-.xw-phone-header img {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-}
-
-.xw-phone-header strong,
-.xw-phone-header span {
-  display: block;
-}
-
-.xw-phone-header strong {
-  color: #fff;
-  font-size: 15px;
-  line-height: 1.2;
-}
-
-.xw-phone-header span {
-  color: rgba(255,255,255,0.52);
-  font-size: 12px;
-  margin-top: 2px;
-}
-
-.xw-phone-map,
-.xw-web-map {
+.xw-phone-shot {
   position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(34,211,238,0.16), transparent 25%),
-    radial-gradient(circle at 74% 70%, rgba(74,222,128,0.12), transparent 28%),
-    linear-gradient(145deg, #0b1020, #08131a 62%, #111326);
-  isolation: isolate;
+  margin: 0;
+  flex: 0 1 auto;
+  width: clamp(150px, 20vw, 222px);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 26px 54px rgba(0,0,0,0.5));
 }
 
-.xw-phone-map {
-  height: 315px;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.08);
+.xw-phone-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
 }
 
-.xw-map-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 36px 36px;
-  mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+/* Outer two shots sit lower and turned slightly inward; center leads. */
+.xw-phone-shot:nth-child(1) {
+  transform: translateY(26px) rotateY(11deg) scale(0.94);
+  z-index: 1;
 }
 
-.xw-storm-cell {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(7px);
-  opacity: 0.86;
+.xw-phone-shot:nth-child(2) {
+  transform: translateY(-6px) scale(1.03);
+  z-index: 3;
+  filter: drop-shadow(0 34px 68px rgba(0,0,0,0.58)) drop-shadow(0 0 40px rgba(34,211,238,0.16));
+}
+
+.xw-phone-shot:nth-child(3) {
+  transform: translateY(26px) rotateY(-11deg) scale(0.94);
   z-index: 2;
 }
 
-.xw-storm-cell.cell-one {
-  width: 132px;
-  height: 78px;
-  left: 12%;
-  top: 28%;
-  background: radial-gradient(circle, #facc15 0 18%, #22c55e 35%, #0ea5e9 62%, transparent 72%);
+.xw-phone-gallery:hover .xw-phone-shot:nth-child(1) {
+  transform: translateY(20px) rotateY(8deg) scale(0.96);
 }
 
-.xw-storm-cell.cell-two {
-  width: 112px;
-  height: 72px;
-  right: 8%;
-  top: 46%;
-  background: radial-gradient(circle, #ef4444 0 12%, #f97316 28%, #22c55e 54%, transparent 75%);
+.xw-phone-gallery:hover .xw-phone-shot:nth-child(2) {
+  transform: translateY(-10px) scale(1.05);
 }
 
-.xw-storm-cell.cell-three {
-  width: 92px;
-  height: 58px;
-  left: 34%;
-  bottom: 13%;
-  background: radial-gradient(circle, #a78bfa 0 20%, #38bdf8 48%, transparent 74%);
+.xw-phone-gallery:hover .xw-phone-shot:nth-child(3) {
+  transform: translateY(20px) rotateY(-8deg) scale(0.96);
 }
 
-.xw-location-pin {
+.xw-phone-shot figcaption {
   position: absolute;
-  left: 49%;
-  top: 47%;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #fff;
-  border: 4px solid #60a5fa;
-  box-shadow: 0 0 0 8px rgba(96,165,250,0.18);
-  z-index: 5;
-}
-
-.xw-radar-sweep {
-  position: absolute;
-  inset: -35%;
-  background: conic-gradient(from 0deg, transparent 0 276deg, rgba(34,211,238,0.24) 314deg, transparent 352deg);
-  animation: xw-radar-spin 7.5s linear infinite;
-  z-index: 3;
-}
-
-@keyframes xw-radar-spin {
-  to { transform: rotate(360deg); }
-}
-
-.xw-phone-alert {
-  display: grid;
-  grid-template-columns: 12px minmax(0, 1fr);
-  gap: 12px;
-  align-items: center;
-  margin-top: 14px;
-  padding: 14px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.xw-alert-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #facc15;
-  box-shadow: 0 0 18px rgba(250,204,21,0.8);
-}
-
-.xw-phone-alert strong,
-.xw-phone-alert span {
-  display: block;
-}
-
-.xw-phone-alert strong {
-  color: #fff;
-  font-size: 13px;
-}
-
-.xw-phone-alert span {
-  color: rgba(255,255,255,0.54);
+  left: 50%;
+  bottom: 5.5%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 5px 12px;
+  border-radius: 999px;
   font-size: 11px;
-  margin-top: 2px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: rgba(10,12,20,0.72);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.xw-phone-shot:nth-child(2) figcaption {
+  opacity: 1;
+}
+
+.xw-phone-gallery:hover .xw-phone-shot figcaption {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xw-phone-shot {
+    transition: none;
+  }
 }
 
 .xw-browser {
@@ -2153,17 +2062,26 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     border-radius: 14px;
   }
 
-  .xw-phone-stage {
-    min-height: 470px;
+  .xw-phone-gallery {
+    min-height: 0;
+    gap: 0;
+    perspective: none;
   }
 
-  .xw-phone {
-    width: min(100%, 292px);
+  /* On phones, three side-by-side screens are too small to read. Show the
+     center (warning) screen full size and drop the flanking two. */
+  .xw-phone-shot:nth-child(1),
+  .xw-phone-shot:nth-child(3) {
+    display: none;
+  }
+
+  .xw-phone-shot:nth-child(2) {
+    width: min(100%, 260px);
     transform: none;
   }
 
-  .xw-phone-map {
-    height: 260px;
+  .xw-phone-shot figcaption {
+    opacity: 1;
   }
 
   .xw-web-map,
