@@ -1078,88 +1078,49 @@ function PreviewSection() {
   );
 }
 
-function HomeProductsSection() {
-  const products = [
-    {
-      id: 'app',
-      icon: 'assets/betterappicon.png',
-      title: 'App',
-      kicker: 'On the App Store',
-      desc: 'Xtreme Weather Pro Radar on iOS, built around fast checks, cleaner alerts, and the Xtreme Weather ecosystem.',
-      href: 'https://apps.apple.com/us/app/xtreme-weather-pro-radar/id6744540041',
-      external: true,
-      tone: 'cyan',
-    },
-    {
-      id: 'radar',
-      icon: 'assets/icons/small-radar.png',
-      title: 'Radar',
-      kicker: 'Web Radar',
-      desc: 'The app radar, ported to your browser. Track storms with live radar, alerts, lightning, and satellite in one place.',
-      href: 'radar',
-      tone: 'green',
-    },
-    {
-      id: 'snowball',
-      icon: 'assets/icons/small-snowball.png',
-      title: 'Snowball',
-      kicker: 'Discord App',
-      desc: 'Weather commands, AI briefings, live radio, music, economy, and community tools built into Discord.',
-      href: '#snowball',
-      tone: 'blue',
-    },
-    {
-      id: 'coverage',
-      icon: 'assets/coverage/severe_static.png',
-      title: 'Coverage Modes',
-      kicker: 'Operations',
-      desc: 'Severe, winter, and tropical workflows that make high-impact weather easier to follow.',
-      href: 'coverage-experts',
-      tone: 'amber',
-    },
-    {
-      id: 'community',
-      icon: 'assets/Discord.webp',
-      title: 'Join the Discord',
-      kicker: 'Community',
-      desc: 'Live coverage, weather chat, alerts, forecast discussion, and the people who keep the server moving.',
-      href: 'https://discord.gg/xtremeweather',
-      external: true,
-      tone: 'violet',
-    },
+const APP_STORE_URL = 'https://apps.apple.com/us/app/xtreme-weather-pro-radar/id6744540041';
+const WEB_RADAR_URL = 'https://radar.xtremewx.com';
+
+function RadarWebSection() {
+  const features = [
+    ['Any station, live', 'Pick from 150+ radar sites and stream super-res reflectivity or velocity.'],
+    ['Every layer that matters', 'Warnings, lightning, spotter positions, mPING reports, and METAR stations on one map.'],
+    ['Flat map or full globe', 'Track on a flat map or spin the planet in 3D.'],
   ];
 
-  return h('section', { id: 'products', className: 'home-products-section' },
-    h('div', { className: 'section-inner xw-products-inner' },
-      h('div', { className: 'xw-products-showcase' },
-        h('div', { className: 'xw-showcase-copy' },
-          h('h2', { className: 'section-title' }, 'Everything weather,', h('br'), 'in one place'),
-          h('p', { className: 'section-body' },
-            'Real radar, live alerts, and a whole community in one ecosystem. Track the storm, then jump straight into coverage with everyone else watching it.'
+  return h('section', { id: 'radar-web', className: 'xw-split-section' },
+    h('div', { className: 'section-inner xw-split' },
+      h('div', { className: 'xw-copy-block' },
+        h('h2', { className: 'section-title' }, 'The app radar,', h('br'), 'in your browser'),
+        h('p', { className: 'section-body' },
+          'A true port of the Xtreme Weather radar on the web. No download, no account, just open it and the storm is right there.'
+        ),
+        h('div', { className: 'xw-feature-list' },
+          ...features.map((f, i) =>
+            h('div', { key: i, className: 'xw-feature-row' },
+              h('img', { src:'assets/othericons/success.png', alt:'', className:'xw-feature-check' }),
+              h('span', null, h('strong', null, f[0]), ' ', f[1])
+            )
+          )
+        ),
+        h('div', { className: 'xw-app-ctas' },
+          h('a', { href: WEB_RADAR_URL, target:'_blank', rel:'noopener', className:'btn-primary', style:{ display:'inline-flex', alignItems:'center', gap:9 } },
+            h('i', { className:'fas fa-location-crosshairs', 'aria-hidden':'true' }),
+            'Open the radar',
+            h('img', { src:'assets/arrow-up-right-small.png', alt:'', className:'btn-arrow-img' })
+          ),
+          h('a', { href:'radar', className:'btn-ghost-arrow xw-inline-cta' },
+            'Learn more',
+            h('img', { src:'assets/arrow-up-right-small.png', alt:'', loading:'lazy' })
           )
         )
       ),
-      h('div', { className: 'xw-product-grid' },
-        ...products.map((p, i) =>
-          h('a', {
-            key: p.id,
-            href: p.href,
-            target: p.external ? '_blank' : undefined,
-            rel: p.external ? 'noopener' : undefined,
-            className: 'xw-product-card tone-' + p.tone + ' card-' + p.id,
-            style: { '--i': i },
-          },
-            h('div', { className: 'xw-product-icon' }, h('img', { src: p.icon, alt: '', loading: 'lazy' })),
-            h('h3', { className: 'xw-product-title' }, p.title),
-            h('p', { className: 'xw-product-desc' }, p.desc)
-          )
-        )
+      h('div', { className: 'xw-showcase-media', 'aria-label': 'Web radar globe view' },
+        h('img', { className: 'xw-showcase-radar', src: 'assets/radar-web.jpg', alt: 'Xtreme Weather web radar in 3D globe view with stations across North America', loading: 'lazy' })
       )
     )
   );
 }
-
-const APP_STORE_URL = 'https://apps.apple.com/us/app/xtreme-weather-pro-radar/id6744540041';
 
 function RadarAppSection() {
   const features = [
@@ -1356,10 +1317,11 @@ function App() {
   return h(React.Fragment, null,
     h(Nav),
     h(Hero),
-    h(HomeProductsSection),
     h(RadarAppSection),
+    h(RadarWebSection),
     h(SnowballPromoSection),
     h(FeaturesSection),
+    h(CoverageSection),
     h(PreviewSection),
     h(Footer)
   );
