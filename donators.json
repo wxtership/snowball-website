@@ -1,22 +1,30 @@
 {
-  "updatedAt": "2026-06-24T19:57:11.474Z",
+  "updatedAt": "2026-07-01T20:35:36.955Z",
   "updatedBy": {
-    "id": "582394159546236948",
-    "tag": "wxtership"
+    "id": "system",
+    "tag": "auto-sync (donation)"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7349
+    "memberCount": 7369
   },
-  "allTimeTotal": 682.39,
-  "monthlyRaised": 93.2,
+  "allTimeTotal": 732.39,
+  "monthlyRaised": 50,
   "monthlyGoal": 50,
   "tiers": [
     {
       "key": "donator",
       "label": "Donators",
       "members": [
+        {
+          "username": "silliphilly",
+          "displayName": "[vacation] Philly",
+          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1133479873155956878/avatars/26e7d9dfed6dc2d9a33bcf5564ba7f3a.png?size=256",
+          "banner": null,
+          "amount": 7,
+          "donatedAt": "2026-03-10T01:52:03.000Z"
+        },
         {
           "username": "username.0_0.",
           "displayName": "$ Death {GE, TBS}",
@@ -28,7 +36,7 @@
         {
           "username": "aaaqqq3091",
           "displayName": "aaaqqq (North Augusta, SC)",
-          "avatar": "https://cdn.discordapp.com/avatars/762538324615102476/667f4824b7768347f8490eb46b5f6490.png?size=256",
+          "avatar": "https://cdn.discordapp.com/avatars/762538324615102476/6ee398abbf5a2fad60894842240a000f.png?size=256",
           "banner": null,
           "amount": 5,
           "donatedAt": "2025-07-03T06:48:30.000Z"
@@ -40,6 +48,14 @@
           "banner": null,
           "amount": 10,
           "donatedAt": "2026-04-10T18:21:37.000Z"
+        },
+        {
+          "username": "starzoneeee_xp",
+          "displayName": "AYRUS ♡ ・COLUMBUS OH",
+          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1020878856829292614/avatars/a_25a98d7abaa8baddf89b6e7940ec554a.png?size=256",
+          "banner": null,
+          "amount": 2,
+          "donatedAt": "2025-06-21T05:43:05.000Z"
         },
         {
           "username": "bex.eot",
@@ -82,14 +98,6 @@
           "donatedAt": "2026-01-08T02:21:49.000Z"
         },
         {
-          "username": "dynafolf",
-          "displayName": "DynaFolf (Pike County, PA)",
-          "avatar": "https://cdn.discordapp.com/avatars/1324763970271314023/df8ed6d3140ebc954bffdbfe76a86dd0.png?size=256",
-          "banner": null,
-          "amount": 5,
-          "donatedAt": "2026-05-19T15:58:40.000Z"
-        },
-        {
           "username": "theexiled6225",
           "displayName": "𝕱𝖊𝖆𝖗 𝕴𝖓𝖈𝖆𝖗𝖓𝖆𝖙𝖊",
           "avatar": "https://cdn.discordapp.com/avatars/1110754991091748905/bd2aeb97b1a280b0e6f0afd7c9a31581.png?size=256",
@@ -107,7 +115,7 @@
         },
         {
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Flight AZ 614)",
+          "displayName": "Gabriel Kramp (Lynchburg VA)",
           "avatar": "https://cdn.discordapp.com/avatars/1298379997689679966/f0c410e13555832327ffd29a27321978.png?size=256",
           "banner": null,
           "amount": 40,
@@ -118,8 +126,8 @@
           "displayName": "Jaysonido",
           "avatar": "https://cdn.discordapp.com/avatars/451857870552825856/0235dbf9d7623d96dbaa5b61d867529b.png?size=256",
           "banner": null,
-          "amount": 4,
-          "donatedAt": "2026-04-19T17:16:56.000Z"
+          "amount": 54,
+          "donatedAt": "2026-07-01T20:33:07.000Z"
         },
         {
           "username": "jordan040818",
@@ -148,7 +156,7 @@
         {
           "username": "weatherlord_wx",
           "displayName": "Max (Massachusetts)",
-          "avatar": "https://cdn.discordapp.com/avatars/877009401423200296/7bf72e4a157a0f9d32e0ab7b867d25b3.png?size=256",
+          "avatar": "https://cdn.discordapp.com/avatars/877009401423200296/60ad29ec5a8c10402936e694484b3f1c.png?size=256",
           "banner": null,
           "amount": 9.13,
           "donatedAt": "2026-05-19T16:00:38.000Z"
@@ -162,20 +170,12 @@
           "donatedAt": "2026-01-01T05:48:41.000Z"
         },
         {
-          "username": "phw115wvwx",
-          "displayName": "Patrick",
-          "avatar": "https://cdn.discordapp.com/avatars/359087432538390528/d2bd986f1e5324754f26494b30320431.png?size=256",
+          "username": "dynafolf",
+          "displayName": "Piker (Pike County, PA)",
+          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1324763970271314023/avatars/3074b09863d14d957f1bbba7b78800b5.png?size=256",
           "banner": null,
-          "amount": 20,
-          "donatedAt": "2026-05-19T16:02:17.000Z"
-        },
-        {
-          "username": "silliphilly",
-          "displayName": "Philly",
-          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1133479873155956878/avatars/26e7d9dfed6dc2d9a33bcf5564ba7f3a.png?size=256",
-          "banner": null,
-          "amount": 7,
-          "donatedAt": "2026-03-10T01:52:03.000Z"
+          "amount": 5,
+          "donatedAt": "2026-05-19T15:58:40.000Z"
         },
         {
           "username": "preston604371",
@@ -195,7 +195,7 @@
         },
         {
           "username": "robbysversion",
-          "displayName": "Robby (MN)",
+          "displayName": "Robby (PA)",
           "avatar": "https://cdn.discordapp.com/avatars/609961976092950528/1c3539ce9859c31176f4fb6ce4e5eba4.png?size=256",
           "banner": null,
           "amount": 152.37,
@@ -232,14 +232,6 @@
           "banner": null,
           "amount": 90,
           "donatedAt": "2026-04-21T19:57:08.000Z"
-        },
-        {
-          "username": "starzoneeee_xp",
-          "displayName": "SYRUP ♡ ・COLUMBUS OH",
-          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1020878856829292614/avatars/a_25a98d7abaa8baddf89b6e7940ec554a.png?size=256",
-          "banner": null,
-          "amount": 2,
-          "donatedAt": "2025-06-21T05:43:05.000Z"
         },
         {
           "username": "tiggre2",
