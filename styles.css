@@ -961,7 +961,9 @@ body {
 .mobile-back-btn {
     position: absolute;
     top: calc(67px + 6px + 8px);
-    left: calc(1.75rem - 3px);
+    /* Same left as the navbar hamburger/X (.nav-container padding), so the
+       back button sits on the same vertical line as the X above it. */
+    left: 1.25rem;
     width: 44px;
     height: 44px;
     border-radius: 50%;

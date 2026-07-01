@@ -1106,6 +1106,10 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
   display: flex; align-items: flex-start; justify-content: flex-start; padding-top: 3px;
 }
 
+/* Charter page variant: same icon-chip layout as the Coverage Policies, but
+   in the site's purple accent instead of the coverage teal. */
+.charter-list-icons .charter-item-ico { color: var(--purple-300); }
+
 /* Coverage policies as a single panel of rows, not cards */
 .policy-list {
   list-style: none; margin: 0 auto; padding: 4px 0; max-width: 760px;
