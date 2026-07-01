@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T20:37:34.514Z",
+  "updatedAt": "2026-07-01T22:10:46.096Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -7,10 +7,10 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7369
+    "memberCount": 7371
   },
-  "allTimeTotal": 752.39,
-  "monthlyRaised": 70,
+  "allTimeTotal": 820.06,
+  "monthlyRaised": 137.67,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -198,8 +198,8 @@
           "displayName": "Robby (PA)",
           "avatar": "https://cdn.discordapp.com/avatars/609961976092950528/1c3539ce9859c31176f4fb6ce4e5eba4.png?size=256",
           "banner": null,
-          "amount": 152.37,
-          "donatedAt": "2026-06-21T02:49:23.000Z"
+          "amount": 220.04,
+          "donatedAt": "2026-07-01T22:10:10.000Z"
         },
         {
           "username": "rock_pebble122",
