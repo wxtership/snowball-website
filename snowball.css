@@ -1347,8 +1347,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 .xw-product-link img {
-  width: 13px;
-  height: 13px;
+  width: 16px;
+  height: 16px;
   filter: brightness(0) invert(1);
   opacity: 0.82;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
@@ -1798,8 +1798,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 .xw-inline-cta img {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }

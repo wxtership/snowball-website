@@ -741,7 +741,6 @@ function EconomySection() {
     { icon:'assets/icons/small-leaderboard.png', title:'Leaderboard', desc:'Compete for the top spot across Snowflakes, starboard messages, boars, and a lot more. Updated in real-time.', tag:'/leaderboard' },
   ];
   return h('section', { id: 'economy' },
-    h('div', { className: 'divider' }),
     h('div', { className: 'section-inner', style:{paddingTop:80} },
       h('h2', { className: 'section-title' }, 'A whole world', h('br'), 'inside Discord'),
       h('p', { className: 'section-body' },
@@ -911,7 +910,6 @@ function CommandsSection() {
   };
 
   return h('section', { id:'commands' },
-    h('div', { className:'divider' }),
     h('div', { className:'section-inner', style:{paddingTop:80} },
       h('h2', { className:'section-title' }, 'Everything in a slash'),
       h('p', { className:'section-body' },
@@ -1004,7 +1002,6 @@ function PreviewTicker() {
 
 function PreviewSection() {
   return h('section', { id:'preview' },
-    h('div', { className:'divider' }),
     h('div', { className:'section-inner', style:{paddingTop:80} },
       h(PreviewTicker)
     )

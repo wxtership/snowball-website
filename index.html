@@ -789,7 +789,6 @@ function EconomySection() {
     { icon:'assets/icons/small-leaderboard.png', title:'Leaderboard', desc:'Compete for the top spot across Snowflakes, starboard messages, boars, and a lot more. Updated in real-time.', tag:'/leaderboard' },
   ];
   return h('section', { id: 'economy' },
-    h('div', { className: 'divider' }),
     h('div', { className: 'section-inner', style:{paddingTop:80} },
       h('h2', { className: 'section-title' }, 'A whole world', h('br'), 'inside Discord'),
       h('p', { className: 'section-body' },
@@ -959,7 +958,6 @@ function CommandsSection() {
   };
 
   return h('section', { id:'commands' },
-    h('div', { className:'divider' }),
     h('div', { className:'section-inner', style:{paddingTop:80} },
       h('h2', { className:'section-title' }, 'Everything in a slash'),
       h('p', { className:'section-body' },
@@ -1192,7 +1190,6 @@ function RadarAppSection() {
   ];
 
   return h('section', { id: 'radar-app', className: 'xw-split-section' },
-    h('div', { className: 'divider' }),
     h('div', { className: 'section-inner xw-split' },
       h('div', { className: 'xw-copy-block' },
         h('h2', { className: 'section-title' }, 'Weather that feels', h('br'), 'built for your phone'),
@@ -1271,7 +1268,6 @@ function FeaturesSection() {
     );
 
   return h('section', { id: 'features', className: 'xw-features-section' },
-    h('div', { className: 'divider' }),
     h('div', { className: 'section-inner' },
       h('div', { className:'xw-features-head' },
         h('h2', { className: 'section-title' }, 'Snowball', h('br'), 'features'),
@@ -1299,7 +1295,6 @@ function CoverageSection() {
   ];
 
   return h('section', { id:'coverage', className:'xw-coverage-section' },
-    h('div', { className:'divider' }),
     h('div', { className:'section-inner' },
       h('div', { className:'xw-section-head' },
         h('div', null,
