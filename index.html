@@ -428,7 +428,7 @@ function Hero() {
         transform: visible ? 'translateY(0)' : 'translateY(14px)',
         transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, filter 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s',
       } },
-        h('a', { href: '#radar-app', className: 'btn-primary', style: { display:'inline-flex', alignItems:'center', gap:8 } },
+        h('a', { href: 'https://radar.xtremewx.com', target: '_blank', rel: 'noopener', className: 'btn-primary', style: { display:'inline-flex', alignItems:'center', gap:8 } },
           h('i', { className:'fas fa-location-crosshairs', 'aria-hidden':'true' }),
           'Open the radar',
           h('img', { src:'assets/arrow-up-right-small.png', alt:'', style:{ width:16, height:16, objectFit:'contain', flexShrink:0, filter:'brightness(0) invert(1)' } })
