@@ -1414,10 +1414,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
    --------------------------------------------------------------------------- */
 .xw-phone-gallery {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   gap: clamp(10px, 2.2vw, 26px);
-  min-height: 560px;
+  padding: 40px 0 24px;
   perspective: 1600px;
 }
 
@@ -1425,9 +1425,9 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: relative;
   margin: 0;
   flex: 0 1 auto;
-  width: clamp(150px, 20vw, 222px);
+  width: clamp(146px, 19vw, 208px);
   transition: transform 0.4s ease, filter 0.4s ease;
-  filter: drop-shadow(0 26px 54px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 24px 50px rgba(0,0,0,0.5));
 }
 
 .xw-phone-shot img {
@@ -1437,61 +1437,33 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   user-select: none;
 }
 
-/* Outer two shots sit lower and turned slightly inward; center leads. */
+/* Outer two shots sit lower and turned slightly inward; center leads and
+   stands taller. Nothing translates above the gallery box, so tops never clip. */
 .xw-phone-shot:nth-child(1) {
-  transform: translateY(26px) rotateY(11deg) scale(0.94);
+  transform: translateY(34px) rotateY(11deg) scale(0.93);
   z-index: 1;
 }
 
 .xw-phone-shot:nth-child(2) {
-  transform: translateY(-6px) scale(1.03);
   z-index: 3;
-  filter: drop-shadow(0 34px 68px rgba(0,0,0,0.58)) drop-shadow(0 0 40px rgba(34,211,238,0.16));
+  filter: drop-shadow(0 30px 62px rgba(0,0,0,0.58)) drop-shadow(0 0 40px rgba(34,211,238,0.16));
 }
 
 .xw-phone-shot:nth-child(3) {
-  transform: translateY(26px) rotateY(-11deg) scale(0.94);
+  transform: translateY(34px) rotateY(-11deg) scale(0.93);
   z-index: 2;
 }
 
 .xw-phone-gallery:hover .xw-phone-shot:nth-child(1) {
-  transform: translateY(20px) rotateY(8deg) scale(0.96);
+  transform: translateY(28px) rotateY(8deg) scale(0.95);
 }
 
 .xw-phone-gallery:hover .xw-phone-shot:nth-child(2) {
-  transform: translateY(-10px) scale(1.05);
+  transform: translateY(-6px) scale(1.02);
 }
 
 .xw-phone-gallery:hover .xw-phone-shot:nth-child(3) {
-  transform: translateY(20px) rotateY(-8deg) scale(0.96);
-}
-
-.xw-phone-shot figcaption {
-  position: absolute;
-  left: 50%;
-  bottom: 5.5%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: #fff;
-  background: rgba(10,12,20,0.72);
-  border: 1px solid rgba(255,255,255,0.14);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-}
-
-.xw-phone-shot:nth-child(2) figcaption {
-  opacity: 1;
-}
-
-.xw-phone-gallery:hover .xw-phone-shot figcaption {
-  opacity: 1;
+  transform: translateY(28px) rotateY(-8deg) scale(0.95);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2063,8 +2035,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .xw-phone-gallery {
-    min-height: 0;
     gap: 0;
+    padding: 20px 0 8px;
     perspective: none;
   }
 
@@ -2078,10 +2050,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .xw-phone-shot:nth-child(2) {
     width: min(100%, 260px);
     transform: none;
-  }
-
-  .xw-phone-shot figcaption {
-    opacity: 1;
   }
 
   .xw-web-map,

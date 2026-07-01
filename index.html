@@ -1165,9 +1165,9 @@ function RadarAppSection() {
   ];
 
   const shots = [
-    { src: 'assets/phone-radar-reflectivity.webp', alt: 'Super-res reflectivity radar over Dodge City', caption: 'Super-Res Reflectivity' },
-    { src: 'assets/phone-radar-velocity.webp',     alt: 'Velocity radar with a tornado warning polygon near Haviland', caption: 'Tornado Warning' },
-    { src: 'assets/phone-radar-warning.webp',      alt: 'Velocity radar and warning polygon over Wichita', caption: 'Velocity + Warnings' },
+    { src: 'assets/phone-radar-reflectivity.webp', alt: 'Super-res reflectivity radar over Dodge City' },
+    { src: 'assets/phone-radar-velocity.webp',     alt: 'Velocity radar with a tornado warning polygon near Haviland' },
+    { src: 'assets/phone-radar-warning.webp',      alt: 'Velocity radar and warning polygon over Wichita' },
   ];
 
   return h('section', { id: 'radar-app', className: 'xw-split-section' },
@@ -1190,8 +1190,7 @@ function RadarAppSection() {
       h('div', { className: 'xw-phone-gallery', 'aria-label': 'Xtreme Weather app radar screens' },
         ...shots.map((s, i) =>
           h('figure', { key: i, className: 'xw-phone-shot' },
-            h('img', { src: s.src, alt: s.alt, loading: 'lazy', draggable: 'false' }),
-            h('figcaption', null, s.caption)
+            h('img', { src: s.src, alt: s.alt, loading: 'lazy', draggable: 'false' })
           )
         )
       )
