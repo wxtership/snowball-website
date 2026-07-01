@@ -976,6 +976,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   opacity: 0.85;
   mix-blend-mode: screen;
   filter: blur(7px);
+  will-change: transform;
   transition: transform 0.12s linear;
   /* Radial mask: hollow the center so the beam's convergence point doesn't pinch
      when it sweeps over the middle, and fade the rim into a circle so the square
@@ -1682,6 +1683,15 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
    back to running. */
 .xw-feat-marquee:hover .xw-feat-row[data-dir] .xw-feat-track { animation-play-state: paused; }
 
+.xw-feat-track { will-change: transform; }
+
+/* Toggled by an IntersectionObserver in FeaturesSection: the marquee costs
+   nothing while it's offscreen. Same specificity note as the hover rule. */
+.xw-features-section.marquee-paused .xw-feat-row[data-dir] .xw-feat-track { animation-play-state: paused; }
+
+/* Same idea for the hero sweep beam (Hero toggles hero-off when scrolled past). */
+#hero.hero-off .xw-hero-map::after { animation-play-state: paused; }
+
 @keyframes xw-feat-scroll-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -1699,10 +1709,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   width: 290px;
   padding: 16px 18px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.035);
+  background: rgba(255,255,255,0.045);
   border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 
 .xw-feat-icon {
@@ -2087,4 +2095,30 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal-up { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Tighter mobile rhythm for the home sections after the hero and app: the
+   site-wide mobile `section` padding (120px top) reads as huge dead gaps
+   between these, so pull them in. The preview inner needs !important to beat
+   its inline paddingTop.
+   --------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .home-page #radar-web,
+  .home-page #snowball,
+  .home-page #features,
+  .home-page #coverage,
+  .home-page #preview {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .home-page #radar-web .section-inner,
+  .home-page #snowball .section-inner,
+  .home-page #features .section-inner,
+  .home-page #coverage .section-inner {
+    padding-top: 0;
+  }
+
+  .home-page #preview .section-inner { padding-top: 8px !important; }
 }
