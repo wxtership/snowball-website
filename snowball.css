@@ -69,6 +69,31 @@ body {
 #root { opacity: 0; transition: opacity 0.3s ease; min-height: 100vh; }
 #root.ready { opacity: 1; }
 
+/* ---------------------------------------------------------------------------
+   Home page entrance + scroll reveal. The whole page drifts up as it fades in
+   on load, then each section below the hero rises into view as you scroll to
+   it (the render script adds .xw-in via IntersectionObserver). Both effects
+   are gated behind no-preference so reduced-motion users get a static page.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .home-page #root.ready { animation: xw-page-enter 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
+
+  @keyframes xw-page-enter {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .home-page #root section:not(#hero) .section-inner {
+    opacity: 0;
+    transform: translateY(34px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .home-page #root section.xw-in .section-inner {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .navbar { background: rgba(13, 8, 32, 0.6) !important; }
 @media (max-width: 1024px) {
   .navbar { background: #0d0d18 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
@@ -1406,6 +1431,27 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   color: #07130d;
   background: #4ade80;
   box-shadow: 0 0 24px rgba(74,222,128,0.22);
+}
+
+.xw-app-ctas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.xw-app-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,0.55);
+  font-size: 13.5px;
+}
+
+.xw-app-rating .fa-star {
+  color: #fbbf24;
+  font-size: 12px;
 }
 
 /* ---------------------------------------------------------------------------

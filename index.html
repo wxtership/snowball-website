@@ -1178,11 +1178,15 @@ function HomeProductsSection() {
   );
 }
 
+const APP_STORE_URL = 'https://apps.apple.com/us/app/xtreme-weather-pro-radar/id6744540041';
+
 function RadarAppSection() {
   const features = [
-    ['Super-res radar', 'Level-III reflectivity and velocity, straight off the nearest site.'],
+    ['Super-res radar', 'Level-III reflectivity and velocity from over 150 sites, pick whichever one you want.'],
     ['Warnings on the map', 'Tornado and severe polygons drawn where they actually are.'],
-    ['Spotter reports', 'Ground truth from the field layered right on the radar.'],
+    ['Ground truth layers', 'Spotter positions, mPING reports, live lightning, and METAR observations on the same map.'],
+    ['Outlooks and radio', 'SPC severe outlooks mapped by day, plus dozens of live NOAA Weather Radio streams.'],
+    ['Made your way', 'Flat map or full 3D globe, with your own colors for alerts and overlays.'],
   ];
 
   const shots = [
@@ -1206,6 +1210,16 @@ function RadarAppSection() {
               h('span', null, h('strong', null, f[0]), ' ', f[1])
             )
           )
+        ),
+        h('div', { className: 'xw-app-ctas' },
+          h('a', { href: APP_STORE_URL, target:'_blank', rel:'noopener', className:'btn-primary', style:{ display:'inline-flex', alignItems:'center', gap:9 } },
+            h('i', { className:'fab fa-apple', 'aria-hidden':'true', style:{ fontSize:18 } }),
+            'Get it on the App Store'
+          ),
+          h('span', { className:'xw-app-rating' },
+            h('i', { className:'fas fa-star', 'aria-hidden':'true' }),
+            '4.7 rating, free on iOS'
+          )
         )
       ),
       h('div', { className: 'xw-phone-gallery', 'aria-label': 'Xtreme Weather app radar screens' },
@@ -1221,24 +1235,24 @@ function RadarAppSection() {
 
 function FeaturesSection() {
   const topRow = [
-    { icon:'assets/icons/radar.png',       title:'Live radar',      text:'Track storms as they move in real time.' },
-    { icon:'assets/icons/alert.png',       title:'Severe alerts',   text:'Warnings the moment they are issued.' },
-    { icon:'assets/icons/lightning.png',   title:'Lightning',       text:'See strikes light up across the map.' },
-    { icon:'assets/icons/satellite.png',   title:'Satellite',       text:'Cloud tops and storm structure from above.' },
-    { icon:'assets/icons/forecast.png',    title:'Forecasts',       text:'Hourly and daily outlooks at a glance.' },
-    { icon:'assets/icons/outlook.png',     title:'Outlooks',        text:'SPC risk areas mapped out for you.' },
-    { icon:'assets/icons/spotter.png',     title:'Storm reports',   text:'Ground truth from spotters in the field.' },
-    { icon:'assets/icons/weather.png',     title:'Conditions',      text:'Current weather wherever you are.' },
+    { icon:'assets/icons/radar.png',       title:'Radar in chat',    text:'Live radar for any site, one command away.' },
+    { icon:'assets/icons/alert.png',       title:'Alerts on demand', text:'Active NWS warnings for any place you ask.' },
+    { icon:'assets/icons/forecast.png',    title:'Forecasts',        text:'Hourly and week-ahead outlooks in seconds.' },
+    { icon:'assets/icons/weather.png',     title:'AI briefings',     text:'A written rundown of your local day.' },
+    { icon:'assets/icons/lightning.png',   title:'Lightning',       text:'Recent strikes plotted around any location.' },
+    { icon:'assets/icons/satellite.png',   title:'Satellite',       text:'GOES imagery straight from orbit.' },
+    { icon:'assets/icons/outlook.png',     title:'Outlooks',        text:'SPC, WPC, and CPC products mapped out.' },
+    { icon:'assets/icons/emergency.png',   title:'EAS tools',       text:'Decode SAME headers or build your own alert.' },
   ];
   const bottomRow = [
-    { icon:'assets/icons/ai.png',          title:'Snowball AI',     text:'Ask the weather, get a real answer.' },
-    { icon:'assets/icons/emergency.png',   title:'Emergencies',     text:'Tornado and flash flood alerts, fast.' },
-    { icon:'assets/icons/events.png',      title:'Live coverage',   text:'Jump into coverage when it counts.' },
-    { icon:'assets/icons/radio.png',       title:'Storm radio',     text:'Listen along during active weather.' },
-    { icon:'assets/icons/balance.png',     title:'Economy',         text:'Earn, gamble, and climb the ranks.' },
-    { icon:'assets/icons/leaderboard.png', title:'Leaderboards',    text:'See who tops the community.' },
-    { icon:'assets/icons/level.png',       title:'Leveling',        text:'Stay active and level up over time.' },
-    { icon:'assets/icons/music.png',       title:'Music & more',    text:'Tools that keep the server alive.' },
+    { icon:'assets/icons/ai.png',          title:'Snowball AI',     text:'Answers backed by real weather data.' },
+    { icon:'assets/icons/balance.png',     title:'Snowflakes',      text:'Earn them working, fishing, or gambling.' },
+    { icon:'assets/icons/stock.png',       title:'Stock market',    text:'Trade XWD as server activity moves it.' },
+    { icon:'assets/icons/small-boar.png',  title:'Boar pets',       text:'Raise one, train it, send it to the pit.' },
+    { icon:'assets/icons/level.png',       title:'Leveling',        text:'Every message you send earns XP.' },
+    { icon:'assets/icons/leaderboard.png', title:'Leaderboards',    text:'Live rankings updated in real time.' },
+    { icon:'assets/icons/music.png',       title:'Music',           text:'A full player for your voice channel.' },
+    { icon:'assets/icons/radio.png',       title:'Weather radio',   text:'NOAA streams playing around the clock.' },
   ];
 
   const card = (f, i) =>
@@ -1263,9 +1277,9 @@ function FeaturesSection() {
     h('div', { className: 'divider' }),
     h('div', { className: 'section-inner' },
       h('div', { className:'xw-features-head' },
-        h('h2', { className: 'section-title' }, 'Everything in', h('br'), 'one weather hub'),
+        h('h2', { className: 'section-title' }, 'Snowball', h('br'), 'features'),
         h('p', { className:'section-body xw-features-sub' },
-          'Radar, alerts, live coverage, Snowball, and a whole community packed into one fast experience.'
+          'Weather commands, real AI answers, a full economy, music, and more, built straight into the Discord.'
         )
       ),
       h('div', { className:'xw-feat-marquee' },
@@ -1355,7 +1369,28 @@ function App() {
 
 const rootEl = document.getElementById('root');
 ReactDOM.createRoot(rootEl).render(h(App));
-requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('ready')));
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  rootEl.classList.add('ready');
+  // Scroll reveal: every section below the hero rises in as it enters the
+  // viewport. The hidden base state only applies under
+  // prefers-reduced-motion: no-preference (see snowball.css), so adding
+  // xw-in unconditionally here is safe for reduced-motion users too.
+  const sections = rootEl.querySelectorAll('section:not(#hero)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add('xw-in');
+          obs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+    sections.forEach(s => obs.observe(s));
+  } else {
+    sections.forEach(s => s.classList.add('xw-in'));
+  }
+}));
 </script>
 
 <footer class="site-footer">
