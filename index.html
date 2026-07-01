@@ -1056,7 +1056,8 @@ function PreviewTicker() {
         h('svg', { width:20, height:20, viewBox:'0 0 127.14 96.36', fill:'currentColor', xmlns:'http://www.w3.org/2000/svg' },
           h('path', { d: DISCORD_SVG_PATH })
         ),
-        'Join Xtreme Weather'
+        'Join Xtreme Weather',
+        h('img', { src:'assets/arrow-up-right-small.png', alt:'', className:'btn-arrow-img' })
       )
     ),
     h('div', { className:'home-cta-stats' },
@@ -1209,7 +1210,8 @@ function RadarAppSection() {
         h('div', { className: 'xw-app-ctas' },
           h('a', { href: APP_STORE_URL, target:'_blank', rel:'noopener', className:'btn-primary', style:{ display:'inline-flex', alignItems:'center', gap:9 } },
             h('i', { className:'fab fa-apple', 'aria-hidden':'true', style:{ fontSize:18 } }),
-            'Get it on the App Store'
+            'Get it on the App Store',
+            h('img', { src:'assets/arrow-up-right-small.png', alt:'', className:'btn-arrow-img' })
           ),
           h('span', { className:'xw-app-rating' },
             h('i', { className:'fas fa-star', 'aria-hidden':'true' }),

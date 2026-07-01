@@ -386,17 +386,19 @@
   max-width: 480px; margin: 0 auto 24px; font-size: 15px; line-height: 1.6;
   color: rgba(255,255,255,0.62);
 }
+/* Same outline treatment as the site's ghost CTA buttons. */
 .donate-banner-btn {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 13px 30px; border-radius: 999px; text-decoration: none;
   font-weight: 700; font-size: 15px; color: #fff;
-  background: var(--purple-500);
-  box-shadow: 0 8px 24px rgba(107,84,245,0.3);
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
 }
 .donate-banner-btn:hover {
-  background: #5a45d6;
-  transform: translateY(-2px); box-shadow: 0 12px 30px rgba(107,84,245,0.45);
+  border-color: #fff;
+  background: rgba(255,255,255,0.06);
+  transform: scale(1.02);
 }
 .donate-banner-btn i { font-size: 14px; }
 
@@ -777,6 +779,7 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
   font-family: var(--font-display); font-size: 17px; font-weight: 700;
   color: #fff; background: var(--rung, rgba(255,255,255,0.2));
 }
+.enforce-step .rung i { font-size: 15px; }
 .enforce-step h4 {
   margin: 2px 0 6px; font-family: var(--font-body); font-size: 16px; font-weight: 700; color: #fff;
 }

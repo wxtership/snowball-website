@@ -616,6 +616,15 @@ body {
 }
 
 /* Nav Buttons */
+/* Custom up-right arrow used inside CTA buttons site-wide. */
+.btn-arrow-img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+}
+
 .nav-btn-circle,
 .back-btn-circle {
     width: 44px;

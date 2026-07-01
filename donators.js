@@ -114,7 +114,8 @@
       + totalLine
       + '<p class="donate-banner-copy">Every dollar keeps the bots, radar, and alerts running. Want your name on the wall?</p>'
       + '<a href="https://xtremewx.com/donate" target="_blank" rel="noopener" class="donate-banner-btn">'
-      + '<i class="fas fa-heart" aria-hidden="true"></i> Donate</a>'
+      + '<i class="fas fa-heart" aria-hidden="true"></i> Donate '
+      + '<img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>'
       + '</div>';
   }
 
