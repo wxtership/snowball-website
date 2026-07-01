@@ -1031,7 +1031,7 @@ function PreviewTicker() {
     };
     // Real 30-day message + active-contributor totals from the banner service.
     const fetchServerStats = () => {
-      fetch(`${BANNER_SERVICE_URL}/public/server-summary?guildId=${XW_GUILD_ID}`, { cache: 'no-store' })
+      fetch(`${BANNER_SERVICE_URL}/public/community?guildId=${XW_GUILD_ID}`, { cache: 'no-store' })
         .then(r => r.ok ? r.json() : null)
         .then(data => {
           if (cancelled || !data) return;
