@@ -1275,6 +1275,10 @@ function FeaturesSection() {
         h('h2', { className: 'section-title' }, 'Snowball', h('br'), 'features'),
         h('p', { className:'section-body xw-features-sub' },
           'Weather commands, real AI answers, a full economy, music, and more, built straight into the Discord.'
+        ),
+        h('a', { href:'snowball', className:'btn-ghost-arrow xw-inline-cta xw-features-cta' },
+          'Learn more',
+          h('img', { src:'assets/arrow-up-right-small.png', alt:'', loading:'lazy' })
         )
       ),
       h('div', { className:'xw-feat-marquee' },
@@ -1370,8 +1374,8 @@ function App() {
     h(Hero),
     h(HomeProductsSection),
     h(RadarAppSection),
-    h(FeaturesSection),
     h(SnowballPromoSection),
+    h(FeaturesSection),
     h(PreviewSection),
     h(Footer)
   );

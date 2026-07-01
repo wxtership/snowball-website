@@ -1655,6 +1655,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-features-section .section-inner { padding-top: 80px; padding-bottom: 8px; }
 
 .xw-features-head { max-width: 620px; margin-bottom: 44px; }
+.xw-features-cta { margin-top: 20px; }
 .xw-features-head .section-title { margin-bottom: 16px; }
 .xw-features-sub { margin-bottom: 0; }
 
