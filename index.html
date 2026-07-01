@@ -353,7 +353,11 @@ function Hero() {
     return () => { clearTimeout(t); clearTimeout(s); };
   }, []);
 
-  const blurIn = settled ? undefined : (visible ? 'blur(0px)' : 'blur(6px)');
+  // Mobile Safari shows the title's rasterized layer as a visible box while
+  // the blur filter animates (the huge text-shadow makes it worse), so small
+  // screens skip the blur entirely and keep just the fade + rise.
+  const noBlur = typeof window !== 'undefined' && window.matchMedia('(max-width: 760px)').matches;
+  const blurIn = (noBlur || settled) ? undefined : (visible ? 'blur(0px)' : 'blur(6px)');
 
   useEffect(() => {
     const hero = heroRef.current;
