@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T20:35:36.955Z",
+  "updatedAt": "2026-07-01T20:37:34.514Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -9,8 +9,8 @@
     "name": "Xtreme Weather",
     "memberCount": 7369
   },
-  "allTimeTotal": 732.39,
-  "monthlyRaised": 50,
+  "allTimeTotal": 752.39,
+  "monthlyRaised": 70,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -230,8 +230,8 @@
           "displayName": "Speedtape",
           "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/655579190711681033/avatars/0877d7498725125d23adbf616f955de9.png?size=256",
           "banner": null,
-          "amount": 90,
-          "donatedAt": "2026-04-21T19:57:08.000Z"
+          "amount": 110,
+          "donatedAt": "2026-07-01T20:36:58.000Z"
         },
         {
           "username": "tiggre2",
