@@ -26,6 +26,8 @@
 <div id="sb-tint-anchor-top" aria-hidden="true"></div>
 <div id="sb-tint-anchor-bottom" aria-hidden="true"></div>
 
+<div id="xw-load-rings" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
 <nav class="navbar">
     <div class="nav-container">
         <div class="nav-left">
@@ -1369,28 +1371,14 @@ function App() {
 
 const rootEl = document.getElementById('root');
 ReactDOM.createRoot(rootEl).render(h(App));
-requestAnimationFrame(() => requestAnimationFrame(() => {
-  rootEl.classList.add('ready');
-  // Scroll reveal: every section below the hero rises in as it enters the
-  // viewport. The hidden base state only applies under
-  // prefers-reduced-motion: no-preference (see snowball.css), so adding
-  // xw-in unconditionally here is safe for reduced-motion users too.
-  const sections = rootEl.querySelectorAll('section:not(#hero)');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.isIntersecting) {
-          en.target.classList.add('xw-in');
-          obs.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
-    sections.forEach(s => obs.observe(s));
-  } else {
-    sections.forEach(s => s.classList.add('xw-in'));
-  }
-}));
+requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('ready')));
+
+// Radar-ping load overlay: static markup near the top of <body> so it shows
+// immediately, removed here once the rings finish playing (~1.75s). The rings
+// only animate under prefers-reduced-motion: no-preference and are invisible
+// otherwise, so unconditionally removing the node is safe either way.
+const xwLoadRings = document.getElementById('xw-load-rings');
+if (xwLoadRings) setTimeout(() => xwLoadRings.remove(), 1900);
 </script>
 
 <footer class="site-footer">
