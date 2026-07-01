@@ -807,9 +807,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   justify-content: space-between;
   gap: 16px;
   padding: 18px 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
 }
-.home-cta-stat:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
 .home-cta-stat-num {
   font-family: var(--font-display); font-weight: 700;
   font-size: clamp(26px, 3.2vw, 40px);
