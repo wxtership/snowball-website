@@ -1965,13 +1965,13 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 
   .home-page #hero {
-    min-height: 92vh;
+    min-height: 84vh;
   }
 
   .home-page #hero.xw-hero-v2 {
-    padding: 190px 16px 56px;
+    padding: 190px 16px 44px;
     justify-content: flex-start;
-    min-height: 92vh;
+    min-height: 84vh;
   }
 
   .xw-hero-mark {
@@ -2023,9 +2023,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
+  /* Fade the radar out where the rings fade (same stops as .xw-hero-map
+     below), so the imagery reaches the bottom of the ring composition
+     instead of dying halfway down the hero. */
   .xw-real-radar-bg {
-    mask-image: linear-gradient(to bottom, black 0%, black 58%, transparent 80%);
-    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 58%, transparent 80%);
+    mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 96%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 96%);
     opacity: 1;
   }
 
@@ -2039,6 +2042,16 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .xw-coverage-section .section-inner,
   .xw-snowball-section .section-inner {
     padding-top: 56px;
+  }
+
+  /* Tighten the hero -> products seam so the next section's header peeks
+     above the fold and invites the scroll. */
+  .home-page #products.home-products-section {
+    padding-top: 40px;
+  }
+
+  .home-page .xw-products-inner {
+    padding-top: 28px;
   }
 
   .xw-product-card,
