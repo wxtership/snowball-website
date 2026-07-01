@@ -1122,16 +1122,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 /* ── Products showcase: copy + framed live radar ───────────────────────── */
 .xw-products-showcase {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-  gap: 58px;
-  align-items: center;
   margin-bottom: 48px;
 }
 
 .xw-showcase-copy .section-body {
   margin-bottom: 0;
-  max-width: 460px;
+  max-width: 540px;
 }
 
 .xw-showcase-media {
