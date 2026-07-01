@@ -70,67 +70,42 @@ body {
 #root.ready { opacity: 1; }
 
 /* ---------------------------------------------------------------------------
-   Load ping: radar-style rings burst out from the center of the viewport
-   while the page fades in underneath. The overlay is static HTML right after
-   <body> so it shows before React mounts; the render script removes it once
-   the rings have played. All motion is gated behind no-preference, and the
-   spans sit at opacity 0 otherwise, so reduced-motion users never see it.
+   Home load composition, matching the snowball page's burst-in style: the
+   hero's own radar rings expand out from the center into their resting spots
+   while the radar backdrop fades up underneath, and the hero copy blur-fades
+   in (inline styles in index.html). Keyframes only declare `from`, so every
+   element lands exactly on its stylesheet resting values.
    --------------------------------------------------------------------------- */
-#xw-load-rings {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-#xw-load-rings::before {
-  content: '';
-  grid-area: 1 / 1;
-  width: 42vmax;
-  height: 42vmax;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(155,94,245,0.30) 0%, rgba(155,94,245,0.10) 40%, transparent 70%);
-  opacity: 0;
-}
-
-#xw-load-rings span {
-  grid-area: 1 / 1;
-  width: 12vmax;
-  height: 12vmax;
-  border-radius: 50%;
-  border: 2px solid rgba(191, 163, 255, 0.85);
-  box-shadow: 0 0 30px rgba(155,94,245,0.5), inset 0 0 22px rgba(155,94,245,0.3);
-  opacity: 0;
-  transform: scale(0.05);
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .home-page #root.ready { animation: xw-page-enter 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+  .home-page .xw-hero-ring {
+    animation: xw-ring-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  .home-page .xw-hero-ring.ring-two { animation-delay: 0.28s; }
+  .home-page .xw-hero-ring.ring-three { animation-delay: 0.46s; }
 
-  @keyframes xw-page-enter {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: none; }
+  @keyframes xw-ring-in {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
   }
 
-  #xw-load-rings::before { animation: xw-ring-glow 1s ease-out 0.05s; }
-  #xw-load-rings span { animation: xw-ring-ping 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  #xw-load-rings span:nth-child(2) { animation-delay: 0.16s; }
-  #xw-load-rings span:nth-child(3) { animation-delay: 0.32s; }
-  #xw-load-rings span:nth-child(4) { animation-delay: 0.48s; border-width: 1px; }
-
-  @keyframes xw-ring-ping {
-    0%   { opacity: 0; transform: scale(0.05); }
-    10%  { opacity: 1; }
-    100% { opacity: 0; transform: scale(15); }
+  .home-page .xw-real-radar-bg {
+    animation: xw-radar-bg-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  @keyframes xw-ring-glow {
-    0%   { opacity: 0; transform: scale(0.6); }
-    30%  { opacity: 1; }
-    100% { opacity: 0; transform: scale(1.6); }
+  @keyframes xw-radar-bg-in {
+    from { opacity: 0; transform: scale(1.14); }
+  }
+
+  .home-page .hero-bg {
+    animation: xw-fade-in 1.2s ease-out both;
+  }
+
+  /* Sweep beam eases in with the backdrop rather than popping at full tilt. */
+  .home-page .xw-hero-map::after {
+    animation: xw-fade-in 1.8s ease-out both;
+  }
+
+  @keyframes xw-fade-in {
+    from { opacity: 0; }
   }
 }
 

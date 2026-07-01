@@ -26,8 +26,6 @@
 <div id="sb-tint-anchor-top" aria-hidden="true"></div>
 <div id="sb-tint-anchor-bottom" aria-hidden="true"></div>
 
-<div id="xw-load-rings" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-
 <nav class="navbar">
     <div class="nav-container">
         <div class="nav-left">
@@ -400,23 +398,26 @@ function Hero() {
     h('div', { className: 'hero-content xw-hero-content' },
       h('h1', { className: 'xw-hero-title', style: {
         opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
         transform: visible ? 'translateY(0)' : 'translateY(18px)',
-        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s',
+        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, filter 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s',
       } },
         h('span', { className:'xw-title-mustica' }, 'Whatever'),
         h('span', { className:'xw-title-druk' }, 'the Weather')
       ),
       h('p', { className: 'xw-hero-deck', style: {
         opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
         transform: visible ? 'translateY(0)' : 'translateY(18px)',
-        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s',
+        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, filter 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s',
       } },
         'Open the radar, watch live coverage, and jump into the Discord when the sky starts getting interesting. A better radar app is coming soon.'
       ),
       h('div', { className: 'hero-ctas xw-hero-ctas', style: {
         opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
         transform: visible ? 'translateY(0)' : 'translateY(14px)',
-        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s',
+        transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, filter 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s',
       } },
         h('a', { href: '#radar-app', className: 'btn-primary', style: { display:'inline-flex', alignItems:'center', gap:8 } },
           h('i', { className:'fas fa-location-crosshairs', 'aria-hidden':'true' }),
@@ -433,8 +434,9 @@ function Hero() {
       ),
       h('div', { className: 'xw-hero-dock', style: {
         opacity: visible ? 1 : 0,
+        filter: visible ? 'blur(0px)' : 'blur(6px)',
         transform: visible ? 'translateY(0)' : 'translateY(16px)',
-        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s',
+        transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, filter 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s',
       } },
         ...heroItems.map(item =>
           h('a', { key:item.label, href:item.label === 'Discord' ? 'https://discord.gg/xtremeweather' : item.label === 'Radar' ? '#radar-app' : '#' + item.label.toLowerCase().replace(/\s+/g, '-'), target:item.label === 'Discord' ? '_blank' : undefined, rel:item.label === 'Discord' ? 'noopener' : undefined },
@@ -1372,13 +1374,6 @@ function App() {
 const rootEl = document.getElementById('root');
 ReactDOM.createRoot(rootEl).render(h(App));
 requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('ready')));
-
-// Radar-ping load overlay: static markup near the top of <body> so it shows
-// immediately, removed here once the rings finish playing (~1.75s). The rings
-// only animate under prefers-reduced-motion: no-preference and are invisible
-// otherwise, so unconditionally removing the node is safe either way.
-const xwLoadRings = document.getElementById('xw-load-rings');
-if (xwLoadRings) setTimeout(() => xwLoadRings.remove(), 1900);
 </script>
 
 <footer class="site-footer">
