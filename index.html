@@ -1005,14 +1005,22 @@ function formatK(n) {
   return (n/1000).toFixed(1).replace(/\.0$/, '') + 'K';
 }
 
+// Banner-service base URL. Its /public/server-summary route is read-only and
+// unauthenticated (aggregate guild counts only), with open CORS, so the
+// browser can read it directly without exposing any API key.
+const BANNER_SERVICE_URL = 'https://banner.xtremewx.com';
+const XW_GUILD_ID = '1077714936056250388';
+
 function PreviewTicker() {
-  const [online, setOnline]   = useState(null);
-  const [members, setMembers] = useState(null);
+  const [online, setOnline]     = useState(null);
+  const [members, setMembers]   = useState(null);
+  const [messages, setMessages] = useState(null);
+  const [chatters, setChatters] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
     const fetchCounts = () => {
-      fetch('https://discord.com/api/guilds/1077714936056250388/widget.json', { cache: 'no-store' })
+      fetch(`https://discord.com/api/guilds/${XW_GUILD_ID}/widget.json`, { cache: 'no-store' })
         .then(r => r.ok ? r.json() : null)
         .then(data => {
           if (cancelled || !data) return;
@@ -1021,16 +1029,29 @@ function PreviewTicker() {
         })
         .catch(() => {});
     };
+    // Real 30-day message + active-contributor totals from the banner service.
+    const fetchServerStats = () => {
+      fetch(`${BANNER_SERVICE_URL}/public/server-summary?guildId=${XW_GUILD_ID}`, { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (cancelled || !data) return;
+          if (typeof data.messages30d === 'number') setMessages(formatK(data.messages30d) + '+');
+          if (typeof data.chatters30d === 'number') setChatters(formatK(data.chatters30d) + '+');
+        })
+        .catch(() => {});
+    };
     fetchCounts();
-    const id = setInterval(fetchCounts, 30000);
-    return () => { cancelled = true; clearInterval(id); };
+    fetchServerStats();
+    const id  = setInterval(fetchCounts, 30000);
+    const id2 = setInterval(fetchServerStats, 300000);
+    return () => { cancelled = true; clearInterval(id); clearInterval(id2); };
   }, []);
 
   const stats = [
-    { num: members ?? '7.5K+', label: 'Members' },
-    { num: online ?? '—',  label: 'Online now' },
-    { num: 'LIVE',         label: 'radar and alerts' },
-    { num: '24/7',         label: 'weather community' },
+    { num: members ?? '7.3K+', label: 'Members' },
+    { num: online ?? '—',      label: 'Online now' },
+    { num: messages ?? '—',    label: 'Messages this month' },
+    { num: chatters ?? '—',    label: 'Active chatters' },
   ];
 
   return h('div', { className:'home-cta' },
