@@ -473,7 +473,7 @@ function AnimatedTimeline({ t, fading }) {
         h('div', { className: 'timeline-rail' },
           h('div', { className: 'timeline-dot' },
             s.state === 'active' ? h('span', { className: 'timeline-spinner' }) : h('img', { src: s.icon, alt: '' }),
-            s.state === 'done' ? h('span', { className: 'timeline-check' }, h('i', { className: 'fa-solid fa-check' })) : null
+            s.state === 'done' ? h('span', { className: 'timeline-check' }, h('img', { src: 'assets/othericons/success.png', alt: '' })) : null
           ),
           i < stepStates.length - 1 ? h('div', { className: 'timeline-line' + (s.state === 'done' ? ' is-filled' : '') }) : null
         ),
@@ -1190,7 +1190,7 @@ function RadarAppSection() {
         h('div', { className: 'xw-feature-list' },
           ...features.map((f, i) =>
             h('div', { key: i, className: 'xw-feature-row' },
-              h('span', { className: 'xw-feature-check' }, h('i', { className:'fas fa-check', 'aria-hidden':'true' })),
+              h('img', { src:'assets/othericons/success.png', alt:'', className:'xw-feature-check' }),
               h('span', null, h('strong', null, f[0]), ' ', f[1])
             )
           )
@@ -1336,7 +1336,7 @@ function SnowballPromoSection() {
         h('div', { className: 'xw-feature-list xw-snowball-features' },
           ...snowballFeatures.map((f, i) =>
             h('div', { key: i, className: 'xw-feature-row' },
-              h('span', { className: 'xw-feature-check xw-check-snow' }, h('i', { className:'fas fa-check', 'aria-hidden':'true' })),
+              h('img', { src:'assets/othericons/success.png', alt:'', className:'xw-feature-check' }),
               h('span', null, h('strong', null, f[0]), ' ', f[1])
             )
           )

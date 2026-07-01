@@ -422,7 +422,7 @@ function AnimatedTimeline({ t, fading }) {
         h('div', { className: 'timeline-rail' },
           h('div', { className: 'timeline-dot' },
             s.state === 'active' ? h('span', { className: 'timeline-spinner' }) : h('img', { src: s.icon, alt: '' }),
-            s.state === 'done' ? h('span', { className: 'timeline-check' }, h('i', { className: 'fa-solid fa-check' })) : null
+            s.state === 'done' ? h('span', { className: 'timeline-check' }, h('img', { src: 'assets/othericons/success.png', alt: '' })) : null
           ),
           i < stepStates.length - 1 ? h('div', { className: 'timeline-line' + (s.state === 'done' ? ' is-filled' : '') }) : null
         ),
