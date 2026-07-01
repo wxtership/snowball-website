@@ -1036,7 +1036,7 @@ function PreviewTicker() {
         .then(data => {
           if (cancelled || !data) return;
           if (typeof data.messages30d === 'number') setMessages(formatK(data.messages30d) + '+');
-          if (typeof data.chatters30d === 'number') setChatters(formatK(data.chatters30d) + '+');
+          if (typeof data.chatters30d === 'number') setChatters(formatK(Math.round(data.chatters30d / 100) * 100) + '+');
         })
         .catch(() => {});
     };
