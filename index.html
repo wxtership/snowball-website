@@ -1094,9 +1094,9 @@ function HomeProductsSection() {
       id: 'radar',
       icon: 'assets/icons/small-radar.png',
       title: 'Radar',
-      kicker: 'Live Map',
-      desc: 'Track storms as they move with live radar, alerts, lightning, and satellite all in one place.',
-      href: '#radar-app',
+      kicker: 'Web Radar',
+      desc: 'The app radar, ported to your browser. Track storms with live radar, alerts, lightning, and satellite in one place.',
+      href: 'radar',
       tone: 'green',
     },
     {
@@ -1120,8 +1120,8 @@ function HomeProductsSection() {
     {
       id: 'community',
       icon: 'assets/Discord.webp',
-      title: 'Community',
-      kicker: 'Discord',
+      title: 'Join the Discord',
+      kicker: 'Community',
       desc: 'Live coverage, weather chat, alerts, forecast discussion, and the people who keep the server moving.',
       href: 'https://discord.gg/xtremeweather',
       external: true,
@@ -1151,11 +1151,7 @@ function HomeProductsSection() {
           },
             h('div', { className: 'xw-product-icon' }, h('img', { src: p.icon, alt: '', loading: 'lazy' })),
             h('h3', { className: 'xw-product-title' }, p.title),
-            h('p', { className: 'xw-product-desc' }, p.desc),
-            h('span', { className: 'xw-product-link' },
-              'Explore',
-              h('img', { src:'assets/arrow-up-right-small.png', alt:'', loading:'lazy' })
-            )
+            h('p', { className: 'xw-product-desc' }, p.desc)
           )
         )
       )

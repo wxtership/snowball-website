@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Get in touch with the Xtreme Weather team. Join the Discord, open a ticket, report bugs, or reach out for partnerships." />
+<meta name="description" content="The Xtreme Weather radar on the web: a true port of the app with super-res reflectivity and velocity, warning polygons, and a full 3D globe view." />
 <meta name="theme-color" content="#0d0d18" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>Contact — Xtreme Weather</title>
+<title>Radar — Xtreme Weather</title>
 <link rel="icon" type="image/png" href="assets/xtreme-logo-small.png">
 <link rel="apple-touch-icon" href="assets/xtreme-logo-small.png">
 <link rel="preconnect" href="https://discord.com" />
 <link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
-<link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -51,23 +51,6 @@
         <div class="nav-right"></div>
     </div>
 </nav>
-
-<div class="mega-menu" id="snowball-mega-menu">
-    <div class="mega-menu-container">
-        <div class="mega-column">
-            <div class="mega-header">Features</div>
-            <a href="#ai-section" class="mega-item"><i class="fas fa-robot"></i><div class="mega-item-text"><span class="title">AI Weather</span><span class="desc">Ask anything, get real data</span></div></a>
-            <a href="#economy" class="mega-item"><i class="fas fa-snowflake"></i><div class="mega-item-text"><span class="title">Economy</span><span class="desc">SNOWFLAKES, stocks &amp; boars</span></div></a>
-            <a href="#commands" class="mega-item"><i class="fas fa-terminal"></i><div class="mega-item-text"><span class="title">Commands</span><span class="desc">All slash commands</span></div></a>
-        </div>
-        <div class="mega-column">
-            <div class="mega-header">Get Started</div>
-            <a href="https://discord.gg/xtremeweather" target="_blank" class="mega-item"><i class="fab fa-discord"></i><div class="mega-item-text"><span class="title">Join the Server</span><span class="desc">Add Snowball to your Discord</span></div></a>
-            <a href="#preview" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Community</span><span class="desc">7K+ members strong</span></div></a>
-            <a href="#" class="mega-item"><i class="fas fa-satellite-dish"></i><div class="mega-item-text"><span class="title">Live Radio</span><span class="desc">Weather radio &amp; music</span></div></a>
-        </div>
-    </div>
-</div>
 
 <div class="mega-menu" id="community-mega-menu">
     <div class="mega-menu-container">
@@ -126,82 +109,55 @@
         </div>
     </div>
 </div>
-</div>
 
 <main class="community-page">
 
   <section class="page-hero">
     <div class="section-inner">
-      <h1 class="section-title">Get in touch</h1>
+      <h1 class="section-title">The Radar</h1>
       <p class="section-body">
-        Questions, bugs, big ideas, or just want to say hi? Here's how to reach the
-        Xtreme Weather team. The Discord is always the fastest way to get a reply.
+        The same super-resolution radar that powers the Xtreme Weather app, ported to the web.
+        Pick any station, layer on warnings and reports, and watch the storm live right from your browser.
       </p>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <div class="contact-layout contact-layout-single">
-        <form class="contact-form" id="contact-form" action="https://snowball-api.xtremewx.com/api/contact" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="_subject" value="New Xtreme Weather contact form submission">
-          <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off">
+      <figure class="radar-web-figure">
+        <img src="assets/radar-web.jpg" alt="Xtreme Weather radar in 3D globe view with radar stations lit up across North America">
+      </figure>
+    </div>
+  </section>
 
-          <div class="form-grid">
-            <label class="form-field">
-              <span>Name <b aria-hidden="true">*</b></span>
-              <input type="text" name="name" autocomplete="name" required>
-            </label>
-            <label class="form-field">
-              <span>Email <b aria-hidden="true">*</b></span>
-              <input type="email" name="email" autocomplete="email" required>
-            </label>
-          </div>
-
-          <div class="form-grid">
-            <label class="form-field">
-              <span>Discord username</span>
-              <input type="text" name="discord" autocomplete="off" placeholder="@username">
-            </label>
-            <label class="form-field">
-              <span>Topic <b aria-hidden="true">*</b></span>
-              <select name="topic" required>
-                <option value="">Choose one</option>
-                <option>Snowball support</option>
-                <option>Bug report</option>
-                <option>Feature idea</option>
-                <option>Partnership or press</option>
-                <option>Community question</option>
-                <option>Other</option>
-              </select>
-            </label>
-          </div>
-
-          <label class="form-field">
-            <span>Message <b aria-hidden="true">*</b></span>
-            <textarea name="message" rows="7" required></textarea>
-          </label>
-
-          <label class="form-check">
-            <input type="checkbox" name="reply_ok" value="yes" checked>
-            <span>I'm okay with the team contacting me back.</span>
-          </label>
-
-          <button type="submit" class="btn-primary form-submit" id="contact-form-submit"><i class="fas fa-paper-plane"></i> Send message</button>
-          <div class="form-status contact-form-status" id="contact-form-status" role="status" aria-live="polite"></div>
-        </form>
-
-      </div>
+  <section>
+    <div class="section-inner">
+      <h2 class="section-heading">What you get</h2>
+      <ol class="charter-list charter-list-icons">
+        <li class="charter-item">
+          <div class="charter-item-no charter-item-ico"><i class="fas fa-satellite-dish"></i></div>
+          <div class="charter-item-body"><h3>A true port of the app</h3><p>Super-res reflectivity and velocity, warning polygons drawn where they actually are, and 150+ stations to pick from. The experience the iOS app delivers, running in your browser.</p></div>
+        </li>
+        <li class="charter-item">
+          <div class="charter-item-no charter-item-ico"><i class="fas fa-globe"></i></div>
+          <div class="charter-item-body"><h3>Flat map or full globe</h3><p>Track on a flat map or spin the planet in 3D, with live lightning, spotter positions, mPING reports, and METAR stations layered on top.</p></div>
+        </li>
+        <li class="charter-item">
+          <div class="charter-item-no charter-item-ico"><i class="fas fa-tower-broadcast"></i></div>
+          <div class="charter-item-body"><h3>Built for coverage</h3><p>When a Coverage Mode activates, the radar is where the room watches together. Follow the storm live while our <a href="coverage-experts">Coverage Experts</a> break down what you are seeing.</p></div>
+        </li>
+      </ol>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
       <div class="community-cta">
-        <h2 class="section-title">See you in the server</h2>
-        <p class="section-body">Thousands of members, round-the-clock weather, and an economy that never sleeps. Come say hi.</p>
+        <h2 class="section-title">Take it with you</h2>
+        <p class="section-body">The web radar pairs with the full Xtreme Weather app on iOS, and the Discord is where everyone watches together.</p>
         <div class="page-cta">
-          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-discord"></i> Join the Server <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
+          <a href="https://apps.apple.com/us/app/xtreme-weather-pro-radar/id6744540041" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-apple"></i> Get the app <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
+          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-ghost"><i class="fab fa-discord"></i> Join the Discord <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
         </div>
       </div>
     </div>
@@ -249,89 +205,6 @@
     </div>
 </footer>
 
-<script>
-// Navbar logic now lives in the shared nav.js (loaded before </body>).
-
-// Contact form: submit to Snowball with AJAX so visitors stay on this page.
-(function () {
-    var form = document.getElementById('contact-form');
-    var status = document.getElementById('contact-form-status');
-    var submit = document.getElementById('contact-form-submit');
-    var API_CONTACT = 'https://snowball-api.xtremewx.com/api/contact';
-    if (!form || !status || !submit) return;
-
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        form.classList.add('is-sending');
-        submit.disabled = true;
-        status.className = 'form-status contact-form-status';
-        status.textContent = 'Sending...';
-
-        fetch(API_CONTACT, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        }).then(function (response) {
-            return response.json().catch(function () {
-                return {};
-            }).then(function (data) {
-                if (!response.ok) {
-                    var error = new Error(data.error || 'contact_submit_failed');
-                    error.code = data.error || 'contact_submit_failed';
-                    throw error;
-                }
-                return data;
-            });
-        }).then(function () {
-            form.reset();
-            status.className = 'form-status contact-form-status is-success';
-            status.textContent = 'Message sent. We got it.';
-            burstContactConfetti();
-        }).catch(function (error) {
-            status.className = 'form-status contact-form-status is-error';
-            status.textContent = contactErrorMessage(error && error.code);
-        }).finally(function () {
-            form.classList.remove('is-sending');
-            submit.disabled = false;
-        });
-    });
-
-    function contactErrorMessage(code) {
-        var messages = {
-            name_required: 'Add your name so staff knows who sent this.',
-            valid_email_required: 'Enter a valid email address so staff can reply.',
-            topic_required: 'Choose a topic for your message.',
-            message_required: 'Write a little more before sending.',
-            contact_rate_limited: 'You already sent a message today. Try again tomorrow.',
-            contact_submit_failed: 'Snowball could not send this yet. Try again, or reach us on Discord.'
-        };
-        return messages[code] || messages.contact_submit_failed;
-    }
-
-    function burstContactConfetti() {
-        var wrap = document.createElement('div');
-        var colors = ['#6B54F5', '#BFA3FF', '#9ee6b7', '#ffffff', '#ff8fa3'];
-        wrap.className = 'contact-confetti';
-        for (var i = 0; i < 44; i++) {
-            var piece = document.createElement('i');
-            piece.style.setProperty('--x', (Math.random() * 100).toFixed(2) + 'vw');
-            piece.style.setProperty('--dx', ((Math.random() * 160) - 80).toFixed(0) + 'px');
-            piece.style.setProperty('--r', ((Math.random() * 360) | 0) + 'deg');
-            piece.style.setProperty('--d', (1.4 + Math.random() * 1.2).toFixed(2) + 's');
-            piece.style.setProperty('--c', colors[i % colors.length]);
-            wrap.appendChild(piece);
-        }
-        document.body.appendChild(wrap);
-        setTimeout(function () { wrap.remove(); }, 2800);
-    }
-})();
-
-</script>
 <script src="nav.js"></script>
 </body>
 </html>
