@@ -1964,14 +1964,15 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     grid-template-columns: 1fr;
   }
 
+  /* Match the snowball page's mobile hero gap: same 100px top padding and
+     min-height, with content flex-centered instead of top-anchored. */
   .home-page #hero {
-    min-height: 84vh;
+    min-height: 92vh;
   }
 
   .home-page #hero.xw-hero-v2 {
-    padding: 190px 16px 44px;
-    justify-content: flex-start;
-    min-height: 84vh;
+    padding: 100px 16px 60px;
+    min-height: 92vh;
   }
 
   .xw-hero-mark {
@@ -2042,16 +2043,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .xw-coverage-section .section-inner,
   .xw-snowball-section .section-inner {
     padding-top: 56px;
-  }
-
-  /* Tighten the hero -> products seam so the next section's header peeks
-     above the fold and invites the scroll. */
-  .home-page #products.home-products-section {
-    padding-top: 40px;
-  }
-
-  .home-page .xw-products-inner {
-    padding-top: 28px;
   }
 
   .xw-product-card,
