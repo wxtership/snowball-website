@@ -88,11 +88,17 @@ body {
   }
 
   .home-page .xw-real-radar-bg {
-    animation: xw-radar-bg-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: xw-radar-bg-in 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  /* Deep zoom-out that sharpens into focus; filter list matches the resting
+     filter's function order so the whole thing interpolates smoothly. */
   @keyframes xw-radar-bg-in {
-    from { opacity: 0; transform: scale(1.14); }
+    from {
+      opacity: 0;
+      transform: scale(1.42);
+      filter: blur(34px) saturate(1.6) brightness(0.4);
+    }
   }
 
   .home-page .hero-bg {
@@ -1446,6 +1452,17 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   color: #07130d;
   background: #4ade80;
   box-shadow: 0 0 24px rgba(74,222,128,0.22);
+}
+
+/* Purple check variant + spacing for the feature rows in the Snowball promo. */
+.xw-check-snow {
+  color: #fff;
+  background: #9B5EF5;
+  box-shadow: 0 0 24px rgba(155,94,245,0.30);
+}
+
+.xw-snowball-features {
+  margin-bottom: 28px;
 }
 
 .xw-app-ctas {

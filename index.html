@@ -339,13 +339,21 @@ const DISCORD_SVG_PATH = 'M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,
 
 function Hero() {
   const [visible, setVisible] = useState(false);
+  const [settled, setSettled] = useState(false);
   const heroRef = useRef(null);
   const mapRef = useRef(null);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
-    return () => clearTimeout(t);
+    // Drop the inline blur filters once the entrance finishes. A lingering
+    // filter (even blur(0px)) keeps each block promoted onto its own
+    // composited layer, and on mobile Safari the title's layer renders as a
+    // faint rectangular band behind the text over the radar backdrop.
+    const s = setTimeout(() => setSettled(true), 1800);
+    return () => { clearTimeout(t); clearTimeout(s); };
   }, []);
+
+  const blurIn = settled ? undefined : (visible ? 'blur(0px)' : 'blur(6px)');
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -398,7 +406,7 @@ function Hero() {
     h('div', { className: 'hero-content xw-hero-content' },
       h('h1', { className: 'xw-hero-title', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        filter: blurIn,
         transform: visible ? 'translateY(0)' : 'translateY(18px)',
         transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, filter 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.08s',
       } },
@@ -407,7 +415,7 @@ function Hero() {
       ),
       h('p', { className: 'xw-hero-deck', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        filter: blurIn,
         transform: visible ? 'translateY(0)' : 'translateY(18px)',
         transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, filter 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.18s',
       } },
@@ -415,7 +423,7 @@ function Hero() {
       ),
       h('div', { className: 'hero-ctas xw-hero-ctas', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        filter: blurIn,
         transform: visible ? 'translateY(0)' : 'translateY(14px)',
         transition: 'opacity 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, filter 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s, transform 1.15s cubic-bezier(0.16,1,0.3,1) 0.32s',
       } },
@@ -434,7 +442,7 @@ function Hero() {
       ),
       h('div', { className: 'xw-hero-dock', style: {
         opacity: visible ? 1 : 0,
-        filter: visible ? 'blur(0px)' : 'blur(6px)',
+        filter: blurIn,
         transform: visible ? 'translateY(0)' : 'translateY(16px)',
         transition: 'opacity 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, filter 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s, transform 1.1s cubic-bezier(0.16,1,0.3,1) 0.48s',
       } },
@@ -1145,7 +1153,7 @@ function HomeProductsSection() {
         h('div', { className: 'xw-showcase-copy' },
           h('h2', { className: 'section-title' }, 'Everything weather,', h('br'), 'in one place'),
           h('p', { className: 'section-body' },
-            'Real radar, live alerts, and a whole community in one ecosystem. Track the storm, then jump straight into coverage with everyone else watching it.'
+            'Since 2022, Xtreme Weather has been serving the community with powerful tools: our live radar, the app, the Discord, and the intuitive systems behind them. Whatever the weather, we have you covered.'
           )
         ),
         h('div', { className: 'xw-showcase-media', 'aria-label': 'Live radar' },
@@ -1328,6 +1336,13 @@ function CoverageSection() {
 }
 
 function SnowballPromoSection() {
+  const snowballFeatures = [
+    ['Ask it anything', 'The AI grabs live radar, forecasts, and alerts before it answers.'],
+    ['Every weather command', 'Radar, forecasts, alerts, satellite, and outlooks right in chat.'],
+    ['A full economy', 'Snowflakes, missions, a stock market, and boar pets raised for the pit.'],
+    ['Music and radio', 'A voice channel player plus live NOAA weather streams.'],
+  ];
+
   return h('section', { id:'snowball', className:'xw-snowball-section' },
     h('div', { className:'section-inner xw-split' },
       h('div', { className:'xw-copy-block' },
@@ -1341,7 +1356,15 @@ function SnowballPromoSection() {
           h('span', { className:'xw-snowball-line' }, 'it.')
         ),
         h('p', { className:'section-body' },
-          'Snowball is a part of the Discord side of Xtreme Weather: AI weather answers that can fetch real data, forecasts, radar, alerts, radio, music, levels, and economy.'
+          'Snowball is the Discord side of Xtreme Weather, and it does a lot more than weather.'
+        ),
+        h('div', { className: 'xw-feature-list xw-snowball-features' },
+          ...snowballFeatures.map((f, i) =>
+            h('div', { key: i, className: 'xw-feature-row' },
+              h('span', { className: 'xw-feature-check xw-check-snow' }, h('i', { className:'fas fa-check', 'aria-hidden':'true' })),
+              h('span', null, h('strong', null, f[0]), ' ', f[1])
+            )
+          )
         ),
         h('a', { href:'https://discord.gg/xtremeweather', target:'_blank', rel:'noopener', className:'btn-ghost-arrow xw-inline-cta' },
           h('i', { className:'fab fa-discord', 'aria-hidden':'true' }),
