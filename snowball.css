@@ -887,7 +887,9 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
    ========================================================================== */
 
 .home-page #hero.xw-hero-v2 {
-  min-height: 90vh;
+  /* Fill the screen like the snowball page hero (base #hero is 92vh). */
+  min-height: 100vh;
+  min-height: 100svh;
   padding: 110px 24px 64px;
   isolation: isolate;
   overflow: hidden;
