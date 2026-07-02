@@ -403,16 +403,21 @@ function Hero() {
       map.style.setProperty('--radar-angle', prevAngle.toFixed(1) + 'deg');
     };
 
-    const move = (event) => {
+    // High-polling mice fire pointermove far above 60Hz, so the handler only
+    // records the cursor; the rect read and trig run at most once per frame.
+    let pointerX = 0, pointerY = 0, queued = false;
+    const update = () => {
+      queued = false;
       const rect = hero.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const dx = event.clientX - cx;
-      const dy = event.clientY - cy;
+      const dx = pointerX - (rect.left + rect.width / 2);
+      const dy = pointerY - (rect.top + rect.height / 2);
       if (dx * dx + dy * dy < 90 * 90) return;
-      const angle = Math.atan2(dy, dx) * (180 / Math.PI) - 200;
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => setRadarAngle(angle));
+      setRadarAngle(Math.atan2(dy, dx) * (180 / Math.PI) - 200);
+    };
+    const move = (event) => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (!queued) { queued = true; frame = requestAnimationFrame(update); }
     };
 
     setRadarAngle(0);

@@ -91,13 +91,14 @@ body {
     animation: xw-radar-bg-in 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  /* Deep zoom-out that sharpens into focus; filter list matches the resting
-     filter's function order so the whole thing interpolates smoothly. */
+  /* Deep zoom-out that fades into focus. Only opacity/transform animate: the
+     resting blur(14px) stays constant so it's rasterized once, instead of the
+     GPU re-blurring the whole hero every frame for 2.2s (a big chunk of the
+     desktop lag on page load). The fade covers the old blur/brightness ramp. */
   @keyframes xw-radar-bg-in {
     from {
       opacity: 0;
       transform: scale(1.42);
-      filter: blur(34px) saturate(1.6) brightness(0.4);
     }
   }
 
@@ -971,11 +972,13 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   top: 50%;
   width: 940px;
   height: 940px;
-  background: conic-gradient(from -22deg, transparent 0 290deg, rgba(34,211,238,0.10) 306deg, rgba(34,211,238,0.38) 324deg, rgba(255,255,255,0.12) 332deg, transparent 348deg);
+  /* Softness is baked into the gradient stops instead of a filter: a blur on
+     this layer forces the GPU to re-blur ~1M px every frame the beam turns,
+     which is what made the hero lag on weaker desktops. */
+  background: conic-gradient(from -22deg, transparent 0 288deg, rgba(34,211,238,0.09) 304deg, rgba(34,211,238,0.36) 323deg, rgba(255,255,255,0.13) 332deg, rgba(34,211,238,0.05) 341deg, transparent 349deg);
   transform: translate(-50%, -50%) rotate(var(--radar-angle, 0deg));
   opacity: 0.85;
   mix-blend-mode: screen;
-  filter: blur(7px);
   will-change: transform;
   transition: transform 0.12s linear;
   /* Radial mask: hollow the center so the beam's convergence point doesn't pinch
