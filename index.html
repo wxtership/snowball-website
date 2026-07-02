@@ -14,7 +14,7 @@
 <link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/hero-radar-level2.png" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/hero-radar-level2.webp" fetchpriority="high" />
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="snowball.css">
@@ -427,7 +427,7 @@ function Hero() {
 
   return h('section', { id: 'hero', className: 'xw-hero-v2', ref: heroRef },
     h('div', { className: 'hero-bg' }),
-    h('img', { className:'xw-real-radar-bg', src:'assets/hero-radar-level2.png', alt:'', fetchpriority:'high', 'aria-hidden':'true' }),
+    h('img', { className:'xw-real-radar-bg', src:'assets/hero-radar-level2.webp', alt:'', fetchpriority:'high', 'aria-hidden':'true' }),
     h('div', { className: 'xw-hero-map', ref: mapRef, 'aria-hidden': 'true' },
       h('span', { className:'xw-hero-ring ring-one' }),
       h('span', { className:'xw-hero-ring ring-two' }),
@@ -526,7 +526,7 @@ const DC_DOTS_CSS = `
 // re-renders — otherwise React unmounts/remounts them every tick (50ms) which
 // retriggers the dcMsgIn entry animation and causes constant flashing.
 const DC_GG_SANS = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
-const DC_WX_AVATAR = 'https://avatars.githubusercontent.com/u/178625091?v=4';
+const DC_WX_AVATAR = 'https://avatars.githubusercontent.com/u/178625091?v=4&s=80';
 
 function DcChannelHeader() {
   return h('div', { style:{background:'rgba(20,14,42,0.88)',padding:'12px 16px',display:'flex',alignItems:'center',gap:8,borderBottom:'1px solid rgba(0,0,0,0.35)',boxShadow:'0 1px 0 rgba(255,255,255,0.04)'} },
@@ -590,7 +590,7 @@ const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy',
 function DcEmbed() {
     return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:690,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS} },
       h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 66',overflow:'hidden'} },
-        h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
+        h('img', { src:'assets/embed-banner.webp', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
         // Header block: title on top with sun icon on the right, description text below the title.
@@ -1141,7 +1141,7 @@ function RadarWebSection() {
         )
       ),
       h('div', { className: 'xw-showcase-media', 'aria-label': 'Web radar globe view' },
-        h('img', { className: 'xw-showcase-radar', src: 'assets/radar-web.jpg', alt: 'Xtreme Weather web radar in 3D globe view with stations across North America', loading: 'lazy' })
+        h('img', { className: 'xw-showcase-radar', src: 'assets/radar-web.webp', alt: 'Xtreme Weather web radar in 3D globe view with stations across North America', loading: 'lazy' })
       )
     )
   );
@@ -1192,7 +1192,7 @@ function RadarAppSection() {
       h('div', { className: 'xw-phone-gallery', 'aria-label': 'Xtreme Weather app radar screens' },
         ...shots.map((s, i) =>
           h('figure', { key: i, className: 'xw-phone-shot' },
-            h('img', { src: s.src, alt: s.alt, loading: 'lazy', draggable: 'false' })
+            h('img', { src: s.src, alt: s.alt, width: 520, height: 1073, loading: 'lazy', draggable: 'false' })
           )
         )
       )
@@ -1262,7 +1262,7 @@ function FeaturesSection() {
           'Not impressed yet? You will be when you interact with the best App on Discord.'
         ),
         h('a', { href:'snowball', className:'btn-ghost-arrow xw-inline-cta xw-features-cta' },
-          'Learn more',
+          'Learn more about Snowball',
           h('img', { src:'assets/arrow-up-right-small.png', alt:'', loading:'lazy' })
         )
       ),
@@ -1289,7 +1289,7 @@ function SnowballPromoSection() {
           h('span', { className:'xw-snowball-line' }, 'Weather it,'), h('br'),
           h('span', { className:'xw-snowball-line' },
             'Sn',
-            h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', loading:'lazy', className:'xw-banner-icon' }),
+            h('img', { src:'assets/snowball-logo-transparent-small.png', alt:'', width:116, height:120, loading:'lazy', className:'xw-banner-icon' }),
             'wball'
           ), h('br'),
           h('span', { className:'xw-snowball-line' }, 'it.')
@@ -1370,7 +1370,7 @@ requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('re
     </div>
     <div class="footer-center-row">
         <a class="footer-wrn" href="https://www.weather.gov/wrn/ambassadors" target="_blank" rel="noopener">
-            <img src="assets/wrn.png" loading="lazy" decoding="async" alt="WRN Logo" class="footer-wrn-logo">
+            <img src="assets/wrn.png" width="300" height="98" loading="lazy" decoding="async" alt="WRN Logo" class="footer-wrn-logo">
             <span class="footer-wrn-text">Xtreme Weather is a proud Weather-Ready Nation Ambassador</span>
         </a>
     </div>

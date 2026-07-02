@@ -464,7 +464,7 @@ const DC_DOTS_CSS = `
 // re-renders — otherwise React unmounts/remounts them every tick (50ms) which
 // retriggers the dcMsgIn entry animation and causes constant flashing.
 const DC_GG_SANS = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
-const DC_WX_AVATAR = 'https://avatars.githubusercontent.com/u/178625091?v=4';
+const DC_WX_AVATAR = 'https://avatars.githubusercontent.com/u/178625091?v=4&s=80';
 const DC_USER_PING = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.3)',padding:'1px 4px',borderRadius:3,cursor:'default',fontWeight:500} }, '@wxtership');
 
 function DcChannelHeader() {
@@ -545,7 +545,7 @@ const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy',
 function DcEmbed() {
     return h('div', { style:{background:'rgba(43,45,49,0.55)',borderRadius:8,maxWidth:690,overflow:'hidden',border:'1px solid rgba(255,255,255,0.06)',fontFamily:DC_GG_SANS} },
       h('div', { style:{position:'relative',width:'100%',aspectRatio:'460 / 120',overflow:'hidden'} },
-        h('img', { src:'assets/embed-banner.png', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
+        h('img', { src:'assets/embed-banner.webp', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
         // Header block: title on top with sun icon on the right, description text below the title.
@@ -1077,7 +1077,7 @@ requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('re
     </div>
     <div class="footer-center-row">
         <a class="footer-wrn" href="https://www.weather.gov/wrn/ambassadors" target="_blank" rel="noopener">
-            <img src="assets/wrn.png" loading="lazy" decoding="async" alt="WRN Logo" class="footer-wrn-logo">
+            <img src="assets/wrn.png" width="300" height="98" loading="lazy" decoding="async" alt="WRN Logo" class="footer-wrn-logo">
             <span class="footer-wrn-text">Xtreme Weather is a proud Weather-Ready Nation Ambassador</span>
         </a>
     </div>

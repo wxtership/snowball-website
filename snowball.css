@@ -1745,7 +1745,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   inset: 0;
   z-index: -1;
   background:
-    url('assets/square snowflake.jpg') center / cover no-repeat,
+    url('assets/square-snowflake.webp') center / cover no-repeat,
     linear-gradient(180deg, #16223c 0%, #1b2a48 50%, #16223c 100%);
   filter: blur(7px);
   transform: scale(1.06); /* hides the soft edges the blur pulls in */
