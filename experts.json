@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-06-26T04:45:31.195Z",
+  "updatedAt": "2026-07-02T20:13:30.409Z",
   "updatedBy": {
-    "id": "726612317248159745",
-    "tag": "sebastioss"
+    "id": "582394159546236948",
+    "tag": "wxtership"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7356
+    "memberCount": 7373
   },
   "tiers": [
     {
@@ -42,19 +42,13 @@
           "id": "1132908259162992712",
           "username": "awcoal",
           "displayName": "awcoal (NJ) 🐌",
-          "avatarURL": null
+          "avatarURL": "assets/avatars/1132908259162992712.png"
         },
         {
           "id": "1061023304862933122",
           "username": "busybird15",
           "displayName": "BusyBird15 (SparkRadar, KIWX)",
           "avatarURL": "assets/avatars/1061023304862933122.png"
-        },
-        {
-          "id": "1193213878834843758",
-          "username": "darkespeon.wx",
-          "displayName": "DarkEspeon (North AL)",
-          "avatarURL": "assets/avatars/1193213878834843758.png"
         },
         {
           "id": "1033720108968841277",
