@@ -1209,7 +1209,7 @@ function FeaturesSection() {
     { icon:'assets/icons/lightning.png',   title:'Lightning',       text:'Recent strikes plotted around any location.' },
     { icon:'assets/icons/satellite.png',   title:'Satellite',       text:'GOES imagery straight from orbit.' },
     { icon:'assets/icons/outlook.png',     title:'Outlooks',        text:'SPC, WPC, and CPC products mapped out.' },
-    { icon:'assets/icons/emergency.png',   title:'EAS tools',       text:'Decode SAME headers or build your own alert.' },
+    { icon:'assets/othericons/signal.png', title:'EAS tools',       text:'Decode SAME headers or build your own alert.' },
   ];
   const bottomRow = [
     { icon:'assets/icons/ai.png',          title:'Snowball AI',     text:'Answers backed by real weather data.' },
@@ -1243,9 +1243,9 @@ function FeaturesSection() {
   return h('section', { id: 'features', ref: secRef, className: 'xw-features-section' },
     h('div', { className: 'section-inner' },
       h('div', { className:'xw-features-head' },
-        h('h2', { className: 'section-title' }, 'Snowball', h('br'), 'features'),
+        h('h2', { className: 'section-title' }, 'Snowball keeps', h('br'), 'the ball rolling'),
         h('p', { className:'section-body xw-features-sub' },
-          'Weather commands, real AI answers, a full economy, music, and more, built straight into the Discord.'
+          'Not impressed yet? You will be when you interact with the best App on Discord.'
         ),
         h('a', { href:'snowball', className:'btn-ghost-arrow xw-inline-cta xw-features-cta' },
           'Learn more',

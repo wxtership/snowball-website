@@ -508,17 +508,16 @@
 .faq-item,
 .mission,
 .charter-item,
-.enforce-step,
 .radar-web-figure {
   animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
 }
 /* Stagger the rule/step lists like the grids above; flat delay past five so
    long lists don't take seconds to finish. */
-.charter-item:nth-child(1), .enforce-step:nth-child(1) { animation-delay: 0.08s; }
-.charter-item:nth-child(2), .enforce-step:nth-child(2) { animation-delay: 0.16s; }
-.charter-item:nth-child(3), .enforce-step:nth-child(3) { animation-delay: 0.24s; }
-.charter-item:nth-child(4), .enforce-step:nth-child(4) { animation-delay: 0.32s; }
-.charter-item:nth-child(5), .enforce-step:nth-child(5) { animation-delay: 0.40s; }
+.charter-item:nth-child(1) { animation-delay: 0.08s; }
+.charter-item:nth-child(2) { animation-delay: 0.16s; }
+.charter-item:nth-child(3) { animation-delay: 0.24s; }
+.charter-item:nth-child(4) { animation-delay: 0.32s; }
+.charter-item:nth-child(5) { animation-delay: 0.40s; }
 .charter-item:nth-child(n+6) { animation-delay: 0.46s; }
 .page-hero .section-title { animation-delay: 0.05s; }
 .page-hero .section-body  { animation-delay: 0.2s; }
@@ -565,7 +564,7 @@
   .contact-form .form-check, .contact-form .form-status, .contact-form .form-submit,
   .contact-side-link, .contact-note,
   .community-cta, .timeline-item, .faq-item, .mission,
-  .charter-item, .enforce-step, .radar-web-figure,
+  .charter-item, .radar-web-figure,
   #staff-roster.animate-in .staff-tier-title, #staff-roster.animate-in .staff-card,
   #donator-roster.animate-in .donate-progress,
   #donator-roster.animate-in .staff-tier-title, #donator-roster.animate-in .staff-card { animation: none; }
@@ -777,28 +776,7 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
 .charter-flag a { color: var(--purple-300); text-decoration: none; font-weight: 600; }
 .charter-flag a:hover { text-decoration: underline; }
 
-/* ---- Enforcement ladder ---- */
-.enforce-ladder { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
-.enforce-step {
-  position: relative; display: flex; gap: 18px; align-items: flex-start;
-  padding: 20px 22px; border-radius: 16px;
-  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-}
-.enforce-step .rung {
-  flex-shrink: 0; width: 40px; height: 40px; border-radius: 11px;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 17px; font-weight: 700;
-  color: #fff; background: var(--rung, rgba(255,255,255,0.2));
-}
-.enforce-step .rung i { font-size: 15px; }
-.enforce-step h4 {
-  margin: 2px 0 6px; font-family: var(--font-body); font-size: 16px; font-weight: 700; color: #fff;
-}
-.enforce-step p { margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.6); }
-.enforce-step.s1 { --rung: #5fbf7f; }
-.enforce-step.s2 { --rung: #e0b341; }
-.enforce-step.s3 { --rung: #e08841; }
-.enforce-step.s4 { --rung: #e0556d; }
+/* ---- Enforcement note (the steps reuse .charter-list rows) ---- */
 .enforce-note {
   margin: 18px auto 0; max-width: 720px; text-align: center;
   font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.55);
@@ -829,22 +807,15 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
 
 /* Callouts (info / warning / note) */
 .legal-callout {
-  position: relative; padding: 14px 18px; margin: 16px 0; border-radius: 12px;
+  position: relative; padding: 16px 20px; margin: 16px 0; border-radius: 14px;
   font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.74);
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-left: 3px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
 }
 .legal-callout strong { color: #fff; }
 .legal-callout-label {
   display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 4px;
+  text-transform: uppercase; margin-bottom: 4px; color: var(--purple-300);
 }
-.legal-callout.info { border-left-color: #5b9dff; background: rgba(91,157,255,0.08); }
-.legal-callout.info .legal-callout-label { color: #8fbcff; }
-.legal-callout.warn { border-left-color: #e0b341; background: rgba(224,179,65,0.08); }
-.legal-callout.warn .legal-callout-label { color: #f0cd6e; }
-.legal-callout.note { border-left-color: var(--purple-400); background: rgba(107,84,245,0.08); }
-.legal-callout.note .legal-callout-label { color: var(--purple-300); }
 
 /* Retention / data tables */
 .legal-table-wrap { overflow-x: auto; margin: 14px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
