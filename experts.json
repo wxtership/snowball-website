@@ -18,13 +18,13 @@
           "id": "626259765537800212",
           "username": "wxoutlaw",
           "displayName": "Frost - Lead Expert",
-          "avatarURL": "https://cdn.discordapp.com/avatars/626259765537800212/b6d5d6c22ff17e5f0daf134255a5ab5e.png?size=256"
+          "avatarURL": "assets/avatars/626259765537800212.png"
         },
         {
           "id": "763380002770649088",
           "username": "itsdrewp",
           "displayName": "Drew - Lead Expert",
-          "avatarURL": "https://cdn.discordapp.com/avatars/763380002770649088/f3aad866f9dba8440e72c653c1b3553b.png?size=256"
+          "avatarURL": "assets/avatars/763380002770649088.png"
         }
       ]
     },
@@ -36,55 +36,55 @@
           "id": "770787602583388170",
           "username": "apocalypsenow",
           "displayName": "apoc (Southeast MI)",
-          "avatarURL": "https://cdn.discordapp.com/avatars/770787602583388170/0bf996fe906568484a5fb17ddd6bd9e3.png?size=256"
+          "avatarURL": "assets/avatars/770787602583388170.png"
         },
         {
           "id": "1132908259162992712",
           "username": "awcoal",
           "displayName": "awcoal (NJ) 🐌",
-          "avatarURL": "https://cdn.discordapp.com/avatars/1132908259162992712/db2e876447e306d93e1712f912ba122c.png?size=256"
+          "avatarURL": null
         },
         {
           "id": "1061023304862933122",
           "username": "busybird15",
           "displayName": "BusyBird15 (SparkRadar, KIWX)",
-          "avatarURL": "https://cdn.discordapp.com/avatars/1061023304862933122/a305c7afa8bddcd46fe73d6a28ebb389.png?size=256"
+          "avatarURL": "assets/avatars/1061023304862933122.png"
         },
         {
           "id": "1193213878834843758",
           "username": "darkespeon.wx",
           "displayName": "DarkEspeon (North AL)",
-          "avatarURL": "https://cdn.discordapp.com/avatars/1193213878834843758/c731bf55a599388bea8289de8e315b99.png?size=256"
+          "avatarURL": "assets/avatars/1193213878834843758.png"
         },
         {
           "id": "1033720108968841277",
           "username": "mesocyclone_vortex",
           "displayName": "Dvorak (Porto Alegre, RS,Brazil)",
-          "avatarURL": "https://cdn.discordapp.com/avatars/1033720108968841277/c338ead2cb4dfe78582f7e417b89dd16.png?size=256"
+          "avatarURL": "assets/avatars/1033720108968841277.png"
         },
         {
           "id": "664920241528242207",
           "username": "kurtfan5468",
           "displayName": "Kurt",
-          "avatarURL": "https://cdn.discordapp.com/avatars/664920241528242207/d1af46adce745aa91786d7a8e02359d3.png?size=256"
+          "avatarURL": "assets/avatars/664920241528242207.png"
         },
         {
           "id": "877009401423200296",
           "username": "weatherlord_wx",
           "displayName": "Max (Massachusetts)",
-          "avatarURL": "https://cdn.discordapp.com/avatars/877009401423200296/7bf72e4a157a0f9d32e0ab7b867d25b3.png?size=256"
+          "avatarURL": "assets/avatars/877009401423200296.png"
         },
         {
           "id": "1104974309295923201",
           "username": "painlesmaster3",
           "displayName": "Painlesmaster3 (Medina, OH)",
-          "avatarURL": "https://cdn.discordapp.com/avatars/1104974309295923201/a7979176cd62ae3fcba660a38afd3065.png?size=256"
+          "avatarURL": "assets/avatars/1104974309295923201.png"
         },
         {
           "id": "948372386347102209",
           "username": "last_one_remaining",
           "displayName": "RemainingWX",
-          "avatarURL": "https://cdn.discordapp.com/guilds/1077714936056250388/users/948372386347102209/avatars/d2247637bee2cd4a51c993789ad6a3ca.png?size=256"
+          "avatarURL": "assets/avatars/948372386347102209.png"
         }
       ]
     }

@@ -18,7 +18,7 @@
           "id": "582394159546236948",
           "username": "wxtership",
           "displayName": "☭ wxtership",
-          "avatar": "https://cdn.discordapp.com/avatars/582394159546236948/4b5f06bc2504edd9c6dcea5c6b5ad2e7.png?size=256",
+          "avatar": "assets/avatars/582394159546236948.png",
           "banner": null,
           "accentColor": null
         }
@@ -32,7 +32,7 @@
           "id": "451857870552825856",
           "username": "jaysonido",
           "displayName": "Jaysonido",
-          "avatar": "https://cdn.discordapp.com/avatars/451857870552825856/0235dbf9d7623d96dbaa5b61d867529b.png?size=256",
+          "avatar": "assets/avatars/451857870552825856.png",
           "banner": null,
           "accentColor": null
         },
@@ -40,7 +40,7 @@
           "id": "1133479873155956878",
           "username": "silliphilly",
           "displayName": "Philly",
-          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1133479873155956878/avatars/26e7d9dfed6dc2d9a33bcf5564ba7f3a.png?size=256",
+          "avatar": "assets/avatars/1133479873155956878.png",
           "banner": null,
           "accentColor": null
         },
@@ -48,7 +48,7 @@
           "id": "726612317248159745",
           "username": "sebastioss",
           "displayName": "seb",
-          "avatar": "https://cdn.discordapp.com/avatars/726612317248159745/192c3649d837559212f72338d4fef0de.png?size=256",
+          "avatar": "assets/avatars/726612317248159745.png",
           "banner": null,
           "accentColor": null
         },
@@ -56,7 +56,7 @@
           "id": "655579190711681033",
           "username": "speedtape_3995",
           "displayName": "Speedtape",
-          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/655579190711681033/avatars/0877d7498725125d23adbf616f955de9.png?size=256",
+          "avatar": "assets/avatars/655579190711681033.png",
           "banner": null,
           "accentColor": null
         }
@@ -70,7 +70,7 @@
           "id": "830201253005885482",
           "username": "nave0929",
           "displayName": "->Nave(PA)<-",
-          "avatar": "https://cdn.discordapp.com/avatars/830201253005885482/61b840ad2617c85640227c46fa1df361.png?size=256",
+          "avatar": "assets/avatars/830201253005885482.png",
           "banner": null,
           "accentColor": "#ff0000"
         },
@@ -78,7 +78,7 @@
           "id": "405757488487464961",
           "username": "adampate",
           "displayName": "Adampate ( Bemidji MN)",
-          "avatar": "https://cdn.discordapp.com/avatars/405757488487464961/6f65ed6acc90c40ff0e5f3134fcc94db.png?size=256",
+          "avatar": "assets/avatars/405757488487464961.png",
           "banner": null,
           "accentColor": "#00ffff"
         },
@@ -86,7 +86,7 @@
           "id": "1083832581411315865",
           "username": "stormy_sky62",
           "displayName": "Cookware (Central PA)",
-          "avatar": "https://cdn.discordapp.com/avatars/1083832581411315865/79ec54d52c0664f6676256b0ea720f93.png?size=256",
+          "avatar": "assets/avatars/1083832581411315865.png",
           "banner": null,
           "accentColor": "#84c0e5"
         },
@@ -94,7 +94,7 @@
           "id": "1008568196292419584",
           "username": "snowboi23",
           "displayName": "frosty the snowman",
-          "avatar": "https://cdn.discordapp.com/avatars/1008568196292419584/0b8e78c159b269a72ce26f8695ac7d0f.png?size=256",
+          "avatar": "assets/avatars/1008568196292419584.png",
           "banner": null,
           "accentColor": "#0f1bc9"
         },
@@ -102,7 +102,7 @@
           "id": "1298379997689679966",
           "username": "gabrielkramp.",
           "displayName": "Gabriel Kramp (Lynchburg VA)",
-          "avatar": "https://cdn.discordapp.com/avatars/1298379997689679966/f0c410e13555832327ffd29a27321978.png?size=256",
+          "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "accentColor": null
         },
@@ -110,7 +110,7 @@
           "id": "609961976092950528",
           "username": "robbysversion",
           "displayName": "Robby (PA)",
-          "avatar": "https://cdn.discordapp.com/avatars/609961976092950528/1c3539ce9859c31176f4fb6ce4e5eba4.png?size=256",
+          "avatar": "assets/avatars/609961976092950528.png",
           "banner": null,
           "accentColor": null
         },
@@ -118,7 +118,7 @@
           "id": "901700314216947712",
           "username": "rock_pebble122",
           "displayName": "Rock",
-          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/901700314216947712/avatars/0c52bcbc12bdebc9e4e10f20164f880a.png?size=256",
+          "avatar": "assets/avatars/901700314216947712.png",
           "banner": null,
           "accentColor": null
         },
@@ -126,7 +126,7 @@
           "id": "1085767966118920233",
           "username": "rtwproductions",
           "displayName": "RTW (Parker County, TX)",
-          "avatar": "https://cdn.discordapp.com/avatars/1085767966118920233/90620ef79aee1d3c0cb90dd8247e6c1e.png?size=256",
+          "avatar": "assets/avatars/1085767966118920233.png",
           "banner": null,
           "accentColor": null
         }
@@ -140,7 +140,7 @@
           "id": "778809059498786826",
           "username": "2hottyscotty",
           "displayName": "2 Hotty Scotty (042129)",
-          "avatar": "https://cdn.discordapp.com/avatars/778809059498786826/16f6575b548d6cc71f13f337b5397456.png?size=256",
+          "avatar": "assets/avatars/778809059498786826.png",
           "banner": null,
           "accentColor": null
         },
@@ -148,7 +148,7 @@
           "id": "796835065287934042",
           "username": "caleb_dont",
           "displayName": "caleb_dont (Round Rock, TX)",
-          "avatar": "https://cdn.discordapp.com/avatars/796835065287934042/57880466deb4ceb813a3aee45b4ef75e.png?size=256",
+          "avatar": "assets/avatars/796835065287934042.png",
           "banner": null,
           "accentColor": null
         },
@@ -156,7 +156,7 @@
           "id": "810308507378516008",
           "username": "clark_la",
           "displayName": "Clark",
-          "avatar": "https://cdn.discordapp.com/embed/avatars/3.png",
+          "avatar": "assets/avatars/default-3.png",
           "banner": null,
           "accentColor": null
         },
@@ -164,7 +164,7 @@
           "id": "1324763970271314023",
           "username": "dynafolf",
           "displayName": "DynaFolf (Pike County, PA)",
-          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/1324763970271314023/avatars/dae0cd80f66ab15114f8e21b21f7549a.png?size=256",
+          "avatar": null,
           "banner": null,
           "accentColor": null
         },
@@ -172,7 +172,7 @@
           "id": "1110754991091748905",
           "username": "theexiled6225",
           "displayName": "𝕱𝖊𝖆𝖗 𝕴𝖓𝖈𝖆𝖗𝖓𝖆𝖙𝖊",
-          "avatar": "https://cdn.discordapp.com/avatars/1110754991091748905/bd2aeb97b1a280b0e6f0afd7c9a31581.png?size=256",
+          "avatar": "assets/avatars/1110754991091748905.png",
           "banner": null,
           "accentColor": null
         },
@@ -180,7 +180,7 @@
           "id": "1248427007390384199",
           "username": "cajuninthesouth8075",
           "displayName": "LafayetteAreaWXシ",
-          "avatar": "https://cdn.discordapp.com/avatars/1248427007390384199/8d22b8d09462e496e53813e442d88e2e.png?size=256",
+          "avatar": "assets/avatars/1248427007390384199.png",
           "banner": null,
           "accentColor": "#ffffff"
         },
@@ -188,7 +188,7 @@
           "id": "877009401423200296",
           "username": "weatherlord_wx",
           "displayName": "Max (Massachusetts)",
-          "avatar": "https://cdn.discordapp.com/avatars/877009401423200296/cf37f17a25a391aec6fe356d8e188aae.png?size=256",
+          "avatar": "assets/avatars/877009401423200296.png",
           "banner": null,
           "accentColor": null
         },
@@ -196,7 +196,7 @@
           "id": "948372386347102209",
           "username": "last_one_remaining",
           "displayName": "RemainingWX",
-          "avatar": "https://cdn.discordapp.com/guilds/1077714936056250388/users/948372386347102209/avatars/d2247637bee2cd4a51c993789ad6a3ca.png?size=256",
+          "avatar": "assets/avatars/948372386347102209.png",
           "banner": null,
           "accentColor": null
         }

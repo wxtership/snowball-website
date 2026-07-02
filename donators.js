@@ -160,7 +160,9 @@
     return n + (s[(v - 20) % 10] || s[v] || s[0]);
   }
   function safeUrl(u) {
-    if (typeof u !== 'string' || !/^https?:\/\//i.test(u)) return '';
+    // Absolute http(s) URLs, or the repo-relative paths the bot writes when it
+    // mirrors Discord avatars into assets/ (so pfps don't die with the CDN).
+    if (typeof u !== 'string' || !(/^https?:\/\//i.test(u) || /^assets\//.test(u))) return '';
     return u.replace(/'/g, '%27').replace(/"/g, '%22');
   }
   function esc(s) {
