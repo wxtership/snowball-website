@@ -1260,38 +1260,6 @@ function FeaturesSection() {
   );
 }
 
-function CoverageSection() {
-  const modes = [
-    { img:'assets/coverage/severe_static.png', title:'Severe', desc:'Warnings, outlooks, radar, reports, and staff coverage when storms are active.' },
-    { img:'assets/coverage/winter_static.png', title:'Winter', desc:'Snow, ice, travel impacts, watches, warnings, and community reports in one mode.' },
-    { img:'assets/coverage/tropical_static.png', title:'Tropical', desc:'Hurricane tracking, forecast updates, surge context, and tropical discussion.' },
-  ];
-
-  return h('section', { id:'coverage', className:'xw-coverage-section' },
-    h('div', { className:'section-inner' },
-      h('div', { className:'xw-section-head' },
-        h('div', null,
-          h('h2', { className:'section-title' }, 'Make active weather', h('br'), 'easy to follow')
-        ),
-        h('p', { className:'section-body xw-section-head-copy' },
-          'Coverage modes give the site and Discord a clear operating state. People should know what is happening, where to go, and what matters now.'
-        )
-      ),
-      h('div', { className:'xw-coverage-grid' },
-        ...modes.map((mode, i) =>
-          h('article', { key: mode.title, className:'xw-coverage-card', style:{ '--i': i } },
-            h('img', { src:mode.img, alt:'', loading:'lazy' }),
-            h('div', null,
-              h('h3', null, mode.title),
-              h('p', null, mode.desc)
-            )
-          )
-        )
-      )
-    )
-  );
-}
-
 function SnowballPromoSection() {
   const snowballFeatures = [
     ['Ask it anything', 'The AI grabs live radar, forecasts, and alerts before it answers.'],
@@ -1346,7 +1314,6 @@ function App() {
     h(RadarWebSection),
     h(SnowballPromoSection),
     h(FeaturesSection),
-    h(CoverageSection),
     h(PreviewSection),
     h(Footer)
   );
