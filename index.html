@@ -10,16 +10,16 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://discord.com" />
+<link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin />
 <link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/hero-radar-level2.webp" fetchpriority="high" />
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
 <link rel="stylesheet" href="snowball.css">
-<script src="vendor/react.production.min.js"></script>
-<script src="vendor/react-dom.production.min.js"></script>
 <link rel="canonical" href="https://wxtership.github.io/snowball-website/" />
 <meta property="og:site_name" content="Xtreme Weather" />
 <meta property="og:type" content="website" />
@@ -136,6 +136,8 @@
 </div>
 
 <div id="root"></div>
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
 <script>
 const { useState, useEffect, useRef } = React;
 const h = React.createElement;
@@ -566,7 +568,7 @@ function DcThinking({ leaving }) {
   return h('div', { style:{padding:'4px 16px',animation:anim} },
     h(DcReplyQuote),
     h('div', { style:{display:'flex',gap:16} },
-      h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+      h('img', { src:'assets/icons/small-snowball.webp', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
       h('div', { style:{flex:1,minWidth:0} },
         h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
           h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
@@ -629,7 +631,7 @@ function DcEmbed() {
           )
         ),
         h('div', { style:{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'#80848e',borderTop:'1px solid rgba(255,255,255,0.05)',paddingTop:10,marginTop:2,fontFamily:DC_GG_SANS} },
-          h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover'} }),
+          h('img', { src:'assets/icons/small-snowball.webp', alt:'', style:{width:16,height:16,borderRadius:'50%',objectFit:'cover'} }),
           'Snowball'
         )
       )
@@ -640,7 +642,7 @@ function DcBotResponse() {
   return h('div', { style:{padding:'4px 16px 12px',animation:'dcMsgIn 0.3s ease forwards'} },
       h(DcReplyQuote),
       h('div', { style:{display:'flex',gap:16} },
-        h('img', { src:'assets/icons/small-snowball.png', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
+        h('img', { src:'assets/icons/small-snowball.webp', alt:'', style:{width:40,height:40,borderRadius:'50%',flexShrink:0,objectFit:'cover'} }),
         h('div', { style:{flex:1,minWidth:0} },
           h('div', { style:{display:'flex',alignItems:'center',gap:6,marginBottom:2} },
             h('span', { style:{color:'#fff',fontWeight:700,fontSize:15} }, 'Snowball'),
@@ -929,7 +931,7 @@ function CommandsSection() {
     { cat:'Utility', icon:'assets/icons/small-messages.png',    name:'stats messages',  desc:'Message activity chart' },
     { cat:'Utility', icon:'assets/icons/small-members.png',     name:'stats members',   desc:'Member count chart' },
     { cat:'Utility', icon:'assets/icons/small-members.png',     name:'stats snowball',  desc:'Snowball system stats' },
-    { cat:'Utility', icon:'assets/icons/small-snowball.png',    name:'stats user',      desc:'User activity chart' },
+    { cat:'Utility', icon:'assets/icons/small-snowball.webp',    name:'stats user',      desc:'User activity chart' },
     { cat:'Utility', icon:'assets/icons/small-ping.png',        name:'notifications',   desc:'Manage Snowball DMs & pings' },
     { cat:'Utility', icon:'assets/icons/small-suggestion.png',  name:'suggest',         desc:'Submit suggestion or bug' },
     { cat:'Utility', icon:'assets/icons/small-suggestion.png',  name:'apply',           desc:'Apply to join Xtreme Weather' },
