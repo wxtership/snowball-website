@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-01T22:10:46.096Z",
+  "updatedAt": "2026-07-02T19:49:03.223Z",
   "updatedBy": {
-    "id": "system",
-    "tag": "auto-sync (donation)"
+    "id": "582394159546236948",
+    "tag": "wxtership"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7371
+    "memberCount": 7372
   },
   "allTimeTotal": 820.06,
   "monthlyRaised": 137.67,
@@ -172,7 +172,7 @@
         {
           "username": "dynafolf",
           "displayName": "Piker (Pike County, PA)",
-          "avatar": null,
+          "avatar": "assets/avatars/1324763970271314023.png",
           "banner": null,
           "amount": 5,
           "donatedAt": "2026-05-19T15:58:40.000Z"
