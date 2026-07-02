@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-28T18:37:42.962Z",
+  "updatedAt": "2026-07-02T19:47:04.030Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7356
+    "memberCount": 7372
   },
   "tiers": [
     {
@@ -29,18 +29,18 @@
       "label": "Leadership",
       "members": [
         {
-          "id": "451857870552825856",
-          "username": "jaysonido",
-          "displayName": "Jaysonido",
-          "avatar": "assets/avatars/451857870552825856.png",
+          "id": "1133479873155956878",
+          "username": "silliphilly",
+          "displayName": "[vacation] Philly",
+          "avatar": "assets/avatars/1133479873155956878.png",
           "banner": null,
           "accentColor": null
         },
         {
-          "id": "1133479873155956878",
-          "username": "silliphilly",
-          "displayName": "Philly",
-          "avatar": "assets/avatars/1133479873155956878.png",
+          "id": "451857870552825856",
+          "username": "jaysonido",
+          "displayName": "Jaysonido",
+          "avatar": "assets/avatars/451857870552825856.png",
           "banner": null,
           "accentColor": null
         },
@@ -83,14 +83,6 @@
           "accentColor": "#00ffff"
         },
         {
-          "id": "1083832581411315865",
-          "username": "stormy_sky62",
-          "displayName": "Cookware (Central PA)",
-          "avatar": "assets/avatars/1083832581411315865.png",
-          "banner": null,
-          "accentColor": "#84c0e5"
-        },
-        {
           "id": "1008568196292419584",
           "username": "snowboi23",
           "displayName": "frosty the snowman",
@@ -129,6 +121,14 @@
           "avatar": "assets/avatars/1085767966118920233.png",
           "banner": null,
           "accentColor": null
+        },
+        {
+          "id": "1083832581411315865",
+          "username": "stormy_sky62",
+          "displayName": "Stormy (Central PA)",
+          "avatar": "assets/avatars/1083832581411315865.png",
+          "banner": null,
+          "accentColor": "#84c0e5"
         }
       ]
     },
@@ -147,7 +147,7 @@
         {
           "id": "796835065287934042",
           "username": "caleb_dont",
-          "displayName": "caleb_dont (Round Rock, TX)",
+          "displayName": "caleb_dont (Kholinar, Alethkar)",
           "avatar": "assets/avatars/796835065287934042.png",
           "banner": null,
           "accentColor": null
@@ -157,14 +157,6 @@
           "username": "clark_la",
           "displayName": "Clark",
           "avatar": "assets/avatars/default-3.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
-          "id": "1324763970271314023",
-          "username": "dynafolf",
-          "displayName": "DynaFolf (Pike County, PA)",
-          "avatar": null,
           "banner": null,
           "accentColor": null
         },
@@ -189,6 +181,14 @@
           "username": "weatherlord_wx",
           "displayName": "Max (Massachusetts)",
           "avatar": "assets/avatars/877009401423200296.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "1324763970271314023",
+          "username": "dynafolf",
+          "displayName": "Piker (Pike County, PA)",
+          "avatar": "assets/avatars/1324763970271314023.png",
           "banner": null,
           "accentColor": null
         },
