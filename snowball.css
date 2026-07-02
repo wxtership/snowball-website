@@ -970,8 +970,9 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 940px;
-  height: 940px;
+  /* Sweeps further out on wide viewports, never below the 940px baseline. */
+  width: clamp(940px, 78vw, 1360px);
+  height: clamp(940px, 78vw, 1360px);
   /* Softness is baked into the gradient stops instead of a filter: a blur on
      this layer forces the GPU to re-blur ~1M px every frame the beam turns,
      which is what made the hero lag on weaker desktops. */
