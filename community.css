@@ -896,17 +896,16 @@ html.js .timeline-item.in-view { opacity: 1; transform: none; }
   .charter-grid { grid-template-columns: 1fr; }
   .coverage-points { grid-template-columns: 1fr; }
   .coverage-leads { grid-template-columns: 1fr; }
-  .enforce-step { padding: 16px 16px; gap: 14px; }
 }
 
 /* Entrance for doc/charter/coverage items: same reveal-up cascade as the rest of
    the site, driven by an inline --i on each element. */
-.charter-article, .enforce-step, .coverage-point, .lead-card {
+.charter-article, .coverage-point, .lead-card {
   animation: reveal-up 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
   animation-delay: calc(var(--i, 0) * 70ms);
 }
 @media (prefers-reduced-motion: reduce) {
-  .charter-article, .enforce-step, .coverage-point, .lead-card { animation: none; }
+  .charter-article, .coverage-point, .lead-card { animation: none; }
 }
 
 /* Coverage page: stagger the mode cards and policy items into view too */
