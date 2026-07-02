@@ -1154,10 +1154,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.xw-showcase-media:hover .xw-showcase-radar {
-  transform: scale(1.06);
-}
-
 /* Faint scrim so the overlay labels stay readable over busy radar. */
 .xw-showcase-media::after {
   content: '';
@@ -1470,18 +1466,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-phone-shot:nth-child(3) {
   transform: translateY(34px) rotateY(-11deg) scale(0.93);
   z-index: 2;
-}
-
-.xw-phone-gallery:hover .xw-phone-shot:nth-child(1) {
-  transform: translateY(28px) rotateY(8deg) scale(0.95);
-}
-
-.xw-phone-gallery:hover .xw-phone-shot:nth-child(2) {
-  transform: translateY(-6px) scale(1.02);
-}
-
-.xw-phone-gallery:hover .xw-phone-shot:nth-child(3) {
-  transform: translateY(28px) rotateY(-8deg) scale(0.95);
 }
 
 @media (prefers-reduced-motion: reduce) {
