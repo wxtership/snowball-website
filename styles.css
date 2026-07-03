@@ -5033,18 +5033,22 @@ body.scroll-locked {
 }
 
 #community-mega-menu,
-#information-mega-menu,
+#about-mega-menu,
 #weather-mega-menu {
     width: 560px;
 }
+#support-mega-menu {
+    width: 300px;
+}
 #community-mega-menu .mega-menu-container,
-#information-mega-menu .mega-menu-container,
+#about-mega-menu .mega-menu-container,
 #weather-mega-menu .mega-menu-container {
     grid-template-columns: 1fr 1fr;
     gap: 22px;
 }
 @media (max-width: 800px) {
     #community-mega-menu,
-    #information-mega-menu,
+    #about-mega-menu,
+    #support-mega-menu,
     #weather-mega-menu { width: 100%; }
 }
