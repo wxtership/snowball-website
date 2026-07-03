@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T03:49:00.346Z",
+  "updatedAt": "2026-07-03T04:00:19.257Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -67,12 +67,44 @@
       "label": "Staff",
       "members": [
         {
+          "id": "778809059498786826",
+          "username": "2hottyscotty",
+          "displayName": "2 Hotty Scotty (042129)",
+          "avatar": "assets/avatars/778809059498786826.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
           "id": "405757488487464961",
           "username": "adampate",
           "displayName": "Adampate ( Bemidji MN)",
           "avatar": "assets/avatars/405757488487464961.png",
           "banner": null,
           "accentColor": "#00ffff"
+        },
+        {
+          "id": "796835065287934042",
+          "username": "caleb_dont",
+          "displayName": "caleb_dont (Kholinar, Alethkar)",
+          "avatar": "assets/avatars/796835065287934042.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "810308507378516008",
+          "username": "clark_la",
+          "displayName": "Clark",
+          "avatar": "assets/avatars/default-3.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "1110754991091748905",
+          "username": "theexiled6225",
+          "displayName": "𝕱𝖊𝖆𝖗 𝕴𝖓𝖈𝖆𝖗𝖓𝖆𝖙𝖊",
+          "avatar": "assets/avatars/1110754991091748905.png",
+          "banner": null,
+          "accentColor": null
         },
         {
           "id": "1008568196292419584",
@@ -87,6 +119,30 @@
           "username": "gabrielkramp.",
           "displayName": "Gabriel Kramp (Lynchburg VA)",
           "avatar": "assets/avatars/1298379997689679966.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "877009401423200296",
+          "username": "weatherlord_wx",
+          "displayName": "Max (Massachusetts)",
+          "avatar": "assets/avatars/877009401423200296.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "1324763970271314023",
+          "username": "dynafolf",
+          "displayName": "Piker (Pike County, PA)",
+          "avatar": "assets/avatars/1324763970271314023.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "948372386347102209",
+          "username": "last_one_remaining",
+          "displayName": "RemainingWX",
+          "avatar": "assets/avatars/948372386347102209.png",
           "banner": null,
           "accentColor": null
         },
@@ -121,68 +177,12 @@
       "label": "Trial Staff",
       "members": [
         {
-          "id": "778809059498786826",
-          "username": "2hottyscotty",
-          "displayName": "2 Hotty Scotty (042129)",
-          "avatar": "assets/avatars/778809059498786826.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
-          "id": "796835065287934042",
-          "username": "caleb_dont",
-          "displayName": "caleb_dont (Kholinar, Alethkar)",
-          "avatar": "assets/avatars/796835065287934042.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
-          "id": "810308507378516008",
-          "username": "clark_la",
-          "displayName": "Clark",
-          "avatar": "assets/avatars/default-3.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
-          "id": "1110754991091748905",
-          "username": "theexiled6225",
-          "displayName": "𝕱𝖊𝖆𝖗 𝕴𝖓𝖈𝖆𝖗𝖓𝖆𝖙𝖊",
-          "avatar": "assets/avatars/1110754991091748905.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
           "id": "1248427007390384199",
           "username": "cajuninthesouth8075",
           "displayName": "LafayetteAreaWXシ",
           "avatar": "assets/avatars/1248427007390384199.png",
           "banner": null,
           "accentColor": "#ffffff"
-        },
-        {
-          "id": "877009401423200296",
-          "username": "weatherlord_wx",
-          "displayName": "Max (Massachusetts)",
-          "avatar": "assets/avatars/877009401423200296.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
-          "id": "1324763970271314023",
-          "username": "dynafolf",
-          "displayName": "Piker (Pike County, PA)",
-          "avatar": "assets/avatars/1324763970271314023.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
-          "id": "948372386347102209",
-          "username": "last_one_remaining",
-          "displayName": "RemainingWX",
-          "avatar": "assets/avatars/948372386347102209.png",
-          "banner": null,
-          "accentColor": null
         }
       ]
     }
