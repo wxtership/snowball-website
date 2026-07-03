@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T04:00:19.257Z",
+  "updatedAt": "2026-07-03T23:22:36.364Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7371
+    "memberCount": 7379
   },
   "tiers": [
     {
@@ -29,18 +29,18 @@
       "label": "Leadership",
       "members": [
         {
-          "id": "1133479873155956878",
-          "username": "silliphilly",
-          "displayName": "[vacation] Philly",
-          "avatar": "assets/avatars/1133479873155956878.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
           "id": "451857870552825856",
           "username": "jaysonido",
           "displayName": "Jaysonido",
           "avatar": "assets/avatars/451857870552825856.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "1133479873155956878",
+          "username": "silliphilly",
+          "displayName": "Philly",
+          "avatar": "assets/avatars/1133479873155956878.png",
           "banner": null,
           "accentColor": null
         },
@@ -117,7 +117,7 @@
         {
           "id": "1298379997689679966",
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Lynchburg VA)",
+          "displayName": "Gabriel Kramp (St John’s FL)",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "accentColor": null
@@ -125,7 +125,7 @@
         {
           "id": "877009401423200296",
           "username": "weatherlord_wx",
-          "displayName": "Max (Massachusetts)",
+          "displayName": "Max (Old Orchard Beach, ME)",
           "avatar": "assets/avatars/877009401423200296.png",
           "banner": null,
           "accentColor": null
@@ -149,7 +149,7 @@
         {
           "id": "609961976092950528",
           "username": "robbysversion",
-          "displayName": "Robby (PA)",
+          "displayName": "Robby just wants to go home",
           "avatar": "assets/avatars/609961976092950528.png",
           "banner": null,
           "accentColor": null
@@ -175,16 +175,7 @@
     {
       "key": "trial",
       "label": "Trial Staff",
-      "members": [
-        {
-          "id": "1248427007390384199",
-          "username": "cajuninthesouth8075",
-          "displayName": "LafayetteAreaWXシ",
-          "avatar": "assets/avatars/1248427007390384199.png",
-          "banner": null,
-          "accentColor": "#ffffff"
-        }
-      ]
+      "members": []
     }
   ]
 }
