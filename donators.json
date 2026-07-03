@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-07-02T19:49:03.223Z",
+  "updatedAt": "2026-07-03T04:13:10.602Z",
   "updatedBy": {
-    "id": "582394159546236948",
-    "tag": "wxtership"
+    "id": "system",
+    "tag": "auto-sync (donation)"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7372
+    "memberCount": 7371
   },
-  "allTimeTotal": 820.06,
-  "monthlyRaised": 137.67,
+  "allTimeTotal": 824.06,
+  "monthlyRaised": 141.67,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -198,8 +198,8 @@
           "displayName": "Robby (PA)",
           "avatar": "assets/avatars/609961976092950528.png",
           "banner": null,
-          "amount": 220.04,
-          "donatedAt": "2026-07-01T22:10:10.000Z"
+          "amount": 224.04,
+          "donatedAt": "2026-07-03T04:12:02.000Z"
         },
         {
           "username": "rock_pebble122",
