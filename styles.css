@@ -5032,15 +5032,9 @@ body.scroll-locked {
     color: #fff;
 }
 
+#community-mega-menu,
 #info-mega-menu {
-    width: 560px;
-}
-#community-mega-menu {
-    width: 300px;
-}
-#info-mega-menu .mega-menu-container {
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
+    width: 320px;
 }
 @media (max-width: 800px) {
     #community-mega-menu,
