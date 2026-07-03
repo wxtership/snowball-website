@@ -260,9 +260,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="https://radar.xtremewx.com" target="_blank" rel="noopener">Radar</a></li>
                 <li class="has-dropdown" data-menu="community"><a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a></li>
-                <li><a href="contact">Support</a></li>
+                <li class="has-dropdown" data-menu="support"><a href="#">Support <i class="fas fa-chevron-down dropdown-arrow"></i></a></li>
                 <li class="has-dropdown" data-menu="info"><a href="#">Info <i class="fas fa-chevron-down dropdown-arrow"></i></a></li>
-                <li><a href="index.html#app">App</a></li>
+                <li class="has-dropdown" data-menu="app"><a href="#">App <i class="fas fa-chevron-down dropdown-arrow"></i></a></li>
                 <li><a href="snowball">Snowball</a></li>
             </ul>
         </div>
@@ -294,15 +294,34 @@
     </div>
 </div>
 
+<div class="mega-menu" id="support-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Support</div>
+            <a href="contact" class="mega-item"><i class="fas fa-envelope"></i><div class="mega-item-text"><span class="title">Contact Us</span><span class="desc">Get in touch with the team</span></div></a>
+            <a href="ban-appeal" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Appeal a moderation action</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mega-menu" id="app-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">App</div>
+            <a href="https://apps.apple.com/us/app/xtreme-weather-pro-radar/id6744540041" target="_blank" rel="noopener" class="mega-item"><i class="fas fa-mobile-screen-button"></i><div class="mega-item-text"><span class="title">Get the App</span><span class="desc">Download on the App Store</span></div></a>
+        </div>
+    </div>
+</div>
+
 <div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
     <div class="mobile-view main-view" id="sb-mobile-main-view">
         <div class="mobile-centered-content">
             <a href="index.html" class="mobile-big-link">Home</a>
             <a href="https://radar.xtremewx.com" target="_blank" rel="noopener" class="mobile-big-link">Radar</a>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
-            <a href="contact" class="mobile-big-link">Support</a>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('support')">Support<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
             <button class="mobile-big-link" onclick="sbOpenSubMenu('info')">Info<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
-            <a href="index.html#app" class="mobile-big-link">App</a>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('app')">App<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
             <a href="snowball" class="mobile-big-link">Snowball</a>
         </div>
     </div>
@@ -322,6 +341,19 @@
             <a href="charter" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-scroll"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Charter</span></span></a>
             <a href="privacy" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-user-shield"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Privacy Policy</span></span></a>
             <a href="terms" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-file-contract"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Terms of Service</span></span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-support">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+        <div class="mobile-sub-list">
+            <a href="contact" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-envelope"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Contact Us</span></span></a>
+            <a href="ban-appeal" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-gavel"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Ban Appeal</span></span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-app">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+        <div class="mobile-sub-list">
+            <a href="https://apps.apple.com/us/app/xtreme-weather-pro-radar/id6744540041" target="_blank" rel="noopener" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-mobile-screen-button"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Get the App</span></span></a>
         </div>
     </div>
 </div>
