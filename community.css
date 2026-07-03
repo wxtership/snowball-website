@@ -42,13 +42,13 @@
 /* About uses these mid-page; center them so the history/FAQ read as centered sections */
 .section-label { text-align: center; }
 
-/* ---- Font-Awesome icon tile (used on about/contact cards) ---- */
+/* ---- Status kicker with icon (ban-appeal panel headers) ---- */
 .card-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  display: inline-flex; align-items: center; justify-content: center;
-  background: rgba(107,84,245,0.14); border: 1px solid rgba(107,84,245,0.28);
-  color: var(--purple-300); font-size: 20px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--purple-300);
 }
+.card-icon i { font-size: 13px; }
 
 /* ---- Stats strip (about) ---- */
 .stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -1189,6 +1189,7 @@ button.clean-link:focus-visible { outline: 2px solid var(--purple-400); outline-
 .glossary-compact .glossary-term h2 { font-size: 16px; margin-bottom: 4px; }
 .glossary-compact .glossary-term p { font-size: 14px; }
 .glossary-cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.page-hero + .glossary-search { padding-top: 32px; }
 .glossary-cat-card { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 18px; border-radius: 16px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.08); text-decoration: none; color: #fff; transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
 .glossary-cat-card:hover { transform: translateY(-3px); border-color: rgba(159,94,245,0.46); background: rgba(255,255,255,0.07); }
 .glossary-cat-card img { width: 44px; height: 44px; object-fit: contain; }
