@@ -402,7 +402,7 @@ const hubBody = `<main class="community-page">
   <section class="glossary-search">
     <div class="section-inner">
       <input type="search" id="glossary-filter" class="glossary-filter" placeholder="Search ${totalTerms} terms..." aria-label="Search glossary terms">
-      <ul class="glossary-index is-hidden" id="glossary-index">
+      <ul class="glossary-index" id="glossary-index" hidden>
 ${indexLinks}
       </ul>
     </div>
@@ -425,7 +425,7 @@ ${cta}
   var items = list.querySelectorAll('li');
   input.addEventListener('input', function () {
     var q = input.value.trim().toLowerCase();
-    list.classList.toggle('is-hidden', !q);
+    list.hidden = !q;
     if (!q) return;
     items.forEach(function (li) {
       li.style.display = li.textContent.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
