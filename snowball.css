@@ -2075,8 +2075,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .reveal-up {
   opacity: 0;
   transform: translateY(22px);
+  /* Opacity ramps linearly: ease-out curves hit ~70% almost immediately, so
+     the visible part of the fade reads as a 70%->100% crawl. Movement keeps
+     the decelerating curve. */
   transition:
-    opacity   0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0ms),
+    opacity   0.5s  linear var(--reveal-delay, 0ms),
     transform 0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }

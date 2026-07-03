@@ -541,12 +541,6 @@ const hubCards = written.map((w) => `      <a class="glossary-cat-card" href="${
         <span class="glossary-cat-count">${w.count} terms</span>
       </a>`).join('\n');
 
-const indexLinks = written
-  .flatMap((w) => [...w.slugs.entries()].map(([slug, d]) => ({ title: d.title, href: `${w.slug}#${slug}` })))
-  .sort((a, b) => a.title.localeCompare(b.title))
-  .map((t) => `      <li><a href="${t.href}">${esc(t.title)}</a></li>`)
-  .join('\n');
-
 const hubTitle = 'Xtreme Weather • Weather Glossary';
 const hubDesc = `${totalTerms}+ weather terms explained in plain English: radar, tornadoes, CAPE, hurricanes, winter storms, and more, from the Xtreme Weather Discord (XWD) community.`;
 const hubLd = {
@@ -566,16 +560,7 @@ const hubBody = `<main class="community-page">
     </div>
   </section>
 
-  <section class="glossary-search">
-    <div class="section-inner">
-      <input type="search" id="glossary-filter" class="glossary-filter" placeholder="Search ${totalTerms} terms..." aria-label="Search glossary terms">
-      <ul class="glossary-index" id="glossary-index" hidden>
-${indexLinks}
-      </ul>
-    </div>
-  </section>
-
-  <section>
+  <section class="glossary-hub-cats">
     <div class="section-inner">
       <div class="glossary-cat-grid">
 ${hubCards}
@@ -583,23 +568,7 @@ ${hubCards}
     </div>
   </section>
 ${cta}
-</main>
-<script>
-(function () {
-  var input = document.getElementById('glossary-filter');
-  var list = document.getElementById('glossary-index');
-  if (!input || !list) return;
-  var items = list.querySelectorAll('li');
-  input.addEventListener('input', function () {
-    var q = input.value.trim().toLowerCase();
-    list.hidden = !q;
-    if (!q) return;
-    items.forEach(function (li) {
-      li.style.display = li.textContent.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
-    });
-  });
-})();
-</script>`;
+</main>`;
 
 fs.writeFileSync(path.join(SITE, 'glossary.html'),
   buildHead(shellTop, { title: hubTitle, desc: hubDesc, slug: 'glossary', ldJson: hubLd }) + hubBody + shellBottom);
