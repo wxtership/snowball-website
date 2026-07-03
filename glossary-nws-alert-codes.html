@@ -42,6 +42,90 @@
   "hasDefinedTerm": [
     {
       "@type": "DefinedTerm",
+      "name": "VTEC",
+      "description": "VTEC (Valid Time Event Code) is a standardized string embedded in every NWS warning/watch/advisory text product. It encodes the product type, issuing office, event number, and start/end time in machine-readable form. It's what allows apps and APIs to parse NWS products automatically without reading ",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#vtec"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "EAS",
+      "description": "The Emergency Alert System (EAS) is the national public warning system that allows authorized agencies — including the NWS — to interrupt TV and radio broadcasts with emergency alerts. NOAA Weather Radio (NWR) activates EAS for weather warnings using SAME tones. The three-tone chirp + digital data b",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#eas"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "WEA",
+      "description": "A Wireless Emergency Alert (WEA) is the loud buzzing alert pushed directly to cell phones within a warning polygon — no app needed. For severe weather:\n\n• All Tornado Warnings → WEA\n• SVR-D (Destructive tag) → WEA\n• FFW with Considerable or Catastrophic tag → WEA\n• Flash Flood Emergencies (FFE) → WE",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#wea"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "AFD",
+      "description": "An Area Forecast Discussion (AFD) is the local NWS office's plain-English explanation of their forecast reasoning. Written by forecasters several times daily — the best way to understand what your local WFO is actually thinking.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#afd"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "HWO",
+      "description": "A Hazardous Weather Outlook (HWO) is a daily product issued by local WFOs highlighting any weather hazards expected over the next 7 days. Day 1 is most detailed; days 2–7 are broader. The HWO is where forecasters flag developing threats before watches or warnings become warranted — your earliest war",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#hwo"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "SPS",
+      "description": "A Special Weather Statement (SPS) is an NWS product covering sub-severe storms or notable weather that doesn't meet warning criteria — strong (but not severe) thunderstorms, dense fog, snow squalls in some offices, etc.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#sps"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Special Weather Statement (SPS)",
+      "description": "A Special Weather Statement (SPS) is used by WFOs to communicate weather hazards that don't meet warning or advisory criteria, or to provide supplemental information. Examples: locally gusty winds, elevated fire danger, brief tornado possible in an ongoing storm, or a nuisance snowfall. SPS products",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#special-weather-statement-sps"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "LSR",
+      "description": "A Local Storm Report (LSR) is an NWS product documenting severe weather events as they occur — tornadoes spotted, hail measured, wind damage, flooding. LSRs are the raw record of what actually happened during an event.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#lsr"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "PNS",
+      "description": "A Public Information Statement (PNS) is a general-purpose NWS product for significant non-warning information — tornado damage survey results, official EF ratings, record temperatures, post-storm summaries, and public safety messages. The PNS is how the NWS officially releases EF-scale ratings after",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#pns"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "WOU",
+      "description": "A Watch Outline Update (WOU) is the SPC product issued when a tornado or severe thunderstorm watch is declared. It contains the official polygon coordinates and county list for the watch. Broadcasters, emergency managers, and apps use the WOU to display the watch boundary accurately.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#wou"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "WCN",
+      "description": "A Watch County Notification (WCN) is issued by local NWS WFOs when an SPC watch covers their County Warning Area. It provides county-level details and local messaging for the watch, complementing the SPC's WOU.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#wcn"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Special Marine Warning",
+      "description": "A Special Marine Warning (SMW) is the marine equivalent of a Severe Thunderstorm Warning, issued for coastal/lake waters when storms are producing 34+ knot winds, hail, or waterspouts.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#special-marine-warning"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Tsunami Watch",
+      "description": "TSA is the EAS/SAME code for a Tsunami Watch. It means a tsunami is possible, but its arrival, size, or exact threat is still being evaluated. Monitor official tsunami products and be ready to move inland or uphill.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#tsunami-watch"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Rip Current Warning",
+      "description": "A Rip Current Warning is issued when dangerous rip currents are occurring or imminent at beaches. Rip currents are the leading cause of aquatic rescues in the U.S. (100+ fatalities/year). If caught in one: don't fight it — swim parallel to shore until out of the current, then swim back in at an angl",
+      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#rip-current-warning"
+    },
+    {
+      "@type": "DefinedTerm",
       "name": "Dense Fog Advisory",
       "description": "A Dense Fog Advisory (DFO) is issued when fog will reduce visibility to ¼ mile or less over a widespread area. Use low-beam headlights, reduce speed, and increase following distance dramatically. Common in river valleys, after overnight rain, and in coastal areas. Radiation fog often lifts by mid-mo",
       "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#dense-fog-advisory"
@@ -60,93 +144,9 @@
     },
     {
       "@type": "DefinedTerm",
-      "name": "PNS",
-      "description": "A Public Information Statement (PNS) is a general-purpose NWS product for significant non-warning information — tornado damage survey results, official EF ratings, record temperatures, post-storm summaries, and public safety messages. The PNS is how the NWS officially releases EF-scale ratings after",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#pns"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Rip Current Warning",
-      "description": "A Rip Current Warning is issued when dangerous rip currents are occurring or imminent at beaches. Rip currents are the leading cause of aquatic rescues in the U.S. (100+ fatalities/year). If caught in one: don't fight it — swim parallel to shore until out of the current, then swim back in at an angl",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#rip-current-warning"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Special Marine Warning",
-      "description": "A Special Marine Warning (SMW) is the marine equivalent of a Severe Thunderstorm Warning, issued for coastal/lake waters when storms are producing 34+ knot winds, hail, or waterspouts.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#special-marine-warning"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Special Weather Statement (SPS)",
-      "description": "A Special Weather Statement (SPS) is used by WFOs to communicate weather hazards that don't meet warning or advisory criteria, or to provide supplemental information. Examples: locally gusty winds, elevated fire danger, brief tornado possible in an ongoing storm, or a nuisance snowfall. SPS products",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#special-weather-statement-sps"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Tsunami Watch",
-      "description": "TSA is the EAS/SAME code for a Tsunami Watch. It means a tsunami is possible, but its arrival, size, or exact threat is still being evaluated. Monitor official tsunami products and be ready to move inland or uphill.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#tsunami-watch"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "WCN",
-      "description": "A Watch County Notification (WCN) is issued by local NWS WFOs when an SPC watch covers their County Warning Area. It provides county-level details and local messaging for the watch, complementing the SPC's WOU.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#wcn"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "WEA",
-      "description": "A Wireless Emergency Alert (WEA) is the loud buzzing alert pushed directly to cell phones within a warning polygon — no app needed. For severe weather:\n\n• All Tornado Warnings → WEA\n• SVR-D (Destructive tag) → WEA\n• FFW with Considerable or Catastrophic tag → WEA\n• Flash Flood Emergencies (FFE) → WE",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#wea"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "WOU",
-      "description": "A Watch Outline Update (WOU) is the SPC product issued when a tornado or severe thunderstorm watch is declared. It contains the official polygon coordinates and county list for the watch. Broadcasters, emergency managers, and apps use the WOU to display the watch boundary accurately.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#wou"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "AFD",
-      "description": "An Area Forecast Discussion (AFD) is the local NWS office's plain-English explanation of their forecast reasoning. Written by forecasters several times daily — the best way to understand what your local WFO is actually thinking.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#afd"
-    },
-    {
-      "@type": "DefinedTerm",
       "name": "Air Quality Alert",
       "description": "An Air Quality Alert is issued when the Air Quality Index (AQI) is forecast to exceed 100 (Unhealthy for Sensitive Groups) or 150 (Unhealthy for all). Causes include wildfire smoke, ground-level ozone (hot stagnant days), and particulate matter from industrial sources. Sensitive groups (elderly, chi",
       "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#air-quality-alert"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "HWO",
-      "description": "A Hazardous Weather Outlook (HWO) is a daily product issued by local WFOs highlighting any weather hazards expected over the next 7 days. Day 1 is most detailed; days 2–7 are broader. The HWO is where forecasters flag developing threats before watches or warnings become warranted — your earliest war",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#hwo"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "LSR",
-      "description": "A Local Storm Report (LSR) is an NWS product documenting severe weather events as they occur — tornadoes spotted, hail measured, wind damage, flooding. LSRs are the raw record of what actually happened during an event.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#lsr"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "SPS",
-      "description": "A Special Weather Statement (SPS) is an NWS product covering sub-severe storms or notable weather that doesn't meet warning criteria — strong (but not severe) thunderstorms, dense fog, snow squalls in some offices, etc.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#sps"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "EAS",
-      "description": "The Emergency Alert System (EAS) is the national public warning system that allows authorized agencies — including the NWS — to interrupt TV and radio broadcasts with emergency alerts. NOAA Weather Radio (NWR) activates EAS for weather warnings using SAME tones. The three-tone chirp + digital data b",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#eas"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "VTEC",
-      "description": "VTEC (Valid Time Event Code) is a standardized string embedded in every NWS warning/watch/advisory text product. It encodes the product type, issuing office, event number, and start/end time in machine-readable form. It's what allows apps and APIs to parse NWS products automatically without reading ",
-      "url": "https://wxtership.github.io/snowball-website/glossary-nws-alert-codes#vtec"
     }
   ]
 }
@@ -254,6 +254,64 @@
 
   <section>
     <div class="section-inner glossary-list">
+    <article class="glossary-term" id="vtec">
+      <h2>What is VTEC? <a class="glossary-anchor" href="#vtec" aria-label="Link to What is VTEC?">#</a></h2>
+      <p><strong>VTEC (Valid Time Event Code)</strong> is a standardized string embedded in every NWS warning/watch/advisory text product. It encodes the product type, issuing office, event number, and start/end time in machine-readable form. It&#39;s what allows apps and APIs to parse NWS products automatically without reading the full text.</p>
+    </article>
+    <article class="glossary-term" id="eas">
+      <h2>What is the EAS? <a class="glossary-anchor" href="#eas" aria-label="Link to What is the EAS?">#</a></h2>
+      <p>The <strong>Emergency Alert System (EAS)</strong> is the national public warning system that allows authorized agencies — including the NWS — to interrupt TV and radio broadcasts with emergency alerts. NOAA Weather Radio (NWR) activates EAS for weather warnings using SAME tones. The three-tone chirp + digital data burst you hear on the radio is EAS in action.</p>
+    </article>
+    <article class="glossary-term" id="wea">
+      <h2>What is a WEA? <a class="glossary-anchor" href="#wea" aria-label="Link to What is a WEA?">#</a></h2>
+      <p>A <strong>Wireless Emergency Alert (WEA)</strong> is the loud buzzing alert pushed directly to cell phones within a warning polygon — no app needed. For severe weather:</p>
+      <ul><li><strong>All Tornado Warnings</strong> → WEA</li><li><strong>SVR-D (Destructive tag)</strong> → WEA</li><li><strong>FFW with Considerable or Catastrophic tag</strong> → WEA</li><li><strong>Flash Flood Emergencies (FFE)</strong> → WEA</li><li><strong>SVR-C (Considerable tag)</strong> → No WEA</li><li><strong>Standard SVR / base FFW</strong> → No WEA</li></ul>
+      <p>WEAs use the polygon boundary, not the county, so you only get the alert if your phone is physically inside the warned area.</p>
+    </article>
+    <article class="glossary-term" id="afd">
+      <h2>What is an AFD? <a class="glossary-anchor" href="#afd" aria-label="Link to What is an AFD?">#</a></h2>
+      <p>An <strong>Area Forecast Discussion (AFD)</strong> is the local NWS office&#39;s plain-English explanation of their forecast reasoning. Written by forecasters several times daily — the best way to understand what your local WFO is actually thinking.</p>
+    </article>
+    <article class="glossary-term" id="hwo">
+      <h2>What is an HWO? <a class="glossary-anchor" href="#hwo" aria-label="Link to What is an HWO?">#</a></h2>
+      <p>A <strong>Hazardous Weather Outlook (HWO)</strong> is a daily product issued by local WFOs highlighting any weather hazards expected over the next 7 days. Day 1 is most detailed; days 2–7 are broader. The HWO is where forecasters flag developing threats <em>before</em> watches or warnings become warranted — your earliest warning for a brewing event.</p>
+    </article>
+    <article class="glossary-term" id="sps">
+      <h2>What is an SPS? <a class="glossary-anchor" href="#sps" aria-label="Link to What is an SPS?">#</a></h2>
+      <p>A <strong>Special Weather Statement (SPS)</strong> is an NWS product covering sub-severe storms or notable weather that doesn&#39;t meet warning criteria — strong (but not severe) thunderstorms, dense fog, snow squalls in some offices, etc.</p>
+    </article>
+    <article class="glossary-term" id="special-weather-statement-sps">
+      <h2>What is a Special Weather Statement (SPS)? <a class="glossary-anchor" href="#special-weather-statement-sps" aria-label="Link to What is a Special Weather Statement (SPS)?">#</a></h2>
+      <p>A <strong>Special Weather Statement (SPS)</strong> is used by WFOs to communicate weather hazards that don&#39;t meet warning or advisory criteria, or to provide supplemental information. Examples: locally gusty winds, elevated fire danger, brief tornado possible in an ongoing storm, or a nuisance snowfall. SPS products are flexible by design.</p>
+    </article>
+    <article class="glossary-term" id="lsr">
+      <h2>What is an LSR? <a class="glossary-anchor" href="#lsr" aria-label="Link to What is an LSR?">#</a></h2>
+      <p>A <strong>Local Storm Report (LSR)</strong> is an NWS product documenting severe weather events as they occur — tornadoes spotted, hail measured, wind damage, flooding. LSRs are the raw record of what actually happened during an event.</p>
+    </article>
+    <article class="glossary-term" id="pns">
+      <h2>What is a PNS? <a class="glossary-anchor" href="#pns" aria-label="Link to What is a PNS?">#</a></h2>
+      <p>A <strong>Public Information Statement (PNS)</strong> is a general-purpose NWS product for significant non-warning information — <strong>tornado damage survey results, official EF ratings, record temperatures, post-storm summaries, and public safety messages</strong>. The PNS is how the NWS officially releases EF-scale ratings after conducting tornado surveys.</p>
+    </article>
+    <article class="glossary-term" id="wou">
+      <h2>What is a WOU? <a class="glossary-anchor" href="#wou" aria-label="Link to What is a WOU?">#</a></h2>
+      <p>A <strong>Watch Outline Update (WOU)</strong> is the SPC product issued when a tornado or severe thunderstorm watch is declared. It contains the official polygon coordinates and county list for the watch. Broadcasters, emergency managers, and apps use the WOU to display the watch boundary accurately.</p>
+    </article>
+    <article class="glossary-term" id="wcn">
+      <h2>What is a WCN? <a class="glossary-anchor" href="#wcn" aria-label="Link to What is a WCN?">#</a></h2>
+      <p>A <strong>Watch County Notification (WCN)</strong> is issued by local NWS WFOs when an SPC watch covers their County Warning Area. It provides county-level details and local messaging for the watch, complementing the SPC&#39;s WOU.</p>
+    </article>
+    <article class="glossary-term" id="special-marine-warning">
+      <h2>What is a Special Marine Warning? <a class="glossary-anchor" href="#special-marine-warning" aria-label="Link to What is a Special Marine Warning?">#</a></h2>
+      <p>A <strong>Special Marine Warning (SMW)</strong> is the marine equivalent of a Severe Thunderstorm Warning, issued for coastal/lake waters when storms are producing 34+ knot winds, hail, or waterspouts.</p>
+    </article>
+    <article class="glossary-term" id="tsunami-watch">
+      <h2>What is a Tsunami Watch? <a class="glossary-anchor" href="#tsunami-watch" aria-label="Link to What is a Tsunami Watch?">#</a></h2>
+      <p><strong>TSA</strong> is the EAS/SAME code for a <strong>Tsunami Watch</strong>. It means a tsunami is possible, but its arrival, size, or exact threat is still being evaluated. Monitor official tsunami products and be ready to move inland or uphill.</p>
+    </article>
+    <article class="glossary-term" id="rip-current-warning">
+      <h2>What is a Rip Current Warning? <a class="glossary-anchor" href="#rip-current-warning" aria-label="Link to What is a Rip Current Warning?">#</a></h2>
+      <p>A <strong>Rip Current Warning</strong> is issued when dangerous rip currents are occurring or imminent at beaches. Rip currents are the leading cause of aquatic rescues in the U.S. (100+ fatalities/year). If caught in one: don&#39;t fight it — swim parallel to shore until out of the current, then swim back in at an angle.</p>
+    </article>
     <article class="glossary-term" id="dense-fog-advisory">
       <h2>What is a Dense Fog Advisory? <a class="glossary-anchor" href="#dense-fog-advisory" aria-label="Link to What is a Dense Fog Advisory?">#</a></h2>
       <p>A <strong>Dense Fog Advisory (DFO)</strong> is issued when fog will reduce visibility to <strong>¼ mile or less</strong> over a widespread area. Use low-beam headlights, reduce speed, and increase following distance dramatically. Common in river valleys, after overnight rain, and in coastal areas. Radiation fog often lifts by mid-morning; advection fog can persist all day.</p>
@@ -266,80 +324,18 @@
       <h2>What is a Hard Freeze Warning? <a class="glossary-anchor" href="#hard-freeze-warning" aria-label="Link to What is a Hard Freeze Warning?">#</a></h2>
       <p>A <strong>Hard Freeze Warning</strong> is issued when temperatures are expected to drop to 28°F or below for at least 2 hours. At 28°F, most unprotected vegetation (crops, ornamentals) suffers severe to fatal damage. It&#39;s the most serious frost/freeze product in the NWS suite — one level above a Freeze Warning (32°F).</p>
     </article>
-    <article class="glossary-term" id="pns">
-      <h2>What is a PNS? <a class="glossary-anchor" href="#pns" aria-label="Link to What is a PNS?">#</a></h2>
-      <p>A <strong>Public Information Statement (PNS)</strong> is a general-purpose NWS product for significant non-warning information — <strong>tornado damage survey results, official EF ratings, record temperatures, post-storm summaries, and public safety messages</strong>. The PNS is how the NWS officially releases EF-scale ratings after conducting tornado surveys.</p>
-    </article>
-    <article class="glossary-term" id="rip-current-warning">
-      <h2>What is a Rip Current Warning? <a class="glossary-anchor" href="#rip-current-warning" aria-label="Link to What is a Rip Current Warning?">#</a></h2>
-      <p>A <strong>Rip Current Warning</strong> is issued when dangerous rip currents are occurring or imminent at beaches. Rip currents are the leading cause of aquatic rescues in the U.S. (100+ fatalities/year). If caught in one: don&#39;t fight it — swim parallel to shore until out of the current, then swim back in at an angle.</p>
-    </article>
-    <article class="glossary-term" id="special-marine-warning">
-      <h2>What is a Special Marine Warning? <a class="glossary-anchor" href="#special-marine-warning" aria-label="Link to What is a Special Marine Warning?">#</a></h2>
-      <p>A <strong>Special Marine Warning (SMW)</strong> is the marine equivalent of a Severe Thunderstorm Warning, issued for coastal/lake waters when storms are producing 34+ knot winds, hail, or waterspouts.</p>
-    </article>
-    <article class="glossary-term" id="special-weather-statement-sps">
-      <h2>What is a Special Weather Statement (SPS)? <a class="glossary-anchor" href="#special-weather-statement-sps" aria-label="Link to What is a Special Weather Statement (SPS)?">#</a></h2>
-      <p>A <strong>Special Weather Statement (SPS)</strong> is used by WFOs to communicate weather hazards that don&#39;t meet warning or advisory criteria, or to provide supplemental information. Examples: locally gusty winds, elevated fire danger, brief tornado possible in an ongoing storm, or a nuisance snowfall. SPS products are flexible by design.</p>
-    </article>
-    <article class="glossary-term" id="tsunami-watch">
-      <h2>What is a Tsunami Watch? <a class="glossary-anchor" href="#tsunami-watch" aria-label="Link to What is a Tsunami Watch?">#</a></h2>
-      <p><strong>TSA</strong> is the EAS/SAME code for a <strong>Tsunami Watch</strong>. It means a tsunami is possible, but its arrival, size, or exact threat is still being evaluated. Monitor official tsunami products and be ready to move inland or uphill.</p>
-    </article>
-    <article class="glossary-term" id="wcn">
-      <h2>What is a WCN? <a class="glossary-anchor" href="#wcn" aria-label="Link to What is a WCN?">#</a></h2>
-      <p>A <strong>Watch County Notification (WCN)</strong> is issued by local NWS WFOs when an SPC watch covers their County Warning Area. It provides county-level details and local messaging for the watch, complementing the SPC&#39;s WOU.</p>
-    </article>
-    <article class="glossary-term" id="wea">
-      <h2>What is a WEA? <a class="glossary-anchor" href="#wea" aria-label="Link to What is a WEA?">#</a></h2>
-      <p>A <strong>Wireless Emergency Alert (WEA)</strong> is the loud buzzing alert pushed directly to cell phones within a warning polygon — no app needed. For severe weather:</p>
-      <ul><li><strong>All Tornado Warnings</strong> → WEA</li><li><strong>SVR-D (Destructive tag)</strong> → WEA</li><li><strong>FFW with Considerable or Catastrophic tag</strong> → WEA</li><li><strong>Flash Flood Emergencies (FFE)</strong> → WEA</li><li><strong>SVR-C (Considerable tag)</strong> → No WEA</li><li><strong>Standard SVR / base FFW</strong> → No WEA</li></ul>
-      <p>WEAs use the polygon boundary, not the county, so you only get the alert if your phone is physically inside the warned area.</p>
-    </article>
-    <article class="glossary-term" id="wou">
-      <h2>What is a WOU? <a class="glossary-anchor" href="#wou" aria-label="Link to What is a WOU?">#</a></h2>
-      <p>A <strong>Watch Outline Update (WOU)</strong> is the SPC product issued when a tornado or severe thunderstorm watch is declared. It contains the official polygon coordinates and county list for the watch. Broadcasters, emergency managers, and apps use the WOU to display the watch boundary accurately.</p>
-    </article>
-    <article class="glossary-term" id="afd">
-      <h2>What is an AFD? <a class="glossary-anchor" href="#afd" aria-label="Link to What is an AFD?">#</a></h2>
-      <p>An <strong>Area Forecast Discussion (AFD)</strong> is the local NWS office&#39;s plain-English explanation of their forecast reasoning. Written by forecasters several times daily — the best way to understand what your local WFO is actually thinking.</p>
-    </article>
     <article class="glossary-term" id="air-quality-alert">
       <h2>What is an Air Quality Alert? <a class="glossary-anchor" href="#air-quality-alert" aria-label="Link to What is an Air Quality Alert?">#</a></h2>
       <p>An <strong>Air Quality Alert</strong> is issued when the Air Quality Index (AQI) is forecast to exceed 100 (Unhealthy for Sensitive Groups) or 150 (Unhealthy for all). Causes include wildfire smoke, ground-level ozone (hot stagnant days), and particulate matter from industrial sources. Sensitive groups (elderly, children, asthma) should limit outdoor exposure.</p>
-    </article>
-    <article class="glossary-term" id="hwo">
-      <h2>What is an HWO? <a class="glossary-anchor" href="#hwo" aria-label="Link to What is an HWO?">#</a></h2>
-      <p>A <strong>Hazardous Weather Outlook (HWO)</strong> is a daily product issued by local WFOs highlighting any weather hazards expected over the next 7 days. Day 1 is most detailed; days 2–7 are broader. The HWO is where forecasters flag developing threats <em>before</em> watches or warnings become warranted — your earliest warning for a brewing event.</p>
-    </article>
-    <article class="glossary-term" id="lsr">
-      <h2>What is an LSR? <a class="glossary-anchor" href="#lsr" aria-label="Link to What is an LSR?">#</a></h2>
-      <p>A <strong>Local Storm Report (LSR)</strong> is an NWS product documenting severe weather events as they occur — tornadoes spotted, hail measured, wind damage, flooding. LSRs are the raw record of what actually happened during an event.</p>
-    </article>
-    <article class="glossary-term" id="sps">
-      <h2>What is an SPS? <a class="glossary-anchor" href="#sps" aria-label="Link to What is an SPS?">#</a></h2>
-      <p>A <strong>Special Weather Statement (SPS)</strong> is an NWS product covering sub-severe storms or notable weather that doesn&#39;t meet warning criteria — strong (but not severe) thunderstorms, dense fog, snow squalls in some offices, etc.</p>
-    </article>
-    <article class="glossary-term" id="eas">
-      <h2>What is the EAS? <a class="glossary-anchor" href="#eas" aria-label="Link to What is the EAS?">#</a></h2>
-      <p>The <strong>Emergency Alert System (EAS)</strong> is the national public warning system that allows authorized agencies — including the NWS — to interrupt TV and radio broadcasts with emergency alerts. NOAA Weather Radio (NWR) activates EAS for weather warnings using SAME tones. The three-tone chirp + digital data burst you hear on the radio is EAS in action.</p>
-    </article>
-    <article class="glossary-term" id="vtec">
-      <h2>What is VTEC? <a class="glossary-anchor" href="#vtec" aria-label="Link to What is VTEC?">#</a></h2>
-      <p><strong>VTEC (Valid Time Event Code)</strong> is a standardized string embedded in every NWS warning/watch/advisory text product. It encodes the product type, issuing office, event number, and start/end time in machine-readable form. It&#39;s what allows apps and APIs to parse NWS products automatically without reading the full text.</p>
     </article>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <div class="community-cta">
-        <h2 class="section-title">Hear these terms used live</h2>
-        <p class="section-body">Reading definitions is one thing. Watching Coverage Experts apply them on live radar is how they stick. Join the Xtreme Weather Discord (XWD) and ask Snowball about any term on this page, these are the same answers the bot gives in the server.</p>
-        <div class="page-cta">
-          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-discord"></i> Join the Discord <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
-          <a href="snowball" class="btn-ghost-arrow"><i class="fas fa-snowflake"></i> Meet Snowball <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
-        </div>
+      <div class="glossary-pager">
+        <a href="glossary" class="btn-ghost"><i class="fas fa-arrow-left"></i> Back to the glossary</a>
+        <a href="glossary-flooding" class="btn-ghost">Next: Flooding &amp; Hydrology <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>

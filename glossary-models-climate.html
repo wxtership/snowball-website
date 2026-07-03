@@ -42,15 +42,45 @@
   "hasDefinedTerm": [
     {
       "@type": "DefinedTerm",
-      "name": "Climate Normal",
-      "description": "A climate normal is a 30-year average of a weather variable (temperature, precipitation, snowfall) used as a baseline for comparison. The current normals period is 1991–2020, updated every decade. When forecasters say 'above normal' or 'below normal,' they are comparing to these climatological bench",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#climate-normal"
-    },
-    {
-      "@type": "DefinedTerm",
       "name": "Model Run",
       "description": "A model run is a single execution of a numerical weather prediction model initialized at a specific time (00Z, 06Z, 12Z, 18Z). The GFS runs every 6 hours; the HRRR every hour. Each run produces updated forecasts as new observational data is assimilated. Forecasters compare runs to identify trends an",
       "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#model-run"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Model Consensus",
+      "description": "Model consensus refers to agreement between multiple numerical weather models (GFS, ECMWF, NAM, HRRR, etc.) on a forecast scenario. High consensus increases confidence. When models disagree significantly ('model spread'), confidence is lower and broader uncertainty ranges are appropriate. Forecaster",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#model-consensus"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Ensemble Forecasting",
+      "description": "Ensemble forecasting runs many slightly different model versions (varied initial conditions and physics) to produce a range of possible outcomes. Ensemble spread represents forecast uncertainty — tight cluster = high confidence; wide spread = high uncertainty. The GEFS (GFS Ensemble, 31 members) and",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#ensemble-forecasting"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "GFS",
+      "description": "The GFS (Global Forecast System) is NOAA's primary global NWP model, running 4x daily out to 16 days. The basis for most U.S. medium-range forecasts. Historically less accurate than the European ECMWF model at 5–10 days — but improvements since 2019 (FV3 dynamical core) have narrowed the gap signifi",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#gfs"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "NAM",
+      "description": "The NAM (North American Mesoscale Model) runs 4x daily out to 84 hours at 12km resolution, with 3km nests over the CONUS. The NAM 3km is widely used for day-1 severe weather parameter forecasting — it provides better mesoscale detail than the GFS for fronts, boundaries, and convective parameters.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#nam"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "HRRR",
+      "description": "The HRRR (High-Resolution Rapid Refresh) is NOAA's convection-allowing model — 3km resolution, hourly runs out to 18 hours (extended 48hr runs at select times). It explicitly simulates individual thunderstorm cells rather than parameterizing convection. The gold standard for same-day storm timing, c",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#hrrr"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "ECMWF",
+      "description": "The ECMWF (European Centre for Medium-Range Weather Forecasts) model is widely considered the world's most accurate global weather model — particularly at 5–14 day lead times. Operated by a European intergovernmental organization in Reading, UK. It consistently outperforms the GFS at extended ranges",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#ecmwf"
     },
     {
       "@type": "DefinedTerm",
@@ -66,9 +96,9 @@
     },
     {
       "@type": "DefinedTerm",
-      "name": "Ensemble Forecasting",
-      "description": "Ensemble forecasting runs many slightly different model versions (varied initial conditions and physics) to produce a range of possible outcomes. Ensemble spread represents forecast uncertainty — tight cluster = high confidence; wide spread = high uncertainty. The GEFS (GFS Ensemble, 31 members) and",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#ensemble-forecasting"
+      "name": "CPC",
+      "description": "The Climate Prediction Center (CPC) is the NWS national center for long-range outlooks — temperature and precipitation probability at 6–10 day, 8–14 day, monthly, and seasonal scales. Also monitors ENSO (El Niño/La Niña), the Arctic Oscillation (AO), and other teleconnection patterns that drive seas",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#cpc"
     },
     {
       "@type": "DefinedTerm",
@@ -78,57 +108,15 @@
     },
     {
       "@type": "DefinedTerm",
-      "name": "Model Consensus",
-      "description": "Model consensus refers to agreement between multiple numerical weather models (GFS, ECMWF, NAM, HRRR, etc.) on a forecast scenario. High consensus increases confidence. When models disagree significantly ('model spread'), confidence is lower and broader uncertainty ranges are appropriate. Forecaster",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#model-consensus"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "AMO",
-      "description": "The Atlantic Multidecadal Oscillation (AMO) is a long-term (~60-70 year) cycle of above- and below-normal SSTs in the North Atlantic. The warm phase of the AMO correlates with more active Atlantic hurricane seasons and drought in the Midwest/Great Plains. It has been in a warm phase since ~1995.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#amo"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "CPC",
-      "description": "The Climate Prediction Center (CPC) is the NWS national center for long-range outlooks — temperature and precipitation probability at 6–10 day, 8–14 day, monthly, and seasonal scales. Also monitors ENSO (El Niño/La Niña), the Arctic Oscillation (AO), and other teleconnection patterns that drive seas",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#cpc"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Drought Monitor",
-      "description": "The U.S. Drought Monitor is a weekly national map depicting drought conditions across five categories: D0 (Abnormally Dry) through D4 (Exceptional Drought). Produced jointly by the NOAA, USDA, and the National Drought Mitigation Center. It directly triggers drought declarations, crop insurance payme",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#drought-monitor"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "ECMWF",
-      "description": "The ECMWF (European Centre for Medium-Range Weather Forecasts) model is widely considered the world's most accurate global weather model — particularly at 5–14 day lead times. Operated by a European intergovernmental organization in Reading, UK. It consistently outperforms the GFS at extended ranges",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#ecmwf"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "GFS",
-      "description": "The GFS (Global Forecast System) is NOAA's primary global NWP model, running 4x daily out to 16 days. The basis for most U.S. medium-range forecasts. Historically less accurate than the European ECMWF model at 5–10 days — but improvements since 2019 (FV3 dynamical core) have narrowed the gap signifi",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#gfs"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "HRRR",
-      "description": "The HRRR (High-Resolution Rapid Refresh) is NOAA's convection-allowing model — 3km resolution, hourly runs out to 18 hours (extended 48hr runs at select times). It explicitly simulates individual thunderstorm cells rather than parameterizing convection. The gold standard for same-day storm timing, c",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#hrrr"
-    },
-    {
-      "@type": "DefinedTerm",
       "name": "MJO",
       "description": "The Madden-Julian Oscillation (MJO) is the dominant mode of intraseasonal tropical variability — an eastward-propagating pulse of enhanced and suppressed tropical convection circling the tropics every 30–60 days. Its phase position modulates tornado outbreaks, precipitation patterns, and even winter",
       "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#mjo"
     },
     {
       "@type": "DefinedTerm",
-      "name": "NAM",
-      "description": "The NAM (North American Mesoscale Model) runs 4x daily out to 84 hours at 12km resolution, with 3km nests over the CONUS. The NAM 3km is widely used for day-1 severe weather parameter forecasting — it provides better mesoscale detail than the GFS for fronts, boundaries, and convective parameters.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#nam"
+      "name": "AMO",
+      "description": "The Atlantic Multidecadal Oscillation (AMO) is a long-term (~60-70 year) cycle of above- and below-normal SSTs in the North Atlantic. The warm phase of the AMO correlates with more active Atlantic hurricane seasons and drought in the Midwest/Great Plains. It has been in a warm phase since ~1995.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#amo"
     },
     {
       "@type": "DefinedTerm",
@@ -141,6 +129,18 @@
       "name": "QBO",
       "description": "The Quasi-Biennial Oscillation (QBO) is a cycle of easterly and westerly winds in the tropical stratosphere, alternating with a period of ~28 months. The QBO influences the polar vortex, Atlantic hurricane activity, and winter weather patterns. The westerly (positive) QBO phase is associated with st",
       "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#qbo"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Climate Normal",
+      "description": "A climate normal is a 30-year average of a weather variable (temperature, precipitation, snowfall) used as a baseline for comparison. The current normals period is 1991–2020, updated every decade. When forecasters say 'above normal' or 'below normal,' they are comparing to these climatological bench",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#climate-normal"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Drought Monitor",
+      "description": "The U.S. Drought Monitor is a weekly national map depicting drought conditions across five categories: D0 (Abnormally Dry) through D4 (Exceptional Drought). Produced jointly by the NOAA, USDA, and the National Drought Mitigation Center. It directly triggers drought declarations, crop insurance payme",
+      "url": "https://wxtership.github.io/snowball-website/glossary-models-climate#drought-monitor"
     }
   ]
 }
@@ -248,13 +248,33 @@
 
   <section>
     <div class="section-inner glossary-list">
-    <article class="glossary-term" id="climate-normal">
-      <h2>What is a Climate Normal? <a class="glossary-anchor" href="#climate-normal" aria-label="Link to What is a Climate Normal?">#</a></h2>
-      <p>A <strong>climate normal</strong> is a 30-year average of a weather variable (temperature, precipitation, snowfall) used as a baseline for comparison. The current normals period is 1991–2020, updated every decade. When forecasters say &#39;above normal&#39; or &#39;below normal,&#39; they are comparing to these climatological benchmarks.</p>
-    </article>
     <article class="glossary-term" id="model-run">
       <h2>What is a Model Run? <a class="glossary-anchor" href="#model-run" aria-label="Link to What is a Model Run?">#</a></h2>
       <p>A <strong>model run</strong> is a single execution of a numerical weather prediction model initialized at a specific time (00Z, 06Z, 12Z, 18Z). The GFS runs every 6 hours; the HRRR every hour. Each run produces updated forecasts as new observational data is assimilated. Forecasters compare runs to identify trends and model consistency.</p>
+    </article>
+    <article class="glossary-term" id="model-consensus">
+      <h2>What is Model Consensus? <a class="glossary-anchor" href="#model-consensus" aria-label="Link to What is Model Consensus?">#</a></h2>
+      <p><strong>Model consensus</strong> refers to agreement between multiple numerical weather models (GFS, ECMWF, NAM, HRRR, etc.) on a forecast scenario. High consensus increases confidence. When models disagree significantly (&#39;model spread&#39;), confidence is lower and broader uncertainty ranges are appropriate. Forecasters weight models based on skill for specific scenarios.</p>
+    </article>
+    <article class="glossary-term" id="ensemble-forecasting">
+      <h2>What is Ensemble Forecasting? <a class="glossary-anchor" href="#ensemble-forecasting" aria-label="Link to What is Ensemble Forecasting?">#</a></h2>
+      <p><strong>Ensemble forecasting</strong> runs many slightly different model versions (varied initial conditions and physics) to produce a range of possible outcomes. Ensemble <strong>spread</strong> represents forecast uncertainty — tight cluster = high confidence; wide spread = high uncertainty. The <strong>GEFS</strong> (GFS Ensemble, 31 members) and <strong>ECMWF ENS</strong> (51 members) are the primary global ensembles.</p>
+    </article>
+    <article class="glossary-term" id="gfs">
+      <h2>What is the GFS? <a class="glossary-anchor" href="#gfs" aria-label="Link to What is the GFS?">#</a></h2>
+      <p>The <strong>GFS (Global Forecast System)</strong> is NOAA&#39;s primary global NWP model, running 4x daily out to 16 days. The basis for most U.S. medium-range forecasts. Historically less accurate than the European ECMWF model at 5–10 days — but improvements since 2019 (FV3 dynamical core) have narrowed the gap significantly.</p>
+    </article>
+    <article class="glossary-term" id="nam">
+      <h2>What is the NAM? <a class="glossary-anchor" href="#nam" aria-label="Link to What is the NAM?">#</a></h2>
+      <p>The <strong>NAM (North American Mesoscale Model)</strong> runs 4x daily out to 84 hours at 12km resolution, with 3km nests over the CONUS. The <strong>NAM 3km</strong> is widely used for day-1 severe weather parameter forecasting — it provides better mesoscale detail than the GFS for fronts, boundaries, and convective parameters.</p>
+    </article>
+    <article class="glossary-term" id="hrrr">
+      <h2>What is the HRRR? <a class="glossary-anchor" href="#hrrr" aria-label="Link to What is the HRRR?">#</a></h2>
+      <p>The <strong>HRRR (High-Resolution Rapid Refresh)</strong> is NOAA&#39;s convection-allowing model — <strong>3km resolution, hourly runs out to 18 hours</strong> (extended 48hr runs at select times). It explicitly simulates individual thunderstorm cells rather than parameterizing convection. The gold standard for same-day storm timing, coverage, and mode forecasting.</p>
+    </article>
+    <article class="glossary-term" id="ecmwf">
+      <h2>What is the ECMWF? <a class="glossary-anchor" href="#ecmwf" aria-label="Link to What is the ECMWF?">#</a></h2>
+      <p>The <strong>ECMWF (European Centre for Medium-Range Weather Forecasts)</strong> model is widely considered the world&#39;s most accurate global weather model — particularly at <strong>5–14 day lead times</strong>. Operated by a European intergovernmental organization in Reading, UK. It consistently outperforms the GFS at extended ranges and famously predicted Hurricane Sandy&#39;s unusual westward track days before American models.</p>
     </article>
     <article class="glossary-term" id="point-and-click-forecast">
       <h2>What is a Point-and-Click Forecast? <a class="glossary-anchor" href="#point-and-click-forecast" aria-label="Link to What is a Point-and-Click Forecast?">#</a></h2>
@@ -264,49 +284,21 @@
       <h2>What is an NWS Text Product? <a class="glossary-anchor" href="#nws-text-product" aria-label="Link to What is an NWS Text Product?">#</a></h2>
       <p><strong>NWS text products</strong> are official written forecasts and statements issued by WFOs using standardized identifiers (VTEC codes, AWIPS headers). Categories include: Watches/Warnings/Advisories, discussions (AFD, MCD, PNS), summaries (HWO, ESF), and records (LSR, Storm Data). Available at mesonet.agron.iastate.edu and api.weather.gov.</p>
     </article>
-    <article class="glossary-term" id="ensemble-forecasting">
-      <h2>What is Ensemble Forecasting? <a class="glossary-anchor" href="#ensemble-forecasting" aria-label="Link to What is Ensemble Forecasting?">#</a></h2>
-      <p><strong>Ensemble forecasting</strong> runs many slightly different model versions (varied initial conditions and physics) to produce a range of possible outcomes. Ensemble <strong>spread</strong> represents forecast uncertainty — tight cluster = high confidence; wide spread = high uncertainty. The <strong>GEFS</strong> (GFS Ensemble, 31 members) and <strong>ECMWF ENS</strong> (51 members) are the primary global ensembles.</p>
+    <article class="glossary-term" id="cpc">
+      <h2>What is the CPC? <a class="glossary-anchor" href="#cpc" aria-label="Link to What is the CPC?">#</a></h2>
+      <p>The <strong>Climate Prediction Center (CPC)</strong> is the NWS national center for long-range outlooks — temperature and precipitation probability at <strong>6–10 day, 8–14 day, monthly, and seasonal</strong> scales. Also monitors <strong>ENSO (El Niño/La Niña)</strong>, the <strong>Arctic Oscillation (AO)</strong>, and other teleconnection patterns that drive seasonal weather.</p>
     </article>
     <article class="glossary-term" id="enso-el-ni-o-la-ni-a">
       <h2>What is ENSO (El Niño / La Niña)? <a class="glossary-anchor" href="#enso-el-ni-o-la-ni-a" aria-label="Link to What is ENSO (El Niño / La Niña)?">#</a></h2>
       <p><strong>ENSO (El Niño–Southern Oscillation)</strong> is the large-scale coupled ocean-atmosphere pattern in the tropical Pacific that significantly influences global weather patterns. <strong>El Niño</strong> (warm Pacific) tends to suppress Atlantic hurricane activity, strengthen the southern jet, and bring wetter winters to the south. <strong>La Niña</strong> (cool Pacific) often does the opposite — fueling more Atlantic hurricanes and producing drier winters in the southern U.S.</p>
     </article>
-    <article class="glossary-term" id="model-consensus">
-      <h2>What is Model Consensus? <a class="glossary-anchor" href="#model-consensus" aria-label="Link to What is Model Consensus?">#</a></h2>
-      <p><strong>Model consensus</strong> refers to agreement between multiple numerical weather models (GFS, ECMWF, NAM, HRRR, etc.) on a forecast scenario. High consensus increases confidence. When models disagree significantly (&#39;model spread&#39;), confidence is lower and broader uncertainty ranges are appropriate. Forecasters weight models based on skill for specific scenarios.</p>
-    </article>
-    <article class="glossary-term" id="amo">
-      <h2>What is the AMO? <a class="glossary-anchor" href="#amo" aria-label="Link to What is the AMO?">#</a></h2>
-      <p>The <strong>Atlantic Multidecadal Oscillation (AMO)</strong> is a long-term (~60-70 year) cycle of above- and below-normal SSTs in the North Atlantic. The warm phase of the AMO correlates with more active Atlantic hurricane seasons and drought in the Midwest/Great Plains. It has been in a warm phase since ~1995.</p>
-    </article>
-    <article class="glossary-term" id="cpc">
-      <h2>What is the CPC? <a class="glossary-anchor" href="#cpc" aria-label="Link to What is the CPC?">#</a></h2>
-      <p>The <strong>Climate Prediction Center (CPC)</strong> is the NWS national center for long-range outlooks — temperature and precipitation probability at <strong>6–10 day, 8–14 day, monthly, and seasonal</strong> scales. Also monitors <strong>ENSO (El Niño/La Niña)</strong>, the <strong>Arctic Oscillation (AO)</strong>, and other teleconnection patterns that drive seasonal weather.</p>
-    </article>
-    <article class="glossary-term" id="drought-monitor">
-      <h2>What is the Drought Monitor? <a class="glossary-anchor" href="#drought-monitor" aria-label="Link to What is the Drought Monitor?">#</a></h2>
-      <p>The <strong>U.S. Drought Monitor</strong> is a weekly national map depicting drought conditions across five categories: D0 (Abnormally Dry) through D4 (Exceptional Drought). Produced jointly by the NOAA, USDA, and the National Drought Mitigation Center. It directly triggers drought declarations, crop insurance payments, and water restrictions.</p>
-    </article>
-    <article class="glossary-term" id="ecmwf">
-      <h2>What is the ECMWF? <a class="glossary-anchor" href="#ecmwf" aria-label="Link to What is the ECMWF?">#</a></h2>
-      <p>The <strong>ECMWF (European Centre for Medium-Range Weather Forecasts)</strong> model is widely considered the world&#39;s most accurate global weather model — particularly at <strong>5–14 day lead times</strong>. Operated by a European intergovernmental organization in Reading, UK. It consistently outperforms the GFS at extended ranges and famously predicted Hurricane Sandy&#39;s unusual westward track days before American models.</p>
-    </article>
-    <article class="glossary-term" id="gfs">
-      <h2>What is the GFS? <a class="glossary-anchor" href="#gfs" aria-label="Link to What is the GFS?">#</a></h2>
-      <p>The <strong>GFS (Global Forecast System)</strong> is NOAA&#39;s primary global NWP model, running 4x daily out to 16 days. The basis for most U.S. medium-range forecasts. Historically less accurate than the European ECMWF model at 5–10 days — but improvements since 2019 (FV3 dynamical core) have narrowed the gap significantly.</p>
-    </article>
-    <article class="glossary-term" id="hrrr">
-      <h2>What is the HRRR? <a class="glossary-anchor" href="#hrrr" aria-label="Link to What is the HRRR?">#</a></h2>
-      <p>The <strong>HRRR (High-Resolution Rapid Refresh)</strong> is NOAA&#39;s convection-allowing model — <strong>3km resolution, hourly runs out to 18 hours</strong> (extended 48hr runs at select times). It explicitly simulates individual thunderstorm cells rather than parameterizing convection. The gold standard for same-day storm timing, coverage, and mode forecasting.</p>
-    </article>
     <article class="glossary-term" id="mjo">
       <h2>What is the MJO? <a class="glossary-anchor" href="#mjo" aria-label="Link to What is the MJO?">#</a></h2>
       <p>The <strong>Madden-Julian Oscillation (MJO)</strong> is the dominant mode of intraseasonal tropical variability — an eastward-propagating pulse of enhanced and suppressed tropical convection circling the tropics every 30–60 days. Its phase position modulates tornado outbreaks, precipitation patterns, and even winter storms across North America on 2–5 week timescales.</p>
     </article>
-    <article class="glossary-term" id="nam">
-      <h2>What is the NAM? <a class="glossary-anchor" href="#nam" aria-label="Link to What is the NAM?">#</a></h2>
-      <p>The <strong>NAM (North American Mesoscale Model)</strong> runs 4x daily out to 84 hours at 12km resolution, with 3km nests over the CONUS. The <strong>NAM 3km</strong> is widely used for day-1 severe weather parameter forecasting — it provides better mesoscale detail than the GFS for fronts, boundaries, and convective parameters.</p>
+    <article class="glossary-term" id="amo">
+      <h2>What is the AMO? <a class="glossary-anchor" href="#amo" aria-label="Link to What is the AMO?">#</a></h2>
+      <p>The <strong>Atlantic Multidecadal Oscillation (AMO)</strong> is a long-term (~60-70 year) cycle of above- and below-normal SSTs in the North Atlantic. The warm phase of the AMO correlates with more active Atlantic hurricane seasons and drought in the Midwest/Great Plains. It has been in a warm phase since ~1995.</p>
     </article>
     <article class="glossary-term" id="pdo">
       <h2>What is the PDO? <a class="glossary-anchor" href="#pdo" aria-label="Link to What is the PDO?">#</a></h2>
@@ -316,18 +308,22 @@
       <h2>What is the QBO? <a class="glossary-anchor" href="#qbo" aria-label="Link to What is the QBO?">#</a></h2>
       <p>The <strong>Quasi-Biennial Oscillation (QBO)</strong> is a cycle of easterly and westerly winds in the tropical stratosphere, alternating with a period of ~28 months. The QBO influences the polar vortex, Atlantic hurricane activity, and winter weather patterns. The westerly (positive) QBO phase is associated with stronger polar vortex and fewer Midwest cold snaps.</p>
     </article>
+    <article class="glossary-term" id="climate-normal">
+      <h2>What is a Climate Normal? <a class="glossary-anchor" href="#climate-normal" aria-label="Link to What is a Climate Normal?">#</a></h2>
+      <p>A <strong>climate normal</strong> is a 30-year average of a weather variable (temperature, precipitation, snowfall) used as a baseline for comparison. The current normals period is 1991–2020, updated every decade. When forecasters say &#39;above normal&#39; or &#39;below normal,&#39; they are comparing to these climatological benchmarks.</p>
+    </article>
+    <article class="glossary-term" id="drought-monitor">
+      <h2>What is the Drought Monitor? <a class="glossary-anchor" href="#drought-monitor" aria-label="Link to What is the Drought Monitor?">#</a></h2>
+      <p>The <strong>U.S. Drought Monitor</strong> is a weekly national map depicting drought conditions across five categories: D0 (Abnormally Dry) through D4 (Exceptional Drought). Produced jointly by the NOAA, USDA, and the National Drought Mitigation Center. It directly triggers drought declarations, crop insurance payments, and water restrictions.</p>
+    </article>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <div class="community-cta">
-        <h2 class="section-title">Hear these terms used live</h2>
-        <p class="section-body">Reading definitions is one thing. Watching Coverage Experts apply them on live radar is how they stick. Join the Xtreme Weather Discord (XWD) and ask Snowball about any term on this page, these are the same answers the bot gives in the server.</p>
-        <div class="page-cta">
-          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-discord"></i> Join the Discord <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
-          <a href="snowball" class="btn-ghost-arrow"><i class="fas fa-snowflake"></i> Meet Snowball <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
-        </div>
+      <div class="glossary-pager">
+        <a href="glossary" class="btn-ghost"><i class="fas fa-arrow-left"></i> Back to the glossary</a>
+        <a href="glossary-clouds" class="btn-ghost">Next: Cloud Types <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>

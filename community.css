@@ -1183,8 +1183,16 @@ button.clean-link:focus-visible { outline: 2px solid var(--purple-400); outline-
 .glossary-term p { margin: 0 0 10px; color: rgba(255,255,255,0.72); line-height: 1.65; font-size: 15.5px; }
 .glossary-term p:last-child { margin-bottom: 0; }
 .glossary-term ul { margin: 0 0 10px 18px; color: rgba(255,255,255,0.72); line-height: 1.65; font-size: 15.5px; }
-.glossary-anchor { opacity: 0; margin-left: 8px; color: var(--purple-300); text-decoration: none; font-weight: 400; }
+.glossary-anchor { opacity: 0; margin-left: 8px; color: var(--purple-300); text-decoration: none; font-weight: 400; transition: opacity 0.3s ease; }
 .glossary-term:hover .glossary-anchor, .glossary-anchor:focus-visible { opacity: 1; }
+
+/* Bottom back/next pager on glossary category pages */
+.glossary-pager { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+.glossary-pager .btn-ghost { font-size: 14px; padding: 12px 22px; }
+@media (max-width: 600px) {
+  .glossary-pager { flex-direction: column; align-items: stretch; }
+  .glossary-pager .btn-ghost { justify-content: center; }
+}
 .glossary-compact .glossary-term { padding: 12px 0; }
 .glossary-compact .glossary-term h2 { font-size: 16px; margin-bottom: 4px; }
 .glossary-compact .glossary-term p { font-size: 14px; }

@@ -82,7 +82,7 @@ const CATEGORIES = [
     heading: 'Tropical Weather & Hurricane Terms',
     icon: 'assets/icons/small-satellite.png',
     intro: 'Tropical meteorology has its own language: invests, rapid intensification, eyewall replacement cycles, the cone. This page walks the full ladder from tropical disturbance to Category 5 hurricane and decodes the NHC products and phenomena around landfalling systems. When the tropics wake up, Tropical Coverage runs live in the Xtreme Weather Discord (XWD).',
-    match: (t) => /Tropical|Hurricane|Saffir|Category [1-5]|NHC|Eyewall|Eye\?|Rainband|Storm Surge|Dropsonde|Invest|ACE\b|Post-Tropical|SST|Loop Current|Subtropical|HUW|HUA|Rapid Intensification|Cone of Uncertainty/i.test(t),
+    match: (t) => /Tropical|Hurricane|Saffir|Category [1-5]|NHC|Eyewall|Eye\?|Rainband|Storm Surge|Dropsonde|Invest|\bACE\b|Post-Tropical|SST|Loop Current|Subtropical|HUW|HUA|Rapid Intensification|Cone of Uncertainty/i.test(t),
   },
   {
     key: 'fire-heat',
@@ -98,7 +98,7 @@ const CATEGORIES = [
     heading: 'Radar Fundamentals',
     icon: 'assets/icons/small-radar.png',
     intro: 'Before you can read a hook echo, you need to know what the radar is actually measuring. This page covers how NEXRAD works: reflectivity, velocity, scan strategies like SAILS and MRLE, beam geometry, and the artifacts that fool beginners. It pairs with the [[radar-signatures]] page, and you can put all of it to use on our own radar at radar.xtremewx.com or with Snowball’s radar commands in the XWD Discord.',
-    match: (t) => /NEXRAD|Reflectivity|^What is Velocity|Storm Relative Velocity|VCP|SAILS|MRLE|Base Scan|Beam Height|Cone of Silence|Spectrum Width|Range Folding|Ground Clutter|Super-Resolution|Anomalous Propagation|Radar Aliasing|Clear-Air|B-Scan|VIL|Echo Tops|MRMS|Dual-Pol Radar|DOW|RaXPol/i.test(t),
+    match: (t) => /NEXRAD|Reflectivity|^What is Velocity|Storm Relative Velocity|VCP|SAILS|MRLE|Base Scan|Beam Height|Cone of Silence|Spectrum Width|Range Folding|Ground Clutter|Super-Resolution|Anomalous Propagation|Radar Aliasing|Clear-Air|B-Scan|\bVIL\b|Echo Tops|MRMS|Dual-Pol Radar|\bDOW\b|RaXPol/i.test(t),
   },
   {
     key: 'radar-signatures',
@@ -197,6 +197,155 @@ const FALLBACK = {
   icon: 'assets/icons/small-weather.png',
   intro: 'The terms that do not fit neatly anywhere else but still come up in the Xtreme Weather Discord (XWD) all the time: coverage modes, agencies, and everyday forecasting vocabulary. If you cannot find a term here, try the search on the main glossary page, or just ask Snowball in the Discord, these definitions are the same answers the bot gives there.',
   match: () => true,
+};
+
+/* ------------------------------- term order -------------------------------
+   Curated reading order per page: rank = index of the FIRST pattern matching
+   the term title; unmatched terms fall to the end alphabetically. The idea is
+   ladders before variants (EF0 -> EF5, watch -> warning -> emergency) and
+   fundamentals before jargon, so each page reads top-to-bottom like a lesson
+   instead of a dictionary. */
+const TERM_ORDER = {
+  'nws-offices': [/^What is the NWS\?/, /^What is a WFO\?/],
+  'spc-outlooks': [
+    /^What is the SPC\?/, /Categorical Outlooks/,
+    /Marginal Risk/, /Slight Risk/, /Enhanced Risk/, /Moderate Risk/, /High Risk/,
+    /Conditional Intensity/, /CIG1/, /CIG2/, /CIG3/,
+    /MCD/, /Mesoanalysis/, /WoFS/, /ProbSevere/,
+  ],
+  'tornado-severe-alerts': [
+    /^Watch vs\. Warning/,
+    /^What is a Tornado Watch\?/, /PDS Tornado Watch/,
+    /^What is a Tornado Warning\?/, /TOR-C/, /TOR-O/, /TOR-R/, /TOR-P\?/,
+    /PDS Tornado Warning/, /Tornado Emergency \(TOR-E\)/, /Triggers a Tornado Emergency/,
+    /^What is a Severe Thunderstorm Watch\?/, /PDS Severe Thunderstorm Watch/,
+    /Severe Thunderstorm Warning/, /SVR-C/, /SVR-D/,
+    /SVS/, /Extreme Wind Warning/,
+  ],
+  'nws-alert-codes': [
+    /VTEC/, /the EAS\?/, /a WEA\?/,
+    /AFD/, /HWO/, /an SPS\?/, /Special Weather Statement/, /LSR/, /PNS/, /WOU/, /WCN/,
+    /Special Marine/, /Tsunami/, /Rip Current/, /Dense Fog/, /Frost Advisory/, /Hard Freeze/, /Air Quality/,
+  ],
+  'flooding': [
+    /Flood Watch \(FLA\)/, /Flash Flood Watch/, /Flood Warning \(FLW\)/, /FLS/,
+    /Flash Flood Warning/, /Flash Flood Emergency/,
+    /Coastal Flood Warning/, /Dam Failure/,
+    /Flood Stage/, /Areal Flooding/, /Flash Flood Guidance/, /Soil Saturation/,
+    /Excessive Rainfall/, /the WPC\?/, /River Forecast/,
+  ],
+  'winter': [
+    /^What is a Winter Storm\?/, /Winter Storm Outlook/, /Winter Storm Watch/,
+    /Winter Weather Advisory/, /Winter Storm Warning/, /Blizzard Warning/,
+    /Ice Storm Warning/, /^What is a Snow Squall\?/, /Snow Squall Warning/,
+    /^What is Wind Chill\?/, /Wind Chill Advisory/, /Wind Chill Warning/,
+    /Freezing Rain/, /Freezing Drizzle/, /Sleet/, /Wintry Mix/, /Graupel/,
+    /Black Ice/, /Freezing Fog/, /Blowing Snow/, /Diamond Dust/,
+    /Lake Effect Snow/, /Lake-Effect Snow/, /Nor'easter/, /Bomb Cyclone/,
+    /Polar Vortex/, /Arctic Outbreak/, /Stratospheric/,
+    /WSSI/, /Snow Drought/,
+  ],
+  'tropical': [
+    /Tropical Cyclone\?/, /Tropical Disturbance/, /Tropical Wave/, /Invest Area/,
+    /Tropical Depression/, /^What is a Tropical Storm\?/, /Subtropical Storm/,
+    /^What is a Hurricane\?/, /Major Hurricane/, /Saffir-Simpson/,
+    /Category 1/, /Category 2/, /Category 3/, /Category 4/, /Category 5/,
+    /Rapid Intensification/, /Post-Tropical/,
+    /the Eye\?/, /the Eyewall\?/, /Eyewall Replacement/, /Rainbands/,
+    /^What is Storm Surge\?/, /Storm Surge Warning/, /Tropical Storm Watch/,
+    /NHC/, /Tropical Weather Outlook/, /Cone of Uncertainty/,
+    /Hurricane Hunters/, /Dropsonde/, /SST/, /Loop Current/,
+  ],
+  'fire-heat': [
+    /Fire Weather Watch/, /Red Flag/, /ETO/, /Critical Fire Weather/,
+    /Fuel Moisture/, /RH Recovery/, /Haines/, /Offshore Flow/, /Fire Spotting/,
+    /Pyrocumulus/, /Fire Whirl/,
+    /Heat Index/, /Heat Advisory/, /Excessive Heat Warning/, /Heat Dome/, /Heat Burst/,
+    /Wind Advisory/, /High Wind Watch/, /High Wind Warning/,
+  ],
+  'radar-fundamentals': [
+    /NEXRAD/, /Dual-Pol Radar/, /Reflectivity/, /^What is Velocity\?/,
+    /Storm Relative Velocity/, /Spectrum Width/,
+    /Base Scan/, /SAILS/, /MRLE/, /Super-Resolution/, /Beam Height/, /Cone of Silence/,
+    /Ground Clutter/, /Anomalous Propagation/, /Range Folding/, /Radar Aliasing/, /Clear-Air/,
+    /Echo Tops/, /MRMS/, /B-Scan/, /DOW/, /RaXPol/,
+  ],
+  'radar-signatures': [
+    /Hook Echo/, /Velocity Couplet/, /Gate-to-Gate/, /VROT/, /TVS/, /AzShear/,
+    /Correlation Coefficient/, /CC Drop/, /TDS/, /Debris Ball/, /ZDR Column/, /Dual-Pol Signature/,
+    /BWER/, /Three-Body/, /TBSS/, /Side Lobe/,
+  ],
+  'instability-cape': [
+    /^What is CAPE\?/, /SBCAPE/, /MLCAPE/, /MUCAPE/, /DCAPE/, /0-3 km CAPE/,
+    /Mixed-Layer Parcel/, /Most-Unstable Parcel/, /Surface-Based Convection/, /Elevated Convection/,
+    /the Cap\?/, /Capping Inversion/, /LCL/, /LFC/, /Equilibrium/, /Lifted Index/, /K-Index/, /Lapse Rate/,
+    /Dewpoint/, /Relative Humidity/, /Mixing Ratio/, /Precipitable Water/, /Theta-E/, /Moisture Pooling/,
+    /^What is a Sounding\?/, /Skew-T/, /Radiosonde/, /Loaded Gun/,
+    /Convective Initiation/,
+  ],
+  'shear-indices': [
+    /^What is Wind Shear\?/, /Bulk Shear/, /0-1 km Shear/, /0-6 km/, /Effective Shear/,
+    /Storm Relative Helicity/, /Streamwise/, /Backing and Veering/,
+    /Hodograph/, /Bunkers/, /Low-Level Jet/, /SIGTOR/,
+  ],
+  'boundaries-winds': [
+    /Dryline/, /Outflow Boundary/, /Gust Front/, /Cold Pool/, /Triple Point/,
+    /Convergence/, /Divergence/,
+    /^What is a Sea Breeze\?/, /Sea Breeze Front/, /Land Breeze/, /Lake Breeze/,
+    /Upslope/, /Mountain Wave/, /Chinook/, /Gap Wind/,
+  ],
+  'storm-structure': [
+    /^What is a Supercell\?/, /What Makes a Supercell/, /Classic \(CL\)/,
+    /^What is an HP Supercell/, /^What is an LP Supercell/, /HP vs\. LP/,
+    /Discrete Supercell/, /Cyclic Supercell/,
+    /Mesocyclone/, /^What is an Updraft\?/, /^What is a Downdraft\?/,
+    /^What is an FFD\?/, /Forward Flank Downdraft/, /^What is an RFD\?/, /Rear Flank Downdraft/,
+    /FFD vs\. RFD/, /RFD Surge/, /Clear Slot/,
+    /^What is Inflow\?/, /Inflow Notch/, /Rear Inflow Jet/, /Flanking Line/,
+    /Cumulonimbus/, /Overshooting/, /^What is an Anvil\?/, /Wall Cloud/, /Funnel Cloud/,
+    /Cold Air Funnel/, /Tail Cloud/, /Beaver/, /Shelf Cloud/, /Roll Cloud/, /Whale/,
+    /Scud/, /Mammatus/, /Horseshoe/, /Mesovortex/,
+  ],
+  'storm-types': [
+    /Multicell/, /^What is a Squall\?/, /Squall Line/, /Bow Echo/, /^What is a Derecho\?/,
+    /Derecho vs/, /QLCS/, /MCS/, /MCV/,
+    /Downburst/, /Microburst/, /Macroburst/,
+    /Gustnado/, /Landspout/, /Waterspout/, /Dust Devil/, /Haboob/, /Virga/, /Steam Fog/,
+    /^What is Lightning\?/, /^What is Thunder\?/, /Lightning Jump/, /Thunderstorm Probability/,
+  ],
+  'tornadoes': [
+    /EF Scale/, /EF0/, /EF1/, /EF2/, /EF3/, /EF4/, /EF5/, /EFU/,
+    /Damage Survey/, /Storm Data/, /Tornado Track/,
+    /Rope/, /Stovepipe/, /Wedge/, /Multi-Vortex/, /Satellite Tornado/, /Rain-Wrapped/, /Cyclic Tornado/,
+    /Tornado Outbreak/,
+    /^What is Hail\?/, /Significant Hail/, /Giant Hail/, /Hail Size Reference/,
+  ],
+  'synoptic': [
+    /Air Mass/, /Cold Front/, /Warm Front/, /Stationary Front/, /Occluded/, /Warm Sector/,
+    /Low Pressure/, /Dry Slot/,
+    /Jet Stream\?/, /^What is a Jet Streak\?/, /Jet Streak Quadrants/,
+    /Upper-Level Trough/, /Shortwave/, /Longwave/, /^What is a Ridge\?/, /Omega Block/,
+    /500mb/, /Geopotential/, /Tropopause/, /TPV/,
+    /Absolute Vorticity/, /Potential Vorticity/, /Omega \/ Vertical/, /Quasi-Geostrophic/, /Baroclinic/,
+    /Temperature Inversion/, /Orographic/, /Adiabatic/,
+  ],
+  'observations': [
+    /SKYWARN/, /Storm Spotter/, /Storm Chaser/, /Mesonet/, /CoCoRaHS/,
+    /Surface Analysis/, /METAR/, /TAF/, /SIGMET/, /PIREP/,
+    /GOES/, /Visible Satellite/, /Infrared/, /Water Vapor/, /GLM/,
+  ],
+  'models-climate': [
+    /Model Run/, /Model Consensus/, /Ensemble/, /GFS/, /NAM/, /HRRR/, /ECMWF/,
+    /Point-and-Click/, /Text Product/, /CPC/,
+    /ENSO/, /MJO/, /AMO/, /PDO/, /QBO/,
+    /Climate Normal/, /Drought Monitor/,
+  ],
+  'clouds': [
+    /Main Cloud Types/,
+    /a Cumulus Cloud/, /a Stratus Cloud/, /Stratocumulus/, /Nimbostratus/,
+    /Altostratus/, /Altocumulus/,
+    /a Cirrus Cloud/, /Cirrostratus/, /Cirrocumulus/,
+  ],
 };
 
 /* --------------------------------- helpers -------------------------------- */
@@ -312,10 +461,16 @@ const cta = `
 
 /* ---------------------------- category pages ------------------------------ */
 const written = [];
-for (const cat of [...CATEGORIES, FALLBACK]) {
+const pageCats = [...CATEGORIES, FALLBACK].filter((c) => buckets.get(c.key).length);
+for (let ci = 0; ci < pageCats.length; ci++) {
+  const cat = pageCats[ci];
   const terms = buckets.get(cat.key);
-  if (!terms.length) continue;
-  terms.sort((a, b) => a.title.localeCompare(b.title));
+  const hints = TERM_ORDER[cat.key] || [];
+  const rank = (title) => {
+    for (let i = 0; i < hints.length; i++) if (hints[i].test(title)) return i;
+    return hints.length;
+  };
+  terms.sort((a, b) => rank(a.title) - rank(b.title) || a.title.localeCompare(b.title));
 
   const slugs = new Map();
   const termHtml = terms.map((d) => {
@@ -344,6 +499,18 @@ for (const cat of [...CATEGORIES, FALLBACK]) {
     })),
   };
 
+  const nextCat = pageCats[ci + 1];
+  const pager = `
+  <section>
+    <div class="section-inner">
+      <div class="glossary-pager">
+        <a href="glossary" class="btn-ghost"><i class="fas fa-arrow-left"></i> Back to the glossary</a>${nextCat ? `
+        <a href="glossary-${nextCat.key}" class="btn-ghost">Next: ${esc(nextCat.title)} <i class="fas fa-arrow-right"></i></a>` : ''}
+      </div>
+    </div>
+  </section>
+`;
+
   const body = `<main class="community-page">
 
   <section class="page-hero">
@@ -358,7 +525,7 @@ for (const cat of [...CATEGORIES, FALLBACK]) {
 ${termHtml}
     </div>
   </section>
-${cta}
+${pager}
 </main>`;
 
   fs.writeFileSync(path.join(SITE, `${pageSlug}.html`),

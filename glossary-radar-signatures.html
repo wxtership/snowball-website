@@ -42,69 +42,9 @@
   "hasDefinedTerm": [
     {
       "@type": "DefinedTerm",
-      "name": "BWER",
-      "description": "A Bounded Weak Echo Region (BWER) is a notch of low reflectivity at low levels on a storm's inflow side, overhung by high reflectivity aloft. It indicates an extremely strong updraft ingesting precipitation-free air. BWERs are associated with violent supercells and large hail.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#bwer"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "CC Drop",
-      "description": "A CC drop (correlation coefficient drop) occurs when values fall below ~0.95 inside a storm. This indicates non-meteorological scatterers: tornado debris (TDS), large/irregular hail, biological targets, or ground clutter. A CC drop co-located with a velocity couplet is strong evidence of a tornado l",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#cc-drop"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Debris Ball",
-      "description": "A debris ball is a small, intense reflectivity blob inside a hook echo, caused by tornado-lofted debris. Visual confirmation that a tornado is on the ground and producing damage.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#debris-ball"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Dual-Pol Signature",
-      "description": "Dual-pol signatures are patterns in ZDR, CC, and KDP that reveal precipitation type and storm structure. Key signatures: ZDR column (updraft), CC drop (debris/hail/mixed phase), KDP column (heavy rain core), ZDR arc (size-sorting of large drops at storm's leading edge).",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#dual-pol-signature"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Gate-to-Gate Couplet",
-      "description": "A gate-to-gate (G2G) couplet is when adjacent radar gates show extreme opposing velocities — say, +60 kt inbound right next to -60 kt outbound. The radar can't get a tighter rotation signature than that. G2G couplets are one of the highest-confidence radar indicators of a tornado, especially when pa",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#gate-to-gate-couplet"
-    },
-    {
-      "@type": "DefinedTerm",
       "name": "Hook Echo",
       "description": "A hook echo (sometimes just called a 'hook' or 'tornado hook') is a hook-shaped appendage on radar reflectivity at the back-right side of a supercell, usually the southwest flank. It marks where precipitation is being wrapped around the mesocyclone by the rear-flank downdraft — meaning the storm has",
       "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#hook-echo"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Side Lobe",
-      "description": "<@626259765537800212>",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#side-lobe"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "TBSS",
-      "description": "A Three-Body Scatter Spike (TBSS) is a radar artifact appearing as a radial spike of weak reflectivity extending below a hail core. It's caused by energy reflecting off large hail to the ground and back to the radar. A TBSS is a reliable indicator of 2\"+ hail (golf ball or larger).",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tbss"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "TDS",
-      "description": "A Tornado Debris Signature (TDS) is a dual-pol radar signature where Correlation Coefficient (CC) drops sharply inside a hook echo, indicating non-meteorological debris is being lofted. Strong evidence of a tornado on the ground.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tds"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Three-Body Scatter Spike",
-      "description": "A Three-Body Scatter Spike (TBSS) is a radar artifact appearing as a faint spike behind a strong reflectivity core. Caused by radar energy scattering off large hailstones — a near-certain indicator of large hail aloft.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#three-body-scatter-spike"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "TVS",
-      "description": "A Tornado Vortex Signature (TVS) is an algorithm-detected, intense gate-to-gate velocity couplet — radar's automated flag for likely tornado-scale rotation.",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tvs"
     },
     {
       "@type": "DefinedTerm",
@@ -114,9 +54,21 @@
     },
     {
       "@type": "DefinedTerm",
-      "name": "ZDR Column",
-      "description": "A ZDR column is an elevated plume of high differential reflectivity (ZDR) extending above the environmental 0°C level inside a thunderstorm updraft. It indicates large, oblate raindrops being lofted by a strong updraft — a reliable signature of a significant rotating updraft and potential for large ",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#zdr-column"
+      "name": "Gate-to-Gate Couplet",
+      "description": "A gate-to-gate (G2G) couplet is when adjacent radar gates show extreme opposing velocities — say, +60 kt inbound right next to -60 kt outbound. The radar can't get a tighter rotation signature than that. G2G couplets are one of the highest-confidence radar indicators of a tornado, especially when pa",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#gate-to-gate-couplet"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "VROT",
+      "description": "VROT (Rotational Velocity) is the maximum gate-to-gate velocity difference on the lowest available radar tilt — a direct measure of circulation intensity at low levels. NWS operational guidelines use VROT thresholds: ≥ 40 kt supports tornado potential; ≥ 70 kt is one of the thresholds used to consid",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#vrot"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "TVS",
+      "description": "A Tornado Vortex Signature (TVS) is an algorithm-detected, intense gate-to-gate velocity couplet — radar's automated flag for likely tornado-scale rotation.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tvs"
     },
     {
       "@type": "DefinedTerm",
@@ -132,9 +84,57 @@
     },
     {
       "@type": "DefinedTerm",
-      "name": "VROT",
-      "description": "VROT (Rotational Velocity) is the maximum gate-to-gate velocity difference on the lowest available radar tilt — a direct measure of circulation intensity at low levels. NWS operational guidelines use VROT thresholds: ≥ 40 kt supports tornado potential; ≥ 70 kt is one of the thresholds used to consid",
-      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#vrot"
+      "name": "CC Drop",
+      "description": "A CC drop (correlation coefficient drop) occurs when values fall below ~0.95 inside a storm. This indicates non-meteorological scatterers: tornado debris (TDS), large/irregular hail, biological targets, or ground clutter. A CC drop co-located with a velocity couplet is strong evidence of a tornado l",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#cc-drop"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "TDS",
+      "description": "A Tornado Debris Signature (TDS) is a dual-pol radar signature where Correlation Coefficient (CC) drops sharply inside a hook echo, indicating non-meteorological debris is being lofted. Strong evidence of a tornado on the ground.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tds"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Debris Ball",
+      "description": "A debris ball is a small, intense reflectivity blob inside a hook echo, caused by tornado-lofted debris. Visual confirmation that a tornado is on the ground and producing damage.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#debris-ball"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "ZDR Column",
+      "description": "A ZDR column is an elevated plume of high differential reflectivity (ZDR) extending above the environmental 0°C level inside a thunderstorm updraft. It indicates large, oblate raindrops being lofted by a strong updraft — a reliable signature of a significant rotating updraft and potential for large ",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#zdr-column"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Dual-Pol Signature",
+      "description": "Dual-pol signatures are patterns in ZDR, CC, and KDP that reveal precipitation type and storm structure. Key signatures: ZDR column (updraft), CC drop (debris/hail/mixed phase), KDP column (heavy rain core), ZDR arc (size-sorting of large drops at storm's leading edge).",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#dual-pol-signature"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "BWER",
+      "description": "A Bounded Weak Echo Region (BWER) is a notch of low reflectivity at low levels on a storm's inflow side, overhung by high reflectivity aloft. It indicates an extremely strong updraft ingesting precipitation-free air. BWERs are associated with violent supercells and large hail.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#bwer"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Three-Body Scatter Spike",
+      "description": "A Three-Body Scatter Spike (TBSS) is a radar artifact appearing as a faint spike behind a strong reflectivity core. Caused by radar energy scattering off large hailstones — a near-certain indicator of large hail aloft.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#three-body-scatter-spike"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "TBSS",
+      "description": "A Three-Body Scatter Spike (TBSS) is a radar artifact appearing as a radial spike of weak reflectivity extending below a hail core. It's caused by energy reflecting off large hail to the ground and back to the radar. A TBSS is a reliable indicator of 2\"+ hail (golf ball or larger).",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tbss"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Side Lobe",
+      "description": "<@626259765537800212>",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#side-lobe"
     }
   ]
 }
@@ -242,57 +242,25 @@
 
   <section>
     <div class="section-inner glossary-list">
-    <article class="glossary-term" id="bwer">
-      <h2>What is a BWER? <a class="glossary-anchor" href="#bwer" aria-label="Link to What is a BWER?">#</a></h2>
-      <p>A <strong>Bounded Weak Echo Region (BWER)</strong> is a notch of low reflectivity at low levels on a storm&#39;s inflow side, overhung by high reflectivity aloft. It indicates an extremely strong updraft ingesting precipitation-free air. BWERs are associated with violent supercells and large hail.</p>
-    </article>
-    <article class="glossary-term" id="cc-drop">
-      <h2>What is a CC Drop? <a class="glossary-anchor" href="#cc-drop" aria-label="Link to What is a CC Drop?">#</a></h2>
-      <p>A <strong>CC drop</strong> (correlation coefficient drop) occurs when values fall below ~0.95 inside a storm. This indicates non-meteorological scatterers: tornado debris (TDS), large/irregular hail, biological targets, or ground clutter. A CC drop co-located with a velocity couplet is strong evidence of a tornado lofting debris.</p>
-    </article>
-    <article class="glossary-term" id="debris-ball">
-      <h2>What is a Debris Ball? <a class="glossary-anchor" href="#debris-ball" aria-label="Link to What is a Debris Ball?">#</a></h2>
-      <p>A <strong>debris ball</strong> is a small, intense reflectivity blob inside a hook echo, caused by tornado-lofted debris. Visual confirmation that a tornado is on the ground and producing damage.</p>
-    </article>
-    <article class="glossary-term" id="dual-pol-signature">
-      <h2>What is a Dual-Pol Signature? <a class="glossary-anchor" href="#dual-pol-signature" aria-label="Link to What is a Dual-Pol Signature?">#</a></h2>
-      <p><strong>Dual-pol signatures</strong> are patterns in ZDR, CC, and KDP that reveal precipitation type and storm structure. Key signatures: ZDR column (updraft), CC drop (debris/hail/mixed phase), KDP column (heavy rain core), ZDR arc (size-sorting of large drops at storm&#39;s leading edge).</p>
-    </article>
-    <article class="glossary-term" id="gate-to-gate-couplet">
-      <h2>What is a Gate-to-Gate Couplet? <a class="glossary-anchor" href="#gate-to-gate-couplet" aria-label="Link to What is a Gate-to-Gate Couplet?">#</a></h2>
-      <p>A <strong>gate-to-gate (G2G) couplet</strong> is when adjacent radar gates show extreme opposing velocities — say, +60 kt inbound right next to -60 kt outbound. The radar can&#39;t get a tighter rotation signature than that. G2G couplets are one of the highest-confidence radar indicators of a tornado, especially when paired with a TDS.</p>
-    </article>
     <article class="glossary-term" id="hook-echo">
       <h2>What is a Hook Echo? <a class="glossary-anchor" href="#hook-echo" aria-label="Link to What is a Hook Echo?">#</a></h2>
       <p>A <strong>hook echo</strong> (sometimes just called a &#39;hook&#39; or &#39;tornado hook&#39;) is a hook-shaped appendage on radar reflectivity at the back-right side of a supercell, usually the southwest flank. It marks where precipitation is being wrapped around the <strong>mesocyclone</strong> by the rear-flank downdraft — meaning the storm has a tight, organized rotation. A well-defined hook with a tight tip is the classic radar signature of a tornadic supercell, and chasers often watch for the tip of the hook to confirm a tornado is on the ground.</p>
-    </article>
-    <article class="glossary-term" id="side-lobe">
-      <h2>What is a Side Lobe? <a class="glossary-anchor" href="#side-lobe" aria-label="Link to What is a Side Lobe?">#</a></h2>
-      <p>&lt;@626259765537800212&gt;</p>
-    </article>
-    <article class="glossary-term" id="tbss">
-      <h2>What is a TBSS? <a class="glossary-anchor" href="#tbss" aria-label="Link to What is a TBSS?">#</a></h2>
-      <p>A <strong>Three-Body Scatter Spike (TBSS)</strong> is a radar artifact appearing as a radial spike of weak reflectivity extending below a hail core. It&#39;s caused by energy reflecting off large hail to the ground and back to the radar. A TBSS is a reliable indicator of 2&quot;+ hail (golf ball or larger).</p>
-    </article>
-    <article class="glossary-term" id="tds">
-      <h2>What is a TDS? <a class="glossary-anchor" href="#tds" aria-label="Link to What is a TDS?">#</a></h2>
-      <p>A <strong>Tornado Debris Signature (TDS)</strong> is a dual-pol radar signature where Correlation Coefficient (CC) drops sharply inside a hook echo, indicating non-meteorological debris is being lofted. Strong evidence of a tornado on the ground.</p>
-    </article>
-    <article class="glossary-term" id="three-body-scatter-spike">
-      <h2>What is a Three-Body Scatter Spike? <a class="glossary-anchor" href="#three-body-scatter-spike" aria-label="Link to What is a Three-Body Scatter Spike?">#</a></h2>
-      <p>A <strong>Three-Body Scatter Spike (TBSS)</strong> is a radar artifact appearing as a faint spike behind a strong reflectivity core. Caused by radar energy scattering off large hailstones — a near-certain indicator of large hail aloft.</p>
-    </article>
-    <article class="glossary-term" id="tvs">
-      <h2>What is a TVS? <a class="glossary-anchor" href="#tvs" aria-label="Link to What is a TVS?">#</a></h2>
-      <p>A <strong>Tornado Vortex Signature (TVS)</strong> is an algorithm-detected, intense gate-to-gate velocity couplet — radar&#39;s automated flag for likely tornado-scale rotation.</p>
     </article>
     <article class="glossary-term" id="velocity-couplet">
       <h2>What is a Velocity Couplet? <a class="glossary-anchor" href="#velocity-couplet" aria-label="Link to What is a Velocity Couplet?">#</a></h2>
       <p>A <strong>velocity couplet</strong> is adjacent inbound and outbound velocity values on radar, indicating rotation. Strong, tight, low-level couplets are the radar signature of a tornado.</p>
     </article>
-    <article class="glossary-term" id="zdr-column">
-      <h2>What is a ZDR Column? <a class="glossary-anchor" href="#zdr-column" aria-label="Link to What is a ZDR Column?">#</a></h2>
-      <p>A <strong>ZDR column</strong> is an elevated plume of high differential reflectivity (ZDR) extending above the environmental 0°C level inside a thunderstorm updraft. It indicates large, oblate raindrops being lofted by a strong updraft — a reliable signature of a significant rotating updraft and potential for large hail.</p>
+    <article class="glossary-term" id="gate-to-gate-couplet">
+      <h2>What is a Gate-to-Gate Couplet? <a class="glossary-anchor" href="#gate-to-gate-couplet" aria-label="Link to What is a Gate-to-Gate Couplet?">#</a></h2>
+      <p>A <strong>gate-to-gate (G2G) couplet</strong> is when adjacent radar gates show extreme opposing velocities — say, +60 kt inbound right next to -60 kt outbound. The radar can&#39;t get a tighter rotation signature than that. G2G couplets are one of the highest-confidence radar indicators of a tornado, especially when paired with a TDS.</p>
+    </article>
+    <article class="glossary-term" id="vrot">
+      <h2>What is VROT? <a class="glossary-anchor" href="#vrot" aria-label="Link to What is VROT?">#</a></h2>
+      <p><strong>VROT (Rotational Velocity)</strong> is the maximum gate-to-gate velocity difference on the lowest available radar tilt — a direct measure of circulation intensity at low levels. NWS operational guidelines use VROT thresholds: <strong>≥ 40 kt</strong> supports tornado potential; <strong>≥ 70 kt</strong> is one of the thresholds used to consider a <strong>Tornado Emergency</strong>.</p>
+    </article>
+    <article class="glossary-term" id="tvs">
+      <h2>What is a TVS? <a class="glossary-anchor" href="#tvs" aria-label="Link to What is a TVS?">#</a></h2>
+      <p>A <strong>Tornado Vortex Signature (TVS)</strong> is an algorithm-detected, intense gate-to-gate velocity couplet — radar&#39;s automated flag for likely tornado-scale rotation.</p>
     </article>
     <article class="glossary-term" id="azshear">
       <h2>What is AzShear? <a class="glossary-anchor" href="#azshear" aria-label="Link to What is AzShear?">#</a></h2>
@@ -302,22 +270,50 @@
       <h2>What is Correlation Coefficient? <a class="glossary-anchor" href="#correlation-coefficient" aria-label="Link to What is Correlation Coefficient?">#</a></h2>
       <p><strong>Correlation Coefficient (CC)</strong> measures how uniform a radar volume&#39;s targets are. CC near 1.0 = uniform (rain). Low CC inside a hook echo = mixed debris = a tornado debris signature.</p>
     </article>
-    <article class="glossary-term" id="vrot">
-      <h2>What is VROT? <a class="glossary-anchor" href="#vrot" aria-label="Link to What is VROT?">#</a></h2>
-      <p><strong>VROT (Rotational Velocity)</strong> is the maximum gate-to-gate velocity difference on the lowest available radar tilt — a direct measure of circulation intensity at low levels. NWS operational guidelines use VROT thresholds: <strong>≥ 40 kt</strong> supports tornado potential; <strong>≥ 70 kt</strong> is one of the thresholds used to consider a <strong>Tornado Emergency</strong>.</p>
+    <article class="glossary-term" id="cc-drop">
+      <h2>What is a CC Drop? <a class="glossary-anchor" href="#cc-drop" aria-label="Link to What is a CC Drop?">#</a></h2>
+      <p>A <strong>CC drop</strong> (correlation coefficient drop) occurs when values fall below ~0.95 inside a storm. This indicates non-meteorological scatterers: tornado debris (TDS), large/irregular hail, biological targets, or ground clutter. A CC drop co-located with a velocity couplet is strong evidence of a tornado lofting debris.</p>
+    </article>
+    <article class="glossary-term" id="tds">
+      <h2>What is a TDS? <a class="glossary-anchor" href="#tds" aria-label="Link to What is a TDS?">#</a></h2>
+      <p>A <strong>Tornado Debris Signature (TDS)</strong> is a dual-pol radar signature where Correlation Coefficient (CC) drops sharply inside a hook echo, indicating non-meteorological debris is being lofted. Strong evidence of a tornado on the ground.</p>
+    </article>
+    <article class="glossary-term" id="debris-ball">
+      <h2>What is a Debris Ball? <a class="glossary-anchor" href="#debris-ball" aria-label="Link to What is a Debris Ball?">#</a></h2>
+      <p>A <strong>debris ball</strong> is a small, intense reflectivity blob inside a hook echo, caused by tornado-lofted debris. Visual confirmation that a tornado is on the ground and producing damage.</p>
+    </article>
+    <article class="glossary-term" id="zdr-column">
+      <h2>What is a ZDR Column? <a class="glossary-anchor" href="#zdr-column" aria-label="Link to What is a ZDR Column?">#</a></h2>
+      <p>A <strong>ZDR column</strong> is an elevated plume of high differential reflectivity (ZDR) extending above the environmental 0°C level inside a thunderstorm updraft. It indicates large, oblate raindrops being lofted by a strong updraft — a reliable signature of a significant rotating updraft and potential for large hail.</p>
+    </article>
+    <article class="glossary-term" id="dual-pol-signature">
+      <h2>What is a Dual-Pol Signature? <a class="glossary-anchor" href="#dual-pol-signature" aria-label="Link to What is a Dual-Pol Signature?">#</a></h2>
+      <p><strong>Dual-pol signatures</strong> are patterns in ZDR, CC, and KDP that reveal precipitation type and storm structure. Key signatures: ZDR column (updraft), CC drop (debris/hail/mixed phase), KDP column (heavy rain core), ZDR arc (size-sorting of large drops at storm&#39;s leading edge).</p>
+    </article>
+    <article class="glossary-term" id="bwer">
+      <h2>What is a BWER? <a class="glossary-anchor" href="#bwer" aria-label="Link to What is a BWER?">#</a></h2>
+      <p>A <strong>Bounded Weak Echo Region (BWER)</strong> is a notch of low reflectivity at low levels on a storm&#39;s inflow side, overhung by high reflectivity aloft. It indicates an extremely strong updraft ingesting precipitation-free air. BWERs are associated with violent supercells and large hail.</p>
+    </article>
+    <article class="glossary-term" id="three-body-scatter-spike">
+      <h2>What is a Three-Body Scatter Spike? <a class="glossary-anchor" href="#three-body-scatter-spike" aria-label="Link to What is a Three-Body Scatter Spike?">#</a></h2>
+      <p>A <strong>Three-Body Scatter Spike (TBSS)</strong> is a radar artifact appearing as a faint spike behind a strong reflectivity core. Caused by radar energy scattering off large hailstones — a near-certain indicator of large hail aloft.</p>
+    </article>
+    <article class="glossary-term" id="tbss">
+      <h2>What is a TBSS? <a class="glossary-anchor" href="#tbss" aria-label="Link to What is a TBSS?">#</a></h2>
+      <p>A <strong>Three-Body Scatter Spike (TBSS)</strong> is a radar artifact appearing as a radial spike of weak reflectivity extending below a hail core. It&#39;s caused by energy reflecting off large hail to the ground and back to the radar. A TBSS is a reliable indicator of 2&quot;+ hail (golf ball or larger).</p>
+    </article>
+    <article class="glossary-term" id="side-lobe">
+      <h2>What is a Side Lobe? <a class="glossary-anchor" href="#side-lobe" aria-label="Link to What is a Side Lobe?">#</a></h2>
+      <p>&lt;@626259765537800212&gt;</p>
     </article>
     </div>
   </section>
 
   <section>
     <div class="section-inner">
-      <div class="community-cta">
-        <h2 class="section-title">Hear these terms used live</h2>
-        <p class="section-body">Reading definitions is one thing. Watching Coverage Experts apply them on live radar is how they stick. Join the Xtreme Weather Discord (XWD) and ask Snowball about any term on this page, these are the same answers the bot gives in the server.</p>
-        <div class="page-cta">
-          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-discord"></i> Join the Discord <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
-          <a href="snowball" class="btn-ghost-arrow"><i class="fas fa-snowflake"></i> Meet Snowball <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
-        </div>
+      <div class="glossary-pager">
+        <a href="glossary" class="btn-ghost"><i class="fas fa-arrow-left"></i> Back to the glossary</a>
+        <a href="glossary-instability-cape" class="btn-ghost">Next: Instability &amp; CAPE <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
