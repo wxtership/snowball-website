@@ -5003,16 +5003,6 @@ body.scroll-locked {
     color: rgba(255, 255, 255, 0.62);
 }
 
-/* WRN centered row (coverage-experts page) between the two-column section and copyright. */
-.footer-wrn-row {
-    max-width: 1200px;
-    margin: 2rem auto 0;
-    display: flex;
-    justify-content: center;
-}
-.footer-wrn-row .footer-wrn { max-width: none; margin-top: 0; flex-direction: row; gap: 10px; align-items: center; }
-.footer-wrn-row .footer-wrn-logo { width: 70px; }
-
 /* Tablet-to-small-desktop: the two footer columns don't fit side by side
    below ~1000px, and wrapped rows with desktop alignment looked broken
    (brand left, socials floating). Use the centered stacked layout instead;
