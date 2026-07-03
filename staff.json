@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T19:47:04.030Z",
+  "updatedAt": "2026-07-03T03:49:00.346Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7372
+    "memberCount": 7371
   },
   "tiers": [
     {
@@ -67,14 +67,6 @@
       "label": "Staff",
       "members": [
         {
-          "id": "830201253005885482",
-          "username": "nave0929",
-          "displayName": "->Nave(PA)<-",
-          "avatar": "assets/avatars/830201253005885482.png",
-          "banner": null,
-          "accentColor": "#ff0000"
-        },
-        {
           "id": "405757488487464961",
           "username": "adampate",
           "displayName": "Adampate ( Bemidji MN)",
@@ -103,14 +95,6 @@
           "username": "robbysversion",
           "displayName": "Robby (PA)",
           "avatar": "assets/avatars/609961976092950528.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
-          "id": "901700314216947712",
-          "username": "rock_pebble122",
-          "displayName": "Rock",
-          "avatar": "assets/avatars/901700314216947712.png",
           "banner": null,
           "accentColor": null
         },
