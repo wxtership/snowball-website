@@ -7,44 +7,92 @@
 <meta name="theme-color" content="#0d0d18" />
 <title>Xtreme Weather • Page Not Found</title>
 <link rel="icon" type="image/png" href="/snowball-website/assets/favicon.png">
+<link rel="preload" as="font" href="/snowball-website/fonts/DrukWideBold.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="/snowball-website/fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin>
 <style>
+  /* Self-contained on purpose: the 404 renders at arbitrary URLs, so fonts and
+     assets use absolute /snowball-website/ paths and no shared stylesheets. */
+  @font-face {
+    font-family: 'Druk Wide';
+    src: url('/snowball-website/fonts/DrukWideBold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Mustica Pro';
+    src: url('/snowball-website/fonts/MusticaPro-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0d0d18;
+    background:
+      radial-gradient(ellipse 720px 340px at 50% -40px, rgba(159,94,245,0.42) 0%, transparent 66%),
+      radial-gradient(ellipse 92% 80% at 50% -14%, rgba(107,84,245,0.24) 0%, transparent 60%),
+      #0d0d18;
     color: #fff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Mustica Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     text-align: center;
     padding: 24px;
   }
-  .wrap { max-width: 460px; }
-  img { width: 72px; height: 72px; object-fit: contain; margin-bottom: 18px; }
-  h1 { font-size: 28px; margin-bottom: 10px; letter-spacing: -0.02em; }
-  p { color: rgba(255, 255, 255, 0.65); line-height: 1.55; margin-bottom: 26px; }
-  .links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  a {
-    display: inline-block;
-    padding: 12px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
+  .wrap { max-width: 560px; }
+  img { width: 72px; height: 72px; object-fit: contain; margin-bottom: 22px; }
+  h1 {
+    font-family: 'Druk Wide', 'Arial Black', Impact, sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 6vw, 48px);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 16px;
   }
-  .primary { background: linear-gradient(90deg, #9B5EF5, #7C3AED); color: #fff; }
-  .ghost { border: 1px solid rgba(255, 255, 255, 0.22); color: #fff; }
+  p { color: rgba(255, 255, 255, 0.65); line-height: 1.65; margin-bottom: 30px; font-size: 16px; }
+  .links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #6B54F5; color: #fff;
+    font-family: inherit; font-size: 15px; padding: 14px 28px;
+    border-radius: 999px; border: none; cursor: pointer; text-decoration: none;
+    box-shadow: 0 0 40px rgba(107,84,245,0.45), 0 4px 20px rgba(0,0,0,0.5);
+    transition: transform 0.15s, box-shadow 0.2s;
+    position: relative;
+    isolation: isolate;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 999px;
+    border: 2px solid rgba(255,255,255,0.55);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .btn-primary:hover::after { opacity: 1; }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85);
+    font-family: inherit; font-size: 15px; padding: 14px 28px;
+    border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); cursor: pointer;
+    text-decoration: none; backdrop-filter: blur(8px);
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.11); transform: scale(1.02); }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <img src="/snowball-website/assets/xtreme-logo-small.png" alt="Xtreme Weather">
+    <img src="/snowball-website/assets/xtreme-logo-small.png" width="72" height="72" alt="Xtreme Weather">
     <h1>This page blew away</h1>
     <p>The page you're looking for doesn't exist or has moved. The radar shows clear skies back home.</p>
     <div class="links">
-      <a class="primary" href="/snowball-website/">Back to home</a>
-      <a class="ghost" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">Join the Discord</a>
+      <a class="btn-primary" href="/snowball-website/">Back to home</a>
+      <a class="btn-ghost" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener">Join the Discord</a>
     </div>
   </div>
 </body>
