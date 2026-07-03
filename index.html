@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Your community for weather coverage, events, EAS, and the tech that powers it all. Whatever the weather, we have you covered." />
+<meta name="description" content="A weather community and Discord server with live severe weather coverage, a pro radar app for iOS and web, real-time alerts, and the Snowball bot." />
 <meta name="theme-color" content="#0d0d18" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>Xtreme Weather • Home</title>
+<title>Xtreme Weather • Live Severe Weather Coverage, Radar &amp; Community</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://discord.com" />
@@ -23,17 +23,35 @@
 <link rel="canonical" href="https://wxtership.github.io/snowball-website/" />
 <meta property="og:site_name" content="Xtreme Weather" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Xtreme Weather • Home" />
-<meta property="og:description" content="Your community for weather coverage, events, EAS, and the tech that powers it all. Whatever the weather, we have you covered." />
+<meta property="og:title" content="Xtreme Weather • Live Severe Weather Coverage, Radar &amp; Community" />
+<meta property="og:description" content="A weather community and Discord server with live severe weather coverage, a pro radar app for iOS and web, real-time alerts, and the Snowball bot." />
 <meta property="og:url" content="https://wxtership.github.io/snowball-website/" />
 <meta property="og:image" content="https://wxtership.github.io/snowball-website/assets/og-whatevertheweather.jpg" />
 <meta property="og:image:width" content="1600" />
 <meta property="og:image:height" content="900" />
 <meta property="og:image:alt" content="Whatever the Weather: Xtreme Weather" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Xtreme Weather • Home" />
-<meta name="twitter:description" content="Your community for weather coverage, events, EAS, and the tech that powers it all. Whatever the weather, we have you covered." />
+<meta name="twitter:title" content="Xtreme Weather • Live Severe Weather Coverage, Radar &amp; Community" />
+<meta name="twitter:description" content="A weather community and Discord server with live severe weather coverage, a pro radar app for iOS and web, real-time alerts, and the Snowball bot." />
 <meta name="twitter:image" content="https://wxtership.github.io/snowball-website/assets/og-whatevertheweather.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Xtreme Weather",
+  "alternateName": "XWD",
+  "url": "https://wxtership.github.io/snowball-website/",
+  "logo": "https://wxtership.github.io/snowball-website/assets/xtreme-logo-small.png",
+  "description": "A weather community and Discord server with live severe weather coverage, a pro radar app for iOS and web, real-time alerts, and the Snowball bot.",
+  "foundingDate": "2022",
+  "sameAs": [
+    "https://discord.gg/xtremeweather",
+    "https://tiktok.com/@xtreme_weather",
+    "https://x.com/joinxtremewx",
+    "https://apps.apple.com/us/app/xtreme-weather-pro-radar/id6744540041"
+  ]
+}
+</script>
 </head>
 <body class="home-page">
 
@@ -135,7 +153,21 @@
 </div>
 </div>
 
-<div id="root"></div>
+<div id="root">
+<!-- Static prerender of the hero so crawlers get an h1 and real copy without
+     running React (createRoot().render replaces this on mount). Keep the text
+     in sync with Hero() below. -->
+<section id="hero" class="xw-hero-v2">
+  <div class="hero-content xw-hero-content">
+    <h1 class="xw-hero-title"><span class="xw-title-mustica">Whatever</span><span class="xw-title-druk">the Weather</span></h1>
+    <p class="xw-hero-deck">Since 2022, Xtreme Weather has been serving the community with powerful tools: our live radar, the app, the Discord, and the intuitive systems behind them. Whatever the weather, we have you covered.</p>
+    <div class="hero-ctas xw-hero-ctas">
+      <a href="https://radar.xtremewx.com" target="_blank" rel="noopener" class="btn-primary">Open the radar</a>
+      <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-ghost-arrow">Join Discord</a>
+    </div>
+  </div>
+</section>
+</div>
 <script src="vendor/react.production.min.js"></script>
 <script src="vendor/react-dom.production.min.js"></script>
 <script>

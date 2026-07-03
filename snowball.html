@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Your community for weather coverage, events, EAS, and the tech that powers it all. Whatever the weather, we have you covered." />
+<meta name="description" content="Snowball is Xtreme Weather's custom Discord bot: AI weather answers backed by real data, live radar and alerts, a full economy with games, radio, and more." />
 <meta name="theme-color" content="#0d0d18" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>Xtreme Weather • Snowball</title>
+<title>Xtreme Weather • Snowball, Our Weather Discord Bot</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://discord.com" />
@@ -23,17 +23,30 @@
 <link rel="canonical" href="https://wxtership.github.io/snowball-website/snowball" />
 <meta property="og:site_name" content="Xtreme Weather" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Xtreme Weather • Snowball" />
-<meta property="og:description" content="Your community for weather coverage, events, EAS, and the tech that powers it all. Whatever the weather, we have you covered." />
+<meta property="og:title" content="Xtreme Weather • Snowball, Our Weather Discord Bot" />
+<meta property="og:description" content="Snowball is Xtreme Weather's custom Discord bot: AI weather answers backed by real data, live radar and alerts, a full economy with games, radio, and more." />
 <meta property="og:url" content="https://wxtership.github.io/snowball-website/snowball" />
 <meta property="og:image" content="https://wxtership.github.io/snowball-website/assets/og-whatevertheweather.jpg" />
 <meta property="og:image:width" content="1600" />
 <meta property="og:image:height" content="900" />
 <meta property="og:image:alt" content="Whatever the Weather: Xtreme Weather" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Xtreme Weather • Snowball" />
-<meta name="twitter:description" content="Your community for weather coverage, events, EAS, and the tech that powers it all. Whatever the weather, we have you covered." />
+<meta name="twitter:title" content="Xtreme Weather • Snowball, Our Weather Discord Bot" />
+<meta name="twitter:description" content="Snowball is Xtreme Weather's custom Discord bot: AI weather answers backed by real data, live radar and alerts, a full economy with games, radio, and more." />
 <meta name="twitter:image" content="https://wxtership.github.io/snowball-website/assets/og-whatevertheweather.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Snowball",
+  "url": "https://wxtership.github.io/snowball-website/snowball",
+  "description": "Snowball is Xtreme Weather's custom Discord bot: AI weather answers backed by real data, live radar and alerts, a full economy with games, radio, and more.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Discord",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Xtreme Weather", "url": "https://wxtership.github.io/snowball-website/" }
+}
+</script>
 </head>
 <body>
 
@@ -134,7 +147,20 @@
     </div>
 </div>
 
-<div id="root"></div>
+<div id="root">
+<!-- Static prerender of the hero so crawlers get an h1 and real copy without
+     running React (createRoot().render replaces this on mount). Keep the text
+     in sync with the Hero component below. -->
+<section id="hero">
+  <div class="hero-content">
+    <h1 class="hero-headline">Snowball is the best Discord app to track live radar</h1>
+    <p class="hero-sub">The most advanced Discord app for weather. AI that actually fetches real data, a full economy system, radio, music, and so much more. <strong>Weather it. Snowball it.</strong></p>
+    <div class="hero-ctas">
+      <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-ghost-arrow">Try it out</a>
+    </div>
+  </div>
+</section>
+</div>
 <script src="vendor/react.production.min.js"></script>
 <script src="vendor/react-dom.production.min.js"></script>
 <script>
