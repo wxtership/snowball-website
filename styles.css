@@ -602,6 +602,11 @@ body {
     margin-left: 6px;
     opacity: 0.5;
     transition: transform 0.3s ease;
+    /* Reserve the glyph's box before the async Font Awesome CSS lands, so the
+       nav doesn't resize on refresh when the icons pop in. */
+    display: inline-block;
+    width: 1em;
+    text-align: center;
 }
 
 .nav-links li:hover .dropdown-arrow {
@@ -634,7 +639,7 @@ body {
     transition: background 0.2s, border-color 0.2s;
 }
 .nav-app-btn:hover { background: rgba(107, 84, 245, 0.3); border-color: rgba(107, 84, 245, 0.55); }
-.nav-app-btn i { font-size: 14px; }
+.nav-app-btn i { font-size: 14px; display: inline-block; width: 14px; text-align: center; }
 @media (max-width: 1024px) { .nav-app-btn { display: none; } }
 
 /* Nav Buttons */
