@@ -4986,6 +4986,18 @@ body.scroll-locked {
 .footer-wrn-row .footer-wrn { max-width: none; margin-top: 0; flex-direction: row; gap: 10px; align-items: center; }
 .footer-wrn-row .footer-wrn-logo { width: 70px; }
 
+/* Tablet-to-small-desktop: the two footer columns don't fit side by side
+   below ~1000px, and wrapped rows with desktop alignment looked broken
+   (brand left, socials floating). Use the centered stacked layout instead;
+   these match the <=768px rules so the hand-off is seamless. */
+@media (max-width: 1024px) {
+    .site-footer { text-align: center; }
+    .footer-container { flex-direction: column; align-items: center; gap: 2.5rem; }
+    .footer-brand-section { align-items: center; max-width: 520px; }
+    .footer-nav-section { align-items: center; width: 100%; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
 /* Centered WRN + donate row (all standard-footer pages). */
 .footer-center-row {
     max-width: 1200px;
