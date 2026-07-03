@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T04:22:23.622Z",
+  "updatedAt": "2026-07-03T04:23:41.726Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -9,8 +9,8 @@
     "name": "Xtreme Weather",
     "memberCount": 7371
   },
-  "allTimeTotal": 905.73,
-  "monthlyRaised": 223.34,
+  "allTimeTotal": 1005.73,
+  "monthlyRaised": 323.34,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -198,8 +198,8 @@
           "displayName": "Robby (PA)",
           "avatar": "assets/avatars/609961976092950528.png",
           "banner": null,
-          "amount": 224.04,
-          "donatedAt": "2026-07-03T04:12:02.000Z"
+          "amount": 324.04,
+          "donatedAt": "2026-07-03T04:22:50.000Z"
         },
         {
           "username": "rock_pebble122",
