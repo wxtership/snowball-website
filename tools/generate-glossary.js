@@ -399,6 +399,15 @@ const hubBody = `<main class="community-page">
     </div>
   </section>
 
+  <section class="glossary-search">
+    <div class="section-inner">
+      <input type="search" id="glossary-filter" class="glossary-filter" placeholder="Search ${totalTerms} terms..." aria-label="Search glossary terms">
+      <ul class="glossary-index is-hidden" id="glossary-index">
+${indexLinks}
+      </ul>
+    </div>
+  </section>
+
   <section>
     <div class="section-inner">
       <div class="glossary-cat-grid">
@@ -406,27 +415,20 @@ ${hubCards}
       </div>
     </div>
   </section>
-
-  <section>
-    <div class="section-inner">
-      <h2 class="glossary-index-title">Every term, A to Z</h2>
-      <input type="search" id="glossary-filter" class="glossary-filter" placeholder="Filter ${totalTerms} terms..." aria-label="Filter glossary terms">
-      <ul class="glossary-index" id="glossary-index">
-${indexLinks}
-      </ul>
-    </div>
-  </section>
 ${cta}
 </main>
 <script>
 (function () {
   var input = document.getElementById('glossary-filter');
-  var items = document.querySelectorAll('#glossary-index li');
-  if (!input) return;
+  var list = document.getElementById('glossary-index');
+  if (!input || !list) return;
+  var items = list.querySelectorAll('li');
   input.addEventListener('input', function () {
     var q = input.value.trim().toLowerCase();
+    list.classList.toggle('is-hidden', !q);
+    if (!q) return;
     items.forEach(function (li) {
-      li.style.display = !q || li.textContent.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
+      li.style.display = li.textContent.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
     });
   });
 })();

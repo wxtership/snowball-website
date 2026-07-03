@@ -1194,9 +1194,11 @@ button.clean-link:focus-visible { outline: 2px solid var(--purple-400); outline-
 .glossary-cat-card img { width: 44px; height: 44px; object-fit: contain; }
 .glossary-cat-name { font-weight: 700; font-size: 15px; }
 .glossary-cat-count { font-size: 13px; color: rgba(255,255,255,0.55); }
-.glossary-index-title { font-size: 22px; margin: 0 0 14px; }
-.glossary-filter { width: 100%; max-width: 420px; padding: 12px 16px; margin-bottom: 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); color: #fff; font-size: 15px; outline: none; }
+/* Search sits under the hero, above the category cards; the full A-to-Z list
+   stays in the DOM for crawlers but only shows while a query is typed. */
+.glossary-filter { display: block; width: 100%; max-width: 420px; padding: 12px 18px; margin: 0 auto 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); color: #fff; font-size: 15px; outline: none; }
 .glossary-filter:focus { border-color: rgba(159,94,245,0.6); }
+.glossary-index.is-hidden { display: none; }
 .glossary-index { list-style: none; margin: 0; padding: 0; columns: 3; column-gap: 28px; }
 .glossary-index li { break-inside: avoid; margin-bottom: 7px; }
 .glossary-index a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; }
