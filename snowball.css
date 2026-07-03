@@ -166,7 +166,7 @@ body {
   }
 }
 
-#community-mega-menu .mega-column + .mega-column {
+.mega-menu-2col .mega-column + .mega-column {
   border-left: 1px solid rgba(255,255,255,0.08);
   padding-left: 28px;
 }

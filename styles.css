@@ -757,6 +757,8 @@ body {
     z-index: 99;
 }
 
+.mega-menu.mega-menu-2col { width: 620px; }
+
 .mega-menu-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
