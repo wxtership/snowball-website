@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T04:34:06.688Z",
+  "updatedAt": "2026-07-03T04:35:47.442Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -9,8 +9,8 @@
     "name": "Xtreme Weather",
     "memberCount": 7371
   },
-  "allTimeTotal": 1007.4,
-  "monthlyRaised": 325.01,
+  "allTimeTotal": 1013.07,
+  "monthlyRaised": 330.68,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -190,8 +190,8 @@
           "displayName": "RemainingWX",
           "avatar": "assets/avatars/948372386347102209.png",
           "banner": null,
-          "amount": 106.87,
-          "donatedAt": "2026-07-03T04:20:20.000Z"
+          "amount": 112.54,
+          "donatedAt": "2026-07-03T04:34:28.000Z"
         },
         {
           "username": "robbysversion",
