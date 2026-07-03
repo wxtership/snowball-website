@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="558+ weather terms explained in plain English: radar, tornadoes, CAPE, hurricanes, winter storms, and more, from the Xtreme Weather Discord (XWD) community." />
+<meta name="theme-color" content="#0d0d18" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Xtreme Weather • Weather Glossary</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://discord.com" />
+<link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
+<link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
+<link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+<link rel="stylesheet" href="snowball.css">
+<link rel="stylesheet" href="community.css">
+<link rel="canonical" href="https://wxtership.github.io/snowball-website/glossary" />
+<meta property="og:site_name" content="Xtreme Weather" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Xtreme Weather • Weather Glossary" />
+<meta property="og:description" content="558+ weather terms explained in plain English: radar, tornadoes, CAPE, hurricanes, winter storms, and more, from the Xtreme Weather Discord (XWD) community." />
+<meta property="og:url" content="https://wxtership.github.io/snowball-website/glossary" />
+<meta property="og:image" content="https://wxtership.github.io/snowball-website/assets/og-whatevertheweather.jpg" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="900" />
+<meta property="og:image:alt" content="Whatever the Weather: Xtreme Weather" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Xtreme Weather • Weather Glossary" />
+<meta name="twitter:description" content="558+ weather terms explained in plain English: radar, tornadoes, CAPE, hurricanes, winter storms, and more, from the Xtreme Weather Discord (XWD) community." />
+<meta name="twitter:image" content="https://wxtership.github.io/snowball-website/assets/og-whatevertheweather.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Xtreme Weather Glossary",
+  "description": "558+ weather terms explained in plain English: radar, tornadoes, CAPE, hurricanes, winter storms, and more, from the Xtreme Weather Discord (XWD) community.",
+  "url": "https://wxtership.github.io/snowball-website/glossary"
+}
+</script>
+</head>
+<body>
+<div class="page-decor" aria-hidden="true"><i class="fas fa-bolt"></i><i class="fas fa-tornado"></i><i class="fas fa-triangle-exclamation"></i><i class="fas fa-snowflake"></i><i class="fas fa-cloud-bolt"></i><i class="fas fa-cloud"></i><i class="fas fa-cloud-rain"></i><i class="fas fa-cloud-showers-heavy"></i><i class="fas fa-sun"></i><i class="fas fa-cloud-sun"></i><i class="fas fa-wind"></i><i class="fas fa-droplet"></i><i class="fas fa-umbrella"></i><i class="fas fa-smog"></i><i class="fas fa-temperature-half"></i><i class="fas fa-hurricane"></i></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <button class="nav-btn-circle hamburger" id="mobile-trigger" onclick="sbToggleMobileMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="index.html" style="display:flex;align-items:center;text-decoration:none;">
+                <img src="assets/xtreme-logo-small.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
+            </a>
+        </div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="has-dropdown" data-menu="community">
+                    <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="information">
+                    <a href="#">Information <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li>
+                    <a href="https://radar.xtremewx.com" target="_blank" rel="noopener">Radar</a>
+                </li>
+                <li>
+                    <a href="snowball">Snowball</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right"></div>
+    </div>
+</nav>
+
+<div class="mega-menu" id="community-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Project</div>
+            <a href="staff" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Staff</span><span class="desc">Meet the team</span></div></a>
+            <a href="donators" class="mega-item"><i class="fas fa-heart"></i><div class="mega-item-text"><span class="title">Donators</span><span class="desc">Community supporters</span></div></a>
+            <a href="about" class="mega-item"><i class="fas fa-circle-info"></i><div class="mega-item-text"><span class="title">About</span><span class="desc">Our story &amp; mission</span></div></a>
+            <a href="coverage-experts" class="mega-item"><i class="fas fa-tower-broadcast"></i><div class="mega-item-text"><span class="title">Coverage Experts</span><span class="desc">Who runs coverage</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mega-menu" id="information-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Docs</div>
+            <a href="charter" class="mega-item"><i class="fas fa-scroll"></i><div class="mega-item-text"><span class="title">Charter</span><span class="desc">Community standards</span></div></a>
+            <a href="glossary" class="mega-item"><i class="fas fa-book"></i><div class="mega-item-text"><span class="title">Glossary</span><span class="desc">Weather terms explained</span></div></a>
+            <a href="privacy" class="mega-item"><i class="fas fa-user-shield"></i><div class="mega-item-text"><span class="title">Privacy Policy</span><span class="desc">Your data &amp; rights</span></div></a>
+            <a href="terms" class="mega-item"><i class="fas fa-file-contract"></i><div class="mega-item-text"><span class="title">Terms of Service</span><span class="desc">Rules of use</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Help</div>
+            <a href="contact" class="mega-item"><i class="fas fa-envelope"></i><div class="mega-item-text"><span class="title">Contact</span><span class="desc">Get in touch</span></div></a>
+            <a href="ban-appeal" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Request a review</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
+    <div class="mobile-view main-view" id="sb-mobile-main-view">
+        <div class="mobile-centered-content">
+            <a href="index.html" class="mobile-big-link">Home</a>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
+            <a href="https://radar.xtremewx.com" target="_blank" rel="noopener" class="mobile-big-link">Radar</a>
+            <a href="snowball" class="mobile-big-link">Snowball</a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-community">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+        <div class="mobile-sub-list">
+            <a href="staff" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-users"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Staff</span></span></a>
+            <a href="coverage-experts" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-tower-broadcast"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Coverage Experts</span></span></a>
+            <a href="about" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-circle-info"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">About</span></span></a>
+            <a href="donators" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-heart"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Donators</span></span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-information">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+        <div class="mobile-sub-list">
+            <a href="charter" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-scroll"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Charter</span></span></a>
+            <a href="glossary" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-book"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Glossary</span></span></a>
+            <a href="privacy" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-user-shield"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Privacy Policy</span></span></a>
+            <a href="terms" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-file-contract"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Terms of Service</span></span></a>
+            <a href="contact" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-envelope"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Contact</span></span></a>
+            <a href="ban-appeal" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-gavel"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Ban Appeal</span></span></a>
+        </div>
+    </div>
+</div>
+
+<main class="community-page">
+
+  <section class="page-hero">
+    <div class="section-inner">
+      <img class="glossary-hero-icon" src="assets/icons/small-snowball.webp" alt="Xtreme Weather glossary icon" width="72" height="72" loading="eager">
+      <h1 class="section-title">Weather Glossary</h1>
+      <p class="section-body">Every hobby has its jargon, and weather has more than most. This glossary explains 558+ terms in plain English, from CAPE and hook echoes to eyewall replacement cycles, written and maintained by the Xtreme Weather Discord (XWD) community. They are the same answers our bot Snowball gives when someone asks in the server, so if a definition here helps you, the people who wrote it are one click away.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="glossary-cat-grid">
+      <a class="glossary-cat-card" href="glossary-nws-offices">
+        <img src="assets/icons/weather.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">NWS Office Codes</span>
+        <span class="glossary-cat-count">164 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-spc-outlooks">
+        <img src="assets/icons/small-spc.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">SPC Outlooks &amp; Risk Categories</span>
+        <span class="glossary-cat-count">15 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-tornado-severe-alerts">
+        <img src="assets/icons/small-alert.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Tornado &amp; Severe Thunderstorm Alerts</span>
+        <span class="glossary-cat-count">18 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-nws-alert-codes">
+        <img src="assets/icons/emergency.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">NWS Alert &amp; Product Codes</span>
+        <span class="glossary-cat-count">18 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-flooding">
+        <img src="assets/icons/small-wpc.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Flooding &amp; Hydrology</span>
+        <span class="glossary-cat-count">15 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-winter">
+        <img src="assets/emoji-snowball-cloud.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Winter Weather</span>
+        <span class="glossary-cat-count">30 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-tropical">
+        <img src="assets/icons/small-satellite.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Tropical Weather &amp; Hurricanes</span>
+        <span class="glossary-cat-count">34 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-fire-heat">
+        <img src="assets/emoji-sunny-haze.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Fire Weather, Heat &amp; Wind</span>
+        <span class="glossary-cat-count">19 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-radar-fundamentals">
+        <img src="assets/icons/small-radar.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Radar Fundamentals</span>
+        <span class="glossary-cat-count">28 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-radar-signatures">
+        <img src="assets/icons/small-signal.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Radar Signatures &amp; Dual-Pol</span>
+        <span class="glossary-cat-count">16 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-instability-cape">
+        <img src="assets/icons/small-sounding.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Instability &amp; CAPE</span>
+        <span class="glossary-cat-count">28 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-shear-indices">
+        <img src="assets/icons/small-forecast.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Wind Shear &amp; Composite Indices</span>
+        <span class="glossary-cat-count">12 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-boundaries-winds">
+        <img src="assets/icons/small-ping.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Boundaries &amp; Local Winds</span>
+        <span class="glossary-cat-count">15 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-storm-structure">
+        <img src="assets/icons/small-lightning.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Storm Structure</span>
+        <span class="glossary-cat-count">33 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-storm-types">
+        <img src="assets/icons/small-weather.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Storm Types &amp; Convective Modes</span>
+        <span class="glossary-cat-count">21 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-tornadoes">
+        <img src="assets/icons/alert.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Tornadoes, Hail &amp; the EF Scale</span>
+        <span class="glossary-cat-count">23 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-synoptic">
+        <img src="assets/icons/forecast.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Fronts &amp; Synoptic Patterns</span>
+        <span class="glossary-cat-count">28 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-observations">
+        <img src="assets/icons/small-spotter.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Observations, Spotting &amp; Reports</span>
+        <span class="glossary-cat-count">14 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-models-climate">
+        <img src="assets/icons/small-outlook.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Forecast Models &amp; Climate Patterns</span>
+        <span class="glossary-cat-count">17 terms</span>
+      </a>
+      <a class="glossary-cat-card" href="glossary-clouds">
+        <img src="assets/icons/small-weather.png" alt="" width="44" height="44" loading="lazy">
+        <span class="glossary-cat-name">Cloud Types</span>
+        <span class="glossary-cat-count">10 terms</span>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <h2 class="glossary-index-title">Every term, A to Z</h2>
+      <input type="search" id="glossary-filter" class="glossary-filter" placeholder="Filter 558 terms..." aria-label="Filter glossary terms">
+      <ul class="glossary-index" id="glossary-index">
+      <li><a href="glossary-storm-types#derecho-vs-squall-line-vs-bow-echo">Derecho vs. Squall Line vs. Bow Echo</a></li>
+      <li><a href="glossary-storm-structure#ffd-vs-rfd">FFD vs. RFD</a></li>
+      <li><a href="glossary-tornadoes#hail-size-reference">Hail Size Reference</a></li>
+      <li><a href="glossary-storm-structure#hp-vs-lp-supercell">HP vs. LP Supercell</a></li>
+      <li><a href="glossary-synoptic#jet-streak-quadrants">Jet Streak Quadrants</a></li>
+      <li><a href="glossary-clouds#the-main-cloud-types">The Main Cloud Types</a></li>
+      <li><a href="glossary-tornado-severe-alerts#watch-vs-warning">Watch vs. Warning</a></li>
+      <li><a href="glossary-spc-outlooks#conditional-intensity-groups-cig">What are Conditional Intensity Groups (CIG)?</a></li>
+      <li><a href="glossary-radar-fundamentals#echo-tops">What are Echo Tops?</a></li>
+      <li><a href="glossary-tropical#hurricane-hunters">What are Hurricane Hunters?</a></li>
+      <li><a href="glossary-tropical#rainbands">What are Rainbands?</a></li>
+      <li><a href="glossary-spc-outlooks#spc-categorical-outlooks">What are SPC Categorical Outlooks?</a></li>
+      <li><a href="glossary-shear-indices#0-1-km-shear">What is 0-1 km Shear?</a></li>
+      <li><a href="glossary-instability-cape#0-3-km-cape">What is 0-3 km CAPE?</a></li>
+      <li><a href="glossary-shear-indices#0-6-km-deep-layer-shear">What is 0-6 km (Deep-Layer) Shear?</a></li>
+      <li><a href="glossary-radar-fundamentals#b-scan">What is a B-Scan?</a></li>
+      <li><a href="glossary-synoptic#baroclinic-zone">What is a Baroclinic Zone?</a></li>
+      <li><a href="glossary-storm-structure#beaver-tail">What is a Beaver Tail?</a></li>
+      <li><a href="glossary-winter#blizzard-warning">What is a Blizzard Warning?</a></li>
+      <li><a href="glossary-winter#bomb-cyclone">What is a Bomb Cyclone?</a></li>
+      <li><a href="glossary-storm-types#bow-echo">What is a Bow Echo?</a></li>
+      <li><a href="glossary-radar-signatures#bwer">What is a BWER?</a></li>
+      <li><a href="glossary-tropical#category-1-hurricane">What is a Category 1 Hurricane?</a></li>
+      <li><a href="glossary-tropical#category-2-hurricane">What is a Category 2 Hurricane?</a></li>
+      <li><a href="glossary-tropical#category-3-hurricane">What is a Category 3 Hurricane?</a></li>
+      <li><a href="glossary-tropical#category-4-hurricane">What is a Category 4 Hurricane?</a></li>
+      <li><a href="glossary-tropical#category-5-hurricane">What is a Category 5 Hurricane?</a></li>
+      <li><a href="glossary-radar-signatures#cc-drop">What is a CC Drop?</a></li>
+      <li><a href="glossary-boundaries-winds#chinook-foehn-wind">What is a Chinook (Foehn) Wind?</a></li>
+      <li><a href="glossary-clouds#cirrocumulus-cloud">What is a Cirrocumulus Cloud?</a></li>
+      <li><a href="glossary-clouds#cirrostratus-cloud">What is a Cirrostratus Cloud?</a></li>
+      <li><a href="glossary-clouds#cirrus-cloud">What is a Cirrus Cloud?</a></li>
+      <li><a href="glossary-storm-structure#classic-cl-supercell">What is a Classic (CL) Supercell?</a></li>
+      <li><a href="glossary-storm-structure#clear-slot">What is a Clear Slot?</a></li>
+      <li><a href="glossary-radar-fundamentals#clear-air-echo">What is a Clear-Air Echo?</a></li>
+      <li><a href="glossary-models-climate#climate-normal">What is a Climate Normal?</a></li>
+      <li><a href="glossary-flooding#coastal-flood-warning">What is a Coastal Flood Warning?</a></li>
+      <li><a href="glossary-storm-structure#cold-air-funnel">What is a Cold Air Funnel?</a></li>
+      <li><a href="glossary-synoptic#cold-front">What is a Cold Front?</a></li>
+      <li><a href="glossary-boundaries-winds#cold-pool">What is a Cold Pool?</a></li>
+      <li><a href="glossary-clouds#cumulus-cloud">What is a Cumulus Cloud?</a></li>
+      <li><a href="glossary-storm-structure#cyclic-supercell">What is a Cyclic Supercell?</a></li>
+      <li><a href="glossary-tornadoes#cyclic-tornado">What is a Cyclic Tornado?</a></li>
+      <li><a href="glossary-flooding#dam-failure-warning">What is a Dam Failure Warning?</a></li>
+      <li><a href="glossary-tornadoes#damage-survey">What is a Damage Survey?</a></li>
+      <li><a href="glossary-radar-signatures#debris-ball">What is a Debris Ball?</a></li>
+      <li><a href="glossary-nws-alert-codes#dense-fog-advisory">What is a Dense Fog Advisory?</a></li>
+      <li><a href="glossary-storm-types#derecho">What is a Derecho?</a></li>
+      <li><a href="glossary-storm-structure#discrete-supercell">What is a Discrete Supercell?</a></li>
+      <li><a href="glossary-radar-fundamentals#dow">What is a DOW?</a></li>
+      <li><a href="glossary-radar-fundamentals#downburst">What is a Downburst?</a></li>
+      <li><a href="glossary-radar-fundamentals#downdraft">What is a Downdraft?</a></li>
+      <li><a href="glossary-tropical#dropsonde">What is a Dropsonde?</a></li>
+      <li><a href="glossary-boundaries-winds#dryline">What is a Dryline?</a></li>
+      <li><a href="glossary-radar-signatures#dual-pol-signature">What is a Dual-Pol Signature?</a></li>
+      <li><a href="glossary-radar-fundamentals#dust-devil">What is a Dust Devil?</a></li>
+      <li><a href="glossary-fire-heat#fire-weather-watch">What is a Fire Weather Watch?</a></li>
+      <li><a href="glossary-fire-heat#fire-whirl">What is a Fire Whirl?</a></li>
+      <li><a href="glossary-storm-structure#flanking-line">What is a Flanking Line?</a></li>
+      <li><a href="glossary-flooding#flash-flood-emergency">What is a Flash Flood Emergency?</a></li>
+      <li><a href="glossary-flooding#flash-flood-warning">What is a Flash Flood Warning?</a></li>
+      <li><a href="glossary-flooding#flash-flood-watch-ffa">What is a Flash Flood Watch (FFA)?</a></li>
+      <li><a href="glossary-flooding#flood-warning-flw">What is a Flood Warning (FLW)?</a></li>
+      <li><a href="glossary-flooding#flood-watch-fla">What is a Flood Watch (FLA)?</a></li>
+      <li><a href="glossary-radar-fundamentals#forward-flank-downdraft-ffd">What is a Forward Flank Downdraft (FFD)?</a></li>
+      <li><a href="glossary-nws-alert-codes#frost-advisory">What is a Frost Advisory?</a></li>
+      <li><a href="glossary-storm-structure#funnel-cloud">What is a Funnel Cloud?</a></li>
+      <li><a href="glossary-boundaries-winds#gap-wind">What is a Gap Wind?</a></li>
+      <li><a href="glossary-radar-signatures#gate-to-gate-couplet">What is a Gate-to-Gate Couplet?</a></li>
+      <li><a href="glossary-boundaries-winds#gust-front">What is a Gust Front?</a></li>
+      <li><a href="glossary-storm-types#gustnado">What is a Gustnado?</a></li>
+      <li><a href="glossary-storm-types#haboob">What is a Haboob?</a></li>
+      <li><a href="glossary-nws-alert-codes#hard-freeze-warning">What is a Hard Freeze Warning?</a></li>
+      <li><a href="glossary-fire-heat#heat-advisory">What is a Heat Advisory?</a></li>
+      <li><a href="glossary-fire-heat#heat-burst">What is a Heat Burst?</a></li>
+      <li><a href="glossary-fire-heat#heat-dome">What is a Heat Dome?</a></li>
+      <li><a href="glossary-spc-outlooks#high-risk">What is a High Risk?</a></li>
+      <li><a href="glossary-fire-heat#high-wind-warning">What is a High Wind Warning?</a></li>
+      <li><a href="glossary-fire-heat#high-wind-watch">What is a High Wind Watch?</a></li>
+      <li><a href="glossary-shear-indices#hodograph">What is a Hodograph?</a></li>
+      <li><a href="glossary-radar-signatures#hook-echo">What is a Hook Echo?</a></li>
+      <li><a href="glossary-storm-structure#horseshoe-vortex">What is a Horseshoe Vortex?</a></li>
+      <li><a href="glossary-tropical#hurricane">What is a Hurricane?</a></li>
+      <li><a href="glossary-synoptic#jet-streak">What is a Jet Streak?</a></li>
+      <li><a href="glossary-boundaries-winds#lake-breeze">What is a Lake Breeze?</a></li>
+      <li><a href="glossary-boundaries-winds#land-breeze">What is a Land Breeze?</a></li>
+      <li><a href="glossary-storm-types#landspout">What is a Landspout?</a></li>
+      <li><a href="glossary-instability-cape#lapse-rate">What is a Lapse Rate?</a></li>
+      <li><a href="glossary-storm-types#lightning-jump">What is a Lightning Jump?</a></li>
+      <li><a href="glossary-instability-cape#loaded-gun-sounding">What is a Loaded Gun Sounding?</a></li>
+      <li><a href="glossary-synoptic#longwave-trough">What is a Longwave Trough?</a></li>
+      <li><a href="glossary-synoptic#low-pressure-system">What is a Low Pressure System?</a></li>
+      <li><a href="glossary-shear-indices#low-level-jet-llj">What is a Low-Level Jet (LLJ)?</a></li>
+      <li><a href="glossary-storm-types#macroburst">What is a Macroburst?</a></li>
+      <li><a href="glossary-tropical#major-hurricane">What is a Major Hurricane?</a></li>
+      <li><a href="glossary-spc-outlooks#marginal-risk-mrgl">What is a Marginal Risk (MRGL)?</a></li>
+      <li><a href="glossary-storm-structure#mesocyclone">What is a Mesocyclone?</a></li>
+      <li><a href="glossary-observations#mesonet">What is a Mesonet?</a></li>
+      <li><a href="glossary-storm-structure#mesovortex">What is a Mesovortex?</a></li>
+      <li><a href="glossary-observations#metar">What is a METAR?</a></li>
+      <li><a href="glossary-storm-types#microburst">What is a Microburst?</a></li>
+      <li><a href="glossary-instability-cape#mixed-layer-parcel">What is a Mixed-Layer Parcel?</a></li>
+      <li><a href="glossary-models-climate#model-run">What is a Model Run?</a></li>
+      <li><a href="glossary-spc-outlooks#moderate-risk-mdt">What is a Moderate Risk (MDT)?</a></li>
+      <li><a href="glossary-instability-cape#most-unstable-parcel">What is a Most-Unstable Parcel?</a></li>
+      <li><a href="glossary-boundaries-winds#mountain-wave">What is a Mountain Wave?</a></li>
+      <li><a href="glossary-tornadoes#multi-vortex-tornado">What is a Multi-Vortex Tornado?</a></li>
+      <li><a href="glossary-storm-types#multicell-storm">What is a Multicell Storm?</a></li>
+      <li><a href="glossary-clouds#nimbostratus-cloud">What is a Nimbostratus Cloud?</a></li>
+      <li><a href="glossary-winter#nor-easter">What is a Nor&#39;easter?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#pds-severe-thunderstorm-watch">What is a PDS Severe Thunderstorm Watch?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#pds-tornado-warning-tor-pds">What is a PDS Tornado Warning (TOR-PDS)?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#pds-tornado-watch">What is a PDS Tornado Watch?</a></li>
+      <li><a href="glossary-observations#pirep">What is a PIREP?</a></li>
+      <li><a href="glossary-nws-alert-codes#pns">What is a PNS?</a></li>
+      <li><a href="glossary-models-climate#point-and-click-forecast">What is a Point-and-Click Forecast?</a></li>
+      <li><a href="glossary-fire-heat#pyrocumulus-pyrocb">What is a Pyrocumulus (PyroCb)?</a></li>
+      <li><a href="glossary-storm-types#qlcs">What is a QLCS?</a></li>
+      <li><a href="glossary-instability-cape#radiosonde">What is a Radiosonde?</a></li>
+      <li><a href="glossary-tornadoes#rain-wrapped-tornado">What is a Rain-Wrapped Tornado?</a></li>
+      <li><a href="glossary-radar-fundamentals#rear-flank-downdraft-rfd">What is a Rear Flank Downdraft (RFD)?</a></li>
+      <li><a href="glossary-storm-structure#rear-inflow-jet-rij">What is a Rear Inflow Jet (RIJ)?</a></li>
+      <li><a href="glossary-fire-heat#red-flag-warning">What is a Red Flag Warning?</a></li>
+      <li><a href="glossary-synoptic#ridge">What is a Ridge?</a></li>
+      <li><a href="glossary-nws-alert-codes#rip-current-warning">What is a Rip Current Warning?</a></li>
+      <li><a href="glossary-flooding#river-forecast-center-rfc">What is a River Forecast Center (RFC)?</a></li>
+      <li><a href="glossary-storm-structure#roll-cloud">What is a Roll Cloud?</a></li>
+      <li><a href="glossary-tornadoes#rope-tornado">What is a Rope Tornado?</a></li>
+      <li><a href="glossary-tornadoes#satellite-tornado">What is a Satellite Tornado?</a></li>
+      <li><a href="glossary-boundaries-winds#sea-breeze-front">What is a Sea Breeze Front?</a></li>
+      <li><a href="glossary-boundaries-winds#sea-breeze">What is a Sea Breeze?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#severe-thunderstorm-warning">What is a Severe Thunderstorm Warning?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#severe-thunderstorm-watch">What is a Severe Thunderstorm Watch?</a></li>
+      <li><a href="glossary-storm-structure#shelf-cloud">What is a Shelf Cloud?</a></li>
+      <li><a href="glossary-synoptic#shortwave-trough">What is a Shortwave Trough?</a></li>
+      <li><a href="glossary-radar-signatures#side-lobe">What is a Side Lobe?</a></li>
+      <li><a href="glossary-observations#sigmet">What is a SIGMET?</a></li>
+      <li><a href="glossary-instability-cape#skew-t">What is a Skew-T?</a></li>
+      <li><a href="glossary-spc-outlooks#slight-risk-slgt">What is a Slight Risk (SLGT)?</a></li>
+      <li><a href="glossary-winter#snow-drought">What is a Snow Drought?</a></li>
+      <li><a href="glossary-winter#snow-squall-warning">What is a Snow Squall Warning?</a></li>
+      <li><a href="glossary-winter#snow-squall">What is a Snow Squall?</a></li>
+      <li><a href="glossary-instability-cape#sounding">What is a Sounding?</a></li>
+      <li><a href="glossary-nws-alert-codes#special-marine-warning">What is a Special Marine Warning?</a></li>
+      <li><a href="glossary-nws-alert-codes#special-weather-statement-sps">What is a Special Weather Statement (SPS)?</a></li>
+      <li><a href="glossary-storm-types#squall-line">What is a Squall Line?</a></li>
+      <li><a href="glossary-storm-types#squall">What is a Squall?</a></li>
+      <li><a href="glossary-synoptic#stationary-front">What is a Stationary Front?</a></li>
+      <li><a href="glossary-observations#storm-chaser">What is a Storm Chaser?</a></li>
+      <li><a href="glossary-observations#storm-spotter">What is a Storm Spotter?</a></li>
+      <li><a href="glossary-tropical#storm-surge-warning-watch">What is a Storm Surge Warning/Watch?</a></li>
+      <li><a href="glossary-tornadoes#stovepipe-tornado">What is a Stovepipe Tornado?</a></li>
+      <li><a href="glossary-clouds#stratocumulus-cloud">What is a Stratocumulus Cloud?</a></li>
+      <li><a href="glossary-clouds#stratus-cloud">What is a Stratus Cloud?</a></li>
+      <li><a href="glossary-tropical#subtropical-storm">What is a Subtropical Storm?</a></li>
+      <li><a href="glossary-winter#sudden-stratospheric-warming-ssw">What is a Sudden Stratospheric Warming (SSW)?</a></li>
+      <li><a href="glossary-storm-structure#supercell">What is a Supercell?</a></li>
+      <li><a href="glossary-tropical#surface-analysis">What is a Surface Analysis?</a></li>
+      <li><a href="glossary-observations#taf">What is a TAF?</a></li>
+      <li><a href="glossary-storm-structure#tail-cloud">What is a Tail Cloud?</a></li>
+      <li><a href="glossary-radar-signatures#tbss">What is a TBSS?</a></li>
+      <li><a href="glossary-radar-signatures#tds">What is a TDS?</a></li>
+      <li><a href="glossary-synoptic#temperature-inversion">What is a Temperature Inversion?</a></li>
+      <li><a href="glossary-radar-signatures#three-body-scatter-spike">What is a Three-Body Scatter Spike?</a></li>
+      <li><a href="glossary-storm-types#thunderstorm-probability-alert">What is a Thunderstorm Probability Alert?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#tornado-emergency-tor-e">What is a Tornado Emergency (TOR-E)?</a></li>
+      <li><a href="glossary-tornadoes#tornado-outbreak">What is a Tornado Outbreak?</a></li>
+      <li><a href="glossary-tornadoes#tornado-track">What is a Tornado Track?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#tornado-warning">What is a Tornado Warning?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#tornado-watch">What is a Tornado Watch?</a></li>
+      <li><a href="glossary-synoptic#tpv">What is a TPV?</a></li>
+      <li><a href="glossary-boundaries-winds#triple-point">What is a Triple Point?</a></li>
+      <li><a href="glossary-tropical#tropical-cyclone">What is a Tropical Cyclone?</a></li>
+      <li><a href="glossary-tropical#tropical-depression">What is a Tropical Depression?</a></li>
+      <li><a href="glossary-tropical#tropical-disturbance">What is a Tropical Disturbance?</a></li>
+      <li><a href="glossary-tropical#tropical-storm-watch-warning">What is a Tropical Storm Watch/Warning?</a></li>
+      <li><a href="glossary-tropical#tropical-storm">What is a Tropical Storm?</a></li>
+      <li><a href="glossary-tropical#tropical-wave">What is a Tropical Wave?</a></li>
+      <li><a href="glossary-tropical#tropical-weather-outlook">What is a Tropical Weather Outlook?</a></li>
+      <li><a href="glossary-nws-alert-codes#tsunami-watch">What is a Tsunami Watch?</a></li>
+      <li><a href="glossary-radar-signatures#tvs">What is a TVS?</a></li>
+      <li><a href="glossary-radar-signatures#velocity-couplet">What is a Velocity Couplet?</a></li>
+      <li><a href="glossary-storm-structure#wall-cloud">What is a Wall Cloud?</a></li>
+      <li><a href="glossary-synoptic#warm-front">What is a Warm Front?</a></li>
+      <li><a href="glossary-storm-types#waterspout">What is a Waterspout?</a></li>
+      <li><a href="glossary-nws-alert-codes#wcn">What is a WCN?</a></li>
+      <li><a href="glossary-nws-alert-codes#wea">What is a WEA?</a></li>
+      <li><a href="glossary-tornadoes#wedge-tornado">What is a Wedge Tornado?</a></li>
+      <li><a href="glossary-nws-offices#wfo">What is a WFO?</a></li>
+      <li><a href="glossary-storm-structure#whale-s-mouth">What is a Whale&#39;s Mouth?</a></li>
+      <li><a href="glossary-fire-heat#wind-advisory">What is a Wind Advisory?</a></li>
+      <li><a href="glossary-winter#wind-chill-advisory">What is a Wind Chill Advisory?</a></li>
+      <li><a href="glossary-winter#wind-chill-warning">What is a Wind Chill Warning?</a></li>
+      <li><a href="glossary-winter#winter-storm-outlook">What is a Winter Storm Outlook?</a></li>
+      <li><a href="glossary-winter#winter-storm-warning">What is a Winter Storm Warning?</a></li>
+      <li><a href="glossary-winter#winter-storm-watch">What is a Winter Storm Watch?</a></li>
+      <li><a href="glossary-winter#winter-storm">What is a Winter Storm?</a></li>
+      <li><a href="glossary-winter#winter-weather-advisory">What is a Winter Weather Advisory?</a></li>
+      <li><a href="glossary-winter#wintry-mix">What is a Wintry Mix?</a></li>
+      <li><a href="glossary-nws-alert-codes#wou">What is a WOU?</a></li>
+      <li><a href="glossary-radar-signatures#zdr-column">What is a ZDR Column?</a></li>
+      <li><a href="glossary-nws-offices#abq">What is ABQ?</a></li>
+      <li><a href="glossary-nws-offices#abr">What is ABR?</a></li>
+      <li><a href="glossary-synoptic#absolute-vorticity">What is Absolute Vorticity?</a></li>
+      <li><a href="glossary-nws-offices#ace">What is ACE?</a></li>
+      <li><a href="glossary-synoptic#adiabatic-cooling-warming">What is Adiabatic Cooling/Warming?</a></li>
+      <li><a href="glossary-nws-offices#afc">What is AFC?</a></li>
+      <li><a href="glossary-nws-offices#afg">What is AFG?</a></li>
+      <li><a href="glossary-nws-offices#ajk">What is AJK?</a></li>
+      <li><a href="glossary-nws-offices#akq">What is AKQ?</a></li>
+      <li><a href="glossary-nws-offices#aly">What is ALY?</a></li>
+      <li><a href="glossary-nws-offices#ama">What is AMA?</a></li>
+      <li><a href="glossary-nws-alert-codes#afd">What is an AFD?</a></li>
+      <li><a href="glossary-synoptic#air-mass">What is an Air Mass?</a></li>
+      <li><a href="glossary-nws-alert-codes#air-quality-alert">What is an Air Quality Alert?</a></li>
+      <li><a href="glossary-clouds#altocumulus-cloud">What is an Altocumulus Cloud?</a></li>
+      <li><a href="glossary-clouds#altostratus-cloud">What is an Altostratus Cloud?</a></li>
+      <li><a href="glossary-radar-fundamentals#anvil">What is an Anvil?</a></li>
+      <li><a href="glossary-winter#arctic-outbreak">What is an Arctic Outbreak?</a></li>
+      <li><a href="glossary-tornadoes#ef0-tornado">What is an EF0 Tornado?</a></li>
+      <li><a href="glossary-tornadoes#ef1-tornado">What is an EF1 Tornado?</a></li>
+      <li><a href="glossary-tornadoes#ef2-tornado">What is an EF2 Tornado?</a></li>
+      <li><a href="glossary-tornadoes#ef3-tornado">What is an EF3 Tornado?</a></li>
+      <li><a href="glossary-tornadoes#ef4-tornado">What is an EF4 Tornado?</a></li>
+      <li><a href="glossary-tornadoes#ef5-tornado">What is an EF5 Tornado?</a></li>
+      <li><a href="glossary-tornadoes#efu-tornado">What is an EFU Tornado?</a></li>
+      <li><a href="glossary-spc-outlooks#enhanced-risk-enh">What is an Enhanced Risk (ENH)?</a></li>
+      <li><a href="glossary-fire-heat#excessive-heat-warning">What is an Excessive Heat Warning?</a></li>
+      <li><a href="glossary-flooding#excessive-rainfall-outlook-ero">What is an Excessive Rainfall Outlook (ERO)?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#extreme-wind-warning-eww">What is an Extreme Wind Warning (EWW)?</a></li>
+      <li><a href="glossary-tropical#eyewall-replacement-cycle-erc">What is an Eyewall Replacement Cycle (ERC)?</a></li>
+      <li><a href="glossary-tropical#eyewall-replacement-cycle">What is an Eyewall Replacement Cycle?</a></li>
+      <li><a href="glossary-storm-structure#ffd">What is an FFD?</a></li>
+      <li><a href="glossary-flooding#fls">What is an FLS?</a></li>
+      <li><a href="glossary-storm-structure#hp-supercell">What is an HP Supercell?</a></li>
+      <li><a href="glossary-nws-alert-codes#hwo">What is an HWO?</a></li>
+      <li><a href="glossary-winter#ice-storm-warning">What is an Ice Storm Warning?</a></li>
+      <li><a href="glossary-storm-structure#inflow-notch">What is an Inflow Notch?</a></li>
+      <li><a href="glossary-tropical#invest-area">What is an Invest Area?</a></li>
+      <li><a href="glossary-storm-structure#lp-supercell">What is an LP Supercell?</a></li>
+      <li><a href="glossary-nws-alert-codes#lsr">What is an LSR?</a></li>
+      <li><a href="glossary-spc-outlooks#mcd">What is an MCD?</a></li>
+      <li><a href="glossary-storm-types#mcs">What is an MCS?</a></li>
+      <li><a href="glossary-storm-types#mcv">What is an MCV?</a></li>
+      <li><a href="glossary-models-climate#nws-text-product">What is an NWS Text Product?</a></li>
+      <li><a href="glossary-synoptic#occluded-front">What is an Occluded Front?</a></li>
+      <li><a href="glossary-synoptic#omega-block">What is an Omega Block?</a></li>
+      <li><a href="glossary-boundaries-winds#outflow-boundary">What is an Outflow Boundary?</a></li>
+      <li><a href="glossary-storm-structure#overshooting-top">What is an Overshooting Top?</a></li>
+      <li><a href="glossary-storm-structure#rfd-surge">What is an RFD Surge?</a></li>
+      <li><a href="glossary-storm-structure#rfd">What is an RFD?</a></li>
+      <li><a href="glossary-nws-alert-codes#sps">What is an SPS?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#svs">What is an SVS?</a></li>
+      <li><a href="glossary-storm-structure#updraft">What is an Updraft?</a></li>
+      <li><a href="glossary-synoptic#upper-level-trough">What is an Upper-Level Trough?</a></li>
+      <li><a href="glossary-nws-offices#anc">What is ANC?</a></li>
+      <li><a href="glossary-radar-fundamentals#anomalous-propagation">What is Anomalous Propagation?</a></li>
+      <li><a href="glossary-nws-offices#apx">What is APX?</a></li>
+      <li><a href="glossary-flooding#areal-flooding">What is Areal Flooding?</a></li>
+      <li><a href="glossary-nws-offices#arx">What is ARX?</a></li>
+      <li><a href="glossary-nws-offices#asw">What is ASW?</a></li>
+      <li><a href="glossary-nws-offices#ava">What is AVA?</a></li>
+      <li><a href="glossary-nws-offices#avw">What is AVW?</a></li>
+      <li><a href="glossary-radar-signatures#azshear">What is AzShear?</a></li>
+      <li><a href="glossary-shear-indices#backing-and-veering">What is Backing and Veering?</a></li>
+      <li><a href="glossary-nws-offices#bgm">What is BGM?</a></li>
+      <li><a href="glossary-nws-offices#bis">What is BIS?</a></li>
+      <li><a href="glossary-winter#black-ice">What is Black Ice?</a></li>
+      <li><a href="glossary-winter#blowing-snow">What is Blowing Snow?</a></li>
+      <li><a href="glossary-nws-offices#bmx">What is BMX?</a></li>
+      <li><a href="glossary-nws-offices#boi">What is BOI?</a></li>
+      <li><a href="glossary-nws-offices#bou">What is BOU?</a></li>
+      <li><a href="glossary-nws-offices#box">What is BOX?</a></li>
+      <li><a href="glossary-nws-offices#brn">What is BRN?</a></li>
+      <li><a href="glossary-nws-offices#bro">What is BRO?</a></li>
+      <li><a href="glossary-nws-offices#btv">What is BTV?</a></li>
+      <li><a href="glossary-nws-offices#buf">What is BUF?</a></li>
+      <li><a href="glossary-shear-indices#bulk-shear">What is Bulk Shear?</a></li>
+      <li><a href="glossary-shear-indices#bunkers-storm-motion">What is Bunkers Storm Motion?</a></li>
+      <li><a href="glossary-nws-offices#byz">What is BYZ?</a></li>
+      <li><a href="glossary-nws-offices#bzw">What is BZW?</a></li>
+      <li><a href="glossary-nws-offices#cae">What is CAE?</a></li>
+      <li><a href="glossary-instability-cape#cape">What is CAPE?</a></li>
+      <li><a href="glossary-nws-offices#car">What is CAR?</a></li>
+      <li><a href="glossary-nws-offices#cfa">What is CFA?</a></li>
+      <li><a href="glossary-nws-offices#cfw">What is CFW?</a></li>
+      <li><a href="glossary-nws-offices#chs">What is CHS?</a></li>
+      <li><a href="glossary-spc-outlooks#cig1">What is CIG1?</a></li>
+      <li><a href="glossary-spc-outlooks#cig2">What is CIG2?</a></li>
+      <li><a href="glossary-spc-outlooks#cig3">What is CIG3?</a></li>
+      <li><a href="glossary-nws-offices#cin">What is CIN?</a></li>
+      <li><a href="glossary-nws-offices#cle">What is CLE?</a></li>
+      <li><a href="glossary-observations#cocorahs">What is CoCoRaHS?</a></li>
+      <li><a href="glossary-instability-cape#convective-initiation">What is Convective Initiation?</a></li>
+      <li><a href="glossary-boundaries-winds#convergence">What is Convergence?</a></li>
+      <li><a href="glossary-radar-signatures#correlation-coefficient">What is Correlation Coefficient?</a></li>
+      <li><a href="glossary-fire-heat#critical-fire-weather">What is Critical Fire Weather?</a></li>
+      <li><a href="glossary-nws-offices#crp">What is CRP?</a></li>
+      <li><a href="glossary-nws-offices#ctp">What is CTP?</a></li>
+      <li><a href="glossary-storm-structure#cumulonimbus">What is Cumulonimbus?</a></li>
+      <li><a href="glossary-nws-offices#cys">What is CYS?</a></li>
+      <li><a href="glossary-instability-cape#dcape">What is DCAPE?</a></li>
+      <li><a href="glossary-nws-offices#ddc">What is DDC?</a></li>
+      <li><a href="glossary-instability-cape#dewpoint">What is Dewpoint?</a></li>
+      <li><a href="glossary-winter#diamond-dust">What is Diamond Dust?</a></li>
+      <li><a href="glossary-boundaries-winds#divergence">What is Divergence?</a></li>
+      <li><a href="glossary-nws-offices#dlh">What is DLH?</a></li>
+      <li><a href="glossary-nws-offices#dmx">What is DMX?</a></li>
+      <li><a href="glossary-nws-offices#dsw">What is DSW?</a></li>
+      <li><a href="glossary-nws-offices#dtx">What is DTX?</a></li>
+      <li><a href="glossary-radar-fundamentals#dual-pol-radar">What is Dual-Pol Radar?</a></li>
+      <li><a href="glossary-nws-offices#dvn">What is DVN?</a></li>
+      <li><a href="glossary-nws-offices#eax">What is EAX?</a></li>
+      <li><a href="glossary-shear-indices#effective-shear">What is Effective Shear?</a></li>
+      <li><a href="glossary-nws-offices#ehi">What is EHI?</a></li>
+      <li><a href="glossary-nws-offices#ehw">What is EHW?</a></li>
+      <li><a href="glossary-nws-offices#eka">What is EKA?</a></li>
+      <li><a href="glossary-instability-cape#elevated-convection">What is Elevated Convection?</a></li>
+      <li><a href="glossary-models-climate#ensemble-forecasting">What is Ensemble Forecasting?</a></li>
+      <li><a href="glossary-models-climate#enso-el-ni-o-la-ni-a">What is ENSO (El Niño / La Niña)?</a></li>
+      <li><a href="glossary-nws-offices#epz">What is EPZ?</a></li>
+      <li><a href="glossary-fire-heat#eto-particularly-dangerous-situation-for-fire-weather">What is ETO (Particularly Dangerous Situation for Fire Weather)?</a></li>
+      <li><a href="glossary-nws-offices#ewx">What is EWX?</a></li>
+      <li><a href="glossary-nws-offices#eyw">What is EYW?</a></li>
+      <li><a href="glossary-nws-offices#ffc">What is FFC?</a></li>
+      <li><a href="glossary-nws-offices#fgf">What is FGF?</a></li>
+      <li><a href="glossary-nws-offices#fgz">What is FGZ?</a></li>
+      <li><a href="glossary-fire-heat#fire-spotting">What is Fire Spotting?</a></li>
+      <li><a href="glossary-flooding#flash-flood-guidance">What is Flash Flood Guidance?</a></li>
+      <li><a href="glossary-flooding#flood-stage">What is Flood Stage?</a></li>
+      <li><a href="glossary-winter#freezing-drizzle">What is Freezing Drizzle?</a></li>
+      <li><a href="glossary-winter#freezing-fog">What is Freezing Fog?</a></li>
+      <li><a href="glossary-winter#freezing-rain">What is Freezing Rain?</a></li>
+      <li><a href="glossary-nws-offices#fsd">What is FSD?</a></li>
+      <li><a href="glossary-fire-heat#fuel-moisture">What is Fuel Moisture?</a></li>
+      <li><a href="glossary-nws-offices#fwd">What is FWD?</a></li>
+      <li><a href="glossary-nws-offices#fzw">What is FZW?</a></li>
+      <li><a href="glossary-synoptic#geopotential-height">What is Geopotential Height?</a></li>
+      <li><a href="glossary-nws-offices#ggw">What is GGW?</a></li>
+      <li><a href="glossary-tornadoes#giant-hail">What is Giant Hail?</a></li>
+      <li><a href="glossary-nws-offices#gid">What is GID?</a></li>
+      <li><a href="glossary-nws-offices#gjt">What is GJT?</a></li>
+      <li><a href="glossary-nws-offices#gld">What is GLD?</a></li>
+      <li><a href="glossary-observations#goes">What is GOES?</a></li>
+      <li><a href="glossary-winter#graupel">What is Graupel?</a></li>
+      <li><a href="glossary-nws-offices#grb">What is GRB?</a></li>
+      <li><a href="glossary-radar-fundamentals#ground-clutter">What is Ground Clutter?</a></li>
+      <li><a href="glossary-nws-offices#grr">What is GRR?</a></li>
+      <li><a href="glossary-nws-offices#gsp">What is GSP?</a></li>
+      <li><a href="glossary-nws-offices#gum">What is GUM?</a></li>
+      <li><a href="glossary-nws-offices#gyx">What is GYX?</a></li>
+      <li><a href="glossary-tornadoes#hail">What is Hail?</a></li>
+      <li><a href="glossary-nws-offices#hfo">What is HFO?</a></li>
+      <li><a href="glossary-nws-offices#hgx">What is HGX?</a></li>
+      <li><a href="glossary-nws-offices#hls">What is HLS?</a></li>
+      <li><a href="glossary-nws-offices#hnx">What is HNX?</a></li>
+      <li><a href="glossary-nws-offices#hua">What is HUA?</a></li>
+      <li><a href="glossary-nws-offices#hun">What is HUN?</a></li>
+      <li><a href="glossary-nws-offices#huw">What is HUW?</a></li>
+      <li><a href="glossary-nws-offices#ibw">What is IBW?</a></li>
+      <li><a href="glossary-nws-offices#ict">What is ICT?</a></li>
+      <li><a href="glossary-nws-offices#ifr">What is IFR?</a></li>
+      <li><a href="glossary-nws-offices#ilm">What is ILM?</a></li>
+      <li><a href="glossary-nws-offices#iln">What is ILN?</a></li>
+      <li><a href="glossary-nws-offices#ilx">What is ILX?</a></li>
+      <li><a href="glossary-nws-offices#ind">What is IND?</a></li>
+      <li><a href="glossary-storm-structure#inflow">What is Inflow?</a></li>
+      <li><a href="glossary-observations#infrared-ir-satellite-imagery">What is Infrared (IR) Satellite Imagery?</a></li>
+      <li><a href="glossary-nws-offices#iwx">What is IWX?</a></li>
+      <li><a href="glossary-nws-offices#jan">What is JAN?</a></li>
+      <li><a href="glossary-nws-offices#jax">What is JAX?</a></li>
+      <li><a href="glossary-nws-offices#jkl">What is JKL?</a></li>
+      <li><a href="glossary-nws-offices#kdp">What is KDP?</a></li>
+      <li><a href="glossary-winter#lake-effect-snow">What is Lake Effect Snow?</a></li>
+      <li><a href="glossary-winter#lake-effect-snow-2">What is Lake-Effect Snow?</a></li>
+      <li><a href="glossary-nws-offices#lbf">What is LBF?</a></li>
+      <li><a href="glossary-nws-offices#lch">What is LCH?</a></li>
+      <li><a href="glossary-storm-types#lightning">What is Lightning?</a></li>
+      <li><a href="glossary-nws-offices#lix">What is LIX?</a></li>
+      <li><a href="glossary-nws-offices#lkn">What is LKN?</a></li>
+      <li><a href="glossary-nws-offices#lmk">What is LMK?</a></li>
+      <li><a href="glossary-nws-offices#lot">What is LOT?</a></li>
+      <li><a href="glossary-nws-offices#lox">What is LOX?</a></li>
+      <li><a href="glossary-nws-offices#lsx">What is LSX?</a></li>
+      <li><a href="glossary-nws-offices#lub">What is LUB?</a></li>
+      <li><a href="glossary-nws-offices#lwx">What is LWX?</a></li>
+      <li><a href="glossary-nws-offices#lzk">What is LZK?</a></li>
+      <li><a href="glossary-nws-offices#maf">What is MAF?</a></li>
+      <li><a href="glossary-storm-structure#mammatus">What is Mammatus?</a></li>
+      <li><a href="glossary-nws-offices#meg">What is MEG?</a></li>
+      <li><a href="glossary-nws-offices#mfl">What is MFL?</a></li>
+      <li><a href="glossary-nws-offices#mfr">What is MFR?</a></li>
+      <li><a href="glossary-nws-offices#mhx">What is MHX?</a></li>
+      <li><a href="glossary-instability-cape#mixing-ratio">What is Mixing Ratio?</a></li>
+      <li><a href="glossary-nws-offices#mkx">What is MKX?</a></li>
+      <li><a href="glossary-nws-offices#mlb">What is MLB?</a></li>
+      <li><a href="glossary-instability-cape#mlcape">What is MLCAPE?</a></li>
+      <li><a href="glossary-nws-offices#mob">What is MOB?</a></li>
+      <li><a href="glossary-models-climate#model-consensus">What is Model Consensus?</a></li>
+      <li><a href="glossary-instability-cape#moisture-pooling">What is Moisture Pooling?</a></li>
+      <li><a href="glossary-nws-offices#mpx">What is MPX?</a></li>
+      <li><a href="glossary-nws-offices#mqt">What is MQT?</a></li>
+      <li><a href="glossary-radar-fundamentals#mrle">What is MRLE?</a></li>
+      <li><a href="glossary-radar-fundamentals#mrms">What is MRMS?</a></li>
+      <li><a href="glossary-nws-offices#mrx">What is MRX?</a></li>
+      <li><a href="glossary-nws-offices#mso">What is MSO?</a></li>
+      <li><a href="glossary-nws-offices#mtr">What is MTR?</a></li>
+      <li><a href="glossary-instability-cape#mucape">What is MUCAPE?</a></li>
+      <li><a href="glossary-radar-fundamentals#nexrad">What is NEXRAD?</a></li>
+      <li><a href="glossary-nws-offices#oax">What is OAX?</a></li>
+      <li><a href="glossary-fire-heat#offshore-flow">What is Offshore Flow?</a></li>
+      <li><a href="glossary-nws-offices#ohx">What is OHX?</a></li>
+      <li><a href="glossary-nws-offices#okx">What is OKX?</a></li>
+      <li><a href="glossary-synoptic#omega-vertical-motion">What is Omega / Vertical Motion?</a></li>
+      <li><a href="glossary-synoptic#orographic-lift">What is Orographic Lift?</a></li>
+      <li><a href="glossary-nws-offices#otx">What is OTX?</a></li>
+      <li><a href="glossary-nws-offices#oun">What is OUN?</a></li>
+      <li><a href="glossary-nws-offices#pah">What is PAH?</a></li>
+      <li><a href="glossary-nws-offices#pbz">What is PBZ?</a></li>
+      <li><a href="glossary-nws-offices#pdt">What is PDT?</a></li>
+      <li><a href="glossary-nws-offices#phi">What is PHI?</a></li>
+      <li><a href="glossary-nws-offices#pih">What is PIH?</a></li>
+      <li><a href="glossary-tropical#post-tropical">What is Post-Tropical?</a></li>
+      <li><a href="glossary-synoptic#potential-vorticity-pv">What is Potential Vorticity (PV)?</a></li>
+      <li><a href="glossary-nws-offices#pqr">What is PQR?</a></li>
+      <li><a href="glossary-instability-cape#precipitable-water-pwat">What is Precipitable Water (PWAT)?</a></li>
+      <li><a href="glossary-spc-outlooks#probsevere">What is ProbSevere?</a></li>
+      <li><a href="glossary-nws-offices#psr">What is PSR?</a></li>
+      <li><a href="glossary-nws-offices#pub">What is PUB?</a></li>
+      <li><a href="glossary-nws-offices#pva">What is PVA?</a></li>
+      <li><a href="glossary-nws-offices#qpf">What is QPF?</a></li>
+      <li><a href="glossary-synoptic#quasi-geostrophic-qg-forcing">What is Quasi-Geostrophic (QG) Forcing?</a></li>
+      <li><a href="glossary-radar-fundamentals#radar-aliasing">What is Radar Aliasing?</a></li>
+      <li><a href="glossary-radar-fundamentals#radar-beam-height">What is Radar Beam Height?</a></li>
+      <li><a href="glossary-nws-offices#rah">What is RAH?</a></li>
+      <li><a href="glossary-radar-fundamentals#range-folding">What is Range Folding?</a></li>
+      <li><a href="glossary-tropical#rapid-intensification">What is Rapid Intensification?</a></li>
+      <li><a href="glossary-radar-fundamentals#raxpol">What is RaXPol?</a></li>
+      <li><a href="glossary-radar-fundamentals#reflectivity">What is Reflectivity?</a></li>
+      <li><a href="glossary-instability-cape#relative-humidity">What is Relative Humidity?</a></li>
+      <li><a href="glossary-nws-offices#rev">What is REV?</a></li>
+      <li><a href="glossary-nws-offices#rfw">What is RFW?</a></li>
+      <li><a href="glossary-fire-heat#rh-recovery">What is RH Recovery?</a></li>
+      <li><a href="glossary-nws-offices#riw">What is RIW?</a></li>
+      <li><a href="glossary-nws-offices#rlx">What is RLX?</a></li>
+      <li><a href="glossary-nws-offices#rnk">What is RNK?</a></li>
+      <li><a href="glossary-radar-fundamentals#sails">What is SAILS?</a></li>
+      <li><a href="glossary-instability-cape#sbcape">What is SBCAPE?</a></li>
+      <li><a href="glossary-nws-offices#scp">What is SCP?</a></li>
+      <li><a href="glossary-storm-structure#scud">What is Scud?</a></li>
+      <li><a href="glossary-nws-offices#sew">What is SEW?</a></li>
+      <li><a href="glossary-nws-offices#sgf">What is SGF?</a></li>
+      <li><a href="glossary-nws-offices#sgx">What is SGX?</a></li>
+      <li><a href="glossary-nws-offices#shv">What is SHV?</a></li>
+      <li><a href="glossary-tornadoes#significant-hail">What is Significant Hail?</a></li>
+      <li><a href="glossary-shear-indices#sigtor">What is SIGTOR?</a></li>
+      <li><a href="glossary-nws-offices#sjt">What is SJT?</a></li>
+      <li><a href="glossary-nws-offices#sju">What is SJU?</a></li>
+      <li><a href="glossary-observations#skywarn">What is SKYWARN?</a></li>
+      <li><a href="glossary-nws-offices#slc">What is SLC?</a></li>
+      <li><a href="glossary-winter#sleet">What is Sleet?</a></li>
+      <li><a href="glossary-flooding#soil-saturation">What is Soil Saturation?</a></li>
+      <li><a href="glossary-spc-outlooks#spc-mesoanalysis">What is SPC Mesoanalysis?</a></li>
+      <li><a href="glossary-radar-fundamentals#spectrum-width">What is Spectrum Width?</a></li>
+      <li><a href="glossary-nws-offices#spw">What is SPW?</a></li>
+      <li><a href="glossary-nws-offices#sqw">What is SQW?</a></li>
+      <li><a href="glossary-nws-offices#ssa">What is SSA?</a></li>
+      <li><a href="glossary-tropical#sst-sea-surface-temperature">What is SST (Sea Surface Temperature)?</a></li>
+      <li><a href="glossary-nws-offices#ssw">What is SSW?</a></li>
+      <li><a href="glossary-storm-types#steam-fog">What is Steam Fog?</a></li>
+      <li><a href="glossary-nws-offices#sto">What is STO?</a></li>
+      <li><a href="glossary-tornadoes#storm-data">What is Storm Data?</a></li>
+      <li><a href="glossary-shear-indices#storm-relative-helicity">What is Storm Relative Helicity?</a></li>
+      <li><a href="glossary-radar-fundamentals#storm-relative-velocity">What is Storm Relative Velocity?</a></li>
+      <li><a href="glossary-tropical#storm-surge">What is Storm Surge?</a></li>
+      <li><a href="glossary-nws-offices#stp">What is STP?</a></li>
+      <li><a href="glossary-shear-indices#streamwise-vorticity">What is Streamwise Vorticity?</a></li>
+      <li><a href="glossary-radar-fundamentals#super-resolution-radar">What is Super-Resolution Radar?</a></li>
+      <li><a href="glossary-tropical#surface-based-convection">What is Surface-Based Convection?</a></li>
+      <li><a href="glossary-nws-offices#sva">What is SVA?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#svr-c">What is SVR-C?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#svr-d">What is SVR-D?</a></li>
+      <li><a href="glossary-nws-offices#tae">What is TAE?</a></li>
+      <li><a href="glossary-nws-offices#tbw">What is TBW?</a></li>
+      <li><a href="glossary-nws-offices#tfx">What is TFX?</a></li>
+      <li><a href="glossary-synoptic#500mb-map">What is the 500mb Map?</a></li>
+      <li><a href="glossary-models-climate#amo">What is the AMO?</a></li>
+      <li><a href="glossary-radar-fundamentals#base-scan">What is the Base Scan?</a></li>
+      <li><a href="glossary-instability-cape#cap">What is the Cap?</a></li>
+      <li><a href="glossary-instability-cape#capping-inversion">What is the Capping Inversion?</a></li>
+      <li><a href="glossary-radar-fundamentals#cone-of-silence">What is the Cone of Silence?</a></li>
+      <li><a href="glossary-tropical#cone-of-uncertainty">What is the Cone of Uncertainty?</a></li>
+      <li><a href="glossary-models-climate#cpc">What is the CPC?</a></li>
+      <li><a href="glossary-models-climate#drought-monitor">What is the Drought Monitor?</a></li>
+      <li><a href="glossary-synoptic#dry-slot">What is the Dry Slot?</a></li>
+      <li><a href="glossary-nws-alert-codes#eas">What is the EAS?</a></li>
+      <li><a href="glossary-models-climate#ecmwf">What is the ECMWF?</a></li>
+      <li><a href="glossary-tornadoes#ef-scale">What is the EF Scale?</a></li>
+      <li><a href="glossary-instability-cape#equilibrium-level">What is the Equilibrium Level?</a></li>
+      <li><a href="glossary-tropical#eye">What is the Eye?</a></li>
+      <li><a href="glossary-tropical#eyewall">What is the Eyewall?</a></li>
+      <li><a href="glossary-models-climate#gfs">What is the GFS?</a></li>
+      <li><a href="glossary-observations#glm">What is the GLM?</a></li>
+      <li><a href="glossary-fire-heat#haines-index">What is the Haines Index?</a></li>
+      <li><a href="glossary-fire-heat#heat-index">What is the Heat Index?</a></li>
+      <li><a href="glossary-models-climate#hrrr">What is the HRRR?</a></li>
+      <li><a href="glossary-synoptic#jet-stream">What is the Jet Stream?</a></li>
+      <li><a href="glossary-instability-cape#k-index">What is the K-Index?</a></li>
+      <li><a href="glossary-instability-cape#lcl">What is the LCL?</a></li>
+      <li><a href="glossary-instability-cape#lfc">What is the LFC?</a></li>
+      <li><a href="glossary-instability-cape#lifted-index-li">What is the Lifted Index (LI)?</a></li>
+      <li><a href="glossary-tropical#loop-current">What is the Loop Current?</a></li>
+      <li><a href="glossary-models-climate#mjo">What is the MJO?</a></li>
+      <li><a href="glossary-models-climate#nam">What is the NAM?</a></li>
+      <li><a href="glossary-tropical#nhc">What is the NHC?</a></li>
+      <li><a href="glossary-nws-offices#nws">What is the NWS?</a></li>
+      <li><a href="glossary-models-climate#pdo">What is the PDO?</a></li>
+      <li><a href="glossary-winter#polar-vortex">What is the Polar Vortex?</a></li>
+      <li><a href="glossary-models-climate#qbo">What is the QBO?</a></li>
+      <li><a href="glossary-tropical#saffir-simpson-scale">What is the Saffir-Simpson Scale?</a></li>
+      <li><a href="glossary-spc-outlooks#spc">What is the SPC?</a></li>
+      <li><a href="glossary-synoptic#tropopause">What is the Tropopause?</a></li>
+      <li><a href="glossary-synoptic#warm-sector">What is the Warm Sector?</a></li>
+      <li><a href="glossary-flooding#wpc">What is the WPC?</a></li>
+      <li><a href="glossary-winter#wssi">What is the WSSI?</a></li>
+      <li><a href="glossary-instability-cape#theta-e">What is Theta-E?</a></li>
+      <li><a href="glossary-storm-types#thunder">What is Thunder?</a></li>
+      <li><a href="glossary-nws-offices#toa">What is TOA?</a></li>
+      <li><a href="glossary-nws-offices#top">What is TOP?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#tor-c">What is TOR-C?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#tor-o">What is TOR-O?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#tor-p">What is TOR-P?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#tor-r">What is TOR-R?</a></li>
+      <li><a href="glossary-nws-offices#tra">What is TRA?</a></li>
+      <li><a href="glossary-nws-offices#trw">What is TRW?</a></li>
+      <li><a href="glossary-nws-offices#tsa">What is TSA?</a></li>
+      <li><a href="glossary-nws-offices#tsw">What is TSW?</a></li>
+      <li><a href="glossary-nws-offices#twc">What is TWC?</a></li>
+      <li><a href="glossary-nws-offices#unr">What is UNR?</a></li>
+      <li><a href="glossary-boundaries-winds#upslope-flow">What is Upslope Flow?</a></li>
+      <li><a href="glossary-nws-offices#vcp">What is VCP?</a></li>
+      <li><a href="glossary-nws-offices#vef">What is VEF?</a></li>
+      <li><a href="glossary-radar-fundamentals#velocity">What is Velocity?</a></li>
+      <li><a href="glossary-nws-offices#vil">What is VIL?</a></li>
+      <li><a href="glossary-storm-types#virga">What is Virga?</a></li>
+      <li><a href="glossary-observations#visible-satellite-imagery">What is Visible Satellite Imagery?</a></li>
+      <li><a href="glossary-nws-offices#vow">What is VOW?</a></li>
+      <li><a href="glossary-radar-signatures#vrot">What is VROT?</a></li>
+      <li><a href="glossary-nws-alert-codes#vtec">What is VTEC?</a></li>
+      <li><a href="glossary-observations#water-vapor-satellite-imagery">What is Water Vapor Satellite Imagery?</a></li>
+      <li><a href="glossary-winter#wind-chill">What is Wind Chill?</a></li>
+      <li><a href="glossary-shear-indices#wind-shear">What is Wind Shear?</a></li>
+      <li><a href="glossary-spc-outlooks#wofs">What is WoFS?</a></li>
+      <li><a href="glossary-nws-offices#wsa">What is WSA?</a></li>
+      <li><a href="glossary-nws-offices#wsw">What is WSW?</a></li>
+      <li><a href="glossary-nws-offices#zdr">What is ZDR?</a></li>
+      <li><a href="glossary-storm-structure#supercell-2">What Makes a Supercell?</a></li>
+      <li><a href="glossary-tornado-severe-alerts#tornado-emergency">What Triggers a Tornado Emergency?</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="community-cta">
+        <h2 class="section-title">Hear these terms used live</h2>
+        <p class="section-body">Reading definitions is one thing. Watching Coverage Experts apply them on live radar is how they stick. Join the Xtreme Weather Discord (XWD) and ask Snowball about any term on this page, these are the same answers the bot gives in the server.</p>
+        <div class="page-cta">
+          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-discord"></i> Join the Discord <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
+          <a href="snowball" class="btn-ghost"><i class="fas fa-snowflake"></i> Meet Snowball <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script>
+(function () {
+  var input = document.getElementById('glossary-filter');
+  var items = document.querySelectorAll('#glossary-index li');
+  if (!input) return;
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    items.forEach(function (li) {
+      li.style.display = !q || li.textContent.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
+    });
+  });
+})();
+</script>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand-section">
+            <div class="footer-brand-identity">
+                <img src="assets/xtreme-logo-small.png" loading="lazy" decoding="async" alt="Xtreme Weather" class="footer-logo">
+                <div class="footer-brand-text">
+                    <span class="footer-brand-name">Xtreme Weather</span>
+                    <span class="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
+                </div>
+            </div>
+            <p class="footer-description">
+                Home of the Xtreme Weather Discord (XWD): delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm.
+            </p>
+
+        </div>
+        <div class="footer-nav-section">
+            <div class="footer-socials">
+                <a href="https://tiktok.com/@xtreme_weather" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://x.com/joinxtremewx" target="_blank" rel="noopener" class="social-btn" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <nav class="footer-links">
+                <a href="about" class="footer-link">About</a>
+                <a href="contact" class="footer-link">Contact</a>
+                <a href="charter" class="footer-link">Charter</a>
+                <a href="glossary" class="footer-link">Glossary</a>
+                <a href="privacy" class="footer-link">Privacy</a>
+                <a href="terms" class="footer-link">Terms</a>
+            </nav>
+        </div>
+    </div>
+    <div class="footer-center-row">
+        <a class="footer-wrn" href="https://www.weather.gov/wrn/ambassadors" target="_blank" rel="noopener">
+            <img src="assets/wrn.png" width="300" height="98" loading="lazy" decoding="async" alt="WRN Logo" class="footer-wrn-logo">
+            <span class="footer-wrn-text">Xtreme Weather is a proud Weather-Ready Nation Ambassador</span>
+        </a>
+    </div>
+    <div class="footer-copyright">
+        &copy; 2026 Xtreme Weather. All rights reserved.
+    </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

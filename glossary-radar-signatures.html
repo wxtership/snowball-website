@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="16 radar signatures &amp; dual-pol terms explained in plain English by the Xtreme Weather Discord (XWD) weather community." />
+<meta name="theme-color" content="#0d0d18" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Xtreme Weather • Radar Signatures &amp; Dual-Pol Glossary</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://discord.com" />
+<link rel="preload" as="font" href="fonts/DrukWideBold.woff2" type="font/woff2" crossorigin />
+<link rel="preload" as="font" href="fonts/MusticaPro-SemiBold.woff2" type="font/woff2" crossorigin />
+<link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+<link rel="stylesheet" href="snowball.css">
+<link rel="stylesheet" href="community.css">
+<link rel="canonical" href="https://wxtership.github.io/snowball-website/glossary-radar-signatures" />
+<meta property="og:site_name" content="Xtreme Weather" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Xtreme Weather • Radar Signatures &amp; Dual-Pol Glossary" />
+<meta property="og:description" content="16 radar signatures &amp; dual-pol terms explained in plain English by the Xtreme Weather Discord (XWD) weather community." />
+<meta property="og:url" content="https://wxtership.github.io/snowball-website/glossary-radar-signatures" />
+<meta property="og:image" content="https://wxtership.github.io/snowball-website/assets/og-whatevertheweather.jpg" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="900" />
+<meta property="og:image:alt" content="Whatever the Weather: Xtreme Weather" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Xtreme Weather • Radar Signatures &amp; Dual-Pol Glossary" />
+<meta name="twitter:description" content="16 radar signatures &amp; dual-pol terms explained in plain English by the Xtreme Weather Discord (XWD) weather community." />
+<meta name="twitter:image" content="https://wxtership.github.io/snowball-website/assets/og-whatevertheweather.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Radar Signatures & Dual-Pol — Xtreme Weather Glossary",
+  "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "name": "BWER",
+      "description": "A Bounded Weak Echo Region (BWER) is a notch of low reflectivity at low levels on a storm's inflow side, overhung by high reflectivity aloft. It indicates an extremely strong updraft ingesting precipitation-free air. BWERs are associated with violent supercells and large hail.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#bwer"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "CC Drop",
+      "description": "A CC drop (correlation coefficient drop) occurs when values fall below ~0.95 inside a storm. This indicates non-meteorological scatterers: tornado debris (TDS), large/irregular hail, biological targets, or ground clutter. A CC drop co-located with a velocity couplet is strong evidence of a tornado l",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#cc-drop"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Debris Ball",
+      "description": "A debris ball is a small, intense reflectivity blob inside a hook echo, caused by tornado-lofted debris. Visual confirmation that a tornado is on the ground and producing damage.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#debris-ball"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Dual-Pol Signature",
+      "description": "Dual-pol signatures are patterns in ZDR, CC, and KDP that reveal precipitation type and storm structure. Key signatures: ZDR column (updraft), CC drop (debris/hail/mixed phase), KDP column (heavy rain core), ZDR arc (size-sorting of large drops at storm's leading edge).",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#dual-pol-signature"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Gate-to-Gate Couplet",
+      "description": "A gate-to-gate (G2G) couplet is when adjacent radar gates show extreme opposing velocities — say, +60 kt inbound right next to -60 kt outbound. The radar can't get a tighter rotation signature than that. G2G couplets are one of the highest-confidence radar indicators of a tornado, especially when pa",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#gate-to-gate-couplet"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Hook Echo",
+      "description": "A hook echo (sometimes just called a 'hook' or 'tornado hook') is a hook-shaped appendage on radar reflectivity at the back-right side of a supercell, usually the southwest flank. It marks where precipitation is being wrapped around the mesocyclone by the rear-flank downdraft — meaning the storm has",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#hook-echo"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Side Lobe",
+      "description": "<@626259765537800212>",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#side-lobe"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "TBSS",
+      "description": "A Three-Body Scatter Spike (TBSS) is a radar artifact appearing as a radial spike of weak reflectivity extending below a hail core. It's caused by energy reflecting off large hail to the ground and back to the radar. A TBSS is a reliable indicator of 2\"+ hail (golf ball or larger).",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tbss"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "TDS",
+      "description": "A Tornado Debris Signature (TDS) is a dual-pol radar signature where Correlation Coefficient (CC) drops sharply inside a hook echo, indicating non-meteorological debris is being lofted. Strong evidence of a tornado on the ground.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tds"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Three-Body Scatter Spike",
+      "description": "A Three-Body Scatter Spike (TBSS) is a radar artifact appearing as a faint spike behind a strong reflectivity core. Caused by radar energy scattering off large hailstones — a near-certain indicator of large hail aloft.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#three-body-scatter-spike"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "TVS",
+      "description": "A Tornado Vortex Signature (TVS) is an algorithm-detected, intense gate-to-gate velocity couplet — radar's automated flag for likely tornado-scale rotation.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#tvs"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Velocity Couplet",
+      "description": "A velocity couplet is adjacent inbound and outbound velocity values on radar, indicating rotation. Strong, tight, low-level couplets are the radar signature of a tornado.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#velocity-couplet"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "ZDR Column",
+      "description": "A ZDR column is an elevated plume of high differential reflectivity (ZDR) extending above the environmental 0°C level inside a thunderstorm updraft. It indicates large, oblate raindrops being lofted by a strong updraft — a reliable signature of a significant rotating updraft and potential for large ",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#zdr-column"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "AzShear",
+      "description": "AzShear (Azimuthal Shear) is an MRMS-derived product that measures rotation across adjacent radar rays — essentially an automated rotation detector. High low-level AzShear values flag tornadic or near-tornadic circulations even when the storm is out of range for a good velocity couplet on a single r",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#azshear"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Correlation Coefficient",
+      "description": "Correlation Coefficient (CC) measures how uniform a radar volume's targets are. CC near 1.0 = uniform (rain). Low CC inside a hook echo = mixed debris = a tornado debris signature.",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#correlation-coefficient"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "VROT",
+      "description": "VROT (Rotational Velocity) is the maximum gate-to-gate velocity difference on the lowest available radar tilt — a direct measure of circulation intensity at low levels. NWS operational guidelines use VROT thresholds: ≥ 40 kt supports tornado potential; ≥ 70 kt is one of the thresholds used to consid",
+      "url": "https://wxtership.github.io/snowball-website/glossary-radar-signatures#vrot"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="page-decor" aria-hidden="true"><i class="fas fa-bolt"></i><i class="fas fa-tornado"></i><i class="fas fa-triangle-exclamation"></i><i class="fas fa-snowflake"></i><i class="fas fa-cloud-bolt"></i><i class="fas fa-cloud"></i><i class="fas fa-cloud-rain"></i><i class="fas fa-cloud-showers-heavy"></i><i class="fas fa-sun"></i><i class="fas fa-cloud-sun"></i><i class="fas fa-wind"></i><i class="fas fa-droplet"></i><i class="fas fa-umbrella"></i><i class="fas fa-smog"></i><i class="fas fa-temperature-half"></i><i class="fas fa-hurricane"></i></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <button class="nav-btn-circle hamburger" id="mobile-trigger" onclick="sbToggleMobileMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="index.html" style="display:flex;align-items:center;text-decoration:none;">
+                <img src="assets/xtreme-logo-small.png" alt="Xtreme Weather" width="40" height="40" class="logo" fetchpriority="high">
+            </a>
+        </div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="has-dropdown" data-menu="community">
+                    <a href="#">Community <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li class="has-dropdown" data-menu="information">
+                    <a href="#">Information <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                </li>
+                <li>
+                    <a href="https://radar.xtremewx.com" target="_blank" rel="noopener">Radar</a>
+                </li>
+                <li>
+                    <a href="snowball">Snowball</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right"></div>
+    </div>
+</nav>
+
+<div class="mega-menu" id="community-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Project</div>
+            <a href="staff" class="mega-item"><i class="fas fa-users"></i><div class="mega-item-text"><span class="title">Staff</span><span class="desc">Meet the team</span></div></a>
+            <a href="donators" class="mega-item"><i class="fas fa-heart"></i><div class="mega-item-text"><span class="title">Donators</span><span class="desc">Community supporters</span></div></a>
+            <a href="about" class="mega-item"><i class="fas fa-circle-info"></i><div class="mega-item-text"><span class="title">About</span><span class="desc">Our story &amp; mission</span></div></a>
+            <a href="coverage-experts" class="mega-item"><i class="fas fa-tower-broadcast"></i><div class="mega-item-text"><span class="title">Coverage Experts</span><span class="desc">Who runs coverage</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mega-menu" id="information-mega-menu">
+    <div class="mega-menu-container">
+        <div class="mega-column">
+            <div class="mega-header">Docs</div>
+            <a href="charter" class="mega-item"><i class="fas fa-scroll"></i><div class="mega-item-text"><span class="title">Charter</span><span class="desc">Community standards</span></div></a>
+            <a href="glossary" class="mega-item"><i class="fas fa-book"></i><div class="mega-item-text"><span class="title">Glossary</span><span class="desc">Weather terms explained</span></div></a>
+            <a href="privacy" class="mega-item"><i class="fas fa-user-shield"></i><div class="mega-item-text"><span class="title">Privacy Policy</span><span class="desc">Your data &amp; rights</span></div></a>
+            <a href="terms" class="mega-item"><i class="fas fa-file-contract"></i><div class="mega-item-text"><span class="title">Terms of Service</span><span class="desc">Rules of use</span></div></a>
+        </div>
+        <div class="mega-column">
+            <div class="mega-header">Help</div>
+            <a href="contact" class="mega-item"><i class="fas fa-envelope"></i><div class="mega-item-text"><span class="title">Contact</span><span class="desc">Get in touch</span></div></a>
+            <a href="ban-appeal" class="mega-item"><i class="fas fa-gavel"></i><div class="mega-item-text"><span class="title">Ban Appeal</span><span class="desc">Request a review</span></div></a>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-menu-overlay" id="sb-mobile-menu" onclick="sbCloseMobileMenu(event)">
+    <div class="mobile-view main-view" id="sb-mobile-main-view">
+        <div class="mobile-centered-content">
+            <a href="index.html" class="mobile-big-link">Home</a>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('community')">Community<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
+            <button class="mobile-big-link" onclick="sbOpenSubMenu('information')">Information<span class="tiny-arrow"><i class="fas fa-chevron-right"></i></span></button>
+            <a href="https://radar.xtremewx.com" target="_blank" rel="noopener" class="mobile-big-link">Radar</a>
+            <a href="snowball" class="mobile-big-link">Snowball</a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-community">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+        <div class="mobile-sub-list">
+            <a href="staff" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-users"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Staff</span></span></a>
+            <a href="coverage-experts" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-tower-broadcast"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Coverage Experts</span></span></a>
+            <a href="about" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-circle-info"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">About</span></span></a>
+            <a href="donators" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-heart"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Donators</span></span></a>
+        </div>
+    </div>
+    <div class="mobile-view sub-view" id="sb-sub-information">
+        <button class="mobile-back-btn" onclick="sbCloseSubMenu()"><i class="fas fa-chevron-left"></i></button>
+        <div class="mobile-sub-list">
+            <a href="charter" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-scroll"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Charter</span></span></a>
+            <a href="glossary" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-book"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Glossary</span></span></a>
+            <a href="privacy" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-user-shield"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Privacy Policy</span></span></a>
+            <a href="terms" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-file-contract"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Terms of Service</span></span></a>
+            <a href="contact" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-envelope"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Contact</span></span></a>
+            <a href="ban-appeal" class="mobile-sub-item"><span class="mobile-sub-icon"><i class="fas fa-gavel"></i></span><span class="mobile-sub-item-text"><span class="mobile-sub-item-name">Ban Appeal</span></span></a>
+        </div>
+    </div>
+</div>
+
+<main class="community-page">
+
+  <section class="page-hero">
+    <div class="section-inner">
+      <img class="glossary-hero-icon" src="assets/icons/small-signal.png" alt="Radar Signatures &amp; Dual-Pol icon" width="72" height="72" loading="eager">
+      <h1 class="section-title">Radar Signatures &amp; Dual-Pol Terms</h1>
+      <p class="section-body">This is the page for what storm chasers and warning forecasters actually look for on radar: velocity couplets, debris signatures, ZDR columns, three-body scatter spikes. Each signature is a physical process you can learn to spot. Members break these down on live radar every event in the Xtreme Weather Discord (XWD); the basics behind the products are on <a href="glossary-radar-fundamentals">Radar Fundamentals</a>.</p>
+      <p class="glossary-crumb"><a href="glossary"><i class="fas fa-book"></i> All glossary categories</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner glossary-list">
+    <article class="glossary-term" id="bwer">
+      <h2>What is a BWER? <a class="glossary-anchor" href="#bwer" aria-label="Link to What is a BWER?">#</a></h2>
+      <p>A <strong>Bounded Weak Echo Region (BWER)</strong> is a notch of low reflectivity at low levels on a storm&#39;s inflow side, overhung by high reflectivity aloft. It indicates an extremely strong updraft ingesting precipitation-free air. BWERs are associated with violent supercells and large hail.</p>
+    </article>
+    <article class="glossary-term" id="cc-drop">
+      <h2>What is a CC Drop? <a class="glossary-anchor" href="#cc-drop" aria-label="Link to What is a CC Drop?">#</a></h2>
+      <p>A <strong>CC drop</strong> (correlation coefficient drop) occurs when values fall below ~0.95 inside a storm. This indicates non-meteorological scatterers: tornado debris (TDS), large/irregular hail, biological targets, or ground clutter. A CC drop co-located with a velocity couplet is strong evidence of a tornado lofting debris.</p>
+    </article>
+    <article class="glossary-term" id="debris-ball">
+      <h2>What is a Debris Ball? <a class="glossary-anchor" href="#debris-ball" aria-label="Link to What is a Debris Ball?">#</a></h2>
+      <p>A <strong>debris ball</strong> is a small, intense reflectivity blob inside a hook echo, caused by tornado-lofted debris. Visual confirmation that a tornado is on the ground and producing damage.</p>
+    </article>
+    <article class="glossary-term" id="dual-pol-signature">
+      <h2>What is a Dual-Pol Signature? <a class="glossary-anchor" href="#dual-pol-signature" aria-label="Link to What is a Dual-Pol Signature?">#</a></h2>
+      <p><strong>Dual-pol signatures</strong> are patterns in ZDR, CC, and KDP that reveal precipitation type and storm structure. Key signatures: ZDR column (updraft), CC drop (debris/hail/mixed phase), KDP column (heavy rain core), ZDR arc (size-sorting of large drops at storm&#39;s leading edge).</p>
+    </article>
+    <article class="glossary-term" id="gate-to-gate-couplet">
+      <h2>What is a Gate-to-Gate Couplet? <a class="glossary-anchor" href="#gate-to-gate-couplet" aria-label="Link to What is a Gate-to-Gate Couplet?">#</a></h2>
+      <p>A <strong>gate-to-gate (G2G) couplet</strong> is when adjacent radar gates show extreme opposing velocities — say, +60 kt inbound right next to -60 kt outbound. The radar can&#39;t get a tighter rotation signature than that. G2G couplets are one of the highest-confidence radar indicators of a tornado, especially when paired with a TDS.</p>
+    </article>
+    <article class="glossary-term" id="hook-echo">
+      <h2>What is a Hook Echo? <a class="glossary-anchor" href="#hook-echo" aria-label="Link to What is a Hook Echo?">#</a></h2>
+      <p>A <strong>hook echo</strong> (sometimes just called a &#39;hook&#39; or &#39;tornado hook&#39;) is a hook-shaped appendage on radar reflectivity at the back-right side of a supercell, usually the southwest flank. It marks where precipitation is being wrapped around the <strong>mesocyclone</strong> by the rear-flank downdraft — meaning the storm has a tight, organized rotation. A well-defined hook with a tight tip is the classic radar signature of a tornadic supercell, and chasers often watch for the tip of the hook to confirm a tornado is on the ground.</p>
+    </article>
+    <article class="glossary-term" id="side-lobe">
+      <h2>What is a Side Lobe? <a class="glossary-anchor" href="#side-lobe" aria-label="Link to What is a Side Lobe?">#</a></h2>
+      <p>&lt;@626259765537800212&gt;</p>
+    </article>
+    <article class="glossary-term" id="tbss">
+      <h2>What is a TBSS? <a class="glossary-anchor" href="#tbss" aria-label="Link to What is a TBSS?">#</a></h2>
+      <p>A <strong>Three-Body Scatter Spike (TBSS)</strong> is a radar artifact appearing as a radial spike of weak reflectivity extending below a hail core. It&#39;s caused by energy reflecting off large hail to the ground and back to the radar. A TBSS is a reliable indicator of 2&quot;+ hail (golf ball or larger).</p>
+    </article>
+    <article class="glossary-term" id="tds">
+      <h2>What is a TDS? <a class="glossary-anchor" href="#tds" aria-label="Link to What is a TDS?">#</a></h2>
+      <p>A <strong>Tornado Debris Signature (TDS)</strong> is a dual-pol radar signature where Correlation Coefficient (CC) drops sharply inside a hook echo, indicating non-meteorological debris is being lofted. Strong evidence of a tornado on the ground.</p>
+    </article>
+    <article class="glossary-term" id="three-body-scatter-spike">
+      <h2>What is a Three-Body Scatter Spike? <a class="glossary-anchor" href="#three-body-scatter-spike" aria-label="Link to What is a Three-Body Scatter Spike?">#</a></h2>
+      <p>A <strong>Three-Body Scatter Spike (TBSS)</strong> is a radar artifact appearing as a faint spike behind a strong reflectivity core. Caused by radar energy scattering off large hailstones — a near-certain indicator of large hail aloft.</p>
+    </article>
+    <article class="glossary-term" id="tvs">
+      <h2>What is a TVS? <a class="glossary-anchor" href="#tvs" aria-label="Link to What is a TVS?">#</a></h2>
+      <p>A <strong>Tornado Vortex Signature (TVS)</strong> is an algorithm-detected, intense gate-to-gate velocity couplet — radar&#39;s automated flag for likely tornado-scale rotation.</p>
+    </article>
+    <article class="glossary-term" id="velocity-couplet">
+      <h2>What is a Velocity Couplet? <a class="glossary-anchor" href="#velocity-couplet" aria-label="Link to What is a Velocity Couplet?">#</a></h2>
+      <p>A <strong>velocity couplet</strong> is adjacent inbound and outbound velocity values on radar, indicating rotation. Strong, tight, low-level couplets are the radar signature of a tornado.</p>
+    </article>
+    <article class="glossary-term" id="zdr-column">
+      <h2>What is a ZDR Column? <a class="glossary-anchor" href="#zdr-column" aria-label="Link to What is a ZDR Column?">#</a></h2>
+      <p>A <strong>ZDR column</strong> is an elevated plume of high differential reflectivity (ZDR) extending above the environmental 0°C level inside a thunderstorm updraft. It indicates large, oblate raindrops being lofted by a strong updraft — a reliable signature of a significant rotating updraft and potential for large hail.</p>
+    </article>
+    <article class="glossary-term" id="azshear">
+      <h2>What is AzShear? <a class="glossary-anchor" href="#azshear" aria-label="Link to What is AzShear?">#</a></h2>
+      <p><strong>AzShear (Azimuthal Shear)</strong> is an MRMS-derived product that measures rotation across adjacent radar rays — essentially an automated rotation detector. High low-level AzShear values flag tornadic or near-tornadic circulations even when the storm is out of range for a good velocity couplet on a single radar. Used heavily in operational warning operations.</p>
+    </article>
+    <article class="glossary-term" id="correlation-coefficient">
+      <h2>What is Correlation Coefficient? <a class="glossary-anchor" href="#correlation-coefficient" aria-label="Link to What is Correlation Coefficient?">#</a></h2>
+      <p><strong>Correlation Coefficient (CC)</strong> measures how uniform a radar volume&#39;s targets are. CC near 1.0 = uniform (rain). Low CC inside a hook echo = mixed debris = a tornado debris signature.</p>
+    </article>
+    <article class="glossary-term" id="vrot">
+      <h2>What is VROT? <a class="glossary-anchor" href="#vrot" aria-label="Link to What is VROT?">#</a></h2>
+      <p><strong>VROT (Rotational Velocity)</strong> is the maximum gate-to-gate velocity difference on the lowest available radar tilt — a direct measure of circulation intensity at low levels. NWS operational guidelines use VROT thresholds: <strong>≥ 40 kt</strong> supports tornado potential; <strong>≥ 70 kt</strong> is one of the thresholds used to consider a <strong>Tornado Emergency</strong>.</p>
+    </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="community-cta">
+        <h2 class="section-title">Hear these terms used live</h2>
+        <p class="section-body">Reading definitions is one thing. Watching Coverage Experts apply them on live radar is how they stick. Join the Xtreme Weather Discord (XWD) and ask Snowball about any term on this page, these are the same answers the bot gives in the server.</p>
+        <div class="page-cta">
+          <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-discord"></i> Join the Discord <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
+          <a href="snowball" class="btn-ghost"><i class="fas fa-snowflake"></i> Meet Snowball <img src="assets/arrow-up-right-small.png" alt="" class="btn-arrow-img"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand-section">
+            <div class="footer-brand-identity">
+                <img src="assets/xtreme-logo-small.png" loading="lazy" decoding="async" alt="Xtreme Weather" class="footer-logo">
+                <div class="footer-brand-text">
+                    <span class="footer-brand-name">Xtreme Weather</span>
+                    <span class="footer-tagline">Real-time forecasts, radar &amp; alerts</span>
+                </div>
+            </div>
+            <p class="footer-description">
+                Home of the Xtreme Weather Discord (XWD): delivering the fastest, most accurate weather data directly to your device. Stay ahead of the storm.
+            </p>
+
+        </div>
+        <div class="footer-nav-section">
+            <div class="footer-socials">
+                <a href="https://tiktok.com/@xtreme_weather" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.gg/xtremeweather" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://x.com/joinxtremewx" target="_blank" rel="noopener" class="social-btn" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <nav class="footer-links">
+                <a href="about" class="footer-link">About</a>
+                <a href="contact" class="footer-link">Contact</a>
+                <a href="charter" class="footer-link">Charter</a>
+                <a href="glossary" class="footer-link">Glossary</a>
+                <a href="privacy" class="footer-link">Privacy</a>
+                <a href="terms" class="footer-link">Terms</a>
+            </nav>
+        </div>
+    </div>
+    <div class="footer-center-row">
+        <a class="footer-wrn" href="https://www.weather.gov/wrn/ambassadors" target="_blank" rel="noopener">
+            <img src="assets/wrn.png" width="300" height="98" loading="lazy" decoding="async" alt="WRN Logo" class="footer-wrn-logo">
+            <span class="footer-wrn-text">Xtreme Weather is a proud Weather-Ready Nation Ambassador</span>
+        </a>
+    </div>
+    <div class="footer-copyright">
+        &copy; 2026 Xtreme Weather. All rights reserved.
+    </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
