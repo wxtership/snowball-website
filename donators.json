@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T04:23:41.726Z",
+  "updatedAt": "2026-07-03T04:34:06.688Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -9,8 +9,8 @@
     "name": "Xtreme Weather",
     "memberCount": 7371
   },
-  "allTimeTotal": 1005.73,
-  "monthlyRaised": 323.34,
+  "allTimeTotal": 1007.4,
+  "monthlyRaised": 325.01,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -158,8 +158,8 @@
           "displayName": "Max (Massachusetts)",
           "avatar": "assets/avatars/877009401423200296.png",
           "banner": null,
-          "amount": 9.13,
-          "donatedAt": "2026-05-19T16:00:38.000Z"
+          "amount": 10.8,
+          "donatedAt": "2026-07-03T04:27:39.000Z"
         },
         {
           "username": "no.one0707",
