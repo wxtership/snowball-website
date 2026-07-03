@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T04:00:19.257Z",
+  "updatedAt": "2026-07-03T04:48:39.448Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -149,7 +149,7 @@
         {
           "id": "609961976092950528",
           "username": "robbysversion",
-          "displayName": "Robby (PA)",
+          "displayName": "Robby",
           "avatar": "assets/avatars/609961976092950528.png",
           "banner": null,
           "accentColor": null
@@ -175,16 +175,7 @@
     {
       "key": "trial",
       "label": "Trial Staff",
-      "members": [
-        {
-          "id": "1248427007390384199",
-          "username": "cajuninthesouth8075",
-          "displayName": "LafayetteAreaWXシ",
-          "avatar": "assets/avatars/1248427007390384199.png",
-          "banner": null,
-          "accentColor": "#ffffff"
-        }
-      ]
+      "members": []
     }
   ]
 }
