@@ -5032,23 +5032,17 @@ body.scroll-locked {
     color: #fff;
 }
 
-#community-mega-menu,
-#about-mega-menu,
-#weather-mega-menu {
+#info-mega-menu {
     width: 560px;
 }
-#support-mega-menu {
+#community-mega-menu {
     width: 300px;
 }
-#community-mega-menu .mega-menu-container,
-#about-mega-menu .mega-menu-container,
-#weather-mega-menu .mega-menu-container {
+#info-mega-menu .mega-menu-container {
     grid-template-columns: 1fr 1fr;
     gap: 22px;
 }
 @media (max-width: 800px) {
     #community-mega-menu,
-    #about-mega-menu,
-    #support-mega-menu,
-    #weather-mega-menu { width: 100%; }
+    #info-mega-menu { width: 100%; }
 }
