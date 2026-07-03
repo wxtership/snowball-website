@@ -486,7 +486,8 @@
 
     function hydrateAccount(user) {
         currentUser = user || currentUser;
-        var name = '@' + displayName(user).replace(/^@/, '');
+        // Plain username, no @ and no display-name decorations.
+        var name = ((user && user.username) || displayName(user)).replace(/^@/, '');
         [
             ['appeal-account-name', 'appeal-account-avatar'],
             ['appeal-form-account-name', 'appeal-form-avatar'],

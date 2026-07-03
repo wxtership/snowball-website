@@ -55,7 +55,7 @@ const CATEGORIES = [
     key: 'nws-alert-codes',
     title: 'NWS Alert & Product Codes',
     heading: 'NWS Alert & Product Codes',
-    icon: 'assets/icons/emergency.png',
+    icon: 'assets/icons/small-propaganda.png',
     intro: 'The National Weather Service encodes every watch, warning, advisory, and statement with a short product code, and weather alert feeds (including ours) are full of them. This page decodes the codes that are not tornado- or severe-specific, plus the alerting infrastructure like VTEC, EAS, and WEA that delivers them to your phone. Severe and tornado products have their own page: [[tornado-severe-alerts]].',
     match: (t) => /^What is (an? |the )?(ASW|AVA|AVW|BZW|CFA|CFW|DSW|EHW|SQW|FZW|HLS|SSW|SSA|RFW|SPW|TRA|TRW|TSW|VOW|VTEC|IBW|WEA|EAS|SPS|AFD|LSR|HWO|WOU|WCN|PNS|SMW)\??/i.test(t)
       || /Special Marine|Special Weather Statement|Tsunami|Rip Current|Air Quality|Dense Fog|Frost Advisory|Hard Freeze/i.test(t),
@@ -72,7 +72,7 @@ const CATEGORIES = [
     key: 'winter',
     title: 'Winter Weather',
     heading: 'Winter Weather Terms',
-    icon: 'assets/emoji-snowball-cloud.png',
+    icon: 'assets/icons/small-snowball.webp',
     intro: 'From a garden-variety Winter Weather Advisory to a full Blizzard Warning, winter alerts have a precise ladder, and the precipitation types behind them (sleet, freezing rain, graupel) matter for what actually happens on the ground. This page covers the winter alert suite, snow science, and large-scale players like the polar vortex. XWD runs Winter Coverage in the Discord when these go up.',
     match: (t) => /Winter|Blizzard|Ice Storm|Snow|Sleet|Freezing|Wind Chill|Lake.Effect|Nor'easter|Polar Vortex|Arctic|Wintry|Bomb Cyclone|Graupel|Diamond Dust|WSSI|Black Ice|Stratospheric/i.test(t),
   },
@@ -88,7 +88,7 @@ const CATEGORIES = [
     key: 'fire-heat',
     title: 'Fire Weather, Heat & Wind',
     heading: 'Fire Weather, Heat & Wind Terms',
-    icon: 'assets/emoji-sunny-haze.png',
+    icon: 'assets/icons/emergency.png',
     intro: 'Fire weather and heat get less attention than tornadoes, but Red Flag Warnings, heat domes, and high wind events are some of the deadliest weather the NWS covers. This page explains the fire weather alert suite and the fuels and humidity terms behind it, plus heat products and the wind advisories that stand alone from thunderstorms.',
     match: (t) => /Fire|Red Flag|Pyrocumulus|Haines|Fuel Moisture|RH Recovery|ETO|Offshore Flow|Heat|High Wind|Wind Advisory|Coastal Flood|Excessive Heat/i.test(t),
   },
@@ -348,10 +348,8 @@ for (const cat of [...CATEGORIES, FALLBACK]) {
 
   <section class="page-hero">
     <div class="section-inner">
-      <img class="glossary-hero-icon" src="${cat.icon}" alt="${esc(cat.title)} icon" width="72" height="72" loading="eager">
       <h1 class="section-title">${esc(cat.heading)}</h1>
       <p class="section-body">${linkIntro(cat.intro)}</p>
-      <p class="glossary-crumb"><a href="glossary"><i class="fas fa-book"></i> All glossary categories</a></p>
     </div>
   </section>
 
@@ -396,7 +394,6 @@ const hubBody = `<main class="community-page">
 
   <section class="page-hero">
     <div class="section-inner">
-      <img class="glossary-hero-icon" src="assets/icons/small-snowball.webp" alt="Xtreme Weather glossary icon" width="72" height="72" loading="eager">
       <h1 class="section-title">Weather Glossary</h1>
       <p class="section-body">Every hobby has its jargon, and weather has more than most. This glossary explains ${totalTerms}+ terms in plain English, from CAPE and hook echoes to eyewall replacement cycles, written and maintained by the Xtreme Weather Discord (XWD) community. They are the same answers our bot Snowball gives when someone asks in the server, so if a definition here helps you, the people who wrote it are one click away.</p>
     </div>

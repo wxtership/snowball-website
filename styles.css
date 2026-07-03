@@ -741,7 +741,10 @@ body {
     transform: translateX(-50%) translateY(10px) translateZ(0);
     width: 550px;
     padding: 24px;
-    background: rgba(30, 30, 35, 0.4);
+    /* Near-opaque: Chromium intermittently drops backdrop-filter on fixed,
+       transformed elements, and at 0.4 alpha the page bled through the menu.
+       The blur is now just an enhancement, not load-bearing. */
+    background: rgba(19, 17, 28, 0.94);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.15);
