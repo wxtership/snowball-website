@@ -5035,14 +5035,10 @@ body.scroll-locked {
 }
 
 #community-mega-menu,
-#info-mega-menu,
-#support-mega-menu,
-#app-mega-menu {
-    width: 320px;
+#info-mega-menu {
+    width: 720px;
 }
 @media (max-width: 800px) {
     #community-mega-menu,
-    #info-mega-menu,
-    #support-mega-menu,
-    #app-mega-menu { width: 100%; }
+    #info-mega-menu { width: 100%; }
 }
