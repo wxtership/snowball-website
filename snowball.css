@@ -1739,6 +1739,14 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: relative;
   isolation: isolate;
   background: transparent;
+  /* Black breathing room between the radar figure above and this section's
+     snow texture (the ::before starts at the section edge). */
+  margin-top: 90px;
+}
+@media (max-width: 768px) {
+  .xw-snowball-section { margin-top: 60px; }
+  /* The 170px desktop gap above the title reads huge on phones. */
+  .xw-snowball-section .section-inner { padding-top: 80px; }
 }
 
 /* Blurred snow texture sits behind the content and feathers top & bottom into
