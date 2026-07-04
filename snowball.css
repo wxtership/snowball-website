@@ -2078,9 +2078,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   /* Opacity ramps linearly: ease-out curves hit ~70% almost immediately, so
      the visible part of the fade reads as a 70%->100% crawl. Movement keeps
      the decelerating curve. */
+  /* !important so component hover transitions (cards define their own) can't
+     override the entrance; nav.js removes the classes once the entrance ends,
+     which hands transitions back to the component. */
   transition:
     opacity   0.5s  linear var(--reveal-delay, 0ms),
-    transform 0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0ms);
+    transform 0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0ms) !important;
   will-change: opacity, transform;
 }
 .reveal-up.reveal-in {

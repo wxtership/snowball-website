@@ -218,6 +218,12 @@ if (document.fonts && document.fonts.ready) {
     batch.forEach(function (el, i) {
       el.style.setProperty('--reveal-delay', (i * 70) + 'ms');
       el.classList.add('reveal-in');
+      // Drop the reveal classes once the entrance finishes so the element's
+      // own transitions (hover lifts etc.) take back over.
+      setTimeout(function () {
+        el.classList.remove('reveal-up', 'reveal-in');
+        el.style.removeProperty('--reveal-delay');
+      }, i * 70 + 800);
     });
     batch = [];
     timer = null;
