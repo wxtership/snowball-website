@@ -215,18 +215,30 @@ if (document.fonts && document.fonts.ready) {
   var batch = [];
   var timer = null;
   function flush() {
-    batch.forEach(function (el, i) {
-      el.style.setProperty('--reveal-delay', (i * 70) + 'ms');
-      el.classList.add('reveal-in');
-      // Drop the reveal classes once the entrance finishes so the element's
-      // own transitions (hover lifts etc.) take back over.
-      setTimeout(function () {
-        el.classList.remove('reveal-up', 'reveal-in');
-        el.style.removeProperty('--reveal-delay');
-      }, i * 70 + 800);
-    });
+    var items = batch;
     batch = [];
     timer = null;
+    items.forEach(function (el, i) {
+      el.style.setProperty('--reveal-delay', (i * 70) + 'ms');
+    });
+    // The transition only plays if the hidden state was painted first. On
+    // fast (cached) refreshes both classes could land in the same style pass
+    // and elements popped in with no fade. Force a style flush, then wait two
+    // frames so the hidden state is guaranteed on screen before revealing.
+    void document.body.offsetHeight;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        items.forEach(function (el, i) {
+          el.classList.add('reveal-in');
+          // Drop the reveal classes once the entrance finishes so the
+          // element's own transitions (hover lifts etc.) take back over.
+          setTimeout(function () {
+            el.classList.remove('reveal-up', 'reveal-in');
+            el.style.removeProperty('--reveal-delay');
+          }, i * 70 + 800);
+        });
+      });
+    });
   }
 
   var io = new IntersectionObserver(function (entries) {
