@@ -1124,7 +1124,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-split-section .section-inner,
 .xw-coverage-section .section-inner,
 .xw-snowball-section .section-inner {
-  padding-top: 80px;
+  padding-top: 170px;
 }
 
 /* ── Products showcase: copy + framed live radar ───────────────────────── */
