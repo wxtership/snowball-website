@@ -989,14 +989,29 @@ function formatK(n) {
   return (n/1000).toFixed(1).replace(/\.0$/, '') + 'K';
 }
 
+// 31,801,221,229 -> "31.8B"; scales K / M / B / T with one trimmed decimal.
+function formatBig(n) {
+  if (typeof n !== 'number' || n < 1000) return null;
+  const units = [[1e12, 'T'], [1e9, 'B'], [1e6, 'M'], [1e3, 'K']];
+  for (const [div, suffix] of units) {
+    if (n >= div) return (n/div).toFixed(1).replace(/\.0$/, '') + suffix;
+  }
+  return null;
+}
+
+const BANNER_SERVICE_URL = 'https://community.xtremewx.com';
+const XW_GUILD_ID = '1077714936056250388';
+
 function PreviewTicker() {
   const [online, setOnline]   = useState(null);
   const [members, setMembers] = useState(null);
+  const [aiMsgs, setAiMsgs]   = useState(null);
+  const [econ, setEcon]       = useState(null);
 
   useEffect(() => {
     let cancelled = false;
     const fetchCounts = () => {
-      fetch('https://discord.com/api/guilds/1077714936056250388/widget.json', { cache: 'no-store' })
+      fetch(`https://discord.com/api/guilds/${XW_GUILD_ID}/widget.json`, { cache: 'no-store' })
         .then(r => r.ok ? r.json() : null)
         .then(data => {
           if (cancelled || !data) return;
@@ -1005,16 +1020,33 @@ function PreviewTicker() {
         })
         .catch(() => {});
     };
+    // Real totals from the banner service: snowflakes in circulation and the
+    // lifetime AI reply counter. Falls back to the words below until the
+    // numbers exist and are big enough to brag about.
+    const fetchBotStats = () => {
+      fetch(`${BANNER_SERVICE_URL}/public/community?guildId=${XW_GUILD_ID}`, { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (cancelled || !data) return;
+          const ai = formatBig(data.aiMessages);
+          const ec = formatBig(data.economyTotal);
+          if (ai) setAiMsgs(ai + '+');
+          if (ec) setEcon(ec + '+');
+        })
+        .catch(() => {});
+    };
     fetchCounts();
-    const id = setInterval(fetchCounts, 30000);
-    return () => { cancelled = true; clearInterval(id); };
+    fetchBotStats();
+    const id  = setInterval(fetchCounts, 30000);
+    const id2 = setInterval(fetchBotStats, 300000);
+    return () => { cancelled = true; clearInterval(id); clearInterval(id2); };
   }, []);
 
   const stats = [
     { num: members ?? '7.2K+', label: 'Members' },
     { num: online ?? '—',  label: 'Online now' },
-    { num: 'Thousands',         label: 'of AI messages sent' },
-    { num: 'Billions',          label: 'in the economy' },
+    { num: aiMsgs ?? 'Thousands', label: 'of AI messages sent' },
+    { num: econ ?? 'Billions',    label: 'in the economy' },
   ];
 
   return h('div', { className:'preview-ticker-wrap' },
