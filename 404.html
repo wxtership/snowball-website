@@ -25,13 +25,11 @@
     92%  { opacity: 0.5; }
     100% { transform: translate(calc(100vw + 60px), calc(var(--y, 40%) - 60px)) rotate(340deg); opacity: 0; }
   }
-  .err-code {
-    display: inline-block; margin-bottom: 18px; padding: 6px 16px;
-    background: rgba(107,84,245,0.15); border: 1px solid rgba(107,84,245,0.3);
-    border-radius: 999px; font-size: 12px; color: var(--purple-300);
-    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
-  }
-  .page-hero.blown-away { padding-bottom: 100px; }
+  .page-hero.blown-away { padding-top: 260px; padding-bottom: 220px; }
+  .blown-away .btn-primary::after { display: none; }
+  /* Continue the hero intro stagger (title 0.05s, body 0.2s) to the buttons. */
+  .page-hero .page-cta { animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards; animation-delay: 0.35s; }
+  @media (prefers-reduced-motion: reduce) { .page-hero .page-cta { animation: none; } }
   @media (prefers-reduced-motion: reduce) { .debris { display: none; } }
 </style>
 </head>
@@ -135,12 +133,11 @@
     <span class="debris" style="--y: 22vh; --dur: 13s; --delay: 5s;">&#128196;</span>
     <span class="debris" style="--y: 48vh; --dur: 9.5s; --delay: 7s;">&#10052;&#65039;</span>
     <div class="section-inner">
-      <span class="err-code"><i class="fas fa-wind"></i>&nbsp; Error 404</span>
       <h1 class="section-title">This page blew away</h1>
       <p class="section-body">The page you're looking for doesn't exist or has moved. The radar shows clear skies back home.</p>
       <div class="page-cta" style="margin-top: 28px;">
         <a class="btn-primary" href="/snowball-website/">Back to home</a>
-        <a class="btn-ghost" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener"><i class="fab fa-discord"></i> Join the Discord</a>
+        <a class="btn-ghost-arrow" href="https://discord.gg/xtremeweather" target="_blank" rel="noopener"><i class="fab fa-discord"></i> Join the Discord</a>
       </div>
     </div>
   </section>
