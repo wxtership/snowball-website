@@ -157,7 +157,8 @@ if (document.fonts && document.fonts.ready) {
   // Child containers whose own children should stagger individually (so grids of
   // cards rise one-by-one) instead of the whole block moving as one unit.
   var GROUP_SELECTOR = 'xw-product-grid xw-feature-list home-cta-stats ' +
-    'xw-section-head footer-grid glossary-cat-grid';
+    'xw-section-head footer-grid glossary-cat-grid economy-grid ' +
+    'coverage-modes mode-thresholds charter-list faq';
 
   function shouldSkip(el) {
     if (el.hasAttribute('data-no-reveal')) return true;
