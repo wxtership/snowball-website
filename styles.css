@@ -771,7 +771,10 @@ body {
     margin-left: -275px;
     margin-top: 10px;
     padding: 24px;
-    background: rgba(19, 17, 28, 0.7);
+    /* Near-opaque on purpose: every translucent variant eventually hit the
+       Chromium backdrop-filter compositing bug one way or another. The blur
+       is decoration only. */
+    background: rgba(19, 17, 28, 0.94);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -823,7 +826,11 @@ body {
 .mega-item:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.1);
-    transform: translateX(4px);
+    /* Nudge via padding, not transform: a transformed child inside a
+       backdrop-filtered panel retriggers the Chromium bug and washes out
+       sibling text. */
+    padding-left: 16px;
+    padding-right: 8px;
 }
 
 .mega-item i {
