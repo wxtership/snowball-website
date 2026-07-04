@@ -562,7 +562,7 @@ const hubBody = `<main class="community-page">
 
   <section class="glossary-hub-cats">
     <div class="section-inner">
-      <div class="glossary-cat-grid">
+      <div class="glossary-cat-grid" data-no-reveal>
 ${hubCards}
       </div>
     </div>
