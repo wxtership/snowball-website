@@ -11,13 +11,15 @@ document.querySelectorAll('.has-dropdown[data-menu]').forEach(function (item) {
     megaMenu.style.opacity = '1';
     megaMenu.style.visibility = 'visible';
     megaMenu.style.pointerEvents = 'auto';
-    megaMenu.style.transform = 'translateX(-50%) translateY(0)';
+    // margin-top instead of transform: Chromium drops backdrop-filter on
+    // fixed elements that carry a transform, which let text bleed through.
+    megaMenu.style.marginTop = '0px';
   }
   function hide() {
     megaMenu.style.opacity = '0';
     megaMenu.style.visibility = 'hidden';
     megaMenu.style.pointerEvents = 'none';
-    megaMenu.style.transform = 'translateX(-50%) translateY(20px)';
+    megaMenu.style.marginTop = '20px';
   }
   item.addEventListener('mouseenter', show);
   item.addEventListener('mouseleave', function () { t = setTimeout(hide, 100); });
@@ -155,7 +157,7 @@ if (document.fonts && document.fonts.ready) {
   // Child containers whose own children should stagger individually (so grids of
   // cards rise one-by-one) instead of the whole block moving as one unit.
   var GROUP_SELECTOR = 'xw-product-grid xw-feature-list home-cta-stats ' +
-    'xw-section-head footer-grid';
+    'xw-section-head footer-grid glossary-cat-grid';
 
   function shouldSkip(el) {
     if (el.hasAttribute('data-no-reveal')) return true;
