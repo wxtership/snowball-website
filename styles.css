@@ -763,12 +763,14 @@ body {
     position: fixed;
     top: 67px;
     left: 50%;
-    transform: translateX(-50%) translateY(10px) translateZ(0);
+    /* No transform on purpose: Chromium intermittently drops backdrop-filter
+       on fixed elements that also have a transform, letting page text bleed
+       through the translucent panel. Centering uses margin-left and the
+       open/close slide animates margin-top instead. */
     width: 550px;
+    margin-left: -275px;
+    margin-top: 10px;
     padding: 24px;
-    /* Chromium intermittently drops backdrop-filter on fixed, transformed
-       elements, and at 0.4 alpha the page bled through the menu. 0.7 is a
-       middle ground: still see-through, but not fully reliant on the blur. */
     background: rgba(19, 17, 28, 0.7);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -782,7 +784,7 @@ body {
     z-index: 99;
 }
 
-.mega-menu.mega-menu-2col { width: 720px; }
+.mega-menu.mega-menu-2col { width: 720px; margin-left: -360px; }
 
 .mega-menu-container {
     display: grid;
@@ -5055,5 +5057,5 @@ body.scroll-locked {
 }
 @media (max-width: 800px) {
     #community-mega-menu,
-    #info-mega-menu { width: 100%; }
+    #info-mega-menu { width: 100%; left: 0; margin-left: 0; }
 }
