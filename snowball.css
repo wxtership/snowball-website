@@ -2103,12 +2103,22 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 /* ---------------------------------------------------------------------------
-   Tighter mobile rhythm for the home sections after the hero and app: the
-   site-wide mobile `section` padding (120px top) reads as huge dead gaps
-   between these, so pull them in. The preview inner needs !important to beat
-   its inline paddingTop.
+   Tighter mobile rhythm for the home sections after the hero: the site-wide
+   mobile `section` padding (120px top) reads as huge dead gaps between these,
+   so pull them in. The preview inner needs !important to beat its inline
+   paddingTop.
    --------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+  /* First section under the hero: 40px between the hero's bottom edge and
+     the app copy, instead of the 120px section + inner padding stack. */
+  .home-page #app {
+    padding-top: 40px;
+  }
+
+  .home-page #app .section-inner {
+    padding-top: 0;
+  }
+
   .home-page #radar-web,
   .home-page #snowball,
   .home-page #features,
