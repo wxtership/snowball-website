@@ -57,7 +57,8 @@
     var headIdx = stagger++;
     var cards = t.members.map(function (m) { return renderCard(m); }).join('');
     return '<div class="staff-tier">' +
-        '<div class="staff-tier-title" style="--i:' + headIdx + '"><i class="fas ' + (t.key === 'lead' ? 'fa-crown' : 'fa-tower-broadcast') + '"></i> ' +
+        '<div class="staff-tier-title" style="--i:' + headIdx + '">' +
+          '<img class="tier-icon" src="' + ICON + '" alt="" width="30" height="30"> ' +
           esc(t.label || meta.label) + '</div>' +
         '<div class="staff-grid staff-grid-coverage">' + cards + '</div>' +
       '</div>';
