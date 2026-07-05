@@ -278,15 +278,17 @@ if (document.fonts && document.fonts.ready) {
 
 // ---- Live Coverage Mode banner ----------------------------------------------
 // When Snowball enables a Coverage Mode it records the event with
-// banner-service, which exposes the current state at /public/coverage. While
-// coverage is live, every page shows a dismissible bottom banner and swaps the
-// tab + navbar icons to the coverage variant of the logo.
-// Preview locally with ?covpreview=severe|tropical|winter.
+// banner-service, which exposes the current state at /public/coverage. Every
+// page polls that endpoint; while coverage is live it shows a dismissible
+// bottom banner and swaps the tab icon to the coverage variant of the logo.
 (function () {
+  if (!window.fetch) return;
+
   var STATS_BASE = 'https://community.xtremewx.com';
   var INVITE_URL = 'https://discord.gg/xtremeweather';
   var DISMISS_KEY = 'xw-coverage-dismissed-until';
   var DISMISS_MS = 24 * 60 * 60 * 1000;
+  var POLL_MS = 60 * 1000;
 
   // Resolve assets against this script's URL so the 404 page (which loads
   // nav.js by absolute path) gets working icons at any URL depth.
@@ -302,36 +304,71 @@ if (document.fonts && document.fonts.ready) {
     winter:   { name: 'Winter',   icon: ASSET_BASE + 'assets/coverage/winter_static.png' }
   };
 
-  var preview = null;
-  try { preview = new URLSearchParams(window.location.search).get('covpreview'); } catch (e) { /* old browser */ }
+  var banner = null;
+  var shownType = null;
+  var savedFavicons = null; // original hrefs, restored when coverage ends
 
-  if (preview && TYPES[preview]) {
-    onCoverage({ active: true, type: preview, header: null, since: 'preview' });
-  } else if (window.fetch) {
+  function check() {
     fetch(STATS_BASE + '/public/coverage', { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (data) {
-        if (data && data.active && TYPES[data.type]) onCoverage(data);
-      })
+      .then(function (data) { apply(data); })
       .catch(function () { /* banner is optional; fail quietly */ });
   }
+  check();
+  setInterval(check, POLL_MS);
 
-  function onCoverage(data) {
-    var t = TYPES[data.type];
+  function apply(data) {
+    var active = !!(data && data.active && TYPES[data.type]);
 
-    // Tab + navbar icons follow the active coverage type
+    if (!active) {
+      restoreFavicons();
+      if (banner) hideBanner();
+      shownType = null;
+      return;
+    }
+
+    // Tab icon follows the active coverage type (navbar logo stays as-is)
+    setFavicons(TYPES[data.type].icon);
+
+    if (banner && shownType !== data.type) hideBanner(); // type changed mid-session
+    if (!banner && !isDismissed()) showBanner(data);
+  }
+
+  function setFavicons(href) {
     document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach(function (l) {
-      l.href = t.icon;
+      if (savedFavicons === null) savedFavicons = [];
+      if (!savedFavicons.some(function (s) { return s.el === l; })) {
+        savedFavicons.push({ el: l, href: l.href });
+      }
+      if (l.href !== href) l.href = href;
     });
-    var logo = document.querySelector('.navbar img.logo');
-    if (logo) logo.src = t.icon;
+  }
 
-    // Clicking the X hides the banner for 24 hours (icons still swap)
-    try { if (Date.now() < Number(localStorage.getItem(DISMISS_KEY) || 0)) return; } catch (e) { /* private mode */ }
+  function restoreFavicons() {
+    if (!savedFavicons) return;
+    savedFavicons.forEach(function (s) { s.el.href = s.href; });
+    savedFavicons = null;
+  }
 
+  function isDismissed() {
+    try { return Date.now() < Number(localStorage.getItem(DISMISS_KEY) || 0); } catch (e) { return false; }
+  }
+
+  function hideBanner() {
+    var el = banner;
+    banner = null;
+    shownType = null;
+    el.classList.remove('animate-in');
+    el.classList.add('animate-out');
+    setTimeout(function () { el.remove(); }, 600);
+  }
+
+  function showBanner(data) {
+    var t = TYPES[data.type];
     var headline = data.header || ('Xtreme Weather has activated ' + t.name + ' Coverage Mode.');
 
-    var banner = document.createElement('div');
+    banner = document.createElement('div');
+    shownType = data.type;
     banner.className = 'coverage-banner ' + data.type;
     banner.setAttribute('role', 'status');
     banner.style.display = 'block';
@@ -355,16 +392,15 @@ if (document.fonts && document.fonts.ready) {
     banner.querySelector('.coverage-dismiss').addEventListener('click', function (e) {
       e.stopPropagation();
       try { localStorage.setItem(DISMISS_KEY, String(Date.now() + DISMISS_MS)); } catch (err) { /* private mode */ }
-      banner.classList.remove('animate-in');
-      banner.classList.add('animate-out');
-      setTimeout(function () { banner.remove(); }, 600);
+      if (banner) hideBanner();
     });
 
     document.body.appendChild(banner);
     // Double rAF so the browser commits the off-screen state first and the
     // enter transition actually animates.
+    var el = banner;
     requestAnimationFrame(function () {
-      requestAnimationFrame(function () { banner.classList.add('animate-in'); });
+      requestAnimationFrame(function () { el.classList.add('animate-in'); });
     });
   }
 
