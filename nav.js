@@ -299,9 +299,9 @@ if (document.fonts && document.fonts.ready) {
   } catch (e) { /* fall back to page-relative */ }
 
   var TYPES = {
-    severe:   { name: 'Severe',   icon: ASSET_BASE + 'assets/coverage/severe_static.png' },
-    tropical: { name: 'Tropical', icon: ASSET_BASE + 'assets/coverage/tropical_static.png' },
-    winter:   { name: 'Winter',   icon: ASSET_BASE + 'assets/coverage/winter_static.png' }
+    severe:   { name: 'Severe',   icon: ASSET_BASE + 'assets/coverage/severe_static.png?v=2' },
+    tropical: { name: 'Tropical', icon: ASSET_BASE + 'assets/coverage/tropical_static.png?v=2' },
+    winter:   { name: 'Winter',   icon: ASSET_BASE + 'assets/coverage/winter_static.png?v=2' }
   };
 
   var banner = null;
@@ -421,7 +421,7 @@ if (document.fonts && document.fonts.ready) {
       requestAnimationFrame(function () {
         requestAnimationFrame(function () { el.classList.add('animate-in'); });
       });
-    }, 1000);
+    }, 500);
   }
 
   function esc(s) {
