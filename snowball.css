@@ -789,7 +789,9 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: clamp(32px, 6vw, 96px);
   align-items: center;
-  padding: 24px 0 8px;
+  /* No top padding: the section inner's padding already sets the gap above,
+     matching the uniform rhythm between all home sections. */
+  padding: 0 0 8px;
 }
 .home-cta-title {
   font-family: var(--font-display); font-weight: 700;
@@ -1122,9 +1124,14 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 .xw-products-inner,
 .xw-split-section .section-inner,
-.xw-coverage-section .section-inner,
-.xw-snowball-section .section-inner {
+.xw-coverage-section .section-inner {
   padding-top: 170px;
+}
+/* The snowball section already carries a 90px margin above (texture breathing
+   room), so its inner gap is trimmed to keep the total section-to-section
+   space at the same 290px as everywhere else on the home page. */
+.xw-snowball-section .section-inner {
+  padding-top: 80px;
 }
 
 /* ── Products showcase: copy + framed live radar ───────────────────────── */
@@ -1628,7 +1635,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 }
 
 /* ---- Features marquee (replaces the old radar-web section) ---- */
-.xw-features-section .section-inner { padding-top: 80px; padding-bottom: 8px; }
+.xw-features-section .section-inner { padding-top: 170px; padding-bottom: 0; }
 
 .xw-features-head { max-width: 620px; margin-bottom: 44px; }
 .xw-features-cta { margin-top: 20px; }
@@ -1744,9 +1751,9 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   margin-top: 90px;
 }
 @media (max-width: 768px) {
-  .xw-snowball-section { margin-top: 60px; }
-  /* The 170px desktop gap above the title reads huge on phones. */
-  .xw-snowball-section .section-inner { padding-top: 80px; }
+  /* No extra texture margin on phones: the 44px section paddings alone keep
+     the gap identical to the rest of the mobile rhythm. */
+  .xw-snowball-section { margin-top: 0; }
 }
 
 /* Blurred snow texture sits behind the content and feathers top & bottom into
@@ -2110,9 +2117,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
    --------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   /* First section under the hero: 40px between the hero's bottom edge and
-     the app copy, instead of the 120px section + inner padding stack. */
+     the app copy, instead of the 120px section + inner padding stack. The
+     bottom matches the 44px the sections below use. */
   .home-page #app {
     padding-top: 40px;
+    padding-bottom: 44px;
   }
 
   .home-page #app .section-inner {
@@ -2135,5 +2144,5 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     padding-top: 0;
   }
 
-  .home-page #preview .section-inner { padding-top: 8px !important; }
+  .home-page #preview .section-inner { padding-top: 0 !important; }
 }
