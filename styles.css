@@ -523,6 +523,12 @@ body {
     border-radius: 6px;
 }
 
+@media (max-width: 768px) {
+    .logo {
+        margin-left: -2px;
+    }
+}
+
 .nav-center {
     position: absolute;
     left: 50%;

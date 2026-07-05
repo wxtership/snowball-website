@@ -299,9 +299,9 @@ if (document.fonts && document.fonts.ready) {
   } catch (e) { /* fall back to page-relative */ }
 
   var TYPES = {
-    severe:   { name: 'Severe',   icon: ASSET_BASE + 'assets/coverage/severe_static.png?v=2' },
-    tropical: { name: 'Tropical', icon: ASSET_BASE + 'assets/coverage/tropical_static.png?v=2' },
-    winter:   { name: 'Winter',   icon: ASSET_BASE + 'assets/coverage/winter_static.png?v=2' }
+    severe:   { name: 'Severe',   icon: ASSET_BASE + 'assets/coverage/severe_static.png?v=3' },
+    tropical: { name: 'Tropical', icon: ASSET_BASE + 'assets/coverage/tropical_static.png?v=3' },
+    winter:   { name: 'Winter',   icon: ASSET_BASE + 'assets/coverage/winter_static.png?v=3' }
   };
 
   var banner = null;
