@@ -1030,7 +1030,10 @@ function PreviewTicker() {
         .then(r => r.ok ? r.json() : null)
         .then(data => {
           if (cancelled || !data) return;
-          const ai = formatBig(data.aiMessages);
+          // AI replies read cleaner rounded to the nearest thousand (19,707 -> 20K+)
+          const ai = typeof data.aiMessages === 'number'
+            ? formatBig(Math.round(data.aiMessages / 1000) * 1000)
+            : null;
           const ec = formatBig(data.economyTotal);
           if (ai) setAiMsgs(ai + '+');
           if (ec) setEcon(ec + '+');
