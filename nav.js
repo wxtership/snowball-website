@@ -285,7 +285,8 @@ if (document.fonts && document.fonts.ready) {
 (function () {
   var STATS_BASE = 'https://community.xtremewx.com';
   var INVITE_URL = 'https://discord.gg/xtremeweather';
-  var DISMISS_KEY = 'xw-coverage-dismissed';
+  var DISMISS_KEY = 'xw-coverage-dismissed-until';
+  var DISMISS_MS = 24 * 60 * 60 * 1000;
 
   // Resolve assets against this script's URL so the 404 page (which loads
   // nav.js by absolute path) gets working icons at any URL depth.
@@ -325,9 +326,8 @@ if (document.fonts && document.fonts.ready) {
     var logo = document.querySelector('.navbar img.logo');
     if (logo) logo.src = t.icon;
 
-    // Stay hidden once dismissed, but re-show for each new activation
-    var stamp = data.type + ':' + (data.since || '');
-    try { if (sessionStorage.getItem(DISMISS_KEY) === stamp) return; } catch (e) { /* private mode */ }
+    // Clicking the X hides the banner for 24 hours (icons still swap)
+    try { if (Date.now() < Number(localStorage.getItem(DISMISS_KEY) || 0)) return; } catch (e) { /* private mode */ }
 
     var headline = data.header || ('Xtreme Weather has activated ' + t.name + ' Coverage Mode.');
 
@@ -350,7 +350,7 @@ if (document.fonts && document.fonts.ready) {
     });
     banner.querySelector('.coverage-dismiss').addEventListener('click', function (e) {
       e.stopPropagation();
-      try { sessionStorage.setItem(DISMISS_KEY, stamp); } catch (err) { /* private mode */ }
+      try { localStorage.setItem(DISMISS_KEY, String(Date.now() + DISMISS_MS)); } catch (err) { /* private mode */ }
       banner.classList.remove('animate-in');
       banner.classList.add('animate-out');
       setTimeout(function () { banner.remove(); }, 450);
