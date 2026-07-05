@@ -275,3 +275,94 @@ if (document.fonts && document.fonts.ready) {
     init();
   }
 })();
+
+// ---- Live Coverage Mode banner ----------------------------------------------
+// When Snowball enables a Coverage Mode it records the event with
+// banner-service, which exposes the current state at /public/coverage. While
+// coverage is live, every page shows a dismissible bottom banner and swaps the
+// tab + navbar icons to the coverage variant of the logo.
+// Preview locally with ?covpreview=severe|tropical|winter.
+(function () {
+  var STATS_BASE = 'https://community.xtremewx.com';
+  var INVITE_URL = 'https://discord.gg/xtremeweather';
+  var DISMISS_KEY = 'xw-coverage-dismissed';
+
+  // Resolve assets against this script's URL so the 404 page (which loads
+  // nav.js by absolute path) gets working icons at any URL depth.
+  var ASSET_BASE = '';
+  try {
+    var src = document.currentScript && document.currentScript.src;
+    if (src) ASSET_BASE = src.slice(0, src.lastIndexOf('/') + 1);
+  } catch (e) { /* fall back to page-relative */ }
+
+  var TYPES = {
+    severe:   { name: 'Severe',   icon: ASSET_BASE + 'assets/coverage/severe_static.png' },
+    tropical: { name: 'Tropical', icon: ASSET_BASE + 'assets/coverage/tropical_static.png' },
+    winter:   { name: 'Winter',   icon: ASSET_BASE + 'assets/coverage/winter_static.png' }
+  };
+
+  var preview = null;
+  try { preview = new URLSearchParams(window.location.search).get('covpreview'); } catch (e) { /* old browser */ }
+
+  if (preview && TYPES[preview]) {
+    onCoverage({ active: true, type: preview, header: null, since: 'preview' });
+  } else if (window.fetch) {
+    fetch(STATS_BASE + '/public/coverage', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (data && data.active && TYPES[data.type]) onCoverage(data);
+      })
+      .catch(function () { /* banner is optional; fail quietly */ });
+  }
+
+  function onCoverage(data) {
+    var t = TYPES[data.type];
+
+    // Tab + navbar icons follow the active coverage type
+    document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach(function (l) {
+      l.href = t.icon;
+    });
+    var logo = document.querySelector('.navbar img.logo');
+    if (logo) logo.src = t.icon;
+
+    // Stay hidden once dismissed, but re-show for each new activation
+    var stamp = data.type + ':' + (data.since || '');
+    try { if (sessionStorage.getItem(DISMISS_KEY) === stamp) return; } catch (e) { /* private mode */ }
+
+    var headline = data.header || ('Xtreme Weather has activated ' + t.name + ' Coverage Mode.');
+
+    var banner = document.createElement('div');
+    banner.className = 'coverage-banner ' + data.type;
+    banner.setAttribute('role', 'status');
+    banner.style.display = 'block';
+    banner.innerHTML =
+      '<div class="coverage-banner-content">' +
+        '<img class="coverage-icon" src="' + t.icon + '" alt="" width="36" height="36">' +
+        '<div class="coverage-text">' +
+          '<p class="coverage-title">' + esc(headline) + '</p>' +
+          '<p class="coverage-subtitle">Join the server now to get live updates</p>' +
+        '</div>' +
+        '<button class="coverage-dismiss" type="button" aria-label="Dismiss">&times;</button>' +
+      '</div>';
+
+    banner.addEventListener('click', function () {
+      window.open(INVITE_URL, '_blank', 'noopener');
+    });
+    banner.querySelector('.coverage-dismiss').addEventListener('click', function (e) {
+      e.stopPropagation();
+      try { sessionStorage.setItem(DISMISS_KEY, stamp); } catch (err) { /* private mode */ }
+      banner.classList.remove('animate-in');
+      banner.classList.add('animate-out');
+      setTimeout(function () { banner.remove(); }, 450);
+    });
+
+    document.body.appendChild(banner);
+    requestAnimationFrame(function () { banner.classList.add('animate-in'); });
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+})();
