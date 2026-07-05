@@ -307,6 +307,7 @@ if (document.fonts && document.fonts.ready) {
   var banner = null;
   var shownType = null;
   var savedFavicons = null; // original hrefs, restored when coverage ends
+  var savedNavLogo = null;  // original navbar logo src, restored when coverage ends
 
   function check() {
     fetch(STATS_BASE + '/public/coverage', { cache: 'no-store' })
@@ -322,13 +323,15 @@ if (document.fonts && document.fonts.ready) {
 
     if (!active) {
       restoreFavicons();
+      restoreNavLogo();
       if (banner) hideBanner();
       shownType = null;
       return;
     }
 
-    // Tab icon follows the active coverage type (navbar logo stays as-is)
+    // Tab + navbar icons switch to the coverage logo right away
     setFavicons(TYPES[data.type].icon);
+    setNavLogo(TYPES[data.type].icon);
 
     if (banner && shownType !== data.type) hideBanner(); // type changed mid-session
     if (!banner && !isDismissed()) showBanner(data);
@@ -348,6 +351,20 @@ if (document.fonts && document.fonts.ready) {
     if (!savedFavicons) return;
     savedFavicons.forEach(function (s) { s.el.href = s.href; });
     savedFavicons = null;
+  }
+
+  function setNavLogo(src) {
+    var logo = document.querySelector('.navbar img.logo');
+    if (!logo) return;
+    if (savedNavLogo === null) savedNavLogo = logo.getAttribute('src');
+    if (logo.getAttribute('src') !== src) logo.src = src;
+  }
+
+  function restoreNavLogo() {
+    if (savedNavLogo === null) return;
+    var logo = document.querySelector('.navbar img.logo');
+    if (logo) logo.src = savedNavLogo;
+    savedNavLogo = null;
   }
 
   function isDismissed() {
@@ -376,8 +393,8 @@ if (document.fonts && document.fonts.ready) {
       '<div class="coverage-banner-content">' +
         '<img class="coverage-icon" src="' + t.icon + '" alt="" width="48" height="48">' +
         '<div class="coverage-text">' +
-          '<p class="coverage-title">' + esc(headline) + '</p>' +
-          '<p class="coverage-subtitle">Join the server now to get live updates</p>' +
+          '<p class="coverage-title">' + esc(t.name + ' Coverage Mode enabled!') + '</p>' +
+          '<p class="coverage-subtitle">' + esc(headline) + '</p>' +
         '</div>' +
         '<button class="coverage-dismiss" type="button" aria-label="Dismiss">' +
           '<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">' +
@@ -395,13 +412,16 @@ if (document.fonts && document.fonts.ready) {
       if (banner) hideBanner();
     });
 
-    document.body.appendChild(banner);
-    // Double rAF so the browser commits the off-screen state first and the
-    // enter transition actually animates.
+    // Mount a beat after the page settles, then double rAF so the browser
+    // commits the off-screen state first and the enter transition animates.
     var el = banner;
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () { el.classList.add('animate-in'); });
-    });
+    setTimeout(function () {
+      if (banner !== el) return; // dismissed or replaced while waiting
+      document.body.appendChild(el);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { el.classList.add('animate-in'); });
+      });
+    }, 1000);
   }
 
   function esc(s) {
