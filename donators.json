@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T04:22:23.622Z",
+  "updatedAt": "2026-07-05T10:18:52.723Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -7,24 +7,16 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7371
+    "memberCount": 7385
   },
-  "allTimeTotal": 905.73,
-  "monthlyRaised": 223.34,
+  "allTimeTotal": 1038.07,
+  "monthlyRaised": 355.68,
   "monthlyGoal": 50,
   "tiers": [
     {
       "key": "donator",
       "label": "Donators",
       "members": [
-        {
-          "username": "silliphilly",
-          "displayName": "[vacation] Philly",
-          "avatar": "assets/avatars/1133479873155956878.png",
-          "banner": null,
-          "amount": 7,
-          "donatedAt": "2026-03-10T01:52:03.000Z"
-        },
         {
           "username": "username.0_0.",
           "displayName": "$ Death {GE, TBS}",
@@ -115,7 +107,7 @@
         },
         {
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Lynchburg VA)",
+          "displayName": "Gabriel Kramp (St John’s FL)",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "amount": 40,
@@ -146,6 +138,14 @@
           "donatedAt": "2026-03-17T04:10:31.000Z"
         },
         {
+          "username": "ldncwx",
+          "displayName": "ldncwx",
+          "avatar": "assets/avatars/default-1.png",
+          "banner": null,
+          "amount": 25,
+          "donatedAt": "2026-07-05T10:17:15.000Z"
+        },
+        {
           "username": "hainesnoids",
           "displayName": "maudpuzzie",
           "avatar": "assets/avatars/496829863924072448.png",
@@ -155,11 +155,11 @@
         },
         {
           "username": "weatherlord_wx",
-          "displayName": "Max (Massachusetts)",
+          "displayName": "Max (Old Orchard Beach, ME)",
           "avatar": "assets/avatars/877009401423200296.png",
           "banner": null,
-          "amount": 9.13,
-          "donatedAt": "2026-05-19T16:00:38.000Z"
+          "amount": 10.8,
+          "donatedAt": "2026-07-03T04:27:39.000Z"
         },
         {
           "username": "no.one0707",
@@ -168,6 +168,14 @@
           "banner": null,
           "amount": 10,
           "donatedAt": "2026-01-01T05:48:41.000Z"
+        },
+        {
+          "username": "silliphilly",
+          "displayName": "Philly",
+          "avatar": "assets/avatars/1133479873155956878.png",
+          "banner": null,
+          "amount": 7,
+          "donatedAt": "2026-03-10T01:52:03.000Z"
         },
         {
           "username": "dynafolf",
@@ -190,16 +198,16 @@
           "displayName": "RemainingWX",
           "avatar": "assets/avatars/948372386347102209.png",
           "banner": null,
-          "amount": 106.87,
-          "donatedAt": "2026-07-03T04:20:20.000Z"
+          "amount": 112.54,
+          "donatedAt": "2026-07-03T04:34:28.000Z"
         },
         {
           "username": "robbysversion",
-          "displayName": "Robby (PA)",
+          "displayName": "Robby",
           "avatar": "assets/avatars/609961976092950528.png",
           "banner": null,
-          "amount": 224.04,
-          "donatedAt": "2026-07-03T04:12:02.000Z"
+          "amount": 324.04,
+          "donatedAt": "2026-07-03T04:22:50.000Z"
         },
         {
           "username": "rock_pebble122",
