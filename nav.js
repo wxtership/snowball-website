@@ -337,12 +337,16 @@ if (document.fonts && document.fonts.ready) {
     banner.style.display = 'block';
     banner.innerHTML =
       '<div class="coverage-banner-content">' +
-        '<img class="coverage-icon" src="' + t.icon + '" alt="" width="36" height="36">' +
+        '<img class="coverage-icon" src="' + t.icon + '" alt="" width="48" height="48">' +
         '<div class="coverage-text">' +
           '<p class="coverage-title">' + esc(headline) + '</p>' +
           '<p class="coverage-subtitle">Join the server now to get live updates</p>' +
         '</div>' +
-        '<button class="coverage-dismiss" type="button" aria-label="Dismiss">&times;</button>' +
+        '<button class="coverage-dismiss" type="button" aria-label="Dismiss">' +
+          '<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">' +
+            '<path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+          '</svg>' +
+        '</button>' +
       '</div>';
 
     banner.addEventListener('click', function () {
@@ -353,11 +357,15 @@ if (document.fonts && document.fonts.ready) {
       try { localStorage.setItem(DISMISS_KEY, String(Date.now() + DISMISS_MS)); } catch (err) { /* private mode */ }
       banner.classList.remove('animate-in');
       banner.classList.add('animate-out');
-      setTimeout(function () { banner.remove(); }, 450);
+      setTimeout(function () { banner.remove(); }, 600);
     });
 
     document.body.appendChild(banner);
-    requestAnimationFrame(function () { banner.classList.add('animate-in'); });
+    // Double rAF so the browser commits the off-screen state first and the
+    // enter transition actually animates.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { banner.classList.add('animate-in'); });
+    });
   }
 
   function esc(s) {
