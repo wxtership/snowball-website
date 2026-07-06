@@ -52,188 +52,214 @@
 <meta name="twitter:description" content="29 instability &amp; cape terms explained in plain English by the Xtreme Weather Discord (XWD) weather community." />
 <meta name="twitter:image" content="https://xtremewx.com/assets/og-whatevertheweather.jpg" />
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "DefinedTermSet",
-  "name": "Instability & CAPE — Xtreme Weather Glossary",
-  "url": "https://xtremewx.com/glossary-instability-cape",
-  "hasDefinedTerm": [
-    {
-      "@type": "DefinedTerm",
-      "name": "CAPE",
-      "description": "CAPE (Convective Available Potential Energy) measures how much energy is available for a rising air parcel — essentially storm fuel. Measured in J/kg. >1000 supports thunderstorms, >2500 strong storms, >4000 extreme instability.",
-      "url": "https://xtremewx.com/glossary-instability-cape#cape"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "SBCAPE",
-      "description": "Surface-Based CAPE (SBCAPE) uses a parcel lifted from the surface. Best for assessing storms rooted in the boundary layer — daytime convection driven by surface heating.",
-      "url": "https://xtremewx.com/glossary-instability-cape#sbcape"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "MLCAPE",
-      "description": "Mixed-Layer CAPE (MLCAPE) averages the lowest 100mb of the atmosphere before lifting the parcel. Often more representative of what storms actually ingest, especially when the surface is unrepresentative.",
-      "url": "https://xtremewx.com/glossary-instability-cape#mlcape"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "MUCAPE",
-      "description": "Most-Unstable CAPE (MUCAPE) uses whichever parcel in the lowest ~300mb has the highest CAPE. Essential for elevated convection — storms not rooted at the surface, common overnight or above a warm front.",
-      "url": "https://xtremewx.com/glossary-instability-cape#mucape"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "DCAPE",
-      "description": "Downdraft CAPE (DCAPE) estimates the potential strength of a thunderstorm downdraft. Values >1000 J/kg favor strong downbursts and damaging wind potential.",
-      "url": "https://xtremewx.com/glossary-instability-cape#dcape"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "0-3 km CAPE",
-      "description": "0-3 km CAPE is the portion of CAPE in the lowest 3 km of the atmosphere — the fuel parcels have right at the surface. Values of 100+ J/kg support strong low-level updrafts and stretching, which is what tornadoes need. Often more relevant to tornado intensity than total CAPE.",
-      "url": "https://xtremewx.com/glossary-instability-cape#0-3-km-cape"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Mixed-Layer Parcel",
-      "description": "A mixed-layer parcel uses the average temperature and humidity of the lowest 100 mb (about the lowest km) to calculate CAPE/CIN. It represents a more realistic afternoon convective parcel than a pure surface parcel — accounting for diurnal mixing. MLCAPE is the result, and it's typically the go-to C",
-      "url": "https://xtremewx.com/glossary-instability-cape#mixed-layer-parcel"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Most-Unstable Parcel",
-      "description": "A most-unstable parcel is the parcel within the lowest 300 mb that gives the largest CAPE — usually an elevated layer when surface conditions are stable. MUCAPE is calculated from this parcel and is the go-to value for elevated convection (storms not rooted at the surface, like overnight or post-fro",
-      "url": "https://xtremewx.com/glossary-instability-cape#most-unstable-parcel"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Surface-Based Convection",
-      "description": "Surface-based convection is the opposite of elevated convection — thunderstorms ingesting surface air directly into their updrafts. This is the regime that supports tornadoes, because the storm is connected to the boundary layer where shear, helicity, and moisture combine. SBCAPE > 0 J/kg is the bas",
-      "url": "https://xtremewx.com/glossary-instability-cape#surface-based-convection"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Elevated Convection",
-      "description": "Elevated convection is thunderstorms whose updrafts originate above the surface, not from surface-based air. Common above warm fronts at night or behind cold fronts in winter. Elevated storms can still produce large hail and heavy rain, but rarely produce tornadoes because they're cut off from surfa",
-      "url": "https://xtremewx.com/glossary-instability-cape#elevated-convection"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Cap",
-      "description": "The cap is a layer of warm air aloft that suppresses convection. A weak cap allows widespread storms (often messy); a strong cap can shut off convection entirely, but a marginal cap can produce isolated, intense supercells.",
-      "url": "https://xtremewx.com/glossary-instability-cape#cap"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Capping Inversion",
-      "description": "A capping inversion is a layer of warm air aloft that suppresses thunderstorm development by stopping rising parcels before they reach the LFC. The 'cap' has to be eroded — by heating, lifting, or moistening — before convection can break out. Days with a strong cap that holds late often produce isol",
-      "url": "https://xtremewx.com/glossary-instability-cape#capping-inversion"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "LCL",
-      "description": "The Lifted Condensation Level (LCL) is the height at which a lifted air parcel becomes saturated — essentially cloud base. Low LCLs (<1000m) significantly enhance tornado potential.",
-      "url": "https://xtremewx.com/glossary-instability-cape#lcl"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "LFC",
-      "description": "The Level of Free Convection (LFC) is the height above which a lifted parcel becomes warmer than its surroundings and rises freely. Low LFCs make storm initiation easier.",
-      "url": "https://xtremewx.com/glossary-instability-cape#lfc"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Equilibrium Level",
-      "description": "The Equilibrium Level (EL) is the altitude where a rising parcel becomes the same temperature as the environment — effectively the storm top / anvil height.",
-      "url": "https://xtremewx.com/glossary-instability-cape#equilibrium-level"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Lifted Index (LI)",
-      "description": "The Lifted Index (LI) is the temperature difference between a lifted surface parcel and the environment at 500mb. Negative = unstable. LI < -6 is very unstable, < -10 is extreme.",
-      "url": "https://xtremewx.com/glossary-instability-cape#lifted-index-li"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "K-Index",
-      "description": "The K-Index is a thunderstorm potential index using temperature at 850mb and 500mb and dewpoints at 850mb/700mb. K > 20 supports thunderstorms; K > 35 indicates widespread convective potential. More useful for general convective threat than for supercell/tornado environments — for those, STP/SCP are",
-      "url": "https://xtremewx.com/glossary-instability-cape#k-index"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Lapse Rate",
-      "description": "A lapse rate is how quickly temperature drops with height. Steep mid-level lapse rates (>7°C/km) indicate strong instability and support large hail and strong updrafts.",
-      "url": "https://xtremewx.com/glossary-instability-cape#lapse-rate"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Dewpoint",
-      "description": "Dewpoint is the temperature at which air becomes saturated (100% relative humidity) when cooled. It's the most direct measure of atmospheric moisture content — unlike relative humidity, it doesn't change as temperature changes. 55°F = comfortable; 65°F = noticeably humid; 70°F+ = very moist, fueling",
-      "url": "https://xtremewx.com/glossary-instability-cape#dewpoint"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Relative Humidity",
-      "description": "Relative Humidity (RH) is the ratio of actual moisture content to the maximum the air can hold at its current temperature — expressed as a percentage. 100% RH = saturated (fog/precipitation forms). RH decreases as temperature rises even if moisture content stays the same, which is why hot afternoons",
-      "url": "https://xtremewx.com/glossary-instability-cape#relative-humidity"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Mixing Ratio",
-      "description": "Mixing ratio is the mass of water vapor per unit mass of dry air (g/kg). It's a measure of the actual moisture content of an air parcel, unlike relative humidity which depends on temperature. High surface mixing ratios (16+ g/kg) support explosive thunderstorm development.",
-      "url": "https://xtremewx.com/glossary-instability-cape#mixing-ratio"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Precipitable Water (PWAT)",
-      "description": "Precipitable Water (PWAT) is the total column water vapor in a vertical column of atmosphere, measured in inches. High PWAT values (2.0\"+ for the CONUS) support heavy rainfall rates and flash flood potential. It's one of the first things forecasters check for flash flood events.",
-      "url": "https://xtremewx.com/glossary-instability-cape#precipitable-water-pwat"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Theta-E",
-      "description": "Theta-E (Equivalent Potential Temperature) is a conserved thermodynamic variable combining temperature and moisture into a single value. High low-level theta-E = rich storm fuel. Theta-E ridges on SPC mesoanalysis mark the axis of highest instability and moisture — supercells that tap into a theta-E",
-      "url": "https://xtremewx.com/glossary-instability-cape#theta-e"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Moisture Pooling",
-      "description": "Moisture pooling is when a localized region of high dewpoints accumulates along a boundary (often a dryline or warm front) as low-level winds converge moist air. Higher local dewpoints mean higher CAPE, lower LCLs, and better tornado potential. SPC forecasters watch the surface moisture pool positio",
-      "url": "https://xtremewx.com/glossary-instability-cape#moisture-pooling"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Sounding",
-      "description": "A sounding is a vertical profile of the atmosphere — temperature, dewpoint, and wind at all heights. Launched twice daily (00Z/12Z) via weather balloons. The foundational dataset for severe weather forecasting.",
-      "url": "https://xtremewx.com/glossary-instability-cape#sounding"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Skew-T",
-      "description": "A Skew-T Log-P is the standard chart format used to display sounding data. Temperature lines are skewed at 45° to make atmospheric features (CAPE, CIN, lapse rates) visually clear.",
-      "url": "https://xtremewx.com/glossary-instability-cape#skew-t"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Radiosonde",
-      "description": "A radiosonde is the instrument package carried by a weather balloon, measuring temperature, humidity, pressure, and winds as it ascends — generating the vertical profile that becomes a sounding. Launched twice daily (00Z/12Z) at ~92 upper-air stations across the U.S. The foundational dataset for sev",
-      "url": "https://xtremewx.com/glossary-instability-cape#radiosonde"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Loaded Gun Sounding",
-      "description": "A loaded gun is forecaster slang for a sounding with extreme CAPE under a strong cap — huge potential energy waiting to be unleashed if the cap breaks. The shape on a Skew-T resembles a coiled spring. Loaded gun environments often go bust if the cap holds, or produce explosive, violent storms if it ",
-      "url": "https://xtremewx.com/glossary-instability-cape#loaded-gun-sounding"
-    },
-    {
-      "@type": "DefinedTerm",
-      "name": "Convective Initiation",
-      "description": "Convective Initiation (CI) is the process by which surface-based thunderstorms first develop. Requires: sufficient lift to push parcels through the cap and past the LFC, adequate instability (CAPE), and moisture. Boundaries — fronts, drylines, outflow boundaries, sea breezes — are the most common CI",
-      "url": "https://xtremewx.com/glossary-instability-cape#convective-initiation"
-    }
-  ]
-}
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "name": "Instability & CAPE — Xtreme Weather Glossary",
+    "url": "https://xtremewx.com/glossary-instability-cape",
+    "hasDefinedTerm": [
+      {
+        "@type": "DefinedTerm",
+        "name": "CAPE",
+        "description": "CAPE (Convective Available Potential Energy) measures how much energy is available for a rising air parcel — essentially storm fuel. Measured in J/kg. >1000 supports thunderstorms, >2500 strong storms, >4000 extreme instability.",
+        "url": "https://xtremewx.com/glossary-instability-cape#cape"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "SBCAPE",
+        "description": "Surface-Based CAPE (SBCAPE) uses a parcel lifted from the surface. Best for assessing storms rooted in the boundary layer — daytime convection driven by surface heating.",
+        "url": "https://xtremewx.com/glossary-instability-cape#sbcape"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "MLCAPE",
+        "description": "Mixed-Layer CAPE (MLCAPE) averages the lowest 100mb of the atmosphere before lifting the parcel. Often more representative of what storms actually ingest, especially when the surface is unrepresentative.",
+        "url": "https://xtremewx.com/glossary-instability-cape#mlcape"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "MUCAPE",
+        "description": "Most-Unstable CAPE (MUCAPE) uses whichever parcel in the lowest ~300mb has the highest CAPE. Essential for elevated convection — storms not rooted at the surface, common overnight or above a warm front.",
+        "url": "https://xtremewx.com/glossary-instability-cape#mucape"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "DCAPE",
+        "description": "Downdraft CAPE (DCAPE) estimates the potential strength of a thunderstorm downdraft. Values >1000 J/kg favor strong downbursts and damaging wind potential.",
+        "url": "https://xtremewx.com/glossary-instability-cape#dcape"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "0-3 km CAPE",
+        "description": "0-3 km CAPE is the portion of CAPE in the lowest 3 km of the atmosphere — the fuel parcels have right at the surface. Values of 100+ J/kg support strong low-level updrafts and stretching, which is what tornadoes need. Often more relevant to tornado intensity than total CAPE.",
+        "url": "https://xtremewx.com/glossary-instability-cape#0-3-km-cape"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Mixed-Layer Parcel",
+        "description": "A mixed-layer parcel uses the average temperature and humidity of the lowest 100 mb (about the lowest km) to calculate CAPE/CIN. It represents a more realistic afternoon convective parcel than a pure surface parcel — accounting for diurnal mixing. MLCAPE is the result, and it's typically the go-to C",
+        "url": "https://xtremewx.com/glossary-instability-cape#mixed-layer-parcel"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Most-Unstable Parcel",
+        "description": "A most-unstable parcel is the parcel within the lowest 300 mb that gives the largest CAPE — usually an elevated layer when surface conditions are stable. MUCAPE is calculated from this parcel and is the go-to value for elevated convection (storms not rooted at the surface, like overnight or post-fro",
+        "url": "https://xtremewx.com/glossary-instability-cape#most-unstable-parcel"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Surface-Based Convection",
+        "description": "Surface-based convection is the opposite of elevated convection — thunderstorms ingesting surface air directly into their updrafts. This is the regime that supports tornadoes, because the storm is connected to the boundary layer where shear, helicity, and moisture combine. SBCAPE > 0 J/kg is the bas",
+        "url": "https://xtremewx.com/glossary-instability-cape#surface-based-convection"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Elevated Convection",
+        "description": "Elevated convection is thunderstorms whose updrafts originate above the surface, not from surface-based air. Common above warm fronts at night or behind cold fronts in winter. Elevated storms can still produce large hail and heavy rain, but rarely produce tornadoes because they're cut off from surfa",
+        "url": "https://xtremewx.com/glossary-instability-cape#elevated-convection"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Cap",
+        "description": "The cap is a layer of warm air aloft that suppresses convection. A weak cap allows widespread storms (often messy); a strong cap can shut off convection entirely, but a marginal cap can produce isolated, intense supercells.",
+        "url": "https://xtremewx.com/glossary-instability-cape#cap"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Capping Inversion",
+        "description": "A capping inversion is a layer of warm air aloft that suppresses thunderstorm development by stopping rising parcels before they reach the LFC. The 'cap' has to be eroded — by heating, lifting, or moistening — before convection can break out. Days with a strong cap that holds late often produce isol",
+        "url": "https://xtremewx.com/glossary-instability-cape#capping-inversion"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "LCL",
+        "description": "The Lifted Condensation Level (LCL) is the height at which a lifted air parcel becomes saturated — essentially cloud base. Low LCLs (<1000m) significantly enhance tornado potential.",
+        "url": "https://xtremewx.com/glossary-instability-cape#lcl"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "LFC",
+        "description": "The Level of Free Convection (LFC) is the height above which a lifted parcel becomes warmer than its surroundings and rises freely. Low LFCs make storm initiation easier.",
+        "url": "https://xtremewx.com/glossary-instability-cape#lfc"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Equilibrium Level",
+        "description": "The Equilibrium Level (EL) is the altitude where a rising parcel becomes the same temperature as the environment — effectively the storm top / anvil height.",
+        "url": "https://xtremewx.com/glossary-instability-cape#equilibrium-level"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Lifted Index (LI)",
+        "description": "The Lifted Index (LI) is the temperature difference between a lifted surface parcel and the environment at 500mb. Negative = unstable. LI < -6 is very unstable, < -10 is extreme.",
+        "url": "https://xtremewx.com/glossary-instability-cape#lifted-index-li"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "K-Index",
+        "description": "The K-Index is a thunderstorm potential index using temperature at 850mb and 500mb and dewpoints at 850mb/700mb. K > 20 supports thunderstorms; K > 35 indicates widespread convective potential. More useful for general convective threat than for supercell/tornado environments — for those, STP/SCP are",
+        "url": "https://xtremewx.com/glossary-instability-cape#k-index"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Lapse Rate",
+        "description": "A lapse rate is how quickly temperature drops with height. Steep mid-level lapse rates (>7°C/km) indicate strong instability and support large hail and strong updrafts.",
+        "url": "https://xtremewx.com/glossary-instability-cape#lapse-rate"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Dewpoint",
+        "description": "Dewpoint is the temperature at which air becomes saturated (100% relative humidity) when cooled. It's the most direct measure of atmospheric moisture content — unlike relative humidity, it doesn't change as temperature changes. 55°F = comfortable; 65°F = noticeably humid; 70°F+ = very moist, fueling",
+        "url": "https://xtremewx.com/glossary-instability-cape#dewpoint"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Relative Humidity",
+        "description": "Relative Humidity (RH) is the ratio of actual moisture content to the maximum the air can hold at its current temperature — expressed as a percentage. 100% RH = saturated (fog/precipitation forms). RH decreases as temperature rises even if moisture content stays the same, which is why hot afternoons",
+        "url": "https://xtremewx.com/glossary-instability-cape#relative-humidity"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Mixing Ratio",
+        "description": "Mixing ratio is the mass of water vapor per unit mass of dry air (g/kg). It's a measure of the actual moisture content of an air parcel, unlike relative humidity which depends on temperature. High surface mixing ratios (16+ g/kg) support explosive thunderstorm development.",
+        "url": "https://xtremewx.com/glossary-instability-cape#mixing-ratio"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Precipitable Water (PWAT)",
+        "description": "Precipitable Water (PWAT) is the total column water vapor in a vertical column of atmosphere, measured in inches. High PWAT values (2.0\"+ for the CONUS) support heavy rainfall rates and flash flood potential. It's one of the first things forecasters check for flash flood events.",
+        "url": "https://xtremewx.com/glossary-instability-cape#precipitable-water-pwat"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Theta-E",
+        "description": "Theta-E (Equivalent Potential Temperature) is a conserved thermodynamic variable combining temperature and moisture into a single value. High low-level theta-E = rich storm fuel. Theta-E ridges on SPC mesoanalysis mark the axis of highest instability and moisture — supercells that tap into a theta-E",
+        "url": "https://xtremewx.com/glossary-instability-cape#theta-e"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Moisture Pooling",
+        "description": "Moisture pooling is when a localized region of high dewpoints accumulates along a boundary (often a dryline or warm front) as low-level winds converge moist air. Higher local dewpoints mean higher CAPE, lower LCLs, and better tornado potential. SPC forecasters watch the surface moisture pool positio",
+        "url": "https://xtremewx.com/glossary-instability-cape#moisture-pooling"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Sounding",
+        "description": "A sounding is a vertical profile of the atmosphere — temperature, dewpoint, and wind at all heights. Launched twice daily (00Z/12Z) via weather balloons. The foundational dataset for severe weather forecasting.",
+        "url": "https://xtremewx.com/glossary-instability-cape#sounding"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Skew-T",
+        "description": "A Skew-T Log-P is the standard chart format used to display sounding data. Temperature lines are skewed at 45° to make atmospheric features (CAPE, CIN, lapse rates) visually clear.",
+        "url": "https://xtremewx.com/glossary-instability-cape#skew-t"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Radiosonde",
+        "description": "A radiosonde is the instrument package carried by a weather balloon, measuring temperature, humidity, pressure, and winds as it ascends — generating the vertical profile that becomes a sounding. Launched twice daily (00Z/12Z) at ~92 upper-air stations across the U.S. The foundational dataset for sev",
+        "url": "https://xtremewx.com/glossary-instability-cape#radiosonde"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Loaded Gun Sounding",
+        "description": "A loaded gun is forecaster slang for a sounding with extreme CAPE under a strong cap — huge potential energy waiting to be unleashed if the cap breaks. The shape on a Skew-T resembles a coiled spring. Loaded gun environments often go bust if the cap holds, or produce explosive, violent storms if it ",
+        "url": "https://xtremewx.com/glossary-instability-cape#loaded-gun-sounding"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Convective Initiation",
+        "description": "Convective Initiation (CI) is the process by which surface-based thunderstorms first develop. Requires: sufficient lift to push parcels through the cap and past the LFC, adequate instability (CAPE), and moisture. Boundaries — fronts, drylines, outflow boundaries, sea breezes — are the most common CI",
+        "url": "https://xtremewx.com/glossary-instability-cape#convective-initiation"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://xtremewx.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Glossary",
+        "item": "https://xtremewx.com/glossary"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Instability & CAPE",
+        "item": "https://xtremewx.com/glossary-instability-cape"
+      }
+    ]
+  }
+]
 </script>
 </head>
 <body>

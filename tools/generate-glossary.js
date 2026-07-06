@@ -436,6 +436,17 @@ function buildHead(top, { title, desc, slug, ldJson }) {
   return head;
 }
 
+// Breadcrumb trail for search results: [['Home', url], ['Glossary', url], ...]
+function breadcrumbLd(items) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, item], i) => ({
+      '@type': 'ListItem', position: i + 1, name, item,
+    })),
+  };
+}
+
 // [[category-key]] intro shorthand -> in-copy links between glossary pages.
 function linkIntro(intro) {
   return intro.replace(/\[\[([a-z-]+)\]\]/g, (m, key) => {
@@ -529,7 +540,11 @@ ${pager}
 </main>`;
 
   fs.writeFileSync(path.join(SITE, `${pageSlug}.html`),
-    buildHead(shellTop, { title, desc, slug: pageSlug, ldJson }) + body + shellBottom);
+    buildHead(shellTop, { title, desc, slug: pageSlug, ldJson: [ldJson, breadcrumbLd([
+      ['Home', `${BASE_URL}/`],
+      ['Glossary', `${BASE_URL}/glossary`],
+      [cat.title, `${BASE_URL}/${pageSlug}`],
+    ])] }) + body + shellBottom);
   written.push({ slug: pageSlug, cat, count: terms.length, slugs });
 }
 
@@ -571,7 +586,10 @@ ${cta}
 </main>`;
 
 fs.writeFileSync(path.join(SITE, 'glossary.html'),
-  buildHead(shellTop, { title: hubTitle, desc: hubDesc, slug: 'glossary', ldJson: hubLd }) + hubBody + shellBottom);
+  buildHead(shellTop, { title: hubTitle, desc: hubDesc, slug: 'glossary', ldJson: [hubLd, breadcrumbLd([
+    ['Home', `${BASE_URL}/`],
+    ['Glossary', `${BASE_URL}/glossary`],
+  ])] }) + hubBody + shellBottom);
 
 /* --------------------------------- sitemap -------------------------------- */
 let sitemap = fs.readFileSync(path.join(SITE, 'sitemap.xml'), 'utf8');
