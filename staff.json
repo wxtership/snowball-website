@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T23:22:36.364Z",
+  "updatedAt": "2026-07-06T07:18:53.464Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7379
+    "memberCount": 7383
   },
   "tiers": [
     {
@@ -85,7 +85,7 @@
         {
           "id": "796835065287934042",
           "username": "caleb_dont",
-          "displayName": "caleb_dont (Kholinar, Alethkar)",
+          "displayName": "caleb_dont (T’Telir, Hallandren)",
           "avatar": "assets/avatars/796835065287934042.png",
           "banner": null,
           "accentColor": null
@@ -149,7 +149,7 @@
         {
           "id": "609961976092950528",
           "username": "robbysversion",
-          "displayName": "Robby just wants to go home",
+          "displayName": "Robby",
           "avatar": "assets/avatars/609961976092950528.png",
           "banner": null,
           "accentColor": null
