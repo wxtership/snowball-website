@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-05T10:18:52.723Z",
+  "updatedAt": "2026-07-06T20:41:04.570Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -7,10 +7,10 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7385
+    "memberCount": 7384
   },
-  "allTimeTotal": 1038.07,
-  "monthlyRaised": 355.68,
+  "allTimeTotal": 1040.19,
+  "monthlyRaised": 357.8,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -238,8 +238,8 @@
           "displayName": "Speedtape",
           "avatar": "assets/avatars/655579190711681033.png",
           "banner": null,
-          "amount": 110,
-          "donatedAt": "2026-07-01T20:36:58.000Z"
+          "amount": 112.12,
+          "donatedAt": "2026-07-06T20:39:37.000Z"
         },
         {
           "username": "tiggre2",
