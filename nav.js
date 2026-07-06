@@ -298,10 +298,12 @@ if (document.fonts && document.fonts.ready) {
     if (src) ASSET_BASE = src.slice(0, src.lastIndexOf('/') + 1);
   } catch (e) { /* fall back to page-relative */ }
 
+  // icon: padded version for the banner + navbar; fav: full-bleed for the tab
+  // icon so it doesn't render smaller than the normal favicon.
   var TYPES = {
-    severe:   { name: 'Severe',   icon: ASSET_BASE + 'assets/coverage/severe_static.png?v=3' },
-    tropical: { name: 'Tropical', icon: ASSET_BASE + 'assets/coverage/tropical_static.png?v=3' },
-    winter:   { name: 'Winter',   icon: ASSET_BASE + 'assets/coverage/winter_static.png?v=3' }
+    severe:   { name: 'Severe',   icon: ASSET_BASE + 'assets/coverage/severe_static.png?v=3',   fav: ASSET_BASE + 'assets/coverage/severe_favicon.png' },
+    tropical: { name: 'Tropical', icon: ASSET_BASE + 'assets/coverage/tropical_static.png?v=3', fav: ASSET_BASE + 'assets/coverage/tropical_favicon.png' },
+    winter:   { name: 'Winter',   icon: ASSET_BASE + 'assets/coverage/winter_static.png?v=3',   fav: ASSET_BASE + 'assets/coverage/winter_favicon.png' }
   };
 
   var banner = null;
@@ -330,7 +332,7 @@ if (document.fonts && document.fonts.ready) {
     }
 
     // Tab + navbar icons switch to the coverage logo right away
-    setFavicons(TYPES[data.type].icon);
+    setFavicons(TYPES[data.type].fav);
     setNavLogo(TYPES[data.type].icon);
 
     if (banner && shownType !== data.type) hideBanner(); // type changed mid-session
