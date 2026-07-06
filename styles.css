@@ -3514,13 +3514,25 @@ body {
     color: white;
 }
 
-.social-btn:hover .fa-tiktok {
-    color: #ff0050;
-    text-shadow: 2px 2px 0px #00f2ea;
-}
-
 .social-btn:hover .fa-discord {
     color: #5865F2;
+}
+
+.social-btn.social-pill {
+    width: auto;
+    padding: 0 20px;
+    border-radius: 999px;
+    gap: 9px;
+}
+
+.social-btn.social-pill span {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+.social-btn.social-pill:hover span {
+    color: white;
 }
 
 .social-btn:hover .fa-x-twitter {
