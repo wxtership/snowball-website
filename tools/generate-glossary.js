@@ -16,7 +16,7 @@ const path = require('path');
 const SITE = path.join(__dirname, '..');
 const DEFS_PATH = process.argv.slice(2).find((a) => !a.startsWith('--'))
   || path.join(SITE, '..', 'snowball', 'snowball', 'definitions.js');
-const BASE_URL = 'https://wxtership.github.io/snowball-website';
+const BASE_URL = 'https://xtremewx.com';
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const { definitions } = require(path.resolve(DEFS_PATH));

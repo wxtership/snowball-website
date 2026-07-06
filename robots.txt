@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wxtership.github.io/snowball-website/sitemap.xml
+Sitemap: https://xtremewx.com/sitemap.xml
