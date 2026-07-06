@@ -1,9 +1,7 @@
-// Prevent browser scroll restoration from jumping the page before content renders
+// We're the ones who innovate, not imitate.
+
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-// ========================================================================
-// CONFIGURATION
-// ========================================================================
 const CONFIG = {
     OWM_GEO_KEY: "d8d9e911b1a890f245ef77f1e53026a9",
     REFRESH_INTERVAL_WEATHER: 10 * 60 * 1000,
@@ -64,9 +62,6 @@ const CONFIG = {
     }
 };
 
-// ========================================================================
-// APPLICATION STATE
-// ========================================================================
 function loadPreferences() {
     try {
         const saved = localStorage.getItem('weatherAppPreferences');
@@ -116,9 +111,6 @@ const AppState = {
     intervals: { weather: null, alerts: null }
 };
 
-// ========================================================================
-// UNITS DISPLAY INITIALIZATION
-// ========================================================================
 function initializeUnitsDisplay() {
     const deskDisplay = document.getElementById('units-display');
     const mobileDisplay = document.getElementById('mobile-units-display');
@@ -138,9 +130,6 @@ if (document.readyState === 'loading') {
     initializeUnitsDisplay();
 }
 
-// ========================================================================
-// UNITS CONVERSION
-// ========================================================================
 function convertTemp(tempF, toUnit) {
     if (tempF === null || tempF === undefined || tempF === '--') return '--';
     const num = parseFloat(tempF);
@@ -173,7 +162,6 @@ function convertPressure(pressureMb, toUnit) {
 
 let scrollY = 0;
 
-// SIMPLER SCROLL LOCK - No position:fixed = no flash
 function lockScroll() {
     scrollY = window.scrollY;
     document.documentElement.style.overflow = 'hidden';
@@ -187,9 +175,6 @@ function unlockScroll() {
     document.body.style.touchAction = '';
     scrollY = 0;
 }
-// ========================================================================
-// SHARE FEATURE & META TAGS
-// ========================================================================
 function updateMetaTags(locationName, temp, condition) {
     const title = `${locationName} - Xtreme Weather`;
     const description = `Weather in ${locationName}: ${temp}, ${condition}. Get real-time forecasts and alerts.`;
@@ -216,7 +201,6 @@ function closeShareModal(event) {
 
     const modal = document.getElementById('share-modal');
     
-    // Add closing class FIRST
     modal.classList.add('modal-closing');
 
     setTimeout(() => {
@@ -323,9 +307,6 @@ function toggleUnits() {
     }
 }
 
-// ========================================================================
-// GREETING PHRASES
-// ========================================================================
 const greetingPhrases = {
     alerts: {
         warning: [
@@ -436,9 +417,6 @@ function getGreeting(lat, lon, condition, isDay, alerts) {
     return pool[Math.floor(Math.random() * pool.length)];
 }
 
-// ========================================================================
-// ALERTS
-// ========================================================================
 async function fetchAlerts(lat, lon, weatherData = null, skipUI = false) {
     const safeLat = parseFloat(lat).toFixed(4);
     const safeLon = parseFloat(lon).toFixed(4);
@@ -487,8 +465,6 @@ async function fetchAlerts(lat, lon, weatherData = null, skipUI = false) {
     }
 }
 
-// Applies the alert banner DOM state from AppState.activeAlerts — called explicitly
-// after transitions so the banner never moves while old cards are still visible.
 function flushAlertBanner() {
     const banner = document.getElementById('alert-banner');
     const content = document.getElementById('main-content');
@@ -674,7 +650,6 @@ function renderSunGraphic(astroData) {
 
     const { sunrise, sunset, moonrise, moonset, moon_phase, moon_illumination } = astroData;
 
-    // Use requestAnimationFrame for smooth updates
     requestAnimationFrame(() => {
         const getMins = (str) => {
             if (!str || str === '--') return null;
@@ -745,9 +720,6 @@ function renderSunGraphic(astroData) {
     });
 }
 
-// ========================================================================
-// PERFORMANCE: DEBOUNCE RESIZE EVENTS
-// ========================================================================
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -788,9 +760,6 @@ function showGlobalError(title, message) {
     transitionContent(true);
 }
 
-// ========================================================================
-// FAVORITES SYSTEM
-// ========================================================================
 function updateFavoriteBtnState() {
     const saved = getFavorites();
     const btn = document.getElementById('fav-btn');
@@ -878,26 +847,21 @@ async function renderFavoritesList() {
         </div>
     `).join('');
 
-    // UPDATED: Add smooth click handlers
     list.querySelectorAll('.fav-item').forEach(item => {
         item.addEventListener('click', async function(e) {
             if (e.target.classList.contains('fav-delete') || e.target.closest('.fav-delete')) {
                 return;
             }
             
-            // Prevent multiple clicks
             if (this.classList.contains('selecting')) return;
             this.classList.add('selecting');
             
-            // Visual feedback
             this.style.transition = 'transform 0.15s ease, opacity 0.15s ease';
             this.style.transform = 'scale(0.95)';
             this.style.opacity = '0.6';
             
-            // Small delay for visual feedback
             await new Promise(resolve => setTimeout(resolve, 100));
             
-            // Select location
             selectLocation(
                 parseFloat(this.dataset.lat),
                 parseFloat(this.dataset.lon),
@@ -958,9 +922,6 @@ async function checkFavoritesForWarnings(favorites) {
     });
 }
 
-// ========================================================================
-// PERFORMANCE: INTERSECTION OBSERVER FOR LAZY RENDERING
-// ========================================================================
 function setupLazyRendering() {
     if (!('IntersectionObserver' in window)) return;
     
@@ -975,7 +936,6 @@ function setupLazyRendering() {
             if (entry.isIntersecting) {
                 const section = entry.target;
                 
-                // Trigger section-specific loading
                 if (section.classList.contains('lifestyle-section')) {
                     section.classList.add('is-visible');
                 }
@@ -984,13 +944,11 @@ function setupLazyRendering() {
                     section.classList.add('is-visible');
                 }
                 
-                // Stop observing once loaded
                 observer.unobserve(section);
             }
         });
     }, options);
     
-    // Observe heavy sections
     const lifestyleSection = document.querySelector('.lifestyle-section');
     const diveSection = document.querySelector('.dive-deeper-section');
     
@@ -1051,9 +1009,6 @@ function formatCityState(displayName) {
     return parts[0];
 }
 
-// ========================================================================
-// ALERT MODAL
-// ========================================================================
 function openAlertModal() {
     const modal = document.getElementById('alert-modal');
     const list = document.getElementById('alert-list');
@@ -1120,10 +1075,8 @@ function closeAlertModal(event) {
 
     const modal = document.getElementById('alert-modal');
     
-    // Add closing class FIRST
     modal.classList.add('modal-closing');
     
-    // Then remove active and unlock after animation
     setTimeout(() => {
         modal.classList.remove('active', 'modal-closing');
         unlockScroll();
@@ -1148,9 +1101,6 @@ function transitionContent(show) {
     }
 }
 
-// ========================================================================
-// TIMEZONE & SUN CALCULATIONS
-// ========================================================================
 function getTimezone(lat, lon) {
     if (lon > 143 && lon < 147 && lat > 10 && lat < 21) return 'Pacific/Guam';
     if (lon < -168 && lon > -173) return 'Pacific/Pago_Pago';
@@ -1192,9 +1142,6 @@ function isDaytime(sunriseStr, sunsetStr) {
     return nowMins >= riseMins && nowMins < setMins;
 }
 
-// ========================================================================
-// WEATHER PARSING
-// ========================================================================
 function parseCondition(condition) {
     if (!condition) return { type: 'cloudy' };
     const lower = condition.toLowerCase();
@@ -1265,9 +1212,6 @@ function getIconKey(condition, isDay, windSpeed = null) {
     return mapping[parsed.type] || 'cloudy';
 }
 
-// ========================================================================
-// UTILITY FUNCTIONS
-// ========================================================================
 function isEmpty(val) {
     if (val === undefined || val === null) return true;
     if (typeof val === 'string') {
@@ -1426,9 +1370,6 @@ async function triggerSearchGPS() {
     }
 }
 
-// ========================================================================
-// WEATHER DATA FETCHING
-// ========================================================================
 async function fetchWeather(lat, lon) {
     const CACHE_KEY = `weather_${lat}_${lon}`;
     const CACHE_DURATION = 10 * 60 * 1000;
@@ -1657,9 +1598,6 @@ function closeMobileMenu(event) {
     }
 }
 
-// ========================================================================
-// VIDEO.JS LAZY LOADING
-// ========================================================================
 let videojsLoaded = false;
 
 async function loadVideoJS() {
@@ -1716,7 +1654,6 @@ function getCameraThumbCandidates(cam) {
                 `${CAMERA_FRAME_BASE}/camera/frame?url=${encodeURIComponent(streamSource)}&at=0.5&width=640`
             );
         }
-        // Fallback for video cams that provide a static preview URL
         if (preview && !isLikelyStreamUrl(preview)) {
             candidates.push(
                 `${CAMERA_PROXY_BASE}/camera/image?url=${encodeURIComponent(preview)}&optimize=1&width=320`
@@ -1781,7 +1718,6 @@ async function loadNearbyCameras(lat, lon) {
         const promises = [];
         const statesToCheck = Object.keys(EXTENDED_BOUNDARIES).filter(state => {
     const bounds = EXTENDED_BOUNDARIES[state];
-    // Only check states within ~1 degree of user location
     return lat >= (bounds.minLat - 1) && lat <= (bounds.maxLat + 1) &&
            lon >= (bounds.minLon - 1) && lon <= (bounds.maxLon + 1);
 });
@@ -1839,11 +1775,10 @@ async function loadNearbyCameras(lat, lon) {
         box.style.aspectRatio = (cam.state === 'MD') ? '4/3' : '16/9';
         box.onclick = () => openCameraModal(i);
 
-        // Create image element for thumbnail
 const img = document.createElement('img');
 img.alt = cam.name;
-img.loading = 'lazy'; // ADD THIS LINE
-img.decoding = 'async'; // ADD THIS LINE
+img.loading = 'lazy';
+img.decoding = 'async';
 img.style.cssText = 'position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:2; transition: opacity 0.5s ease; opacity: 0;';
 box.appendChild(img);
 
@@ -1874,7 +1809,6 @@ box.appendChild(img);
             showThumbError(box);
         }
 
-        // Refresh every 60 seconds
         const refreshInterval = setInterval(() => {
             if (img.style.display !== 'none' && img.style.opacity === '1' && activeThumbBase) {
                 gracefulImageRefresh(img, activeThumbBase);
@@ -1883,7 +1817,6 @@ box.appendChild(img);
 
         window.thumbRefreshIntervals.push(refreshInterval);
 
-        // Overlay
         const overlay = document.createElement('div');
         overlay.className = 'camera-thumb-overlay';
         overlay.style.zIndex = '20';
@@ -1899,12 +1832,10 @@ box.appendChild(img);
         `;
         box.appendChild(overlay);
 
-        // Add to DOM immediately
         if (slot) slot.appendChild(box);
         finalBoxes.push(box);
     }
 
-    // Reveal boxes
     setTimeout(() => {
         finalBoxes.forEach(b => {
             b.classList.remove('camera-content-hidden');
@@ -1917,7 +1848,6 @@ box.appendChild(img);
 
 }
 function captureVideoFrame(videoUrl, imgElement, boxElement) {
-    // ADD THESE 6 LINES AT THE TOP:
     if (!window.activeVideoCaptures) window.activeVideoCaptures = 0;
     if (window.activeVideoCaptures >= 4) {
         showThumbError(boxElement);
@@ -1926,7 +1856,6 @@ function captureVideoFrame(videoUrl, imgElement, boxElement) {
     window.activeVideoCaptures++;
     
     const proxyUrl = `https://secureproxy.xtremewx.com/camera/video?url=${encodeURIComponent(videoUrl)}`;
-    // ... rest of your existing code
     const vid = document.createElement('video');
     vid.className = 'video-js vjs-default-skin';
     vid.setAttribute('playsinline', '');
@@ -1944,7 +1873,7 @@ function captureVideoFrame(videoUrl, imgElement, boxElement) {
  const cleanup = () => {
     if (disposed) return;
     disposed = true;
-    window.activeVideoCaptures--; // ADD THIS LINE
+    window.activeVideoCaptures--;
     if (player) {
         try { player.dispose(); } catch(e) {}
         player = null;
@@ -2079,7 +2008,6 @@ async function openCameraModal(index) {
 
     const container = document.getElementById('modal-camera-video');
 
-    // Pause all thumbnail videos when opening modal
     if (window.gridPlayers) {
         window.gridPlayers.forEach(p => {
             if (p && !p.paused()) {
@@ -2149,7 +2077,6 @@ async function openCameraModal(index) {
 
         activePlayer = player;
         
-        // Auto-pause modal video after 3 minutes
         window.modalVideoTimeout = setTimeout(() => {
             if (activePlayer && !activePlayer.paused()) {
                 activePlayer.pause();
@@ -2186,7 +2113,6 @@ async function openCameraModal(index) {
         });
 
     } else {
-        // FIX: Use cam.url instead of undefined imageUrl
         const imageUrl = cam.preview || cam.url;
         const thumbUrl = `${CAMERA_PROXY_BASE}/camera/image?url=${encodeURIComponent(imageUrl)}`;
         
@@ -2234,10 +2160,8 @@ function closeCameraModal(event) {
 
     const modal = document.getElementById('camera-modal');
     
-    // Add closing class FIRST for smooth fade
     modal.classList.add('modal-closing');
 
-    // Clean up timers immediately
     if (modalImageInterval) {
         clearInterval(modalImageInterval);
         modalImageInterval = null;
@@ -2248,7 +2172,6 @@ function closeCameraModal(event) {
         window.modalVideoTimeout = null;
     }
 
-    // Wait for fade, then dispose player and unlock
     setTimeout(() => {
         if (activePlayer) {
             try { activePlayer.dispose(); } catch (e) {}
@@ -2282,9 +2205,6 @@ function gracefulImageRefresh(imgElement, newUrlBase) {
     tempLoader.src = newSrc;
 }
 
-// ========================================================================
-// NWS TEXT FORMATTING
-// ========================================================================
 function formatNWSBody(text) {
     if (!text) return "No details available.";
 
@@ -2389,7 +2309,6 @@ const US_STATE_TO_ABBR = {
     "Northern Mariana Islands": "MP"
 };
 
-// Replace the toggleSearch function with this:
 function toggleSearch() {
     const overlay = document.getElementById('search-overlay');
     const input = document.getElementById('search-input');
@@ -2473,7 +2392,6 @@ async function fetchSearchResults(query) {
         let results = [];
 
         if (/^\d{5}$/.test(trimmed)) {
-            // ZIP code path
             const res = await fetch(`https://api.openweathermap.org/geo/1.0/zip?zip=${trimmed},US&appid=${CONFIG.OWM_GEO_KEY}`);
             if (res.ok) {
                 const d = await res.json();
@@ -2550,7 +2468,7 @@ function showSwitchingPill(cityName) {
         document.body.appendChild(pill);
     }
     pill.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i><span>Switching to ${cityName}</span>`;
-    pill.getBoundingClientRect(); // force reflow
+    pill.getBoundingClientRect();
     pill.classList.add('visible');
 }
 
@@ -2572,7 +2490,6 @@ function transitionContentFastOut() {
         hourlySection.style.transition = 'opacity 0.2s ease';
         hourlySection.classList.remove('is-loaded');
     }
-    // Clear inline overrides after out is done so CSS handles the staggered in-animation
     setTimeout(() => {
         items.forEach(el => { el.style.transition = ''; });
         if (hourlySection) hourlySection.style.transition = '';
@@ -2582,7 +2499,6 @@ function transitionContentFastOut() {
 async function selectLocation(lat, lon, displayName) {
     console.log('📍 Location selected:', displayName);
     
-    // Fade out and close search overlay
     const overlay = document.getElementById('search-overlay');
     const searchResults = document.getElementById('search-results');
 
@@ -2614,7 +2530,6 @@ async function selectLocation(lat, lon, displayName) {
         resultsContainer.classList.remove('has-data');
     }
 
-    // Update state & UI (cards stay visible while we fetch)
     AppState.lat = parseFloat(lat);
     AppState.lon = parseFloat(lon);
     AppState.currentLocationName = displayName;
@@ -2624,23 +2539,19 @@ async function selectLocation(lat, lon, displayName) {
     const newUrl = `${window.location.pathname}?location=${encodeURIComponent(displayName)}`;
     window.history.pushState({ path: newUrl }, '', newUrl);
 
-    // Show pill — old cards stay visible during fetch
     showSwitchingPill(displayName);
     const pillStart = Date.now();
 
     try {
         const weather = await fetchWeather(AppState.lat, AppState.lon);
-        // skipUI=true: only updates AppState.activeAlerts/alertRank, no banner DOM yet
         const alertRank = await fetchAlerts(AppState.lat, AppState.lon, weather, true);
         AppState.alertRank = alertRank;
 
-        // Pill must be visible for at least 1s so it doesn't just flash
         const elapsed = Date.now() - pillStart;
         if (elapsed < 1000) {
             await new Promise(resolve => setTimeout(resolve, 1000 - elapsed));
         }
 
-        // Fade banner out alongside cards so it doesn't snap away while old content is visible
         const alertBanner = document.getElementById('alert-banner');
         const mainContent = document.getElementById('main-content');
         if (alertBanner && alertBanner.classList.contains('active')) {
@@ -2648,34 +2559,29 @@ async function selectLocation(lat, lon, displayName) {
             alertBanner.style.opacity = '0';
         }
 
-        // Fast-out cards (0.2s)
         transitionContentFastOut();
         await new Promise(resolve => setTimeout(resolve, 220));
 
-        // Everything invisible — snap-settle layout with no visible impact
         if (alertBanner) {
             alertBanner.style.transition = 'none';
             alertBanner.style.opacity = '';
-            alertBanner.className = 'alert-banner'; // clear active + severity classes
+            alertBanner.className = 'alert-banner';
             mainContent.classList.remove('has-alert');
-            alertBanner.getBoundingClientRect(); // flush
-            // Pre-settle padding if new location has alerts (avoids layout shift during card fade-in)
+            alertBanner.getBoundingClientRect();
             if (AppState.activeAlerts && AppState.activeAlerts.length > 0) {
                 mainContent.style.transition = 'none';
                 mainContent.classList.add('has-alert');
-                mainContent.getBoundingClientRect(); // flush
+                mainContent.getBoundingClientRect();
                 mainContent.style.transition = '';
             }
             alertBanner.style.transition = '';
         }
 
-        // Everything is invisible — apply new alert banner, render content
         flushAlertBanner();
         renderWeather(weather, alertRank);
         loadNearbyCameras(AppState.lat, AppState.lon).catch(() => {});
         startAutoRefresh();
 
-        // Let pill fade and banner fully settle before cards stagger in
         hideSwitchingPill();
         await new Promise(resolve => setTimeout(resolve, 400));
         transitionContent(true);
@@ -2696,9 +2602,6 @@ async function selectLocation(lat, lon, displayName) {
     }
 }
 
-// ========================================================================
-// RENDER WEATHER
-// ========================================================================
 function renderWeather(data, alertRank = 0) {
     if (!data) return;
     window.lastWeatherData = data;
@@ -3029,7 +2932,6 @@ function renderMinutelyForecast(minutely) {
     }
 }
 
-// Replace the existing startAutoRefresh function with this updated version:
 
 function startAutoRefresh() {
     if (AppState.intervals.weather) clearInterval(AppState.intervals.weather);
@@ -3045,17 +2947,14 @@ function startAutoRefresh() {
         } catch (error) {}
     }, 600000);
 
-    // UPDATED: Now checks if alert rank changed and updates background
     AppState.intervals.alerts = setInterval(async () => {
         try {
             const oldAlertRank = AppState.alertRank;
             const newAlertRank = await fetchAlerts(AppState.lat, AppState.lon, null);
             
-            // If alert severity changed, force background update
             if (oldAlertRank !== newAlertRank && window.lastWeatherData) {
                 AppState.alertRank = newAlertRank;
                 
-                // Force visual key reset to trigger background change
                 AppState.lastVisualKey = '';
                 
                 renderWeather(window.lastWeatherData, newAlertRank);
@@ -3073,12 +2972,9 @@ function startAutoRefresh() {
     });
 }, 60000);
 }
-// ========================================================================
-// INITIALIZATION
-// ========================================================================
 async function init() {
     setupGlobalEvents();
-setupLazyRendering(); // ADD THIS LINE
+setupLazyRendering();
 
     try {
         const urlParams = new URLSearchParams(window.location.search);
@@ -3115,7 +3011,6 @@ setupLazyRendering(); // ADD THIS LINE
                 AppState.alertRank = rank;
                 renderWeather(weather, rank);
 
-                // Load cameras after 2 seconds
 setTimeout(() => {
     loadNearbyCameras(AppState.lat, AppState.lon);
 }, 2000);
@@ -3217,7 +3112,6 @@ setTimeout(() => {
     }
 }
 
-// Replace the toggleMobileMenu function with this:
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const btn = document.getElementById('mobile-trigger');
@@ -3275,7 +3169,6 @@ document.querySelectorAll('.bottom-nav-item').forEach(item => {
     });
 });
 
-// Replace the existing window resize listener with this:
 window.addEventListener('resize', debounce(() => {
     if (window.innerWidth > 1024) {
         const menu = document.getElementById('mobile-menu');
@@ -3283,7 +3176,7 @@ window.addEventListener('resize', debounce(() => {
             toggleMobileMenu();
         }
     }
-}, 150)); // Only fire after 150ms of no resizing
+}, 150));
 
 document.querySelectorAll('.has-dropdown[data-menu]').forEach(item => {
     const menuName = item.getAttribute('data-menu');
@@ -3358,11 +3251,9 @@ function setupGlobalEvents() {
 
 init();
 
-// MOBILE: Disable ALL hover events
 if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
     document.body.classList.add('touch-device');
     
-    // Kill hover events by preventing mouseover/mouseenter
     document.addEventListener('mouseover', function(e) {
         e.stopPropagation();
     }, true);
@@ -3372,9 +3263,6 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
     }, true);
 }
 
-// ========================================================================
-// COVERAGE MODE SYSTEM
-// ========================================================================
 const CoverageMode = {
     data: null,
     banner: null,
@@ -3428,24 +3316,18 @@ const CoverageMode = {
         icon.src = this.getIcon(this.data.coverageMode);
         title.textContent = `${this.getDisplayName(this.data.coverageMode)} Coverage Mode enabled!`;
 
-        // Reset classes first
         this.banner.className = 'coverage-banner ' + this.data.coverageMode;
 
-        // Clear any existing timer
         if (this.dismissTimer) clearTimeout(this.dismissTimer);
 
-        // Auto-dismiss after 8 seconds
         this.dismissTimer = setTimeout(() => {
             this.hideBanner();
         }, 8000);
 
-        // Click pill → open modal
         this.banner.onclick = () => this.openModal();
 
-        // Show it with animation
         setTimeout(() => {
             this.banner.style.display = 'block';
-            // Force reflow before adding animation class
             void this.banner.offsetWidth;
             this.banner.classList.add('animate-in');
         }, 3000);
@@ -3542,10 +3424,8 @@ const CoverageMode = {
     }
 };
 
-// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => CoverageMode.init());
 
-// Global reference
 window.CoverageMode = CoverageMode;
 
 function closeCoverageModal(event) {
@@ -3553,7 +3433,6 @@ function closeCoverageModal(event) {
     
     const modal = document.getElementById('coverage-modal');
     
-    // Add closing class FIRST
     modal.classList.add('modal-closing');
     
     setTimeout(() => {

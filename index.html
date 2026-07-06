@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- We're the ones who innovate, not imitate. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -151,9 +152,6 @@
     </div>
 </div>
 <div id="root">
-<!-- Static prerender of the hero so crawlers get an h1 and real copy without
-     running React (createRoot().render replaces this on mount). Keep the text
-     in sync with Hero() below. -->
 <section id="hero" class="xw-hero-v2">
   <div class="hero-content xw-hero-content">
     <h1 class="xw-hero-title"><span class="xw-title-mustica">Whatever</span><span class="xw-title-druk">the Weather</span></h1>
@@ -394,21 +392,13 @@ function Hero() {
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
-    // Drop the inline blur filters once the entrance finishes. A lingering
-    // filter (even blur(0px)) keeps each block promoted onto its own
-    // composited layer, and on mobile Safari the title's layer renders as a
-    // faint rectangular band behind the text over the radar backdrop.
     const s = setTimeout(() => setSettled(true), 1800);
     return () => { clearTimeout(t); clearTimeout(s); };
   }, []);
 
-  // Mobile Safari shows the title's rasterized layer as a visible box while
-  // the blur filter animates (the huge text-shadow makes it worse), so small
-  // screens skip the blur entirely and keep just the fade + rise.
   const noBlur = typeof window !== 'undefined' && window.matchMedia('(max-width: 760px)').matches;
   const blurIn = (noBlur || settled) ? undefined : (visible ? 'blur(0px)' : 'blur(6px)');
 
-  // Pause the sweep beam's animation once the hero scrolls out of view.
   useEffect(() => {
     const hero = heroRef.current;
     if (!hero || !('IntersectionObserver' in window)) return;
@@ -432,8 +422,6 @@ function Hero() {
       map.style.setProperty('--radar-angle', prevAngle.toFixed(1) + 'deg');
     };
 
-    // High-polling mice fire pointermove far above 60Hz, so the handler only
-    // records the cursor; the rect read and trig run at most once per frame.
     let pointerX = 0, pointerY = 0, queued = false;
     const update = () => {
       queued = false;
@@ -450,9 +438,6 @@ function Hero() {
     };
 
     setRadarAngle(0);
-    // Only let mouse-style pointers steer the beam. On touch screens a held
-    // or dragging finger fires pointermove too, which swung the beam around
-    // under the user's thumb.
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (finePointer) hero.addEventListener('pointermove', move, { passive: true });
     return () => {
@@ -510,7 +495,6 @@ function Hero() {
   );
 }
 
-// Shared timeline steps — used by AiSection's clock and rendered here.
 const AI_TIMELINE_STEPS = [
   { icon:'assets/icons/small-ai.png',        title:'Message sent',  desc:'Snowball will reply to you in any channel',                  start: 0.20, end: 0.70 },
   { icon:'assets/icons/small-satellite.png', title:'Researching',   desc:'Snowball will find the relevant data for your question',     start: 1.10, end: 4.20 },
@@ -524,8 +508,6 @@ function AnimatedTimeline({ t, fading }) {
     let state = 'pending', display = s.start;
     if (t < s.start) { state = 'pending'; display = s.start; }
     else if (next && t >= next.start) { state = 'done'; display = s.end; }
-    // Last step (no next): once we've reached its start time, it's done.
-    // Avoids showing the spinner forever for instantaneous steps (start === end).
     else if (!next && t >= s.start) { state = 'done'; display = s.end; }
     else if (t >= s.start && t <= s.end) { state = 'active'; display = t; }
     else if (t > s.end) { state = 'done'; display = s.end; }
@@ -557,10 +539,6 @@ const DC_DOTS_CSS = `
   @keyframes dcMsgOut { from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(6px);} }
 `;
 
-// Module-level constants & sub-components for the Discord chat demo. Hoisted
-// out of DiscordChatDemo so their function references stay stable across
-// re-renders — otherwise React unmounts/remounts them every tick (50ms) which
-// retriggers the dcMsgIn entry animation and causes constant flashing.
 const DC_GG_SANS = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
 const DC_WX_AVATAR = 'https://avatars.githubusercontent.com/u/178625091?v=4&s=80';
 
@@ -577,11 +555,6 @@ function DcChannelHeader() {
 }
 
 function DcReplyQuote() {
-  // Sits as its own row above the avatar+name line, like a real Discord
-  // reply header. marginLeft:20 lines the curve up over the bot avatar
-  // below. Inner div clips overflow with an ellipsis so the snippet stays
-  // a single line; SVG lives outside that clipped region so the curve
-  // isn't truncated by overflow:hidden.
   return h('div', { style:{position:'relative',marginTop:6,marginBottom:2,marginLeft:20,paddingLeft:42,fontSize:13,color:'#b5bac1',lineHeight:'20px'} },
     h('svg', { width:32, height:18, viewBox:'0 0 32 18', fill:'none', style:{position:'absolute',left:-2,top:6} },
       h('path', { d:'M2 17 L2 8 Q2 3 7 3 L30 3', stroke:'#4e5058', strokeWidth:2, strokeLinecap:'round', strokeLinejoin:'round' })
@@ -618,9 +591,6 @@ function DcThinking({ leaving }) {
   );
 }
 
-// Inline arrow used in embed bullet rows. Hoisted so we don't rebuild the
-// element every render. Sits inline with the text so wrapped lines flow
-// underneath the arrow, matching Discord's real embed bullet behavior.
 const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy', style:{width:15,height:15,objectFit:'contain',verticalAlign:'top',marginRight:6,marginTop:3} });
 
 function DcEmbed() {
@@ -629,7 +599,6 @@ function DcEmbed() {
         h('img', { src:'assets/embed-banner.webp', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
-        // Header block: title on top with sun icon on the right, description text below the title.
         h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
           h('div', { style:{flex:1,minWidth:0} },
             h('div', { style:{color:'#fff',fontWeight:700,fontSize:19,lineHeight:1.2,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
@@ -690,10 +659,6 @@ function DcBotResponse() {
   }
 
 function DiscordChatDemo({ t, fading }) {
-  // Derived visibility flags for each chat element, driven by the shared clock.
-  // Thinking renders for an extra 0.30s past the Researching boundary so the
-  // dcMsgOut fade animation can play before unmount. `thinkingLeaving` flips to
-  // true when t crosses 4.20s, swapping the entry animation for the exit one.
   const showThinking    = t >= 0.30 && t < 4.50;
   const thinkingLeaving = t >= 4.20;
   const showBotResponse = t >= 5.00;
@@ -701,16 +666,9 @@ function DiscordChatDemo({ t, fading }) {
   const contentRef  = useRef(null);
   const [bodyHeight, setBodyHeight] = useState(240);
 
-  // Measure content height on each phase change so the chat container's height
-  // animates smoothly from "Thinking" (~small) to "BotResponse" (~tall) instead
-  // of snapping the page down by hundreds of pixels.
   useEffect(() => {
     if (!contentRef.current) return;
     const el = contentRef.current;
-    // Re-measure whenever the content reflows (font swap, images loading) so the
-    // clipped body wrapper never ends up shorter than the content and clips the
-    // embed's bottom row. A ResizeObserver keeps bodyHeight in sync past the
-    // initial phase-change measurement.
     const measure = () => setBodyHeight(Math.max(240, el.scrollHeight));
     measure();
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
@@ -718,10 +676,6 @@ function DiscordChatDemo({ t, fading }) {
     return () => { if (ro) ro.disconnect(); };
   }, [showThinking, thinkingLeaving, showBotResponse]);
 
-  // Scroll-driven 3D tilt: the card is fully slanted when it sits away from the
-  // viewport center and flattens out as it scrolls through the middle, so it
-  // tilts and untilts continuously as you scroll up or down. Sets a unitless
-  // --demo-tilt (0 = flat, 1 = full tilt) that the CSS transform multiplies.
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -766,8 +720,6 @@ function DiscordChatDemo({ t, fading }) {
 }
 
 function AiSection() {
-  // Shared clock: drives both the timeline and the Discord chat in lockstep.
-  // Cycle = animate (TOTAL) → hold (HOLD) → fade out (FADE) → reset, repeat.
   const HOLD = 1.5;
   const FADE = 0.45;
   const FRAME_MS = 50;
@@ -795,8 +747,6 @@ function AiSection() {
 
     const startCycle = () => {
       if (cancelled) return;
-      // After 2 full loops, freeze in the final state — everything visible,
-      // no more fading. Stops the text from flickering forever.
       if (cycleCount >= MAX_CYCLES) {
         setFading(false);
         setT(AI_TIMELINE_TOTAL);
@@ -816,8 +766,6 @@ function AiSection() {
           setT(AI_TIMELINE_TOTAL);
           timer = setTimeout(tick, FRAME_MS);
         } else if (cycleCount < MAX_CYCLES && elapsed < AI_TIMELINE_TOTAL + HOLD + FADE) {
-          // Skip the fade on the final cycle so we settle directly into the
-          // finished state instead of fading out then snapping back.
           setT(AI_TIMELINE_TOTAL);
           setFading(true);
           timer = setTimeout(tick, FRAME_MS);
@@ -875,7 +823,6 @@ function EconomySection() {
 
 function CommandsSection() {
   const cmds = [
-    // Weather
     { cat:'Weather', icon:'assets/icons/small-weather.png',     name:'weather current',   desc:'Current conditions' },
     { cat:'Weather', icon:'assets/icons/small-forecast.png',    name:'weather forecast',  desc:'Extended forecast' },
     { cat:'Weather', icon:'assets/icons/small-hourly.png',      name:'weather hourly',    desc:'Hourly forecast' },
@@ -897,11 +844,9 @@ function CommandsSection() {
     { cat:'Weather', icon:'assets/icons/small-cpc.png',         name:'outlook cpc',       desc:'CPC climate outlooks' },
     { cat:'Weather', icon:'assets/icons/small-outlook.png',     name:'outlook timing',    desc:'SPC timing charts' },
     { cat:'Weather', icon:'assets/icons/small-spc.png',         name:'outlook verifications', desc:'SPC report verifications' },
-    // EAS
     { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas decode',        desc:'Decode SAME header' },
     { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas audio',         desc:'Generate EAS audio' },
     { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas generate',      desc:'Build EAS alert' },
-    // Music & Radio
     { cat:'Music & Radio', icon:'assets/icons/small-music.png', name:'music play',        desc:'Play a song' },
     { cat:'Music & Radio', icon:'assets/icons/small-music.png', name:'music nowplaying',  desc:'Now playing' },
     { cat:'Music & Radio', icon:'assets/icons/small-music.png', name:'music queue',       desc:'View queue' },
@@ -920,7 +865,6 @@ function CommandsSection() {
     { cat:'Music & Radio', icon:'assets/icons/small-radio.png', name:'radio stations',    desc:'NOAA radio stations' },
     { cat:'Music & Radio', icon:'assets/icons/small-radio.png', name:'radio volume',      desc:'Adjust radio volume' },
     { cat:'Music & Radio', icon:'assets/icons/small-radio.png', name:'radio identify',    desc:'Identify playing song' },
-    // Economy
     { cat:'Economy', icon:'assets/icons/small-balance.png',     name:'economy balance',       desc:'Check your balance' },
     { cat:'Economy', icon:'assets/icons/small-daily.png',       name:'economy daily',         desc:'Claim daily Snowflakes' },
     { cat:'Economy', icon:'assets/icons/small-work.png',        name:'economy work',          desc:'Work for Snowflakes' },
@@ -953,7 +897,6 @@ function CommandsSection() {
     { cat:'Economy', icon:'assets/icons/small-items.png',       name:'economy use',           desc:'Use an item' },
     { cat:'Economy', icon:'assets/icons/small-stock.png',       name:'economy stock',         desc:'XWD stock & portfolio' },
     { cat:'Economy', icon:'assets/icons/small-events.png',      name:'economy event',         desc:'Active server event' },
-    // Utility
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai personality',  desc:'Change AI personality' },
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai toggle',       desc:'Toggle AI replies' },
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai usage',        desc:'Check AI usage' },
@@ -969,7 +912,6 @@ function CommandsSection() {
     { cat:'Utility', icon:'assets/icons/small-ping.png',        name:'notifications',   desc:'Manage Snowball DMs & pings' },
     { cat:'Utility', icon:'assets/icons/small-suggestion.png',  name:'suggest',         desc:'Submit suggestion or bug' },
     { cat:'Utility', icon:'assets/icons/small-suggestion.png',  name:'apply',           desc:'Apply to join Xtreme Weather' },
-    // Community
     { cat:'Community', icon:'assets/icons/small-birthdaypurple.png', name:'birthday add',  desc:'Set your birthday' },
     { cat:'Community', icon:'assets/icons/small-birthdaypurple.png', name:'birthday remove', desc:'Remove your birthday' },
     { cat:'Community', icon:'assets/icons/small-qotd.png',        name:'qotd submit',   desc:'Submit QOTD idea' },
@@ -979,7 +921,6 @@ function CommandsSection() {
   ];
   const cats = ['Weather', 'Economy', 'Music & Radio', 'Community', 'EAS', 'Utility'];
 
-  // Sort alphabetically within each category, then assign per-category stagger index.
   const sortedCmds = [...cmds].sort((a, b) => {
     if (a.cat !== b.cat) return cats.indexOf(a.cat) - cats.indexOf(b.cat);
     return a.name.localeCompare(b.name);
@@ -997,16 +938,8 @@ function CommandsSection() {
   const handlePick = (cat) => {
     if (cat === active) return;
     const grid = gridRef.current;
-    // View Transitions API: browser captures old + new states and crossfades
-    // them, animating both opacity AND height/layout in one smooth pass.
-    // Only apply view-transition-name during the transition itself — keeping it
-    // on the grid permanently creates a stacking context that breaks the
-    // navbar's backdrop-filter from blurring the grid underneath on scroll.
     const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
     if (!isMobile && typeof document !== 'undefined' && document.startViewTransition && grid) {
-      // Give the navbar its own snapshot too so backdrop-filter keeps working
-      // during the transition. Without this, it's flattened into the root
-      // snapshot and loses the live blur for the 360ms transition window.
       const navbar = document.querySelector('.navbar');
       grid.style.viewTransitionName = 'commands-grid';
       if (navbar) navbar.style.viewTransitionName = 'navbar';
@@ -1063,9 +996,6 @@ function formatK(n) {
   return (n/1000).toFixed(1).replace(/\.0$/, '') + 'K';
 }
 
-// Banner-service base URL. Its /public/server-summary route is read-only and
-// unauthenticated (aggregate guild counts only), with open CORS, so the
-// browser can read it directly without exposing any API key.
 const BANNER_SERVICE_URL = 'https://community.xtremewx.com';
 const XW_GUILD_ID = '1077714936056250388';
 
@@ -1087,7 +1017,6 @@ function PreviewTicker() {
         })
         .catch(() => {});
     };
-    // Real 30-day message + active-contributor totals from the banner service.
     const fetchServerStats = () => {
       fetch(`${BANNER_SERVICE_URL}/public/community?guildId=${XW_GUILD_ID}`, { cache: 'no-store' })
         .then(r => r.ok ? r.json() : null)
@@ -1239,8 +1168,6 @@ function RadarAppSection() {
 function FeaturesSection() {
   const secRef = useRef(null);
 
-  // Pause the marquee tracks while the section is offscreen so the two
-  // infinitely-animating rows cost nothing when you can't see them.
   useEffect(() => {
     const el = secRef.current;
     if (!el || !('IntersectionObserver' in window)) return;
@@ -1281,7 +1208,6 @@ function FeaturesSection() {
       )
     );
 
-  // Duplicate each row so the marquee loops seamlessly.
   const renderRow = (items, dir) =>
     h('div', { className: 'xw-feat-row', 'data-dir': dir },
       h('div', { className: 'xw-feat-track' },
@@ -1416,7 +1342,6 @@ requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('re
 </footer>
 
 <script>
-// Navbar logic now lives in the shared nav.js (loaded before </body>).
 
 </script>
 <script src="nav.js"></script>

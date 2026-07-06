@@ -1,6 +1,5 @@
-/* Fetches staff.json (published by the Snowball bot's /moderation sync) and renders
-   the tiers. Cards "load up" with a staggered entrance (see .staff-card animation in
-   community.css). Empty tiers are hidden. Shows a friendly message if it can't load. */
+// We're the ones who innovate, not imitate.
+
 (function () {
   var TIERS = {
     founder:    { label: 'Founder' },
@@ -32,8 +31,6 @@
     })
     .catch(function () { showError(); });
 
-  // Preload avatars/banners so cards don't flash in unstyled, then render (which
-  // triggers the staggered entrance). Falls back after a short timeout.
   function preloadThenRender(tiers) {
     var urls = [];
     tiers.forEach(function (t) {
@@ -45,8 +42,6 @@
     var remaining = urls.length, done = false;
     function render() {
       if (done) return; done = true;
-      // Add the class BEFORE inserting the cards so they're created already animating from
-      // the invisible first frame (no flash). Without this JS, the cards just stay visible.
       root.classList.add('animate-in');
       root.innerHTML = tiers.map(renderTier).join('');
     }
@@ -56,7 +51,7 @@
       img.onload = img.onerror = function () { if (--remaining <= 0) render(); };
       img.src = u;
     });
-    setTimeout(render, 2500); // never wait forever on a slow image
+    setTimeout(render, 2500);
   }
 
   function showError() {
@@ -98,8 +93,6 @@
   }
 
   function safeUrl(u) {
-    // Absolute http(s) URLs, or the repo-relative paths the bot writes when it
-    // mirrors Discord avatars into assets/ (so pfps don't die with the CDN).
     if (typeof u !== 'string' || !(/^https?:\/\//i.test(u) || /^assets\//.test(u))) return '';
     return u.replace(/'/g, '%27').replace(/"/g, '%22');
   }

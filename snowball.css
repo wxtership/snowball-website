@@ -1,3 +1,5 @@
+/* We're the ones who innovate, not imitate. */
+
 @font-face {
   font-family: 'Druk Wide';
   src: url('./fonts/DrukWideBold.woff2') format('woff2');
@@ -69,13 +71,6 @@ body {
 #root { opacity: 0; transition: opacity 0.3s ease; min-height: 100vh; }
 #root.ready { opacity: 1; }
 
-/* ---------------------------------------------------------------------------
-   Home load composition, matching the snowball page's burst-in style: the
-   hero's own radar rings expand out from the center into their resting spots
-   while the radar backdrop fades up underneath, and the hero copy blur-fades
-   in (inline styles in index.html). Keyframes only declare `from`, so every
-   element lands exactly on its stylesheet resting values.
-   --------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
   .home-page .xw-hero-ring {
     animation: xw-ring-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
@@ -91,10 +86,6 @@ body {
     animation: xw-radar-bg-in 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  /* Deep zoom-out that fades into focus. Only opacity/transform animate: the
-     resting blur(14px) stays constant so it's rasterized once, instead of the
-     GPU re-blurring the whole hero every frame for 2.2s (a big chunk of the
-     desktop lag on page load). The fade covers the old blur/brightness ramp. */
   @keyframes xw-radar-bg-in {
     from {
       opacity: 0;
@@ -106,7 +97,6 @@ body {
     animation: xw-fade-in 1.2s ease-out both;
   }
 
-  /* Sweep beam eases in with the backdrop rather than popping at full tilt. */
   .home-page .xw-hero-map::after {
     animation: xw-fade-in 1.8s ease-out both;
   }
@@ -123,12 +113,10 @@ body {
 @media (max-width: 1024px) {
   .mobile-menu-overlay {
     background: #0d0d18 !important;
-    inset: -2px !important;     /* overdraws the viewport to avoid iOS edge flashes */
+    inset: -2px !important;
     min-height: 100vh !important;
     min-height: 100dvh !important;
     height: auto !important;
-    /* Closed state sits slightly below, so opening fades up and closing
-       fades back down. */
     transform: translateY(22px);
     transition: opacity 0.32s ease-out, transform 0.32s ease-in, visibility 0s linear 0.32s !important;
   }
@@ -193,8 +181,6 @@ body {
   z-index: 100000;
   pointer-events: none;
 }
-/* Keep the top anchor below the navbar (z 10000) so it never shows as a dark
-   strip over the header; the navbar already covers the top edge. */
 #sb-tint-anchor-top { top: 0; z-index: 9990; }
 #sb-tint-anchor-bottom { bottom: 0; }
 
@@ -398,7 +384,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   filter: grayscale(0.6);
 }
 .state-active .timeline-dot {
-  /* Layer the tint over solid page bg so the line behind the dot is masked. */
   background: linear-gradient(rgba(107,84,245,0.18), rgba(107,84,245,0.18)), #0b0b0f;
   border-color: rgba(107,84,245,0.7);
   box-shadow: 0 0 32px rgba(107,84,245,0.45);
@@ -564,7 +549,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-/* View Transitions API: browser-native crossfade + height animation on filter change. */
 ::view-transition-old(commands-grid),
 ::view-transition-new(commands-grid) {
   animation-duration: 360ms;
@@ -579,15 +563,9 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 @keyframes vt-fade-out { to { opacity: 0; } }
 @keyframes vt-fade-in  { from { opacity: 0; } }
 
-/* AI section loop fade — both timeline and Discord chat fade out together
-   before the cycle resets. Transition only applies when fading is added so
-   the snap-back to opacity 1 at reset is instant (no flash). */
 .demo-fades { opacity: 1; }
 .demo-fades.demo-fading { opacity: 0; transition: opacity 0.45s ease-out; }
 
-/* 3D tilt for the Discord demo card. Driven by --demo-tilt (set on scroll in
-   JS): 0 = flat, 1 = full slant. The card tilts back when it's away from the
-   viewport center and flattens as it scrolls through the middle. */
 .xw-demo3d {
   --demo-tilt: 1;
   transform:
@@ -606,8 +584,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 }
 
-/* Navbar: own snapshot, no fade, no movement — preserves backdrop-filter blur
-   during the grid transition instead of dropping it for 360ms. */
 ::view-transition-old(navbar),
 ::view-transition-new(navbar) {
   animation: none !important;
@@ -631,8 +607,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .cmd-chip img { width: 22px; height: 22px; }
   .cmd-chip-name { font-size: 12px; }
   .cmd-chip-desc { font-size: 10.5px; }
-  /* Disable card hover lift/glow on touch (econ cards) — they were getting
-     stuck in the hover state on tap. */
   .econ-card { transition: none; }
   .econ-card:hover { border-color: rgba(255,255,255,0.08); transform: none; box-shadow: none; }
   .econ-card:hover::before { opacity: 0; }
@@ -782,15 +756,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   letter-spacing: 0.02em;
 }
 
-/* Home closing CTA: left-aligned split (headline + button | stacked stats)
-   so it reads differently from the snowball page's centered ticker. */
 .home-cta {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: clamp(32px, 6vw, 96px);
   align-items: center;
-  /* No top padding: the section inner's padding already sets the gap above,
-     matching the uniform rhythm between all home sections. */
   padding: 0 0 8px;
 }
 .home-cta-title {
@@ -868,10 +838,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 
 @media (max-width: 768px) {
-  /* NOTE: removed legacy `nav { padding: 14px 20px }` — it applied only at
-     mobile and added 20px of horizontal padding the tablet range lacked,
-     shifting the navbar contents left on tablet vs mobile. The navbar's
-     spacing is owned entirely by .nav-container (constant 0 1.25rem). */
   .nav-links { gap: 16px; }
   .nav-link { display: none; }
   .economy-grid { grid-template-columns: 1fr; }
@@ -887,12 +853,8 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .section-title { font-size: clamp(26px, 6vw, 40px); }
 }
 
-/* ==========================================================================
-   Xtreme Weather Home Page
-   ========================================================================== */
 
 .home-page #hero.xw-hero-v2 {
-  /* Fill the screen like the snowball page hero (base #hero is 92vh). */
   min-height: 100vh;
   min-height: 100svh;
   padding: 110px 24px 64px;
@@ -972,21 +934,14 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: absolute;
   left: 50%;
   top: 50%;
-  /* Sweeps further out on wide viewports, never below the 940px baseline. */
   width: clamp(940px, 78vw, 1360px);
   height: clamp(940px, 78vw, 1360px);
-  /* Softness is baked into the gradient stops instead of a filter: a blur on
-     this layer forces the GPU to re-blur ~1M px every frame the beam turns,
-     which is what made the hero lag on weaker desktops. */
   background: conic-gradient(from -22deg, transparent 0 288deg, rgba(34,211,238,0.09) 304deg, rgba(34,211,238,0.36) 323deg, rgba(255,255,255,0.13) 332deg, rgba(34,211,238,0.05) 341deg, transparent 349deg);
   transform: translate(-50%, -50%) rotate(var(--radar-angle, 0deg));
   opacity: 0.85;
   mix-blend-mode: screen;
   will-change: transform;
   transition: transform 0.12s linear;
-  /* Radial mask: hollow the center so the beam's convergence point doesn't pinch
-     when it sweeps over the middle, and fade the rim into a circle so the square
-     edge never looks boxy. */
   -webkit-mask-image: radial-gradient(circle at center, transparent 0, transparent 8%, #000 24%, #000 58%, transparent 82%);
   mask-image: radial-gradient(circle at center, transparent 0, transparent 8%, #000 24%, #000 58%, transparent 82%);
 }
@@ -1104,15 +1059,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   max-width: none;
 }
 
-/* Products head no longer has body copy beside it — let the heading use the
-   full width so it stays on two lines instead of being squeezed by the
-   reserved second column. */
 .home-products-section .xw-section-head {
   grid-template-columns: 1fr;
 }
 
-/* Pull the products block up into the hero's faded bottom so there isn't a
-   tall empty gap between the hero and the "Everything weather" heading. */
 .home-products-section {
   padding-top: 0;
   margin-top: -1vh;
@@ -1127,14 +1077,10 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-coverage-section .section-inner {
   padding-top: 170px;
 }
-/* The snowball section already carries a 90px margin above (texture breathing
-   room), so its inner gap is trimmed to keep the total section-to-section
-   space at the same 290px as everywhere else on the home page. */
 .xw-snowball-section .section-inner {
   padding-top: 80px;
 }
 
-/* ── Products showcase: copy + framed live radar ───────────────────────── */
 .xw-products-showcase {
   margin-bottom: 48px;
 }
@@ -1165,7 +1111,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Faint scrim so the overlay labels stay readable over busy radar. */
 .xw-showcase-media::after {
   content: '';
   position: absolute;
@@ -1276,11 +1221,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     0 0 52px -4px color-mix(in srgb, var(--card-accent, var(--purple-400)) 58%, transparent);
 }
 
-.xw-product-card.tone-cyan { --card-accent: #9B5EF5; }   /* Radar App: purple */
-.xw-product-card.tone-green { --card-accent: #9B5EF5; }  /* Features: purple */
-.xw-product-card.tone-violet { --card-accent: #5865F2; } /* Discord: blurple */
-.xw-product-card.tone-blue { --card-accent: #60a5fa; }   /* Snowball: blue */
-.xw-product-card.tone-amber { --card-accent: #ef4444; }  /* Coverage Modes: red */
+.xw-product-card.tone-cyan { --card-accent: #9B5EF5; }
+.xw-product-card.tone-green { --card-accent: #9B5EF5; }
+.xw-product-card.tone-violet { --card-accent: #5865F2; }
+.xw-product-card.tone-blue { --card-accent: #60a5fa; }
+.xw-product-card.tone-amber { --card-accent: #ef4444; }
 
 .xw-product-icon {
   width: 52px;
@@ -1303,7 +1248,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   object-fit: contain;
 }
 
-/* Radar icon sits a touch left and smaller than the rest. */
 .card-radar .xw-product-icon {
   width: 47px;
   height: 47px;
@@ -1400,7 +1344,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   color: #fff;
 }
 
-/* Feature-row checkmarks use the shared success icon. */
 .xw-feature-check {
   width: 30px;
   height: 30px;
@@ -1433,10 +1376,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   font-size: 12px;
 }
 
-/* ---------------------------------------------------------------------------
-   Radar app gallery: three real app screenshots composited into a phone frame,
-   staggered so the middle screen leads. No fake UI, no spinning sweep.
-   --------------------------------------------------------------------------- */
 .xw-phone-gallery {
   display: flex;
   align-items: flex-end;
@@ -1462,8 +1401,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   user-select: none;
 }
 
-/* Outer two shots sit lower and turned slightly inward; center leads and
-   stands taller. Nothing translates above the gallery box, so tops never clip. */
 .xw-phone-shot:nth-child(1) {
   transform: translateY(34px) rotateY(11deg) scale(0.93);
   z-index: 1;
@@ -1634,7 +1571,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   font-size: 13px;
 }
 
-/* ---- Features marquee (replaces the old radar-web section) ---- */
 .xw-features-section .section-inner { padding-top: 170px; padding-bottom: 0; }
 
 .xw-features-head { max-width: 620px; margin-bottom: 44px; }
@@ -1642,12 +1578,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 .xw-features-head .section-title { margin-bottom: 16px; }
 .xw-features-sub { margin-bottom: 0; }
 
-/* Full-bleed track so cards can scroll off the edges of the centered column.
-   Uses calc(50% - 50vw) margins instead of width:100vw + margin-left:-50vw:
-   the left/right margins cancel to exactly the content box's distance from each
-   viewport edge, so the element spans the viewport WITHOUT the ~15px overshoot
-   that 100vw causes (100vw includes the scrollbar). No horizontal reflow on
-   resize, and no phantom scrollbar. */
 .xw-feat-marquee {
   display: flex;
   flex-direction: column;
@@ -1655,7 +1585,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: relative;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  /* fade the left/right edges so cards slide in and out softly */
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
 }
@@ -1669,25 +1598,17 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   will-change: transform;
 }
 
-/* Two duplicated sets sit end to end, so translating by -50% loops seamlessly. */
 .xw-feat-row[data-dir="left"]  .xw-feat-track { animation: xw-feat-scroll-left  60s linear infinite; }
 .xw-feat-row[data-dir="right"] .xw-feat-track { animation: xw-feat-scroll-right 60s linear infinite; }
 
-/* Pause (don't fade) on hover. Needs to match the per-direction selector's
-   specificity so the `animation` shorthand above doesn't reset play-state
-   back to running. Gated to real hover devices: on touch screens a tap
-   counts as :hover and froze the marquee until you tapped elsewhere. */
 @media (hover: hover) and (pointer: fine) {
   .xw-feat-marquee:hover .xw-feat-row[data-dir] .xw-feat-track { animation-play-state: paused; }
 }
 
 .xw-feat-track { will-change: transform; }
 
-/* Toggled by an IntersectionObserver in FeaturesSection: the marquee costs
-   nothing while it's offscreen. Same specificity note as the hover rule. */
 .xw-features-section.marquee-paused .xw-feat-row[data-dir] .xw-feat-track { animation-play-state: paused; }
 
-/* Same idea for the hero sweep beam (Hero toggles hero-off when scrolled past). */
 #hero.hero-off .xw-hero-map::after { animation-play-state: paused; }
 
 @keyframes xw-feat-scroll-left {
@@ -1746,18 +1667,12 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   position: relative;
   isolation: isolate;
   background: transparent;
-  /* Black breathing room between the radar figure above and this section's
-     snow texture (the ::before starts at the section edge). */
   margin-top: 90px;
 }
 @media (max-width: 768px) {
-  /* No extra texture margin on phones: the 44px section paddings alone keep
-     the gap identical to the rest of the mobile rhythm. */
   .xw-snowball-section { margin-top: 0; }
 }
 
-/* Blurred snow texture sits behind the content and feathers top & bottom into
-   the page's dark purple. Kept on a ::before so the text/cards stay sharp. */
 .xw-snowball-section::before {
   content: '';
   position: absolute;
@@ -1767,7 +1682,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     url('assets/square-snowflake.webp') center / cover no-repeat,
     linear-gradient(180deg, #16223c 0%, #1b2a48 50%, #16223c 100%);
   filter: blur(7px);
-  transform: scale(1.06); /* hides the soft edges the blur pulls in */
+  transform: scale(1.06);
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
   mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
   pointer-events: none;
@@ -1809,7 +1724,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   min-width: 0;
 }
 
-/* Full-width header band at the top of the Snowball section */
 .xw-snowball-banner {
   width: 100%;
   display: flex;
@@ -1829,7 +1743,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   text-transform: uppercase;
   letter-spacing: -0.01em;
   line-height: 1;
-  /* scales with the viewport so the single line fits without clipping */
   font-size: clamp(15px, 4.2vw, 46px);
   color: #c7d2de;
   white-space: nowrap;
@@ -1844,8 +1757,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45));
 }
 
-/* Force the promo heading onto exactly three lines: each line is its own
-   nowrap block so a phrase never wraps mid-line ("Weather it," stays whole). */
 .xw-snowball-line {
   display: inline-block;
   white-space: nowrap;
@@ -1961,15 +1872,11 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
 
 
 @media (max-width: 560px) {
-  /* Final collapse to one column. Above this the grids step 5->4->2 (product)
-     and 3->2 (coverage) so cards never jump straight from many columns to one. */
   .xw-product-grid,
   .xw-coverage-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Match the snowball page's mobile hero gap: same 100px top padding and
-     min-height, with content flex-centered instead of top-anchored. */
   .home-page #hero {
     min-height: 92vh;
   }
@@ -2028,9 +1935,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
-  /* Fade the radar out where the rings fade (same stops as .xw-hero-map
-     below), so the imagery reaches the bottom of the ring composition
-     instead of dying halfway down the hero. */
   .xw-real-radar-bg {
     mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 96%);
     -webkit-mask-image: linear-gradient(to bottom, black 0%, black 78%, transparent 96%);
@@ -2060,8 +1964,6 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
     perspective: none;
   }
 
-  /* On phones, three side-by-side screens are too small to read. Show the
-     center (warning) screen full size and drop the flanking two. */
   .xw-phone-shot:nth-child(1),
   .xw-phone-shot:nth-child(3) {
     display: none;
@@ -2082,20 +1984,9 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   }
 }
 
-/* ===========================================================================
-   Site-wide stagger-up reveal (driven by nav.js). Blocks rise + fade in as
-   they scroll into view, like the legal pages. Opt out with [data-no-reveal];
-   elements with their own intro animations are skipped by the script.
-   =========================================================================== */
 .reveal-up {
   opacity: 0;
   transform: translateY(22px);
-  /* Opacity ramps linearly: ease-out curves hit ~70% almost immediately, so
-     the visible part of the fade reads as a 70%->100% crawl. Movement keeps
-     the decelerating curve. */
-  /* !important so component hover transitions (cards define their own) can't
-     override the entrance; nav.js removes the classes once the entrance ends,
-     which hands transitions back to the component. */
   transition:
     opacity   0.5s  linear var(--reveal-delay, 0ms),
     transform 0.72s cubic-bezier(0.215, 0.61, 0.355, 1) var(--reveal-delay, 0ms) !important;
@@ -2109,16 +2000,7 @@ section { position: relative; z-index: 1; padding: 60px 24px; }
   .reveal-up { opacity: 1; transform: none; transition: none; }
 }
 
-/* ---------------------------------------------------------------------------
-   Tighter mobile rhythm for the home sections after the hero: the site-wide
-   mobile `section` padding (120px top) reads as huge dead gaps between these,
-   so pull them in. The preview inner needs !important to beat its inline
-   paddingTop.
-   --------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  /* First section under the hero: 40px between the hero's bottom edge and
-     the app copy, instead of the 120px section + inner padding stack. The
-     bottom matches the 44px the sections below use. */
   .home-page #app {
     padding-top: 40px;
     padding-bottom: 44px;

@@ -1,7 +1,5 @@
-/* Fetches experts.json (published by Snowball's /moderation expertssync) and renders the
-   Coverage Expert roster: Lead Experts first, then the rest. Falls back to the shared
-   Coverage Expert icon if a member has no avatar. If the file can't load, the static
-   fallback already in #experts-roster is left in place. */
+// We're the ones who innovate, not imitate.
+
 (function () {
   var root = document.getElementById('experts-roster');
   if (!root || !window.fetch) return;
@@ -28,7 +26,7 @@
       });
       preloadThenRender(tiers);
     })
-    .catch(function () { /* leave the fallback */ });
+    .catch(function () {                          });
 
   function preloadThenRender(tiers) {
     var urls = [];

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- We're the ones who innovate, not imitate. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -313,11 +314,7 @@
 </footer>
 
 <script>
-// Navbar logic now lives in the shared nav.js (loaded before </body>).
 
-// Ban appeal flow. Snowball must provide these backend routes:
-// GET /api/ban-appeal/me -> { authenticated, banned, user, ban }
-// POST /api/ban-appeals -> accepts JSON for the authenticated user.
 (function () {
     var SNOWBALL_CLIENT_ID = '1465594035912704083';
     var SNOWBALL_API_BASE = window.SNOWBALL_API_BASE || 'https://snowball-api.xtremewx.com';
@@ -461,7 +458,6 @@
 
     function hydrateAccount(user) {
         currentUser = user || currentUser;
-        // Plain username, no @ and no display-name decorations.
         var name = ((user && user.username) || displayName(user)).replace(/^@/, '');
         [
             ['appeal-account-name', 'appeal-account-avatar'],

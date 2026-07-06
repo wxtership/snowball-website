@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- We're the ones who innovate, not imitate. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -16,7 +17,6 @@
 <link rel="stylesheet" href="/snowball-website/snowball.css">
 <link rel="stylesheet" href="/snowball-website/community.css">
 <style>
-  /* Debris drifting by in the 404 hero; hidden for reduced motion. */
   .blown-away { position: relative; overflow: hidden; }
   .debris { position: absolute; top: 0; left: 0; font-size: 22px; opacity: 0; pointer-events: none; animation: drift-by var(--dur, 9s) linear var(--delay, 0s) infinite; }
   @keyframes drift-by {
@@ -26,7 +26,6 @@
     100% { transform: translate(calc(100vw + 60px), calc(var(--y, 40%) - 60px)) rotate(340deg); opacity: 0; }
   }
   .page-hero.blown-away { padding-top: 260px; padding-bottom: 220px; }
-  /* Continue the hero intro stagger (title 0.05s, body 0.2s) to the buttons. */
   .page-hero .page-cta { animation: reveal-up 0.85s cubic-bezier(0.215, 0.61, 0.355, 1) backwards; animation-delay: 0.35s; }
   @media (prefers-reduced-motion: reduce) { .page-hero .page-cta { animation: none; } }
   @media (prefers-reduced-motion: reduce) { .debris { display: none; } }

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- We're the ones who innovate, not imitate. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -435,7 +436,6 @@ function Hero() {
   );
 }
 
-// Shared timeline steps — used by AiSection's clock and rendered here.
 const AI_TIMELINE_STEPS = [
   { icon:'assets/icons/small-ai.png',        title:'Message sent',  desc:'Snowball will reply to you in any channel',                  start: 0.20, end: 0.70 },
   { icon:'assets/icons/small-satellite.png', title:'Researching',   desc:'Snowball will find the relevant data for your question',     start: 1.10, end: 4.20 },
@@ -449,8 +449,6 @@ function AnimatedTimeline({ t, fading }) {
     let state = 'pending', display = s.start;
     if (t < s.start) { state = 'pending'; display = s.start; }
     else if (next && t >= next.start) { state = 'done'; display = s.end; }
-    // Last step (no next): once we've reached its start time, it's done.
-    // Avoids showing the spinner forever for instantaneous steps (start === end).
     else if (!next && t >= s.start) { state = 'done'; display = s.end; }
     else if (t >= s.start && t <= s.end) { state = 'active'; display = t; }
     else if (t > s.end) { state = 'done'; display = s.end; }
@@ -482,10 +480,6 @@ const DC_DOTS_CSS = `
   @keyframes dcMsgOut { from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(6px);} }
 `;
 
-// Module-level constants & sub-components for the Discord chat demo. Hoisted
-// out of DiscordChatDemo so their function references stay stable across
-// re-renders — otherwise React unmounts/remounts them every tick (50ms) which
-// retriggers the dcMsgIn entry animation and causes constant flashing.
 const DC_GG_SANS = '"gg sans","Noto Sans",Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif';
 const DC_WX_AVATAR = 'https://avatars.githubusercontent.com/u/178625091?v=4&s=80';
 const DC_USER_PING = h('span', { style:{color:'#c9b6ff',background:'rgba(88,101,242,0.3)',padding:'1px 4px',borderRadius:3,cursor:'default',fontWeight:500} }, '@wxtership');
@@ -503,11 +497,6 @@ function DcChannelHeader() {
 }
 
 function DcReplyQuote() {
-  // Sits as its own row above the avatar+name line, like a real Discord
-  // reply header. marginLeft:20 lines the curve up over the bot avatar
-  // below. Inner div clips overflow with an ellipsis so the snippet stays
-  // a single line; SVG lives outside that clipped region so the curve
-  // isn't truncated by overflow:hidden.
   return h('div', { style:{position:'relative',marginTop:6,marginBottom:2,marginLeft:20,paddingLeft:42,fontSize:13,color:'#b5bac1',lineHeight:'20px'} },
     h('svg', { width:32, height:18, viewBox:'0 0 32 18', fill:'none', style:{position:'absolute',left:-2,top:6} },
       h('path', { d:'M2 17 L2 8 Q2 3 7 3 L30 3', stroke:'#4e5058', strokeWidth:2, strokeLinecap:'round', strokeLinejoin:'round' })
@@ -560,9 +549,6 @@ function DcThinking({ leaving }) {
   );
 }
 
-// Inline arrow used in embed bullet rows. Hoisted so we don't rebuild the
-// element every render. Sits inline with the text so wrapped lines flow
-// underneath the arrow, matching Discord's real embed bullet behavior.
 const DC_ARROW_IMG = h('img', { src:'assets/arrow.webp', alt:'', loading:'lazy', style:{width:15,height:15,objectFit:'contain',verticalAlign:'top',marginRight:6,marginTop:3} });
 
 function DcEmbed() {
@@ -571,7 +557,6 @@ function DcEmbed() {
         h('img', { src:'assets/embed-banner.webp', alt:'', loading:'lazy', style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'} })
       ),
       h('div', { style:{padding:'18px 20px',display:'flex',flexDirection:'column',gap:18} },
-        // Header block: title on top with sun icon on the right, description text below the title.
         h('div', { style:{display:'flex',gap:14,alignItems:'flex-start'} },
           h('div', { style:{flex:1,minWidth:0} },
             h('div', { style:{color:'#fff',fontWeight:700,fontSize:22,lineHeight:1.2,marginBottom:6,fontFamily:DC_GG_SANS} }, 'Weather for Pittsburgh, PA'),
@@ -653,10 +638,6 @@ function DcBotResponse() {
   }
 
 function DiscordChatDemo({ t, fading }) {
-  // Derived visibility flags for each chat element, driven by the shared clock.
-  // Thinking renders for an extra 0.30s past the Researching boundary so the
-  // dcMsgOut fade animation can play before unmount. `thinkingLeaving` flips to
-  // true when t crosses 4.20s, swapping the entry animation for the exit one.
   const showUserMsg     = t >= 0.20;
   const showThinking    = t >= 1.10 && t < 4.50;
   const thinkingLeaving = t >= 4.20;
@@ -665,9 +646,6 @@ function DiscordChatDemo({ t, fading }) {
   const contentRef  = useRef(null);
   const [bodyHeight, setBodyHeight] = useState(240);
 
-  // Measure content height on each phase change so the chat container's height
-  // animates smoothly from "Thinking" (~small) to "BotResponse" (~tall) instead
-  // of snapping the page down by hundreds of pixels.
   useEffect(() => {
     if (!contentRef.current) return;
     const measured = Math.max(240, contentRef.current.scrollHeight);
@@ -694,8 +672,6 @@ function DiscordChatDemo({ t, fading }) {
 }
 
 function AiSection() {
-  // Shared clock: drives both the timeline and the Discord chat in lockstep.
-  // Cycle = animate (TOTAL) → hold (HOLD) → fade out (FADE) → reset, repeat.
   const HOLD = 1.5;
   const FADE = 0.45;
   const FRAME_MS = 50;
@@ -723,8 +699,6 @@ function AiSection() {
 
     const startCycle = () => {
       if (cancelled) return;
-      // After 2 full loops, freeze in the final state — everything visible,
-      // no more fading. Stops the text from flickering forever.
       if (cycleCount >= MAX_CYCLES) {
         setFading(false);
         setT(AI_TIMELINE_TOTAL);
@@ -744,8 +718,6 @@ function AiSection() {
           setT(AI_TIMELINE_TOTAL);
           timer = setTimeout(tick, FRAME_MS);
         } else if (cycleCount < MAX_CYCLES && elapsed < AI_TIMELINE_TOTAL + HOLD + FADE) {
-          // Skip the fade on the final cycle so we settle directly into the
-          // finished state instead of fading out then snapping back.
           setT(AI_TIMELINE_TOTAL);
           setFading(true);
           timer = setTimeout(tick, FRAME_MS);
@@ -803,7 +775,6 @@ function EconomySection() {
 
 function CommandsSection() {
   const cmds = [
-    // Weather
     { cat:'Weather', icon:'assets/icons/small-weather.png',     name:'weather current',   desc:'Current conditions' },
     { cat:'Weather', icon:'assets/icons/small-forecast.png',    name:'weather forecast',  desc:'Extended forecast' },
     { cat:'Weather', icon:'assets/icons/small-hourly.png',      name:'weather hourly',    desc:'Hourly forecast' },
@@ -825,11 +796,9 @@ function CommandsSection() {
     { cat:'Weather', icon:'assets/icons/small-cpc.png',         name:'outlook cpc',       desc:'CPC climate outlooks' },
     { cat:'Weather', icon:'assets/icons/small-outlook.png',     name:'outlook timing',    desc:'SPC timing charts' },
     { cat:'Weather', icon:'assets/icons/small-spc.png',         name:'outlook verifications', desc:'SPC report verifications' },
-    // EAS
     { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas decode',        desc:'Decode SAME header' },
     { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas audio',         desc:'Generate EAS audio' },
     { cat:'EAS',     icon:'assets/icons/small-signal.png',      name:'eas generate',      desc:'Build EAS alert' },
-    // Music & Radio
     { cat:'Music & Radio', icon:'assets/icons/small-music.png', name:'music play',        desc:'Play a song' },
     { cat:'Music & Radio', icon:'assets/icons/small-music.png', name:'music nowplaying',  desc:'Now playing' },
     { cat:'Music & Radio', icon:'assets/icons/small-music.png', name:'music queue',       desc:'View queue' },
@@ -848,7 +817,6 @@ function CommandsSection() {
     { cat:'Music & Radio', icon:'assets/icons/small-radio.png', name:'radio stations',    desc:'NOAA radio stations' },
     { cat:'Music & Radio', icon:'assets/icons/small-radio.png', name:'radio volume',      desc:'Adjust radio volume' },
     { cat:'Music & Radio', icon:'assets/icons/small-radio.png', name:'radio identify',    desc:'Identify playing song' },
-    // Economy
     { cat:'Economy', icon:'assets/icons/small-balance.png',     name:'economy balance',       desc:'Check your balance' },
     { cat:'Economy', icon:'assets/icons/small-daily.png',       name:'economy daily',         desc:'Claim daily Snowflakes' },
     { cat:'Economy', icon:'assets/icons/small-work.png',        name:'economy work',          desc:'Work for Snowflakes' },
@@ -881,7 +849,6 @@ function CommandsSection() {
     { cat:'Economy', icon:'assets/icons/small-items.png',       name:'economy use',           desc:'Use an item' },
     { cat:'Economy', icon:'assets/icons/small-stock.png',       name:'economy stock',         desc:'XWD stock & portfolio' },
     { cat:'Economy', icon:'assets/icons/small-events.png',      name:'economy event',         desc:'Active server event' },
-    // Utility
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai personality',  desc:'Change AI personality' },
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai toggle',       desc:'Toggle AI replies' },
     { cat:'Utility', icon:'assets/icons/small-ai.png',          name:'ai usage',        desc:'Check AI usage' },
@@ -897,7 +864,6 @@ function CommandsSection() {
     { cat:'Utility', icon:'assets/icons/small-ping.png',        name:'notifications',   desc:'Manage Snowball DMs & pings' },
     { cat:'Utility', icon:'assets/icons/small-suggestion.png',  name:'suggest',         desc:'Submit suggestion or bug' },
     { cat:'Utility', icon:'assets/icons/small-suggestion.png',  name:'apply',           desc:'Apply to join Xtreme Weather' },
-    // Community
     { cat:'Community', icon:'assets/icons/small-birthdaypurple.png', name:'birthday add',  desc:'Set your birthday' },
     { cat:'Community', icon:'assets/icons/small-birthdaypurple.png', name:'birthday remove', desc:'Remove your birthday' },
     { cat:'Community', icon:'assets/icons/small-qotd.png',        name:'qotd submit',   desc:'Submit QOTD idea' },
@@ -907,7 +873,6 @@ function CommandsSection() {
   ];
   const cats = ['Weather', 'Economy', 'Music & Radio', 'Community', 'EAS', 'Utility'];
 
-  // Sort alphabetically within each category, then assign per-category stagger index.
   const sortedCmds = [...cmds].sort((a, b) => {
     if (a.cat !== b.cat) return cats.indexOf(a.cat) - cats.indexOf(b.cat);
     return a.name.localeCompare(b.name);
@@ -925,16 +890,8 @@ function CommandsSection() {
   const handlePick = (cat) => {
     if (cat === active) return;
     const grid = gridRef.current;
-    // View Transitions API: browser captures old + new states and crossfades
-    // them, animating both opacity AND height/layout in one smooth pass.
-    // Only apply view-transition-name during the transition itself — keeping it
-    // on the grid permanently creates a stacking context that breaks the
-    // navbar's backdrop-filter from blurring the grid underneath on scroll.
     const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
     if (!isMobile && typeof document !== 'undefined' && document.startViewTransition && grid) {
-      // Give the navbar its own snapshot too so backdrop-filter keeps working
-      // during the transition. Without this, it's flattened into the root
-      // snapshot and loses the live blur for the 360ms transition window.
       const navbar = document.querySelector('.navbar');
       grid.style.viewTransitionName = 'commands-grid';
       if (navbar) navbar.style.viewTransitionName = 'navbar';
@@ -991,7 +948,6 @@ function formatK(n) {
   return (n/1000).toFixed(1).replace(/\.0$/, '') + 'K';
 }
 
-// 31,801,221,229 -> "31.8B"; scales K / M / B / T with one trimmed decimal.
 function formatBig(n) {
   if (typeof n !== 'number' || n < 1000) return null;
   const units = [[1e12, 'T'], [1e9, 'B'], [1e6, 'M'], [1e3, 'K']];
@@ -1022,15 +978,11 @@ function PreviewTicker() {
         })
         .catch(() => {});
     };
-    // Real totals from the banner service: snowflakes in circulation and the
-    // lifetime AI reply counter. Falls back to the words below until the
-    // numbers exist and are big enough to brag about.
     const fetchBotStats = () => {
       fetch(`${BANNER_SERVICE_URL}/public/community?guildId=${XW_GUILD_ID}`, { cache: 'no-store' })
         .then(r => r.ok ? r.json() : null)
         .then(data => {
           if (cancelled || !data) return;
-          // AI replies read cleaner rounded to the nearest thousand (19,707 -> 20K+)
           const ai = typeof data.aiMessages === 'number'
             ? formatBig(Math.round(data.aiMessages / 1000) * 1000)
             : null;
@@ -1145,7 +1097,6 @@ requestAnimationFrame(() => requestAnimationFrame(() => rootEl.classList.add('re
 </footer>
 
 <script>
-// Navbar logic now lives in the shared nav.js (loaded before </body>).
 
 </script>
 <script src="nav.js"></script>

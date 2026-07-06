@@ -1,5 +1,5 @@
-/* Fetches donators.json (published by Snowball's /moderation donatorsync) and renders
-   current Donator-role members, highest donation first, with amount + date pills. */
+// We're the ones who innovate, not imitate.
+
 (function () {
   var root = document.getElementById('donator-roster');
   if (!root) return;
@@ -25,8 +25,6 @@
     })
     .catch(function () { showError(); });
 
-  // Highest donated first; donors with no recorded amount sink to the bottom,
-  // tie-broken alphabetically so that block stays stable.
   function getSorted() {
     return allMembers.slice().sort(function (a, b) {
       var av = typeof a.amount === 'number' ? a.amount : -1;
@@ -146,7 +144,6 @@
       + '</article>';
   }
 
-  // Let the bar paint at 0%, then bump to its target so the width transition fires.
   function animateProgress() {
     var fill = root.querySelector('.donate-progress-fill');
     if (!fill) return;
@@ -160,8 +157,6 @@
     return n + (s[(v - 20) % 10] || s[v] || s[0]);
   }
   function safeUrl(u) {
-    // Absolute http(s) URLs, or the repo-relative paths the bot writes when it
-    // mirrors Discord avatars into assets/ (so pfps don't die with the CDN).
     if (typeof u !== 'string' || !(/^https?:\/\//i.test(u) || /^assets\//.test(u))) return '';
     return u.replace(/'/g, '%27').replace(/"/g, '%22');
   }

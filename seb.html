@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- We're the ones who innovate, not imitate. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -21,7 +22,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 <style>
-/* ===== SEB PAGE: OVERRIDE DECOR ICONS WITH CHAOS ===== */
 @keyframes sebFloat  { 0%,100%{transform:translateY(0) rotate(var(--ir,0deg))} 50%{transform:translateY(-11px) rotate(var(--ir,0deg))} }
 @keyframes sebSpin   { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 @keyframes sebWobble { 0%,100%{transform:rotate(var(--ir,0deg))} 25%{transform:rotate(calc(var(--ir,0deg) + 20deg))} 75%{transform:rotate(calc(var(--ir,0deg) - 20deg))} }
@@ -43,7 +43,6 @@
 .page-decor i:nth-child(15) { --ir:10deg;  animation-duration:2.7s!important; }
 .page-decor i:nth-child(16) { --ir:-12deg; animation-duration:3.8s!important; animation-name:sebWobble!important; }
 
-/* ===== SEB PAGE: DARK CRAYON CHALKBOARD STUPID MODE ===== */
 
 @keyframes stampIn {
   0%  { transform:rotate(-20deg) scale(2.8); opacity:0; }
@@ -71,11 +70,9 @@
   0%,100%{transform:translateY(0) rotate(var(--dr,0deg))} 50%{transform:translateY(-14px) rotate(calc(var(--dr,0deg) + 8deg))}
 }
 
-/* WHOLE PAGE: stupid handwriting everywhere, dark stays */
 .community-page { position: relative; }
 .community-page .section-inner { position: relative; z-index: 2; }
 
-/* HERO BADGE -> looks like a kid's gold star sticker */
 .page-badge {
   font-family: 'Gloria Hallelujah', cursive !important;
   font-size: 1rem !important;
@@ -89,7 +86,6 @@
   display:inline-block;
 }
 
-/* HUGE BOLD CRAYON TITLE */
 .section-title {
   font-family: 'Gloria Hallelujah', cursive !important;
   font-size: 4.5rem !important;
@@ -106,7 +102,6 @@
   display: inline-block;
 }
 
-/* BIG BOLD body text */
 .section-body {
   font-family: 'Caveat', cursive !important;
   font-size: 1.9rem !important;
@@ -116,7 +111,6 @@
 }
 .section-body strong { color:#ffd93d !important; }
 
-/* THE CARD: black construction paper / chalkboard, NOT light */
 .roast-console {
   background:
     repeating-linear-gradient(transparent, transparent 33px, rgba(255,255,255,0.04) 34px),
@@ -131,7 +125,6 @@
   transform: rotate(-1.2deg);
   animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both;
 }
-/* taped-on doodle corner: a scribbled star */
 .roast-console::before {
   content: '★' !important;
   position: absolute !important;
@@ -147,7 +140,6 @@
   --dr: -15deg;
 }
 
-/* CLASSIFIED stamp — bright crayon red on dark */
 .roast-stamp {
   position: absolute;
   top: 16px;
@@ -169,7 +161,6 @@
   filter: url(#squiggle);
 }
 
-/* card header */
 .roast-console-head { border-bottom: 3px dashed #ffffff22 !important; }
 .roast-target strong {
   font-family: 'Gloria Hallelujah', cursive !important;
@@ -192,7 +183,6 @@
   box-shadow: 2px 2px 0 #1a1208 !important;
 }
 
-/* avatar: kid-drew-a-circle outline */
 .roast-target img {
   animation: avatarWiggle 3s ease-in-out infinite;
   outline: 4px dashed #ff6b6b !important;
@@ -201,7 +191,6 @@
   filter: url(#squiggle);
 }
 
-/* FINDINGS: scribbled note cards on dark */
 .roast-grid { gap: 14px !important; }
 .roast-line {
   font-family: 'Caveat', cursive !important;
@@ -221,7 +210,6 @@
 .roast-line:nth-child(even) { transform: rotate(0.6deg); }
 .roast-line:hover { transform: rotate(0deg) scale(1.02) !important; transition: transform 0.15s ease; background: rgba(255,255,255,0.07) !important; }
 
-/* crayon-colored left borders + glow per finding */
 .roast-line:nth-child(1) { border-left-color:#ff6b6b !important; }
 .roast-line:nth-child(2) { border-left-color:#ff9f40 !important; }
 .roast-line:nth-child(3) { border-left-color:#ffd93d !important; }
@@ -231,7 +219,6 @@
 .roast-line:nth-child(7) { border-left-color:#ff5bcf !important; }
 .roast-line:nth-child(8) { border-left-color:#ff6b6b !important; }
 
-/* finding labels: big bold crayon colors */
 .roast-line b { font-size:1.1rem; font-family:'Gloria Hallelujah',cursive !important; display:block; margin-bottom:2px; }
 .roast-line:nth-child(1) b { color:#ff6b6b; }
 .roast-line:nth-child(2) b { color:#ff9f40; }
@@ -242,7 +229,6 @@
 .roast-line:nth-child(7) b { color:#ff5bcf; }
 .roast-line:nth-child(8) b { color:#ff6b6b; }
 
-/* menace bar: crayon scribble on dark */
 .menace-bar-wrap {
   margin: 20px 0 4px;
   background: rgba(255,255,255,0.05) !important;
@@ -266,7 +252,6 @@
   margin-bottom: 4px;
 }
 
-/* roast note */
 .roast-note {
   font-family: 'Caveat', cursive !important;
   font-size: 1.5rem !important;
@@ -277,7 +262,6 @@
   background: transparent !important;
 }
 
-/* floating doodle stickers scattered on the page */
 .seb-doodle {
   position: absolute;
   font-family: 'Gloria Hallelujah', cursive;
@@ -291,7 +275,6 @@
   text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
 
-/* ===== STUPID NAVBAR ===== */
 .navbar {
   background: #16131f !important;
   border-bottom: 5px dashed #ffd93d !important;
@@ -322,7 +305,6 @@
 }
 .hamburger { filter: url(#squiggle); border: 3px dashed #ffd93d !important; }
 
-/* ===== STUPID FOOTER ===== */
 .site-footer {
   background: #16131f !important;
   border-top: 5px dashed #ffd93d !important;
@@ -373,26 +355,18 @@
   color: #7a6fa0 !important;
 }
 
-/* ===== SEB PAGE: MOBILE FRIENDLY (no sideways scroll, nothing clips) ===== */
 
-/* Page-scoped overflow guard. This <style> only loads on seb.html, so these
-   rules don't leak to other pages. The rotated nav/footer/card + the
-   absolutely-positioned doodles can poke past the viewport edge, so clip it. */
 html, body { overflow-x: hidden; max-width: 100%; }
 .community-page { overflow-x: clip; }
 
 @media (max-width: 768px) {
-  /* kill the page-level tilts that push bounding boxes past 100% width */
   .navbar       { transform: none !important; }
   .site-footer  { transform: none !important; }
   .roast-console{ transform: rotate(-0.6deg); }
 
-  /* belt-and-suspenders: clamp anything that still tries to overflow */
   html, body { overflow-x: hidden; }
   .community-page { overflow-x: hidden; }
 
-  /* doodle stickers: keep a couple near the page edges but tame them so they
-     can't spill out. The ones that sit deep in the layout get hidden. */
   .seb-doodle {
     font-size: 1.05rem;
     max-width: 42vw;
@@ -402,10 +376,8 @@ html, body { overflow-x: hidden; max-width: 100%; }
   }
   .seb-doodle[style*="left"]  { left: 2% !important; }
   .seb-doodle[style*="right"] { right: 2% !important; }
-  /* hide most doodles on mobile to avoid sitting on top of the text */
   .community-page .seb-doodle:nth-of-type(n+3) { display: none; }
 
-  /* scale the oversized crayon type down so it never clips the viewport */
   .section-title {
     font-size: 2.5rem !important;
     text-shadow:
@@ -424,18 +396,15 @@ html, body { overflow-x: hidden; max-width: 100%; }
 
   .roast-line   { font-size: 1.3rem !important; padding: 11px 14px !important; }
   .roast-line b { font-size: 1rem; }
-  /* lighten the per-line tilts so rows don't widen the card */
   .roast-line:nth-child(odd)  { transform: rotate(-0.3deg); }
   .roast-line:nth-child(even) { transform: rotate(0.3deg); }
 
   .menace-label { font-size: 1rem !important; }
   .roast-note   { font-size: 1.3rem !important; }
 
-  /* tighten the classified stamp + corner star so they don't reach off-screen */
   .roast-stamp { font-size: 0.9rem; top: 12px; right: 12px; }
   .roast-console::before { font-size: 2.2rem !important; top: -16px !important; left: -8px !important; }
 
-  /* footer type a touch smaller */
   .footer-brand-name { font-size: 1.2rem !important; }
   .footer-tagline, .footer-description { font-size: 1.1rem !important; }
 }
@@ -445,7 +414,6 @@ html, body { overflow-x: hidden; max-width: 100%; }
   .section-body { font-size: 1.3rem !important; }
   .roast-line   { font-size: 1.2rem !important; }
   .roast-note   { font-size: 1.2rem !important; }
-  /* on the smallest screens, drop the doodles entirely — purely decorative */
   .seb-doodle { display: none !important; }
 }
 </style>

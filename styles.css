@@ -1,32 +1,8 @@
-/* ==========================================================================
-   XTREME WEATHER - MAIN STYLESHEET
-   Reorganized & Optimized - Mobile Visibility Fixes Applied
-   ==========================================================================
-   
-   TABLE OF CONTENTS:
-   1. Fonts & Custom Properties
-   2. Reset & Base Styles
-   3. Navigation Bar
-   4. Mega Menu (Desktop)
-   5. Mobile Menu Overlay
-   6. Search Overlay
-   7. Alert Banner & Modal
-   8. Main Content Layout
-   9. Weather Cards
-   10. Camera System
-   11. Hourly Forecast
-   12. Dive Deeper Section
-   13. Lifestyle Section
-   14. Footer
-   15. Utilities & Animations
-   16. Responsive - Tablet (1024px)
-   17. Responsive - Mobile (768px) - CONSOLIDATED
-   
-   ========================================================================== */
+/* We're the ones who innovate, not imitate. */
 
-/* ==========================================================================
-   1. FONTS & CUSTOM PROPERTIES
-   ========================================================================== */
+   
+   
+
 
 @font-face {
     font-family: 'Druk Wide';
@@ -51,9 +27,6 @@
 }
 
 
-/* ==========================================================================
-   COVERAGE MODE STYLES – FIXED
-   ========================================================================== */
 
 .coverage-banner {
     position: fixed;
@@ -157,7 +130,6 @@
     display: none !important;
 }
 
-/* Coverage Modal */
 .coverage-modal {
     position: fixed;
     top: 0;
@@ -373,9 +345,6 @@
     box-shadow: 0 8px 20px rgba(88, 101, 242, 0.5);
 }
 
-/* ==========================================================================
-   COVERAGE MODE - MOBILE STYLES (768px and below)
-   ========================================================================== */
 @media (max-width: 768px) {
     .coverage-banner {
         bottom: 16px;
@@ -418,7 +387,6 @@
 
 }
 
-/* Small phones: tighter pill so long headers don't dominate the screen */
 @media (max-width: 480px) {
     .coverage-banner {
         padding: 12px 16px;
@@ -443,9 +411,6 @@
         margin-top: 2px;
     }
 }
-/* ==========================================================================
-   2. RESET & BASE STYLES
-   ========================================================================== */
 
 *,
 *::before,
@@ -473,9 +438,6 @@ body {
     padding: 0;
 }
 
-/* ==========================================================================
-   3. NAVIGATION BAR
-   ========================================================================== */
 
 .navbar {
     position: fixed;
@@ -488,8 +450,6 @@ body {
     align-items: center;
     background: #000000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    /* Kept modest: the fixed navbar re-blurs its backdrop every scroll frame,
-       and behind the 60%-opaque tint a wider radius is indistinguishable. */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     isolation: isolate;
@@ -501,8 +461,6 @@ body {
     max-width: 1400px;
     height: 100%;
     margin: 0 auto;
-    /* Single horizontal padding used at every width so the logo/hamburger
-       left edge never shifts when crossing the 768px / 1024px breakpoints. */
     padding: 0 1.25rem;
     display: flex;
     align-items: center;
@@ -571,7 +529,6 @@ body {
     align-items: center;
 }
 
-/* Invisible bridge for dropdown hover */
 .nav-links li.has-dropdown::after {
     content: '';
     position: absolute;
@@ -592,8 +549,6 @@ body {
     margin-left: 6px;
     opacity: 0.5;
     transition: transform 0.3s ease;
-    /* Reserve the glyph's box before the async Font Awesome CSS lands, so the
-       nav doesn't resize on refresh when the icons pop in. */
     display: inline-block;
     width: 1em;
     text-align: center;
@@ -612,7 +567,6 @@ body {
     z-index: 20;
 }
 
-/* "Get the App" CTA pill in the navbar; the mobile menu carries its own link */
 .nav-app-btn {
     display: inline-flex;
     align-items: center;
@@ -632,8 +586,6 @@ body {
 .nav-app-btn i { font-size: 14px; display: inline-block; width: 14px; text-align: center; }
 @media (max-width: 1024px) { .nav-app-btn { display: none; } }
 
-/* Nav Buttons */
-/* Custom up-right arrow used inside CTA buttons site-wide. */
 .btn-arrow-img {
     width: 16px;
     height: 16px;
@@ -673,27 +625,23 @@ body {
     font-size: 1.1rem;
 }
 
-/* Update the nav-btn-disabled class with smooth transitions */
 .nav-btn-disabled {
     opacity: 0.2 !important;
     pointer-events: none !important;
     transition: opacity 0.3s ease !important;
 }
 
-/* Ensure buttons have transitions */
 .nav-btn-circle,
 .back-btn-circle,
 .search-trigger-btn {
     transition: all 0.3s ease, transform 0.2s ease !important;
 }
 
-/* Smooth icon transitions */
 .nav-btn-circle i,
 .back-btn-circle i {
     transition: all 0.3s ease !important;
 }
 
-/* Units Toggle */
 .units-toggle {
     height: 42px;
     padding: 0 1rem;
@@ -715,20 +663,15 @@ body {
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* Hamburger */
 .hamburger {
     display: none;
 }
 
-/* Show hamburger on tablet and below */
 @media (max-width: 1024px) {
     .hamburger {
         display: flex !important;
     }
 
-    /* Brighter circle styling for every viewport where the hamburger shows
-       (tablet + mobile), so the button looks identical across both — not
-       dim on tablet and bright only on mobile. */
     .nav-btn-circle,
     .back-btn-circle,
     .search-trigger-btn,
@@ -745,25 +688,15 @@ body {
     }
 }
 
-/* ==========================================================================
-   4. MEGA MENU (DESKTOP)
-   ========================================================================== */
 
 .mega-menu {
     position: fixed;
     top: 67px;
     left: 50%;
-    /* No transform on purpose: Chromium intermittently drops backdrop-filter
-       on fixed elements that also have a transform, letting page text bleed
-       through the translucent panel. Centering uses margin-left and the
-       open/close slide animates margin-top instead. */
     width: 550px;
     margin-left: -275px;
     margin-top: 10px;
     padding: 24px;
-    /* Near-opaque on purpose: every translucent variant eventually hit the
-       Chromium backdrop-filter compositing bug one way or another. The blur
-       is decoration only. */
     background: rgba(19, 17, 28, 0.94);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -816,9 +749,6 @@ body {
 .mega-item:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.1);
-    /* Nudge via padding, not transform: a transformed child inside a
-       backdrop-filtered panel retriggers the Chromium bug and washes out
-       sibling text. */
     padding-left: 16px;
     padding-right: 8px;
 }
@@ -853,9 +783,6 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* ==========================================================================
-   5. MOBILE MENU OVERLAY
-   ========================================================================== */
 
 .mobile-menu-overlay {
     position: fixed;
@@ -1000,9 +927,6 @@ body {
 .mobile-back-btn {
     position: absolute;
     top: calc(67px + 6px + 8px + 2px);
-    /* Same left as the navbar hamburger/X (.nav-container padding). The +2px
-       compensates the overlay's inset: -2px overdraw so the back button sits
-       exactly on the X's vertical line. */
     left: calc(1.25rem + 2px);
     width: 44px;
     height: 44px;
@@ -1022,18 +946,14 @@ body {
 .mobile-back-btn:hover { background: rgba(255,255,255,0.22); }
 .mobile-back-btn:active { background: rgba(255,255,255,0.25) !important; transform: scale(0.9); }
 
-/* Sub-view item list */
 .mobile-sub-list {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Nudge the centered block down so options don't sit high in the view. */
     padding: 10vh 2rem 0;
     gap: 0.2rem;
     overflow-y: auto;
-    /* Cap and center the list itself (the view spans the full overlay), so
-       menu options stay centered at any viewport size. */
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
@@ -1109,7 +1029,6 @@ body {
     color: white;
 }
 
-/* Sub Menu */
 .sub-menu-header {
     display: flex;
     align-items: center;
@@ -1166,9 +1085,6 @@ body {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* ==========================================================================
-   6. SEARCH OVERLAY
-   ========================================================================== */
 
 .search-trigger-btn {
     position: relative;
@@ -1238,7 +1154,6 @@ body {
     transform: translateY(0);
 }
 
-/* Search button icon transitions */
 .search-trigger-btn {
     position: relative;
     z-index: 101;
@@ -1252,7 +1167,6 @@ body {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Default state - search visible, times hidden */
 .search-trigger-btn .fa-search {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(0deg) scale(1);
@@ -1263,7 +1177,6 @@ body {
     transform: translate(-50%, -50%) rotate(90deg) scale(0.8);
 }
 
-/* Active state - times visible, search hidden */
 .search-trigger-btn.active .fa-search {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(-90deg) scale(0.8);
@@ -1305,7 +1218,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Search Results */
 .search-results-large {
     width: 100%;
     max-height: 0;
@@ -1426,7 +1338,6 @@ body {
     color: #fca5a5;
 }
 
-/* Favorites */
 #favorites-section {
     width: 100%;
 }
@@ -1502,7 +1413,6 @@ body {
     opacity: 1;
 }
 
-/* Favorite Button */
 #fav-btn {
     border-radius: 18px !important;
 }
@@ -1524,11 +1434,7 @@ body {
     transform: scale(1.1);
 }
 
-/* ==========================================================================
-   7. ALERT BANNER & MODAL
-   ========================================================================== */
 
-/* Alert Banner */
 .alert-banner {
     position: fixed;
     top: 67px;
@@ -1598,7 +1504,6 @@ body {
     color: white;
 }
 
-/* Banner Severity Colors */
 .alert-banner.warning .alert-content-wrapper i:first-child { color: #ef4444; }
 .alert-banner.warning .alert-banner-text { color: #fca5a5; }
 .alert-banner.watch .alert-content-wrapper i:first-child { color: #f97316; }
@@ -1607,7 +1512,6 @@ body {
 .alert-banner.advisory .alert-banner-text { color: #fde047; }
 
 
-/* Alert Modal */
 .alert-modal {
     position: fixed;
     top: 0;
@@ -1727,7 +1631,6 @@ body {
     transform: none;
 }
 
-/* Alert List */
 .alert-list {
     padding: 0.8rem;
     display: flex;
@@ -1865,9 +1768,6 @@ body {
     margin-top: 0 !important;
 }
 
-/* ==========================================================================
-   8. MAIN CONTENT LAYOUT
-   ========================================================================== */
 
 .content {
     position: relative;
@@ -1885,11 +1785,11 @@ body {
 }
 
 .hero-bg {
-    position: absolute; /* Changed from fixed */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Changed from 100vh */
+    height: 100%;
     z-index: -2;
     background-size: cover;
     background-position: center center;
@@ -1928,7 +1828,6 @@ body {
     overflow: visible;
 }
 
-/* Greeting Section */
 .greeting-section {
     max-width: 1400px;
     margin: 0 auto;
@@ -1955,7 +1854,6 @@ body {
     transition-delay: 0.1s;
 }
 
-/* Location Controls */
 .location-controls {
     display: flex;
     align-items: center;
@@ -2002,7 +1900,6 @@ body {
     color: #fbbf24;
 }
 
-/* Weather Grid */
 .weather-info-grid {
     display: grid;
     grid-template-columns: 1fr 400px;
@@ -2028,11 +1925,7 @@ body {
     opacity: 1 !important;
 }
 
-/* ==========================================================================
-   9. WEATHER CARDS
-   ========================================================================== */
 
-/* Shared Card Animation */
 .current-card,
 .info-card {
     will-change: transform, opacity;
@@ -2074,7 +1967,6 @@ body {
     letter-spacing: 0.01em;
 }
 
-/* ── Switching pill ──────────────────────────────── */
 .switching-pill {
     position: fixed;
     bottom: 96px;
@@ -2084,7 +1976,6 @@ body {
     align-items: center;
     gap: 0.6rem;
     padding: 0.55rem 1.2rem;
-    /* Background + blur on ::before so backdrop-filter isn't on same element as transform (iOS bug) */
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 999px;
@@ -2131,7 +2022,6 @@ body {
 .side-cards .info-card:nth-child(1).is-loaded { transition-delay: 0.4s; }
 .side-cards .info-card:nth-child(2).is-loaded { transition-delay: 0.5s; }
 
-/* Main Current Card */
 .current-card {
     position: relative;
     min-height: 500px;
@@ -2152,7 +2042,6 @@ body {
     justify-content: center;
 }
 
-/* Noise texture overlay for frosted effect */
 .current-card::before {
     content: '';
     position: absolute;
@@ -2169,7 +2058,6 @@ body {
     z-index: 1;
 }
 
-/* Info Card */
 .info-card {
     position: relative;
     padding: 1.5rem;
@@ -2221,7 +2109,6 @@ body {
     opacity: 0.8;
 }
 
-/* Side Cards */
 .side-cards {
     display: flex;
     flex-direction: column;
@@ -2229,7 +2116,6 @@ body {
     align-items: stretch;
 }
 
-/* Observation Meta */
 .observation-meta {
     display: flex;
     flex-direction: column;
@@ -2284,7 +2170,6 @@ body {
     font-size: 1rem;
 }
 
-/* Temperature Display */
 .temp-group {
     display: flex;
     align-items: center;
@@ -2339,7 +2224,6 @@ body {
     z-index: 1;
 }
 
-/* Stats Grid */
 .stats-grid {
     display: flex;
     flex-wrap: wrap;
@@ -2388,7 +2272,6 @@ body {
     z-index: 1;
 }
 
-/* Glass Error */
 .glass-error {
     display: flex;
     flex-direction: column;
@@ -2422,7 +2305,6 @@ body {
     opacity: 0.7;
 }
 
-/* View Map Button */
 .view-map-btn {
     width: 100%;
     margin-top: 1rem;
@@ -2452,9 +2334,6 @@ body {
     font-size: 1rem;
 }
 
-/* ==========================================================================
-   10. CAMERA SYSTEM
-   ========================================================================== */
 
 .cameras-grid {
     display: grid;
@@ -2463,7 +2342,6 @@ body {
     margin-top: 0.8rem;
 }
 
-/* Skeleton */
 .skeleton-box {
     height: 80px;
     background: rgba(255, 255, 255, 0.05);
@@ -2498,7 +2376,6 @@ body {
     animation: shimmer 1.5s infinite linear;
 }
 
-/* Camera Thumbnails */
 .camera-content-hidden {
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -2614,7 +2491,6 @@ body {
     font-size: 1.2rem;
 }
 
-/* Custom Camera Error Overlay */
 .camera-error-overlay {
     position: absolute;
     top: 0;
@@ -2643,7 +2519,6 @@ body {
     padding: 0 1rem;
 }
 
-/* Hide default VideoJS error display */
 .video-js .vjs-error-display {
     display: none !important;
 }
@@ -2652,7 +2527,6 @@ body {
     display: none !important;
 }
 
-/* Camera Image States */
 .camera-thumb img,
 .camera-modal-video img {
     opacity: 1;
@@ -2664,7 +2538,6 @@ body {
     filter: blur(5px);
 }
 
-/* Empty State */
 .no-cams-box {
     grid-column: 1 / -1;
     min-height: 160px;
@@ -2697,7 +2570,6 @@ body {
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* Camera Modal */
 .camera-modal {
     position: fixed;
     top: 0;
@@ -2877,7 +2749,6 @@ body {
     font-weight: 700;
 }
 
-/* VideoJS Styles */
 .video-js {
     font-family: 'Mustica Pro', sans-serif;
     color: white;
@@ -2971,7 +2842,6 @@ body {
     z-index: 9999 !important;
 }
 
-/* Share Modal */
 .share-modal {
     position: fixed;
     top: 0;
@@ -3150,9 +3020,6 @@ body {
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-/* ==========================================================================
-   11. HOURLY FORECAST
-   ========================================================================== */
 
 .hourly-forecast-section {
     position: relative;
@@ -3310,9 +3177,6 @@ body {
     font-weight: 600;
 }
 
-/* ==========================================================================
-   12. DIVE DEEPER SECTION
-   ========================================================================== */
 
 .dive-deeper-section {
     position: relative;
@@ -3375,9 +3239,6 @@ body {
     animation-delay: 0.2s;
 }
 
-/* ==========================================================================
-   13. LIFESTYLE SECTION
-   ========================================================================== */
 
 .lifestyle-section {
     position: relative;
@@ -3444,7 +3305,6 @@ body {
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Only apply backdrop-filter on larger screens where performance is better */
 @media (min-width: 769px) and (pointer: fine) {
     .life-card {
         backdrop-filter: blur(20px) saturate(150%);
@@ -3467,7 +3327,6 @@ body {
     opacity: 0.8;
 }
 
-/* AQI & UV Values */
 .aqi-value,
 .uv-value {
     margin-bottom: 4px;
@@ -3489,7 +3348,6 @@ body {
     opacity: 0.9;
 }
 
-/* Progress Bars */
 .life-bar-container {
     width: 100%;
     height: 6px;
@@ -3504,7 +3362,6 @@ body {
     transition: width 1s ease-out;
 }
 
-/* Pollen Grid */
 .pollen-grid {
     display: flex;
     flex-direction: column;
@@ -3534,9 +3391,6 @@ body {
 }
 
 
-/* ==========================================================================
-   14. FOOTER
-   ========================================================================== */
 
 .site-footer {
     position: relative;
@@ -3688,7 +3542,6 @@ body {
     text-align: center;
 }
 
-/* Info Section (Bottom Info) */
 .info-section {
     position: relative;
     z-index: 3;
@@ -3747,9 +3600,6 @@ body {
     opacity: 0.7;
 }
 
-/* ==========================================================================
-   15. UTILITIES & ANIMATIONS
-   ========================================================================== */
 
 @keyframes pulse {
     0% { opacity: 0.3; }
@@ -3779,12 +3629,8 @@ body {
     }
 }
 
-/* ==========================================================================
-   16. RESPONSIVE - TABLET (1024px)
-   ========================================================================== */
 
 @media (max-width: 1024px) {
-    /* Navigation */
     .nav-center {
         display: none;
     }
@@ -3796,7 +3642,6 @@ body {
 
 @media (max-width: 1024px) {
 
-    /* Hamburger icon transitions */
     .hamburger {
         position: relative;
     }
@@ -3833,7 +3678,6 @@ body {
         display: none !important;
     }
 
-    /* Layout */
     .weather-info-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -3845,7 +3689,6 @@ body {
         gap: 1.5rem;
     }
 
-    /* Lifestyle */
     .lifestyle-grid {
         grid-template-columns: 1fr 1fr;
     }
@@ -3854,13 +3697,11 @@ body {
         min-height: 800px;
     }
 
-    /* Dive Deeper */
     .dive-deeper-grid {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-/* Desktop: Force hide mobile menu */
 @media (min-width: 1025px) {
     .mobile-menu-overlay {
         opacity: 0 !important;
@@ -3871,7 +3712,6 @@ body {
     }
 }
 
-/* Desktop modal content pseudo-element enhancements */
 @media (min-width: 769px) {
     .alert-modal-content::before,
     .camera-modal-content::before,
@@ -3884,23 +3724,14 @@ body {
     }
 }
 
-/* ==========================================================================
-   MOBILE BOTTOM NAVIGATION (Base - Desktop Hidden)
-   ========================================================================== */
 
 .mobile-bottom-nav {
     display: none !important;
 }
 
-/* ==========================================================================
-   17. RESPONSIVE - MOBILE (768px) - ALL MOBILE STYLES CONSOLIDATED
-   ========================================================================== */
 
 @media (max-width: 768px) {
     
-    /* =====================================================================
-       GLOBAL MOBILE PERFORMANCE - Remove ALL backdrop-filters
-       ===================================================================== */
     
     * {
         backdrop-filter: none !important;
@@ -3909,21 +3740,14 @@ body {
     
     .nav-container {
         gap: 1rem;
-        /* Padding inherits the base 0 1.25rem so the header's left edge stays
-           put across the mobile/tablet/desktop boundaries (no left snap). */
     }
 
-    /* Bright circle styling for the nav buttons now lives in the shared
-       @media (max-width: 1024px) block so tablet and mobile match. */
 
     .units-toggle {
         background: rgba(255, 255, 255, 0.15) !important;
         border: 1px solid rgba(255, 255, 255, 0.25);
     }
     
-    /* =====================================================================
-       ALERT BANNER - FIXED: Fully Opaque Solid Background
-       ===================================================================== */
     
     .alert-banner {
         background: linear-gradient(
@@ -3934,7 +3758,6 @@ body {
         border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     }
     
-    /* Enhanced severity backgrounds for better visibility */
     .alert-banner.warning {
         background: linear-gradient(
             180deg,
@@ -3966,9 +3789,6 @@ body {
         background: rgba(255, 255, 255, 0.15);
     }
     
-    /* =====================================================================
-       MOBILE MENU OVERLAY - Solid Gradient Background
-       ===================================================================== */
     
     .mobile-menu-overlay {
         background: linear-gradient(
@@ -3999,9 +3819,6 @@ body {
         background: rgba(255, 255, 255, 0.1);
     }
     
-    /* =====================================================================
-       SEARCH OVERLAY - FIXED: Fully Opaque Solid Background
-       ===================================================================== */
     
 .search-overlay {
     background: linear-gradient(
@@ -4038,9 +3855,6 @@ body {
         border: 1px solid rgba(255, 255, 255, 0.15);
     }
     
-    /* =====================================================================
-       WEATHER CARDS - Solid Backgrounds
-       ===================================================================== */
     
     .current-card {
         padding: 1.5rem;
@@ -4070,9 +3884,6 @@ body {
         flex: 1 1 calc(50% - 0.8rem);
     }
     
-    /* =====================================================================
-       LIFESTYLE CARDS - Solid Backgrounds
-       ===================================================================== */
     
     .life-card {
         background: rgba(255, 255, 255, 0.12) !important;
@@ -4091,9 +3902,6 @@ body {
         gap: 1rem;
     }
     
-    /* =====================================================================
-       LOCATION BUTTON - Solid Background
-       ===================================================================== */
     
     .location {
         background: rgba(255, 255, 255, 0.12) !important;
@@ -4104,9 +3912,6 @@ body {
         gap: 0.8rem;
     }
     
-    /* =====================================================================
-       TYPOGRAPHY ADJUSTMENTS
-       ===================================================================== */
     
     .greeting {
         font-size: 2rem;
@@ -4135,9 +3940,6 @@ body {
         padding: 0.6rem 0.8rem;
     }
     
-    /* =====================================================================
-       HOURLY FORECAST - Mobile Grid
-       ===================================================================== */
     
     .hourly-cards-grid {
         grid-template-columns: repeat(2, 1fr) !important;
@@ -4178,9 +3980,6 @@ body {
         padding: 1.5rem;
     }
     
-    /* =====================================================================
-       DIVE DEEPER SECTION
-       ===================================================================== */
     
     .dive-deeper-section {
         min-height: 750px;
@@ -4214,9 +4013,6 @@ body {
         grid-template-columns: 1fr;
     }
     
-    /* =====================================================================
-       MODALS - Mobile Safari blur + clean clipping
-       ===================================================================== */
     
     .alert-modal,
     .camera-modal {
@@ -4268,9 +4064,6 @@ body {
         background: rgba(15, 15, 20, 0.98) !important;
     }
     
-    /* =====================================================================
-       FOOTER
-       ===================================================================== */
     
     .site-footer {
         padding: 3rem 1.5rem 2rem;
@@ -4322,9 +4115,6 @@ body {
         font-size: 0.85rem;
     }
     
-    /* =====================================================================
-       MOBILE BOTTOM NAVIGATION - FIXED: Visible Purple/Indigo Glow
-       ===================================================================== */
     
     .mobile-bottom-nav {
         display: flex !important;
@@ -4395,7 +4185,6 @@ body {
         color: white;
     }
 
-    /* FIXED: Active glow using solid purple/indigo radial gradient */
     .bottom-nav-item.active::before {
         content: '';
         position: absolute;
@@ -4404,7 +4193,6 @@ body {
         width: 70px;
         height: 70px;
         border-radius: 50%;
-        /* Keep the original soft glow when no modal is active */
         background: radial-gradient(
             ellipse at center,
             rgba(139, 92, 246, 0.7) 0%,
@@ -4426,7 +4214,6 @@ body {
         animation: pulseGlow 3s ease-in-out infinite;
     }
 
-    /* Subtle pulse animation for the glow */
     @keyframes pulseGlow {
         0%, 100% {
             opacity: 0.9;
@@ -4438,13 +4225,11 @@ body {
         }
     }
 
-    /* Hide glow during nav updates */
     .mobile-bottom-nav.nav-updating .bottom-nav-item.active::before {
         opacity: 0 !important;
         transition: opacity 0.2s ease-out;
     }
 
-    /* Prevent iOS layer artifacts when modal backdrops are animating */
     .alert-modal.active:not(.modal-closing) ~ .mobile-bottom-nav .bottom-nav-item.active::before,
     .camera-modal.active:not(.modal-closing) ~ .mobile-bottom-nav .bottom-nav-item.active::before,
     .share-modal.active:not(.modal-closing) ~ .mobile-bottom-nav .bottom-nav-item.active::before,
@@ -4456,31 +4241,21 @@ body {
         filter: none !important;
     }
     
-    /* =====================================================================
-       PERFORMANCE OPTIMIZATIONS
-       ===================================================================== */
     
-    /* Pause SVG icon animations on mobile */
     .condition-icon svg *,
     .hourly-card-icon svg * {
         animation-play-state: paused !important;
     }
 
-    /* Kill shimmer animation */
     .skeleton-cam::after {
         animation: none !important;
     }
     
-    /* Make camera overlays always visible on mobile */
     .camera-thumb .camera-thumb-overlay {
         opacity: 1 !important;
     }
     
-    /* =====================================================================
-       DISABLE HOVER ANIMATIONS ON MOBILE (except buttons & footer)
-       ===================================================================== */
 
-    /* Kill transitions on cards/items so tap-triggered :hover never animates */
     .mega-item,
     .mega-item i,
     .mobile-big-link,
@@ -4501,7 +4276,6 @@ body {
         transition: none !important;
     }
 
-    /* Neutralize :hover state to base values (no visible change on tap) */
     .mega-item:hover {
         background: transparent;
         border-color: transparent;
@@ -4589,9 +4363,6 @@ body {
         transform: none;
     }
     
-    /* =====================================================================
-       MOBILE ACTIVE STATES (Tap Feedback Only)
-       ===================================================================== */
     
     .nav-btn-circle:active,
     .back-btn-circle:active,
@@ -4627,21 +4398,16 @@ body {
         ) !important;
     }
     
-    /* Hide delete buttons on mobile entirely */
     .fav-delete {
         display: none !important;
     }
     
-    /* Overlay should not intercept clicks */
     .camera-thumb-overlay {
         pointer-events: none !important;
     }
 
-} /* End of @media (max-width: 768px) */
+}
 
-/* ==========================================================================
-   TOUCH DEVICE DETECTION
-   ========================================================================== */
 
 @media (pointer: coarse) {
     * {
@@ -4650,9 +4416,6 @@ body {
     }
 }
 
-/* ==========================================================================
-   PERFORMANCE OPTIMIZATIONS - DOM CONTAINMENT
-   ========================================================================== */
 
 .lifestyle-section,
 .dive-deeper-section,
@@ -4665,7 +4428,6 @@ body {
     contain-intrinsic-size: 0 750px;
 }
 
-/* Own GPU compositing layer — isolated from modal layer creation/teardown */
 .dive-deeper-section {
     isolation: isolate;
     transform: translateZ(0);
@@ -4682,9 +4444,6 @@ body {
 .hamburger:not(.active) i {
     will-change: auto;
 }
-/* ==========================================================================
-   SCROLLBAR & SCROLL LOCK - CLEAN VERSION
-   ========================================================================== */
 
 body {
     margin: 0;
@@ -4693,7 +4452,6 @@ body {
     min-height: 100dvh;
 }
 
-/* Force GPU compositing on modals to prevent flash */
 .alert-modal,
 .camera-modal,
 .share-modal,
@@ -4705,7 +4463,6 @@ body {
     will-change: opacity;
 }
 
-/* Closing state - faster fade for snappier feel */
 .alert-modal.modal-closing,
 .camera-modal.modal-closing,
 .share-modal.modal-closing,
@@ -4715,7 +4472,6 @@ body {
     pointer-events: none !important;
 }
 
-/* iOS Safari: backdrop-filter + forced translateZ can break blur/compositing */
 @supports (-webkit-touch-callout: none) {
     @media (max-width: 768px) {
         .alert-modal,
@@ -4728,17 +4484,12 @@ body {
     }
 }
 
-/* Also update the scroll-locked body style - REPLACE YOUR EXISTING ONE */
 body.scroll-locked {
     overflow: hidden !important;
     touch-action: none;
     -webkit-overflow-scrolling: none;
-    /* REMOVED: position: fixed - this causes the flash! */
-    /* REMOVED: width: 100% */
-    /* REMOVED: top: var(--scroll-position) */
 }
 
-/* Scrollbar styling - desktop only */
 @media (min-width: 769px) {
     
     
@@ -4757,11 +4508,9 @@ body.scroll-locked {
     }
 }
 
-/* Hide scrollbar on mobile */
 @media (max-width: 768px) {
     html {
         scrollbar-gutter: auto;
-        /* iOS rubber-band area uses root background when over-scrolling */
         background-color: #0d0d18;
     }
     ::-webkit-scrollbar {
@@ -4770,11 +4519,9 @@ body.scroll-locked {
     html, body {
         -ms-overflow-style: none;
         scrollbar-width: none;
-        /* Keep bottom bounce area from flashing pure black */
         background-color: #0d0d18;
     }
 
-    /* iOS/Safari repaint fix: footer can stay blank after overlay + scroll-lock toggles */
     .site-footer {
         content-visibility: visible !important;
         contain-intrinsic-size: auto !important;
@@ -4783,37 +4530,27 @@ body.scroll-locked {
 }
 
 
-/* ==========================================================================
-   Z-INDEX HIERARCHY - MASTER CONTROL
-   ========================================================================== */
 
-/* Base layer elements */
 .hero-bg { z-index: 1; }
 .content { z-index: 6; }
 .dive-deeper-section { z-index: 5; }
 .lifestyle-section { z-index: 5; }
 .site-footer { z-index: 10; }
 
-/* Overlays - full screen takeovers */
 .search-overlay { z-index: 9000 !important; }
 .mobile-menu-overlay { z-index: 9000 !important; }
 
-/* Navigation - ABOVE overlays so buttons remain clickable */
 .navbar { z-index: 10000 !important; }
 .mega-menu { z-index: 9999 !important; }
 .alert-banner { z-index: 8000 !important; }
 .mobile-bottom-nav { z-index: 9500 !important; }
 .coverage-banner { z-index: 900 !important; }
 
-/* Modals - highest priority (true modals that block everything) */
 .alert-modal { z-index: 11000 !important; }
 .camera-modal { z-index: 11000 !important; }
 .share-modal { z-index: 11000 !important; }
 .coverage-modal { z-index: 11000 !important; }
 
-/* ==========================================================================
-   COMMANDS SECTION - filter pills + chip grid
-   ========================================================================== */
 
 .cmd-filters {
     display: flex;
@@ -4959,12 +4696,7 @@ body.scroll-locked {
     }
 }
 
-/* ==========================================================================
-   WRN AMBASSADOR FOOTER BADGE  +  POLICIES NAV  (shared, every page)
-   ========================================================================== */
 
-/* Weather-Ready Nation Ambassador credit in the footer brand column: just the
-   logo over a single line of text, centered, no surrounding box. */
 .footer-wrn {
     display: flex;
     flex-direction: column;
@@ -4990,10 +4722,6 @@ body.scroll-locked {
     color: rgba(255, 255, 255, 0.62);
 }
 
-/* Tablet-to-small-desktop: the two footer columns don't fit side by side
-   below ~1000px, and wrapped rows with desktop alignment looked broken
-   (brand left, socials floating). Use the centered stacked layout instead;
-   these match the <=768px rules so the hand-off is seamless. */
 @media (max-width: 1024px) {
     .site-footer { text-align: center; }
     .footer-container { flex-direction: column; align-items: center; gap: 2.5rem; }
@@ -5002,7 +4730,6 @@ body.scroll-locked {
     .footer-links { flex-wrap: wrap; justify-content: center; }
 }
 
-/* Centered WRN + donate row (all standard-footer pages). */
 .footer-center-row {
     max-width: 1200px;
     margin: 2rem auto 0;
@@ -5028,7 +4755,6 @@ body.scroll-locked {
 }
 .footer-donate-btn i { font-size: 12px; }
 
-/* Donate gets an accent treatment within the footer link pill. */
 .footer-link.is-donate {
     color: #b9a8ff;
 }
