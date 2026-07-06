@@ -3525,8 +3525,12 @@ body {
     gap: 9px;
 }
 
+.social-btn.social-pill i {
+    font-size: 1.05rem;
+}
+
 .social-btn.social-pill span {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: rgba(255, 255, 255, 0.7);
     transition: color 0.3s ease;
 }
