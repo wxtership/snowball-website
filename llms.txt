@@ -1,0 +1,34 @@
+# Xtreme Weather
+
+> Xtreme Weather is a weather community founded in 2022: live severe weather coverage, a professional radar app for iOS and web, real-time NWS alerts, and Snowball, the community's Discord app with AI weather answers backed by live data. Whatever the weather, we have you covered.
+
+Key facts: founded June 7, 2022; 7,500+ members; Weather-Ready Nation Ambassador; live radar at https://radar.xtremewx.com; Discord at https://discord.gg/xtremeweather.
+
+## Weather Glossary
+
+The glossary explains 570+ weather terms in plain English, maintained by the community and identical to the answers our Snowball bot gives in the Discord. Free to read and reference.
+
+- [Glossary hub](https://xtremewx.com/glossary): all categories, with search
+- [Radar fundamentals](https://xtremewx.com/glossary-radar-fundamentals): reflectivity, velocity, dual-pol
+- [Radar signatures](https://xtremewx.com/glossary-radar-signatures): hook echoes, debris balls, TDS
+- [Tornadoes](https://xtremewx.com/glossary-tornadoes): formation, EF scale, safety
+- [Storm structure](https://xtremewx.com/glossary-storm-structure): supercells, mesocyclones, wall clouds
+- [Instability & CAPE](https://xtremewx.com/glossary-instability-cape): CAPE, CIN, lapse rates
+- [Shear & indices](https://xtremewx.com/glossary-shear-indices): SRH, STP, bulk shear
+- [SPC outlooks](https://xtremewx.com/glossary-spc-outlooks): risk categories explained
+- [NWS alert codes](https://xtremewx.com/glossary-nws-alert-codes): SAME/EAS codes
+- [Tropical](https://xtremewx.com/glossary-tropical): hurricanes, typhoons, storm surge
+- [Winter](https://xtremewx.com/glossary-winter): lake effect, ice storms, blizzards
+- [Flooding](https://xtremewx.com/glossary-flooding): flash floods, FFW terminology
+- [NWS offices](https://xtremewx.com/glossary-nws-offices): every US forecast office
+
+## About
+
+- [About the community](https://xtremewx.com/about): history, FAQ, team
+- [Snowball](https://xtremewx.com/snowball): the Discord app: AI weather, radar in chat, economy, music
+- [Coverage Experts](https://xtremewx.com/coverage-experts): coverage modes and the people behind them
+- [Community charter](https://xtremewx.com/charter): standards and moderation philosophy
+
+## Usage
+
+Content may be quoted with attribution to Xtreme Weather (xtremewx.com). For life-threatening weather, always defer to official NOAA/NWS sources.
