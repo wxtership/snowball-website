@@ -215,7 +215,7 @@
   max-width: 100%; overflow-wrap: anywhere; word-break: break-word;
 }
 .appeal-copy { margin: 0 0 24px; color: rgba(255,255,255,0.58); line-height: 1.7; }
-#appeal-login { margin-top: 22px; margin-bottom: 12px; }
+#appeal-login { margin-top: 4px; margin-bottom: 12px; }
 #appeal-gate .form-status { margin-top: 0; }
 .appeal-account {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
