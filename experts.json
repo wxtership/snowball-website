@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-02T20:13:30.409Z",
+  "updatedAt": "2026-07-11T23:52:09.033Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,19 +7,13 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7373
+    "memberCount": 7397
   },
   "tiers": [
     {
       "key": "lead",
       "label": "Lead Experts",
       "members": [
-        {
-          "id": "626259765537800212",
-          "username": "wxoutlaw",
-          "displayName": "Frost - Lead Expert",
-          "avatarURL": "assets/avatars/626259765537800212.png"
-        },
         {
           "id": "763380002770649088",
           "username": "itsdrewp",
@@ -41,7 +35,7 @@
         {
           "id": "1132908259162992712",
           "username": "awcoal",
-          "displayName": "awcoal (NJ) 🐌",
+          "displayName": "awcaol (NJ) 🐌",
           "avatarURL": "assets/avatars/1132908259162992712.png"
         },
         {
@@ -53,7 +47,7 @@
         {
           "id": "1033720108968841277",
           "username": "mesocyclone_vortex",
-          "displayName": "Dvorak (Porto Alegre, RS,Brazil)",
+          "displayName": "Dvorak (Flight LA8126)",
           "avatarURL": "assets/avatars/1033720108968841277.png"
         },
         {
@@ -65,7 +59,7 @@
         {
           "id": "877009401423200296",
           "username": "weatherlord_wx",
-          "displayName": "Max (Massachusetts)",
+          "displayName": "Max",
           "avatarURL": "assets/avatars/877009401423200296.png"
         },
         {
