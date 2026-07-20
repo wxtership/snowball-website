@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-07-06T20:41:04.570Z",
+  "updatedAt": "2026-07-20T15:49:20.752Z",
   "updatedBy": {
-    "id": "system",
-    "tag": "auto-sync (donation)"
+    "id": "582394159546236948",
+    "tag": "wxtership"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7384
+    "memberCount": 7436
   },
-  "allTimeTotal": 1040.19,
-  "monthlyRaised": 357.8,
+  "allTimeTotal": 1042.69,
+  "monthlyRaised": 360.3,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -50,12 +50,12 @@
           "donatedAt": "2025-06-21T05:43:05.000Z"
         },
         {
-          "username": "bex.eot",
-          "displayName": "Bex | Morrisville, PA",
-          "avatar": "assets/avatars/176081301743337472.png",
+          "username": "centralcarolinawx",
+          "displayName": "Cali",
+          "avatar": "assets/avatars/1020807595579154544.png",
           "banner": null,
-          "amount": 1,
-          "donatedAt": "2025-06-21T06:11:17.000Z"
+          "amount": null,
+          "donatedAt": null
         },
         {
           "username": "dodgeram3500limited",
@@ -99,7 +99,7 @@
         },
         {
           "username": "wxoutlaw",
-          "displayName": "Frost - Lead Expert",
+          "displayName": "Frost",
           "avatar": "assets/avatars/626259765537800212.png",
           "banner": null,
           "amount": 69.67,
@@ -107,11 +107,19 @@
         },
         {
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (St John’s FL)",
+          "displayName": "Gabriel Kramp (Central MA)",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "amount": 40,
           "donatedAt": "2026-01-06T17:55:08.000Z"
+        },
+        {
+          "username": "hainesnoids",
+          "displayName": "hainesnoids",
+          "avatar": "assets/avatars/496829863924072448.png",
+          "banner": null,
+          "amount": 1.01,
+          "donatedAt": "2026-01-24T00:43:24.000Z"
         },
         {
           "username": "jaysonido",
@@ -140,22 +148,14 @@
         {
           "username": "ldncwx",
           "displayName": "ldncwx",
-          "avatar": "assets/avatars/default-1.png",
+          "avatar": "assets/avatars/1478266467307884636.png",
           "banner": null,
           "amount": 25,
           "donatedAt": "2026-07-05T10:17:15.000Z"
         },
         {
-          "username": "hainesnoids",
-          "displayName": "maudpuzzie",
-          "avatar": "assets/avatars/496829863924072448.png",
-          "banner": null,
-          "amount": 1.01,
-          "donatedAt": "2026-01-24T00:43:24.000Z"
-        },
-        {
           "username": "weatherlord_wx",
-          "displayName": "Max (Old Orchard Beach, ME)",
+          "displayName": "Max (Charlton, MA)",
           "avatar": "assets/avatars/877009401423200296.png",
           "banner": null,
           "amount": 10.8,
@@ -210,14 +210,6 @@
           "donatedAt": "2026-07-03T04:22:50.000Z"
         },
         {
-          "username": "rock_pebble122",
-          "displayName": "Rock",
-          "avatar": "assets/avatars/901700314216947712.png",
-          "banner": null,
-          "amount": 12,
-          "donatedAt": "2026-04-19T16:00:18.000Z"
-        },
-        {
           "username": "rtwproductions",
           "displayName": "RTW (Parker County, TX)",
           "avatar": "assets/avatars/1085767966118920233.png",
@@ -240,6 +232,14 @@
           "banner": null,
           "amount": 112.12,
           "donatedAt": "2026-07-06T20:39:37.000Z"
+        },
+        {
+          "username": "rock_pebble122",
+          "displayName": "Stone",
+          "avatar": "assets/avatars/901700314216947712.png",
+          "banner": null,
+          "amount": 12,
+          "donatedAt": "2026-04-19T16:00:18.000Z"
         },
         {
           "username": "tiggre2",
