@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T15:49:20.752Z",
+  "updatedAt": "2026-07-20T18:26:08.023Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,10 +7,10 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7436
+    "memberCount": 7433
   },
-  "allTimeTotal": 1042.69,
-  "monthlyRaised": 360.3,
+  "allTimeTotal": 1043.69,
+  "monthlyRaised": 361.3,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -54,8 +54,8 @@
           "displayName": "Cali",
           "avatar": "assets/avatars/1020807595579154544.png",
           "banner": null,
-          "amount": null,
-          "donatedAt": null
+          "amount": 3.5,
+          "donatedAt": "2026-07-20T12:00:00.000Z"
         },
         {
           "username": "dodgeram3500limited",
