@@ -39,6 +39,7 @@
 <link rel="stylesheet" href="snowball.css">
 <link rel="stylesheet" href="community.css">
 <link rel="canonical" href="https://xtremewx.com/contact" />
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <meta property="og:site_name" content="Xtreme Weather" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Xtreme Weather • Contact Us" />
@@ -164,6 +165,7 @@
       <div class="contact-layout contact-layout-single">
         <form class="contact-form" id="contact-form" action="https://snowball-api.xtremewx.com/api/contact" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="_subject" value="New Xtreme Weather contact form submission">
+          <input type="hidden" name="form_loaded_at" id="contact-form-loaded-at">
           <input type="text" name="_gotcha" class="form-honey" tabindex="-1" autocomplete="off">
 
           <div class="form-grid">
@@ -207,7 +209,8 @@
             <span>I'm okay with the team contacting me back.</span>
           </label>
 
-          <button type="submit" class="btn-primary form-submit" id="contact-form-submit"><i class="fas fa-paper-plane"></i> Send message</button>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAD6qk50orIjxwt0j" data-theme="dark"></div>
+          <button type="submit" class="btn-primary form-submit" id="contact-form-submit" disabled><i class="fas fa-paper-plane"></i> Please wait 30s</button>
           <div class="form-status contact-form-status" id="contact-form-status" role="status" aria-live="polite"></div>
         </form>
 
@@ -274,8 +277,34 @@
     var form = document.getElementById('contact-form');
     var status = document.getElementById('contact-form-status');
     var submit = document.getElementById('contact-form-submit');
+    var formLoadedAt = document.getElementById('contact-form-loaded-at');
     var API_CONTACT = 'https://snowball-api.xtremewx.com/api/contact';
-    if (!form || !status || !submit) return;
+    var MIN_CONTACT_WAIT_MS = 30000;
+    var CONTACT_SEND_LABEL = '<i class="fas fa-paper-plane"></i> Send message';
+    var contactWaitActive = false;
+    if (!form || !status || !submit || !formLoadedAt) return;
+
+    function startContactWait() {
+        var startedAt = Date.now();
+        formLoadedAt.value = String(startedAt);
+        contactWaitActive = true;
+        submit.disabled = true;
+        submit.innerHTML = '<i class="fas fa-hourglass-half"></i> Please wait 30s';
+
+        var timer = window.setInterval(function () {
+            var remaining = Math.max(0, MIN_CONTACT_WAIT_MS - (Date.now() - startedAt));
+            if (remaining === 0) {
+                window.clearInterval(timer);
+                contactWaitActive = false;
+                submit.disabled = false;
+                submit.innerHTML = CONTACT_SEND_LABEL;
+                return;
+            }
+            submit.innerHTML = '<i class="fas fa-hourglass-half"></i> Please wait ' + Math.ceil(remaining / 1000) + 's';
+        }, 250);
+    }
+
+    startContactWait();
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -306,6 +335,8 @@
             });
         }).then(function () {
             form.reset();
+            if (window.turnstile) window.turnstile.reset();
+            startContactWait();
             status.className = 'form-status contact-form-status is-success';
             status.textContent = 'Message sent. We got it.';
             burstContactConfetti();
@@ -314,7 +345,7 @@
             status.textContent = contactErrorMessage(error && error.code);
         }).finally(function () {
             form.classList.remove('is-sending');
-            submit.disabled = false;
+            submit.disabled = contactWaitActive;
         });
     });
 
@@ -324,6 +355,8 @@
             valid_email_required: 'Enter a valid email address so staff can reply.',
             topic_required: 'Choose a topic for your message.',
             message_required: 'Write a little more before sending.',
+            contact_form_too_fast: 'Please wait 30 seconds before sending your message.',
+            turnstile_required: 'Please complete the security check, then try again.',
             contact_rate_limited: 'You already sent a message today. Try again tomorrow.',
             contact_submit_failed: 'Snowball could not send this yet. Try again, or reach us on Discord.'
         };
