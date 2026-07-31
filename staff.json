@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-07-06T07:20:36.924Z",
+  "updatedAt": "2026-07-31T03:11:52.961Z",
   "updatedBy": {
-    "id": "582394159546236948",
-    "tag": "wxtership"
+    "id": "655579190711681033",
+    "tag": "speedtape_3995"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7383
+    "memberCount": 7497
   },
   "tiers": [
     {
@@ -17,7 +17,7 @@
         {
           "id": "582394159546236948",
           "username": "wxtership",
-          "displayName": "wxtership",
+          "displayName": "xtreme weather on tiktok 🤫",
           "avatar": "assets/avatars/582394159546236948.png",
           "banner": null,
           "accentColor": null
@@ -75,17 +75,9 @@
           "accentColor": null
         },
         {
-          "id": "405757488487464961",
-          "username": "adampate",
-          "displayName": "Adampate ( Bemidji MN)",
-          "avatar": "assets/avatars/405757488487464961.png",
-          "banner": null,
-          "accentColor": "#00ffff"
-        },
-        {
           "id": "796835065287934042",
           "username": "caleb_dont",
-          "displayName": "caleb_dont (T’Telir, Hallandren)",
+          "displayName": "caleb_dont (Round Rock, TX)",
           "avatar": "assets/avatars/796835065287934042.png",
           "banner": null,
           "accentColor": null
@@ -95,6 +87,14 @@
           "username": "clark_la",
           "displayName": "Clark",
           "avatar": "assets/avatars/default-3.png",
+          "banner": null,
+          "accentColor": null
+        },
+        {
+          "id": "877009401423200296",
+          "username": "weatherlord_wx",
+          "displayName": "ERRERR-HAPPY BIRTHDAY EMERGENCY",
+          "avatar": "assets/avatars/877009401423200296.png",
           "banner": null,
           "accentColor": null
         },
@@ -117,24 +117,24 @@
         {
           "id": "1298379997689679966",
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (St John’s FL)",
+          "displayName": "Gabriel Kramp (Central MA)",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "accentColor": null
         },
         {
-          "id": "877009401423200296",
-          "username": "weatherlord_wx",
-          "displayName": "Max (Old Orchard Beach, ME)",
-          "avatar": "assets/avatars/877009401423200296.png",
+          "id": "1083832581411315865",
+          "username": "stormy_sky62",
+          "displayName": "INK EMERGENCY",
+          "avatar": "assets/avatars/1083832581411315865.png",
           "banner": null,
-          "accentColor": null
+          "accentColor": "#84c0e5"
         },
         {
           "id": "1324763970271314023",
           "username": "dynafolf",
           "displayName": "Piker (Pike County, PA)",
-          "avatar": "assets/avatars/1324763970271314023.png",
+          "avatar": "assets/avatars/1324763970271314023.gif",
           "banner": null,
           "accentColor": null
         },
@@ -161,14 +161,6 @@
           "avatar": "assets/avatars/1085767966118920233.png",
           "banner": null,
           "accentColor": null
-        },
-        {
-          "id": "1083832581411315865",
-          "username": "stormy_sky62",
-          "displayName": "Stormy (Central PA)",
-          "avatar": "assets/avatars/1083832581411315865.png",
-          "banner": null,
-          "accentColor": "#84c0e5"
         }
       ]
     },
