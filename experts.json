@@ -12,8 +12,21 @@
   "tiers": [
     {
       "key": "lead",
-      "label": "Lead Experts",
-      "members": []
+      "label": "Coverage Leads",
+      "members": [
+        {
+          "id": "1104974309295923201",
+          "username": "painlesmaster3",
+          "displayName": "Painless",
+          "avatarURL": "assets/avatars/1104974309295923201.png"
+        },
+        {
+          "id": "948372386347102209",
+          "username": "last_one_remaining",
+          "displayName": "RemainingWX",
+          "avatarURL": "assets/avatars/948372386347102209.png"
+        }
+      ]
     },
     {
       "key": "expert",
@@ -72,18 +85,6 @@
           "username": "weatherlord_wx",
           "displayName": "Max (Charlton, MA)",
           "avatarURL": "assets/avatars/877009401423200296.png"
-        },
-        {
-          "id": "1104974309295923201",
-          "username": "painlesmaster3",
-          "displayName": "Painless",
-          "avatarURL": "assets/avatars/1104974309295923201.png"
-        },
-        {
-          "id": "948372386347102209",
-          "username": "last_one_remaining",
-          "displayName": "RemainingWX",
-          "avatarURL": "assets/avatars/948372386347102209.png"
         },
         {
           "id": "290304889718964242",

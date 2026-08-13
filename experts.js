@@ -23,7 +23,7 @@
 
   var ICON = 'assets/coverage-expert.png';
   var TIERS = {
-    lead:   { label: 'Lead Experts',    role: 'Lead Coverage Expert' },
+    lead:   { label: 'Coverage Leads',  role: 'Coverage Lead' },
     expert: { label: 'Coverage Experts', role: 'Coverage Expert' }
   };
   var ORDER = ['lead', 'expert'];
