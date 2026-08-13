@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T02:51:44.044Z",
+  "updatedAt": "2026-08-13T02:35:17.572Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7500
+    "memberCount": 7516
   },
   "tiers": [
     {
@@ -20,12 +20,6 @@
       "label": "Coverage Experts",
       "members": [
         {
-          "id": "1033720108968841277",
-          "username": "mesocyclone_vortex",
-          "displayName": "［ Ø ヌ ル セ ッ ク ］ ド ヴ ォ ル ザ ー ク",
-          "avatarURL": "assets/avatars/1033720108968841277.png"
-        },
-        {
           "id": "770787602583388170",
           "username": "apocalypsenow",
           "displayName": "apoc (Southeast MI)",
@@ -34,7 +28,7 @@
         {
           "id": "1132908259162992712",
           "username": "awcoal",
-          "displayName": "AWCoal (On the dance floor, NJ)",
+          "displayName": "AWCoal (NJ)",
           "avatarURL": "assets/avatars/1132908259162992712.png"
         },
         {
@@ -44,10 +38,34 @@
           "avatarURL": "assets/avatars/1061023304862933122.png"
         },
         {
+          "id": "796835065287934042",
+          "username": "caleb_dont",
+          "displayName": "caleb_dont (Round Rock, TX)",
+          "avatarURL": "assets/avatars/796835065287934042.png"
+        },
+        {
+          "id": "750809384187199561",
+          "username": "nickh.",
+          "displayName": "Coffee (Massachusetts)",
+          "avatarURL": "assets/avatars/750809384187199561.png"
+        },
+        {
           "id": "664920241528242207",
           "username": "kurtfan5468",
           "displayName": "Kurt",
           "avatarURL": "assets/avatars/664920241528242207.png"
+        },
+        {
+          "id": "1096563265556975736",
+          "username": "logan.sss",
+          "displayName": "LoganS (MapleGlen PA)",
+          "avatarURL": "assets/avatars/1096563265556975736.png"
+        },
+        {
+          "id": "1134660169456955433",
+          "username": "veilednightmare",
+          "displayName": "luna",
+          "avatarURL": "assets/avatars/1134660169456955433.png"
         },
         {
           "id": "877009401423200296",
@@ -58,7 +76,7 @@
         {
           "id": "1104974309295923201",
           "username": "painlesmaster3",
-          "displayName": "Painless - Lead Expert",
+          "displayName": "Painless",
           "avatarURL": "assets/avatars/1104974309295923201.png"
         },
         {
@@ -68,10 +86,34 @@
           "avatarURL": "assets/avatars/948372386347102209.png"
         },
         {
+          "id": "290304889718964242",
+          "username": "sondders",
+          "displayName": "Sonder",
+          "avatarURL": "assets/avatars/290304889718964242.png"
+        },
+        {
           "id": "655579190711681033",
           "username": "speedtape_3995",
           "displayName": "Speedtape",
           "avatarURL": "assets/avatars/655579190711681033.png"
+        },
+        {
+          "id": "1409029489119461397",
+          "username": "tiggre2",
+          "displayName": "tiger (Hanoi, Vietnam)",
+          "avatarURL": "assets/avatars/1409029489119461397.png"
+        },
+        {
+          "id": "364919496546320384",
+          "username": "vb__",
+          "displayName": "VB (Tuscaloosa, AL)",
+          "avatarURL": "assets/avatars/364919496546320384.png"
+        },
+        {
+          "id": "1033720108968841277",
+          "username": "mesocyclone_vortex",
+          "displayName": "ド ヴ ォ ル ザ ー ク［ Ø ヌ ル セ ッ ク ］",
+          "avatarURL": "assets/avatars/1033720108968841277.png"
         }
       ]
     }
