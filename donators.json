@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18T03:16:58.700Z",
+  "updatedAt": "2026-08-18T19:01:55.987Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -7,10 +7,10 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7523
+    "memberCount": 7525
   },
-  "allTimeTotal": 1046.69,
-  "monthlyRaised": 3,
+  "allTimeTotal": 1051.69,
+  "monthlyRaised": 8,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -130,20 +130,20 @@
           "donatedAt": "2026-03-17T04:10:31.000Z"
         },
         {
-          "username": "logan.sss",
-          "displayName": "Larpgan",
-          "avatar": "assets/avatars/1096563265556975736.png",
-          "banner": null,
-          "amount": 2,
-          "donatedAt": "2026-08-18T03:16:05.000Z"
-        },
-        {
           "username": "ldncwx",
           "displayName": "ldncwx",
           "avatar": "assets/avatars/1478266467307884636.png",
           "banner": null,
           "amount": 25,
           "donatedAt": "2026-07-05T10:17:15.000Z"
+        },
+        {
+          "username": "logan.sss",
+          "displayName": "LoganS (MapleGlen PA",
+          "avatar": "assets/avatars/1096563265556975736.png",
+          "banner": null,
+          "amount": 2,
+          "donatedAt": "2026-08-18T03:16:05.000Z"
         },
         {
           "username": "weatherlord_wx",
@@ -174,8 +174,8 @@
           "displayName": "Preston (French Island, WI)",
           "avatar": "assets/avatars/989369484299104256.png",
           "banner": null,
-          "amount": 21,
-          "donatedAt": "2026-02-05T04:18:07.000Z"
+          "amount": 26,
+          "donatedAt": "2026-08-18T19:01:04.000Z"
         },
         {
           "username": "last_one_remaining",
