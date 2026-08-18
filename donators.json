@@ -1,22 +1,30 @@
 {
-  "updatedAt": "2026-07-26T17:55:27.207Z",
+  "updatedAt": "2026-08-18T03:13:24.667Z",
   "updatedBy": {
-    "id": "582394159546236948",
-    "tag": "wxtership"
+    "id": "system",
+    "tag": "auto-sync (donation)"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7447
+    "memberCount": 7523
   },
-  "allTimeTotal": 1043.69,
-  "monthlyRaised": 361.3,
+  "allTimeTotal": 1044.69,
+  "monthlyRaised": 1,
   "monthlyGoal": 50,
   "tiers": [
     {
       "key": "donator",
       "label": "Donators",
       "members": [
+        {
+          "username": "dynafolf",
+          "displayName": "<- Lad (South Carolina)",
+          "avatar": "assets/avatars/1324763970271314023.png",
+          "banner": null,
+          "amount": 5,
+          "donatedAt": "2026-05-19T15:58:40.000Z"
+        },
         {
           "username": "username.0_0.",
           "displayName": "$ Death {GE, TBS}",
@@ -43,11 +51,11 @@
         },
         {
           "username": "centralcarolinawx",
-          "displayName": "Cali",
+          "displayName": "CarolinaP",
           "avatar": "assets/avatars/1020807595579154544.png",
           "banner": null,
-          "amount": 3.5,
-          "donatedAt": "2026-07-20T12:00:00.000Z"
+          "amount": 4.5,
+          "donatedAt": "2026-08-17T13:00:29.000Z"
         },
         {
           "username": "dodgeram3500limited",
@@ -74,14 +82,6 @@
           "donatedAt": "2026-06-04T18:16:05.000Z"
         },
         {
-          "username": "itsdrewp",
-          "displayName": "Drew - Lead Expert",
-          "avatar": "assets/avatars/763380002770649088.png",
-          "banner": null,
-          "amount": 1,
-          "donatedAt": "2026-01-08T02:21:49.000Z"
-        },
-        {
           "username": "theexiled6225",
           "displayName": "𝕱𝖊𝖆𝖗 𝕴𝖓𝖈𝖆𝖗𝖓𝖆𝖙𝖊",
           "avatar": "assets/avatars/1110754991091748905.png",
@@ -91,7 +91,7 @@
         },
         {
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Central MA)",
+          "displayName": "Gabriel Kramp (Central Ma)",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "amount": 40,
@@ -162,14 +162,6 @@
           "donatedAt": "2026-03-10T01:52:03.000Z"
         },
         {
-          "username": "dynafolf",
-          "displayName": "Piker (Pike County, PA)",
-          "avatar": "assets/avatars/1324763970271314023.png",
-          "banner": null,
-          "amount": 5,
-          "donatedAt": "2026-05-19T15:58:40.000Z"
-        },
-        {
           "username": "preston604371",
           "displayName": "Preston (French Island, WI)",
           "avatar": "assets/avatars/989369484299104256.png",
@@ -234,7 +226,7 @@
           "donatedAt": "2026-04-20T00:00:00.000Z"
         },
         {
-          "username": "avipus_89340",
+          "username": "unguidedgod",
           "displayName": "Ziema [GE | TBS]",
           "avatar": "assets/avatars/858386183603617874.png",
           "banner": null,
