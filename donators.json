@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18T03:13:24.667Z",
+  "updatedAt": "2026-08-18T03:16:58.700Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -9,8 +9,8 @@
     "name": "Xtreme Weather",
     "memberCount": 7523
   },
-  "allTimeTotal": 1044.69,
-  "monthlyRaised": 1,
+  "allTimeTotal": 1046.69,
+  "monthlyRaised": 3,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -128,6 +128,14 @@
           "banner": null,
           "amount": 1,
           "donatedAt": "2026-03-17T04:10:31.000Z"
+        },
+        {
+          "username": "logan.sss",
+          "displayName": "Larpgan",
+          "avatar": "assets/avatars/1096563265556975736.png",
+          "banner": null,
+          "amount": 2,
+          "donatedAt": "2026-08-18T03:16:05.000Z"
         },
         {
           "username": "ldncwx",
