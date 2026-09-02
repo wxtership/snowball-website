@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-28T14:27:54.374Z",
+  "updatedAt": "2026-09-02T22:24:49.183Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -7,24 +7,16 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7540
+    "memberCount": 7550
   },
-  "allTimeTotal": 1052.69,
-  "monthlyRaised": 9,
+  "allTimeTotal": 1059.39,
+  "monthlyRaised": 6.7,
   "monthlyGoal": 50,
   "tiers": [
     {
       "key": "donator",
       "label": "Donators",
       "members": [
-        {
-          "username": "dynafolf",
-          "displayName": "<- Lad (Pike County, PA)",
-          "avatar": "assets/avatars/1324763970271314023.png",
-          "banner": null,
-          "amount": 5,
-          "donatedAt": "2026-05-19T15:58:40.000Z"
-        },
         {
           "username": "username.0_0.",
           "displayName": "$ Death {GE, TBS}",
@@ -50,20 +42,20 @@
           "donatedAt": "2025-06-21T05:43:05.000Z"
         },
         {
-          "username": "centralcarolinawx",
-          "displayName": "CarolinaP",
-          "avatar": "assets/avatars/1020807595579154544.png",
-          "banner": null,
-          "amount": 4.5,
-          "donatedAt": "2026-08-17T13:00:29.000Z"
-        },
-        {
           "username": "dodgeram3500limited",
           "displayName": "cat 395",
           "avatar": "assets/avatars/1060732954285965332.png",
           "banner": null,
           "amount": 1,
           "donatedAt": "2025-06-21T05:46:17.000Z"
+        },
+        {
+          "username": "centralcarolinawx",
+          "displayName": "centricariweather",
+          "avatar": "assets/avatars/1020807595579154544.png",
+          "banner": null,
+          "amount": 4.5,
+          "donatedAt": "2026-08-17T13:00:29.000Z"
         },
         {
           "username": "ccorentinn",
@@ -99,7 +91,7 @@
         },
         {
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Lynchburg, VA)",
+          "displayName": "Gabriel Kramp (Santa Barbara, CA",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "amount": 40,
@@ -115,7 +107,7 @@
         },
         {
           "username": "hay.wyd",
-          "displayName": "hayden is SO tuff",
+          "displayName": "hayden is SO tuff (Lima OH)",
           "avatar": "assets/avatars/998607936031035412.png",
           "banner": null,
           "amount": 1,
@@ -163,11 +155,11 @@
         },
         {
           "username": "weatherlord_wx",
-          "displayName": "Max (North Myrtle Beach, SC)",
+          "displayName": "Max (Charlton, MA)",
           "avatar": "assets/avatars/877009401423200296.png",
           "banner": null,
-          "amount": 10.8,
-          "donatedAt": "2026-07-03T04:27:39.000Z"
+          "amount": 17.5,
+          "donatedAt": "2026-09-02T22:23:10.000Z"
         },
         {
           "username": "no.one0707",
@@ -176,6 +168,14 @@
           "banner": null,
           "amount": 10,
           "donatedAt": "2026-01-01T05:48:41.000Z"
+        },
+        {
+          "username": "dynafolf",
+          "displayName": "Owpple (Pike County, PA)",
+          "avatar": "assets/avatars/1324763970271314023.png",
+          "banner": null,
+          "amount": 5,
+          "donatedAt": "2026-05-19T15:58:40.000Z"
         },
         {
           "username": "silliphilly",
