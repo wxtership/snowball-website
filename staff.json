@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T02:30:53.942Z",
+  "updatedAt": "2026-09-07T18:23:50.888Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7551
+    "memberCount": 7549
   },
   "tiers": [
     {
@@ -17,7 +17,7 @@
         {
           "id": "582394159546236948",
           "username": "wxtership",
-          "displayName": "wxtership ☭",
+          "displayName": "barrow ☭",
           "avatar": "assets/avatars/582394159546236948.png",
           "banner": null,
           "accentColor": null
@@ -67,14 +67,6 @@
       "label": "Staff",
       "members": [
         {
-          "id": "1324763970271314023",
-          "username": "dynafolf",
-          "displayName": "<- Lad (Pike County, PA)",
-          "avatar": "assets/avatars/1324763970271314023.gif",
-          "banner": null,
-          "accentColor": null
-        },
-        {
           "id": "778809059498786826",
           "username": "2hottyscotty",
           "displayName": "2 Hotty Scotty (Westmo Co. PA)",
@@ -109,7 +101,7 @@
         {
           "id": "1298379997689679966",
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Lynchburg, VA)",
+          "displayName": "Gabriel Kramp (Central MA)",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "accentColor": null
@@ -123,10 +115,10 @@
           "accentColor": null
         },
         {
-          "id": "948372386347102209",
-          "username": "last_one_remaining",
-          "displayName": "RemainingWX",
-          "avatar": "assets/avatars/948372386347102209.png",
+          "id": "1324763970271314023",
+          "username": "dynafolf",
+          "displayName": "Owpple (Pike County, PA)",
+          "avatar": "assets/avatars/1324763970271314023.png",
           "banner": null,
           "accentColor": null
         },
