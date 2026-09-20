@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-12T01:20:37.492Z",
+  "updatedAt": "2026-09-20T19:55:53.232Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -7,10 +7,10 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7560
+    "memberCount": 7557
   },
-  "allTimeTotal": 1060.39,
-  "monthlyRaised": 7.7,
+  "allTimeTotal": 1061.44,
+  "monthlyRaised": 8.75,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -26,6 +26,14 @@
           "donatedAt": "2025-06-22T00:00:00.000Z"
         },
         {
+          "username": "dynafolf",
+          "displayName": "A Twig (Pike County, PA)",
+          "avatar": "assets/avatars/1324763970271314023.png",
+          "banner": null,
+          "amount": 5,
+          "donatedAt": "2026-05-19T15:58:40.000Z"
+        },
+        {
           "username": "americanjon",
           "displayName": "AmericanJon - MI",
           "avatar": "assets/avatars/136818144256851968.png",
@@ -34,12 +42,20 @@
           "donatedAt": "2026-04-10T18:21:37.000Z"
         },
         {
+          "username": "bex.eot",
+          "displayName": "Bex | Morrisville, PA",
+          "avatar": "assets/avatars/176081301743337472.png",
+          "banner": null,
+          "amount": 1,
+          "donatedAt": "2025-06-21T06:11:17.000Z"
+        },
+        {
           "username": "centralcarolinawx",
           "displayName": "CarolinaP",
           "avatar": "assets/avatars/1020807595579154544.png",
           "banner": null,
-          "amount": 4.5,
-          "donatedAt": "2026-08-17T13:00:29.000Z"
+          "amount": 5.55,
+          "donatedAt": "2026-09-20T19:54:30.000Z"
         },
         {
           "username": "dodgeram3500limited",
@@ -83,7 +99,7 @@
         },
         {
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Raleigh, NC)",
+          "displayName": "Gabriel Kramp (Los Angeles, CA)",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "amount": 40,
@@ -115,7 +131,7 @@
         },
         {
           "username": "jpseasmocksxreborn",
-          "displayName": "JP’s Media Broadcasting CompanyX",
+          "displayName": "JP’s EAS MocksX (Bibb County,GA)",
           "avatar": "assets/avatars/1540886926415110194.png",
           "banner": null,
           "amount": 1,
@@ -227,7 +243,7 @@
         },
         {
           "username": "starzoneeee_xp",
-          "displayName": "SYRUS 🎂 ・COLUMBUS OH",
+          "displayName": "SYRUS ☆ ・COLUMBUS OH",
           "avatar": "assets/avatars/1020878856829292614.png",
           "banner": null,
           "amount": 2,
@@ -240,14 +256,6 @@
           "banner": null,
           "amount": 0.99,
           "donatedAt": "2026-04-20T00:00:00.000Z"
-        },
-        {
-          "username": "dynafolf",
-          "displayName": "Uh…? (Pike County, PA)",
-          "avatar": "assets/avatars/1324763970271314023.png",
-          "banner": null,
-          "amount": 5,
-          "donatedAt": "2026-05-19T15:58:40.000Z"
         },
         {
           "username": "unguidedgod",
