@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T19:55:53.232Z",
+  "updatedAt": "2026-09-21T23:28:24.035Z",
   "updatedBy": {
     "id": "system",
     "tag": "auto-sync (donation)"
@@ -7,10 +7,10 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7557
+    "memberCount": 7561
   },
-  "allTimeTotal": 1061.44,
-  "monthlyRaised": 8.75,
+  "allTimeTotal": 1069.44,
+  "monthlyRaised": 16.75,
   "monthlyGoal": 50,
   "tiers": [
     {
@@ -18,20 +18,20 @@
       "label": "Donators",
       "members": [
         {
+          "username": "dynafolf",
+          "displayName": "??? (Pike County, PA)",
+          "avatar": "assets/avatars/1324763970271314023.png",
+          "banner": null,
+          "amount": 5,
+          "donatedAt": "2026-05-19T15:58:40.000Z"
+        },
+        {
           "username": "username.0_0.",
           "displayName": "$ Death {GE, TBS}",
           "avatar": "assets/avatars/1326976601673568380.png",
           "banner": null,
           "amount": 1,
           "donatedAt": "2025-06-22T00:00:00.000Z"
-        },
-        {
-          "username": "dynafolf",
-          "displayName": "A Twig (Pike County, PA)",
-          "avatar": "assets/avatars/1324763970271314023.png",
-          "banner": null,
-          "amount": 5,
-          "donatedAt": "2026-05-19T15:58:40.000Z"
         },
         {
           "username": "americanjon",
@@ -99,7 +99,7 @@
         },
         {
           "username": "gabrielkramp.",
-          "displayName": "Gabriel Kramp (Los Angeles, CA)",
+          "displayName": "Gabriel Kramp (Lynchburg VA)",
           "avatar": "assets/avatars/1298379997689679966.png",
           "banner": null,
           "amount": 40,
@@ -190,8 +190,8 @@
           "displayName": "Preston (French Island, WI)",
           "avatar": "assets/avatars/989369484299104256.png",
           "banner": null,
-          "amount": 26,
-          "donatedAt": "2026-08-18T19:01:04.000Z"
+          "amount": 34,
+          "donatedAt": "2026-09-21T23:27:52.000Z"
         },
         {
           "username": "last_one_remaining",
