@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-29T12:48:51.286Z",
+  "updatedAt": "2026-10-30T23:52:39.005Z",
   "updatedBy": {
     "id": "582394159546236948",
     "tag": "wxtership"
@@ -7,7 +7,7 @@
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7562
+    "memberCount": 7559
   },
   "tiers": [
     {
@@ -42,7 +42,7 @@
           "displayName": "Philly",
           "avatar": "assets/avatars/1133479873155956878.png",
           "banner": null,
-          "accentColor": "#20b8af"
+          "accentColor": null
         },
         {
           "id": "726612317248159745",
@@ -67,10 +67,10 @@
       "label": "Staff",
       "members": [
         {
-          "id": "778809059498786826",
-          "username": "2hottyscotty",
-          "displayName": "2 Hotty Scotty (Westmo Co. PA)",
-          "avatar": "assets/avatars/778809059498786826.png",
+          "id": "1324763970271314023",
+          "username": "dynafolf",
+          "displayName": ":) (Pike County, PA)",
+          "avatar": "assets/avatars/1324763970271314023.png",
           "banner": null,
           "accentColor": null
         },
@@ -107,18 +107,10 @@
           "accentColor": null
         },
         {
-          "id": "1324763970271314023",
-          "username": "dynafolf",
-          "displayName": "Lad (Piker Pike County, PA)",
-          "avatar": "assets/avatars/1324763970271314023.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
           "id": "877009401423200296",
           "username": "weatherlord_wx",
-          "displayName": "Max (West Springfield, MA)",
-          "avatar": "assets/avatars/877009401423200296.gif",
+          "displayName": "Max (Charlton, MA)",
+          "avatar": "assets/avatars/877009401423200296.png",
           "banner": null,
           "accentColor": null
         },
