@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-10-30T23:52:39.005Z",
+  "updatedAt": "2026-10-31T22:58:50.122Z",
   "updatedBy": {
-    "id": "582394159546236948",
-    "tag": "wxtership"
+    "id": "1133479873155956878",
+    "tag": "silliphilly"
   },
   "guild": {
     "id": "1077714936056250388",
     "name": "Xtreme Weather",
-    "memberCount": 7559
+    "memberCount": 7564
   },
   "tiers": [
     {
@@ -87,14 +87,6 @@
           "username": "clark_la",
           "displayName": "Clark",
           "avatar": "assets/avatars/default-3.png",
-          "banner": null,
-          "accentColor": null
-        },
-        {
-          "id": "1110754991091748905",
-          "username": "theexiled6225",
-          "displayName": "𝕱𝖊𝖆𝖗 𝕴𝖓𝖈𝖆𝖗𝖓𝖆𝖙𝖊",
-          "avatar": "assets/avatars/1110754991091748905.png",
           "banner": null,
           "accentColor": null
         },
